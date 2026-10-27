@@ -1,0 +1,29 @@
+name: Verify live preview
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: Internal implementation branch
+        required: true
+        default: feat/phase-one-encyclopedia
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: node scripts/verify-preview.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: live-preview-screenshots
+          path: test-results/live-preview/
