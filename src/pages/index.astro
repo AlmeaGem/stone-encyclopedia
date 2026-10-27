@@ -2,6 +2,7 @@
 import Page from '../layouts/Page.astro';
 import ReportOffer from '../components/ReportOffer.astro';
 import ServiceComparison from '../components/ServiceComparison.astro';
+import ArticleCover from '../components/ArticleCover.astro';
 import ArticleTitle from '../components/ArticleTitle.astro';
 import HeroGem from '../components/HeroGem.astro';
 import Card from '../components/Card.astro';
@@ -187,14 +188,7 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
     <div class="article-grid">
       {articles.slice(0, 3).map((a, i) => (
         <a class="article-card" href={pathTo(`articles/${a.slug}/`)}>
-          <div class:list={['article-cover', `cover-${i}`]} aria-hidden="true">
-            <span>
-              ALMÉA GEM
-              <br />
-              FIELD NOTES
-            </span>
-            <strong>0{i + 1}</strong>
-          </div>
+          <ArticleCover slug={a.slug} number={i + 1} />
           <p class="eyebrow">{a.category}</p>
           <ArticleTitle title={a.title} />
           <p>{a.description}</p>

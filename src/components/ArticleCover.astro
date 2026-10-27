@@ -1,0 +1,148 @@
+---
+interface Props {
+  slug: string;
+  number: number;
+}
+const { slug, number } = Astro.props;
+---
+
+<div
+  class:list={['article-cover', `cover-${(number - 1) % 3}`]}
+  aria-hidden="true"
+>
+  <span class="article-cover-brand">
+    ALMÉA GEM
+    <br />
+    FIELD NOTES
+  </span>
+  <svg
+    class="article-theme-icon"
+    data-theme={slug}
+    viewBox="0 0 100 100"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    focusable="false"
+    aria-hidden="true"
+  >
+    {slug === 'first-stone' && (
+      <>
+        <path
+          d="m17 30 12-13h24l13 13-24 33Z"
+          fill="#f4ddd6"
+          fill-opacity=".6"
+        />
+        <path
+          d="M17 30h49M29 17l-3 13 16 33 15-33-4-13M26 30h31"
+          opacity=".65"
+        />
+        <circle cx="61" cy="57" r="20" fill="#fffaf4" fill-opacity=".65" />
+        <circle cx="61" cy="57" r="15" opacity=".45" />
+        <path d="m75 72 15 16-5 5-15-16M53 56l6-7 10 7-8 10Z" />
+      </>
+    )}
+    {slug === 'names-and-varieties' && (
+      <>
+        <path
+          d="m13 45 11-13h22l11 13-22 29Z"
+          fill="#edcfc7"
+          fill-opacity=".55"
+        />
+        <path
+          d="M13 45h44M24 32l-2 13 13 29 13-29-2-13M57 44l9-21M58 50h9M55 59l11 18"
+          opacity=".65"
+        />
+        <path
+          d="M66 15h24v15H66l-6-7.5ZM68 42h23v15H68l-6-7.5ZM66 70h24v15H66l-6-7.5Z"
+          fill="#fffbf5"
+        />
+        <path
+          d="M72 21h12M72 25h8M74 48h11M74 52h7M72 76h12M72 80h8"
+          opacity=".5"
+        />
+      </>
+    )}
+    {slug === 'inclusions' && (
+      <>
+        <path
+          d="m31 13 31 5 16 27-12 36-32 8-18-28Z"
+          fill="#e2c6bb"
+          fill-opacity=".45"
+        />
+        <path
+          d="m31 13 8 30-23 18M62 18 39 43l27 38M39 43l39 2M34 89l5-46"
+          opacity=".5"
+        />
+        <path
+          d="m29 58 18-13M34 65l20-17M42 72l18-20M52 74l11-14"
+          stroke="#aa7872"
+        />
+        <path d="m26 48 5 3 3-6M56 31l4 4 5-2M56 77l-4 4" opacity=".7" />
+        <circle cx="50" cy="38" r="1.4" fill="currentColor" />
+        <circle cx="32" cy="73" r="1" fill="currentColor" />
+      </>
+    )}
+    {slug === 'care' && (
+      <>
+        <path
+          d="M10 64q18-18 37-8t39-3l-8 28q-18 11-36-1T10 83Z"
+          fill="#f7ebe4"
+        />
+        <path d="M18 70q13-8 27 0t32 0M22 78q10-5 20 0" opacity=".5" />
+        <path
+          d="m30 36 12-14h23l12 14-23 31Z"
+          fill="#eccfc8"
+          fill-opacity=".6"
+        />
+        <path d="M30 36h47M42 22l-2 14 14 31 14-31-3-14" opacity=".65" />
+        <path d="M13 22v10M8 27h10M81 13v12M75 19h12" stroke="#b89b77" />
+      </>
+    )}
+    {slug === 'compare-pink-stones' && (
+      <>
+        <ellipse
+          cx="31"
+          cy="51"
+          rx="20"
+          ry="27"
+          fill="#f2d9d7"
+          fill-opacity=".8"
+        />
+        <path
+          d="M22 31q-10 14-5 26M18 64q5 10 15 10"
+          stroke="#fffaf6"
+          stroke-width="2"
+        />
+        <path
+          d="m62 28 19-7 13 20-8 30-22 10-10-29Z"
+          fill="#ce9eab"
+          fill-opacity=".55"
+        />
+        <path
+          d="m62 28 5 23-13 1M81 21 67 51l19 20M67 51l27-10M64 81l3-30"
+          opacity=".6"
+        />
+        <path d="m75 37 8-6M70 45l16-9" stroke="#fffaf6" stroke-width="1.6" />
+      </>
+    )}
+    {slug === 'editorial-policy' && (
+      <>
+        <path
+          d="M10 34q22-8 40 4 18-12 40-4v46q-23-8-40 3-18-11-40-3Z"
+          fill="#fff9f1"
+        />
+        <path
+          d="M50 38v45M15 85q19-5 35 4 17-9 35-4M19 45q13-3 23 3M19 53q13-3 23 3M19 61q13-3 23 3M59 56q12-4 22-2M59 64q12-4 22-2"
+          opacity=".6"
+        />
+        <path
+          d="m69 11 2.5 8.5L80 22l-8.5 2.5L69 33l-2.5-8.5L58 22l8.5-2.5ZM38 14v8M34 18h8M87 9v6M84 12h6"
+          stroke="#b89b77"
+        />
+      </>
+    )}
+  </svg>
+  <strong>{String(number).padStart(2, '0')}</strong>
+</div>
