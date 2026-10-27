@@ -1,5 +1,6 @@
 ---
 import Prose from '../../components/Prose.astro';
+import { publicReferences, publicHandling } from '../../lib/references';
 import Page from '../../layouts/Page.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Card from '../../components/Card.astro';
@@ -20,6 +21,7 @@ export function getStaticPaths() {
   }));
 }
 const { stone } = Astro.props;
+const references = publicReferences(stone.sources);
 const related = stone.related.map(stoneById).filter(Boolean);
 const reads = articles.filter((a) => a.stoneIds.includes(stone.id));
 const sections = [
@@ -87,7 +89,7 @@ const schema = {
         <a href="#quality">品質・選び方</a>
         <a href="#story">伝承・象徴</a>
         <a href="#care">浄化・取り扱い</a>
-        <a href="#references">出典・編集情報</a>
+        {references.length > 0 && <a href="#references">参考文献・出典</a>}
       </aside>
       <div class="detail-body">
         <section id="nature" class="detail-section">
@@ -154,41 +156,34 @@ const schema = {
           <p class="eyebrow">04 / CARE</p>
           <h2>浄化と、取り扱いの注意</h2>
           <Prose text={stone.cleansing} />
-          <div class="notice">{stone.handling}</div>
+          <div class="notice">{publicHandling(stone.handling)}</div>
           <a class="text-link" href={pathTo('articles/care/')}>
             お手入れの基本を読む ↗
           </a>
         </section>
-        <section id="references" class="detail-section">
-          <p class="eyebrow">05 / EDITORIAL NOTES</p>
-          <h2>出典・確認状況</h2>
-          <ul class="source-list">
-            {stone.sources.map((s) => (
-              <li>
-                <strong>
-                  {s.url ? (
-                    <a href={s.url} target="_blank" rel="noopener noreferrer">
-                      {s.label} ↗
-                    </a>
-                  ) : (
-                    s.label
-                  )}
-                </strong>
-                <Prose text={s.note} />
-                <small>資料の確認日：{s.checkedAt || '未確認'}</small>
-              </li>
-            ))}
-          </ul>
-          <p class="quiet-note">{stone.reviewNote}</p>
-          <p class="updated">
-            ページ編集日：
-            <time datetime={stone.updatedAt}>{stone.updatedAt}</time> · ID{' '}
-            {stone.id}
-          </p>
-          <a class="text-link" href={pathTo('articles/editorial-policy/')}>
-            編集方針と未確認情報の扱い ↗
-          </a>
-        </section>
+        {references.length > 0 && (
+          <section id="references" class="detail-section">
+            <p class="eyebrow">05 / REFERENCES</p>
+            <h2>参考文献・出典</h2>
+            <ul class="source-list">
+              {references.map((s) => (
+                <li>
+                  <strong>
+                    {s.url ? (
+                      <a href={s.url} target="_blank" rel="noopener noreferrer">
+                        {s.label} ↗
+                      </a>
+                    ) : (
+                      s.label
+                    )}
+                  </strong>
+                  {s.note && <Prose text={s.note} />}
+                  {s.checkedAt && <small>参照日：{s.checkedAt}</small>}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
       </div>
     </div>
     <section class="section">

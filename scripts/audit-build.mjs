@@ -17,9 +17,16 @@ for (const s of stones) {
     s.name,
     '鉱物・物理的な情報',
     '伝承',
-    '出典・確認状況',
   ])
     if (!html.includes(token)) throw new Error(`${s.id} lacks ${token}`);
+  for (const internal of [
+    '出典・確認状況',
+    '出典確認状況',
+    '移行資料',
+    s.reviewNote,
+  ].filter(Boolean))
+    if (html.includes(internal))
+      throw new Error(`${s.id} exposes internal review notes`);
   if (!index.includes(s.slug)) throw new Error('一覧に含まれない石があります');
 }
 async function files(dir) {

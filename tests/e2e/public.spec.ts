@@ -70,7 +70,6 @@ test('detail separates facts, quality and symbolism, with sources, internal link
     '宝石としての見方・選び方',
     '想いを託す、象徴と物語',
     '浄化と、取り扱いの注意',
-    '出典・確認状況',
   ]);
   await expect(
     page.getByText('未確認・情報整備中', { exact: true }).first(),
@@ -116,6 +115,9 @@ test('all 210 pages exist and have distinct canonical URLs, titles and sitemap e
           title = /<title>([^<]+)<\/title>/.exec(html)?.[1];
         expect(canonical).toBeTruthy();
         expect(title).toContain(stone.name);
+        expect(html).not.toContain('出典・確認状況');
+        expect(html).not.toContain('出典確認状況');
+        expect(html).not.toContain('移行資料');
         canonicals.add(canonical!);
         titles.add(title!);
         expect(sitemap).toContain(`/stones/${stone.slug}/`);
@@ -339,6 +341,14 @@ test('375, 390 and 430px keep Japanese title phrases intact and search targets s
     expect(
       await page.evaluate(() => document.body.scrollWidth <= innerWidth),
     ).toBe(true);
+    await expect(page.locator('.library-title')).toHaveText(
+      'POWER STONE ENCYCLOPEDIA',
+    );
+    for (const phrase of await page.locator('.library-title > span').all()) {
+      expect(
+        await phrase.evaluate((el) => el.scrollWidth <= el.clientWidth),
+      ).toBe(true);
+    }
     const input = page.locator('#home-q');
     await input.focus();
     const a = await input.boundingBox(),
