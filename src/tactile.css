@@ -1049,19 +1049,18 @@
   }
 }
 
-/* Theme illustrations share one lightweight, decorative cover component. */
+/* Balanced editorial cover: left-aligned brand, centered gem, inset folio. */
 .article-card .article-cover {
-  grid-template-columns: minmax(74px, 1fr) minmax(58px, 86px) auto;
+  grid-template-columns: minmax(0, 1fr) minmax(52px, 86px) minmax(0, 1fr);
   gap: 8px;
-  padding: 16px;
+  padding: 18px 20px;
 }
 .article-cover .article-cover-brand {
   white-space: nowrap;
   font-size: 8px;
   letter-spacing: 0.08em;
-  /* Align the label toward the illustration within its flexible grid track,
-     instead of leaving a large visual gap at the center of the cover. */
-  justify-self: end;
+  justify-self: start;
+  margin-left: clamp(4px, 1vw, 12px);
   text-align: left;
 }
 .article-theme-icon {
@@ -1075,4 +1074,6 @@
 }
 .article-cover > strong {
   font-size: clamp(40px, 4.4vw, 58px);
+  justify-self: end;
+  margin-right: clamp(4px, 1vw, 12px);
 }
