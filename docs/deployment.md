@@ -2,12 +2,9 @@
 
 ## GitHubの接続
 
-現在の接続は `createRepository` に対してGitHubから403を返すため、リポジトリの作成と連携対象への追加はアカウント所有者の操作が必要です。トークンをチャットに貼り付ける必要はありません。
+新規リポジトリ https://github.com/AlmeaGem/stone-encyclopedia への送信とPR #1の作成は完了しました。既存 `Amule-manager` の権限・コード・設定は変更していません。
 
-1. https://github.com/new でOwner `AlmeaGem`、名前 `stone-encyclopedia`、Publicを選択。
-2. README・ライセンス・gitignoreは追加せず、空のリポジトリを作成。
-3. https://github.com/settings/installations から接続に使うGitHubアプリのConfigureを開き、新しいリポジトリを対象に追加（All repositoriesの場合は不要）。
-4. リポジトリURLを共有。既存の `Amule-manager` の権限・コード・設定は変更しない。
+Pages有効化APIだけはGitHub連携の権限不足で403となるため、次のSource設定はアカウント所有者の操作が必要です。トークンやAPIキーの共有は不要です。
 
 ## GitHub Pagesの一時プレビュー
 

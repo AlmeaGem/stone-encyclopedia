@@ -2,13 +2,12 @@
 
 ## 現在の結論
 
-独立したローカルリポジトリ `/workspace/stone-encyclopedia` に、動作するフェーズ1を実装しました。既存 `AlmeaGem/Amule-manager` は編集していません。新しいGitHubリポジトリ・PR・外部プレビューは、アカウント所有者による新リポジトリの作成とGitHub連携の対象追加を待っています。
+フェーズ1を新しい独立リポジトリへ送信し、[PR #1](https://github.com/AlmeaGem/stone-encyclopedia/pull/1)を作成しました。既存 `AlmeaGem/Amule-manager` は編集していません。
 
-- 作成先候補：`https://github.com/AlmeaGem/stone-encyclopedia`（作成・アクセス確認前のため完成URLとはしません）
-- ブランチ：`feat/phase-one-encyclopedia`
-- main：初期READMEと手動プレビュー用ワークフロー
-- リポジトリ作成：GraphQL・RESTの両方でGitHubの403（integrationの権限不足）。APIキーのチャット共有は不要。
-- 外部プレビュー：未発行。Cloudflareのアカウント不要トンネルによる仮公開も、この環境の接続制限で成立していません。未接続のURLを公開済みとは案内しません。
+- GitHub：https://github.com/AlmeaGem/stone-encyclopedia
+- ブランチ：`feat/phase-one-encyclopedia`。mainは初期ファイルと手動プレビュー用ワークフローのみ。PRは未マージ。
+- GitHub上でも単体テスト・本番用静的ビルドの成功を確認。PC／スマホとサブパスの最終結果はPRのCIを参照。
+- 外部プレビュー：Pages未有効化のため未発行。新リポジトリのPages有効化APIはGitHub連携の権限不足で403。所有者によるSettings → Pages → Source: GitHub Actionsの設定が必要。
 - ローカル表示：`npm ci` → `npm run dev` → `http://127.0.0.1:4321/`
 
 ## 実装範囲
@@ -40,17 +39,16 @@
 - TypeScript／Astroチェック：エラー・警告なし。
 - 本番ビルド：240ページ生成（石の詳細210ページを含む）。公開ビルドの私有ファイル混入・CSP・サブパスのURLを監査。
 - GitHubのプロジェクト配下 `/stone-encyclopedia/` を指定したビルドも確認。ルートURLとの混同を防ぐ。
-- 実決済・PDF・クラウド管理者認証はフェーズ2のため未実装。GitHub CI／外部ホスティング上の検証は接続準備後に行う。
+- 実決済・PDF・クラウド管理者認証はフェーズ2のため未実装。外部ホスティング上の実表示検証はPages有効化後に行う。
 
 画面は [PCトップ](screenshots/home-desktop.png)、[スマホトップ](screenshots/home-mobile.png)、[PC詳細](screenshots/detail-desktop.png)、[スマホ詳細](screenshots/detail-mobile.png)、[編集画面（テストデータ）](screenshots/editor-test.png) を参照。
 
 ## 次に必要な操作
 
-1. [新規リポジトリ作成](https://github.com/new)でOwner `AlmeaGem`、名前 `stone-encyclopedia`、Public、README等を付けない空リポジトリを作成。
-2. [GitHubアプリの設定](https://github.com/settings/installations)でCodex／ChatGPT連携のConfigureを開き、新しいリポジトリを対象に追加（All repositoriesなら不要）。
-3. URLを共有。コード送信・PR・CI・新規プレビューの設定を続行できる。
-4. Pagesを使う場合は新リポジトリのSettings → Pages → SourceをGitHub Actionsにし、手動ワークフローを実行。商用の本番は別のCloudflare Pagesプロジェクトを推奨。
-5. 本番前に石の未確認項目・権利・運営者表示・問い合わせ先を確認。独自ドメインの購入・DNS・本番公開は所有者が最終操作する。
+1. [新リポジトリのPages設定](https://github.com/AlmeaGem/stone-encyclopedia/settings/pages)でSourceをGitHub Actionsにする。支払い情報や有料契約は不要。
+2. Actionsの `Deploy independent preview` を再実行し、対象refを `feat/phase-one-encyclopedia` にする。成功後のURLで実表示を確認する。設定前の失敗はビルド不良ではなくPages未有効化によるもの。
+3. PRのCIと内容を確認後にマージする。本番商用公開は新しいCloudflare Pagesプロジェクトを推奨。接続手順は下記の公開手順を参照。
+4. 本番前に石の未確認項目・写真の権利・運営者表示・問い合わせ先を確認。独自ドメインの購入・DNS変更・本番インデックス有効化は未実施。
 
 手順は [公開手順](deployment.md)、[編集・画像管理](editor-and-images.md)、[内容と次のフェーズ](content-and-roadmap.md) に記載。
 
@@ -58,4 +56,4 @@
 
 今回の外部サービス購入・課金は0円。静的サイトの無料枠を使えば月額0円を想定しますが、契約時の公式条件を再確認してください。独自ドメインは未購入。有料CMS・AI API・既存Supabaseは使っていません。[費用の比較](costs.md)を参照。
 
-次は「新リポジトリへ接続してPRとプレビュー」→「内容・写真・法務の確認」→「フェーズ2のルールベース診断、Stripeテスト決済、購入者権限、再閲覧、PDF」の順です。決済鍵は将来の**新プロジェクト**の環境変数へ設定し、チャットには貼り付けません。本番販売を自動で開始する機能はありません。
+次は「Pages有効化と実プレビュー確認」→「内容・写真・法務の確認」→「フェーズ2のルールベース診断、Stripeテスト決済、購入者権限、再閲覧、PDF」の順です。決済鍵は将来の**新プロジェクト**の環境変数へ設定し、チャットには貼り付けません。本番販売を自動で開始する機能はありません。
