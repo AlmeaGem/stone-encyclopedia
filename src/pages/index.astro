@@ -1,0 +1,185 @@
+---
+import Page from '../layouts/Page.astro';
+import Card from '../components/Card.astro';
+import { stones, categories, articles } from '../lib/content';
+import { pathTo, canonical } from '../lib/urls';
+const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
+  stones.find((s) => s.id === id)!,
+);
+---
+
+<Page
+  schema={{
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: '天然石・パワーストーン大図鑑',
+    url: canonical(),
+    inLanguage: 'ja-JP',
+    publisher: { '@type': 'Organization', name: 'ALMÉA GEM' },
+  }}
+>
+  <section class="home-hero wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">THE STONE JOURNAL · BY ALMÉA GEM</p>
+      <h1>
+        知るほどに、
+        <br />
+        石との出会いは深くなる。
+      </h1>
+      <p>
+        色に惹かれ、個性を知り、物語にふれる。
+        <br />
+        天然石を選ぶ時間に、確かな視点を。
+      </p>
+      <a class="text-link" href={pathTo('stones/')}>
+        210項目の図鑑を開く <span>↗</span>
+      </a>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <span class="orbit"></span>
+      <span class="hero-gem"></span>
+      <span class="hero-art-label">NATURE / COLOR / STORY</span>
+      <span class="edition">
+        A COLLECTION
+        <br />
+        <strong>210</strong>
+        <br />
+        STONE ENTRIES
+      </span>
+    </div>
+  </section>
+  <section class="home-search wrap" aria-labelledby="find-title">
+    <h2 id="find-title">今日、気になる石は？</h2>
+    <form action={pathTo('stones/')} role="search">
+      <label class="sr-only" for="home-q">
+        石名・英語名・別名
+      </label>
+      <input
+        id="home-q"
+        name="q"
+        type="search"
+        placeholder="石名・英語名・別名で探す"
+      />
+      <button class="button" type="submit">
+        検索 <span aria-hidden="true">→</span>
+      </button>
+    </form>
+    <div class="search-suggestions">
+      <span>たとえば</span>
+      <a href={pathTo('stones/rose-quartz/')}>ローズクォーツ</a>
+      <a href={pathTo('stones/amethyst/')}>アメジスト</a>
+      <a href={pathTo('stones/labradorite/')}>ラブラドライト</a>
+    </div>
+  </section>
+  <section class="wrap section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">THE ENCYCLOPEDIA</p>
+        <h2>一粒ずつ、知っていく。</h2>
+      </div>
+      <a class="text-link" href={pathTo('stones/')}>
+        すべての石を見る ↗
+      </a>
+    </div>
+    <div class="stone-grid">
+      {picks.map((stone) => (
+        <Card stone={stone} />
+      ))}
+    </div>
+    <p class="quiet-note">
+      写真のない項目は、実物写真ではない抽象的な色のイメージで表示しています。
+    </p>
+  </section>
+  <section class="wisdom-band">
+    <div class="wrap three-views">
+      <div>
+        <span>01 / NATURE</span>
+        <h2>鉱物として知る</h2>
+        <p>色、硬さ、内包物。確認できた情報と、まだ分からないことを分けて。</p>
+      </div>
+      <div>
+        <span>02 / QUALITY</span>
+        <h2>宝石として選ぶ</h2>
+        <p>
+          美しさや仕上がりを見つめる。品質の評価と、伝承の意味を混同しない。
+        </p>
+      </div>
+      <div>
+        <span>03 / STORY</span>
+        <h2>想いを託す</h2>
+        <p>
+          石にまつわる文化や象徴を楽しむ。願いの結果を保証するものではありません。
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="wrap section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">FIND YOUR THEME</p>
+        <h2>願いから、物語にふれる。</h2>
+      </div>
+      <a class="text-link" href={pathTo('wishes/')}>
+        12のテーマを見る ↗
+      </a>
+    </div>
+    <div class="wish-grid">
+      {categories.slice(0, 6).map((c, i) => (
+        <a class="wish-link" href={pathTo(`wishes/${c.id}/`)}>
+          <span class="wish-number">0{i + 1}</span>
+          <div>
+            <h3>{c.name}</h3>
+            <p>{c.description}</p>
+          </div>
+          <span aria-hidden="true">↗</span>
+        </a>
+      ))}
+    </div>
+  </section>
+  <section class="wrap section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">READ & DISCOVER</p>
+        <h2>選ぶ前に、読んでおきたいこと。</h2>
+      </div>
+      <a class="text-link" href={pathTo('articles/')}>
+        読みもの一覧 ↗
+      </a>
+    </div>
+    <div class="article-grid">
+      {articles.slice(0, 3).map((a, i) => (
+        <a class="article-card" href={pathTo(`articles/${a.slug}/`)}>
+          <div class:list={['article-cover', `cover-${i}`]} aria-hidden="true">
+            <span>
+              ALMÉA GEM
+              <br />
+              FIELD NOTES
+            </span>
+            <strong>0{i + 1}</strong>
+          </div>
+          <p class="eyebrow">{a.category}</p>
+          <h3>{a.title}</h3>
+          <p>{a.description}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+  <section class="wrap report-teaser">
+    <div>
+      <p class="eyebrow">PERSONAL STONE SELECTION</p>
+      <h2>
+        あなたの願いを、
+        <br />
+        ゆっくり言葉に。
+      </h2>
+      <p>
+        パーソナル天然石選定レポート <strong>790円（税込・予定）</strong>
+        <br />
+        質問画面を体験できます。販売と結果の提供は準備中です。
+      </p>
+    </div>
+    <a class="button outline" href={pathTo('diagnosis/')}>
+      質問画面を見る →
+    </a>
+  </section>
+</Page>

@@ -1,0 +1,176 @@
+---
+import Page from '../layouts/Page.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { categories } from '../lib/content';
+import { pathTo } from '../lib/urls';
+---
+
+<Page
+  title="パーソナル天然石選定レポート・質問画面"
+  path="diagnosis/"
+  description="願いと好みを整理する質問画面。パーソナル天然石選定レポート790円（税込・予定）は準備中です。現段階では決済・個人向け結果の提供はありません。"
+>
+  <div class="wrap narrow">
+    <Breadcrumbs items={[{ name: '選定レポート' }]} />
+    <div class="page-intro">
+      <p class="eyebrow">PERSONAL STONE SELECTION</p>
+      <h1>願いを、言葉にする時間。</h1>
+      <p>
+        伝承、美しさ、扱いやすさ。
+        <br />
+        あなたが大切にしたいことを整理しましょう。
+      </p>
+    </div>
+    <div class="notice">
+      質問画面のプレビューです。料金の請求や診断結果の提供はありません。入力はこの画面内だけで扱い、サーバーへ送信・保存しません。ページを閉じると消えます。
+    </div>
+    <noscript>
+      <p class="notice">
+        質問画面にはJavaScriptが必要です。無料図鑑はJavaScriptなしでも閲覧できます。
+      </p>
+    </noscript>
+    <form id="questionnaire" class="questionnaire">
+      <p id="step-label" class="eyebrow" aria-live="polite">
+        STEP 1 / 6
+      </p>
+      <div class="step-progress" aria-hidden="true">
+        <span id="progress"></span>
+      </div>
+      <fieldset data-step="1">
+        <legend>どんなテーマが気になりますか？</legend>
+        <div class="choice-grid">
+          {categories.map((c) => (
+            <label class="choice">
+              <input type="radio" name="category" value={c.id} />
+              <span>{c.name}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+      <fieldset data-step="2" hidden>
+        <legend>メインの願いをひとつ。</legend>
+        <div id="main-choices" class="choice-grid"></div>
+      </fieldset>
+      <fieldset data-step="3" hidden>
+        <legend>サブの願いは、最大2つまで。</legend>
+        <p>選ばずに進むこともできます。</p>
+        <div class="choice-grid">
+          {categories.map((c) => (
+            <label class="choice">
+              <input type="checkbox" name="sub" value={c.id} />
+              <span>{c.name}</span>
+            </label>
+          ))}
+        </div>
+        <p id="sub-count" class="quiet-note">
+          0 / 2 選択
+        </p>
+      </fieldset>
+      <fieldset data-step="4" hidden>
+        <legend>今の状況に近いものは？</legend>
+        <div class="choice-grid">
+          {[
+            '新しい一歩を考えている',
+            '変化の途中にいる',
+            '日々を大切にしたい',
+            'じっくり自分を見つめたい',
+          ].map((s) => (
+            <label class="choice">
+              <input type="radio" name="situation" value={s} />
+              <span>{s}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+      <fieldset data-step="5" hidden>
+        <legend>見た目と、選び方の好み。</legend>
+        <label>
+          大切にしたいこと
+          <select name="priority">
+            <option value="">選択してください</option>
+            {['伝承・象徴', '美しさ・色', '品質・表示の確かさ', 'バランス'].map(
+              (s) => (
+                <option>{s}</option>
+              ),
+            )}
+          </select>
+        </label>
+        <label>
+          好きな色や雰囲気
+          <select name="color">
+            <option value="">選択してください</option>
+            {[
+              '特に決めない',
+              'ピンク・やわらかい',
+              '青・すっきり',
+              '緑・自然を感じる',
+              '紫・落ち着き',
+              '透明・軽やか',
+              '黒・シック',
+              '金・あたたかい',
+            ].map((s) => (
+              <option>{s}</option>
+            ))}
+          </select>
+        </label>
+        <label>
+          石を選ぶ際の予算帯（レポート料金ではありません）
+          <select name="budget">
+            <option value="">選択してください</option>
+            {[
+              '未定',
+              '3,000円未満',
+              '3,000〜10,000円',
+              '10,000〜30,000円',
+              '30,000円以上',
+            ].map((s) => (
+              <option>{s}</option>
+            ))}
+          </select>
+        </label>
+      </fieldset>
+      <fieldset data-step="6" hidden>
+        <legend>選んだ内容を、確認する。</legend>
+        <dl id="answers" class="fact-list"></dl>
+        <div class="report-boundary">
+          <h2>パーソナル天然石選定レポート</h2>
+          <p class="price">
+            790<span>円（税込・予定）</span>
+          </p>
+          <p>
+            おすすめ石の理由、組み合わせ案、品質・形状の見方、お手入れ、PDFなどを含む買い切りレポートを準備しています。
+          </p>
+          <p>
+            個人向けのおすすめ順位・組み合わせ・選定結果は、この無料画面では表示しません。決済機能と閲覧権限の実装後に提供予定です。
+          </p>
+          <button type="button" class="button" disabled>
+            購入・決済は準備中
+          </button>
+          <p class="fine-print">
+            現時点で料金は発生しません。病気の治療、金運・恋愛などの結果は保証しません。
+          </p>
+        </div>
+      </fieldset>
+      <p id="question-error" class="form-error" role="alert"></p>
+      <div class="wizard-actions">
+        <button id="back" class="button outline" type="button" disabled>
+          ← 戻る
+        </button>
+        <button id="next" class="button" type="button">
+          次へ →
+        </button>
+      </div>
+      <button id="clear-answers" class="text-link" type="reset">
+        回答をすべて消す
+      </button>
+    </form>
+    <p class="quiet-note">
+      無料で読める<a href={pathTo('stones/')}>210項目の図鑑</a>
+      と、個人向けの有料レポートは別のものです。
+    </p>
+  </div>
+</Page>
+<script>
+  import { startQuestionnaire } from '../lib/questionnaire';
+  startQuestionnaire();
+</script>

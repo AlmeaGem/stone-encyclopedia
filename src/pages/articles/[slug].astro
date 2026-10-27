@@ -1,0 +1,64 @@
+---
+import Page from '../../layouts/Page.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Card from '../../components/Card.astro';
+import { articles, stoneById } from '../../lib/content';
+import { canonical } from '../../lib/urls';
+export function getStaticPaths() {
+  return articles.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+const { article } = Astro.props;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: article.title,
+  description: article.description,
+  dateModified: article.updatedAt,
+  author: { '@type': 'Organization', name: 'ALMÉA GEM' },
+  mainEntityOfPage: canonical(`articles/${article.slug}/`),
+  inLanguage: 'ja-JP',
+  isAccessibleForFree: true,
+};
+---
+
+<Page
+  title={article.title}
+  description={article.description}
+  path={`articles/${article.slug}/`}
+  schema={schema}
+>
+  <div class="wrap">
+    <Breadcrumbs
+      items={[{ name: '読みもの', path: 'articles/' }, { name: article.title }]}
+    />
+    <article class="reading">
+      <p class="eyebrow">{article.category} / FIELD NOTES</p>
+      <h1>{article.title}</h1>
+      <p class="lead">{article.description}</p>
+      <p class="updated">
+        編集日 <time datetime={article.updatedAt}>{article.updatedAt}</time>
+      </p>
+      {article.sections.map((s) => (
+        <section>
+          <h2>{s.heading}</h2>
+          <p>{s.body}</p>
+        </section>
+      ))}
+      <p class="notice">
+        このページは、観察・表示確認のための編集ガイドです。個別の石の同定や鑑別、医療・投資などの専門的な助言を行うものではありません。
+      </p>
+    </article>
+    <section class="section">
+      <h2>この読みものに登場する石</h2>
+      <div class="stone-grid related-grid">
+        {article.stoneIds
+          .map(stoneById)
+          .filter(Boolean)
+          .map((s) => s && <Card stone={s} />)}
+      </div>
+    </section>
+  </div>
+</Page>

@@ -1,0 +1,36 @@
+---
+import Page from '../../layouts/Page.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { categories } from '../../lib/content';
+import { pathTo } from '../../lib/urls';
+---
+
+<Page title="12の願い・テーマから天然石を探す" path="wishes/">
+  <div class="wrap">
+    <Breadcrumbs items={[{ name: '願いから探す' }]} />
+    <div class="page-intro">
+      <p class="eyebrow">TWELVE THEMES</p>
+      <h1>願いを知る、石を知る。</h1>
+      <p>
+        伝承に込められた12のテーマ。
+        <br />
+        石にまつわる物語を、自分の気持ちを見つめるきっかけに。
+      </p>
+    </div>
+    <p class="notice">
+      テーマ別の一般的な図鑑一覧です。個人向けの診断結果や、おすすめ順位ではありません。結果を保証する情報は掲載していません。
+    </p>
+    <div class="wish-grid">
+      {categories.map((c, i) => (
+        <a class="wish-link" href={pathTo(`wishes/${c.id}/`)}>
+          <span class="wish-number">{String(i + 1).padStart(2, '0')}</span>
+          <div>
+            <h2>{c.name}</h2>
+            <p>{c.description}</p>
+          </div>
+          <span>↗</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Page>

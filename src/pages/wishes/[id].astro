@@ -1,0 +1,59 @@
+---
+import Page from '../../layouts/Page.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Card from '../../components/Card.astro';
+import { categories, stones } from '../../lib/content';
+import { pathTo } from '../../lib/urls';
+export function getStaticPaths() {
+  return categories.map((category) => ({
+    params: { id: category.id },
+    props: { category },
+  }));
+}
+const { category } = Astro.props;
+const selected = stones.filter((s) => s.wishes.includes(category.id));
+---
+
+<Page
+  title={`${category.name}の伝承・テーマを持つ石`}
+  path={`wishes/${category.id}/`}
+>
+  <div class="wrap">
+    <Breadcrumbs
+      items={[
+        { name: '願いから探す', path: 'wishes/' },
+        { name: category.name },
+      ]}
+    />
+    <div class="page-intro">
+      <p class="eyebrow">STORIES & SYMBOLS</p>
+      <h1>{category.name}</h1>
+      <p>{category.description}</p>
+    </div>
+    <p class="notice">
+      一般的な伝承テーマによる一覧です。個人向けのおすすめではありません。医療、金銭、恋愛などの結果を保証するものではありません。
+    </p>
+    <div class="tag-list">
+      {category.subcategories.map((s) => (
+        <span>{s}</span>
+      ))}
+    </div>
+    <div class="list-status">
+      <p>{selected.length}項目</p>
+      <span>掲載ID順 · 効果や品質の順位ではありません</span>
+    </div>
+    {selected.length ? (
+      <div class="stone-grid">
+        {selected.map((stone) => (
+          <Card stone={stone} />
+        ))}
+      </div>
+    ) : (
+      <div class="empty">
+        <h2>このテーマの情報を整備しています。</h2>
+        <p>根拠の弱い石を追加して件数を埋めることはしていません。</p>
+        <a href={pathTo('stones/')}>すべての石を探す →</a>
+      </div>
+    )}
+  </div>
+</Page>

@@ -1,0 +1,107 @@
+---
+import '../styles.css';
+import { pathTo, canonical, siteName, launched } from '../lib/urls';
+interface Props {
+  title?: string;
+  description?: string;
+  path?: string;
+  schema?: Record<string, unknown>;
+}
+const {
+  title = siteName,
+  description = '天然石を知る、選ぶ、大切にする。210項目の石を、鉱物の情報・品質の見方・伝承の三つの視点から。by ALMÉA GEM',
+  path = '',
+  schema,
+} = Astro.props;
+const url = canonical(path);
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title===siteName?`${title} | by ALMÉA GEM`:`${title} | ${siteName}`}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={url} />
+    <meta
+      name="robots"
+      content={launched ? 'index,follow' : 'noindex,nofollow'}
+    />
+    <meta name="theme-color" content="#faf7f2" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta
+      property="og:type"
+      content={schema?.['@type'] === 'Article' ? 'article' : 'website'}
+    />
+    <meta property="og:url" content={url} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:image" content={canonical('og.png')} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href={pathTo('favicon.svg')} type="image/svg+xml" />
+    {schema && (
+      <script
+        type="application/ld+json"
+        set:html={JSON.stringify(schema).replace(/</g, '\\u003c')}
+      />
+    )}
+  </head>
+  <body>
+    <a class="skip" href="#main">
+      本文へ
+    </a>
+    {!launched && (
+      <div class="preview-ribbon">
+        プレビュー公開中 ·
+        情報・運営者表示の確認前です。有料販売は行っていません。
+      </div>
+    )}
+    <header class="site-header">
+      <a
+        class="brand"
+        href={pathTo()}
+        aria-label="天然石・パワーストーン大図鑑 ホーム"
+      >
+        <span class="brand-symbol" aria-hidden="true">
+          ◇
+        </span>
+        <span>
+          <span class="brand-name">天然石・パワーストーン大図鑑</span>
+          <span class="brand-by">by ALMÉA GEM</span>
+        </span>
+      </a>
+      <nav aria-label="メインメニュー">
+        <a href={pathTo('stones/')}>石を探す</a>
+        <a href={pathTo('wishes/')}>願いから</a>
+        <a href={pathTo('articles/')}>読みもの</a>
+        <a class="nav-diagnosis" href={pathTo('diagnosis/')}>
+          選定レポート <span>準備中</span>
+        </a>
+      </nav>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div>
+        <span class="footer-brand">ALMÉA GEM</span>
+        <p>知るほどに、石との出会いは深くなる。</p>
+      </div>
+      <nav aria-label="フッターメニュー">
+        <a href={pathTo('about/')}>この図鑑について</a>
+        <a href={pathTo('terms/')}>利用規約</a>
+        <a href={pathTo('privacy/')}>プライバシー</a>
+        <a href={pathTo('commerce/')}>特定商取引法に基づく表記</a>
+        <a href={pathTo('refund/')}>返金ポリシー</a>
+        <a href={pathTo('contact/')}>お問い合わせ</a>
+      </nav>
+      <p class="footer-note">
+        石の意味は伝承・象徴であり、医療・金銭・恋愛などの結果を保証するものではありません。
+        <br />© 2026 ALMÉA GEM · Editorial notes &amp; design.
+        写真には個別のライセンスが適用されます。
+      </p>
+    </footer>
+  </body>
+</html>

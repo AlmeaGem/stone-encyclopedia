@@ -1,0 +1,34 @@
+---
+import Page from '../../layouts/Page.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { articles } from '../../lib/content';
+import { pathTo } from '../../lib/urls';
+---
+
+<Page title="天然石の選び方・品質・お手入れの読みもの" path="articles/">
+  <div class="wrap">
+    <Breadcrumbs items={[{ name: '読みもの' }]} />
+    <div class="page-intro">
+      <p class="eyebrow">FIELD NOTES</p>
+      <h1>石と暮らす、読みもの。</h1>
+      <p>美しさの見方を知ることから、長く大切にすることまで。</p>
+    </div>
+    <div class="article-grid">
+      {articles.map((a, i) => (
+        <a class="article-card" href={pathTo(`articles/${a.slug}/`)}>
+          <div class:list={['article-cover', `cover-${i % 3}`]}>
+            <span>
+              ALMÉA GEM
+              <br />
+              FIELD NOTES
+            </span>
+            <strong>0{i + 1}</strong>
+          </div>
+          <p class="eyebrow">{a.category}</p>
+          <h2>{a.title}</h2>
+          <p>{a.description}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</Page>

@@ -1,0 +1,168 @@
+---
+import Page from '../../layouts/Page.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Card from '../../components/Card.astro';
+import { stones, categories } from '../../lib/content';
+import { pathTo } from '../../lib/urls';
+const colors = [...new Set(stones.flatMap((s) => s.colors))];
+---
+
+<Page
+  title="210項目の天然石図鑑・検索"
+  path="stones/"
+  description="天然石・流通名・結晶の形状など210項目を検索。日本語名、英語名、別名、願いのテーマ、色から見つける公開図鑑です。"
+>
+  <div class="wrap">
+    <Breadcrumbs items={[{ name: '石を探す' }]} />
+    <div class="page-intro">
+      <p class="eyebrow">THE STONE ENCYCLOPEDIA</p>
+      <h1>石を探す。</h1>
+      <p>
+        名前から、色から、気になる物語から。
+        <br class="mobile-break" />
+        鉱物・流通名・形状を含む210項目。
+      </p>
+    </div>
+    <form
+      id="catalog-filter"
+      class="filter-panel"
+      role="search"
+      action={pathTo('stones/')}
+    >
+      <label class="search-field">
+        石名・英語名・別名
+        <input
+          type="search"
+          name="q"
+          placeholder="例：紅水晶、Rose Quartz"
+          autocomplete="off"
+        />
+      </label>
+      <label>
+        願いのテーマ
+        <select name="wish">
+          <option value="">すべてのテーマ</option>
+          {categories.map((c) => (
+            <option value={c.id}>{c.name}</option>
+          ))}
+        </select>
+      </label>
+      <label>
+        色のイメージ
+        <select name="color">
+          <option value="">すべての色</option>
+          {colors.map((c) => (
+            <option value={c}>{c}</option>
+          ))}
+        </select>
+      </label>
+      <button class="button" type="submit">
+        検索
+      </button>
+      <button class="text-link" type="reset">
+        条件をクリア
+      </button>
+    </form>
+    <noscript>
+      <p class="notice">
+        検索の絞り込みにはJavaScriptを使用します。以下の210項目はすべて閲覧でき、
+        <a href={pathTo('wishes/')}>テーマ別の一覧</a>も利用できます。
+      </p>
+    </noscript>
+    <div class="list-status">
+      <p id="result-status" role="status" aria-live="polite">
+        210項目
+      </p>
+      <span>英語見出し・分類は鑑別を保証するものではありません</span>
+    </div>
+    <div class="stone-grid catalog-grid" id="catalog-grid">
+      {stones.map((stone) => (
+        <Card stone={stone} />
+      ))}
+    </div>
+    <p id="no-results" class="empty" hidden>
+      一致する石が見つかりません。別名や一部の名前でもお試しください。
+    </p>
+    <nav id="pagination" class="pagination" aria-label="図鑑のページ" hidden>
+      <button type="button" data-prev>
+        ← 前へ
+      </button>
+      <span data-page></span>
+      <button type="button" data-next>
+        次へ →
+      </button>
+    </nav>
+  </div>
+</Page>
+<script>
+  import { matches } from '../../lib/search';
+  const form = document.querySelector<HTMLFormElement>('#catalog-filter')!;
+  const cards = [...document.querySelectorAll<HTMLElement>('[data-stone]')];
+  const pager = document.querySelector<HTMLElement>('#pagination')!;
+  const status = document.querySelector('#result-status')!;
+  const empty = document.querySelector<HTMLElement>('#no-results')!;
+  let current = 1;
+  const size = 24;
+  const params = new URLSearchParams(location.search);
+  for (const key of ['q', 'wish', 'color']) {
+    const el = form.elements.namedItem(key) as
+      HTMLInputElement | HTMLSelectElement;
+    el.value = params.get(key) || '';
+  }
+  function render() {
+    const data = new FormData(form),
+      q = String(data.get('q') || ''),
+      wish = String(data.get('wish') || ''),
+      color = String(data.get('color') || '');
+    const filtered = cards.filter(
+      (c) =>
+        matches(q, c.dataset.search || '') &&
+        (!wish || c.dataset.wishes?.split(',').includes(wish)) &&
+        (!color || c.dataset.colors?.split(',').includes(color)),
+    );
+    const pages = Math.max(1, Math.ceil(filtered.length / size));
+    current = Math.min(Math.max(1, current), pages);
+    const shown = new Set(filtered.slice((current - 1) * size, current * size));
+    cards.forEach((c) => (c.hidden = !shown.has(c)));
+    status.textContent = `${filtered.length}項目 · ${filtered.length ? (current - 1) * size + 1 : 0}〜${Math.min(current * size, filtered.length)}件を表示`;
+    empty.hidden = filtered.length > 0;
+    pager.hidden = pages <= 1;
+    pager.querySelector('[data-page]')!.textContent = `${current} / ${pages}`;
+    (pager.querySelector('[data-prev]') as HTMLButtonElement).disabled =
+      current === 1;
+    (pager.querySelector('[data-next]') as HTMLButtonElement).disabled =
+      current === pages;
+    const p = new URLSearchParams();
+    for (const key of ['q', 'wish', 'color']) {
+      const value = String(data.get(key) || '');
+      if (value) p.set(key, value);
+    }
+    history.replaceState(null, '', location.pathname + (p.size ? '?' + p : ''));
+  }
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    current = 1;
+    render();
+  });
+  form.addEventListener('input', () => {
+    current = 1;
+    render();
+  });
+  form.addEventListener('reset', () =>
+    queueMicrotask(() => {
+      current = 1;
+      render();
+    }),
+  );
+  pager.querySelector('[data-prev]')!.addEventListener('click', () => {
+    current--;
+    render();
+    form.scrollIntoView({ block: 'start' });
+  });
+  pager.querySelector('[data-next]')!.addEventListener('click', () => {
+    current++;
+    render();
+    form.scrollIntoView({ block: 'start' });
+  });
+  render();
+</script>

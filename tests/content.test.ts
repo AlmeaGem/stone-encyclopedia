@@ -1,0 +1,99 @@
+import { it, expect } from 'vitest';
+import { readFileSync } from 'node:fs';
+import {
+  validateCatalog,
+  categorySchema,
+  articleSchema,
+} from '../src/lib/schema';
+import { matches, normalize } from '../src/lib/search';
+import { z } from 'zod';
+const stones = validateCatalog(
+  JSON.parse(readFileSync('src/content/stones.json', 'utf8')),
+);
+it('migrates exactly the 210 stable IDs, with unique English paths and no inventory fields', () => {
+  expect(stones.map((s) => s.id)).toEqual(
+    Array.from({ length: 210 }, (_, i) => `s${String(i + 1).padStart(3, '0')}`),
+  );
+  expect(new Set(stones.map((s) => s.slug)).size).toBe(210);
+  expect(stones.find((s) => s.id === 's205')?.slug).toBe('rubellite');
+  expect(stones.find((s) => s.id === 's206')?.slug).toBe('morganite');
+  const text = JSON.stringify(stones);
+  for (const field of [
+    'photo_path',
+    'purchase_url',
+    'current_qty',
+    'supplier',
+    'owner_id',
+    'total_yen',
+    'customer',
+  ])
+    expect(text).not.toContain(`"${field}"`);
+});
+it('preserves the distinction between mineral identities, forms, unverified facts and symbolism', () => {
+  expect(stones.find((s) => s.id === 's193')?.kind).toBe('form');
+  for (const s of stones) {
+    expect(s.symbolism).toContain('効果を示すものではありません');
+    expect(
+      s.sources.every(
+        (x) => x.checkedAt === null || /^\d{4}-\d{2}-\d{2}$/.test(x.checkedAt),
+      ),
+    ).toBe(true);
+    expect(s.updatedAt).toBe('2026-10-27');
+    expect(s.hardness).toBe('');
+    expect(s.mineral).toBe('');
+  }
+});
+it('rejects duplicate paths, private-field injections, missing IDs and dangling related links', () => {
+  const bad = structuredClone(stones);
+  bad[1].slug = bad[0].slug;
+  expect(() => validateCatalog(bad)).toThrow();
+  expect(() => validateCatalog(stones.slice(1))).toThrow();
+  expect(() =>
+    validateCatalog(
+      stones.map((s, i) => (i ? s : { ...s, owner_id: 'private' })),
+    ),
+  ).toThrow();
+  expect(() =>
+    validateCatalog(
+      stones.map((s, i) => (i ? s : { ...s, related: ['s999'] })),
+    ),
+  ).toThrow();
+});
+it('searches English names, aliases and kana without sending input to an API', () => {
+  const rose = stones.find((s) => s.id === 's107')!;
+  const terms = [rose.name, rose.english, ...rose.aliases].join(' ');
+  for (const q of [
+    'ローズ',
+    'ろーずくぉーつ',
+    'ＲＯＳＥ　ＱＵＡＲＴＺ',
+    '紅水晶',
+  ])
+    expect(matches(q, terms)).toBe(true);
+  expect(matches('Emerald', terms)).toBe(false);
+  expect(normalize('ガーネット')).toBe('がーねっと');
+});
+it('has twelve editable categories and six substantial original articles', () => {
+  const categories = z
+    .array(categorySchema)
+    .length(12)
+    .parse(JSON.parse(readFileSync('src/content/categories.json', 'utf8')));
+  const articles = z
+    .array(articleSchema)
+    .parse(JSON.parse(readFileSync('src/content/articles.json', 'utf8')));
+  expect(articles).toHaveLength(6);
+  expect(new Set(categories.map((c) => c.id)).size).toBe(12);
+  expect(
+    articles.every((a) => a.sections.map((s) => s.body).join('').length > 250),
+  ).toBe(true);
+});
+
+it('resolves root and project-prefix URLs without broken joins', async () => {
+  const { resolvePath } = await import('../src/lib/urls');
+  expect(resolvePath('/', 'stones/')).toBe('/stones/');
+  expect(resolvePath('/stone-encyclopedia', 'stones/rose-quartz/')).toBe(
+    '/stone-encyclopedia/stones/rose-quartz/',
+  );
+  expect(resolvePath('/stone-encyclopedia/', '/images/s107/a.webp')).toBe(
+    '/stone-encyclopedia/images/s107/a.webp',
+  );
+});

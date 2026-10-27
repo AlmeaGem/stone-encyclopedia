@@ -1,0 +1,49 @@
+---
+import { photoFor, colorClass } from '../lib/content';
+import { pathTo } from '../lib/urls';
+import type { Stone } from '../lib/schema';
+const { stone, detail = false } = Astro.props as {
+  stone: Stone;
+  detail?: boolean;
+};
+const photo = photoFor(stone);
+---
+
+{photo?.localPath ? (
+  <figure class:list={['stone-figure', { detail }]}>
+    <img
+      src={pathTo(photo.localPath)}
+      width={photo.width!}
+      height={photo.height!}
+      loading="lazy"
+      decoding="async"
+      alt={photo.alt || `${stone.name}の承認済み写真`}
+    />
+    {detail && (
+      <figcaption>
+        写真：{photo.photographer} ·{' '}
+        <a href={photo.pageUrl} rel="noopener noreferrer" target="_blank">
+          {photo.provider}
+        </a>{' '}
+        ·{' '}
+        <a
+          href={photo.licenseUrl}
+          rel="license noopener noreferrer"
+          target="_blank"
+        >
+          {photo.license}
+        </a>{' '}
+        · {photo.modified ? '掲載用に縮小・変換' : '加工なし'} · 確認日{' '}
+        {photo.reviewedAt}
+      </figcaption>
+    )}
+  </figure>
+) : (
+  <div
+    class:list={['stone-placeholder', colorClass(stone), { detail }]}
+    aria-label="色の抽象イメージ。実物写真ではありません"
+  >
+    <span class="crystal" aria-hidden="true"></span>
+    <span class="visual-caption">COLOR IMPRESSION · 写真準備中</span>
+  </div>
+)}

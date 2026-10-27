@@ -9,3 +9,6 @@ test-results/
 playwright-report/
 .DS_Store
 *.log
+
+# Generated from approved metadata only
+/public/images/

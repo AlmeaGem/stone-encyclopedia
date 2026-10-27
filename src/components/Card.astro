@@ -1,0 +1,28 @@
+---
+import Visual from './Visual.astro';
+import { pathTo } from '../lib/urls';
+import { kindLabels } from '../lib/content';
+import type { Stone } from '../lib/schema';
+const { stone } = Astro.props as { stone: Stone };
+---
+
+<article
+  class="stone-card"
+  data-stone
+  data-search={[stone.name, stone.english, ...stone.aliases].join(' ')}
+  data-wishes={stone.wishes.join(',')}
+  data-colors={stone.colors.join(',')}
+>
+  <a href={pathTo(`stones/${stone.slug}/`)}>
+    <Visual stone={stone} />
+    <div class="card-copy">
+      <span class="card-eyebrow">{kindLabels[stone.kind]}</span>
+      <h3>{stone.name}</h3>
+      <p class="english">{stone.english}</p>
+      <p class="card-theme">{stone.themes.slice(0, 2).join(' / ')}</p>
+      <span class="card-arrow" aria-hidden="true">
+        ↗
+      </span>
+    </div>
+  </a>
+</article>

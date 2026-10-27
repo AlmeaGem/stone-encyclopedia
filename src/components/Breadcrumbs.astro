@@ -1,0 +1,43 @@
+---
+import { pathTo, canonical } from '../lib/urls';
+const { items = [] } = Astro.props as {
+  items: { name: string; path?: string }[];
+};
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { name: 'ホーム', url: canonical() },
+    ...items.map((item) => ({
+      name: item.name,
+      url: item.path
+        ? canonical(item.path)
+        : new URL(Astro.url.pathname, Astro.site).href,
+    })),
+  ].map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.name,
+    item: item.url,
+  })),
+};
+---
+
+<nav class="breadcrumbs" aria-label="パンくず">
+  <a href={pathTo()}>ホーム</a>
+  {items.map((item) => (
+    <>
+      <span aria-hidden="true">/</span>
+      {item.path ? (
+        <a href={pathTo(item.path)}>{item.name}</a>
+      ) : (
+        <span aria-current="page">{item.name}</span>
+      )}
+    </>
+  ))}
+</nav>
+
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(breadcrumb).replace(/</g, '\\u003c')}
+/>

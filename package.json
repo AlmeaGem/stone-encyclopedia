@@ -1,0 +1,37 @@
+{
+  "name": "almea-stone-encyclopedia",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "node --env-file-if-exists=.env scripts/astro.mjs dev --host 127.0.0.1 --ignore-lock",
+    "build": "npm run validate && npm run images:prepare && node --env-file-if-exists=.env scripts/astro.mjs check && node --env-file-if-exists=.env scripts/astro.mjs build && node scripts/audit-build.mjs",
+    "preview": "node --env-file-if-exists=.env scripts/astro.mjs preview --host 127.0.0.1 --ignore-lock",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "admin": "node --env-file-if-exists=.env --import tsx scripts/admin-server.ts",
+    "images:collect": "node --import tsx scripts/collect-images.ts",
+    "validate": "node --import tsx scripts/validate-content.ts",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "images:prepare": "node --import tsx scripts/prepare-images.ts"
+  },
+  "dependencies": {
+    "astro": "^7.4.2",
+    "sharp": "^0.35.5",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^24.19.2",
+    "prettier": "^3.9.10",
+    "prettier-plugin-astro": "^1.1.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.0",
+    "vitest": "^5.0.5"
+  }
+}
