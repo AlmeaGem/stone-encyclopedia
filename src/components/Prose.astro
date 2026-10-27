@@ -1,0 +1,13 @@
+---
+interface Props {
+  text: string;
+}
+const { text } = Astro.props;
+const sentences = text.match(/[^。！？\n]+[。！？]?/gu) || [text];
+---
+
+<p class="prose-lines">
+  {sentences.map((sentence) => (
+    <span>{sentence}</span>
+  ))}
+</p>

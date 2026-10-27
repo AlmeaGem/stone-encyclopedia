@@ -9,7 +9,7 @@ interface Props {
 }
 const {
   title = siteName,
-  description = '天然石を知る、選ぶ、大切にする。210項目の石を、鉱物の情報・品質の見方・伝承の三つの視点から。by ALMÉA GEM',
+  description = 'パワーストーンブレスレットのALMÉA GEMが届ける天然石図鑑。210項目の石の個性・意味・選び方を知り、あなたの願いに寄り添う一粒を。',
   path = '',
   schema,
 } = Astro.props;
@@ -87,7 +87,12 @@ const url = canonical(path);
     <footer class="site-footer">
       <div>
         <span class="footer-brand">ALMÉA GEM</span>
-        <p>知るほどに、石との出会いは深くなる。</p>
+        <p>
+          本物の石はあなたのパワーになる。
+          <br />
+          まだ知らない石の世界へ。
+        </p>
+        <p>パワーストーンブレスレットのALMÉA GEMが届ける、天然石図鑑。</p>
       </div>
       <nav aria-label="フッターメニュー">
         <a href={pathTo('about/')}>この図鑑について</a>

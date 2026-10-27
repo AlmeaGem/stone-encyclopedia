@@ -1,15 +1,16 @@
 ---
+import Prose from '../components/Prose.astro';
 import Page from '../layouts/Page.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { pathTo } from '../lib/urls';
 const pages = {
   about: {
     title: 'この図鑑について',
-    intro: '知ることと、想いを託すこと。その二つを、大切に。',
+    intro: 'あなたの願いに寄り添う、パワーストーンとの出会いを。',
     sections: [
       [
-        '独立した公開図鑑',
-        '天然石・パワーストーン大図鑑 by ALMÉA GEM は、誰でも読める公開図鑑です。210項目には、鉱物種だけでなく色・流通名・結晶形状の名称も含みます。既存の非公開業務管理サイトとは完全に別のサイトで、在庫・原価・仕入れ・顧客情報を掲載したり、その認証やAPIを利用したりしていません。',
+        'ALMÉA GEMが届ける天然石図鑑',
+        'パワーストーンブレスレットを手がけるALMÉA GEMが、石選びをもっと楽しむために届ける公開図鑑です。石の個性や伝承を知り、自分らしいブレスレットに想いを込めるきっかけに。210項目には、鉱物種だけでなく色・流通名・結晶形状の名称も含みます。既存の非公開業務管理サイトとは完全に別のサイトで、在庫・原価・仕入れ・顧客情報を掲載したり、その認証やAPIを利用したりしていません。',
       ],
       [
         '確認できたこと、できていないこと',
@@ -53,7 +54,7 @@ const pages = {
       ],
       [
         '配信サービスのログ',
-        'ホスティング事業者がIPアドレスやアクセス時刻などを運用上のログとして扱う場合があります。プレビューの配信先はGitHub Pagesを予定しています。本番の配信・計測サービスが決まった段階で、その目的と利用条件を追記します。',
+        'ホスティング事業者がIPアドレスやアクセス時刻などを運用上のログとして扱う場合があります。プレビューはGitHub Pagesで配信しています。本番の配信・計測サービスが決まった段階で、その目的と利用条件を追記します。',
       ],
       [
         '将来の決済・問い合わせ',
@@ -138,7 +139,7 @@ const page = pages[Astro.params.legal as keyof typeof pages];
       {page.sections.map(([h, b]) => (
         <section>
           <h2>{h}</h2>
-          <p>{b}</p>
+          <Prose text={b} />
         </section>
       ))}
       <a class="text-link" href={pathTo('articles/editorial-policy/')}>
