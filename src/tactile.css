@@ -960,6 +960,8 @@
   font-weight: 600;
   box-shadow: inset 0 1px 2px #916b5820;
 }
+/* Avoid reserving a blank glyph before the label. The pressed state is
+   communicated by the button's fill/border and aria-pressed attribute. */
 .wish-check {
   display: none;
   position: absolute;
@@ -1076,6 +1078,10 @@
   white-space: nowrap;
   font-size: 8px;
   letter-spacing: 0.08em;
+  /* Align the label toward the illustration within its flexible grid track,
+     instead of leaving a large visual gap at the center of the cover. */
+  justify-self: end;
+  text-align: left;
 }
 .article-theme-icon {
   display: block;
