@@ -23,7 +23,7 @@ import { pathTo } from '../../lib/urls';
     <div class="wish-grid">
       {categories.map((c, i) => (
         <a class="wish-link" href={pathTo(`wishes/${c.id}/`)}>
-          <span class="wish-number">{String(i + 1).padStart(2, '0')}</span>
+          <span class="wish-number">{i + 1}</span>
           <div>
             <h2>{c.name}</h2>
             <p>{c.description}</p>

@@ -1,0 +1,15 @@
+---
+interface Props {
+  title: string;
+  level?: 'h2' | 'h3';
+}
+const { title, level = 'h3' } = Astro.props;
+const Tag = level;
+const phrases = title.match(/[^。、！？]+[。、！？]?/gu) || [title];
+---
+
+<Tag class="article-title">
+  {phrases.map((phrase) => (
+    <span>{phrase}</span>
+  ))}
+</Tag>

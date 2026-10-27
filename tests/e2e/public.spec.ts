@@ -293,3 +293,80 @@ test('search works under the exact production Content Security Policy', async ({
     page.locator('script:not([src]):not([type="application/ld+json"])'),
   ).toHaveCount(0);
 });
+
+test('home offers general wish search, real editorial destinations and an honest premium preview', async ({
+  page,
+  request,
+}) => {
+  await page.goto('/');
+  await expect(page.locator('.brand-symbol svg')).toBeVisible();
+  await expect(page.locator('.home-hero img')).toHaveCount(0);
+  await expect(page.locator('.wish-search-links a')).toHaveCount(12);
+  const links = page.locator('.three-views a');
+  await expect(links).toHaveCount(3);
+  for (const link of await links.all()) {
+    const href = await link.getAttribute('href');
+    expect((await request.get(href!)).status()).toBe(200);
+    await expect(link).toContainText('詳しく見る');
+  }
+  await expect(page.locator('.report-teaser')).toContainText('販売準備中');
+  await expect(page.locator('.premium-price')).toContainText('790');
+  await expect(page.locator('.report-teaser a')).toHaveText(
+    '質問画面を無料で体験 →',
+  );
+  await page
+    .getByRole('searchbox', { name: '石名・英語名・別名' })
+    .fill('仕事運');
+  await page.locator('.home-search button').click();
+  await expect(page).toHaveURL(/stones\/\?q=/);
+  expect(await page.locator('[data-stone]:visible').count()).toBeGreaterThan(0);
+  for (const card of await page.locator('[data-stone]:visible').all())
+    expect((await card.getAttribute('data-wishes'))!.split(',')).toContain(
+      'prosperity',
+    );
+  await page.goto('/wishes/');
+  expect(await page.locator('.wish-number').allTextContents()).toEqual(
+    Array.from({ length: 12 }, (_, i) => String(i + 1)),
+  );
+});
+
+test('375, 390 and 430px keep Japanese title phrases intact and search targets separated', async ({
+  page,
+}) => {
+  for (const width of [375, 390, 430]) {
+    await page.setViewportSize({ width, height: 844 });
+    await page.goto('/');
+    expect(
+      await page.evaluate(() => document.body.scrollWidth <= innerWidth),
+    ).toBe(true);
+    const input = page.locator('#home-q');
+    await input.focus();
+    const a = await input.boundingBox(),
+      b = await page.locator('.home-search button').boundingBox();
+    expect(b!.x - a!.x - a!.width).toBeGreaterThanOrEqual(11);
+    const phrase = page
+      .locator('.article-title span')
+      .filter({ hasText: '名前より先に、' });
+    await expect(phrase).toHaveCount(1);
+    expect(
+      await phrase.evaluate((el) => {
+        const range = document.createRange();
+        range.selectNodeContents(el);
+        return new Set(
+          [...range.getClientRects()].map((r) => Math.round(r.top)),
+        ).size;
+      }),
+    ).toBe(1);
+    for (const link of await page.locator('.wish-search-links a').all()) {
+      const bounds = await link.boundingBox();
+      expect(bounds!.height).toBeGreaterThanOrEqual(44);
+    }
+    await page.goto('/articles/');
+    await expect(page.locator('.article-title').first()).toHaveText(
+      'はじめての天然石。名前より先に、見たいこと。',
+    );
+    expect(
+      await page.evaluate(() => document.body.scrollWidth <= innerWidth),
+    ).toBe(true);
+  }
+});

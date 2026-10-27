@@ -1,4 +1,5 @@
 ---
+import GemIcon from '../components/GemIcon.astro';
 import '../styles.css';
 import '../tactile.css';
 import { pathTo, canonical, siteName, launched } from '../lib/urls';
@@ -66,7 +67,7 @@ const url = canonical(path);
         aria-label="天然石・パワーストーン大図鑑 ホーム"
       >
         <span class="brand-symbol" aria-hidden="true">
-          ◇
+          <GemIcon />
         </span>
         <span>
           <span class="brand-name">天然石・パワーストーン大図鑑</span>

@@ -1,5 +1,6 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ArticleTitle from '../../components/ArticleTitle.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { articles } from '../../lib/content';
 import { pathTo } from '../../lib/urls';
@@ -25,7 +26,7 @@ import { pathTo } from '../../lib/urls';
             <strong>0{i + 1}</strong>
           </div>
           <p class="eyebrow">{a.category}</p>
-          <h2>{a.title}</h2>
+          <ArticleTitle title={a.title} level="h2" />
           <p>{a.description}</p>
           <span class="open-label">
             記事を読む <span aria-hidden="true">↗</span>

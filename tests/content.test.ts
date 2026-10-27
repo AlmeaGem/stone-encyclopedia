@@ -97,3 +97,20 @@ it('resolves root and project-prefix URLs without broken joins', async () => {
     '/stone-encyclopedia/images/s107/a.webp',
   );
 });
+
+it('indexes general wishes and theme tags without inventing category membership or ranking', async () => {
+  const { stoneSearchTerms } = await import('../src/lib/search');
+  const categories = JSON.parse(
+    readFileSync('src/content/categories.json', 'utf8'),
+  );
+  const rose = stones.find((s) => s.id === 's107')!;
+  const terms = stoneSearchTerms(
+    { ...rose, themes: ['調和'], wishes: ['prosperity'] },
+    categories,
+  );
+  expect(matches('仕事運', terms)).toBe(true);
+  expect(matches('金運', terms)).toBe(true);
+  expect(matches('調和', terms)).toBe(true);
+  expect(matches('紅水晶', terms)).toBe(true);
+  expect(matches('魔除け', terms)).toBe(false);
+});

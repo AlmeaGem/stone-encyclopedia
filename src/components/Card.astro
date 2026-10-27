@@ -1,7 +1,8 @@
 ---
 import Visual from './Visual.astro';
 import { pathTo } from '../lib/urls';
-import { kindLabels } from '../lib/content';
+import { kindLabels, categories } from '../lib/content';
+import { stoneSearchTerms } from '../lib/search';
 import type { Stone } from '../lib/schema';
 const { stone } = Astro.props as { stone: Stone };
 ---
@@ -9,7 +10,7 @@ const { stone } = Astro.props as { stone: Stone };
 <article
   class="stone-card"
   data-stone
-  data-search={[stone.name, stone.english, ...stone.aliases].join(' ')}
+  data-search={stoneSearchTerms(stone, categories)}
   data-wishes={stone.wishes.join(',')}
   data-colors={stone.colors.join(',')}
 >

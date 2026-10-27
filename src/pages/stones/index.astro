@@ -23,6 +23,11 @@ const colors = [...new Set(stones.flatMap((s) => s.colors))];
         ブレスレットに迎えたい一粒を、210項目の図鑑から。
       </p>
     </div>
+    <p class="search-scope">
+      石名・別名に加え、願望・伝承のタグも検索できます。
+      <br />
+      一般的な図鑑検索であり、個人別のランキングや選定ではありません。
+    </p>
     <form
       id="catalog-filter"
       class="filter-panel"
@@ -34,7 +39,7 @@ const colors = [...new Set(stones.flatMap((s) => s.colors))];
         <input
           type="search"
           name="q"
-          placeholder="例：紅水晶、Rose Quartz"
+          placeholder="例：紅水晶、恋愛、仕事運"
           autocomplete="off"
         />
       </label>
