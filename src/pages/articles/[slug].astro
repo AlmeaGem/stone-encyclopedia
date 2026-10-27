@@ -1,5 +1,6 @@
 ---
 import Prose from '../../components/Prose.astro';
+import ArticleTitle from '../../components/ArticleTitle.astro';
 import Page from '../../layouts/Page.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Card from '../../components/Card.astro';
@@ -37,14 +38,14 @@ const schema = {
     />
     <article class="reading">
       <p class="eyebrow">{article.category} / FIELD NOTES</p>
-      <h1>{article.title}</h1>
+      <ArticleTitle title={article.title} level="h1" />
       <p class="lead">{article.description}</p>
       <p class="updated">
         編集日 <time datetime={article.updatedAt}>{article.updatedAt}</time>
       </p>
       {article.sections.map((s) => (
         <section>
-          <h2>{s.heading}</h2>
+          <ArticleTitle title={s.heading} level="h2" protectWords />
           <Prose text={s.body} />
         </section>
       ))}

@@ -370,3 +370,49 @@ test('375, 390 and 430px keep Japanese title phrases intact and search targets s
     ).toBe(true);
   }
 });
+
+test('card actions share a bottom inset and article detail phrases do not split on phones', async ({
+  page,
+}) => {
+  for (const width of [375, 390, 430, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    for (const path of ['/', '/stones/?q=quartz', '/wishes/love/']) {
+      await page.goto(path);
+      const gaps = await page
+        .locator('.stone-card:visible')
+        .evaluateAll((cards) =>
+          cards.map((card) => {
+            const action = card
+              .querySelector('.card-arrow')!
+              .getBoundingClientRect();
+            const theme = card
+              .querySelector('.card-theme')!
+              .getBoundingClientRect();
+            if (action.top < theme.bottom + 10)
+              throw new Error('action overlaps text');
+            return card.getBoundingClientRect().bottom - action.bottom;
+          }),
+        );
+      expect(gaps.length).toBeGreaterThan(1);
+      expect(Math.max(...gaps) - Math.min(...gaps)).toBeLessThan(1);
+    }
+    await page.goto('/articles/inclusions/');
+    await expect(page.locator('h1.article-title')).toHaveText(
+      '内包物と模様。完璧ではない、美しさ。',
+    );
+    for (const phrase of await page.locator('h1.article-title > span').all()) {
+      expect(
+        await phrase.evaluate((el) => {
+          const range = document.createRange();
+          range.selectNodeContents(el);
+          return new Set(
+            [...range.getClientRects()].map((r) => Math.round(r.top)),
+          ).size;
+        }),
+      ).toBe(1);
+    }
+    expect(
+      await page.evaluate(() => document.body.scrollWidth <= innerWidth),
+    ).toBe(true);
+  }
+});

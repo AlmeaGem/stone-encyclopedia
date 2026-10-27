@@ -804,3 +804,75 @@
     opacity: 0.85;
   }
 }
+
+/* Anchor actions to the card bottom, independent of name/description length. */
+.stone-card > a {
+  display: flex;
+  flex-direction: column;
+}
+.stone-card > a > .stone-placeholder,
+.stone-card > a > .stone-figure {
+  flex: none;
+}
+.stone-card .card-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding-bottom: 16px;
+}
+.stone-card .card-theme {
+  margin-bottom: 16px;
+}
+.stone-card .card-arrow {
+  position: static;
+  align-self: flex-end;
+  margin-top: auto;
+  flex: none;
+}
+.three-views .view-card {
+  display: flex;
+  flex-direction: column;
+}
+.three-views .view-card p {
+  margin-bottom: 18px;
+}
+.three-views .view-cta {
+  margin-top: auto;
+}
+.reading h1.article-title {
+  font-size: 32px;
+  line-height: 1.7;
+}
+.reading h1.article-title > span {
+  display: block;
+}
+@media (max-width: 640px) {
+  .stone-card .card-copy,
+  .home-hero + .home-search + .section .stone-card .card-copy {
+    padding-bottom: 14px;
+  }
+  .reading h1.article-title {
+    font-size: clamp(23px, 6vw, 26px);
+    letter-spacing: 0;
+    line-height: 1.75;
+  }
+  .reading h2.article-title {
+    font-size: 21px;
+    line-height: 1.75;
+  }
+}
+
+.reading .article-title > span {
+  text-wrap: balance;
+}
+.reading h1.article-title > span {
+  display: inline-block;
+}
+.reading h1.article-title > span:first-child {
+  display: block;
+}
+
+.article-title .title-run {
+  display: inline-block;
+  white-space: nowrap;
+}
