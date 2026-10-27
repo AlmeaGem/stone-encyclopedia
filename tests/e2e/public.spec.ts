@@ -9,7 +9,7 @@ test('editorial home has immediate content, separate navigation and no mobile ov
 }) => {
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1 })).toContainText(
-    '本物の石はあなたのパワーになる。',
+    /本物の石は\s*あなたのパワーになる。/,
   );
   await expect(page.locator('.stone-card')).toHaveCount(6);
   await expect(
