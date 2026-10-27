@@ -123,6 +123,24 @@ export class EditorStore {
     await unlink(path);
     return { revision: hash(parsed) };
   }
+  async imageBudget() {
+    const date = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Asia/Tokyo',
+    }).format(new Date());
+    let saved: { date?: string; calls?: number; limit?: number } = {};
+    try {
+      saved = JSON.parse(
+        await readFile(join(this.root, '.editor/image-budget.json'), 'utf8'),
+      );
+    } catch (e) {
+      if ((e as NodeJS.ErrnoException).code !== 'ENOENT') throw e;
+    }
+    return {
+      date,
+      calls: saved.date === date ? saved.calls || 0 : 0,
+      limit: saved.limit || 100,
+    };
+  }
   async candidates(): Promise<Candidate[]> {
     try {
       return z
@@ -151,7 +169,11 @@ export class EditorStore {
     await this.atomic(join(this.root, '.editor/candidates.json'), all);
     return c;
   }
-  async approve(document: unknown, fetcher: typeof fetch = fetch) {
+  async approve(
+    document: unknown,
+    fetcher: typeof fetch = fetch,
+    stage = false,
+  ) {
     const c = candidateSchema.parse(document);
     const stones = await this.read('stones');
     if (!stones.some((s: any) => s.id === c.stoneId))
@@ -192,16 +214,53 @@ export class EditorStore {
       .parse(await this.read('images'))
       .filter((i) => i.stoneId !== image.stoneId);
     images.push(image);
-    await this.atomic(join(this.root, 'src/content/images.json'), images);
+    if (!stage)
+      await this.atomic(join(this.root, 'src/content/images.json'), images);
     const queue = await this.candidates();
     const index = queue.findIndex(
       (i) => i.id === c.id && i.stoneId === c.stoneId,
     );
     if (index >= 0) {
+      for (const other of queue)
+        if (
+          other.stoneId === c.stoneId &&
+          other.id !== c.id &&
+          other.status === 'approved'
+        )
+          other.status = 'rejected';
       queue[index] = image;
       await this.atomic(join(this.root, '.editor/candidates.json'), queue);
     }
     return image;
+  }
+  async applyApproved() {
+    const staged = (await this.candidates())
+      .filter((c) => c.status === 'approved')
+      .map(validateApproved);
+    const ids = new Set(staged.map((c) => c.stoneId));
+    if (ids.size !== staged.length)
+      throw new Error('同じ石に複数の代表画像があります');
+    for (const c of staged) {
+      const bytes = await readFile(
+        join(
+          this.root,
+          'assets/approved-images',
+          c.stoneId,
+          c.sha256 + '.webp',
+        ),
+      );
+      if (createHash('sha256').update(bytes).digest('hex') !== c.sha256)
+        throw new Error('承認画像が変更されています。再確認してください');
+    }
+    const current = z
+      .array(candidateSchema)
+      .parse(await this.read('images'))
+      .map(validateApproved);
+    await this.atomic(join(this.root, 'src/content/images.json'), [
+      ...current.filter((c) => !ids.has(c.stoneId)),
+      ...staged,
+    ]);
+    return { applied: staged.length };
   }
   async removePhoto(stoneId: string) {
     if (!/^s\d{3}$/.test(stoneId)) throw new Error('石IDが不正です');

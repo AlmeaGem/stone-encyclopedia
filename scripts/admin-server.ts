@@ -4,20 +4,33 @@ import {
   type ServerResponse,
 } from 'node:http';
 import { randomBytes, scryptSync, timingSafeEqual } from 'node:crypto';
-import { readFile } from 'node:fs/promises';
+import { readFile, mkdir, writeFile, rename } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
+import { ImageBatch } from './image-batch';
+import { downloadCandidate, optimizeCandidate } from './image-policy';
 import { fileURLToPath } from 'node:url';
 import { join, resolve } from 'node:path';
 import { EditorStore, EditorConflict } from './admin-store';
 import { collectForStone } from './collect-images';
 
 const scriptDir = fileURLToPath(new URL('./admin/', import.meta.url));
-export async function startEditor(root: string, password: string, port = 4322) {
+export async function startEditor(
+  root: string,
+  password: string,
+  port = 4322,
+  imageFetcher: typeof fetch = fetch,
+) {
   if (password.length < 20 || password.length > 256)
     throw new Error(
       'EDITOR_PASSWORDに20文字以上の専用パスフレーズを設定してください。公開サイトやManagerの認証情報は使わないでください。',
     );
   const sessions = new Map<string, { csrf: string; expires: number }>();
   const store = new EditorStore(resolve(root));
+  const batch = new ImageBatch(store, (root, id) =>
+    collectForStone(root, id, imageFetcher),
+  );
   const salt = randomBytes(32),
     key = scryptSync(password, salt, 64);
   const attempts = new Map<string, { count: number; until: number }>();
@@ -158,7 +171,42 @@ export async function startEditor(root: string, password: string, port = 4322) {
             categories: await store.read('categories'),
             images: await store.read('images'),
             candidates: await store.candidates(),
+            imageJob: await batch.state(),
+            imageBudget: await store.imageBudget(),
           });
+          return;
+        }
+        if (req.method === 'GET' && url.pathname === '/api/thumbnail') {
+          const c = (await store.candidates()).find(
+            (c) =>
+              c.id === url.searchParams.get('id') &&
+              c.stoneId === url.searchParams.get('stoneId'),
+          );
+          if (!c) throw new Error('候補が見つかりません');
+          const large = url.searchParams.get('large') === '1';
+          const key = createHash('sha256')
+            .update(c.imageUrl + (large ? ':large' : ':small'))
+            .digest('hex');
+          const dir = join(store.root, '.editor/thumbnails');
+          const path = join(dir, key + '.webp');
+          let bytes;
+          try {
+            bytes = await readFile(path);
+          } catch (e) {
+            if ((e as NodeJS.ErrnoException).code !== 'ENOENT') throw e;
+            bytes = (
+              await optimizeCandidate(
+                await downloadCandidate(c.imageUrl, imageFetcher),
+                large ? 1440 : 480,
+              )
+            ).bytes;
+            await mkdir(dir, { recursive: true });
+            const temp = path + '.' + randomBytes(8).toString('hex') + '.tmp';
+            await writeFile(temp, bytes, { mode: 0o600 });
+            await rename(temp, path);
+          }
+          res.writeHead(200, { 'Content-Type': 'image/webp' });
+          res.end(bytes);
           return;
         }
         if (req.method === 'GET' && url.pathname === '/api/entry') {
@@ -173,7 +221,69 @@ export async function startEditor(root: string, password: string, port = 4322) {
         }
         if (post) {
           const perform = async () => {
+            await batch.state();
+            if (
+              (await batch.active()) &&
+              [
+                '/api/collect',
+                '/api/candidate',
+                '/api/approve',
+                '/api/stage-photo',
+                '/api/apply-photos',
+                '/api/image-budget',
+              ].includes(url.pathname)
+            )
+              throw new Error(
+                '収集を一時停止し、現在の石の処理が終わってから操作してください',
+              );
             switch (url.pathname) {
+              case '/api/image-job/start':
+                return batch.start(body.ids);
+              case '/api/image-job/pause':
+                return batch.pause();
+              case '/api/image-job/resume':
+                return batch.resume();
+              case '/api/image-budget': {
+                if (
+                  !Number.isInteger(body.limit) ||
+                  body.limit < 1 ||
+                  body.limit > 1000
+                )
+                  throw new Error('日次上限は1〜1000回です');
+                const path = join(store.root, '.editor/image-budget.json');
+                let saved = {};
+                try {
+                  saved = JSON.parse(await readFile(path, 'utf8'));
+                } catch (e) {
+                  if ((e as NodeJS.ErrnoException).code !== 'ENOENT') throw e;
+                }
+                await store.atomic(path, { ...saved, limit: body.limit });
+                return { ok: true };
+              }
+              case '/api/stage-photo':
+                return store.approve(body.document, imageFetcher, true);
+              case '/api/build-photos': {
+                if (await batch.active())
+                  throw new Error('収集を一時停止してください');
+                try {
+                  await promisify(execFile)('npm', ['run', 'build'], {
+                    cwd: store.root,
+                    timeout: 180000,
+                    maxBuffer: 4000000,
+                  });
+                } catch {
+                  throw new Error(
+                    'ビルドに失敗しました。公開は行っていません。管理サーバーのログと画像の承認情報を確認してください。',
+                  );
+                }
+                return {
+                  ok: true,
+                  message:
+                    'ローカル本番ビルドに成功しました。Web公開にはGitHubへの反映とプレビューデプロイが必要です。',
+                };
+              }
+              case '/api/apply-photos':
+                return store.applyApproved();
               case '/api/logout':
                 sessions.delete(token!);
                 res.setHeader(
@@ -197,9 +307,9 @@ export async function startEditor(root: string, password: string, port = 4322) {
               case '/api/candidate':
                 return store.saveCandidate(body.document);
               case '/api/collect':
-                return collectForStone(store.root, body.stoneId);
+                return collectForStone(store.root, body.stoneId, imageFetcher);
               case '/api/approve':
-                return store.approve(body.document);
+                return store.approve(body.document, imageFetcher);
               case '/api/remove-photo':
                 return store.removePhoto(body.stoneId);
               default:

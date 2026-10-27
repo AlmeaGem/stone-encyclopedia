@@ -268,7 +268,7 @@ test('private editor authenticates, edits a draft and keeps public source unchan
     .getByRole('button', { name: '写真候補・ライセンス', exact: true })
     .click();
   await expect(
-    page.getByRole('heading', { name: '石ごとの画像候補' }),
+    page.getByRole('heading', { name: '210種類の写真を選ぶ' }),
   ).toBeVisible();
   await page.screenshot({
     path: test.info().outputPath('editor.png'),

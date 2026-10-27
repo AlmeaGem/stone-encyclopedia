@@ -54,29 +54,84 @@
         </p>
       </section>
       <section id="images" hidden>
-        <h2>石ごとの画像候補</h2>
+        <h2>210種類の写真を選ぶ</h2>
+        <p>
+          候補は未承認です。石種と利用条件を確認して代表画像を選び、最後に承認済みだけをまとめて反映します。
+        </p>
+        <div class="row">
+          <label
+            >表示を絞り込む<select id="photo-status">
+              <option value="all">すべて</option>
+              <option>登録済み</option>
+              <option>候補あり</option>
+              <option>承認済み・反映待ち</option>
+              <option>写真なし</option>
+              <option>要確認</option>
+            </select></label
+          >
+          <label
+            >日次検索上限（無料API）<input
+              id="image-limit"
+              type="number"
+              min="1"
+              max="1000"
+              value="100"
+          /></label>
+          <button id="save-image-limit">上限を保存</button>
+        </div>
+        <p id="photo-summary"></p>
+        <div class="row">
+          <button id="select-ten">最初の10種類を選択</button
+          ><button id="select-all-stones">210種類を選択</button
+          ><button id="clear-stones">選択解除</button>
+        </div>
+        <details>
+          <summary>収集する石を選ぶ（210種類の状態一覧）</summary>
+          <div id="photo-overview"></div>
+        </details>
+        <p id="collection-plan"></p>
+        <div class="row">
+          <button id="batch-start">選択した石の収集を開始</button
+          ><button id="batch-pause">一時停止</button
+          ><button id="batch-resume">停止したジョブを再開</button>
+        </div>
+        <p id="image-job" role="status"></p>
+        <button id="apply-photos">
+          承認済みの代表画像をまとめて公開用データへ反映
+        </button>
+        <button id="build-photos">反映した画像をビルドして確認</button>
+        <hr />
+        <h3>石ごとの候補を見て選ぶ</h3>
         <div class="row">
           <label>対象の石<select id="image-stone"></select></label
-          ><button id="collect">Commonsから候補を収集（最大5枚）</button
+          ><button id="collect">この石をCommonsで検索（最大10枚）</button
           ><button id="manual-candidate">候補を手動登録</button>
         </div>
         <p>
-          検索は1日20回まで、1回1石。課金APIは使いません。候補の収集だけでは公開されません。石名の一致だけでは採用せず、対象・処理・撮影者・利用条件を原ページで確認してください。
+          日本語名・英語名・別名から最大3検索、各石最大10候補。毎秒1リクエスト以下、日次上限で停止します。ブラウザを閉じても管理サーバーが動いていれば処理は続きます。パソコンやサーバーを終了した場合は、起動後に再開してください。候補数は検索結果により異なります。
         </p>
         <div id="candidates"></div>
         <h3>候補の確認・編集</h3>
-        <textarea
-          id="candidate-json"
-          rows="18"
-          spellcheck="false"
-          aria-label="写真候補JSON"
-        ></textarea>
+        <p id="chosen-photo">写真候補を選んでください。</p>
+        <div class="row">
+          <label>撮影者<input id="photo-author" /></label
+          ><label>画像の説明<input id="photo-alt" maxlength="300" /></label>
+        </div>
+        <details>
+          <summary>詳細情報（通常は編集不要）</summary>
+          <textarea
+            id="candidate-json"
+            rows="18"
+            spellcheck="false"
+            aria-label="写真候補JSON"
+          ></textarea>
+        </details>
         <div class="row">
           <label class="check"
             ><input
               type="checkbox"
               id="identity"
-            />この石IDと撮影対象の一致を確認した</label
+            />この石IDと実物写真の一致を確認した（AI画像・絵・別の石ではない）</label
           ><label class="check"
             ><input
               type="checkbox"
@@ -86,7 +141,7 @@
         </div>
         <div class="row">
           <button id="save-candidate">候補だけ保存</button
-          ><button id="approve">採用して最適化画像を公開用に登録</button
+          ><button id="approve">代表画像として採用（公開反映前）</button
           ><button id="remove-photo">選択した石の写真を表示から外す</button>
         </div>
         <p class="muted">
@@ -95,6 +150,14 @@
         <h3>採用済み写真</h3>
         <div id="approved"></div>
       </section>
+      <dialog id="photo-dialog">
+        <button id="close-photo-dialog">閉じる</button
+        ><img id="photo-large" alt="候補写真の拡大" />
+        <p id="photo-dialog-info"></p>
+        <a id="photo-dialog-source" target="_blank" rel="noopener noreferrer"
+          >出典ページを開く ↗</a
+        >
+      </dialog>
     </main>
     <script type="module" src="/editor.js" defer></script>
   </body>

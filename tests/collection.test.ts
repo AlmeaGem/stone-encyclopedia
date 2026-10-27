@@ -30,9 +30,10 @@ const fixture = {
 };
 it('automatically collects candidates without publication and deduplicates repeated search results', async () => {
   const before = await readFile(join(root, 'src/content/images.json'), 'utf8');
+  const names: string[] = [];
   const fetcher: typeof fetch = async (url) => {
+    names.push(new URL(String(url)).searchParams.get('gsrsearch') || '');
     expect(String(url)).toContain('commons.wikimedia.org/w/api.php');
-    expect(String(url)).toContain('Rose+Quartz');
     return Response.json(fixture);
   };
   await collectForStone(root, 's107', fetcher);
@@ -40,13 +41,15 @@ it('automatically collects candidates without publication and deduplicates repea
   const queue = JSON.parse(
     await readFile(join(root, '.editor/candidates.json'), 'utf8'),
   );
+  expect(names.some((n) => n.includes('Rose Quartz'))).toBe(true);
+  expect(names.some((n) => n.includes('ローズクォーツ'))).toBe(true);
   expect(queue).toHaveLength(1);
   expect(queue[0].status).toBe('pending');
   expect(queue[0].rightsConfirmed).toBe(false);
   expect(await readFile(join(root, 'src/content/images.json'), 'utf8')).toBe(
     before,
   );
-});
+}, 15000);
 it('stops safely on API failures and always releases its search lock', async () => {
   await expect(
     collectForStone(

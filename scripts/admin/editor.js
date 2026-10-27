@@ -143,20 +143,41 @@ function renderCandidates() {
     const div = document.createElement('div');
     div.className = 'candidate';
     const p = document.createElement('p');
-    p.textContent = `${c.stoneName} / ${c.status} / ${c.license} / 撮影者 ${c.photographer || '未確認'}`;
+    p.textContent = `${c.stoneName} / ${{ pending: '未承認候補', approved: '承認済み', rejected: '不採用', review: '要確認' }[c.status]} / ${c.license} / 撮影者 ${c.photographer || '未確認'}`;
     const link = document.createElement('a');
     link.href = c.pageUrl;
     link.target = '_blank';
     link.rel = 'noopener noreferrer';
     link.textContent = '原ページを確認 ↗';
+    const preview = document.createElement('button');
+    preview.className = 'photo-preview';
+    preview.setAttribute('aria-label', c.stoneName + 'の候補写真を拡大');
+    const img = document.createElement('img');
+    img.loading = 'lazy';
+    img.alt = c.stoneName + 'の未確認候補';
+    img.src = `/api/thumbnail?id=${encodeURIComponent(c.id)}&stoneId=${encodeURIComponent(c.stoneId)}`;
+    img.onerror = () => {
+      img.alt = '画像を取得できません。出典ページをご確認ください';
+    };
+    preview.append(img);
+    preview.onclick = () => {
+      $('photo-large').src = img.src + '&large=1';
+      $('photo-dialog-info').textContent =
+        `${c.stoneName} / ${c.photographer || '撮影者未確認'} / ${c.license} / 石種・権利の確認前`;
+      $('photo-dialog-source').href = c.pageUrl;
+      $('photo-dialog').showModal();
+    };
     const button = document.createElement('button');
-    button.textContent = '候補を開く';
+    button.textContent = 'この写真を選ぶ';
     button.onclick = () => {
       $('candidate-json').value = JSON.stringify(c, null, 2);
+      $('photo-author').value = c.photographer;
+      $('photo-alt').value = c.alt || c.stoneName + 'の写真';
+      $('chosen-photo').textContent = `${c.stoneName} / ${c.license} / ${c.id}`;
       $('identity').checked = c.identityConfirmed;
       $('rights').checked = c.rightsConfirmed;
     };
-    div.append(p, link, document.createTextNode(' '), button);
+    div.append(preview, p, link, document.createTextNode(' '), button);
     wrap.append(div);
   }
   $('approved').replaceChildren();
@@ -170,6 +191,7 @@ async function refresh() {
   state = await api('/api/state');
   csrf = state.csrf;
   renderCandidates();
+  renderPhotoOverview();
 }
 $('collection').onchange = () => {
   entries();
@@ -297,10 +319,14 @@ $('manual-candidate').onclick = () => {
   $('candidate-json').value = JSON.stringify(c, null, 2);
   $('identity').checked = false;
   $('rights').checked = false;
+  $('photo-author').value = '';
+  $('photo-alt').value = stone.name + 'の写真';
   showStatus('候補のJSONに原ページの正しい情報を入力してください。');
 };
 function candidate() {
   const c = JSON.parse($('candidate-json').value);
+  c.photographer = $('photo-author').value.trim();
+  c.alt = $('photo-alt').value.trim();
   c.identityConfirmed = $('identity').checked;
   c.rightsConfirmed = $('rights').checked;
   return c;
@@ -320,11 +346,11 @@ $('approve').onclick = () =>
       )
     )
       return;
-    const image = await api('/api/approve', { document: c });
+    const image = await api('/api/stage-photo', { document: c });
     $('candidate-json').value = JSON.stringify(image, null, 2);
     await refresh();
     showStatus(
-      '画像を最適化し、承認済みの公開用データへ登録しました。ビルドとPR確認後にデプロイしてください。',
+      '代表画像を承認しました。まだ公開用データへ反映していません。「承認済みの代表画像をまとめて反映」を押してください。',
     );
   });
 $('remove-photo').onclick = () =>
@@ -350,6 +376,7 @@ $('remove-photo').onclick = () =>
     $('image-stone').append(o);
   }
   renderCandidates();
+  renderPhotoOverview();
   await load();
 })().catch((e) => showStatus(e.message));
 
@@ -439,3 +466,143 @@ function showStructuredFields(wrap) {
     wrap.append(label);
   }
 }
+
+const chosenStones = new Set();
+function photoStatus(stone) {
+  const staged = state.candidates.find(
+    (c) => c.stoneId === stone.id && c.status === 'approved',
+  );
+  if (
+    staged &&
+    !state.images.some(
+      (c) => c.stoneId === stone.id && c.sha256 === staged.sha256,
+    )
+  )
+    return '承認済み・反映待ち';
+  if (state.images.some((c) => c.stoneId === stone.id)) return '登録済み';
+  const list = state.candidates.filter((c) => c.stoneId === stone.id);
+  if (list.some((c) => c.status === 'approved')) return '承認済み・反映待ち';
+  if (list.some((c) => c.status === 'pending')) return '候補あり';
+  if (list.length) return '要確認';
+  return '写真なし';
+}
+function renderPhotoOverview() {
+  const counts = {};
+  const wrap = $('photo-overview');
+  wrap.replaceChildren();
+  for (const stone of state.stones) {
+    const status = photoStatus(stone);
+    counts[status] = (counts[status] || 0) + 1;
+    if ($('photo-status').value !== 'all' && $('photo-status').value !== status)
+      continue;
+    const label = document.createElement('label');
+    label.className = 'photo-row';
+    const input = document.createElement('input');
+    input.type = 'checkbox';
+    input.checked = chosenStones.has(stone.id);
+    input.onchange = () => {
+      if (input.checked) chosenStones.add(stone.id);
+      else chosenStones.delete(stone.id);
+      updatePlan();
+    };
+    const button = document.createElement('button');
+    button.textContent = `${stone.id} ${stone.name}`;
+    button.onclick = (event) => {
+      event.preventDefault();
+      $('image-stone').value = stone.id;
+      renderCandidates();
+      $('candidates').scrollIntoView({ block: 'start' });
+    };
+    const info = document.createElement('span');
+    info.textContent = `${status} / ${state.candidates.filter((c) => c.stoneId === stone.id).length}候補`;
+    label.append(input, button, info);
+    wrap.append(label);
+  }
+  $('photo-summary').textContent = Object.entries(counts)
+    .map(([name, count]) => `${name} ${count}種類`)
+    .join(' / ');
+  if (state.imageBudget) {
+    $('photo-summary').textContent +=
+      ` / 本日 ${state.imageBudget.calls}検索 / 上限 ${state.imageBudget.limit}回`;
+    if (document.activeElement !== $('image-limit'))
+      $('image-limit').value = state.imageBudget.limit;
+  }
+  const job = state.imageJob;
+  $('image-job').textContent = job
+    ? `${{ running: '収集中', paused: '一時停止', error: 'エラー停止', completed: '完了' }[job.status]}：${job.cursor}/${job.ids.length}種類完了。${job.error || ''}`
+    : 'まだ収集ジョブはありません。';
+  updatePlan();
+}
+function updatePlan() {
+  $('collection-plan').textContent =
+    `対象 ${chosenStones.size}種類 / 最大 ${chosenStones.size * 3}検索 / 最大 ${chosenStones.size * 10}候補。API利用料0円（無料Commons API）。設定した日次上限で停止します。`;
+}
+$('photo-status').onchange = renderPhotoOverview;
+$('select-ten').onclick = () => {
+  chosenStones.clear();
+  state.stones.slice(0, 10).forEach((s) => chosenStones.add(s.id));
+  renderPhotoOverview();
+};
+$('select-all-stones').onclick = () => {
+  state.stones.forEach((s) => chosenStones.add(s.id));
+  renderPhotoOverview();
+};
+$('clear-stones').onclick = () => {
+  chosenStones.clear();
+  renderPhotoOverview();
+};
+$('save-image-limit').onclick = () =>
+  action(async () => {
+    await api('/api/image-budget', { limit: Number($('image-limit').value) });
+    showStatus('日次上限を保存しました。');
+  });
+$('batch-start').onclick = () =>
+  action(async () => {
+    if (!chosenStones.size) throw new Error('収集する石を選択してください');
+    if (
+      !confirm(
+        $('collection-plan').textContent +
+          ' 収集を開始しますか？採用・公開はしません。',
+      )
+    )
+      return;
+    await api('/api/image-job/start', { ids: [...chosenStones] });
+    await refresh();
+  });
+$('batch-pause').onclick = () =>
+  action(async () => {
+    await api('/api/image-job/pause', {});
+    await refresh();
+    showStatus('現在の石を処理後に停止します。');
+  });
+$('batch-resume').onclick = () =>
+  action(async () => {
+    await api('/api/image-job/resume', {});
+    await refresh();
+  });
+$('apply-photos').onclick = () =>
+  action(async () => {
+    if (
+      !confirm(
+        '承認済みの代表写真だけを公開用データへまとめて反映しますか？公開には別途ビルドとデプロイが必要です。',
+      )
+    )
+      return;
+    const result = await api('/api/apply-photos', {});
+    await refresh();
+    showStatus(
+      `${result.applied}種類を反映しました。まだWeb公開ではありません。ビルド確認とGitHubへの反映後、プレビューデプロイが必要です。`,
+    );
+  });
+$('close-photo-dialog').onclick = () => $('photo-dialog').close();
+setInterval(() => {
+  if (state?.imageJob?.status === 'running' && !busy)
+    refresh().catch((e) => showStatus(e.message));
+}, 2500);
+
+$('build-photos').onclick = () =>
+  action(async () => {
+    showStatus('承認済み画像のローカル本番ビルドを確認しています。');
+    const r = await api('/api/build-photos', {});
+    showStatus(r.message);
+  });

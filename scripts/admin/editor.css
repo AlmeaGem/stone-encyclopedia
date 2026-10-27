@@ -199,3 +199,66 @@ select:focus-visible {
     font-size: 24px;
   }
 }
+#candidates {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 16px;
+}
+.photo-preview {
+  display: block;
+  width: 100%;
+  background: #f3eae3;
+  padding: 0;
+}
+.photo-preview img {
+  display: block;
+  width: 100%;
+  height: 190px;
+  object-fit: contain;
+}
+#photo-overview {
+  max-height: 430px;
+  overflow: auto;
+}
+.photo-row {
+  display: grid;
+  grid-template-columns: 24px minmax(120px, 1fr) minmax(100px, 1fr);
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border-bottom: 1px solid #e5d8cd;
+}
+.photo-row input {
+  width: 20px;
+  min-height: 24px;
+}
+.photo-row button {
+  text-align: left;
+}
+dialog {
+  max-width: min(850px, 94vw);
+  max-height: 90vh;
+  overflow: auto;
+  border: 1px solid #b49783;
+  border-radius: 16px;
+  background: #fffaf6;
+  color: #51433a;
+}
+dialog::backdrop {
+  background: #30231d99;
+}
+#photo-large {
+  display: block;
+  max-width: 100%;
+  max-height: 65vh;
+  margin: 12px auto;
+  object-fit: contain;
+}
+@media (max-width: 640px) {
+  .photo-row {
+    grid-template-columns: 24px 1fr;
+  }
+  .photo-row span {
+    grid-column: 2;
+  }
+}

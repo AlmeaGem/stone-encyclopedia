@@ -71,7 +71,7 @@ export async function downloadCandidate(
   }
   throw new Error('画像の転送回数が多すぎます');
 }
-export async function optimizeCandidate(bytes: Uint8Array) {
+export async function optimizeCandidate(bytes: Uint8Array, maxSize = 1440) {
   const pipeline = sharp(bytes, {
     limitInputPixels: 40000000,
     animated: false,
@@ -85,8 +85,8 @@ export async function optimizeCandidate(bytes: Uint8Array) {
   const { data, info } = await pipeline
     .rotate()
     .resize({
-      width: 1440,
-      height: 1440,
+      width: maxSize,
+      height: maxSize,
       fit: 'inside',
       withoutEnlargement: true,
     })
@@ -145,6 +145,20 @@ export function commonsCandidates(
   return Object.values(pages).flatMap((page) => {
     const info = page.imageinfo?.[0];
     if (!info?.url || !info.descriptionurl) return [];
+    if (info.mime && !/^image\/(jpeg|png|webp)$/.test(info.mime)) return [];
+    try {
+      const source = new URL(info.descriptionurl);
+      if (
+        source.protocol !== 'https:' ||
+        source.hostname !== 'commons.wikimedia.org' ||
+        source.username ||
+        source.password ||
+        source.port
+      )
+        return [];
+    } catch {
+      return [];
+    }
     let url: URL;
     try {
       url = safeImageUrl(info.thumburl || info.url);
