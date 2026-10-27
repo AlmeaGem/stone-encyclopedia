@@ -17,9 +17,7 @@ import { pathTo } from '../../lib/urls';
         大切な願いを、身につけるブレスレットに託して。
       </p>
     </div>
-    <p class="notice">
-      テーマ別の一般的な図鑑一覧です。個人向けの診断結果や、おすすめ順位ではありません。結果を保証する情報は掲載していません。
-    </p>
+
     <div class="wish-grid">
       {categories.map((c, i) => (
         <a class="wish-link" href={pathTo(`wishes/${c.id}/`)}>

@@ -4,6 +4,7 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Card from '../../components/Card.astro';
 import { categories, stones } from '../../lib/content';
 import { pathTo } from '../../lib/urls';
+import { availableWishTags } from '../../lib/wish-filter';
 export function getStaticPaths() {
   return categories.map((category) => ({
     params: { id: category.id },
@@ -12,6 +13,7 @@ export function getStaticPaths() {
 }
 const { category } = Astro.props;
 const selected = stones.filter((s) => s.wishes.includes(category.id));
+const tags = availableWishTags(selected);
 ---
 
 <Page
@@ -30,18 +32,40 @@ const selected = stones.filter((s) => s.wishes.includes(category.id));
       <h1>{category.name}</h1>
       <p>{category.description}</p>
     </div>
-    <p class="notice">
-      一般的な伝承テーマによる一覧です。個人向けのおすすめではありません。医療、金銭、恋愛などの結果を保証するものではありません。
-    </p>
-    <div class="tag-list">
-      {category.subcategories.map((s) => (
-        <span>{s}</span>
-      ))}
-    </div>
+    {category.id === 'wellbeing' && (
+      <p class="health-note">
+        健康・美容にまつわる伝承を紹介します。医療や治療の代わりになるものではありません。
+      </p>
+    )}
+    <section class="wish-filter" aria-labelledby="wish-filter-title" hidden>
+      <h2 id="wish-filter-title">願いのテーマで絞り込む</h2>
+      <p class="wish-filter-help">
+        複数選ぶと、すべてのテーマを持つ石を表示します。
+      </p>
+      <div class="wish-filter-buttons" role="group" aria-label="願いのテーマ">
+        <button type="button" data-clear-wishes aria-pressed="true">
+          すべて表示
+        </button>
+        {tags.map((tag) => (
+          <button type="button" data-wish-tag={tag} aria-pressed="false">
+            <span class="wish-check" aria-hidden="true">
+              ✓
+            </span>
+            {tag}
+          </button>
+        ))}
+      </div>
+    </section>
     <div class="list-status">
-      <p>{selected.length}項目</p>
-      <span>掲載ID順 · 効果や品質の順位ではありません</span>
+      <p id="wish-result-count" role="status" aria-live="polite">
+        {selected.length}種類の天然石
+      </p>
     </div>
+    <p id="wish-empty" class="empty" hidden>
+      選択したテーマすべてに当てはまる石は見つかりませんでした。
+      <br />
+      テーマを減らすか「すべて表示」をお試しください。
+    </p>
     {selected.length ? (
       <div class="stone-grid">
         {selected.map((stone) => (
@@ -50,10 +74,75 @@ const selected = stones.filter((s) => s.wishes.includes(category.id));
       </div>
     ) : (
       <div class="empty">
-        <h2>このテーマの情報を整備しています。</h2>
-        <p>根拠の弱い石を追加して件数を埋めることはしていません。</p>
+        <h2>このテーマの石はまだ掲載されていません。</h2>
+        <p>ほかのテーマや石名からも探してみてください。</p>
         <a href={pathTo('stones/')}>すべての石を探す →</a>
       </div>
     )}
   </div>
 </Page>
+
+<script>
+  import { matchesWishTags } from '../../lib/wish-filter';
+  const filter = document.querySelector<HTMLElement>('.wish-filter')!;
+  const buttons = [
+    ...filter.querySelectorAll<HTMLButtonElement>('[data-wish-tag]'),
+  ];
+  const clear = filter.querySelector<HTMLButtonElement>('[data-clear-wishes]')!;
+  const cards = [...document.querySelectorAll<HTMLElement>('[data-stone]')].map(
+    (el) => ({ el, themes: JSON.parse(el.dataset.themes || '[]') as string[] }),
+  );
+  const selected = new Set<string>();
+  const valid = new Set(buttons.map((b) => b.dataset.wishTag!));
+  function restore() {
+    selected.clear();
+    for (const tag of new URLSearchParams(location.search).getAll('theme'))
+      if (valid.has(tag)) selected.add(tag);
+  }
+  function render(updateUrl = true) {
+    let count = 0;
+    for (const card of cards) {
+      card.el.hidden = !matchesWishTags(card.themes, [...selected]);
+      if (!card.el.hidden) count++;
+    }
+    buttons.forEach((button) =>
+      button.setAttribute(
+        'aria-pressed',
+        String(selected.has(button.dataset.wishTag!)),
+      ),
+    );
+    clear.setAttribute('aria-pressed', String(selected.size === 0));
+    document.querySelector('#wish-result-count')!.textContent =
+      `${count}種類の天然石`;
+    (document.querySelector('#wish-empty') as HTMLElement).hidden =
+      count !== 0 || cards.length === 0;
+    if (updateUrl) {
+      const params = new URLSearchParams();
+      selected.forEach((tag) => params.append('theme', tag));
+      history.replaceState(
+        null,
+        '',
+        location.pathname + (params.size ? '?' + params : ''),
+      );
+    }
+  }
+  buttons.forEach((button) =>
+    button.addEventListener('click', () => {
+      const tag = button.dataset.wishTag!;
+      if (selected.has(tag)) selected.delete(tag);
+      else selected.add(tag);
+      render();
+    }),
+  );
+  clear.addEventListener('click', () => {
+    selected.clear();
+    render();
+  });
+  window.addEventListener('popstate', () => {
+    restore();
+    render(false);
+  });
+  restore();
+  render(false);
+  filter.hidden = false;
+</script>

@@ -1,4 +1,5 @@
 import rawStones from '../content/stones.json';
+import { publicArticle } from './public-copy';
 import rawCategories from '../content/categories.json';
 import rawArticles from '../content/articles.json';
 import rawImages from '../content/images.json';
@@ -21,7 +22,8 @@ export const categories = z
 export const articles = z
   .array(articleSchema)
   .parse(rawArticles)
-  .filter((a) => a.status === 'published');
+  .filter((a) => a.status === 'published')
+  .map(publicArticle);
 export const approvedImages = z
   .array(candidateSchema)
   .parse(rawImages)
@@ -50,7 +52,7 @@ export const kindLabels: Record<Stone['kind'], string> = {
   organic: '有機物由来',
   rock: '岩石・天然ガラスなど',
 };
-export const unknown = '未確認・情報整備中';
+export const unknown = '未確認';
 export function colorClass(s: Stone) {
   const color = s.colors[0];
   return color === 'ピンク'

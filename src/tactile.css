@@ -898,3 +898,96 @@
     display: block;
   }
 }
+
+/* Reserve identical non-shrinking space for 1–12, including two-digit numbers. */
+.wish-link .wish-number {
+  display: inline-block;
+  flex: 0 0 2ch;
+  min-width: 2ch;
+  width: 2ch;
+  white-space: nowrap;
+  word-break: normal;
+  overflow-wrap: normal;
+  writing-mode: horizontal-tb;
+  text-align: center;
+}
+.wish-filter {
+  margin: 20px 0 24px;
+}
+.wish-filter h2 {
+  font: 500 17px/1.6 var(--sans);
+  letter-spacing: 0;
+}
+.wish-filter-help {
+  font-size: 12px;
+  color: #62534a;
+  margin: 6px 0 14px;
+}
+.wish-filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.wish-filter-buttons button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 46px;
+  padding: 10px 17px;
+  border: 1px solid #c7a99b;
+  border-radius: 999px;
+  background: linear-gradient(145deg, #fffdfb, #f7eeea);
+  color: #5d4239;
+  box-shadow:
+    inset 0 1px 0 white,
+    0 3px 7px #7853450c;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.wish-filter-buttons button[aria-pressed='true'] {
+  background: #e6cac1;
+  color: #482f27;
+  border-color: #9d7362;
+  font-weight: 600;
+  box-shadow: inset 0 1px 2px #916b5820;
+}
+.wish-check {
+  visibility: hidden;
+  font-size: 12px;
+}
+[aria-pressed='true'] > .wish-check {
+  visibility: visible;
+}
+.wish-filter-buttons button:hover {
+  border-color: #89604f;
+}
+.wish-filter-buttons button:focus-visible {
+  outline: 2px solid #80565e;
+  outline-offset: 3px;
+}
+.wish-filter-buttons button:active {
+  box-shadow: var(--pressed);
+  transform: translateY(1px);
+}
+.health-note {
+  font-size: 12px;
+  color: #62534a;
+  margin-block: 12px;
+}
+@media (max-width: 640px) {
+  .wish-link {
+    gap: 12px;
+  }
+  .wish-filter-buttons {
+    gap: 9px;
+  }
+  .wish-filter-buttons button {
+    padding: 10px 13px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wish-filter-buttons button:active {
+    transform: none;
+  }
+}

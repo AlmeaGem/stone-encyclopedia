@@ -12,6 +12,7 @@ const { stone } = Astro.props as { stone: Stone };
   data-stone
   data-search={stoneSearchTerms(stone, categories)}
   data-wishes={stone.wishes.join(',')}
+  data-themes={JSON.stringify(stone.themes)}
   data-colors={stone.colors.join(',')}
 >
   <a href={pathTo(`stones/${stone.slug}/`)}>

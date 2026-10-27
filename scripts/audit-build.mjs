@@ -41,6 +41,15 @@ async function files(dir) {
 }
 const output = await files('dist');
 for (const p of output) {
+  if (p.endsWith('.html')) {
+    const html = await readFile(p, 'utf8');
+    if (
+      /編集ガイド|表示確認|移行資料|移行元|掲載ID順|公開ビルド|管理者が/.test(
+        html,
+      )
+    )
+      throw new Error(`${p} contains production-only copy`);
+  }
   if (
     /(?:admin-server|candidates|\.editor|password|stone_catalog\.json)/.test(p)
   )
@@ -73,7 +82,7 @@ if (prefix !== '/') {
 
 for (const file of output.filter((p) => p.endsWith('.html'))) {
   const html = await readFile(file, 'utf8');
-  for (const [, attrs, body] of html.matchAll(
+  for (const [, attrs] of html.matchAll(
     /<script([^>]*)>([\s\S]*?)<\/script>/g,
   )) {
     if (!attrs.includes('application/ld+json') && !attrs.includes('src='))

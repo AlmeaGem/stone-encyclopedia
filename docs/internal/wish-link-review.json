@@ -1,0 +1,277 @@
+[
+  {
+    "categoryId": "love",
+    "category": "恋愛・結婚",
+    "unmappedDetailedWishes": [
+      "新しい出会い",
+      "気になる人との関係",
+      "恋人との調和",
+      "結婚を考える",
+      "結婚生活の安定",
+      "復縁について考える",
+      "自分を大切にしたい",
+      "理想の関係を見つめる"
+    ],
+    "availableExplicitTags": [
+      "愛情・絆",
+      "癒し・安定",
+      "勝負・行動",
+      "魅力・自己肯定",
+      "浄化・守護",
+      "学習・集中",
+      "恋愛・出会い",
+      "直感・精神性",
+      "対人・コミュニケーション",
+      "仕事・成功",
+      "変化・再生"
+    ],
+    "requiresExplicitStoneIds": true
+  },
+  {
+    "categoryId": "prosperity",
+    "category": "金運・仕事・成功",
+    "unmappedDetailedWishes": [
+      "仕事を探している",
+      "転職を考えている",
+      "起業を考えている",
+      "事業を育てたい",
+      "安定した働き方",
+      "臨時収入を願う",
+      "豊かさを見つめる",
+      "目標に挑戦したい",
+      "売上を見直したい",
+      "商売繁盛を願う",
+      "副業に挑戦"
+    ],
+    "availableExplicitTags": [
+      "仕事・成功",
+      "対人・コミュニケーション",
+      "浄化・守護",
+      "癒し・安定",
+      "金運・繁栄",
+      "勝負・行動",
+      "魅力・自己肯定",
+      "学習・集中",
+      "変化・再生",
+      "直感・精神性",
+      "愛情・絆"
+    ],
+    "requiresExplicitStoneIds": true
+  },
+  {
+    "categoryId": "fortune",
+    "category": "開運・願望成就・引き寄せ",
+    "unmappedDetailedWishes": [
+      "運気を意識したい",
+      "幸福を大切にしたい",
+      "強運を願う",
+      "人生の転機",
+      "停滞からの一歩",
+      "機会を見つけたい"
+    ],
+    "availableExplicitTags": [
+      "癒し・安定",
+      "変化・再生",
+      "直感・精神性",
+      "浄化・守護",
+      "勝負・行動",
+      "仕事・成功",
+      "対人・コミュニケーション",
+      "学習・集中",
+      "魅力・自己肯定",
+      "恋愛・出会い"
+    ],
+    "requiresExplicitStoneIds": true
+  },
+  {
+    "categoryId": "protection",
+    "category": "魔除け・浄化・解放",
+    "unmappedDetailedWishes": [
+      "家族との関係を整理",
+      "不安な気持ちの支え",
+      "周囲の影響から距離を置く",
+      "人間関係の見直し",
+      "心の境界線",
+      "過去を振り返り前へ"
+    ],
+    "availableExplicitTags": [
+      "浄化・守護",
+      "勝負・行動",
+      "癒し・安定",
+      "対人・コミュニケーション",
+      "変化・再生",
+      "仕事・成功",
+      "愛情・絆",
+      "学習・集中",
+      "旅・安全",
+      "直感・精神性"
+    ],
+    "requiresExplicitStoneIds": true
+  },
+  {
+    "categoryId": "wellbeing",
+    "category": "健康・美容・魅力",
+    "unmappedDetailedWishes": [
+      "療養中の気持ちの支え",
+      "健康を大切にする",
+      "日々の生活を整える",
+      "自分らしい魅力",
+      "年齢を重ねる楽しさ",
+      "自信を育みたい",
+      "休息を意識したい"
+    ],
+    "availableExplicitTags": [
+      "癒し・安定",
+      "変化・再生",
+      "浄化・守護",
+      "直感・精神性",
+      "学習・集中",
+      "勝負・行動",
+      "対人・コミュニケーション",
+      "愛情・絆",
+      "金運・繁栄",
+      "魅力・自己肯定",
+      "仕事・成功",
+      "恋愛・出会い"
+    ],
+    "requiresExplicitStoneIds": true
+  },
+  {
+    "categoryId": "relationships",
+    "category": "人間関係",
+    "unmappedDetailedWishes": [
+      "コミュニケーション",
+      "職場の関係",
+      "新しいつながり",
+      "関係を見直す"
+    ],
+    "availableExplicitTags": [
+      "浄化・守護",
+      "対人・コミュニケーション",
+      "仕事・成功",
+      "癒し・安定",
+      "魅力・自己肯定",
+      "金運・繁栄",
+      "変化・再生",
+      "愛情・絆",
+      "直感・精神性",
+      "学習・集中"
+    ],
+    "requiresExplicitStoneIds": true
+  },
+  {
+    "categoryId": "challenge",
+    "category": "勝負運・試験・当選運",
+    "unmappedDetailedWishes": [
+      "試験に向けて",
+      "競技に向けて",
+      "大切な挑戦",
+      "幸運を願う"
+    ],
+    "availableExplicitTags": [
+      "浄化・守護",
+      "勝負・行動",
+      "癒し・安定",
+      "愛情・絆",
+      "変化・再生",
+      "金運・繁栄",
+      "仕事・成功",
+      "魅力・自己肯定",
+      "学習・集中",
+      "直感・精神性"
+    ],
+    "requiresExplicitStoneIds": true
+  },
+  {
+    "categoryId": "presence",
+    "category": "人気運・カリスマ性",
+    "unmappedDetailedWishes": [
+      "表現を楽しむ",
+      "人前に立つ",
+      "自分らしい存在感"
+    ],
+    "availableExplicitTags": [
+      "対人・コミュニケーション",
+      "魅力・自己肯定",
+      "愛情・絆",
+      "癒し・安定",
+      "仕事・成功",
+      "勝負・行動",
+      "金運・繁栄",
+      "恋愛・出会い",
+      "直感・精神性",
+      "学習・集中",
+      "変化・再生"
+    ],
+    "requiresExplicitStoneIds": true
+  },
+  {
+    "categoryId": "learning",
+    "category": "学業・才能開花",
+    "unmappedDetailedWishes": [
+      "学習に取り組む",
+      "得意を育てる",
+      "創作を楽しむ"
+    ],
+    "availableExplicitTags": [
+      "癒し・安定",
+      "学習・集中",
+      "愛情・絆",
+      "仕事・成功",
+      "金運・繁栄",
+      "勝負・行動",
+      "浄化・守護",
+      "変化・再生",
+      "直感・精神性",
+      "魅力・自己肯定",
+      "対人・コミュニケーション"
+    ],
+    "requiresExplicitStoneIds": true
+  },
+  {
+    "categoryId": "home",
+    "category": "家庭運・住まい",
+    "unmappedDetailedWishes": [
+      "家族との時間",
+      "住まいを整える",
+      "暮らしの変化"
+    ],
+    "availableExplicitTags": [
+      "愛情・絆",
+      "癒し・安定",
+      "勝負・行動",
+      "魅力・自己肯定",
+      "浄化・守護",
+      "学習・集中",
+      "恋愛・出会い",
+      "対人・コミュニケーション",
+      "仕事・成功"
+    ],
+    "requiresExplicitStoneIds": true
+  },
+  {
+    "categoryId": "journey",
+    "category": "旅行・移動・新しい環境",
+    "unmappedDetailedWishes": ["旅行のお守り", "引っ越し", "新しい環境"],
+    "availableExplicitTags": ["浄化・守護", "旅・安全"],
+    "requiresExplicitStoneIds": true
+  },
+  {
+    "categoryId": "intuition",
+    "category": "直感・精神性・自己探求",
+    "unmappedDetailedWishes": ["内省する時間", "自分を知る", "感性を楽しむ"],
+    "availableExplicitTags": [
+      "直感・精神性",
+      "癒し・安定",
+      "変化・再生",
+      "恋愛・出会い",
+      "勝負・行動",
+      "魅力・自己肯定",
+      "学習・集中",
+      "対人・コミュニケーション",
+      "仕事・成功",
+      "浄化・守護"
+    ],
+    "requiresExplicitStoneIds": true
+  }
+]

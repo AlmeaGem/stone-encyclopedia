@@ -148,9 +148,6 @@ const schema = {
               return c && <a href={pathTo(`wishes/${id}/`)}>{c.name} ↗</a>;
             })}
           </div>
-          <p class="fine-print">
-            願望や健康への効果、恋愛・金銭・試験などの結果を保証する情報ではありません。
-          </p>
         </section>
         <section id="care" class="detail-section">
           <p class="eyebrow">04 / CARE</p>
@@ -193,9 +190,7 @@ const schema = {
           <h2>あわせて知りたい石</h2>
         </div>
       </div>
-      <p class="quiet-note">
-        共通する伝承のテーマから案内しています。品質や相性の優劣、個人向けのおすすめ順位ではありません。
-      </p>
+      <p class="quiet-note">関連する伝承テーマの石をご紹介します。</p>
       <div class="stone-grid related-grid">
         {related.map((s) => s && <Card stone={s} />)}
       </div>

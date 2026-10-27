@@ -71,9 +71,7 @@ test('detail separates facts, quality and symbolism, with sources, internal link
     '想いを託す、象徴と物語',
     '浄化と、取り扱いの注意',
   ]);
-  await expect(
-    page.getByText('未確認・情報整備中', { exact: true }).first(),
-  ).toBeVisible();
+  await expect(page.getByText('未確認', { exact: true }).first()).toBeVisible();
   await expect(page.locator('.stone-placeholder.detail')).toHaveAttribute(
     'aria-label',
     '色の抽象イメージ。実物写真ではありません',
@@ -425,4 +423,120 @@ test('card actions share a bottom inset and article detail phrases do not split 
       await page.evaluate(() => document.body.scrollWidth <= innerWidth),
     ).toBe(true);
   }
+});
+
+test('wish pills select, intersect, clear, restore and update the actual count without ranking', async ({
+  page,
+}) => {
+  const raw = JSON.parse(readFileSync('src/content/stones.json', 'utf8')) as {
+    id: string;
+    wishes: string[];
+    themes: string[];
+  }[];
+  const love = raw.filter((s) => s.wishes.includes('love'));
+  await page.goto('/wishes/love/');
+  await expect(page.locator('.page-intro + .notice')).toHaveCount(0);
+  const buttons = page.locator('[data-wish-tag]');
+  expect(await buttons.count()).toBeGreaterThan(2);
+  const tags = await buttons.evaluateAll((nodes) =>
+    nodes.map((n) => (n as HTMLElement).dataset.wishTag!),
+  );
+  const chosen: string[] = [];
+  const verify = async () => {
+    const expected = love.filter((s) =>
+      chosen.every((tag) => s.themes.includes(tag)),
+    );
+    await expect(page.locator('#wish-result-count')).toHaveText(
+      `${expected.length}種類の天然石`,
+    );
+    expect(
+      await page
+        .locator('[data-stone]:visible')
+        .evaluateAll((nodes) =>
+          nodes.map((n) => (n as HTMLElement).dataset.wishes),
+        ),
+    ).toHaveLength(expected.length);
+    const actual = await page
+      .locator('[data-stone]:visible')
+      .evaluateAll((nodes) =>
+        nodes.map((n) => JSON.parse((n as HTMLElement).dataset.themes!)),
+      );
+    for (const themes of actual)
+      expect(chosen.every((tag) => themes.includes(tag))).toBe(true);
+    if (!expected.length)
+      await expect(page.locator('#wish-empty')).toBeVisible();
+  };
+  await verify();
+  for (const tag of tags.slice(0, 3)) {
+    await buttons.filter({ hasText: tag }).click();
+    chosen.push(tag);
+    await expect(buttons.filter({ hasText: tag })).toHaveAttribute(
+      'aria-pressed',
+      'true',
+    );
+    await verify();
+  }
+  await page.reload();
+  await verify();
+  await buttons.filter({ hasText: chosen[0] }).click();
+  chosen.shift();
+  await verify();
+  await page.getByRole('button', { name: 'すべて表示', exact: true }).click();
+  chosen.length = 0;
+  await verify();
+  await expect(page.locator('#wish-empty')).toBeHidden();
+  await page.goto('/wishes/love/?theme=unregistered');
+  await verify();
+});
+
+test('category numbers remain horizontal and public pages omit production copy at all required widths', async ({
+  page,
+}) => {
+  for (const width of [375, 390, 430, 1280, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/wishes/');
+    for (const n of await page.locator('.wish-number').all()) {
+      expect(
+        await n.evaluate((el) => {
+          const r = document.createRange();
+          r.selectNodeContents(el);
+          return [...r.getClientRects()].length;
+        }),
+      ).toBe(1);
+    }
+    expect(
+      await page.evaluate(() => document.body.scrollWidth <= innerWidth),
+    ).toBe(true);
+    await page.goto('/wishes/love/');
+    for (const button of await page
+      .locator('.wish-filter-buttons button')
+      .all())
+      expect((await button.boundingBox())!.height).toBeGreaterThanOrEqual(44);
+    expect(
+      await page.evaluate(() => document.body.scrollWidth <= innerWidth),
+    ).toBe(true);
+  }
+  for (const path of [
+    '/',
+    '/about/',
+    '/terms/',
+    '/privacy/',
+    '/commerce/',
+    '/refund/',
+    '/contact/',
+    '/articles/editorial-policy/',
+    '/articles/inclusions/',
+    '/stones/rose-quartz/',
+    '/wishes/love/',
+    '/stones/',
+  ]) {
+    await page.goto(path);
+    expect(await page.locator('body').innerText()).not.toMatch(
+      /編集ガイド|表示確認|移行資料|移行元|掲載ID順|公開ビルド|管理者が/,
+    );
+  }
+  await page.goto('/wishes/wellbeing/');
+  await expect(page.locator('.health-note')).toContainText(
+    '医療や治療の代わり',
+  );
 });

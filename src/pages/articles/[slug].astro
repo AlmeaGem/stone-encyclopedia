@@ -41,7 +41,7 @@ const schema = {
       <ArticleTitle title={article.title} level="h1" />
       <p class="lead">{article.description}</p>
       <p class="updated">
-        編集日 <time datetime={article.updatedAt}>{article.updatedAt}</time>
+        更新日 <time datetime={article.updatedAt}>{article.updatedAt}</time>
       </p>
       {article.sections.map((s) => (
         <section>
@@ -49,9 +49,6 @@ const schema = {
           <Prose text={s.body} />
         </section>
       ))}
-      <p class="notice">
-        このページは、観察・表示確認のための編集ガイドです。個別の石の同定や鑑別、医療・投資などの専門的な助言を行うものではありません。
-      </p>
     </article>
     <section class="section">
       <h2>この読みものに登場する石</h2>
