@@ -1,6 +1,7 @@
 ---
 import Page from '../layouts/Page.astro';
 import ArticleTitle from '../components/ArticleTitle.astro';
+import HeroGem from '../components/HeroGem.astro';
 import Card from '../components/Card.astro';
 import { stones, categories, articles } from '../lib/content';
 import { pathTo, canonical } from '../lib/urls';
@@ -29,6 +30,7 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
           あなたのパワーになる。
         </span>
         <span class="hero-line">まだ知らない石の世界へ。</span>
+        <HeroGem />
       </h1>
       <p>
         パワーストーンアイテムを手がけるALMÉA GEMから。

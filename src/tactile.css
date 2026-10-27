@@ -762,3 +762,45 @@
     font-size: 13px;
   }
 }
+
+/* Decorative vector only: preserve the headline's width and reading order. */
+.typography-hero .hero-copy h1 {
+  position: relative;
+}
+.hero-gem-accent {
+  position: absolute;
+  width: 148px;
+  height: auto;
+  right: -108px;
+  top: -14px;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+.typography-hero .hero-line {
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 1100px) and (min-width: 641px) {
+  .hero-gem-accent {
+    right: 0;
+    width: 110px;
+    opacity: 0.65;
+    top: 10px;
+  }
+}
+@media (max-width: 640px) {
+  .hero-gem-accent {
+    width: 66px;
+    right: -2px;
+    top: 7px;
+    opacity: 0.85;
+  }
+}
+@media (max-width: 350px) {
+  .hero-gem-accent {
+    width: 48px;
+    right: -4px;
+    opacity: 0.6;
+  }
+}
