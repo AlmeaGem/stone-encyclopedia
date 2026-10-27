@@ -4,7 +4,9 @@
 
 新規リポジトリ https://github.com/AlmeaGem/stone-encyclopedia への送信とPR #1の作成は完了しました。既存 `Amule-manager` の権限・コード・設定は変更していません。
 
-Pages有効化APIだけはGitHub連携の権限不足で403となるため、次のSource設定はアカウント所有者の操作が必要です。トークンやAPIキーの共有は不要です。
+Pages有効化APIはGitHub連携の権限不足で403でしたが、所有者によるSource設定が完了し、無料プレビューの初回デプロイに成功しました。トークンやAPIキーの共有は不要です。
+
+確認用URL：https://almeagem.github.io/stone-encyclopedia/ 。以下は再設定・更新時の手順です。
 
 ## GitHub Pagesの一時プレビュー
 

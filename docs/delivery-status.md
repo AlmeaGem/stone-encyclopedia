@@ -7,7 +7,8 @@
 - GitHub：https://github.com/AlmeaGem/stone-encyclopedia
 - ブランチ：`feat/phase-one-encyclopedia`。mainは初期ファイルと手動プレビュー用ワークフローのみ。PRは未マージ。
 - GitHub上でも単体テスト・本番用静的ビルドの成功を確認。PC／スマホとサブパスの最終結果はPRのCIを参照。
-- 外部プレビュー：Pages未有効化のため未発行。新リポジトリのPages有効化APIはGitHub連携の権限不足で403。所有者によるSettings → Pages → Source: GitHub Actionsの設定が必要。
+- 外部プレビュー：https://almeagem.github.io/stone-encyclopedia/ 。所有者のPages設定後、[デプロイ](https://github.com/AlmeaGem/stone-encyclopedia/actions/runs/40476885276)が成功しました。noindex・販売無効の確認用サイトです。
+- 公開URLの210項目・PC／スマホ・検索・canonicalは手動ワークフロー `Verify live preview` で再確認できます。結果とスクリーンショットはActionsのArtifactsに保存します。
 - ローカル表示：`npm ci` → `npm run dev` → `http://127.0.0.1:4321/`
 
 ## 実装範囲
@@ -39,15 +40,15 @@
 - TypeScript／Astroチェック：エラー・警告なし。
 - 本番ビルド：240ページ生成（石の詳細210ページを含む）。公開ビルドの私有ファイル混入・CSP・サブパスのURLを監査。
 - GitHubのプロジェクト配下 `/stone-encyclopedia/` を指定したビルドも確認。ルートURLとの混同を防ぐ。
-- 実決済・PDF・クラウド管理者認証はフェーズ2のため未実装。外部ホスティング上の実表示検証はPages有効化後に行う。
+- 実決済・PDF・クラウド管理者認証はフェーズ2のため未実装。公開先の実表示検証は独立した `Verify live preview` ワークフローで行う。
 
 画面は [PCトップ](screenshots/home-desktop.png)、[スマホトップ](screenshots/home-mobile.png)、[PC詳細](screenshots/detail-desktop.png)、[スマホ詳細](screenshots/detail-mobile.png)、[編集画面（テストデータ）](screenshots/editor-test.png) を参照。
 
 ## 次に必要な操作
 
-1. [新リポジトリのPages設定](https://github.com/AlmeaGem/stone-encyclopedia/settings/pages)でSourceをGitHub Actionsにする。支払い情報や有料契約は不要。
-2. Actionsの `Deploy independent preview` を再実行し、対象refを `feat/phase-one-encyclopedia` にする。成功後のURLで実表示を確認する。設定前の失敗はビルド不良ではなくPages未有効化によるもの。
-3. PRのCIと内容を確認後にマージする。本番商用公開は新しいCloudflare Pagesプロジェクトを推奨。接続手順は下記の公開手順を参照。
+1. 無料プレビューURLで内容と表示をレビューする。Pages有効化と初回デプロイは完了。
+2. PRのCIと内容を確認後にマージする。プレビューは手動デプロイのため、更新時はActionsの `Deploy independent preview` で対象refを指定して再実行する。
+3. 本番商用公開は新しいCloudflare Pagesプロジェクトを推奨。接続手順は下記の公開手順を参照。
 4. 本番前に石の未確認項目・写真の権利・運営者表示・問い合わせ先を確認。独自ドメインの購入・DNS変更・本番インデックス有効化は未実施。
 
 手順は [公開手順](deployment.md)、[編集・画像管理](editor-and-images.md)、[内容と次のフェーズ](content-and-roadmap.md) に記載。
@@ -56,4 +57,4 @@
 
 今回の外部サービス購入・課金は0円。静的サイトの無料枠を使えば月額0円を想定しますが、契約時の公式条件を再確認してください。独自ドメインは未購入。有料CMS・AI API・既存Supabaseは使っていません。[費用の比較](costs.md)を参照。
 
-次は「Pages有効化と実プレビュー確認」→「内容・写真・法務の確認」→「フェーズ2のルールベース診断、Stripeテスト決済、購入者権限、再閲覧、PDF」の順です。決済鍵は将来の**新プロジェクト**の環境変数へ設定し、チャットには貼り付けません。本番販売を自動で開始する機能はありません。
+次は「無料プレビューの内容レビュー」→「内容・写真・法務の確認」→「フェーズ2のルールベース診断、Stripeテスト決済、購入者権限、再閲覧、PDF」の順です。決済鍵は将来の**新プロジェクト**の環境変数へ設定し、チャットには貼り付けません。本番販売を自動で開始する機能はありません。
