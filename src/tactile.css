@@ -991,3 +991,62 @@
     transform: none;
   }
 }
+
+/* Shared editorial cards: reserve space for the folio and align actions. */
+.article-grid > .article-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  gap: 0;
+}
+.article-card .article-cover {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  flex: 0 0 auto;
+  height: 140px;
+  padding: 20px;
+}
+.article-cover > span {
+  min-width: 0;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  line-height: 1.9;
+}
+.article-cover > strong {
+  display: block;
+  width: 2ch;
+  min-width: 2ch;
+  white-space: nowrap;
+  word-break: normal;
+  overflow-wrap: normal;
+  font-size: clamp(44px, 5vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  text-align: right;
+  font-variant-numeric: lining-nums tabular-nums;
+}
+.article-card .article-title {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+.article-card .article-title > span {
+  text-wrap: pretty;
+}
+.article-card > p:not(.eyebrow) {
+  color: #67594f;
+  margin-bottom: 20px;
+}
+.article-card > .open-label {
+  align-self: flex-start;
+  margin-top: auto;
+  min-height: 44px;
+}
+@media (min-width: 701px) and (max-width: 1000px) {
+  .article-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

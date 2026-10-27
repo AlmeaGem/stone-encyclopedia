@@ -16,6 +16,9 @@ const protectedPhrases = [
   '名前より先に',
   '完璧ではない',
   '傷めない',
+  '鉱物名',
+  '流通名',
+  '形状名',
 ];
 const protectedPattern = new RegExp(`(${protectedPhrases.join('|')})`, 'u');
 ---
@@ -35,7 +38,7 @@ const protectedPattern = new RegExp(`(${protectedPhrases.join('|')})`, 'u');
           )}
       </span>
     ) : (
-      <span>{phrase}</span>
+      phrase.split(/(?<=・)/u).map((part) => <span>{part}</span>)
     ),
   )}
 </Tag>
