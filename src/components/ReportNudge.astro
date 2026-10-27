@@ -1,0 +1,29 @@
+---
+import { pathTo } from '../lib/urls';
+import { reportPrice } from '../lib/report-offer';
+const { kind = 'article' } = Astro.props as {
+  kind?: 'article' | 'stone' | 'category';
+};
+const title =
+  kind === 'stone'
+    ? 'この石が自分の願望に合うか、ほかの石と比較したい方へ'
+    : kind === 'category'
+      ? '自分の願望に合う石を詳しく選びたい方へ'
+      : '条件に合わせて石を選びたい方へ';
+---
+
+<aside class="report-nudge" aria-label="個別選定レポートの案内">
+  <h2>{title}</h2>
+  <p>
+    個別のおすすめ7選・組み合わせ3案をまとめる、{reportPrice}
+    のレポート。現在は販売準備中です。
+  </p>
+  <div class="report-actions">
+    <a class="text-link" href={pathTo('diagnosis/')}>
+      パーソナル天然石診断を見る ↗
+    </a>
+    <a class="sample-text-link" href={pathTo('sample-report/')}>
+      無料サンプル
+    </a>
+  </div>
+</aside>

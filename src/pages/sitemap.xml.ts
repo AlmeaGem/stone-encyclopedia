@@ -7,6 +7,7 @@ export function GET() {
     'articles/',
     'wishes/',
     'diagnosis/',
+    'sample-report/',
     'about/',
     'terms/',
     'privacy/',

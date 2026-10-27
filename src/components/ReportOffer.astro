@@ -1,0 +1,37 @@
+---
+import { pathTo } from '../lib/urls';
+import { reportFeatures, reportPrice } from '../lib/report-offer';
+const { anchor = false } = Astro.props as { anchor?: boolean };
+---
+
+<section class="report-offer" aria-label="パーソナル天然石選定レポートの紹介">
+  <div class="report-offer-heading">
+    <p class="eyebrow">PERSONAL STONE SELECTION</p>
+    <span class="premium-badge">提供予定・販売準備中</span>
+    <h2>
+      <span class="report-title-part">パーソナル</span>
+      <span class="report-title-part">天然石選定レポート</span>
+    </h2>
+    <p class="report-lead">あなたの願望と好みに合わせて、天然石を7種類選定。</p>
+    <p class="report-price">{reportPrice}</p>
+  </div>
+  <p class="offer-state">
+    以下は販売開始後の提供予定内容です。現在は購入・個別選定結果の閲覧はできません。
+  </p>
+  <ul class="report-features">
+    {reportFeatures.map((feature) => (
+      <li>
+        <h3>{feature.title}</h3>
+        <p>{feature.detail}</p>
+      </li>
+    ))}
+  </ul>
+  <div class="report-actions">
+    <a class="button" href={anchor ? '#questionnaire' : pathTo('diagnosis/')}>
+      質問に無料で答える →
+    </a>
+    <a class="text-link" href={pathTo('sample-report/')}>
+      無料サンプルを見る ↗
+    </a>
+  </div>
+</section>

@@ -1,5 +1,8 @@
 ---
 import Page from '../layouts/Page.astro';
+import ReportOffer from '../components/ReportOffer.astro';
+import ServiceComparison from '../components/ServiceComparison.astro';
+import { reportFeatures, reportPrice } from '../lib/report-offer';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import { categories } from '../lib/content';
 import { pathTo } from '../lib/urls';
@@ -14,16 +17,25 @@ import { pathTo } from '../lib/urls';
     <Breadcrumbs items={[{ name: '選定レポート' }]} />
     <div class="page-intro">
       <p class="eyebrow">PERSONAL STONE SELECTION</p>
-      <h1>願いを、言葉にする時間。</h1>
+      <h1>パーソナル天然石診断</h1>
+      <p>質問に回答して、願望・好み・予算を整理できます。</p>
+    </div>
+    <section class="diagnosis-pricing" aria-label="回答前の料金案内">
       <p>
-        伝承、美しさ、扱いやすさ。
-        <br />
-        あなたが大切にしたいことを整理しましょう。
+        <strong>
+          質問への回答は無料です。個別の選定レポートの閲覧には790円（税込）が必要です。
+        </strong>
       </p>
-    </div>
-    <div class="notice">
-      質問画面を無料で体験できます。料金の請求や診断結果の提供はありません。入力はこの画面内だけで扱い、サーバーへ送信・保存しません。ページを閉じると消えます。
-    </div>
+      <p>
+        現在は販売準備中のため、料金の請求・個別の選定結果の提供はありません。
+      </p>
+      <p class="fine-print">
+        回答はこの画面内だけに保持し、サーバーへ送信・保存しません。
+      </p>
+      <a class="sample-text-link" href={pathTo('sample-report/')}>
+        固定の無料サンプルを見る ↗
+      </a>
+    </section>
     <noscript>
       <p class="notice">
         質問画面にはJavaScriptが必要です。無料図鑑はJavaScriptなしでも閲覧できます。
@@ -130,24 +142,36 @@ import { pathTo } from '../lib/urls';
         </label>
       </fieldset>
       <fieldset data-step="6" hidden>
-        <legend>選んだ内容を、確認する。</legend>
+        <legend>回答が完了しました</legend>
+        <div class="free-completion">
+          <h2>無料で確認できること</h2>
+          <ul>
+            <li>願望の整理</li>
+            <li>好み・予算の確認</li>
+            <li>回答内容の確認</li>
+          </ul>
+        </div>
         <dl id="answers" class="fact-list"></dl>
         <div class="report-boundary">
-          <h2>パーソナル天然石選定レポート</h2>
-          <p class="price">
-            790<span>円（税込・予定）</span>
-          </p>
+          <p class="premium-badge">販売準備中</p>
+          <h2>ここから先は有料です</h2>
+          <p>パーソナル天然石選定レポート</p>
+          <p class="report-price">{reportPrice}</p>
+          <ul>
+            {reportFeatures.map((feature) => (
+              <li>{feature.title}</li>
+            ))}
+          </ul>
           <p>
-            おすすめ石の理由、組み合わせ案、品質・形状の見方、お手入れ、PDFなどを含む買い切りレポートを準備しています。
-          </p>
-          <p>
-            個人向けのおすすめ順位・組み合わせ・選定結果は、この無料画面では表示しません。現在は販売準備中で、購入や選定結果の提供は行っていません。
+            現在、個別の選定結果は提供していません。販売開始後に提供する予定の内容です。
           </p>
           <button type="button" class="button" disabled>
             購入・決済は準備中
           </button>
-          <p class="fine-print">
-            現時点で料金は発生しません。病気の治療、金運・恋愛などの結果は保証しません。
+          <p>
+            <a class="sample-text-link" href={pathTo('sample-report/')}>
+              架空の回答による無料サンプルを見る ↗
+            </a>
           </p>
         </div>
       </fieldset>
@@ -164,10 +188,10 @@ import { pathTo } from '../lib/urls';
         回答をすべて消す
       </button>
     </form>
-    <p class="quiet-note">
-      無料で読める<a href={pathTo('stones/')}>210項目の図鑑</a>
-      と、個人向けの有料レポートは別のものです。
-    </p>
+    <div id="diagnosis-offer">
+      <ReportOffer anchor />
+    </div>
+    <ServiceComparison />
   </div>
 </Page>
 <script>

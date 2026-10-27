@@ -13,6 +13,8 @@ export function startQuestionnaire() {
       `${(step / 6) * 100}%`;
     back.disabled = step === 1;
     next.hidden = step === 6;
+    const introOffer = document.querySelector<HTMLElement>('#diagnosis-offer');
+    if (introOffer) introOffer.hidden = step === 6;
     error.textContent = '';
   }
   function count() {

@@ -1,5 +1,6 @@
 ---
 import Page from '../../layouts/Page.astro';
+import ReportNudge from '../../components/ReportNudge.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Card from '../../components/Card.astro';
 import { categories, stones } from '../../lib/content';
@@ -79,6 +80,7 @@ const tags = availableWishTags(selected);
         <a href={pathTo('stones/')}>すべての石を探す →</a>
       </div>
     )}
+    <ReportNudge kind="category" />
   </div>
 </Page>
 

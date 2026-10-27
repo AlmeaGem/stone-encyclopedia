@@ -68,7 +68,7 @@ test('detail separates facts, quality and symbolism, with sources, internal link
   await expect(page.locator('h2')).toContainText([
     '鉱物・物理的な情報',
     '宝石としての見方・選び方',
-    '想いを託す、象徴と物語',
+    '石の意味と伝承',
     '浄化と、取り扱いの注意',
   ]);
   await expect(page.getByText('未確認', { exact: true }).first()).toBeVisible();
@@ -183,6 +183,20 @@ test('questions enforce required choices and two sub-wishes but never reveal or 
     page.getByRole('button', { name: '購入・決済は準備中' }),
   ).toBeDisabled();
   await expect(page.locator('#answers')).toContainText('新しい出会い');
+  await expect(
+    page.getByText('回答が完了しました', { exact: true }),
+  ).toBeVisible();
+  await expect(page.locator('.free-completion li')).toHaveCount(3);
+  await expect(page.locator('#diagnosis-offer')).toBeHidden();
+  await expect(page.locator('.report-boundary h2')).toHaveText(
+    'ここから先は有料です',
+  );
+  await expect(page.locator('.report-boundary')).toContainText(
+    '790円（税込・買い切り）',
+  );
+  await expect(page.locator('.report-boundary')).toContainText(
+    'PDF保存・購入後の再閲覧',
+  );
   expect(sends).toBe(0);
   await page.screenshot({
     path: test.info().outputPath('questions.png'),
@@ -309,10 +323,10 @@ test('home offers general wish search, real editorial destinations and an honest
     expect((await request.get(href!)).status()).toBe(200);
     await expect(link).toContainText('詳しく見る');
   }
-  await expect(page.locator('.report-teaser')).toContainText('販売準備中');
-  await expect(page.locator('.premium-price')).toContainText('790');
-  await expect(page.locator('.report-teaser a')).toHaveText(
-    '質問画面を無料で体験 →',
+  await expect(page.locator('.report-offer')).toContainText('販売準備中');
+  await expect(page.locator('.report-price').first()).toContainText('790');
+  await expect(page.locator('.report-offer .button')).toHaveText(
+    '質問に無料で答える →',
   );
   await page
     .getByRole('searchbox', { name: '石名・英語名・別名' })
@@ -539,4 +553,111 @@ test('category numbers remain horizontal and public pages omit production copy a
   await expect(page.locator('.health-note')).toContainText(
     '医療や治療の代わり',
   );
+});
+
+test('free and planned paid services are explicit before answering, with no purchasable result', async ({
+  page,
+  request,
+}) => {
+  await page.goto('/');
+  await expect(page.locator('.entry-actions a')).toHaveCount(3);
+  await expect(page.locator('.entry-actions a').nth(2)).toContainText(
+    '結果790円',
+  );
+  await expect(page.locator('.comparison-card')).toHaveCount(2);
+  await expect(page.locator('.report-offer')).toContainText(
+    '提供予定・販売準備中',
+  );
+  await expect(page.locator('.report-features li')).toHaveCount(5);
+  await page.goto('/diagnosis/');
+  await expect(page.locator('.diagnosis-pricing')).toContainText(
+    '質問への回答は無料です',
+  );
+  await expect(page.locator('.diagnosis-pricing')).toContainText(
+    '790円（税込）',
+  );
+  expect(
+    (await page.locator('.diagnosis-pricing').boundingBox())!.y,
+  ).toBeLessThan((await page.locator('#questionnaire').boundingBox())!.y);
+  for (const name of ['ローズクォーツ', 'アメジスト', 'ラブラドライト'])
+    expect(await (await request.get('/diagnosis/')).text()).not.toContain(name);
+  await expect(page.locator('[role=dialog]')).toHaveCount(0);
+});
+
+test('public sample is seven fixed examples and three combinations, not an answer-dependent report', async ({
+  page,
+  request,
+}) => {
+  await page.goto('/sample-report/');
+  await expect(page.locator('.sample-scope')).toContainText(
+    '架空の回答例に基づく固定サンプル',
+  );
+  await expect(page.locator('.sample-selections > li')).toHaveCount(7);
+  await expect(page.locator('.sample-combinations > article')).toHaveCount(3);
+  await expect(page.locator('.sample-paper')).toHaveCount(2);
+  const names = await page.locator('.sample-item-heading h3').allTextContents();
+  await page.goto('/sample-report/?category=prosperity&paid=true');
+  expect(
+    await page.locator('.sample-item-heading h3').allTextContents(),
+  ).toEqual(names);
+  await expect(page.locator('meta[name=robots]')).toHaveAttribute(
+    'content',
+    /noindex/,
+  );
+  await expect(page.locator('link[rel=canonical]')).toHaveAttribute(
+    'href',
+    /\/sample-report\/$/,
+  );
+  for (const link of await page.locator('.sample-selections a').all())
+    expect(
+      (await request.get((await link.getAttribute('href'))!)).status(),
+    ).toBe(200);
+  expect((await request.get('/api/reports/personal')).status()).toBe(404);
+});
+
+test('article, stone and category ends provide real related links and a restrained report route', async ({
+  page,
+  request,
+}) => {
+  for (const path of [
+    '/stones/rose-quartz/',
+    '/wishes/love/',
+    '/articles/inclusions/',
+  ]) {
+    await page.goto(path);
+    await expect(page.locator('.report-nudge')).toContainText('販売準備中');
+    const link = page.locator('.report-nudge a').first();
+    expect(
+      (await request.get((await link.getAttribute('href'))!)).status(),
+    ).toBe(200);
+  }
+  await expect(page.locator('.reading-next .related-links a')).not.toHaveCount(
+    0,
+  );
+  for (const link of await page.locator('.reading-next .related-links a').all())
+    expect(
+      (await request.get((await link.getAttribute('href'))!)).status(),
+    ).toBe(200);
+});
+
+test('service comparison and sample stay readable at phone, tablet and desktop widths', async ({
+  page,
+}) => {
+  for (const width of [375, 390, 430, 768, 1280, 1440]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto('/');
+    const cards = page.locator('.comparison-card');
+    const a = (await cards.nth(0).boundingBox())!,
+      b = (await cards.nth(1).boundingBox())!;
+    if (width <= 640) expect(b.y).toBeGreaterThanOrEqual(a.y + a.height);
+    else expect(b.x).toBeGreaterThanOrEqual(a.x + a.width);
+    for (const path of ['/diagnosis/', '/sample-report/']) {
+      await page.goto(path);
+      expect(
+        await page.evaluate(() => document.body.scrollWidth <= innerWidth),
+      ).toBe(true);
+      for (const button of await page.locator('.report-actions a').all())
+        expect((await button.boundingBox())!.height).toBeGreaterThanOrEqual(44);
+    }
+  }
 });

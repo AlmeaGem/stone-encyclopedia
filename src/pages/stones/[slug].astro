@@ -1,5 +1,6 @@
 ---
 import Prose from '../../components/Prose.astro';
+import ReportNudge from '../../components/ReportNudge.astro';
 import { publicReferences, publicHandling } from '../../lib/references';
 import Page from '../../layouts/Page.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
@@ -138,7 +139,7 @@ const schema = {
         </section>
         <section id="story" class="detail-section story-section">
           <p class="eyebrow">03 / STORY · 伝承上の解釈</p>
-          <h2>想いを託す、象徴と物語</h2>
+          <h2>石の意味と伝承</h2>
           <Prose text={stone.symbolism} />
           <h3>選び方のヒント</h3>
           <Prose text={stone.selection} />
@@ -196,12 +197,13 @@ const schema = {
       </div>
     </section>
     <section class="section">
-      <h2>選ぶ前の、読みもの</h2>
+      <h2>関連する基礎知識</h2>
       <div class="related-reads">
         {(reads.length ? reads : articles.slice(0, 2)).map((a) => (
           <a href={pathTo(`articles/${a.slug}/`)}>{a.title} ↗</a>
         ))}
       </div>
     </section>
+    <ReportNudge kind="stone" />
   </div>
 </Page>

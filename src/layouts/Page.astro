@@ -2,6 +2,7 @@
 import GemIcon from '../components/GemIcon.astro';
 import '../styles.css';
 import '../tactile.css';
+import '../report-experience.css';
 import { pathTo, canonical, siteName, launched } from '../lib/urls';
 interface Props {
   title?: string;
@@ -78,7 +79,7 @@ const url = canonical(path);
         <a href={pathTo('wishes/')}>願いから</a>
         <a href={pathTo('articles/')}>読みもの</a>
         <a class="nav-diagnosis" href={pathTo('diagnosis/')}>
-          選定レポート <span>準備中</span>
+          パーソナル診断 <span>準備中</span>
         </a>
       </nav>
     </header>
@@ -89,13 +90,13 @@ const url = canonical(path);
       <div>
         <span class="footer-brand">ALMÉA GEM</span>
         <p>
-          本物の石はあなたのパワーになる。
+          ALMÉA GEMが届ける天然石図鑑。
           <br />
-          まだ知らない石の世界へ。
+          石の情報は無料で閲覧できます。
         </p>
-        <p>パワーストーンブレスレットのALMÉA GEMが届ける、天然石図鑑。</p>
       </div>
       <nav aria-label="フッターメニュー">
+        <a href={pathTo('sample-report/')}>レポートの無料サンプル</a>
         <a href={pathTo('about/')}>この図鑑について</a>
         <a href={pathTo('terms/')}>利用規約</a>
         <a href={pathTo('privacy/')}>プライバシー</a>

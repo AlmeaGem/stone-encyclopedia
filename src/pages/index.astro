@@ -1,5 +1,7 @@
 ---
 import Page from '../layouts/Page.astro';
+import ReportOffer from '../components/ReportOffer.astro';
+import ServiceComparison from '../components/ServiceComparison.astro';
 import ArticleTitle from '../components/ArticleTitle.astro';
 import HeroGem from '../components/HeroGem.astro';
 import Card from '../components/Card.astro';
@@ -37,9 +39,20 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
         <br />
         石の個性と意味を知り、あなたの願いに寄り添う一粒を。
       </p>
-      <a class="text-link" href={pathTo('stones/')}>
-        210項目の図鑑を開く <span>↗</span>
-      </a>
+      <nav class="entry-actions" aria-label="利用するサービスを選ぶ">
+        <a href={pathTo('stones/')}>
+          <strong>石を調べる</strong>
+          <span>無料図鑑 ↗</span>
+        </a>
+        <a href={pathTo('wishes/')}>
+          <strong>願いから探す</strong>
+          <span>無料検索 ↗</span>
+        </a>
+        <a href={pathTo('diagnosis/')}>
+          <strong>パーソナル診断</strong>
+          <span>結果790円・販売準備中 ↗</span>
+        </a>
+      </nav>
     </div>
   </section>
   <section class="home-search wrap" aria-labelledby="find-title">
@@ -102,7 +115,7 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
     <div class="wrap three-views">
       <a class="view-card" href={pathTo('articles/names-and-varieties/')}>
         <span>01 / NATURE</span>
-        <h2>鉱物として知る</h2>
+        <h2>鉱物情報を調べる</h2>
         <p>
           色、硬さ、内包物。
           <br />
@@ -114,7 +127,7 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
       </a>
       <a class="view-card" href={pathTo('articles/first-stone/')}>
         <span>02 / QUALITY</span>
-        <h2>宝石として選ぶ</h2>
+        <h2>品質の見方を知る</h2>
         <p>
           色合い、透明感、一粒ごとの表情。
           <br />
@@ -126,7 +139,7 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
       </a>
       <a class="view-card" href={pathTo('wishes/')}>
         <span>03 / STORY</span>
-        <h2>想いを託す</h2>
+        <h2>意味・伝承を知る</h2>
         <p>
           願いに重ねて、石の意味や象徴を楽しむ。
           <br />
@@ -165,7 +178,7 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
     <div class="section-heading">
       <div>
         <p class="eyebrow">READ & DISCOVER</p>
-        <h2>ブレスレットを選ぶ前に。</h2>
+        <h2>天然石の選び方・基礎知識</h2>
       </div>
       <a class="text-link" href={pathTo('articles/')}>
         読みもの一覧 ↗
@@ -192,30 +205,8 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
       ))}
     </div>
   </section>
-  <section class="wrap report-teaser">
-    <div>
-      <p class="eyebrow">PERSONAL STONE SELECTION</p>
-      <span class="premium-badge">有料・個別選定レポート / 販売準備中</span>
-      <h2>
-        あなたの願いを、
-        <br />
-        ゆっくり言葉に。
-      </h2>
-      <p>パーソナル天然石選定レポート</p>
-      <p class="premium-price">
-        <strong>
-          790<span>円</span>
-        </strong>
-        <span>税込・予定価格</span>
-      </p>
-      <p class="premium-status">
-        質問画面を無料で体験できます。
-        <br />
-        販売・決済・個別選定結果の提供は準備中です。
-      </p>
-    </div>
-    <a class="button outline" href={pathTo('diagnosis/')}>
-      質問画面を無料で体験 →
-    </a>
-  </section>
+  <div class="wrap section">
+    <ReportOffer />
+    <ServiceComparison />
+  </div>
 </Page>

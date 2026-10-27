@@ -18,7 +18,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "images:prepare": "node --import tsx scripts/prepare-images.ts",
-    "lint": "npm run format:check && node --env-file-if-exists=.env scripts/astro.mjs check"
+    "lint": "npm run format:check && node --env-file-if-exists=.env scripts/astro.mjs check",
+    "audit:ui": "node scripts/audit-public-ui.mjs"
   },
   "dependencies": {
     "astro": "^7.4.2",
