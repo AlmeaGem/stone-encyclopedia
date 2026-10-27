@@ -1049,9 +1049,14 @@
   }
 }
 
-/* Balanced editorial cover: left-aligned brand, centered gem, inset folio. */
+/* User-adjusted article-cover controls: brand +6px, gem +16px, folio -2px,
+   gem size 72px. Keep layout tracks independent to avoid wrapping. */
 .article-card .article-cover {
-  grid-template-columns: minmax(0, 1fr) minmax(52px, 86px) minmax(0, 1fr);
+  --cover-brand-shift-x: 6px;
+  --cover-gem-shift-x: 16px;
+  --cover-folio-shift-x: -2px;
+  --cover-gem-size: 72px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 72px) minmax(0, 1fr);
   gap: 8px;
   padding: 18px 20px;
 }
@@ -1060,20 +1065,29 @@
   font-size: 8px;
   letter-spacing: 0.08em;
   justify-self: start;
-  margin-left: clamp(4px, 1vw, 12px);
   text-align: left;
+  transform: translateX(var(--cover-brand-shift-x));
 }
 .article-theme-icon {
   display: block;
-  width: 100%;
-  max-width: 86px;
+  width: var(--cover-gem-size);
+  max-width: 100%;
   height: auto;
   aspect-ratio: 1;
   color: #96756a;
   justify-self: center;
+  transform: translateX(var(--cover-gem-shift-x));
 }
 .article-cover > strong {
   font-size: clamp(40px, 4.4vw, 58px);
   justify-self: end;
-  margin-right: clamp(4px, 1vw, 12px);
+  margin-right: 8px;
+  transform: translateX(var(--cover-folio-shift-x));
+}
+@media (max-width: 380px) {
+  /* Constrain the gem movement on very narrow cards to protect the folio. */
+  .article-card .article-cover {
+    --cover-gem-shift-x: 8px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 64px) minmax(0, 1fr);
+  }
 }
