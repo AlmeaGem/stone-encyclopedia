@@ -69,6 +69,24 @@ export const candidateSchema = z
   .object({
     id: z.string().regex(/^[a-zA-Z0-9_-]{1,100}$/),
     stoneId: z.string().regex(/^s\d{3}$/),
+    shape: z
+      .enum(['sphere', 'polished', 'loose', 'rough', 'unknown'])
+      .optional(),
+    shapeConfirmed: z.boolean().optional(),
+    searchMode: z
+      .enum(['sphere', 'polished', 'loose', 'rough', 'all'])
+      .optional(),
+    originalUrl: z
+      .url()
+      .regex(/^https:\/\//)
+      .optional(),
+    sourceWidth: z.number().int().positive().optional(),
+    sourceHeight: z.number().int().positive().optional(),
+    creditText: z.string().max(1000).optional(),
+    uploadSha256: z
+      .string()
+      .regex(/^[a-f0-9]{64}$/)
+      .optional(),
     stoneName: z.string().max(150),
     searchName: z.string().max(200),
     imageUrl: z.url().regex(/^https:\/\//),
@@ -82,6 +100,8 @@ export const candidateSchema = z
       'CC BY 3.0',
       'CC BY-SA 3.0',
       'unknown',
+      'Own photo',
+      'Commercial permission',
     ]),
     licenseUrl: z.string().max(300),
     commercial: z.boolean(),

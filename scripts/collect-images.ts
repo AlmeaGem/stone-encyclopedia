@@ -8,167 +8,157 @@ import {
 } from 'node:fs/promises';
 import { resolve, join } from 'node:path';
 import { commonsCandidates } from './image-policy';
-import type { Candidate } from '../src/lib/schema';
-import { validateCatalog } from '../src/lib/schema';
-async function collectUnlocked(
+import {
+  validateCatalog,
+  candidateSchema,
+  type Candidate,
+} from '../src/lib/schema';
+import { photoQueries, searchMode } from './photo-search';
+
+// Called only while holding image-search.lock; quota includes failures and refreshes.
+export async function commonsRequest(
   root: string,
-  id: string,
+  params: Record<string, string>,
   fetcher: typeof fetch = fetch,
 ) {
-  const stones = validateCatalog(
-      JSON.parse(await readFile(join(root, 'src/content/stones.json'), 'utf8')),
-    ),
-    stone = stones.find((s) => s.id === id);
-  if (!stone) throw new Error('石IDが不正です');
   const dir = join(root, '.editor');
   await mkdir(dir, { recursive: true });
-  const queueFile = join(dir, 'candidates.json'),
-    budgetFile = join(dir, 'image-budget.json');
-  let budget: { date: string; calls: number; limit: number } = {
-    date: new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Tokyo' }).format(
-      new Date(),
-    ),
-    calls: 0,
-    limit: 100,
-  };
+  const date = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Asia/Tokyo',
+  }).format(new Date());
+  const budgetFile = join(dir, 'image-budget.json');
+  let saved: { date?: string; calls?: number; limit?: number } = {};
   try {
-    const saved = JSON.parse(await readFile(budgetFile, 'utf8'));
-    if (
-      Number.isInteger(saved.limit) &&
-      saved.limit >= 1 &&
-      saved.limit <= 1000
-    )
-      budget.limit = saved.limit;
-    if (saved.date === budget.date) budget.calls = saved.calls;
+    saved = JSON.parse(await readFile(budgetFile, 'utf8'));
   } catch (e) {
     if ((e as NodeJS.ErrnoException).code !== 'ENOENT') throw e;
   }
-  if (!Number.isInteger(budget.calls) || budget.calls < 0)
-    throw new Error('日次上限ファイルが不正です。確認するまで停止します。');
+  const budget = {
+    date,
+    calls: saved.date === date ? saved.calls || 0 : 0,
+    limit: saved.limit || 100,
+  };
+  if (
+    !Number.isInteger(budget.calls) ||
+    budget.calls < 0 ||
+    !Number.isInteger(budget.limit) ||
+    budget.limit < 1 ||
+    budget.limit > 1000
+  )
+    throw new Error('日次上限ファイルを確認してください');
   if (budget.calls >= budget.limit)
     throw new Error('画像候補検索の日次上限です');
   budget.calls++;
   await writeFile(budgetFile + '.tmp', JSON.stringify(budget));
   await rename(budgetFile + '.tmp', budgetFile);
-  const names = [
-    ...new Set(
-      [stone.english, stone.name, ...stone.aliases]
-        .map((x) => x.trim())
-        .filter(Boolean),
-    ),
-  ].slice(0, 3);
-  const candidates: Candidate[] = [];
-  for (const name of names) {
-    if (candidates.length >= 10) break;
-    const url = new URL('https://commons.wikimedia.org/w/api.php');
-    url.search = new URLSearchParams({
-      action: 'query',
-      format: 'json',
-      generator: 'search',
-      gsrsearch: `"${name.replace(/"/g, '')}" filetype:bitmap`,
-      gsrnamespace: '6',
-      gsrlimit: '10',
-      prop: 'imageinfo',
-      iiprop: 'url|extmetadata|mime',
-      iiurlwidth: '1400',
-      maxlag: '5',
-    }).toString();
-    const lastFile = join(dir, 'image-last-request.json');
-    let last = 0;
-    try {
-      last = JSON.parse(await readFile(lastFile, 'utf8')).at;
-    } catch (e) {
-      if ((e as NodeJS.ErrnoException).code !== 'ENOENT') throw e;
-    }
-    if (!Number.isFinite(last) || last > Date.now() + 60000)
-      throw new Error('検索間隔の記録を確認してください');
-    const wait = Math.max(0, 1050 - (Date.now() - last));
-    if (wait) await new Promise((r) => setTimeout(r, wait));
-    await writeFile(lastFile, JSON.stringify({ at: Date.now() }));
-    let response: Response;
-    try {
-      response = await fetcher(url, {
-        signal: AbortSignal.timeout(15000),
-        headers: {
-          'User-Agent':
-            'ALMEA-Stone-Encyclopedia/0.1 (manual image review; no auto publish)',
-        },
-      });
-    } catch {
-      throw new Error(
-        'Wikimedia Commonsへ接続できませんでした。ジョブを停止し、公開写真は変更していません。',
-      );
-    }
-    if (!response.ok)
-      throw new Error(
-        `Commons検索に失敗（HTTP ${response.status}）。再試行は再開ボタンで行ってください。`,
-      );
-    const data = await response.json();
-    if (data.error)
-      throw new Error(
-        `Commons APIが停止を要求しました（${String(data.error.code).slice(0, 80)}）。時間をおいて再開してください。`,
-      );
-    for (const c of commonsCandidates(data, stone)) {
-      if (!candidates.some((x) => x.id === c.id))
-        candidates.push({ ...c, searchName: name });
-      if (candidates.length >= 10) break;
-    }
-    const prior = await new (await import('./admin-store')).EditorStore(
-      root,
-    ).candidates();
-    for (const c of candidates)
-      if (!prior.some((x) => x.id === c.id && x.stoneId === c.stoneId))
-        prior.push(c);
-    await writeFile(
-      queueFile + '.tmp',
-      JSON.stringify(capQueue(prior, id), null, 2),
-    );
-    await rename(queueFile + '.tmp', queueFile);
-    // One request per second, including alias searches. No automatic retry loops.
-    if (names.indexOf(name) < names.length - 1 && candidates.length < 10) {
-      await new Promise((r) => setTimeout(r, 1000));
-      if (budget.calls >= budget.limit)
-        throw new Error(
-          '日次検索上限です。上限設定または翌日を確認して再開してください。',
-        );
-      budget.calls++;
-      await writeFile(budgetFile + '.tmp', JSON.stringify(budget));
-      await rename(budgetFile + '.tmp', budgetFile);
-    }
-  }
-  let old: any[] = [];
+  const lastFile = join(dir, 'image-last-request.json');
+  let last = 0;
   try {
-    old = JSON.parse(await readFile(queueFile, 'utf8'));
-  } catch {}
-  const next = [...old];
-  for (const c of candidates)
-    if (!next.some((x) => x.id === c.id && x.stoneId === c.stoneId))
-      next.push(c);
-  await writeFile(
-    queueFile + '.tmp',
-    JSON.stringify(capQueue(next, id), null, 2),
-  );
-  await rename(queueFile + '.tmp', queueFile);
-  return candidates;
-}
-if (process.argv[1]?.endsWith('collect-images.ts')) {
-  const ids = process.argv.slice(2);
-  if (ids.length < 1 || ids.length > 3)
-    throw new Error(
-      '1〜3件の石IDを指定してください。例 npm run images:collect -- s107',
-    );
-  for (const id of ids)
-    console.log({
-      id,
-      candidates: (await collectForStone(resolve('.'), id)).length,
+    last = JSON.parse(await readFile(lastFile, 'utf8')).at;
+  } catch (e) {
+    if ((e as NodeJS.ErrnoException).code !== 'ENOENT') throw e;
+  }
+  if (!Number.isFinite(last) || last > Date.now() + 60000)
+    throw new Error('検索間隔の記録を確認してください');
+  const wait = Math.max(0, 1050 - (Date.now() - last));
+  if (wait) await new Promise((r) => setTimeout(r, wait));
+  await writeFile(lastFile, JSON.stringify({ at: Date.now() }));
+  const url = new URL('https://commons.wikimedia.org/w/api.php');
+  url.search = new URLSearchParams({
+    action: 'query',
+    format: 'json',
+    maxlag: '5',
+    ...params,
+  }).toString();
+  let response: Response;
+  try {
+    response = await fetcher(url, {
+      signal: AbortSignal.timeout(15000),
+      redirect: 'error',
+      headers: {
+        'User-Agent':
+          'ALMEA-Stone-Encyclopedia/0.2 (https://github.com/AlmeaGem/stone-encyclopedia; manual review)',
+      },
     });
+  } catch {
+    throw new Error(
+      'Wikimedia Commonsへ接続できませんでした。公開写真は変更していません。',
+    );
+  }
+  if (!response.ok)
+    throw new Error(
+      `Commons検索に失敗（HTTP ${response.status}）。制限を回避せず、時間をおいて再取得してください。`,
+    );
+  const data = await response.json();
+  if (data.error)
+    throw new Error(
+      `Commons APIエラー：${String(data.error.code).slice(0, 80)}`,
+    );
+  return data;
 }
-
 export async function collectForStone(
   root: string,
   id: string,
   fetcher: typeof fetch = fetch,
+  mode: unknown = 'sphere',
 ) {
+  const selectedMode = searchMode(mode);
+  return imageSearchLock(root, async () => {
+    const stones = validateCatalog(
+      JSON.parse(await readFile(join(root, 'src/content/stones.json'), 'utf8')),
+    );
+    const stone = stones.find((s) => s.id === id);
+    if (!stone) throw new Error('石IDが不正です');
+    const file = join(root, '.editor/candidates.json');
+    let previous: Candidate[] = [];
+    try {
+      previous = JSON.parse(await readFile(file, 'utf8')).map((c: unknown) =>
+        candidateSchema.parse(c),
+      );
+    } catch (e) {
+      if ((e as NodeJS.ErrnoException).code !== 'ENOENT') throw e;
+    }
+    const found: Candidate[] = [];
+    for (const query of photoQueries(stone, selectedMode)) {
+      if (found.length >= 10) break;
+      const data = await commonsRequest(
+        root,
+        {
+          generator: 'search',
+          gsrsearch: query,
+          gsrnamespace: '6',
+          gsrlimit: '10',
+          prop: 'imageinfo',
+          iiprop: 'url|extmetadata|mime|size',
+          iiurlwidth: '1400',
+        },
+        fetcher,
+      );
+      const parsed = commonsCandidates(data, stone).sort(
+        (a, b) =>
+          (b.sourceWidth || 0) * (b.sourceHeight || 0) -
+          (a.sourceWidth || 0) * (a.sourceHeight || 0),
+      );
+      for (const c of parsed) {
+        if (found.some((x) => x.id === c.id)) continue;
+        found.push({
+          ...c,
+          searchName: query.slice(0, 200),
+          searchMode: selectedMode,
+        });
+        if (found.length >= 10) break;
+      }
+      // Never truncate or delete historical candidates, including old approved images.
+      for (const c of found)
+        if (!previous.some((x) => x.id === c.id && x.stoneId === c.stoneId))
+          previous.push(c);
+      await writeFile(file + '.tmp', JSON.stringify(previous, null, 2));
+      await rename(file + '.tmp', file);
+    }
+    return found;
+  });
+}
+export async function imageSearchLock<T>(root: string, run: () => Promise<T>) {
   const directory = join(root, '.editor');
   await mkdir(directory, { recursive: true });
   const path = join(directory, 'image-search.lock');
@@ -196,22 +186,20 @@ export async function collectForStone(
     );
   }
   try {
-    return await collectUnlocked(root, id, fetcher);
+    return await run();
   } finally {
     await lock.close();
     await unlink(path);
   }
 }
 
-function capQueue(queue: Candidate[], id: string) {
-  return [
-    ...queue.filter((c) => c.stoneId !== id),
-    ...queue
-      .filter((c) => c.stoneId === id)
-      .sort(
-        (a, b) =>
-          Number(b.status === 'approved') - Number(a.status === 'approved'),
-      )
-      .slice(0, 10),
-  ];
+if (process.argv[1]?.endsWith('collect-images.ts')) {
+  const ids = process.argv.slice(2);
+  if (!ids.length || ids.length > 3)
+    throw new Error('石IDを1〜3件指定してください');
+  for (const id of ids)
+    console.log({
+      id,
+      candidates: (await collectForStone(resolve('.'), id)).length,
+    });
 }

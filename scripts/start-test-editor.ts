@@ -37,18 +37,24 @@ const fixtureMetadata = {
 };
 for (const stone of (await store.read('stones')).slice(0, 10)) {
   for (const c of commonsCandidates(fixtureMetadata, stone))
-    await store.saveCandidate(c);
+    await store.saveCandidate(
+      ['s007', 's008'].includes(stone.id)
+        ? { ...c, imageUrl: 'https://upload.wikimedia.org/broken.jpg' }
+        : c,
+    );
 }
 const server = await startEditor(
   root,
   'browser-fixture-only-passphrase-32',
   4322,
   async (url) =>
-    String(url).includes('commons.wikimedia.org/w/api.php')
-      ? Response.json(fixtureMetadata)
-      : new Response(fixtureBytes, {
-          headers: { 'Content-Type': 'image/jpeg' },
-        }),
+    String(url).includes('/broken.jpg')
+      ? new Response(null, { status: 403 })
+      : String(url).includes('commons.wikimedia.org/w/api.php')
+        ? Response.json(fixtureMetadata)
+        : new Response(fixtureBytes, {
+            headers: { 'Content-Type': 'image/jpeg' },
+          }),
 );
 console.log('Test editor ready at http://127.0.0.1:4322');
 for (const signal of ['SIGINT', 'SIGTERM'])

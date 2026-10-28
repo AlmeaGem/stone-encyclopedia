@@ -23,7 +23,7 @@ test('private photo editor offers thumbnails, source review and staged adoption 
   );
   if (test.info().project.name === 'desktop')
     await page.locator('#photo-dialog').screenshot({
-      path: 'docs/screenshots/photo-editor/expanded-fixture.png',
+      path: test.info().outputPath('expanded-fixture.png'),
     });
   await page.locator('#close-photo-dialog').click();
   await page
@@ -47,7 +47,7 @@ test('private photo editor offers thumbnails, source review and staged adoption 
     await page.setViewportSize({ width, height: 900 });
     if (test.info().project.name === 'desktop' && [390, 1440].includes(width))
       await page.locator('#images').screenshot({
-        path: `docs/screenshots/photo-editor/gallery-fixture-${width}.png`,
+        path: test.info().outputPath(`gallery-fixture-${width}.png`),
       });
     expect(
       await page.evaluate(

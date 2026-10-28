@@ -4,12 +4,11 @@ import {
   type ServerResponse,
 } from 'node:http';
 import { randomBytes, scryptSync, timingSafeEqual } from 'node:crypto';
-import { readFile, mkdir, writeFile, rename } from 'node:fs/promises';
-import { createHash } from 'node:crypto';
+import { readFile } from 'node:fs/promises';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { ImageBatch } from './image-batch';
-import { downloadCandidate, optimizeCandidate } from './image-policy';
+import { PhotoMedia } from './photo-media';
 import { fileURLToPath } from 'node:url';
 import { join, resolve } from 'node:path';
 import { EditorStore, EditorConflict } from './admin-store';
@@ -28,8 +27,9 @@ export async function startEditor(
     );
   const sessions = new Map<string, { csrf: string; expires: number }>();
   const store = new EditorStore(resolve(root));
-  const batch = new ImageBatch(store, (root, id) =>
-    collectForStone(root, id, imageFetcher),
+  const media = new PhotoMedia(store, imageFetcher);
+  const batch = new ImageBatch(store, (root, id, _fetcher, mode) =>
+    collectForStone(root, id, imageFetcher, mode),
   );
   const salt = randomBytes(32),
     key = scryptSync(password, salt, 64);
@@ -101,7 +101,10 @@ export async function startEditor(
           const chunks: Buffer[] = [];
           for await (const chunk of req) {
             bytes += chunk.length;
-            if (bytes > 1500000) {
+            if (
+              bytes >
+              (url.pathname === '/api/upload-photo' ? 14500000 : 1500000)
+            ) {
               json(413, { error: '入力が大きすぎます' });
               return;
             }
@@ -173,6 +176,7 @@ export async function startEditor(
             candidates: await store.candidates(),
             imageJob: await batch.state(),
             imageBudget: await store.imageBudget(),
+            imageHealth: await media.health(),
           });
           return;
         }
@@ -183,30 +187,16 @@ export async function startEditor(
               c.stoneId === url.searchParams.get('stoneId'),
           );
           if (!c) throw new Error('候補が見つかりません');
-          const large = url.searchParams.get('large') === '1';
-          const key = createHash('sha256')
-            .update(c.imageUrl + (large ? ':large' : ':small'))
-            .digest('hex');
-          const dir = join(store.root, '.editor/thumbnails');
-          const path = join(dir, key + '.webp');
-          let bytes;
-          try {
-            bytes = await readFile(path);
-          } catch (e) {
-            if ((e as NodeJS.ErrnoException).code !== 'ENOENT') throw e;
-            bytes = (
-              await optimizeCandidate(
-                await downloadCandidate(c.imageUrl, imageFetcher),
-                large ? 1440 : 480,
-              )
-            ).bytes;
-            await mkdir(dir, { recursive: true });
-            const temp = path + '.' + randomBytes(8).toString('hex') + '.tmp';
-            await writeFile(temp, bytes, { mode: 0o600 });
-            await rename(temp, path);
-          }
+          const bytes = await media.thumbnail(
+            c,
+            url.searchParams.get('large') === '1',
+          );
           res.writeHead(200, { 'Content-Type': 'image/webp' });
           res.end(bytes);
+          return;
+        }
+        if (req.method === 'GET' && url.pathname === '/api/image-health') {
+          json(200, await media.health());
           return;
         }
         if (req.method === 'GET' && url.pathname === '/api/entry') {
@@ -226,6 +216,8 @@ export async function startEditor(
               (await batch.active()) &&
               [
                 '/api/collect',
+                '/api/refresh-photo',
+                '/api/upload-photo',
                 '/api/candidate',
                 '/api/approve',
                 '/api/stage-photo',
@@ -238,7 +230,7 @@ export async function startEditor(
               );
             switch (url.pathname) {
               case '/api/image-job/start':
-                return batch.start(body.ids);
+                return batch.start(body.ids, body.mode);
               case '/api/image-job/pause':
                 return batch.pause();
               case '/api/image-job/resume':
@@ -304,10 +296,19 @@ export async function startEditor(
                   body.id,
                   body.revision,
                 );
+              case '/api/refresh-photo':
+                return media.retry(body.id, body.stoneId);
+              case '/api/upload-photo':
+                return media.upload(body);
               case '/api/candidate':
                 return store.saveCandidate(body.document);
               case '/api/collect':
-                return collectForStone(store.root, body.stoneId, imageFetcher);
+                return collectForStone(
+                  store.root,
+                  body.stoneId,
+                  imageFetcher,
+                  body.mode,
+                );
               case '/api/approve':
                 return store.approve(body.document, imageFetcher);
               case '/api/remove-photo':

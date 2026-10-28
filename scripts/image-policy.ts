@@ -2,6 +2,8 @@ import { createHash } from 'node:crypto';
 import sharp from 'sharp';
 import { candidateSchema, type Candidate } from '../src/lib/schema';
 export const licenseUrls: Record<string, string> = {
+  'Own photo': '',
+  'Commercial permission': '',
   CC0: 'https://creativecommons.org/publicdomain/zero/1.0/',
   'CC BY 4.0': 'https://creativecommons.org/licenses/by/4.0/',
   'CC BY-SA 4.0': 'https://creativecommons.org/licenses/by-sa/4.0/',
@@ -31,20 +33,30 @@ export async function downloadCandidate(
 ) {
   let current = safeImageUrl(url);
   for (let n = 0; n < 4; n++) {
-    const response = await fetcher(current, {
-      redirect: 'manual',
-      signal: AbortSignal.timeout(15000),
-      headers: {
-        'User-Agent': 'ALMEA-Stone-Encyclopedia/0.1 (image review tool)',
-      },
-    });
+    let response: Response;
+    try {
+      response = await fetcher(current, {
+        redirect: 'manual',
+        signal: AbortSignal.timeout(15000),
+        headers: {
+          'User-Agent': 'ALMEA-Stone-Encyclopedia/0.1 (image review tool)',
+        },
+      });
+    } catch {
+      throw new Error(
+        '画像配信元へ接続できませんでした（通信制限・タイムアウトの可能性）。制限を回避せず再取得または出典を確認してください。',
+      );
+    }
     if (response.status >= 300 && response.status < 400) {
       const to = response.headers.get('location');
       if (!to) throw new Error('画像の転送先が不明です');
       current = safeImageUrl(new URL(to, current).href);
       continue;
     }
-    if (!response.ok) throw new Error('画像の取得に失敗しました');
+    if (!response.ok)
+      throw new Error(
+        `画像取得HTTP ${response.status}：削除・取得制限・一時的な障害の可能性があります。再取得または原ページを確認してください。`,
+      );
     if (
       !/^image\/(jpeg|png|webp)$/.test(
         response.headers.get('content-type')?.split(';')[0] || '',
@@ -116,6 +128,11 @@ export function validateApproved(raw: unknown) {
     throw new Error(
       '石の一致・権利・撮影者・代替テキスト・確認日・画像をすべて確認してください',
     );
+  if (
+    ['Own photo', 'Commercial permission'].includes(c.license) &&
+    (!c.uploadSha256 || c.provider !== '手動アップロード')
+  )
+    throw new Error('所有・許諾写真の記録が必要です');
   if (licenseUrls[c.license] !== c.licenseUrl)
     throw new Error('ライセンス名と公式URLが一致しません');
   if (c.license !== 'CC0' && !c.attribution)
@@ -168,9 +185,11 @@ export function commonsCandidates(
     const meta = info.extmetadata || {};
     const raw = stripHtml(meta.LicenseShortName?.value || '');
     const normalized = raw === 'CC0' || raw === 'CC0 1.0' ? 'CC0' : raw;
-    const license = Object.hasOwn(licenseUrls, normalized)
-      ? normalized
-      : 'unknown';
+    const license =
+      !['Own photo', 'Commercial permission'].includes(normalized) &&
+      Object.hasOwn(licenseUrls, normalized)
+        ? normalized
+        : 'unknown';
     return [
       candidateSchema.parse({
         id: `commons-${page.pageid}`,
@@ -178,6 +197,15 @@ export function commonsCandidates(
         stoneName: stone.name,
         searchName: stone.english,
         imageUrl: url.href,
+        originalUrl: safeImageUrl(info.url).href,
+        shape: 'unknown',
+        shapeConfirmed: false,
+        ...(Number.isInteger(info.width) && info.width > 0
+          ? { sourceWidth: info.width }
+          : {}),
+        ...(Number.isInteger(info.height) && info.height > 0
+          ? { sourceHeight: info.height }
+          : {}),
         pageUrl: info.descriptionurl,
         photographer: stripHtml(meta.Artist?.value || '').slice(0, 500),
         provider: 'Wikimedia Commons',

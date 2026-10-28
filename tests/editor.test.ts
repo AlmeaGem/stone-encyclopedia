@@ -1,6 +1,6 @@
 import { request } from 'node:http';
 import { beforeEach, afterEach, it, expect } from 'vitest';
-import { mkdtemp, cp, readFile, rm } from 'node:fs/promises';
+import { mkdtemp, cp, readFile, writeFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { EditorStore } from '../scripts/admin-store';
@@ -11,6 +11,8 @@ let root: string, store: EditorStore;
 beforeEach(async () => {
   root = await mkdtemp(join(tmpdir(), 'almea-public-editor-'));
   await cp('src/content', join(root, 'src/content'), { recursive: true });
+  // Only this temporary test copy starts with an empty photo manifest.
+  await writeFile(join(root, 'src/content/images.json'), '[]\n');
   store = new EditorStore(root);
 });
 afterEach(async () => rm(root, { recursive: true, force: true }));

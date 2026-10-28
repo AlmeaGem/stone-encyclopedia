@@ -2,8 +2,10 @@ import { open, readFile, unlink, mkdir } from 'node:fs/promises';
 import { join } from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { EditorStore } from './admin-store';
+import { searchMode, type PhotoSearchMode } from './photo-search';
 import { collectForStone } from './collect-images';
 export type ImageJob = {
+  mode?: PhotoSearchMode;
   id: string;
   ids: string[];
   cursor: number;
@@ -79,7 +81,8 @@ export class ImageBatch {
     }
     return this.job;
   }
-  async start(ids: string[]) {
+  async start(ids: string[], mode: unknown = 'sphere') {
+    const selectedMode = searchMode(mode);
     if (await this.active()) throw new Error('別の収集ワーカーが動作中です');
     await this.state();
     if (this.running || (this.job && this.job.status !== 'completed'))
@@ -94,6 +97,7 @@ export class ImageBatch {
     )
       throw new Error('対象の石IDが不正です');
     this.job = {
+      mode: selectedMode,
       id: randomUUID(),
       ids,
       cursor: 0,
@@ -148,7 +152,12 @@ export class ImageBatch {
           this.job!.status === 'running' &&
           this.job!.cursor < this.job!.ids.length
         ) {
-          await this.collect(this.store.root, this.job!.ids[this.job!.cursor]);
+          await this.collect(
+            this.store.root,
+            this.job!.ids[this.job!.cursor],
+            fetch,
+            this.job!.mode || 'sphere',
+          );
           this.job!.cursor++;
           if (this.job!.cursor === this.job!.ids.length)
             this.job!.status = 'completed';

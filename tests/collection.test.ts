@@ -7,6 +7,8 @@ let root: string;
 beforeEach(async () => {
   root = await mkdtemp(join(tmpdir(), 'almea-collection-'));
   await cp('src/content', join(root, 'src/content'), { recursive: true });
+  // Only this temporary test copy starts with an empty photo manifest.
+  await writeFile(join(root, 'src/content/images.json'), '[]\n');
 });
 afterEach(async () => rm(root, { recursive: true, force: true }));
 const fixture = {

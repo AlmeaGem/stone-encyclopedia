@@ -128,11 +128,37 @@ async function load() {
       : '公開用データを開きました。変更はまず下書きに保存します。',
   );
 }
+const shapeNames = {
+  sphere: '丸玉・スフィア',
+  polished: '研磨石・タンブル',
+  loose: '宝石ルース',
+  rough: '原石・鉱物標本',
+  unknown: '形状未確認',
+  all: 'すべて',
+};
 function renderCandidates() {
   const id = $('image-stone').value,
     wrap = $('candidates');
   wrap.replaceChildren();
-  const list = state.candidates.filter((c) => c.stoneId === id);
+  const shapeOf = (c) => (c.shapeConfirmed ? c.shape || 'unknown' : 'unknown');
+  const selectedShape = $('photo-shape-filter').value;
+  const order = ['sphere', 'polished', 'loose', 'rough', 'unknown'];
+  const healthOf = (c) => state.imageHealth?.[c.stoneId + ':' + c.id];
+  const list = state.candidates
+    .filter(
+      (c) =>
+        c.stoneId === id &&
+        (selectedShape === 'all' || shapeOf(c) === selectedShape),
+    )
+    .sort(
+      (a, b) =>
+        order.indexOf(shapeOf(a)) - order.indexOf(shapeOf(b)) ||
+        Number(healthOf(a)?.status === 'error') -
+          Number(healthOf(b)?.status === 'error') ||
+        (b.sourceWidth || 0) * (b.sourceHeight || 0) -
+          (a.sourceWidth || 0) * (a.sourceHeight || 0),
+    );
+  let lastShape;
   if (!list.length) {
     const p = document.createElement('p');
     p.textContent =
@@ -140,10 +166,35 @@ function renderCandidates() {
     wrap.append(p);
   }
   for (const c of list) {
+    const shape = shapeOf(c);
+    if (lastShape !== shape) {
+      const heading = document.createElement('h3');
+      heading.className = 'candidate-group';
+      heading.textContent = shapeNames[shape];
+      wrap.append(heading);
+      lastShape = shape;
+    }
     const div = document.createElement('div');
     div.className = 'candidate';
     const p = document.createElement('p');
     p.textContent = `${c.stoneName} / ${{ pending: '未承認候補', approved: '承認済み', rejected: '不採用', review: '要確認' }[c.status]} / ${c.license} / 撮影者 ${c.photographer || '未確認'}`;
+    const quality = document.createElement('p');
+    quality.textContent = `${c.sourceWidth && c.sourceHeight ? c.sourceWidth + ' × ' + c.sourceHeight + 'px' : '解像度未確認'} / 検索条件：${shapeNames[c.searchMode] || '従来検索'} / ${shapeNames[shape]}`;
+    const imageError = document.createElement('p');
+    imageError.className = 'image-error';
+    imageError.setAttribute('role', 'status');
+    imageError.textContent =
+      healthOf(c)?.status === 'error' ? healthOf(c).error : '';
+    const retry = document.createElement('button');
+    retry.textContent = '画像を再取得';
+    retry.onclick = () =>
+      action(async () => {
+        try {
+          await api('/api/refresh-photo', { id: c.id, stoneId: c.stoneId });
+        } finally {
+          await refresh();
+        }
+      });
     const link = document.createElement('a');
     link.href = c.pageUrl;
     link.target = '_blank';
@@ -156,11 +207,37 @@ function renderCandidates() {
     img.loading = 'lazy';
     img.alt = c.stoneName + 'の未確認候補';
     img.src = `/api/thumbnail?id=${encodeURIComponent(c.id)}&stoneId=${encodeURIComponent(c.stoneId)}`;
-    img.onerror = () => {
-      img.alt = '画像を取得できません。出典ページをご確認ください';
+    img.onload = () => {
+      button.disabled = false;
+      imageError.textContent = '';
+    };
+    img.onerror = async () => {
+      button.disabled = true;
+      img.alt = '画像を取得できません';
+      try {
+        const health = await api('/api/image-health');
+        state.imageHealth = health;
+        imageError.textContent =
+          health[c.stoneId + ':' + c.id]?.error ||
+          '画像の読み込みに失敗しました。再取得または出典を確認してください。';
+      } catch (e) {
+        imageError.textContent = e.message;
+      }
+      div.classList.add('image-failed');
     };
     preview.append(img);
     preview.onclick = () => {
+      $('photo-large').onerror = async () => {
+        try {
+          const health = await api('/api/image-health');
+          $('photo-dialog-info').textContent +=
+            ' / ' +
+            (health[c.stoneId + ':' + c.id]?.error ||
+              '拡大画像を読み込めません。閉じて再取得をお試しください。');
+        } catch (e) {
+          $('photo-dialog-info').textContent += ' / ' + e.message;
+        }
+      };
       $('photo-large').src = img.src + '&large=1';
       $('photo-dialog-info').textContent =
         `${c.stoneName} / ${c.photographer || '撮影者未確認'} / ${c.license} / 石種・権利の確認前`;
@@ -169,15 +246,28 @@ function renderCandidates() {
     };
     const button = document.createElement('button');
     button.textContent = 'この写真を選ぶ';
+    button.disabled = true;
     button.onclick = () => {
       $('candidate-json').value = JSON.stringify(c, null, 2);
+      $('photo-shape').value = c.shapeConfirmed
+        ? c.shape || 'unknown'
+        : 'unknown';
       $('photo-author').value = c.photographer;
       $('photo-alt').value = c.alt || c.stoneName + 'の写真';
       $('chosen-photo').textContent = `${c.stoneName} / ${c.license} / ${c.id}`;
       $('identity').checked = c.identityConfirmed;
       $('rights').checked = c.rightsConfirmed;
     };
-    div.append(preview, p, link, document.createTextNode(' '), button);
+    div.append(
+      preview,
+      p,
+      quality,
+      imageError,
+      link,
+      document.createTextNode(' '),
+      retry,
+      button,
+    );
     wrap.append(div);
   }
   $('approved').replaceChildren();
@@ -325,6 +415,8 @@ $('manual-candidate').onclick = () => {
 };
 function candidate() {
   const c = JSON.parse($('candidate-json').value);
+  c.shape = $('photo-shape').value;
+  c.shapeConfirmed = c.shape !== 'unknown';
   c.photographer = $('photo-author').value.trim();
   c.alt = $('photo-alt').value.trim();
   c.identityConfirmed = $('identity').checked;
@@ -529,7 +621,7 @@ function renderPhotoOverview() {
   }
   const job = state.imageJob;
   $('image-job').textContent = job
-    ? `${{ running: '収集中', paused: '一時停止', error: 'エラー停止', completed: '完了' }[job.status]}：${job.cursor}/${job.ids.length}種類完了。${job.error || ''}`
+    ? `${{ running: '収集中', paused: '一時停止', error: 'エラー停止', completed: '完了' }[job.status]}：${job.cursor}/${job.ids.length}種類完了（検索条件：${shapeNames[job.mode || 'sphere']}）。${job.error || ''}`
     : 'まだ収集ジョブはありません。';
   updatePlan();
 }
@@ -566,7 +658,10 @@ $('batch-start').onclick = () =>
       )
     )
       return;
-    await api('/api/image-job/start', { ids: [...chosenStones] });
+    await api('/api/image-job/start', {
+      ids: [...chosenStones],
+      mode: $('photo-search-mode').value,
+    });
     await refresh();
   });
 $('batch-pause').onclick = () =>
@@ -605,4 +700,37 @@ $('build-photos').onclick = () =>
     showStatus('承認済み画像のローカル本番ビルドを確認しています。');
     const r = await api('/api/build-photos', {});
     showStatus(r.message);
+  });
+
+$('photo-shape-filter').onchange = renderCandidates;
+$('upload-photo').onclick = () =>
+  action(async () => {
+    const file = $('photo-file').files[0];
+    if (!file) throw new Error('写真ファイルを選択してください');
+    if (
+      file.size > 10000000 ||
+      !['image/jpeg', 'image/png', 'image/webp'].includes(file.type)
+    )
+      throw new Error(
+        '10MB以下のJPEG・PNG・WebPを選択してください。HEICはJPEGに変換してください。',
+      );
+    const data = await new Promise((resolve, reject) => {
+      const r = new FileReader();
+      r.onload = () => resolve(r.result);
+      r.onerror = () => reject(new Error('画像を読み込めませんでした'));
+      r.readAsDataURL(file);
+    });
+    await api('/api/upload-photo', {
+      stoneId: $('image-stone').value,
+      data,
+      photographer: $('upload-author').value.trim(),
+      license: $('upload-license').value,
+      note: $('upload-note').value.trim(),
+      sourceUrl: $('upload-source').value.trim(),
+      creditText: $('upload-credit').value.trim(),
+    });
+    await refresh();
+    showStatus(
+      '手動写真を非公開候補へ追加しました。石種と権利を確認して採用してください。',
+    );
   });

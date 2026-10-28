@@ -1,5 +1,5 @@
 import { it, expect } from 'vitest';
-import { mkdtemp, cp, readFile, rm } from 'node:fs/promises';
+import { mkdtemp, cp, readFile, writeFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import sharp from 'sharp';
@@ -11,6 +11,8 @@ import { prepareImages } from '../scripts/prepare-images';
 async function setup() {
   const root = await mkdtemp(join(tmpdir(), 'almea-photo-batch-'));
   await cp('src/content', join(root, 'src/content'), { recursive: true });
+  // Only this temporary test copy starts with an empty photo manifest.
+  await writeFile(join(root, 'src/content/images.json'), '[]\n');
   return { root, store: new EditorStore(root) };
 }
 async function settled(batch: ImageBatch) {

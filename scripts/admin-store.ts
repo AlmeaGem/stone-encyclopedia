@@ -190,8 +190,18 @@ export class EditorStore {
       throw new Error(
         '石の一致・権利・ライセンス・撮影者・代替テキストを確認してください',
       );
-    const downloaded = await downloadCandidate(c.imageUrl, fetcher),
-      optimized = await optimizeCandidate(downloaded);
+    await this.validateLocalRights(c);
+    const downloaded = c.uploadSha256
+      ? await readFile(
+          join(this.root, '.editor/uploads', c.uploadSha256 + '.webp'),
+        )
+      : await downloadCandidate(c.imageUrl, fetcher);
+    if (
+      c.uploadSha256 &&
+      createHash('sha256').update(downloaded).digest('hex') !== c.uploadSha256
+    )
+      throw new Error('アップロード画像が変更されています');
+    const optimized = await optimizeCandidate(downloaded);
     const image = validateApproved({
       ...c,
       status: 'approved',
@@ -233,6 +243,25 @@ export class EditorStore {
     }
     return image;
   }
+  async validateLocalRights(c: Candidate) {
+    if (['Own photo', 'Commercial permission'].includes(c.license)) {
+      if (!c.uploadSha256 || c.provider !== '手動アップロード')
+        throw new Error('所有・許諾画像の登録方法を確認してください');
+      const record = JSON.parse(
+        await readFile(
+          join(this.root, '.editor/upload-rights', c.id + '.json'),
+          'utf8',
+        ),
+      );
+      if (
+        !record.note?.trim() ||
+        record.license !== c.license ||
+        record.photographer !== c.photographer ||
+        record.stoneId !== c.stoneId
+      )
+        throw new Error('所有・商用利用許諾の記録を再確認してください');
+    }
+  }
   async applyApproved() {
     const staged = (await this.candidates())
       .filter((c) => c.status === 'approved')
@@ -241,6 +270,7 @@ export class EditorStore {
     if (ids.size !== staged.length)
       throw new Error('同じ石に複数の代表画像があります');
     for (const c of staged) {
+      await this.validateLocalRights(c);
       const bytes = await readFile(
         join(
           this.root,

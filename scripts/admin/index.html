@@ -89,6 +89,18 @@
           <summary>収集する石を選ぶ（210種類の状態一覧）</summary>
           <div id="photo-overview"></div>
         </details>
+        <label
+          >検索する写真の種類<select id="photo-search-mode">
+            <option value="sphere">丸玉・スフィア優先</option>
+            <option value="polished">研磨石・タンブル</option>
+            <option value="loose">宝石ルース</option>
+            <option value="rough">原石・鉱物標本</option>
+            <option value="all">すべて</option>
+          </select></label
+        >
+        <p>
+          検索語は形状の証明ではありません。石種・実物写真・形状は候補ごとに確認してください。
+        </p>
         <p id="collection-plan"></p>
         <div class="row">
           <button id="batch-start">選択した石の収集を開始</button
@@ -108,15 +120,78 @@
           ><button id="manual-candidate">候補を手動登録</button>
         </div>
         <p>
-          日本語名・英語名・別名から最大3検索、各石最大10候補。毎秒1リクエスト以下、日次上限で停止します。ブラウザを閉じても管理サーバーが動いていれば処理は続きます。パソコンやサーバーを終了した場合は、起動後に再開してください。候補数は検索結果により異なります。
+          日本語名・英語名・別名から最大3検索、1検索作業につき各石最大10候補（過去の候補は保持）。毎秒1リクエスト以下、日次上限で停止します。ブラウザを閉じても管理サーバーが動いていれば処理は続きます。パソコンやサーバーを終了した場合は、起動後に再開してください。候補数は検索結果により異なります。
+        </p>
+        <label
+          >確認済みの形状で候補を表示<select id="photo-shape-filter">
+            <option value="all">すべて</option>
+            <option value="sphere">丸玉・スフィア</option>
+            <option value="polished">研磨石・タンブル</option>
+            <option value="loose">宝石ルース</option>
+            <option value="rough">原石・鉱物標本</option>
+            <option value="unknown">形状未確認</option>
+          </select></label
+        >
+        <p>
+          寸法は検索元の原画像、アップロードは保存候補の画素数です。ピント・自然な色・艶・背景・被写体の大きさ・透かしの有無は目視で確認し、見た目より石種の正確性を優先してください。
         </p>
         <div id="candidates"></div>
+        <details>
+          <summary>自分の写真・商用利用許可を得た写真を追加</summary>
+          <p>
+            他人の画像を所有写真として登録しないでください。許諾には商用利用・掲載・縮小や変換の許可が必要です。記録は非公開で保存します。
+          </p>
+          <label
+            >写真ファイル（10MB以下）<input
+              id="photo-file"
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+          /></label>
+          <label
+            >権利の種類<select id="upload-license">
+              <option value="Own photo">自分・自社で撮影（権利留保）</option>
+              <option value="Commercial permission">
+                商用利用・加工の許諾を取得
+              </option>
+            </select></label
+          >
+          <label
+            >撮影者（公開クレジット）<input id="upload-author" maxlength="500"
+          /></label>
+          <label
+            >所有・許諾の記録（非公開／10文字以上）<textarea
+              id="upload-note"
+              maxlength="3000"
+            ></textarea>
+          </label>
+          <label
+            >公開用の出典URL（任意・HTTPS）<input id="upload-source" type="url"
+          /></label>
+          <label
+            >公開クレジット補足（許諾条件に応じて）<input
+              id="upload-credit"
+              maxlength="1000"
+          /></label>
+          <button id="upload-photo">写真を非公開候補へ追加</button>
+          <p>
+            JPEG・PNG・WebP対応。HEICは端末でJPEGに変換してから選択してください。追加だけでは承認・公開しません。
+          </p>
+        </details>
         <h3>候補の確認・編集</h3>
         <p id="chosen-photo">写真候補を選んでください。</p>
         <div class="row">
           <label>撮影者<input id="photo-author" /></label
           ><label>画像の説明<input id="photo-alt" maxlength="300" /></label>
         </div>
+        <label
+          >この写真の形状（目視確認して設定）<select id="photo-shape">
+            <option value="unknown">形状未確認</option>
+            <option value="sphere">丸玉・スフィア</option>
+            <option value="polished">研磨石・タンブル</option>
+            <option value="loose">宝石ルース</option>
+            <option value="rough">原石・鉱物標本</option>
+          </select></label
+        >
         <details>
           <summary>詳細情報（通常は編集不要）</summary>
           <textarea

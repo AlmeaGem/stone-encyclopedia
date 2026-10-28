@@ -262,3 +262,22 @@ dialog::backdrop {
     grid-column: 2;
   }
 }
+.candidate-group {
+  grid-column: 1/-1;
+  margin-bottom: 0;
+}
+.image-error {
+  color: #8a3030;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+.image-failed {
+  border-color: #bd8b8b;
+}
+#candidates .candidate button {
+  margin: 4px 4px 4px 0;
+}
+#candidates button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}

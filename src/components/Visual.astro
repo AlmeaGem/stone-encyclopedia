@@ -22,18 +22,32 @@ const photo = photoFor(stone);
     {detail && (
       <figcaption>
         写真：{photo.photographer} ·{' '}
-        <a href={photo.pageUrl} rel="noopener noreferrer" target="_blank">
-          {photo.provider}
-        </a>{' '}
+        {photo.uploadSha256 &&
+        photo.pageUrl === 'https://almeagem.github.io/stone-encyclopedia/' ? (
+          <span>提供写真</span>
+        ) : (
+          <a href={photo.pageUrl} rel="noopener noreferrer" target="_blank">
+            {photo.provider}
+          </a>
+        )}{' '}
         ·{' '}
-        <a
-          href={photo.licenseUrl}
-          rel="license noopener noreferrer"
-          target="_blank"
-        >
-          {photo.license}
-        </a>{' '}
-        · {photo.modified ? '掲載用に縮小・変換' : '加工なし'} · 確認日{' '}
+        {photo.licenseUrl ? (
+          <a
+            href={photo.licenseUrl}
+            rel="license noopener noreferrer"
+            target="_blank"
+          >
+            {photo.license}
+          </a>
+        ) : (
+          <span>
+            {photo.license === 'Own photo'
+              ? '自社撮影・無断転載不可'
+              : '商用利用許諾済み・権利留保'}
+          </span>
+        )}{' '}
+        {photo.creditText && <span> · {photo.creditText}</span>}·{' '}
+        {photo.modified ? '掲載用に縮小・変換' : '加工なし'} · 確認日{' '}
         {photo.reviewedAt}
       </figcaption>
     )}
