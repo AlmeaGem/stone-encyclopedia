@@ -4,6 +4,7 @@ import { candidateSchema, type Candidate } from '../src/lib/schema';
 export const licenseUrls: Record<string, string> = {
   'Own photo': '',
   'Commercial permission': '',
+  'AI-generated': '',
   CC0: 'https://creativecommons.org/publicdomain/zero/1.0/',
   'CC BY 2.0': 'https://creativecommons.org/licenses/by/2.0/',
   'CC BY 2.5': 'https://creativecommons.org/licenses/by/2.5/',
@@ -133,10 +134,14 @@ export function validateApproved(raw: unknown) {
       '石の一致・権利・撮影者・代替テキスト・確認日・画像をすべて確認してください',
     );
   if (
-    ['Own photo', 'Commercial permission'].includes(c.license) &&
+    ['Own photo', 'Commercial permission', 'AI-generated'].includes(c.license) &&
     (!c.uploadSha256 || c.provider !== '手動アップロード')
   )
     throw new Error('所有・許諾写真の記録が必要です');
+  if (c.license === 'AI-generated' && c.imageKind !== 'ai-generated')
+    throw new Error('AI生成画像はイメージ写真として登録してください');
+  if (c.imageKind === 'ai-generated' && c.license !== 'AI-generated')
+    throw new Error('画像の種類と権利種別を確認してください');
   if (licenseUrls[c.license] !== c.licenseUrl)
     throw new Error('ライセンス名と公式URLが一致しません');
   if (c.license !== 'CC0' && !c.attribution)
