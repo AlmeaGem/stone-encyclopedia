@@ -246,7 +246,7 @@ export class EditorStore {
   async validateLocalRights(c: Candidate) {
     if (
       c.uploadSha256 ||
-      ['Own photo', 'Commercial permission'].includes(c.license)
+      ['Own photo', 'Commercial permission', 'AI-generated'].includes(c.license)
     ) {
       if (!c.uploadSha256 || c.provider !== '手動アップロード')
         throw new Error('所有・許諾画像の登録方法を確認してください');
