@@ -144,3 +144,27 @@ it('decodes, shrinks and strips metadata from real image bytes; rejects corrupt 
     optimizeCandidate(Buffer.from('not an image')),
   ).rejects.toThrow();
 });
+
+it('allows explicitly labeled AI illustrations but rejects mislabeling as a real photograph', () => {
+  const hash = 'b'.repeat(64);
+  const image = candidate({
+    license: 'AI-generated',
+    imageKind: 'ai-generated',
+    licenseUrl: '',
+    provider: '手動アップロード',
+    uploadSha256: 'c'.repeat(64),
+    photographer: 'ALMÉA GEM',
+    status: 'approved',
+    identityConfirmed: true,
+    rightsConfirmed: true,
+    alt: 'ローズクォーツのイメージ写真',
+    reviewedAt: '2026-10-29',
+    localPath: `/images/s107/${hash}.webp`,
+    sha256: hash,
+    width: 50,
+    height: 50,
+  });
+  expect(validateApproved(image).imageKind).toBe('ai-generated');
+  expect(() => validateApproved({ ...image, imageKind: 'real-photo' })).toThrow();
+  expect(() => validateApproved({ ...image, license: 'Own photo' })).toThrow();
+});
