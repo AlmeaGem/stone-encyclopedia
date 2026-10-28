@@ -17,7 +17,7 @@ const photo = photoFor(stone);
       height={photo.height!}
       loading="lazy"
       decoding="async"
-      alt={photo.imageKind === 'ai-generated' ? `${stone.name}のイメージ写真（AI生成）` : photo.alt || `${stone.name}の承認済み写真`}
+      alt={photo.imageKind === 'ai-generated' ? `${stone.name}のイメージ写真` : photo.alt || `${stone.name}の承認済み写真`}
     />
     {photo.imageKind === 'ai-generated' && <span class="image-impression-label">イメージ写真</span>}
     {detail && photo.imageKind !== 'ai-generated' && (
@@ -44,9 +44,7 @@ const photo = photoFor(stone);
           <span>
             {photo.license === 'Own photo'
               ? '自社撮影・無断転載不可'
-              : photo.license === 'AI-generated'
-                ? 'AI生成イメージ'
-                : '商用利用許諾済み・権利留保'}
+              : '商用利用許諾済み・権利留保'}
           </span>
         )}{' '}
         {photo.creditText && <span> · {photo.creditText}</span>}·{' '}
