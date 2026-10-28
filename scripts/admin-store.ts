@@ -244,7 +244,10 @@ export class EditorStore {
     return image;
   }
   async validateLocalRights(c: Candidate) {
-    if (['Own photo', 'Commercial permission'].includes(c.license)) {
+    if (
+      c.uploadSha256 ||
+      ['Own photo', 'Commercial permission'].includes(c.license)
+    ) {
       if (!c.uploadSha256 || c.provider !== '手動アップロード')
         throw new Error('所有・許諾画像の登録方法を確認してください');
       const record = JSON.parse(
@@ -257,7 +260,14 @@ export class EditorStore {
         !record.note?.trim() ||
         record.license !== c.license ||
         record.photographer !== c.photographer ||
-        record.stoneId !== c.stoneId
+        record.stoneId !== c.stoneId ||
+        (record.sourceUrl !== undefined && record.sourceUrl !== c.pageUrl) ||
+        (record.originalUrl !== undefined &&
+          record.originalUrl !== (c.originalUrl || '')) ||
+        (record.licenseUrl !== undefined &&
+          record.licenseUrl !== c.licenseUrl) ||
+        (record.uploadSha256 !== undefined &&
+          record.uploadSha256 !== c.uploadSha256)
       )
         throw new Error('所有・商用利用許諾の記録を再確認してください');
     }

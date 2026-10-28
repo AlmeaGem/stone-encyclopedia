@@ -5,6 +5,7 @@ import { EditorStore } from './admin-store';
 import { commonsRequest, imageSearchLock } from './collect-images';
 import {
   commonsCandidates,
+  licenseUrls,
   downloadCandidate,
   optimizeCandidate,
 } from './image-policy';
@@ -239,19 +240,28 @@ export class PhotoMedia {
     shape?: string;
     sourceUrl?: string;
     creditText?: string;
+    originalImageUrl?: string;
   }) {
     const stone = (await this.store.read('stones')).find(
       (s: any) => s.id === input.stoneId,
     );
     if (!stone) throw new Error('石IDが不正です');
+    const cc =
+      input.license?.startsWith('CC') &&
+      Object.hasOwn(licenseUrls, input.license);
+    if (!cc && !['Own photo', 'Commercial permission'].includes(input.license))
+      throw new Error('対応するライセンスを選択してください');
+    if (!input.photographer?.trim())
+      throw new Error('撮影者を入力してください');
     if (
-      !['Own photo', 'Commercial permission'].includes(input.license) ||
-      !input.photographer?.trim() ||
-      !input.note?.trim() ||
-      input.note.trim().length < 10 ||
-      input.note.length > 3000
+      input.license === 'Commercial permission' &&
+      (!input.note?.trim() || input.note.trim().length < 10)
     )
-      throw new Error('撮影者と所有・商用利用許諾の記録を入力してください');
+      throw new Error(
+        '個別許諾の内容・商用利用と加工の許可を10文字以上で記録してください',
+      );
+    if (typeof input.note !== 'string' || input.note.length > 3000)
+      throw new Error('確認記録は3000文字以内です');
     if (
       typeof input.data !== 'string' ||
       input.data.length > 14000000 ||
@@ -278,6 +288,29 @@ export class PhotoMedia {
         throw new Error('公開用出典URLはHTTPSで入力してください');
       sourceUrl = parsed.href;
     }
+    if (cc) {
+      const page = new URL(sourceUrl);
+      if (
+        page.hostname !== 'commons.wikimedia.org' ||
+        page.port ||
+        (!decodeURIComponent(page.pathname).startsWith('/wiki/File:') &&
+          !/^\d+$/.test(page.searchParams.get('curid') || ''))
+      )
+        throw new Error(
+          'Commons画像は、ライセンスが確認できるFileページのURLを入力してください',
+        );
+    }
+    let originalUrl: string | undefined;
+    if (input.originalImageUrl?.trim()) {
+      const original = new URL(input.originalImageUrl.trim());
+      if (
+        original.protocol !== 'https:' ||
+        original.username ||
+        original.password
+      )
+        throw new Error('元画像URLはHTTPSで入力してください');
+      originalUrl = original.href;
+    }
     const c = candidateSchema.parse({
       id: 'upload-' + randomUUID(),
       stoneId: stone.id,
@@ -286,13 +319,14 @@ export class PhotoMedia {
       imageUrl: 'https://almeagem.github.io/stone-encyclopedia/',
       pageUrl: sourceUrl,
       creditText: input.creditText || '',
+      ...(originalUrl ? { originalUrl } : {}),
       photographer: input.photographer,
       provider: '手動アップロード',
       license: input.license,
-      licenseUrl: '',
+      licenseUrl: licenseUrls[input.license],
       commercial: true,
       derivatives: true,
-      attribution: true,
+      attribution: input.license !== 'CC0',
       modified: true,
       status: 'pending',
       identityConfirmed: false,
@@ -315,7 +349,16 @@ export class PhotoMedia {
       join(this.store.root, '.editor/upload-rights', c.id + '.json'),
       {
         stoneId: c.stoneId,
-        note: input.note,
+        note:
+          input.note.trim() ||
+          (cc
+            ? 'Commonsの原ページでライセンスを確認し、採用時に石種・利用条件を確認する'
+            : '本人・自社の撮影と権利保有を採用時に確認する'),
+        sourceUrl: c.pageUrl,
+        originalUrl: c.originalUrl || '',
+        licenseUrl: c.licenseUrl,
+        uploadSha256: c.uploadSha256,
+        creditText: c.creditText || '',
         photographer: c.photographer,
         license: c.license,
         savedAt: new Date().toISOString(),

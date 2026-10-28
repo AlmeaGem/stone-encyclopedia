@@ -95,6 +95,10 @@ export const candidateSchema = z
     provider: z.string().max(100),
     license: z.enum([
       'CC0',
+      'CC BY 2.0',
+      'CC BY 2.5',
+      'CC BY-SA 2.0',
+      'CC BY-SA 2.5',
       'CC BY 4.0',
       'CC BY-SA 4.0',
       'CC BY 3.0',

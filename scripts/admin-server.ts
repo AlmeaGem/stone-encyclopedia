@@ -42,7 +42,7 @@ export async function startEditor(
       res.setHeader('X-Frame-Options', 'DENY');
       res.setHeader(
         'Content-Security-Policy',
-        "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; object-src 'none'; base-uri 'none'",
+        "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; frame-ancestors 'none'; object-src 'none'; base-uri 'none'",
       );
       res.setHeader('Referrer-Policy', 'no-referrer');
       const address = server.address();

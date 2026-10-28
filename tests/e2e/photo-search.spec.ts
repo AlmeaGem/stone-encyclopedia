@@ -7,6 +7,9 @@ async function login(page: any) {
     .fill('browser-fixture-only-passphrase-32');
   await page.locator('button').click();
   await page.locator('[data-tab=images]').click();
+  await page
+    .locator('#auto-search')
+    .evaluate((el: HTMLDetailsElement) => (el.open = true));
 }
 test('sphere search defaults, error reasons and official metadata retry work without adopting candidates', async ({
   page,
@@ -24,7 +27,7 @@ test('sphere search defaults, error reasons and official metadata retry work wit
   if (test.info().project.name === 'desktop')
     await page
       .locator('#candidates')
-      .screenshot({ path: 'docs/screenshots/sphere-search/error-fixture.png' });
+      .screenshot({ path: test.info().outputPath('error-fixture.png') });
   await page.getByRole('button', { name: '画像を再取得', exact: true }).click();
   await expect(
     page.getByRole('button', { name: 'この写真を選ぶ', exact: true }),
@@ -40,7 +43,7 @@ test('sphere search defaults, error reasons and official metadata retry work wit
     ).toBe(true);
     if (test.info().project.name === 'desktop' && [390, 1440].includes(width))
       await page.locator('#images').screenshot({
-        path: `docs/screenshots/sphere-search/after-fixture-${width}.png`,
+        path: test.info().outputPath(`after-fixture-${width}.png`),
       });
   }
 });
@@ -51,9 +54,7 @@ test('manual photo upload and confirmed shape filtering need no JSON or public i
   await page
     .locator('#image-stone')
     .selectOption(test.info().project.name === 'desktop' ? 's010' : 's009');
-  await page
-    .getByText('自分の写真・商用利用許可を得た写真を追加', { exact: true })
-    .click();
+  await page.locator('#upload-license').selectOption('Own photo');
   const bytes = await sharp({
     create: { width: 80, height: 60, channels: 3, background: '#b89aaa' },
   })
@@ -76,6 +77,7 @@ test('manual photo upload and confirmed shape filtering need no JSON or public i
     .locator('.candidate')
     .filter({ hasText: '撮影者 TEST OWNER' })
     .last();
+  await card.locator('img').scrollIntoViewIfNeeded();
   await expect(card.locator('img')).toBeVisible();
   await card
     .getByRole('button', { name: 'この写真を選ぶ', exact: true })

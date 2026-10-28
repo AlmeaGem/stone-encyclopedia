@@ -8,6 +8,9 @@ test('private photo editor offers thumbnails, source review and staged adoption 
     .fill('browser-fixture-only-passphrase-32');
   await page.locator('button').click();
   await page.locator('[data-tab=images]').click();
+  await page
+    .locator('#auto-search')
+    .evaluate((el: HTMLDetailsElement) => (el.open = true));
   await expect(page.locator('#photo-overview .photo-row')).toHaveCount(210);
   await page.locator('#select-ten').click();
   await expect(page.locator('#collection-plan')).toContainText('対象 10種類');

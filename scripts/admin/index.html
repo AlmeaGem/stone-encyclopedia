@@ -56,8 +56,109 @@
       <section id="images" hidden>
         <h2>210種類の写真を選ぶ</h2>
         <p>
-          候補は未承認です。石種と利用条件を確認して代表画像を選び、最後に承認済みだけをまとめて反映します。
+          石を選ぶ → 写真と出典を入力 → プレビュー確認 → 採用 →
+          承認済みを一括反映。コード・JSONの編集は不要です。
         </p>
+        <label>対象の石<select id="image-stone"></select></label>
+        <section id="manual-upload" aria-labelledby="manual-photo-title">
+          <h3 id="manual-photo-title">1. Macから写真を選び、出典を登録</h3>
+          <p>
+            JPEG・PNG・WebPを選び、出典とライセンスを入力してください。Commons画像・自社撮影・個別許諾に対応します。
+          </p>
+          <label
+            >写真ファイル（10MB以下）<input
+              id="photo-file"
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+          /></label>
+          <label
+            >権利の種類<select id="upload-license">
+              <option value="">ライセンスを選択してください</option>
+              <option value="CC0">Commons：CC0 1.0</option>
+              <option value="CC BY 2.0">Commons：CC BY 2.0</option>
+              <option value="CC BY 2.5">Commons：CC BY 2.5</option>
+              <option value="CC BY-SA 2.0">Commons：CC BY-SA 2.0</option>
+              <option value="CC BY-SA 2.5">Commons：CC BY-SA 2.5</option>
+              <option value="CC BY 4.0">Commons：CC BY 4.0</option>
+              <option value="CC BY 3.0">Commons：CC BY 3.0</option>
+              <option value="CC BY-SA 4.0">Commons：CC BY-SA 4.0</option>
+              <option value="CC BY-SA 3.0">Commons：CC BY-SA 3.0</option>
+              <option value="Own photo">自分・自社で撮影（権利留保）</option>
+              <option value="Commercial permission">
+                商用利用・加工の許諾を取得
+              </option>
+            </select></label
+          >
+          <label
+            >撮影者（公開クレジット）<input id="upload-author" maxlength="500"
+          /></label>
+          <label
+            >確認・許諾の記録（非公開／個別許諾は10文字以上）<textarea
+              id="upload-note"
+              maxlength="3000"
+            ></textarea>
+          </label>
+          <label
+            >出典ページURL（CommonsはFileページ必須・HTTPS）<input
+              id="upload-source"
+              type="url"
+          /></label>
+          <label
+            >公開クレジット補足（許諾条件に応じて）<input
+              id="upload-credit"
+              maxlength="1000"
+          /></label>
+          <label
+            >元画像のURL（任意・HTTPS）<input id="upload-original" type="url"
+          /></label>
+          <label
+            >ライセンスURL（選択内容から自動設定）<input
+              id="upload-license-url"
+              readonly
+          /></label>
+          <label
+            >写真の説明（省略時は石名から作成）<input
+              id="upload-alt"
+              maxlength="300"
+          /></label>
+          <h3>2. プレビューと利用条件を確認</h3>
+          <figure id="manual-preview" hidden>
+            <img
+              id="manual-preview-image"
+              alt="アップロード前の写真プレビュー"
+            />
+            <figcaption id="manual-preview-info"></figcaption>
+          </figure>
+          <p id="manual-target"></p>
+          <label class="check"
+            ><input
+              id="manual-identity"
+              type="checkbox"
+            />選択した石と実物写真が一致していることを確認しました</label
+          >
+          <label class="check"
+            ><input
+              id="manual-rights"
+              type="checkbox"
+            />指定したライセンス・商用掲載・加工・クレジット条件を確認しました</label
+          >
+          <div class="row">
+            <button id="manual-adopt">代表写真として採用</button
+            ><button id="upload-photo">写真を非公開候補へ追加</button>
+          </div>
+          <p>
+            採用後も図鑑にはまだ公開しません。下の一括反映ボタンで承認済みだけを反映します。
+          </p>
+          <p>
+            JPEG・PNG・WebP対応。HEICは端末でJPEGに変換してから選択してください。追加だけでは承認・公開しません。
+          </p>
+        </section>
+        <h3>3. 承認済み写真をまとめて図鑑へ反映</h3>
+        <button id="apply-photos">
+          承認済みの代表画像をまとめて公開用データへ反映
+        </button>
+        <button id="build-photos">反映した画像をビルドして確認</button>
+        <h3>210種類の写真登録状況</h3>
         <div class="row">
           <label
             >表示を絞り込む<select id="photo-status">
@@ -69,15 +170,6 @@
               <option>要確認</option>
             </select></label
           >
-          <label
-            >日次検索上限（無料API）<input
-              id="image-limit"
-              type="number"
-              min="1"
-              max="1000"
-              value="100"
-          /></label>
-          <button id="save-image-limit">上限を保存</button>
         </div>
         <p id="photo-summary"></p>
         <div class="row">
@@ -85,145 +177,111 @@
           ><button id="select-all-stones">210種類を選択</button
           ><button id="clear-stones">選択解除</button>
         </div>
-        <details>
+        <details open id="photo-progress">
           <summary>収集する石を選ぶ（210種類の状態一覧）</summary>
           <div id="photo-overview"></div>
         </details>
-        <label
-          >検索する写真の種類<select id="photo-search-mode">
-            <option value="sphere">丸玉・スフィア優先</option>
-            <option value="polished">研磨石・タンブル</option>
-            <option value="loose">宝石ルース</option>
-            <option value="rough">原石・鉱物標本</option>
-            <option value="all">すべて</option>
-          </select></label
-        >
-        <p>
-          検索語は形状の証明ではありません。石種・実物写真・形状は候補ごとに確認してください。
-        </p>
-        <p id="collection-plan"></p>
-        <div class="row">
-          <button id="batch-start">選択した石の収集を開始</button
-          ><button id="batch-pause">一時停止</button
-          ><button id="batch-resume">停止したジョブを再開</button>
-        </div>
-        <p id="image-job" role="status"></p>
-        <button id="apply-photos">
-          承認済みの代表画像をまとめて公開用データへ反映
-        </button>
-        <button id="build-photos">反映した画像をビルドして確認</button>
-        <hr />
-        <h3>石ごとの候補を見て選ぶ</h3>
-        <div class="row">
-          <label>対象の石<select id="image-stone"></select></label
-          ><button id="collect">この石をCommonsで検索（最大10枚）</button
-          ><button id="manual-candidate">候補を手動登録</button>
-        </div>
-        <p>
-          日本語名・英語名・別名から最大3検索、1検索作業につき各石最大10候補（過去の候補は保持）。毎秒1リクエスト以下、日次上限で停止します。ブラウザを閉じても管理サーバーが動いていれば処理は続きます。パソコンやサーバーを終了した場合は、起動後に再開してください。候補数は検索結果により異なります。
-        </p>
-        <label
-          >確認済みの形状で候補を表示<select id="photo-shape-filter">
-            <option value="all">すべて</option>
-            <option value="sphere">丸玉・スフィア</option>
-            <option value="polished">研磨石・タンブル</option>
-            <option value="loose">宝石ルース</option>
-            <option value="rough">原石・鉱物標本</option>
-            <option value="unknown">形状未確認</option>
-          </select></label
-        >
-        <p>
-          寸法は検索元の原画像、アップロードは保存候補の画素数です。ピント・自然な色・艶・背景・被写体の大きさ・透かしの有無は目視で確認し、見た目より石種の正確性を優先してください。
-        </p>
-        <div id="candidates"></div>
-        <details>
-          <summary>自分の写真・商用利用許可を得た写真を追加</summary>
-          <p>
-            他人の画像を所有写真として登録しないでください。許諾には商用利用・掲載・縮小や変換の許可が必要です。記録は非公開で保存します。
-          </p>
+        <details id="auto-search">
+          <summary>自動検索・既存候補から選ぶ（必要なとき）</summary>
+          <div class="row">
+            <label
+              >日次検索上限（無料API）<input
+                id="image-limit"
+                type="number"
+                min="1"
+                max="1000"
+                value="100"
+            /></label>
+            <button id="save-image-limit">上限を保存</button>
+          </div>
           <label
-            >写真ファイル（10MB以下）<input
-              id="photo-file"
-              type="file"
-              accept="image/jpeg,image/png,image/webp"
-          /></label>
-          <label
-            >権利の種類<select id="upload-license">
-              <option value="Own photo">自分・自社で撮影（権利留保）</option>
-              <option value="Commercial permission">
-                商用利用・加工の許諾を取得
-              </option>
+            >検索する写真の種類<select id="photo-search-mode">
+              <option value="sphere">丸玉・スフィア優先</option>
+              <option value="polished">研磨石・タンブル</option>
+              <option value="loose">宝石ルース</option>
+              <option value="rough">原石・鉱物標本</option>
+              <option value="all">すべて</option>
             </select></label
           >
-          <label
-            >撮影者（公開クレジット）<input id="upload-author" maxlength="500"
-          /></label>
-          <label
-            >所有・許諾の記録（非公開／10文字以上）<textarea
-              id="upload-note"
-              maxlength="3000"
-            ></textarea>
-          </label>
-          <label
-            >公開用の出典URL（任意・HTTPS）<input id="upload-source" type="url"
-          /></label>
-          <label
-            >公開クレジット補足（許諾条件に応じて）<input
-              id="upload-credit"
-              maxlength="1000"
-          /></label>
-          <button id="upload-photo">写真を非公開候補へ追加</button>
           <p>
-            JPEG・PNG・WebP対応。HEICは端末でJPEGに変換してから選択してください。追加だけでは承認・公開しません。
+            検索語は形状の証明ではありません。石種・実物写真・形状は候補ごとに確認してください。
           </p>
-        </details>
-        <h3>候補の確認・編集</h3>
-        <p id="chosen-photo">写真候補を選んでください。</p>
-        <div class="row">
-          <label>撮影者<input id="photo-author" /></label
-          ><label>画像の説明<input id="photo-alt" maxlength="300" /></label>
-        </div>
-        <label
-          >この写真の形状（目視確認して設定）<select id="photo-shape">
-            <option value="unknown">形状未確認</option>
-            <option value="sphere">丸玉・スフィア</option>
-            <option value="polished">研磨石・タンブル</option>
-            <option value="loose">宝石ルース</option>
-            <option value="rough">原石・鉱物標本</option>
-          </select></label
-        >
-        <details>
-          <summary>詳細情報（通常は編集不要）</summary>
-          <textarea
-            id="candidate-json"
-            rows="18"
-            spellcheck="false"
-            aria-label="写真候補JSON"
-          ></textarea>
-        </details>
-        <div class="row">
-          <label class="check"
-            ><input
-              type="checkbox"
-              id="identity"
-            />この石IDと実物写真の一致を確認した（AI画像・絵・別の石ではない）</label
-          ><label class="check"
-            ><input
-              type="checkbox"
-              id="rights"
-            />商用利用・改変・帰属・継承条件を原ページで確認した</label
+          <p id="collection-plan"></p>
+          <div class="row">
+            <button id="batch-start">選択した石の収集を開始</button
+            ><button id="batch-pause">一時停止</button
+            ><button id="batch-resume">停止したジョブを再開</button>
+          </div>
+          <p id="image-job" role="status"></p>
+          <div class="row">
+            <button id="collect">この石をCommonsで検索（最大10枚）</button
+            ><button id="manual-candidate">
+              詳細な候補を手動登録（上級者向け）
+            </button>
+          </div>
+          <label
+            >確認済みの形状で候補を表示<select id="photo-shape-filter">
+              <option value="all">すべて</option>
+              <option value="sphere">丸玉・スフィア</option>
+              <option value="polished">研磨石・タンブル</option>
+              <option value="loose">宝石ルース</option>
+              <option value="rough">原石・鉱物標本</option>
+              <option value="unknown">形状未確認</option>
+            </select></label
           >
-        </div>
-        <div class="row">
-          <button id="save-candidate">候補だけ保存</button
-          ><button id="approve">代表画像として採用（公開反映前）</button
-          ><button id="remove-photo">選択した石の写真を表示から外す</button>
-        </div>
-        <p class="muted">
-          ライセンス不明・非商用・改変禁止は採用できません。採用後の画像は縮小・WebP変換し、撮影者とライセンスを公開します。元ファイルは自動削除しません。
-        </p>
-        <h3>採用済み写真</h3>
-        <div id="approved"></div>
+          <p>
+            寸法は検索元の原画像、アップロードは保存候補の画素数です。ピント・自然な色・艶・背景・被写体の大きさ・透かしの有無は目視で確認し、見た目より石種の正確性を優先してください。
+          </p>
+          <div id="candidates"></div>
+
+          <h3>候補の確認・編集</h3>
+          <p id="chosen-photo">写真候補を選んでください。</p>
+          <div class="row">
+            <label>撮影者<input id="photo-author" /></label
+            ><label>画像の説明<input id="photo-alt" maxlength="300" /></label>
+          </div>
+          <label
+            >この写真の形状（目視確認して設定）<select id="photo-shape">
+              <option value="unknown">形状未確認</option>
+              <option value="sphere">丸玉・スフィア</option>
+              <option value="polished">研磨石・タンブル</option>
+              <option value="loose">宝石ルース</option>
+              <option value="rough">原石・鉱物標本</option>
+            </select></label
+          >
+          <details>
+            <summary>詳細情報（通常は編集不要）</summary>
+            <textarea
+              id="candidate-json"
+              rows="18"
+              spellcheck="false"
+              aria-label="写真候補JSON"
+            ></textarea>
+          </details>
+          <div class="row">
+            <label class="check"
+              ><input
+                type="checkbox"
+                id="identity"
+              />この石IDと実物写真の一致を確認した（AI画像・絵・別の石ではない）</label
+            ><label class="check"
+              ><input
+                type="checkbox"
+                id="rights"
+              />商用利用・改変・帰属・継承条件を原ページで確認した</label
+            >
+          </div>
+          <div class="row">
+            <button id="save-candidate">候補だけ保存</button
+            ><button id="approve">代表画像として採用（公開反映前）</button
+            ><button id="remove-photo">選択した石の写真を表示から外す</button>
+          </div>
+          <p class="muted">
+            ライセンス不明・非商用・改変禁止は採用できません。採用後の画像は縮小・WebP変換し、撮影者とライセンスを公開します。元ファイルは自動削除しません。
+          </p>
+          <h3>採用済み写真</h3>
+          <div id="approved"></div>
+        </details>
       </section>
       <dialog id="photo-dialog">
         <button id="close-photo-dialog">閉じる</button

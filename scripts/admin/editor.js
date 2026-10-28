@@ -40,6 +40,7 @@ async function action(fn) {
     busy = false;
     buttons.forEach((b) => (b.disabled = false));
     $('publish').disabled = !hasDraft;
+    $('manual-adopt').disabled = manualAdopted;
   }
 }
 const key = (e) => ($('collection').value === 'articles' ? e.slug : e.id);
@@ -469,6 +470,7 @@ $('remove-photo').onclick = () =>
   }
   renderCandidates();
   renderPhotoOverview();
+  renderManualPreview();
   await load();
 })().catch((e) => showStatus(e.message));
 
@@ -603,7 +605,8 @@ function renderPhotoOverview() {
       event.preventDefault();
       $('image-stone').value = stone.id;
       renderCandidates();
-      $('candidates').scrollIntoView({ block: 'start' });
+      manualChanged();
+      $('manual-upload').scrollIntoView({ block: 'start' });
     };
     const info = document.createElement('span');
     info.textContent = `${status} / ${state.candidates.filter((c) => c.stoneId === stone.id).length}候補`;
@@ -703,34 +706,132 @@ $('build-photos').onclick = () =>
   });
 
 $('photo-shape-filter').onchange = renderCandidates;
+const uploadLicenseUrls = {
+  CC0: 'https://creativecommons.org/publicdomain/zero/1.0/',
+  'CC BY 2.0': 'https://creativecommons.org/licenses/by/2.0/',
+  'CC BY 2.5': 'https://creativecommons.org/licenses/by/2.5/',
+  'CC BY-SA 2.0': 'https://creativecommons.org/licenses/by-sa/2.0/',
+  'CC BY-SA 2.5': 'https://creativecommons.org/licenses/by-sa/2.5/',
+  'CC BY 4.0': 'https://creativecommons.org/licenses/by/4.0/',
+  'CC BY 3.0': 'https://creativecommons.org/licenses/by/3.0/',
+  'CC BY-SA 4.0': 'https://creativecommons.org/licenses/by-sa/4.0/',
+  'CC BY-SA 3.0': 'https://creativecommons.org/licenses/by-sa/3.0/',
+};
+let manualFile = null,
+  manualCandidate = null,
+  manualSignature = '',
+  manualAdopted = false,
+  previewUrl;
+function manualChanged() {
+  manualAdopted = false;
+  $('manual-adopt').disabled = false;
+  $('manual-identity').checked = false;
+  $('manual-rights').checked = false;
+  $('upload-license-url').value =
+    uploadLicenseUrls[$('upload-license').value] ||
+    '個別の権利・許諾記録で管理（CCライセンスへ変更しません）';
+  renderManualPreview();
+}
+function renderManualPreview() {
+  const stone = state?.stones.find((s) => s.id === $('image-stone').value);
+  $('manual-target').textContent = stone
+    ? `登録先：${stone.name}（${stone.id}）`
+    : '';
+  $('manual-preview-info').textContent =
+    `${stone?.name || ''} / ${$('upload-author').value || '撮影者未入力'} / ${$('upload-license').selectedOptions[0]?.textContent || ''} / ${$('upload-source').value || '出典URL未入力'}`;
+}
+$('photo-file').onchange = () => {
+  if (previewUrl) URL.revokeObjectURL(previewUrl);
+  const file = $('photo-file').files[0];
+  $('manual-preview').hidden = !file;
+  if (file) {
+    previewUrl = URL.createObjectURL(file);
+    $('manual-preview-image').src = previewUrl;
+  }
+  manualChanged();
+};
+window.addEventListener('beforeunload', () => {
+  if (previewUrl) URL.revokeObjectURL(previewUrl);
+});
+for (const id of [
+  'upload-author',
+  'upload-license',
+  'upload-note',
+  'upload-source',
+  'upload-credit',
+  'upload-original',
+  'upload-alt',
+])
+  $(id).addEventListener('input', manualChanged);
+$('image-stone').addEventListener('change', manualChanged);
+async function saveManualCandidate() {
+  const file = $('photo-file').files[0];
+  if (!file) throw new Error('写真ファイルを選択してください');
+  if (
+    file.size > 10000000 ||
+    !['image/jpeg', 'image/png', 'image/webp'].includes(file.type)
+  )
+    throw new Error(
+      '10MB以下のJPEG・PNG・WebPを選択してください。HEICはJPEGに変換してください。',
+    );
+  const input = {
+    stoneId: $('image-stone').value,
+    photographer: $('upload-author').value.trim(),
+    license: $('upload-license').value,
+    note: $('upload-note').value.trim(),
+    sourceUrl: $('upload-source').value.trim(),
+    originalImageUrl: $('upload-original').value.trim(),
+    creditText: $('upload-credit').value.trim(),
+  };
+  const signature = JSON.stringify({
+    ...input,
+    file: { name: file.name, size: file.size, lastModified: file.lastModified },
+    alt: $('upload-alt').value.trim(),
+  });
+  if (manualCandidate && manualSignature === signature && manualFile === file)
+    return manualCandidate;
+  const data = await new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onload = () => resolve(r.result);
+    r.onerror = () => reject(new Error('画像を読み込めませんでした'));
+    r.readAsDataURL(file);
+  });
+  manualCandidate = await api('/api/upload-photo', { ...input, data });
+  manualSignature = signature;
+  manualFile = file;
+  return manualCandidate;
+}
 $('upload-photo').onclick = () =>
   action(async () => {
-    const file = $('photo-file').files[0];
-    if (!file) throw new Error('写真ファイルを選択してください');
-    if (
-      file.size > 10000000 ||
-      !['image/jpeg', 'image/png', 'image/webp'].includes(file.type)
-    )
-      throw new Error(
-        '10MB以下のJPEG・PNG・WebPを選択してください。HEICはJPEGに変換してください。',
-      );
-    const data = await new Promise((resolve, reject) => {
-      const r = new FileReader();
-      r.onload = () => resolve(r.result);
-      r.onerror = () => reject(new Error('画像を読み込めませんでした'));
-      r.readAsDataURL(file);
-    });
-    await api('/api/upload-photo', {
-      stoneId: $('image-stone').value,
-      data,
-      photographer: $('upload-author').value.trim(),
-      license: $('upload-license').value,
-      note: $('upload-note').value.trim(),
-      sourceUrl: $('upload-source').value.trim(),
-      creditText: $('upload-credit').value.trim(),
-    });
+    await saveManualCandidate();
     await refresh();
     showStatus(
-      '手動写真を非公開候補へ追加しました。石種と権利を確認して採用してください。',
+      '手動写真を非公開候補へ追加しました。石種とライセンスを確認して採用してください。',
+    );
+  });
+$('manual-adopt').onclick = () =>
+  action(async () => {
+    if (manualAdopted) {
+      showStatus('この写真は採用済みです。一括反映へ進んでください。');
+      return;
+    }
+    if (!$('manual-identity').checked || !$('manual-rights').checked)
+      throw new Error(
+        '石の種類とライセンス・利用条件の確認にチェックしてください',
+      );
+    const c = await saveManualCandidate();
+    const image = await api('/api/stage-photo', {
+      document: {
+        ...c,
+        identityConfirmed: true,
+        rightsConfirmed: true,
+        alt: $('upload-alt').value.trim() || c.stoneName + 'の写真',
+      },
+    });
+    manualCandidate = image;
+    manualAdopted = true;
+    await refresh();
+    showStatus(
+      '代表写真として採用しました。まだ公開されていません。「承認済みの代表画像をまとめて公開用データへ反映」で図鑑に反映できます。',
     );
   });

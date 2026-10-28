@@ -281,3 +281,47 @@ dialog::backdrop {
   opacity: 0.55;
   cursor: not-allowed;
 }
+#manual-upload {
+  padding: 20px;
+  margin: 20px 0;
+  background: #f6eee8;
+  border: 1px solid #d8c0ad;
+  border-radius: 14px;
+}
+#manual-upload > label {
+  margin: 14px 0;
+}
+#manual-preview {
+  margin: 18px 0;
+  padding: 12px;
+  background: #fffaf6;
+  border-radius: 12px;
+}
+#manual-preview img {
+  display: block;
+  max-width: 100%;
+  max-height: 340px;
+  margin: auto;
+  object-fit: contain;
+}
+#manual-preview figcaption {
+  overflow-wrap: anywhere;
+  padding-top: 12px;
+}
+#auto-search {
+  margin-top: 28px;
+  padding: 16px;
+  border: 1px solid #decec0;
+  border-radius: 12px;
+}
+#manual-adopt {
+  background: #80594e;
+}
+#manual-adopt:disabled {
+  opacity: 0.65;
+}
+@media (max-width: 640px) {
+  #manual-upload {
+    padding: 14px;
+  }
+}
