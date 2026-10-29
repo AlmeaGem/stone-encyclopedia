@@ -250,10 +250,11 @@ export class PhotoMedia {
       .update(JSON.stringify(input))
       .digest('hex');
     if (input.requestId) {
-      const existing = (await this.store.candidates()).find(
+      const existing = (await this.store.rawCandidates()).find(
         (c) => c.id === 'upload-' + input.requestId,
       );
       if (existing) {
+        await this.store.assertCandidateActive(existing);
         const proof = JSON.parse(
           await readFile(
             join(

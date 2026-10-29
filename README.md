@@ -34,6 +34,8 @@ npm run test:e2e
 
 ## 編集と写真
 
+**不要な仮保存候補の削除・復元**は、[30日ゴミ箱の操作手順](docs/photo-trash.md)を参照してください。公開用画像は変更しません。
+
 **Macの仮保存写真をまとめて採用**する場合は、[一括アップロード・一括採用の手順](docs/bulk-photo-registration.md)を参照してください。既存の`.editor/`を保持し、公開はGitHub Desktop・Actionsを使います。
 
 管理画面の「保存して公開」だけで更新するCloudflare写真サービスも実装しています。初回のAccess・R2・D1接続は未実施です。[設計・費用・初回設定と操作手順](docs/cloud-photo-publishing.md)を参照してください。既存のローカル管理画面は引き続き使えます。

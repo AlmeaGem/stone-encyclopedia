@@ -79,7 +79,10 @@
           <div class="row">
             <button id="bulk-select-all">候補を全選択</button
             ><button id="bulk-clear">選択解除</button
-            ><button id="bulk-reload">保存済み候補を再読込</button>
+            ><button id="bulk-reload">保存済み候補を再読込</button
+            ><button id="bulk-delete-selected" class="candidate-delete">
+              選択画像を削除
+            </button>
           </div>
           <div id="bulk-candidates" class="bulk-grid"></div>
           <div class="row">
@@ -111,6 +114,33 @@
             Actionsでプレビューを公開してください。
           </p>
         </section>
+        <details id="photo-trash-panel">
+          <summary>候補画像のゴミ箱（30日間復元可能）</summary>
+          <p>
+            仮保存・確認待ちの候補だけを一覧から外します。原本・権利記録は保持します。30日経過後も自動消去しませんが、この画面からの復元は期限内に行ってください。
+          </p>
+          <p id="photo-trash-count" role="status"></p>
+          <div id="photo-trash-list" class="bulk-grid"></div>
+          <div class="row">
+            <button id="photo-trash-prev">前の30件</button
+            ><span id="photo-trash-page"></span
+            ><button id="photo-trash-next">次の30件</button>
+          </div>
+        </details>
+        <dialog id="photo-trash-dialog" aria-labelledby="photo-trash-title">
+          <h3 id="photo-trash-title">候補画像の削除確認</h3>
+          <p>
+            チェックした候補だけをゴミ箱へ移動します。公開済み・承認済みの代表写真は削除しません。30日以内なら復元できます。
+          </p>
+          <p id="photo-trash-selection-count" role="status"></p>
+          <div id="photo-trash-confirm-list" class="bulk-grid"></div>
+          <p id="photo-trash-error" role="alert"></p>
+          <div class="row">
+            <button id="photo-trash-confirm" class="candidate-delete">
+              チェックした候補をゴミ箱へ</button
+            ><button id="photo-trash-cancel">キャンセル</button>
+          </div>
+        </dialog>
         <section id="bulk-upload">
           <h3>複数画像をまとめて仮保存</h3>
           <p>

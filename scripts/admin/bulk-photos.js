@@ -1,4 +1,11 @@
-export function initBulkPhotos({ api, getState, refresh, action, showStatus }) {
+export function initBulkPhotos({
+  api,
+  getState,
+  refresh,
+  action,
+  showStatus,
+  trashUI,
+}) {
   const $ = (id) => document.getElementById(id);
   const choices = new Map(),
     uploads = [];
@@ -67,7 +74,7 @@ export function initBulkPhotos({ api, getState, refresh, action, showStatus }) {
     );
   }
   function eligible(c) {
-    return ['pending', 'review'].includes(c.status) && !revision(c)?.protected;
+    return ['pending', 'review'].includes(c.status);
   }
   function enlarge(c) {
     $('photo-large').src =
@@ -123,6 +130,8 @@ export function initBulkPhotos({ api, getState, refresh, action, showStatus }) {
   function render() {
     const s = getState();
     if (!s?.photoBulk) return;
+    for (const k of choices.keys())
+      if (!s.candidates.some((c) => key(c) === k)) choices.delete(k);
     const list = filtered();
     page = Math.min(page, Math.max(0, Math.ceil(list.length / 30) - 1));
     $('bulk-candidates').replaceChildren();
@@ -200,6 +209,7 @@ export function initBulkPhotos({ api, getState, refresh, action, showStatus }) {
       source.rel = 'noopener noreferrer';
       card.append(source);
       if (c.creditText) card.append(element('p', c.creditText));
+      card.append(trashUI.createDeleteButton(c));
       $('bulk-candidates').append(card);
     }
     $('bulk-confirm-adopt').disabled = !plan?.results.some(
@@ -272,6 +282,12 @@ export function initBulkPhotos({ api, getState, refresh, action, showStatus }) {
     render();
   };
   $('bulk-reload').onclick = () => action(refresh);
+  $('bulk-delete-selected').onclick = () =>
+    action(() =>
+      trashUI.confirmCandidates(
+        getState().candidates.filter((c) => choice(c).selected && eligible(c)),
+      ),
+    );
   $('bulk-preview').onclick = () =>
     action(async () => {
       const items = getState()

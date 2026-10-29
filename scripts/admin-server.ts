@@ -8,6 +8,7 @@ import { readFile } from 'node:fs/promises';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { ImageBatch } from './image-batch';
+import { PhotoTrash } from './photo-trash';
 import { PhotoBulk } from './photo-bulk';
 import { PhotoMedia } from './photo-media';
 import { fileURLToPath } from 'node:url';
@@ -30,6 +31,7 @@ export async function startEditor(
   const store = new EditorStore(resolve(root));
   const media = new PhotoMedia(store, imageFetcher);
   const photoBulk = new PhotoBulk(store, imageFetcher);
+  const photoTrash = new PhotoTrash(store);
   const batch = new ImageBatch(store, (root, id, _fetcher, mode) =>
     collectForStone(root, id, imageFetcher, mode),
   );
@@ -164,6 +166,10 @@ export async function startEditor(
           await file('index.html', 'text/html; charset=utf-8');
           return;
         }
+        if (req.method === 'GET' && url.pathname === '/photo-trash.js') {
+          await file('photo-trash.js', 'application/javascript');
+          return;
+        }
         if (req.method === 'GET' && url.pathname === '/bulk-photos.js') {
           await file('bulk-photos.js', 'application/javascript');
           return;
@@ -184,7 +190,20 @@ export async function startEditor(
             imageBudget: await store.imageBudget(),
             imageHealth: await media.health(),
             photoBulk: await photoBulk.state(),
+            photoTrash: await photoTrash.state(),
           });
+          return;
+        }
+        if (req.method === 'GET' && url.pathname === '/api/trash-thumbnail') {
+          const c = await photoTrash.thumbnailCandidate(
+            url.searchParams.get('trashId'),
+          );
+          const bytes = await media.thumbnail(
+            c,
+            url.searchParams.get('large') === '1',
+          );
+          res.writeHead(200, { 'Content-Type': 'image/webp' });
+          res.end(bytes);
           return;
         }
         if (req.method === 'GET' && url.pathname === '/api/thumbnail') {
@@ -230,6 +249,9 @@ export async function startEditor(
                 '/api/stage-photo',
                 '/api/bulk-photo-preview',
                 '/api/bulk-photo-adopt',
+                '/api/photo-trash-preview',
+                '/api/photo-trash-delete',
+                '/api/photo-trash-restore',
                 '/api/apply-photos',
                 '/api/image-budget',
               ].includes(url.pathname)
@@ -261,6 +283,12 @@ export async function startEditor(
                 await store.atomic(path, { ...saved, limit: body.limit });
                 return { ok: true };
               }
+              case '/api/photo-trash-preview':
+                return photoTrash.preview(body.items);
+              case '/api/photo-trash-delete':
+                return photoTrash.remove(body.token, body.items);
+              case '/api/photo-trash-restore':
+                return photoTrash.restore(body.trashId);
               case '/api/bulk-photo-preview':
                 return photoBulk.preview(body.items);
               case '/api/bulk-photo-adopt':

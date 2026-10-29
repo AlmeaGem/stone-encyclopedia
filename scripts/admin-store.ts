@@ -2,6 +2,7 @@ import { readFile, writeFile, mkdir, rename, unlink } from 'node:fs/promises';
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';
 import { z } from 'zod';
+import { photoKey, readPhotoTrash } from './photo-trash-state';
 import {
   stoneSchema,
   articleSchema,
@@ -141,7 +142,7 @@ export class EditorStore {
       limit: saved.limit || 100,
     };
   }
-  async candidates(): Promise<Candidate[]> {
+  async rawCandidates(): Promise<Candidate[]> {
     try {
       return z
         .array(candidateSchema)
@@ -155,14 +156,32 @@ export class EditorStore {
       throw e;
     }
   }
+  async candidates(): Promise<Candidate[]> {
+    const raw = await this.rawCandidates();
+    const hidden = new Set(
+      (await readPhotoTrash(this.root)).entries
+        .filter((e) => e.restoredAt === null)
+        .map((e) => photoKey(e.candidate)),
+    );
+    return raw.filter((c) => !hidden.has(photoKey(c)));
+  }
+  async assertCandidateActive(c: Candidate) {
+    if (
+      (await readPhotoTrash(this.root)).entries.some(
+        (e) => e.restoredAt === null && photoKey(e.candidate) === photoKey(c),
+      )
+    )
+      throw new Error('この候補はゴミ箱内です。先にゴミ箱から復元してください');
+  }
   async saveCandidate(document: unknown) {
     const c = candidateSchema.parse(document);
+    await this.assertCandidateActive(c);
     const stones = await this.read('stones');
     if (!stones.some((s: any) => s.id === c.stoneId))
       throw new Error('石IDが見つかりません');
     if (c.status === 'approved')
       throw new Error('承認は専用の確認操作で行ってください');
-    const all = await this.candidates(),
+    const all = await this.rawCandidates(),
       idx = all.findIndex((x) => x.id === c.id && x.stoneId === c.stoneId);
     if (idx < 0) all.push(c);
     else all[idx] = c;
@@ -175,6 +194,7 @@ export class EditorStore {
     stage = false,
   ) {
     const c = candidateSchema.parse(document);
+    await this.assertCandidateActive(c);
     const stones = await this.read('stones');
     if (!stones.some((s: any) => s.id === c.stoneId))
       throw new Error('石IDが見つかりません');
@@ -226,7 +246,7 @@ export class EditorStore {
     images.push(image);
     if (!stage)
       await this.atomic(join(this.root, 'src/content/images.json'), images);
-    const queue = await this.candidates();
+    const queue = await this.rawCandidates();
     const index = queue.findIndex(
       (i) => i.id === c.id && i.stoneId === c.stoneId,
     );

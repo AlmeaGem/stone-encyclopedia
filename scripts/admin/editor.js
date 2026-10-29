@@ -1,3 +1,4 @@
+import { initPhotoTrash } from './photo-trash.js';
 import { initBulkPhotos } from './bulk-photos.js';
 let state,
   csrf,
@@ -43,6 +44,7 @@ async function action(fn) {
     $('publish').disabled = !hasDraft;
     $('manual-adopt').disabled = manualAdopted;
     bulkRender();
+    trashUI.render();
   }
 }
 const key = (e) => ($('collection').value === 'articles' ? e.slug : e.id);
@@ -270,6 +272,7 @@ function renderCandidates() {
       document.createTextNode(' '),
       retry,
       button,
+      trashUI.createDeleteButton(c),
     );
     wrap.append(div);
   }
@@ -286,6 +289,7 @@ async function refresh() {
   renderCandidates();
   renderPhotoOverview();
   bulkRender();
+  trashUI.render();
 }
 $('collection').onchange = () => {
   entries();
@@ -475,6 +479,7 @@ $('remove-photo').onclick = () =>
   renderPhotoOverview();
   renderManualPreview();
   bulkRender();
+  trashUI.render();
   await load();
 })().catch((e) => showStatus(e.message));
 
@@ -642,16 +647,19 @@ $('select-ten').onclick = () => {
   state.stones.slice(0, 10).forEach((s) => chosenStones.add(s.id));
   renderPhotoOverview();
   bulkRender();
+  trashUI.render();
 };
 $('select-all-stones').onclick = () => {
   state.stones.forEach((s) => chosenStones.add(s.id));
   renderPhotoOverview();
   bulkRender();
+  trashUI.render();
 };
 $('clear-stones').onclick = () => {
   chosenStones.clear();
   renderPhotoOverview();
   bulkRender();
+  trashUI.render();
 };
 $('save-image-limit').onclick = () =>
   action(async () => {
@@ -871,7 +879,16 @@ $('manual-adopt').onclick = () =>
     );
   });
 
+const trashUI = initPhotoTrash({
+  api,
+  getState: () => state,
+  refresh,
+  action,
+  showStatus,
+});
+
 const bulkRender = initBulkPhotos({
+  trashUI,
   api,
   getState: () => state,
   refresh,
