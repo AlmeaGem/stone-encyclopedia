@@ -68,7 +68,8 @@ test('detail separates facts, quality and symbolism, with sources, internal link
   await expect(page.locator('h2')).toContainText([
     '鉱物・物理的な情報',
     '宝石としての見方・選び方',
-    '石の意味と伝承',
+    '伝説と、スピリチュアルな意味',
+    '相乗効果を期待する組み合わせ',
     '浄化と、取り扱いの注意',
   ]);
   await expect(page.getByText('未確認', { exact: true }).first()).toBeVisible();
