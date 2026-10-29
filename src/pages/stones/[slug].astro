@@ -182,9 +182,7 @@ const schema = {
             <div class="tag-list">
               {synergies.map(
                 (s) =>
-                  s && (
-                    <a href={pathTo(`stones/${s.slug}/`)}>{s.name} ↗</a>
-                  ),
+                  s && <a href={pathTo(`stones/${s.slug}/`)}>{s.name} ↗</a>,
               )}
             </div>
           ) : (
@@ -197,9 +195,7 @@ const schema = {
               <div class="tag-list">
                 {cautions.map(
                   (s) =>
-                    s && (
-                      <a href={pathTo(`stones/${s.slug}/`)}>{s.name} ↗</a>
-                    ),
+                    s && <a href={pathTo(`stones/${s.slug}/`)}>{s.name} ↗</a>,
                 )}
               </div>
             </>
