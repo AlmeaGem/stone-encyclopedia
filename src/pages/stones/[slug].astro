@@ -91,7 +91,7 @@ const schema = {
         <a href="#nature">鉱物・物理的な情報</a>
         <a href="#quality">品質・選び方</a>
         <a href="#story">伝説・スピリチュアルな意味</a>
-        <a href="#pairing">石同士の相性・組み合わせ</a>
+        <a href="#pairing">相乗効果・おすすめの組み合わせ</a>
         <a href="#care">浄化・取り扱い</a>
         {references.length > 0 && <a href="#references">参考文献・出典</a>}
       </aside>
@@ -160,17 +160,19 @@ const schema = {
         </section>
         <section id="pairing" class="detail-section">
           <p class="eyebrow">04 / STONE PAIRINGS</p>
-          <h2>相乗効果と石同士の相性</h2>
+          <h2>相乗効果を期待する組み合わせ</h2>
           <h3>相乗効果が期待される石</h3>
           {stone.synergyNote && <Prose text={stone.synergyNote} />}
           {synergies.length > 0 ? (
             <div class="tag-list">{synergies.map((s) => s && <a href={pathTo(`stones/${s.slug}/`)}>{s.name} ↗</a>)}</div>
           ) : <p class="quiet-note">相乗効果の組み合わせを調査中です。</p>}
-          <h3>相性に注意したい石</h3>
-          {stone.cautionNote && <Prose text={stone.cautionNote} />}
-          {cautions.length > 0 ? (
-            <div class="tag-list">{cautions.map((s) => s && <a href={pathTo(`stones/${s.slug}/`)}>{s.name} ↗</a>)}</div>
-          ) : <p class="quiet-note">特定の石を「相性が悪い」と一律に決める組み合わせは掲載していません。願いの方向性や石の硬さを踏まえて選べます。</p>}
+          {(cautions.length > 0 && stone.cautionNote) && (
+            <>
+              <h3>組み合わせを避けたい石</h3>
+              <Prose text={stone.cautionNote} />
+              <div class="tag-list">{cautions.map((s) => s && <a href={pathTo(`stones/${s.slug}/`)}>{s.name} ↗</a>)}</div>
+            </>
+          )}
         </section>
         <section id="care" class="detail-section">
           <p class="eyebrow">05 / CARE</p>
