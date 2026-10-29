@@ -91,7 +91,7 @@ const schema = {
         <a href="#nature">鉱物・物理的な情報</a>
         <a href="#quality">品質・選び方</a>
         <a href="#story">伝説・スピリチュアルな意味</a>
-        <a href="#pairing">相乗効果・おすすめの組み合わせ</a>
+        <a href="#pairing">意味と相性・おすすめの組み合わせ</a>
         <a href="#care">浄化・取り扱い</a>
         {references.length > 0 && <a href="#references">参考文献・出典</a>}
       </aside>
@@ -143,7 +143,10 @@ const schema = {
         <section id="story" class="detail-section story-section">
           <p class="eyebrow">03 / SPIRITUAL MEANING</p>
           <h2>伝説と、スピリチュアルな意味</h2>
-          <h3>このストーンの伝説・言い伝え</h3>
+          <p class="quiet-note">
+            ここで紹介する意味は、文化的な伝承や現代のクリスタル文化の解釈です。鉱物の性質とは分けてお読みください。
+          </p>
+          <h3>来歴・伝説・言い伝え</h3>
           {stone.legend ? (
             <Prose text={stone.legend} />
           ) : (
@@ -159,11 +162,12 @@ const schema = {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                伝承の参考資料：{stone.legendSourceLabel || '出典を開く'} ↗
+                来歴・伝承の参考資料：{stone.legendSourceLabel || '出典を開く'}{' '}
+                ↗
               </a>
             </p>
           )}
-          <h3>スピリチュアル的効果</h3>
+          <h3>スピリチュアルな意味・象徴</h3>
           <Prose text={stone.spiritualEffects || stone.symbolism} />
           <h3>こんな願いを持つ人に</h3>
           <div class="tag-list">
@@ -175,8 +179,11 @@ const schema = {
         </section>
         <section id="pairing" class="detail-section">
           <p class="eyebrow">04 / STONE PAIRINGS</p>
-          <h2>相乗効果を期待する組み合わせ</h2>
-          <h3>相乗効果が期待される石</h3>
+          <h2>相性を考えた組み合わせ</h2>
+          <p class="quiet-note">
+            伝承の意味や色・質感を重ねたALMÉA GEMの提案です。
+          </p>
+          <h3>意味やテーマを重ねる石</h3>
           {stone.synergyNote && <Prose text={stone.synergyNote} />}
           {synergies.length > 0 ? (
             <div class="tag-list">
@@ -186,7 +193,7 @@ const schema = {
               )}
             </div>
           ) : (
-            <p class="quiet-note">相乗効果の組み合わせを調査中です。</p>
+            <p class="quiet-note">組み合わせの紹介を準備しています。</p>
           )}
           {cautions.length > 0 && stone.cautionNote && (
             <>

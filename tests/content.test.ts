@@ -60,7 +60,7 @@ it('rejects duplicate paths, private-field injections, missing IDs and dangling 
     ),
   ).toThrow();
 });
-it('checks the first twenty researched stones', () => {
+it('checks structural completeness of the first twenty enriched entries', () => {
   for (const stone of stones.slice(0, 20)) {
     expect(stone.legend?.length).toBeGreaterThan(70);
     expect(stone.spiritualEffects?.length).toBeGreaterThan(70);
@@ -127,4 +127,32 @@ it('indexes general wishes and theme tags without inventing category membership 
   expect(matches('調和', terms)).toBe(true);
   expect(matches('紅水晶', terms)).toBe(true);
   expect(matches('魔除け', terms)).toBe(false);
+});
+
+it('keeps the first twenty story citations aligned and fragile specimens distinct from wearable recipes', () => {
+  for (const stone of stones.slice(0, 20)) {
+    expect(
+      stone.sources.some(
+        (source) =>
+          source.url === stone.legendSourceUrl &&
+          source.label === stone.legendSourceLabel,
+      ),
+    ).toBe(true);
+    expect(new Set(stone.synergyStoneIds).size).toBe(
+      stone.synergyStoneIds?.length,
+    );
+    expect(stone.synergyStoneIds).not.toContain(stone.id);
+  }
+  const onyx = stones.find((s) => s.id === 's015')!;
+  expect(onyx.legendSourceUrl).toContain('thejewelrymagazine.com');
+  expect(onyx.legend).toContain('ローマ神話');
+  expect(stones.find((s) => s.id === 's006')!.characteristics).not.toContain(
+    '単結晶の組み合わせ',
+  );
+  expect(stones.find((s) => s.id === 's007')!.synergyNote).toContain(
+    '鑑賞用標本',
+  );
+  expect(stones.find((s) => s.id === 's011')!.synergyNote).toContain(
+    '重晶石質のものとは区別',
+  );
 });

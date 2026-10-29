@@ -69,7 +69,7 @@ test('detail separates facts, quality and symbolism, with sources, internal link
     '鉱物・物理的な情報',
     '宝石としての見方・選び方',
     '伝説と、スピリチュアルな意味',
-    '相乗効果を期待する組み合わせ',
+    '相性を考えた組み合わせ',
     '浄化と、取り扱いの注意',
   ]);
   await expect(page.getByText('未確認', { exact: true }).first()).toBeVisible();
