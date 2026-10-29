@@ -179,6 +179,9 @@ test('metadata refuses unsafe URLs, missing confirmations, NC and missing permis
   ).toThrow();
   expect(() => validateMetadata({ ...meta, rightsConfirmed: false })).toThrow();
   expect(() =>
+    validateMetadata({ ...meta, license: 'AI-generated', kind: 'real' }),
+  ).toThrow();
+  expect(() =>
     validateMetadata({ ...meta, license: 'CC BY-NC 4.0' }),
   ).toThrow();
   expect(() =>
@@ -232,4 +235,17 @@ test('Access signed JWT accepts only the configured audience and administrator e
   } finally {
     mocked.mockRestore();
   }
+});
+
+test('existing static photos can be hidden without deleting original files', async () => {
+  const paused = await handle(
+    request('/api/photos/s002/pause', { expectedRevision: '' }),
+    env,
+    auth,
+  );
+  expect(paused.status).toBe(200);
+  expect((await handle(request('/public/image/s002'), env)).status).toBe(404);
+  const manifest = await (await handle(request('/public/photos'), env)).text();
+  expect(manifest).toContain('s002');
+  expect(manifest).not.toContain('既存静的写真の公開停止記録');
 });

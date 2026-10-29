@@ -2,6 +2,7 @@ import type { D1Database, R2Bucket } from '@cloudflare/workers-types';
 import { createRemoteJWKSet, jwtVerify } from 'jose';
 import stones from '../../src/content/stones.json' with { type: 'json' };
 import { adminHtml } from './ui';
+import localPhotos from '../../src/content/images.json' with { type: 'json' };
 
 export interface Env {
   DB: D1Database;
@@ -18,6 +19,7 @@ const licenses: Record<string, string> = {
   CC0: 'https://creativecommons.org/publicdomain/zero/1.0/',
   'Own photo': '',
   'Commercial permission': '',
+  'AI-generated': '',
 };
 for (const kind of ['by', 'by-sa']) {
   for (const version of ['2.0', '2.5', '3.0', '4.0']) {
@@ -82,8 +84,13 @@ export function validateMetadata(value: Record<string, unknown>): Metadata {
       );
     }
   }
+  if (license === 'AI-generated' && value.kind !== 'illustrative')
+    throw Error('AI生成画像はイメージ写真として登録してください');
   const permissionNote = text('permissionNote', 3000);
-  if (license === 'Commercial permission' && permissionNote.length < 10)
+  if (
+    ['Commercial permission', 'AI-generated'].includes(license) &&
+    permissionNote.length < 10
+  )
     throw Error('商用利用許諾の記録を10文字以上で残してください');
   return {
     kind: value.kind,
@@ -214,6 +221,9 @@ export async function handle(
     const rows = await env.DB.prepare('SELECT * FROM photos').all<Row>();
     return response({
       stones: stones.map((s) => ({ id: s.id, name: s.name })),
+      localPhotos: localPhotos
+        .filter((p) => p.status === 'approved')
+        .map((p) => p.stoneId),
       photos: rows.results.map((r) => ({
         ...publicMeta(r),
         permissionNote: (JSON.parse(r.metadata) as Metadata).permissionNote,
@@ -298,12 +308,29 @@ export async function handle(
         httpMetadata: { contentType: 'image/webp' },
       });
     } else {
-      if (!before)
-        throw Error(
-          'クラウド登録済み写真がありません。既存の静的写真の非表示は写真登録後に操作してください',
+      if (before) {
+        objectKey = before.object_key;
+        metadata = JSON.parse(before.metadata) as Metadata;
+      } else {
+        const local = localPhotos.find(
+          (p) => p.stoneId === id && p.status === 'approved',
         );
-      objectKey = before.object_key;
-      metadata = JSON.parse(before.metadata) as Metadata;
+        if (!local) throw Error('登録写真がありません');
+        // Only a display tombstone: never delete or rewrite the existing Git image.
+        metadata = {
+          kind: local.imageKind === 'ai-generated' ? 'illustrative' : 'real',
+          photographer: local.photographer,
+          sourceUrl: local.pageUrl,
+          originalUrl: local.imageUrl,
+          license: local.license,
+          licenseUrl: local.licenseUrl,
+          credit: local.creditText || '',
+          alt: local.alt || '天然石の写真',
+          permissionNote:
+            '既存静的写真の公開停止記録。元のファイルと権利記録を保持。',
+        };
+        objectKey = '';
+      }
     }
     const state =
       action === 'publish'
