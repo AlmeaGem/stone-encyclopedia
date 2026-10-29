@@ -761,7 +761,7 @@
     "spiritualEffects": "魔除け、意志の強化、誘惑を断つ力、集中力、仕事や試験をやり抜く継続力を象徴するといわれます。気持ちが揺らぐときに『決めたことを最後まで守る』お守りとして選ばれます。人からの影響を受けすぎない境界線を意識する意味もあります。",
     "synergyStoneIds": ["s017", "s019", "s209"],
     "synergyNote": "ヘマタイトとは実行力と粘り強さ、モリオンとは守護、ゴールデンルチルクォーツとは仕事の目標に向かう意思を重ねる構成です。",
-    "legend": "オニキスという名は古代ギリシャ語の『爪』に由来します。黒と白の層を生かしたカメオや印章は古代ギリシャ・ローマの装飾品として用いられ、後のアール・デコ期には漆黒の石が洗練の象徴となりました。黒いオニキスは今もお守りや意思の強さを表す石として語られます。",
+    "legend": "ギリシャの物語では、眠る女神ヴィーナスの爪をキューピッドが矢で切り、その欠片を運命の女神たちが永遠に残る石に変えたと語られます。オニキスの名はギリシャ語の『爪』に由来します。実際にオニキスの縞を生かしたカメオや印章は古代ギリシャ・ローマで愛され、近代には漆黒の装飾石としても親しまれました。",
     "legendSourceUrl": "https://www.sothebys.com/en/articles/the-a-z-of-jewelry-o-is-for-onyx",
     "legendSourceLabel": "Sotheby's｜オニキスの歴史と装飾",
     "selection": "伝承のテーマから選ぶときも、色の好みと扱いやすさを分けて考えましょう。",
@@ -771,6 +771,12 @@
     "treatments": "",
     "related": ["s001", "s003", "s004"],
     "sources": [
+      {
+        "label": "The Jewelry Magazine｜ヴィーナスの爪の伝説",
+        "url": "https://www.thejewelrymagazine.com/jewelry-information-center/about-gemstones/onyx/",
+        "checkedAt": "2026-10-30",
+        "note": "古代ギリシャに由来すると紹介される女神ヴィーナスの爪の物語を参照。"
+      },
       {
         "label": "Sotheby's｜オニキスの歴史と装飾",
         "url": "https://www.sothebys.com/en/articles/the-a-z-of-jewelry-o-is-for-onyx",
