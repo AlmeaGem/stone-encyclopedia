@@ -557,6 +557,24 @@
   .home-hero + .home-search + .section .card-theme {
     font-size: 9px;
   }
+  .stone-figure {
+    position: relative;
+  }
+  .stone-figure .image-impression-label {
+    position: absolute;
+    right: 9px;
+    bottom: 9px;
+    padding: 2px 5px;
+    border-radius: 3px;
+    background: rgba(250, 247, 243, 0.88);
+    color: #62574f;
+    font: 10px/1.5 var(--sans);
+    letter-spacing: 0;
+  }
+  .stone-figure.detail .image-impression-label {
+    bottom: auto;
+    top: 9px;
+  }
   .stone-figure img {
     width: 100%;
     height: 190px;

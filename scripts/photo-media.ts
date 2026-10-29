@@ -249,7 +249,12 @@ export class PhotoMedia {
     const cc =
       input.license?.startsWith('CC') &&
       Object.hasOwn(licenseUrls, input.license);
-    if (!cc && !['Own photo', 'Commercial permission'].includes(input.license))
+    if (
+      !cc &&
+      !['Own photo', 'Commercial permission', 'AI-generated'].includes(
+        input.license,
+      )
+    )
       throw new Error('対応するライセンスを選択してください');
     if (!input.photographer?.trim())
       throw new Error('撮影者を入力してください');
@@ -323,6 +328,8 @@ export class PhotoMedia {
       photographer: input.photographer,
       provider: '手動アップロード',
       license: input.license,
+      imageKind:
+        input.license === 'AI-generated' ? 'ai-generated' : 'real-photo',
       licenseUrl: licenseUrls[input.license],
       commercial: true,
       derivatives: true,
@@ -343,7 +350,9 @@ export class PhotoMedia {
       shape: input.shape || 'unknown',
       shapeConfirmed: !!input.shape && input.shape !== 'unknown',
       misidentificationNote:
-        '所有・許諾記録は非公開で保持。石種・実物写真・商用利用条件の再確認が必要です。',
+        input.license === 'AI-generated'
+          ? 'AI生成のイメージ写真。実物撮影や鉱物鑑別を示すものではありません。'
+          : '所有・許諾記録は非公開で保持。石種・実物写真・商用利用条件の再確認が必要です。',
     });
     await this.store.atomic(
       join(this.store.root, '.editor/upload-rights', c.id + '.json'),
@@ -353,7 +362,9 @@ export class PhotoMedia {
           input.note.trim() ||
           (cc
             ? 'Commonsの原ページでライセンスを確認し、採用時に石種・利用条件を確認する'
-            : '本人・自社の撮影と権利保有を採用時に確認する'),
+            : input.license === 'AI-generated'
+              ? 'AI生成イメージ。生成サービスの利用条件・利用権を確認済み。実物写真ではない。'
+              : '本人・自社の撮影と権利保有を採用時に確認する'),
         sourceUrl: c.pageUrl,
         originalUrl: c.originalUrl || '',
         licenseUrl: c.licenseUrl,

@@ -727,6 +727,10 @@ function manualChanged() {
   $('manual-adopt').disabled = false;
   $('manual-identity').checked = false;
   $('manual-rights').checked = false;
+  const isAI = $('upload-license').value === 'AI-generated';
+  $('manual-identity-label').textContent = isAI
+    ? 'AI生成のイメージであり、実物写真・鑑別画像ではないことを確認しました'
+    : '選択した石と実物写真が一致していることを確認しました';
   $('upload-license-url').value =
     uploadLicenseUrls[$('upload-license').value] ||
     '個別の権利・許諾記録で管理（CCライセンスへ変更しません）';
@@ -825,7 +829,11 @@ $('manual-adopt').onclick = () =>
         ...c,
         identityConfirmed: true,
         rightsConfirmed: true,
-        alt: $('upload-alt').value.trim() || c.stoneName + 'の写真',
+        alt:
+          $('upload-alt').value.trim() ||
+          (c.license === 'AI-generated'
+            ? c.stoneName + 'のAI生成イメージ'
+            : c.stoneName + 'の写真'),
       },
     });
     manualCandidate = image;
