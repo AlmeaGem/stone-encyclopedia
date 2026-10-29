@@ -144,9 +144,24 @@ const schema = {
           <p class="eyebrow">03 / SPIRITUAL MEANING</p>
           <h2>伝説と、スピリチュアルな意味</h2>
           <h3>このストーンの伝説・言い伝え</h3>
-          {stone.legend ? <Prose text={stone.legend} /> : <p class="quiet-note">この石ならではの伝承は調査中です。確認できたものから順次掲載します。</p>}
+          {stone.legend ? (
+            <Prose text={stone.legend} />
+          ) : (
+            <p class="quiet-note">
+              この石ならではの伝承は調査中です。確認できたものから順次掲載します。
+            </p>
+          )}
           {stone.legendSourceUrl && (
-            <p class="quiet-note"><a class="text-link" href={stone.legendSourceUrl} target="_blank" rel="noopener noreferrer">伝承の参考資料：{stone.legendSourceLabel || '出典を開く'} ↗</a></p>
+            <p class="quiet-note">
+              <a
+                class="text-link"
+                href={stone.legendSourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                伝承の参考資料：{stone.legendSourceLabel || '出典を開く'} ↗
+              </a>
+            </p>
           )}
           <h3>スピリチュアル的効果</h3>
           <Prose text={stone.spiritualEffects || stone.symbolism} />
@@ -164,13 +179,29 @@ const schema = {
           <h3>相乗効果が期待される石</h3>
           {stone.synergyNote && <Prose text={stone.synergyNote} />}
           {synergies.length > 0 ? (
-            <div class="tag-list">{synergies.map((s) => s && <a href={pathTo(`stones/${s.slug}/`)}>{s.name} ↗</a>)}</div>
-          ) : <p class="quiet-note">相乗効果の組み合わせを調査中です。</p>}
-          {(cautions.length > 0 && stone.cautionNote) && (
+            <div class="tag-list">
+              {synergies.map(
+                (s) =>
+                  s && (
+                    <a href={pathTo(`stones/${s.slug}/`)}>{s.name} ↗</a>
+                  ),
+              )}
+            </div>
+          ) : (
+            <p class="quiet-note">相乗効果の組み合わせを調査中です。</p>
+          )}
+          {cautions.length > 0 && stone.cautionNote && (
             <>
               <h3>組み合わせを避けたい石</h3>
               <Prose text={stone.cautionNote} />
-              <div class="tag-list">{cautions.map((s) => s && <a href={pathTo(`stones/${s.slug}/`)}>{s.name} ↗</a>)}</div>
+              <div class="tag-list">
+                {cautions.map(
+                  (s) =>
+                    s && (
+                      <a href={pathTo(`stones/${s.slug}/`)}>{s.name} ↗</a>
+                    ),
+                )}
+              </div>
             </>
           )}
         </section>
