@@ -8,6 +8,7 @@ import { readFile } from 'node:fs/promises';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { ImageBatch } from './image-batch';
+import { PhotoBulk } from './photo-bulk';
 import { PhotoMedia } from './photo-media';
 import { fileURLToPath } from 'node:url';
 import { join, resolve } from 'node:path';
@@ -28,6 +29,7 @@ export async function startEditor(
   const sessions = new Map<string, { csrf: string; expires: number }>();
   const store = new EditorStore(resolve(root));
   const media = new PhotoMedia(store, imageFetcher);
+  const photoBulk = new PhotoBulk(store, imageFetcher);
   const batch = new ImageBatch(store, (root, id, _fetcher, mode) =>
     collectForStone(root, id, imageFetcher, mode),
   );
@@ -162,6 +164,10 @@ export async function startEditor(
           await file('index.html', 'text/html; charset=utf-8');
           return;
         }
+        if (req.method === 'GET' && url.pathname === '/bulk-photos.js') {
+          await file('bulk-photos.js', 'application/javascript');
+          return;
+        }
         if (req.method === 'GET' && url.pathname === '/editor.js') {
           await file('editor.js', 'application/javascript');
           return;
@@ -177,6 +183,7 @@ export async function startEditor(
             imageJob: await batch.state(),
             imageBudget: await store.imageBudget(),
             imageHealth: await media.health(),
+            photoBulk: await photoBulk.state(),
           });
           return;
         }
@@ -221,6 +228,8 @@ export async function startEditor(
                 '/api/candidate',
                 '/api/approve',
                 '/api/stage-photo',
+                '/api/bulk-photo-preview',
+                '/api/bulk-photo-adopt',
                 '/api/apply-photos',
                 '/api/image-budget',
               ].includes(url.pathname)
@@ -252,6 +261,10 @@ export async function startEditor(
                 await store.atomic(path, { ...saved, limit: body.limit });
                 return { ok: true };
               }
+              case '/api/bulk-photo-preview':
+                return photoBulk.preview(body.items);
+              case '/api/bulk-photo-adopt':
+                return photoBulk.adopt(body.token);
               case '/api/stage-photo':
                 return store.approve(body.document, imageFetcher, true);
               case '/api/build-photos': {
@@ -275,7 +288,7 @@ export async function startEditor(
                 };
               }
               case '/api/apply-photos':
-                return store.applyApproved();
+                return store.applyApproved(body.protectExisting === true);
               case '/api/logout':
                 sessions.delete(token!);
                 res.setHeader(

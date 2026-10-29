@@ -60,6 +60,82 @@
           承認済みを一括反映。コード・JSONの編集は不要です。
         </p>
         <label>対象の石<select id="image-stone"></select></label>
+        <section id="bulk-photos" aria-labelledby="bulk-photo-title">
+          <h3 id="bulk-photo-title">仮保存画像の一括採用</h3>
+          <p>
+            このMacの保存済み候補を読み込みます。採用だけでは公開されません。既存の代表写真は一括操作で上書きしません。
+          </p>
+          <div class="row">
+            <label>石名・IDで検索<input id="bulk-search" type="search" /></label
+            ><label
+              >状態<select id="bulk-filter">
+                <option value="pending">仮保存・確認待ち</option>
+                <option value="all">すべて</option>
+                <option value="approved">承認済み・反映待ち</option>
+              </select></label
+            >
+          </div>
+          <p id="bulk-counts" role="status"></p>
+          <div class="row">
+            <button id="bulk-select-all">候補を全選択</button
+            ><button id="bulk-clear">選択解除</button
+            ><button id="bulk-reload">保存済み候補を再読込</button>
+          </div>
+          <div id="bulk-candidates" class="bulk-grid"></div>
+          <div class="row">
+            <button id="bulk-prev">前の30件</button><span id="bulk-page"></span
+            ><button id="bulk-next">次の30件</button>
+          </div>
+          <label
+            ><input
+              id="bulk-identity"
+              type="checkbox"
+            />選択したすべての写真の石ID・石種・写真区分を確認しました</label
+          >
+          <label
+            ><input
+              id="bulk-rights"
+              type="checkbox"
+            />選択したすべての写真の出典・クレジット・商用利用権限を確認しました</label
+          >
+          <button id="bulk-preview">
+            選択した画像をまとめて採用（確認へ）
+          </button>
+          <p id="bulk-job" role="status" aria-live="polite"></p>
+          <button id="bulk-apply">
+            承認済みの代表画像をまとめて公開用データへ反映（既存写真を保護）
+          </button>
+          <p>
+            反映済みでもWeb公開ではありません。GitHub
+            DesktopでCommit・Pushし、GitHub
+            Actionsでプレビューを公開してください。
+          </p>
+        </section>
+        <section id="bulk-upload">
+          <h3>複数画像をまとめて仮保存</h3>
+          <p>
+            1回に最大30枚。各行の石を必ず指定してください。ファイル名から自動確定しません。仮保存できた画像はブラウザを閉じてもこのMacに残ります。未保存のファイル選択は画面を閉じると失われます。
+          </p>
+          <label
+            >JPEG・PNG・WebPを複数選択（各10MB以下）<input
+              id="bulk-files"
+              type="file"
+              multiple
+              accept="image/jpeg,image/png,image/webp"
+          /></label>
+          <div id="bulk-upload-rows" class="bulk-grid"></div>
+          <button id="bulk-save-uploads">選択した画像をまとめて仮保存</button>
+          <p id="bulk-upload-result" role="status"></p>
+        </section>
+        <dialog id="bulk-confirm-dialog">
+          <h3>一括採用の最終確認</h3>
+          <p>
+            正常な候補だけを採用します。除外理由を確認してください。既存写真は上書きしません。
+          </p>
+          <div id="bulk-confirm-results"></div>
+          <button id="bulk-confirm-adopt">確認した正常画像を採用</button
+          ><button id="bulk-cancel-adopt">戻って修正</button>
+        </dialog>
         <section id="manual-upload" aria-labelledby="manual-photo-title">
           <h3 id="manual-photo-title">1. Macから写真を選び、出典を登録</h3>
           <p>
@@ -157,6 +233,12 @@
           </p>
         </section>
         <h3>3. 承認済み写真をまとめて図鑑へ反映</h3>
+        <label
+          ><input
+            id="allow-photo-replacement"
+            type="checkbox"
+          />単品で確認済みの既存代表写真を差し替える（通常はオフ）</label
+        >
         <button id="apply-photos">
           承認済みの代表画像をまとめて公開用データへ反映
         </button>

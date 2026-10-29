@@ -325,3 +325,98 @@ dialog::backdrop {
     padding: 14px;
   }
 }
+#bulk-photos,
+#bulk-upload {
+  margin: 24px 0;
+  padding: 20px;
+  border: 1px solid #d8c0ad;
+  border-radius: 14px;
+  background: #faf5ef;
+}
+.bulk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: 16px;
+}
+.bulk-card {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid #ddc9b7;
+  border-radius: 12px;
+  background: #fffdfb;
+}
+.bulk-card > img,
+.bulk-card .photo-preview img {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+}
+.bulk-card label {
+  display: block;
+  margin: 12px 0;
+}
+.bulk-card input:not([type='checkbox']),
+.bulk-card select,
+.bulk-card textarea {
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+}
+.bulk-card p,
+.bulk-card small,
+#bulk-job {
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+#bulk-confirm-dialog {
+  width: min(700px, 85vw);
+  max-height: 80vh;
+  overflow: auto;
+  border: 1px solid #ba9980;
+  border-radius: 16px;
+}
+@media (max-width: 640px) {
+  #bulk-photos,
+  #bulk-upload {
+    padding: 12px;
+  }
+}
+#bulk-photos label:has(input[type='checkbox']),
+#bulk-upload label:has(input[type='checkbox']) {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  min-width: 0;
+  color: #51433a;
+  cursor: pointer;
+}
+#bulk-photos input[type='checkbox'],
+#bulk-upload input[type='checkbox'] {
+  width: 20px;
+  min-height: 20px;
+  height: 20px;
+  padding: 0;
+  flex: 0 0 20px;
+}
+
+.bulk-card {
+  overflow-wrap: anywhere;
+}
+
+#bulk-photos > .row button {
+  flex: 1 1 130px;
+}
+label:has(#allow-photo-replacement) {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+}
+#allow-photo-replacement {
+  width: 20px;
+  height: 20px;
+  min-height: 20px;
+  flex: 0 0 20px;
+  padding: 0;
+}

@@ -19,7 +19,10 @@ test('sphere search defaults, error reasons and official metadata retry work wit
   await page
     .locator('#image-stone')
     .selectOption(test.info().project.name === 'desktop' ? 's008' : 's007');
-  await page.locator('.photo-preview').first().scrollIntoViewIfNeeded();
+  await page
+    .locator('#candidates .photo-preview')
+    .first()
+    .scrollIntoViewIfNeeded();
   await expect(page.locator('.image-error')).toContainText('403');
   await expect(
     page.getByRole('button', { name: 'この写真を選ぶ', exact: true }),

@@ -233,6 +233,8 @@ export class PhotoMedia {
   }
   async upload(input: {
     stoneId: string;
+    requestId?: string;
+    imageKind?: string;
     data: string;
     photographer: string;
     license: string;
@@ -242,6 +244,46 @@ export class PhotoMedia {
     creditText?: string;
     originalImageUrl?: string;
   }) {
+    if (input.requestId && !/^[a-f0-9-]{36}$/.test(input.requestId))
+      throw new Error('アップロード識別子が不正です');
+    const requestHash = createHash('sha256')
+      .update(JSON.stringify(input))
+      .digest('hex');
+    if (input.requestId) {
+      const existing = (await this.store.candidates()).find(
+        (c) => c.id === 'upload-' + input.requestId,
+      );
+      if (existing) {
+        const proof = JSON.parse(
+          await readFile(
+            join(
+              this.store.root,
+              '.editor/upload-rights',
+              existing.id + '.json',
+            ),
+            'utf8',
+          ),
+        );
+        if (proof.requestHash !== requestHash)
+          throw new Error(
+            '保存済みの入力が変わっています。別の写真として選択し直してください',
+          );
+        return existing;
+      }
+    }
+    if (
+      input.imageKind &&
+      !['real-photo', 'ai-generated', 'illustrative-photo'].includes(
+        input.imageKind,
+      )
+    )
+      throw new Error('写真区分が不正です');
+    if (
+      input.imageKind &&
+      (input.license === 'AI-generated') !==
+        (input.imageKind === 'ai-generated')
+    )
+      throw new Error('AI生成区分と権利種別を確認してください');
     const stone = (await this.store.read('stones')).find(
       (s: any) => s.id === input.stoneId,
     );
@@ -317,7 +359,7 @@ export class PhotoMedia {
       originalUrl = original.href;
     }
     const c = candidateSchema.parse({
-      id: 'upload-' + randomUUID(),
+      id: 'upload-' + (input.requestId || randomUUID()),
       stoneId: stone.id,
       stoneName: stone.name,
       searchName: '手動アップロード',
@@ -329,7 +371,8 @@ export class PhotoMedia {
       provider: '手動アップロード',
       license: input.license,
       imageKind:
-        input.license === 'AI-generated' ? 'ai-generated' : 'real-photo',
+        input.imageKind ||
+        (input.license === 'AI-generated' ? 'ai-generated' : 'real-photo'),
       licenseUrl: licenseUrls[input.license],
       commercial: true,
       derivatives: true,
@@ -358,6 +401,7 @@ export class PhotoMedia {
       join(this.store.root, '.editor/upload-rights', c.id + '.json'),
       {
         stoneId: c.stoneId,
+        requestHash,
         note:
           input.note.trim() ||
           (cc

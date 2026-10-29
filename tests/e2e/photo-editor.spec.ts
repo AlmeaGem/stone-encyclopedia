@@ -14,12 +14,12 @@ test('private photo editor offers thumbnails, source review and staged adoption 
   await expect(page.locator('#photo-overview .photo-row')).toHaveCount(210);
   await page.locator('#select-ten').click();
   await expect(page.locator('#collection-plan')).toContainText('対象 10種類');
-  const image = page.locator('.photo-preview img').first();
+  const image = page.locator('#candidates .photo-preview img').first();
   await expect(image).toBeVisible();
   await expect
     .poll(() => image.evaluate((img: HTMLImageElement) => img.naturalWidth))
     .toBeGreaterThan(0);
-  await page.locator('.photo-preview').first().click();
+  await page.locator('#candidates .photo-preview').first().click();
   await expect(page.locator('#photo-dialog')).toBeVisible();
   await expect(page.locator('#photo-dialog-info')).toContainText(
     'TEST FIXTURE',

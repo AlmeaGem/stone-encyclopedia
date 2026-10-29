@@ -1,3 +1,4 @@
+import { initBulkPhotos } from './bulk-photos.js';
 let state,
   csrf,
   revision,
@@ -41,6 +42,7 @@ async function action(fn) {
     buttons.forEach((b) => (b.disabled = false));
     $('publish').disabled = !hasDraft;
     $('manual-adopt').disabled = manualAdopted;
+    bulkRender();
   }
 }
 const key = (e) => ($('collection').value === 'articles' ? e.slug : e.id);
@@ -283,6 +285,7 @@ async function refresh() {
   csrf = state.csrf;
   renderCandidates();
   renderPhotoOverview();
+  bulkRender();
 }
 $('collection').onchange = () => {
   entries();
@@ -471,6 +474,7 @@ $('remove-photo').onclick = () =>
   renderCandidates();
   renderPhotoOverview();
   renderManualPreview();
+  bulkRender();
   await load();
 })().catch((e) => showStatus(e.message));
 
@@ -637,14 +641,17 @@ $('select-ten').onclick = () => {
   chosenStones.clear();
   state.stones.slice(0, 10).forEach((s) => chosenStones.add(s.id));
   renderPhotoOverview();
+  bulkRender();
 };
 $('select-all-stones').onclick = () => {
   state.stones.forEach((s) => chosenStones.add(s.id));
   renderPhotoOverview();
+  bulkRender();
 };
 $('clear-stones').onclick = () => {
   chosenStones.clear();
   renderPhotoOverview();
+  bulkRender();
 };
 $('save-image-limit').onclick = () =>
   action(async () => {
@@ -686,7 +693,27 @@ $('apply-photos').onclick = () =>
       )
     )
       return;
-    const result = await api('/api/apply-photos', {});
+    const replace = $('allow-photo-replacement').checked;
+    const conflicts = state.candidates.filter(
+      (c) =>
+        c.status === 'approved' &&
+        state.images.some(
+          (p) =>
+            p.stoneId === c.stoneId && (p.id !== c.id || p.sha256 !== c.sha256),
+        ),
+    );
+    if (
+      replace &&
+      conflicts.length &&
+      !confirm(
+        '次の既存代表写真を差し替えますか？\n' +
+          conflicts.map((c) => c.stoneId + ' ' + c.stoneName).join('\n'),
+      )
+    )
+      return;
+    const result = await api('/api/apply-photos', {
+      protectExisting: !replace,
+    });
     await refresh();
     showStatus(
       `${result.applied}種類を反映しました。まだWeb公開ではありません。ビルド確認とGitHubへの反映後、プレビューデプロイが必要です。`,
@@ -843,3 +870,11 @@ $('manual-adopt').onclick = () =>
       '代表写真として採用しました。まだ公開されていません。「承認済みの代表画像をまとめて公開用データへ反映」で図鑑に反映できます。',
     );
   });
+
+const bulkRender = initBulkPhotos({
+  api,
+  getState: () => state,
+  refresh,
+  action,
+  showStatus,
+});

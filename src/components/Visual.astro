@@ -26,14 +26,14 @@ const cloudOrigin = cloudPhotoOrigin(import.meta.env.PUBLIC_PHOTO_API_ORIGIN);
         loading="lazy"
         decoding="async"
         alt={
-          photo.imageKind === 'ai-generated'
+          ['ai-generated', 'illustrative-photo'].includes(photo.imageKind || '')
             ? `${stone.name}のイメージ写真`
             : photo.alt || `${stone.name}の承認済み写真`
         }
       />
-      {photo.imageKind === 'ai-generated' && (
-        <span class="image-impression-label">イメージ写真</span>
-      )}
+      {['ai-generated', 'illustrative-photo'].includes(
+        photo.imageKind || '',
+      ) && <span class="image-impression-label">イメージ写真</span>}
       {detail && photo.imageKind !== 'ai-generated' && (
         <figcaption>
           写真：{photo.photographer} ·{' '}

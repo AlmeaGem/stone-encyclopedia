@@ -272,9 +272,15 @@ export class EditorStore {
         throw new Error('所有・商用利用許諾の記録を再確認してください');
     }
   }
-  async applyApproved() {
+  async applyApproved(protectExisting = false) {
+    const published = protectExisting ? await this.read('images') : [];
     const staged = (await this.candidates())
-      .filter((c) => c.status === 'approved')
+      .filter(
+        (c) =>
+          c.status === 'approved' &&
+          (!protectExisting ||
+            !published.some((p: Candidate) => p.stoneId === c.stoneId)),
+      )
       .map(validateApproved);
     const ids = new Set(staged.map((c) => c.stoneId));
     if (ids.size !== staged.length)

@@ -109,7 +109,9 @@ export const candidateSchema = z
       'AI-generated',
     ]),
     licenseUrl: z.string().max(300),
-    imageKind: z.enum(['real-photo', 'ai-generated']).optional(),
+    imageKind: z
+      .enum(['real-photo', 'ai-generated', 'illustrative-photo'])
+      .optional(),
     commercial: z.boolean(),
     derivatives: z.boolean(),
     attribution: z.boolean(),
