@@ -1,5 +1,6 @@
 import { z } from 'zod';
 const text = z.string().trim().max(3000);
+const stoneId = z.string().regex(/^s\d{3}$/);
 export const sourceSchema = z
   .object({
     label: z.string().min(1).max(250),
@@ -30,12 +31,12 @@ export const stoneSchema = z
     quality: text,
     symbolism: text,
     legend: text.optional(),
-    legendSourceUrl: z.url().regex(/^https:\/\//).or(z.literal('')).optional(),
+    legendSourceUrl: sourceSchema.shape.url.optional(),
     legendSourceLabel: text.optional(),
     spiritualEffects: text.optional(),
-    synergyStoneIds: z.array(z.string().regex(/^s\d{3}$/)).max(8).optional(),
+    synergyStoneIds: z.array(stoneId).max(8).optional(),
     synergyNote: text.optional(),
-    cautionStoneIds: z.array(z.string().regex(/^s\d{3}$/)).max(8).optional(),
+    cautionStoneIds: z.array(stoneId).max(8).optional(),
     cautionNote: text.optional(),
     selection: text,
     shapes: text,
