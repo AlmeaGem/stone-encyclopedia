@@ -96,7 +96,26 @@ function showFields() {
   const wrap = $('fields');
   wrap.replaceChildren();
   for (const [name, labelText] of Object.entries(fields)) {
-    if (!(name in documentValue)) continue;
+    if (!(name in documentValue)) {
+      const optionalStoneFields = [
+        'legend',
+        'legendSourceUrl',
+        'legendSourceLabel',
+        'spiritualEffects',
+        'synergyStoneIds',
+        'synergyNote',
+        'cautionStoneIds',
+        'cautionNote',
+      ];
+      if (
+        $('collection').value === 'stones' &&
+        optionalStoneFields.includes(name)
+      ) {
+        documentValue[name] = name.endsWith('Ids') ? [] : '';
+      } else {
+        continue;
+      }
+    }
     const label = document.createElement('label');
     label.textContent = labelText;
     if (name.length > 8 || String(documentValue[name]).length > 80)
