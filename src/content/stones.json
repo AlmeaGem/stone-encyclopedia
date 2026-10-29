@@ -29,8 +29,18 @@
     "treatments": "",
     "related": ["s003", "s004", "s005"],
     "sources": [
-      {"label":"Getty Research Institute｜古代の黒曜石鏡","url":"https://www.getty.edu/research/exhibitions_events/exhibitions/obsidian_mirror/through_the_mirror.html","checkedAt":"2026-10-30","note":"石の来歴・名称・歴史に関する参照情報。"},
-      {"label":"Institute of Making｜占術に用いられた鏡","url":"https://www.instituteofmaking.org.uk/materials-library/library/obsidian-mirror","checkedAt":"2026-10-30","note":"現代のスピリチュアルな解釈・販売店の語りを参考に編集。組み合わせの提案は編集部によるもの。"},
+      {
+        "label": "Getty Research Institute｜古代の黒曜石鏡",
+        "url": "https://www.getty.edu/research/exhibitions_events/exhibitions/obsidian_mirror/through_the_mirror.html",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・名称・歴史に関する参照情報。"
+      },
+      {
+        "label": "Institute of Making｜占術に用いられた鏡",
+        "url": "https://www.instituteofmaking.org.uk/materials-library/library/obsidian-mirror",
+        "checkedAt": "2026-10-30",
+        "note": "現代のスピリチュアルな解釈・販売店の語りを参考に編集。組み合わせの提案は編集部によるもの。"
+      },
       {
         "label": "移行資料の参照記録",
         "url": "",
@@ -72,8 +82,18 @@
     "treatments": "",
     "related": ["s003", "s004", "s005"],
     "sources": [
-      {"label":"天然石専門店WAKOU｜キャストライト","url":"https://www.wakou-stone.co.jp/view/item/000000010202","checkedAt":"2026-10-30","note":"石の来歴・名称・歴史に関する参照情報。"},
-      {"label":"Chiastolite解説｜十字模様と護符","url":"https://taslar.bumba.tr/en/stones/chiastolite/","checkedAt":"2026-10-30","note":"現代のスピリチュアルな解釈・販売店の語りを参考に編集。組み合わせの提案は編集部によるもの。"},
+      {
+        "label": "天然石専門店WAKOU｜キャストライト",
+        "url": "https://www.wakou-stone.co.jp/view/item/000000010202",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・名称・歴史に関する参照情報。"
+      },
+      {
+        "label": "Chiastolite解説｜十字模様と護符",
+        "url": "https://taslar.bumba.tr/en/stones/chiastolite/",
+        "checkedAt": "2026-10-30",
+        "note": "現代のスピリチュアルな解釈・販売店の語りを参考に編集。組み合わせの提案は編集部によるもの。"
+      },
       {
         "label": "移行資料の参照記録",
         "url": "",
@@ -115,8 +135,18 @@
     "treatments": "",
     "related": ["s001", "s002", "s004"],
     "sources": [
-      {"label":"Whitby Museum｜ジェットと追悼装身具","url":"https://whitbymuseum.org.uk/collection/jet-and-jet-jewellery/","checkedAt":"2026-10-30","note":"石の来歴・名称・歴史に関する参照情報。"},
-      {"label":"GIA｜ウィットビージェットの歴史","url":"https://www.gia.edu/gia-website/whitby-jet-reading-list","checkedAt":"2026-10-30","note":"現代のスピリチュアルな解釈・販売店の語りを参考に編集。組み合わせの提案は編集部によるもの。"},
+      {
+        "label": "Whitby Museum｜ジェットと追悼装身具",
+        "url": "https://whitbymuseum.org.uk/collection/jet-and-jet-jewellery/",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・名称・歴史に関する参照情報。"
+      },
+      {
+        "label": "GIA｜ウィットビージェットの歴史",
+        "url": "https://www.gia.edu/gia-website/whitby-jet-reading-list",
+        "checkedAt": "2026-10-30",
+        "note": "現代のスピリチュアルな解釈・販売店の語りを参考に編集。組み合わせの提案は編集部によるもの。"
+      },
       {
         "label": "移行資料の参照記録",
         "url": "",
@@ -158,8 +188,18 @@
     "treatments": "",
     "related": ["s001", "s002", "s003"],
     "sources": [
-      {"label":"Pascle｜シャーマナイトの流通説明","url":"https://pascle.net/stone/shamanite","checkedAt":"2026-10-30","note":"石の来歴・名称・歴史に関する参照情報。"},
-      {"label":"天然石・パワーストーン意味辞典｜シャーマナイト","url":"https://www.ishi-imi.com/2009/05/post_394.html","checkedAt":"2026-10-30","note":"現代のスピリチュアルな解釈・販売店の語りを参考に編集。組み合わせの提案は編集部によるもの。"},
+      {
+        "label": "Pascle｜シャーマナイトの流通説明",
+        "url": "https://pascle.net/stone/shamanite",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・名称・歴史に関する参照情報。"
+      },
+      {
+        "label": "天然石・パワーストーン意味辞典｜シャーマナイト",
+        "url": "https://www.ishi-imi.com/2009/05/post_394.html",
+        "checkedAt": "2026-10-30",
+        "note": "現代のスピリチュアルな解釈・販売店の語りを参考に編集。組み合わせの提案は編集部によるもの。"
+      },
       {
         "label": "移行資料の参照記録",
         "url": "",
@@ -201,8 +241,18 @@
     "treatments": "",
     "related": ["s001", "s002", "s003"],
     "sources": [
-      {"label":"平凡社『最新 地学事典』｜シュンガイト","url":"https://kotobank.jp/word/%E3%81%97%E3%82%86%E3%82%93%E3%81%8C%E3%81%84%E3%81%A8-3249354","checkedAt":"2026-10-30","note":"石の来歴・名称・歴史に関する参照情報。"},
-      {"label":"産地事業者｜シュンガイトにまつわる地域史","url":"https://shungitnpk.ru/en/history","checkedAt":"2026-10-30","note":"現代のスピリチュアルな解釈・販売店の語りを参考に編集。組み合わせの提案は編集部によるもの。"},
+      {
+        "label": "平凡社『最新 地学事典』｜シュンガイト",
+        "url": "https://kotobank.jp/word/%E3%81%97%E3%82%86%E3%82%93%E3%81%8C%E3%81%84%E3%81%A8-3249354",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・名称・歴史に関する参照情報。"
+      },
+      {
+        "label": "産地事業者｜シュンガイトにまつわる地域史",
+        "url": "https://shungitnpk.ru/en/history",
+        "checkedAt": "2026-10-30",
+        "note": "現代のスピリチュアルな解釈・販売店の語りを参考に編集。組み合わせの提案は編集部によるもの。"
+      },
       {
         "label": "移行資料の参照記録",
         "url": "",
@@ -244,8 +294,18 @@
     "treatments": "",
     "related": ["s001", "s003", "s004"],
     "sources": [
-      {"label":"Virginia State Parks｜フェアリーストーン伝説","url":"https://www.dcr.virginia.gov/state-parks/fairystones","checkedAt":"2026-10-30","note":"石の来歴・名称・歴史に関する参照情報。"},
-      {"label":"Virginia State Parks｜護符の言い伝え","url":"https://www.dcr.virginia.gov/state-parks/blog/legend-of-the-fairy-stone?id=legend-of-the-fairy-stone","checkedAt":"2026-10-30","note":"現代のスピリチュアルな解釈・販売店の語りを参考に編集。組み合わせの提案は編集部によるもの。"},
+      {
+        "label": "Virginia State Parks｜フェアリーストーン伝説",
+        "url": "https://www.dcr.virginia.gov/state-parks/fairystones",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・名称・歴史に関する参照情報。"
+      },
+      {
+        "label": "Virginia State Parks｜護符の言い伝え",
+        "url": "https://www.dcr.virginia.gov/state-parks/blog/legend-of-the-fairy-stone?id=legend-of-the-fairy-stone",
+        "checkedAt": "2026-10-30",
+        "note": "現代のスピリチュアルな解釈・販売店の語りを参考に編集。組み合わせの提案は編集部によるもの。"
+      },
       {
         "label": "移行資料の参照記録",
         "url": "",
@@ -287,8 +347,18 @@
     "treatments": "",
     "related": ["s006", "s015", "s016"],
     "sources": [
-      {"label":"Cosmetics（学術誌）｜コールに用いられた鉱物","url":"https://doi.org/10.3390/cosmetics10030071","checkedAt":"2026-10-30","note":"石の来歴・名称・歴史に関する参照情報。"},
-      {"label":"Spirit of ISIS｜スティブナイトの意味","url":"https://www.spiritofisis.org/knowledge/crystal_files/stibnite.htm","checkedAt":"2026-10-30","note":"現代のスピリチュアルな解釈・販売店の語りを参考に編集。組み合わせの提案は編集部によるもの。"},
+      {
+        "label": "Cosmetics（学術誌）｜コールに用いられた鉱物",
+        "url": "https://doi.org/10.3390/cosmetics10030071",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・名称・歴史に関する参照情報。"
+      },
+      {
+        "label": "Spirit of ISIS｜スティブナイトの意味",
+        "url": "https://www.spiritofisis.org/knowledge/crystal_files/stibnite.htm",
+        "checkedAt": "2026-10-30",
+        "note": "現代のスピリチュアルな解釈・販売店の語りを参考に編集。組み合わせの提案は編集部によるもの。"
+      },
       {
         "label": "移行資料の参照記録",
         "url": "",
@@ -330,8 +400,18 @@
     "treatments": "",
     "related": ["s001", "s002", "s003"],
     "sources": [
-      {"label":"National Museums Scotland｜ケアンゴーム水晶の歴史","url":"https://www.nms.ac.uk/discover-catalogue/geology-to-jewellery-the-history-and-science-of-cairngorm-quartz","checkedAt":"2026-10-30","note":"石の来歴・名称・歴史に関する参照情報。"},
-      {"label":"County Argyle｜煙水晶の伝承","url":"https://www.countyargyle.com/a-guide-to-scottish-gemstones/5/","checkedAt":"2026-10-30","note":"現代のスピリチュアルな解釈・販売店の語りを参考に編集。組み合わせの提案は編集部によるもの。"},
+      {
+        "label": "National Museums Scotland｜ケアンゴーム水晶の歴史",
+        "url": "https://www.nms.ac.uk/discover-catalogue/geology-to-jewellery-the-history-and-science-of-cairngorm-quartz",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・名称・歴史に関する参照情報。"
+      },
+      {
+        "label": "County Argyle｜煙水晶の伝承",
+        "url": "https://www.countyargyle.com/a-guide-to-scottish-gemstones/5/",
+        "checkedAt": "2026-10-30",
+        "note": "現代のスピリチュアルな解釈・販売店の語りを参考に編集。組み合わせの提案は編集部によるもの。"
+      },
       {
         "label": "移行資料の参照記録",
         "url": "",
@@ -373,8 +453,18 @@
     "treatments": "",
     "related": ["s002", "s003", "s004"],
     "sources": [
-      {"label":"Natural Gems Pakistan｜スレイマニアゲートの習俗","url":"https://naturalgems.pk/blog/sulemani-agate-guide","checkedAt":"2026-10-30","note":"石の来歴・名称・歴史に関する参照情報。"},
-      {"label":"GemStore｜アキークとナザル除け","url":"https://gemstore.pk/purpose/protection","checkedAt":"2026-10-30","note":"現代のスピリチュアルな解釈・販売店の語りを参考に編集。組み合わせの提案は編集部によるもの。"},
+      {
+        "label": "Natural Gems Pakistan｜スレイマニアゲートの習俗",
+        "url": "https://naturalgems.pk/blog/sulemani-agate-guide",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・名称・歴史に関する参照情報。"
+      },
+      {
+        "label": "GemStore｜アキークとナザル除け",
+        "url": "https://gemstore.pk/purpose/protection",
+        "checkedAt": "2026-10-30",
+        "note": "現代のスピリチュアルな解釈・販売店の語りを参考に編集。組み合わせの提案は編集部によるもの。"
+      },
       {
         "label": "移行資料の参照記録",
         "url": "",
@@ -416,8 +506,18 @@
     "treatments": "",
     "related": ["s002", "s009", "s011"],
     "sources": [
-      {"label":"Texas State Historical Association｜テクタイトの成り立ち","url":"https://www.tshaonline.org/handbook/entries/tektites","checkedAt":"2026-10-30","note":"石の来歴・名称・歴史に関する参照情報。"},
-      {"label":"Nornenthal｜テクタイトの象徴","url":"https://www.nornenthal.net/index.php?id=136&language=en&page=1&site=edelsteinlexikon.php&sub=details","checkedAt":"2026-10-30","note":"現代のスピリチュアルな解釈・販売店の語りを参考に編集。組み合わせの提案は編集部によるもの。"},
+      {
+        "label": "Texas State Historical Association｜テクタイトの成り立ち",
+        "url": "https://www.tshaonline.org/handbook/entries/tektites",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・名称・歴史に関する参照情報。"
+      },
+      {
+        "label": "Nornenthal｜テクタイトの象徴",
+        "url": "https://www.nornenthal.net/index.php?id=136&language=en&page=1&site=edelsteinlexikon.php&sub=details",
+        "checkedAt": "2026-10-30",
+        "note": "現代のスピリチュアルな解釈・販売店の語りを参考に編集。組み合わせの提案は編集部によるもの。"
+      },
       {
         "label": "移行資料の参照記録",
         "url": "",
@@ -459,8 +559,18 @@
     "treatments": "",
     "related": ["s001", "s002", "s003"],
     "sources": [
-      {"label":"天然石・パワーストーン意味辞典｜デザートローズ","url":"https://www.ishi-imi.com/2009/05/post_416.html","checkedAt":"2026-10-30","note":"名称・来歴・歴史・素材の確認に参照。"},
-      {"label":"ANAHITA STONES｜願望成就の石","url":"https://www.anahitastones.com/en/stone-library/wish/details/desert_rose.html","checkedAt":"2026-10-30","note":"販売店・解説サイトで語られる意味と象徴を参照。組み合わせの推奨は編集部による解釈。"},
+      {
+        "label": "天然石・パワーストーン意味辞典｜デザートローズ",
+        "url": "https://www.ishi-imi.com/2009/05/post_416.html",
+        "checkedAt": "2026-10-30",
+        "note": "名称・来歴・歴史・素材の確認に参照。"
+      },
+      {
+        "label": "ANAHITA STONES｜願望成就の石",
+        "url": "https://www.anahitastones.com/en/stone-library/wish/details/desert_rose.html",
+        "checkedAt": "2026-10-30",
+        "note": "販売店・解説サイトで語られる意味と象徴を参照。組み合わせの推奨は編集部による解釈。"
+      },
       {
         "label": "移行資料の参照記録",
         "url": "",
@@ -502,8 +612,18 @@
     "treatments": "",
     "related": ["s002", "s009", "s010"],
     "sources": [
-      {"label":"国際宝石学会議｜ヌーマイトの産地と歴史","url":"https://www.igc-gemmology.org/igc-2023/a-nuummite-occurrence-from-kangerluarsuk-in-the-maniitsoq-region-west-greenland/","checkedAt":"2026-10-30","note":"名称・来歴・歴史・素材の確認に参照。"},
-      {"label":"Crystal Vaults｜ヌーマイトの現代的象徴","url":"https://www.crystalvaults.com/crystal-encyclopedia/nuummite/","checkedAt":"2026-10-30","note":"販売店・解説サイトで語られる意味と象徴を参照。組み合わせの推奨は編集部による解釈。"},
+      {
+        "label": "国際宝石学会議｜ヌーマイトの産地と歴史",
+        "url": "https://www.igc-gemmology.org/igc-2023/a-nuummite-occurrence-from-kangerluarsuk-in-the-maniitsoq-region-west-greenland/",
+        "checkedAt": "2026-10-30",
+        "note": "名称・来歴・歴史・素材の確認に参照。"
+      },
+      {
+        "label": "Crystal Vaults｜ヌーマイトの現代的象徴",
+        "url": "https://www.crystalvaults.com/crystal-encyclopedia/nuummite/",
+        "checkedAt": "2026-10-30",
+        "note": "販売店・解説サイトで語られる意味と象徴を参照。組み合わせの推奨は編集部による解釈。"
+      },
       {
         "label": "移行資料の参照記録",
         "url": "",
@@ -545,8 +665,18 @@
     "treatments": "",
     "related": ["s002", "s003", "s004"],
     "sources": [
-      {"label":"天然石工房ブログ｜シリシファイド・ピクチャーサンドストーン","url":"https://stonecage.blog.shinobi.jp/Category/7/","checkedAt":"2026-10-30","note":"名称・来歴・歴史・素材の確認に参照。"},
-      {"label":"BodhiTree｜風景模様の石と流通名","url":"https://bodhitreejp.com/natural-stone/picture-stone/","checkedAt":"2026-10-30","note":"販売店・解説サイトで語られる意味と象徴を参照。組み合わせの推奨は編集部による解釈。"},
+      {
+        "label": "天然石工房ブログ｜シリシファイド・ピクチャーサンドストーン",
+        "url": "https://stonecage.blog.shinobi.jp/Category/7/",
+        "checkedAt": "2026-10-30",
+        "note": "名称・来歴・歴史・素材の確認に参照。"
+      },
+      {
+        "label": "BodhiTree｜風景模様の石と流通名",
+        "url": "https://bodhitreejp.com/natural-stone/picture-stone/",
+        "checkedAt": "2026-10-30",
+        "note": "販売店・解説サイトで語られる意味と象徴を参照。組み合わせの推奨は編集部による解釈。"
+      },
       {
         "label": "移行資料の参照記録",
         "url": "",
@@ -588,8 +718,18 @@
     "treatments": "",
     "related": ["s001", "s002", "s003"],
     "sources": [
-      {"label":"Utah Geological Survey｜赤い砂岩と鉄酸化物","url":"https://ugspub.nr.utah.gov/publications/public_information/pi-77.pdf","checkedAt":"2026-10-30","note":"名称・来歴・歴史・素材の確認に参照。"},
-      {"label":"Astrology.com｜サンドストーンの象徴","url":"https://www.astrology.com/crystals/sandstone-crystal","checkedAt":"2026-10-30","note":"販売店・解説サイトで語られる意味と象徴を参照。組み合わせの推奨は編集部による解釈。"},
+      {
+        "label": "Utah Geological Survey｜赤い砂岩と鉄酸化物",
+        "url": "https://ugspub.nr.utah.gov/publications/public_information/pi-77.pdf",
+        "checkedAt": "2026-10-30",
+        "note": "名称・来歴・歴史・素材の確認に参照。"
+      },
+      {
+        "label": "Astrology.com｜サンドストーンの象徴",
+        "url": "https://www.astrology.com/crystals/sandstone-crystal",
+        "checkedAt": "2026-10-30",
+        "note": "販売店・解説サイトで語られる意味と象徴を参照。組み合わせの推奨は編集部による解釈。"
+      },
       {
         "label": "移行資料の参照記録",
         "url": "",
@@ -631,8 +771,18 @@
     "treatments": "",
     "related": ["s001", "s003", "s004"],
     "sources": [
-      {"label":"Sotheby's｜オニキスの歴史と装飾","url":"https://www.sothebys.com/en/articles/the-a-z-of-jewelry-o-is-for-onyx","checkedAt":"2026-10-30","note":"名称・来歴・歴史・素材の確認に参照。"},
-      {"label":"International Gem Society｜ブラックオニキスの流通と特徴","url":"https://www.gemsociety.org/article/black-onyx-jewelry-and-gemstone-information/","checkedAt":"2026-10-30","note":"販売店・解説サイトで語られる意味と象徴を参照。組み合わせの推奨は編集部による解釈。"},
+      {
+        "label": "Sotheby's｜オニキスの歴史と装飾",
+        "url": "https://www.sothebys.com/en/articles/the-a-z-of-jewelry-o-is-for-onyx",
+        "checkedAt": "2026-10-30",
+        "note": "名称・来歴・歴史・素材の確認に参照。"
+      },
+      {
+        "label": "International Gem Society｜ブラックオニキスの流通と特徴",
+        "url": "https://www.gemsociety.org/article/black-onyx-jewelry-and-gemstone-information/",
+        "checkedAt": "2026-10-30",
+        "note": "販売店・解説サイトで語られる意味と象徴を参照。組み合わせの推奨は編集部による解釈。"
+      },
       {
         "label": "移行資料の参照記録",
         "url": "",
@@ -674,8 +824,18 @@
     "treatments": "",
     "related": ["s001", "s003", "s004"],
     "sources": [
-      {"label":"米国国立公園局｜フリントの道具と火起こし","url":"https://www.nps.gov/articles/flint-part-2.htm","checkedAt":"2026-10-30","note":"名称・来歴・歴史・素材の確認に参照。"},
-      {"label":"米国国立公園局｜火打石と火花","url":"https://www.nps.gov/pisp/learn/historyculture/flint-and-steel.htm","checkedAt":"2026-10-30","note":"販売店・解説サイトで語られる意味と象徴を参照。組み合わせの推奨は編集部による解釈。"},
+      {
+        "label": "米国国立公園局｜フリントの道具と火起こし",
+        "url": "https://www.nps.gov/articles/flint-part-2.htm",
+        "checkedAt": "2026-10-30",
+        "note": "名称・来歴・歴史・素材の確認に参照。"
+      },
+      {
+        "label": "米国国立公園局｜火打石と火花",
+        "url": "https://www.nps.gov/pisp/learn/historyculture/flint-and-steel.htm",
+        "checkedAt": "2026-10-30",
+        "note": "販売店・解説サイトで語られる意味と象徴を参照。組み合わせの推奨は編集部による解釈。"
+      },
       {
         "label": "移行資料の参照記録",
         "url": "",
@@ -717,8 +877,18 @@
     "treatments": "",
     "related": ["s001", "s003", "s004"],
     "sources": [
-      {"label":"Metropolitan Museum｜古代エジプトのヘマタイト護符","url":"https://www.metmuseum.org/art/collection/search/552959","checkedAt":"2026-10-30","note":"名称・来歴・歴史・素材の確認に参照。"},
-      {"label":"Getty｜古代のヘマタイト護符の象徴","url":"https://www.getty.edu/publications/ambers/intro/16/","checkedAt":"2026-10-30","note":"販売店・解説サイトで語られる意味と象徴を参照。組み合わせの推奨は編集部による解釈。"},
+      {
+        "label": "Metropolitan Museum｜古代エジプトのヘマタイト護符",
+        "url": "https://www.metmuseum.org/art/collection/search/552959",
+        "checkedAt": "2026-10-30",
+        "note": "名称・来歴・歴史・素材の確認に参照。"
+      },
+      {
+        "label": "Getty｜古代のヘマタイト護符の象徴",
+        "url": "https://www.getty.edu/publications/ambers/intro/16/",
+        "checkedAt": "2026-10-30",
+        "note": "販売店・解説サイトで語られる意味と象徴を参照。組み合わせの推奨は編集部による解釈。"
+      },
       {
         "label": "移行資料の参照記録",
         "url": "",
@@ -760,8 +930,18 @@
     "treatments": "",
     "related": ["s002", "s009", "s010"],
     "sources": [
-      {"label":"Meteoritics & Planetary Science｜ツタンカーメン王の隕鉄短剣","url":"https://doi.org/10.1111/maps.12664","checkedAt":"2026-10-30","note":"名称・来歴・歴史・素材の確認に参照。"},
-      {"label":"NASA｜隕石にまつわる文化史","url":"https://www.nasa.gov/wp-content/uploads/2025/07/a-history-of-near-earth-object-research-sp-4235.pdf","checkedAt":"2026-10-30","note":"販売店・解説サイトで語られる意味と象徴を参照。組み合わせの推奨は編集部による解釈。"},
+      {
+        "label": "Meteoritics & Planetary Science｜ツタンカーメン王の隕鉄短剣",
+        "url": "https://doi.org/10.1111/maps.12664",
+        "checkedAt": "2026-10-30",
+        "note": "名称・来歴・歴史・素材の確認に参照。"
+      },
+      {
+        "label": "NASA｜隕石にまつわる文化史",
+        "url": "https://www.nasa.gov/wp-content/uploads/2025/07/a-history-of-near-earth-object-research-sp-4235.pdf",
+        "checkedAt": "2026-10-30",
+        "note": "販売店・解説サイトで語られる意味と象徴を参照。組み合わせの推奨は編集部による解釈。"
+      },
       {
         "label": "移行資料の参照記録",
         "url": "",
@@ -803,8 +983,18 @@
     "treatments": "",
     "related": ["s001", "s002", "s003"],
     "sources": [
-      {"label":"Gemdat｜黒色煙水晶モリオンの定義","url":"https://www.gemdat.org/gem-6270.html","checkedAt":"2026-10-30","note":"名称・来歴・歴史・素材の確認に参照。"},
-      {"label":"宝石辞典｜煙水晶とモルモリオンの名","url":"https://www.edelsteine.at/en/glossaries/lexicon/smoky-quartz/","checkedAt":"2026-10-30","note":"販売店・解説サイトで語られる意味と象徴を参照。組み合わせの推奨は編集部による解釈。"},
+      {
+        "label": "Gemdat｜黒色煙水晶モリオンの定義",
+        "url": "https://www.gemdat.org/gem-6270.html",
+        "checkedAt": "2026-10-30",
+        "note": "名称・来歴・歴史・素材の確認に参照。"
+      },
+      {
+        "label": "宝石辞典｜煙水晶とモルモリオンの名",
+        "url": "https://www.edelsteine.at/en/glossaries/lexicon/smoky-quartz/",
+        "checkedAt": "2026-10-30",
+        "note": "販売店・解説サイトで語られる意味と象徴を参照。組み合わせの推奨は編集部による解釈。"
+      },
       {
         "label": "移行資料の参照記録",
         "url": "",
@@ -846,8 +1036,18 @@
     "treatments": "",
     "related": ["s002", "s003", "s004"],
     "sources": [
-      {"label":"Crystal & Stone Compendium｜ラヴァの形成と象徴","url":"https://luminaryoddities.com/crystalcompendium/lava-stone","checkedAt":"2026-10-30","note":"名称・来歴・歴史・素材の確認に参照。"},
-      {"label":"Gemstone Guide｜ラヴァストーンの現代的意味","url":"https://jeffreyburroughs.com/lava-stone/","checkedAt":"2026-10-30","note":"販売店・解説サイトで語られる意味と象徴を参照。組み合わせの推奨は編集部による解釈。"},
+      {
+        "label": "Crystal & Stone Compendium｜ラヴァの形成と象徴",
+        "url": "https://luminaryoddities.com/crystalcompendium/lava-stone",
+        "checkedAt": "2026-10-30",
+        "note": "名称・来歴・歴史・素材の確認に参照。"
+      },
+      {
+        "label": "Gemstone Guide｜ラヴァストーンの現代的意味",
+        "url": "https://jeffreyburroughs.com/lava-stone/",
+        "checkedAt": "2026-10-30",
+        "note": "販売店・解説サイトで語られる意味と象徴を参照。組み合わせの推奨は編集部による解釈。"
+      },
       {
         "label": "移行資料の参照記録",
         "url": "",
