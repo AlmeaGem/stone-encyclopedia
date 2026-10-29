@@ -29,6 +29,12 @@ export const stoneSchema = z
     inclusions: text,
     quality: text,
     symbolism: text,
+    legend: text.optional(),
+    spiritualEffects: text.optional(),
+    synergyStoneIds: z.array(z.string().regex(/^s\\d{3}$/)).max(8).optional(),
+    synergyNote: text.optional(),
+    cautionStoneIds: z.array(z.string().regex(/^s\\d{3}$/)).max(8).optional(),
+    cautionNote: text.optional(),
     selection: text,
     shapes: text,
     cleansing: text,
@@ -143,7 +149,7 @@ export function validateCatalog(input: unknown) {
   )
     throw new Error('図鑑ID・URLが重複しています');
   for (const s of stones)
-    for (const id of s.related)
+    for (const id of [...s.related, ...(s.synergyStoneIds || []), ...(s.cautionStoneIds || [])])
       if (!stones.some((x) => x.id === id) || id === s.id)
         throw new Error('関連する石のIDが不正です');
   return stones;
