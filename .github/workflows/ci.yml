@@ -20,10 +20,6 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      - name: Show temporary formatting diagnostics
-        run: |
-          npx prettier --write src/content/stones.json 'src/pages/stones/[slug].astro'
-          git diff -- src/content/stones.json 'src/pages/stones/[slug].astro'
       - run: npm run lint
       - run: npm run validate
       - run: npm test
