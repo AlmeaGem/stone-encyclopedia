@@ -156,3 +156,20 @@ it('keeps the first twenty story citations aligned and fragile specimens distinc
     '重晶石質のものとは区別',
   );
 });
+
+it('keeps the second twenty identities and aligns the existing garnet citation without marking it verified', () => {
+  expect(stones.slice(20, 40).map((s) => s.id)).toEqual(
+    Array.from({ length: 20 }, (_, i) => `s${String(i + 21).padStart(3, '0')}`),
+  );
+  const grossular = stones[31];
+  expect(grossular.aliases).toContain('グロッシュラーライト');
+  expect(grossular.characteristics).toContain(grossular.name);
+  expect(grossular.characteristics).not.toContain('グロッシュラーライト');
+  const garnet = stones[27];
+  const source = garnet.sources.find((s) => s.url === garnet.legendSourceUrl);
+  expect(source?.label).toBe(garnet.legendSourceLabel);
+  expect(source?.checkedAt).toBeNull();
+  expect(
+    garnet.synergyStoneIds?.map((id) => stones.find((s) => s.id === id)?.name),
+  ).toEqual(['ルビー', 'シトリン']);
+});
