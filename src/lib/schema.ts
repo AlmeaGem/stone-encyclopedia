@@ -30,6 +30,8 @@ export const stoneSchema = z
     quality: text,
     symbolism: text,
     legend: text.optional(),
+    legendSourceUrl: z.url().regex(/^https:\/\//).or(z.literal('')).optional(),
+    legendSourceLabel: text.optional(),
     spiritualEffects: text.optional(),
     synergyStoneIds: z.array(z.string().regex(/^s\d{3}$/)).max(8).optional(),
     synergyNote: text.optional(),
