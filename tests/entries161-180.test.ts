@@ -35,7 +35,7 @@ it('keeps fragile-material cautions, pairing labels and comparison routes cohere
     expect(s.related).not.toContain(s.id);
     for (const id of s.related)
       expect(stones.find((x) => x.id === id)).toBeDefined();
-    for (const id of s.synergyStoneIds || [])
+    if (s.synergyStoneIds?.length)
       expect(s.synergyNote?.length || 0).toBeGreaterThan(15);
   }
 });
