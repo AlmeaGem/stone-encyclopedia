@@ -33,6 +33,6 @@ it('supports material comparison without treating links as mineral identity or g
     for (const id of [...s.related, ...(s.synergyStoneIds || [])])
       expect(stones.find((x) => x.id === id)).toBeDefined();
   }
-  expect(stones[100].synergyNote.length).toBeGreaterThan(20);
+  expect((stones[100].synergyNote?.length || 0)).toBeGreaterThan(20);
   expect(stones[109].legendSourceLabel).toContain('個別の伝承記事は未確認');
 });
