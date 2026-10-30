@@ -101,3 +101,35 @@ const allowedImages = new Set(
 for (const file of output.filter((p) => p.startsWith('dist/images/')))
   if (!allowedImages.has(file))
     throw new Error('Unselected image entered public output: ' + file);
+
+// App icons must stay inside the deployment base on GitHub Pages.
+const manifest = JSON.parse(await readFile('dist/site.webmanifest', 'utf8'));
+for (const field of ['id', 'scope', 'start_url']) {
+  if (manifest[field] !== prefix)
+    throw new Error(`Manifest ${field} escapes deployment base`);
+}
+for (const size of [192, 512]) {
+  if (
+    !manifest.icons.some(
+      (icon) =>
+        icon.src === `${prefix}icon-${size}.png` &&
+        icon.sizes === `${size}x${size}` &&
+        icon.purpose === 'any',
+    )
+  )
+    throw new Error(`Manifest lacks supplied ${size}px icon`);
+}
+for (const file of output.filter((p) => p.endsWith('.html'))) {
+  const html = await readFile(file, 'utf8');
+  for (const asset of [
+    'apple-touch-icon.png',
+    'favicon.ico',
+    'site.webmanifest',
+  ]) {
+    if (!html.includes(`href="${prefix}${asset}"`))
+      throw new Error(`${file} lacks app icon link ${asset}`);
+  }
+  if (html.includes('favicon.svg'))
+    throw new Error(`${file} references the retired text icon`);
+}
+console.log('App icon and manifest subpath audit OK: ' + prefix);

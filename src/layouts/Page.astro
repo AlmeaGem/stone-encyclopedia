@@ -43,7 +43,32 @@ const url = canonical(path);
     <meta property="og:locale" content="ja_JP" />
     <meta property="og:image" content={canonical('og.png')} />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="icon" href={pathTo('favicon.svg')} type="image/svg+xml" />
+    <link
+      rel="icon"
+      href={pathTo('favicon.ico')}
+      type="image/x-icon"
+      sizes="16x16 32x32 48x48"
+    />
+    <link
+      rel="icon"
+      href={pathTo('favicon-32.png')}
+      type="image/png"
+      sizes="32x32"
+    />
+    <link
+      rel="icon"
+      href={pathTo('favicon-48.png')}
+      type="image/png"
+      sizes="48x48"
+    />
+    <link
+      rel="apple-touch-icon"
+      href={pathTo('apple-touch-icon.png')}
+      sizes="180x180"
+    />
+    <link rel="manifest" href={pathTo('site.webmanifest')} />
+    <meta name="application-name" content="ALMÉA GEM" />
+    <meta name="apple-mobile-web-app-title" content="ALMÉA GEM" />
     {schema && (
       <script
         type="application/ld+json"
