@@ -48,7 +48,7 @@ it('keeps last thirty shape/trade names distinct from guaranteed effects and lin
   const last = stones.slice(180);
   expect(new Set(last.map((s) => s.introduction)).size).toBe(30);
   expect(new Set(last.map((s) => s.quality)).size).toBe(30);
-  expect(stones[203].quality).toContain('古代文明');
+  expect(stones[203].quality).toContain('産地');
   expect(stones[195].selection).toContain('治療作用');
   expect(stones[209].handling).toContain('星の見え方');
   for (const s of last) {
