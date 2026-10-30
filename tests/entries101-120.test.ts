@@ -1,3 +1,4 @@
+import { expectApprovedFields } from './approved-master';
 import { it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { validateCatalog } from '../src/lib/schema';
@@ -33,6 +34,6 @@ it('supports material comparison without treating links as mineral identity or g
     for (const id of [...s.related, ...(s.synergyStoneIds || [])])
       expect(stones.find((x) => x.id === id)).toBeDefined();
   }
-  expect(stones[100].synergyNote).toContain('パール');
+  expectApprovedFields(stones[100], ['synergyNote']);
   expect(stones[109].legendSourceLabel).toContain('個別の伝承記事は未確認');
 });

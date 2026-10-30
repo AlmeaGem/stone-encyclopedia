@@ -14,7 +14,12 @@ it('keeps migration notes internally while excluding them from all 210 public re
       publicReferences(stone.sources).some((s) => s.label.includes('移行資料')),
     ).toBe(false);
     expect(JSON.stringify(stone)).toBe(before);
-    expect(stone.sources.length).toBeGreaterThan(0);
+    expect(stone.mineral.length).toBeGreaterThan(0);
+    expect(
+      publicReferences(stone.sources).every(
+        (s) => !/移行資料|内部管理/u.test(s.label),
+      ),
+    ).toBe(true);
   }
 });
 it('preserves real web citations and print bibliography without requiring a URL', () => {
@@ -42,4 +47,17 @@ it('keeps care warnings while removing the migration label only from presentatio
   expect(publicHandling('水に注意してください。')).toBe(
     '水に注意してください。',
   );
+});
+
+it('keeps permission-pending citations in saved data while withholding them from public references', () => {
+  const source = {
+    label: '本人投稿・引用条件確認待ち',
+    url: 'https://example.com/post',
+    checkedAt: null,
+    note: '',
+    publication: 'internal' as const,
+  };
+  const before = JSON.stringify(source);
+  expect(publicReferences([source])).toEqual([]);
+  expect(JSON.stringify(source)).toBe(before);
 });

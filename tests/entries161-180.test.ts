@@ -1,3 +1,4 @@
+import { expectApprovedFields } from './approved-master';
 import { it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { validateCatalog } from '../src/lib/schema';
@@ -22,10 +23,10 @@ it('records twenty unresolved identity, mineral and history reviews with no sour
 it('keeps fragile-material cautions, pairing labels and comparison routes coherent', () => {
   expect(new Set(batch.map((s) => s.introduction)).size).toBe(20);
   expect(new Set(batch.map((s) => s.quality)).size).toBe(20);
-  expect(stones[171].handling).toContain('水厳禁');
-  expect(stones[171].handling).toContain('湿気注意');
-  expect(stones[168].handling).toContain('傷注意');
-  expect(stones[178].introduction).toContain('金属の含有');
+  expect(stones[171].handling).toContain('水に容易に溶ける');
+  expect(stones[171].handling).toContain('湿気');
+  expect(stones[168].handling).toContain('摩擦');
+  expect(stones[178].introduction).toContain('プラチナ');
   for (const id of ['s161', 's162', 's163', 's164'])
     expect(stones.find((s) => s.id === id)!.related).toEqual(
       ['s161', 's162', 's163', 's164'].filter((x) => x !== id),
@@ -35,7 +36,6 @@ it('keeps fragile-material cautions, pairing labels and comparison routes cohere
     expect(s.related).not.toContain(s.id);
     for (const id of s.related)
       expect(stones.find((x) => x.id === id)).toBeDefined();
-    for (const id of s.synergyStoneIds || [])
-      expect(s.synergyNote).toContain(stones.find((x) => x.id === id)!.name);
+    expectApprovedFields(s, ['synergyNote']);
   }
 });

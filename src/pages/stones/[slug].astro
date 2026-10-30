@@ -28,8 +28,11 @@ const synergies = (stone.synergyStoneIds || []).map(stoneById).filter(Boolean);
 const cautions = (stone.cautionStoneIds || []).map(stoneById).filter(Boolean);
 const reads = articles.filter((a) => a.stoneIds.includes(stone.id));
 const sections = [
-  ['鉱物名', stone.mineral],
-  ['モース硬度', stone.hardness],
+  ['鉱物・素材', stone.mineral],
+  [
+    stone.compositionHardness ? '組成・硬度' : 'モース硬度',
+    stone.compositionHardness || stone.hardness,
+  ],
   ['特徴', stone.characteristics],
   ['内包物・模様', stone.inclusions],
 ];
@@ -55,7 +58,7 @@ const schema = {
 <Page
   title={`${stone.name}（${stone.english}）の特徴・意味・選び方`}
   path={`stones/${stone.slug}/`}
-  description={`${stone.name}の特徴、宝石としての選び方、伝承のテーマ、浄化と取り扱い。${stone.aliases.length ? '別名：' + stone.aliases.join('・') + '。' : ''}未確認の鉱物情報は明示しています。`}
+  description={`${stone.name}の鉱物・素材、組成・硬度、品質と選び方、歴史・伝承、象徴的な意味、組み合わせ、取り扱いを紹介します。`}
   schema={schema}
 >
   <div class="wrap">
@@ -65,7 +68,9 @@ const schema = {
     <section class="stone-heading">
       <div>
         <p class="eyebrow">STONE LIBRARY · {stone.id.toUpperCase()}</p>
-        <span class="kind-label">{kindLabels[stone.kind]}</span>
+        <span class="kind-label">
+          {stone.classification || kindLabels[stone.kind]}
+        </span>
         <h1>{stone.name}</h1>
         <p class="detail-english">{stone.english}</p>
         {stone.aliases.length > 0 && (
@@ -137,6 +142,8 @@ const schema = {
             {stone.treatments ||
               '個別の見分け方は未確認です。色や写真だけで天然・合成・模造・処理の有無を断定できません。購入時に素材、処理表示、鑑別情報を確認してください。'}
           </p>
+          <h3>選ぶときの視点</h3>
+          <Prose text={stone.selection} />
           <h3>形状の違い</h3>
           <Prose text={stone.shapes} />
         </section>
@@ -192,9 +199,9 @@ const schema = {
                   s && <a href={pathTo(`stones/${s.slug}/`)}>{s.name} ↗</a>,
               )}
             </div>
-          ) : (
+          ) : !stone.synergyNote ? (
             <p class="quiet-note">組み合わせの紹介を準備しています。</p>
-          )}
+          ) : null}
           {cautions.length > 0 && stone.cautionNote && (
             <>
               <h3>組み合わせを避けたい石</h3>

@@ -29,6 +29,20 @@ test('all 210 detail pages have responsive content, valid links, loaded images a
     expect(response?.status(), stone.id).toBe(200);
     await expect(page.locator('h1')).toHaveText(stone.name);
     await expect(page.locator('#nature')).toBeVisible();
+    await expect(page.locator('.stone-heading .kind-label')).toHaveText(
+      stone.classification,
+    );
+    for (const field of ['mineral', 'compositionHardness', 'characteristics'])
+      await expect(page.locator('#nature')).toContainText(stone[field]);
+    await expect(page.locator('.stone-heading')).toContainText(
+      stone.introduction,
+    );
+    await expect(page.locator('#quality')).toContainText(stone.quality);
+    await expect(page.locator('#story')).toContainText(stone.legend);
+    await expect(page.locator('#pairing')).toContainText(stone.synergyNote);
+    await expect(
+      page.locator('#nature dt').filter({ hasText: /^モース硬度$/ }),
+    ).toHaveCount(0);
     await expect(page.locator('#story')).toContainText(
       stone.spiritualEffects || stone.symbolism,
     );

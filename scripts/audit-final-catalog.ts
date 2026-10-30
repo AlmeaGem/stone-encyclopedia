@@ -181,7 +181,9 @@ const summary = {
       )
       .map((s) => s.id),
     blankMineralFields: stones.filter((s) => !s.mineral).length,
-    blankHardnessFields: stones.filter((s) => !s.hardness).length,
+    blankHardnessFields: stones.filter(
+      (s) => !s.compositionHardness && !s.hardness,
+    ).length,
     missingDedicatedLegends: stones.filter((s) => !s.legend).length,
     missingDedicatedMeanings: stones.filter((s) => !s.spiritualEffects).length,
     missingDedicatedPairings: stones.filter((s) => !s.synergyStoneIds?.length)

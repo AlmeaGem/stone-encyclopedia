@@ -1,3 +1,4 @@
+import { expectApprovedFields } from './approved-master';
 import { it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { validateCatalog } from '../src/lib/schema';
@@ -22,16 +23,15 @@ it('preserves twenty pending evidence reviews without assigning source confirmat
 it('keeps coatings, trade names and comparison links distinct from mineral identity and guaranteed effects', () => {
   expect(new Set(batch.map((s) => s.introduction)).size).toBe(20);
   expect(new Set(batch.map((s) => s.quality)).size).toBe(20);
-  expect(stones[146].handling).toContain('コーティング注意');
-  expect(stones[144].introduction).toContain('流通名');
-  expect(stones[147].legend).toContain('地域・時代');
-  expect(stones[147].synergyStoneIds).toEqual(['s133', 's047']);
+  expect(stones[146].handling).toMatch(/膜|コーティング/u);
+  expect(stones[144].introduction).toContain('名称');
+  expect(stones[147].legend).toContain('古代ローマ');
+  expectApprovedFields(stones[147], ['synergyNote']);
   for (const s of batch) {
     expect(s.handling).not.toContain('移行資料の注意メモ');
     expect(s.related).not.toContain(s.id);
     for (const id of s.related)
       expect(stones.find((x) => x.id === id)).toBeDefined();
-    for (const id of s.synergyStoneIds || [])
-      expect(s.synergyNote).toContain(stones.find((x) => x.id === id)!.name);
+    expectApprovedFields(s, ['synergyNote']);
   }
 });

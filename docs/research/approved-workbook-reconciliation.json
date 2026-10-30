@@ -1,0 +1,44 @@
+{
+  "workbookSha256": "3e6119d9575164eb20a00f82ad0c8cc586a01fe0de638f1aef2fe74b2f336ba2",
+  "tabs": {
+    "公開候補原稿210石・内部情報除外": 210,
+    "全210石・品質監査": 210,
+    "全出典・公開前再検証": 477,
+    "最終QA・総括と修正記録": 17,
+    "P0安全・鉱物分類 再審査原稿": 10,
+    "P0再照合・外部根拠": 20
+  },
+  "matchingStones": 210,
+  "fieldMatches": {
+    "id": 210,
+    "name": 210,
+    "classification": 210,
+    "mineral": 210,
+    "compositionHardness": 210,
+    "introduction": 210,
+    "characteristics": 210,
+    "quality": 210,
+    "legend": 210,
+    "spiritualEffects": 210,
+    "synergyNote": 210,
+    "handling": 210
+  },
+  "differences": [],
+  "p0Ids": [
+    "s035",
+    "s038",
+    "s056",
+    "s068",
+    "s079",
+    "s103",
+    "s128",
+    "s145",
+    "s172",
+    "s178"
+  ],
+  "bibliographicRows": 424,
+  "missingBibliographicRows": 0,
+  "excludedTestimonialRows": 50,
+  "restrictedSourceRecords": 21,
+  "sourceBodiesIndependentlyVerifiedHere": false
+}

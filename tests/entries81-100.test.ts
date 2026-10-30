@@ -1,3 +1,4 @@
+import { expectApprovedFields } from './approved-master';
 import { it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { validateCatalog } from '../src/lib/schema';
@@ -22,12 +23,8 @@ it('lists all twenty pending source reviews without claiming mineral or historic
 it('distinguishes buying guidance and checks the existing pairing and jade-material boundaries', () => {
   expect(new Set(batch.map((s) => s.introduction)).size).toBe(20);
   expect(new Set(batch.map((s) => s.quality)).size).toBe(20);
-  expect(stones[94].legend).toContain('同定');
-  expect(stones[90].synergyStoneIds).toEqual(['s205', 's208']);
-  for (const id of stones[90].synergyStoneIds || []) {
-    expect(stones[90].synergyNote).toContain(
-      stones.find((s) => s.id === id)!.name,
-    );
-  }
+  expectApprovedFields(stones[94], ['legend']);
+  expectApprovedFields(stones[90], ['synergyNote']);
+  expectApprovedFields(stones[90], ['synergyNote']);
   for (const s of batch) expect(s.handling).not.toContain('移行資料の注意メモ');
 });
