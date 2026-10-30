@@ -22,10 +22,10 @@ it('records twenty unresolved identity, mineral and history reviews with no sour
 it('keeps fragile-material cautions, pairing labels and comparison routes coherent', () => {
   expect(new Set(batch.map((s) => s.introduction)).size).toBe(20);
   expect(new Set(batch.map((s) => s.quality)).size).toBe(20);
-  expect(stones[171].handling).toContain('水厳禁');
-  expect(stones[171].handling).toContain('湿気注意');
-  expect(stones[168].handling).toContain('傷注意');
-  expect(stones[178].introduction).toContain('金属の含有');
+  expect(stones[171].handling).toContain('水に容易に溶ける');
+  expect(stones[171].handling).toContain('湿気');
+  expect(stones[168].handling).toContain('摩擦');
+  expect(stones[178].introduction).toContain('プラチナ');
   for (const id of ['s161', 's162', 's163', 's164'])
     expect(stones.find((s) => s.id === id)!.related).toEqual(
       ['s161', 's162', 's163', 's164'].filter((x) => x !== id),
