@@ -23,7 +23,7 @@ it('keeps coatings, trade names and comparison links distinct from mineral ident
   expect(new Set(batch.map((s) => s.introduction)).size).toBe(20);
   expect(new Set(batch.map((s) => s.quality)).size).toBe(20);
   expect(stones[146].handling).toMatch(/膜|コーティング/u);
-  expect(stones[144].introduction).toContain('流通名');
+  expect(stones[144].introduction).toContain('名称');
   expect(stones[147].legend).toContain('地域・時代');
   expect(stones[147].synergyStoneIds).toEqual(['s133', 's047']);
   for (const s of batch) {
