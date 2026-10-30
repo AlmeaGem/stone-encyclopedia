@@ -1,0 +1,14 @@
+{
+  "project": "desktop",
+  "width": 1440,
+  "pages": 210,
+  "uniqueTitles": 210,
+  "uniqueCanonicals": 210,
+  "imageUrls": [
+    "/images/s001/799ff7ede196fc6470cfe997d7c37efbd61b4310a2a2dcdeab50e311e32abaa7.webp",
+    "/images/s002/546bd4a120841e24797eb525699cd9c98c0dbe643c312a602615bcce9dc2c963.webp"
+  ],
+  "pageErrors": [],
+  "badResponses": [],
+  "passed": true
+}

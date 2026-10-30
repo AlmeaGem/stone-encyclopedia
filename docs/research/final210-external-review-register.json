@@ -1,0 +1,3936 @@
+[
+  {
+    "id": "s001",
+    "name": "オブシディアン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [
+      "https://www.getty.edu/research/exhibitions_events/exhibitions/obsidian_mirror/through_the_mirror.html",
+      "https://www.instituteofmaking.org.uk/materials-library/library/obsidian-mirror"
+    ],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [],
+    "originalSourceDateHistory": [
+      {
+        "url": "https://www.getty.edu/research/exhibitions_events/exhibitions/obsidian_mirror/through_the_mirror.html",
+        "checkedAt": "2026-10-30"
+      },
+      {
+        "url": "https://www.instituteofmaking.org.uk/materials-library/library/obsidian-mirror",
+        "checkedAt": "2026-10-30"
+      }
+    ],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s002",
+    "name": "キャストライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [
+      "https://www.wakou-stone.co.jp/view/item/000000010202",
+      "https://taslar.bumba.tr/en/stones/chiastolite/"
+    ],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [],
+    "originalSourceDateHistory": [
+      {
+        "url": "https://www.wakou-stone.co.jp/view/item/000000010202",
+        "checkedAt": "2026-10-30"
+      },
+      {
+        "url": "https://taslar.bumba.tr/en/stones/chiastolite/",
+        "checkedAt": "2026-10-30"
+      }
+    ],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s003",
+    "name": "ジェット",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [
+      "https://whitbymuseum.org.uk/collection/jet-and-jet-jewellery/",
+      "https://www.gia.edu/gia-website/whitby-jet-reading-list"
+    ],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [],
+    "originalSourceDateHistory": [
+      {
+        "url": "https://whitbymuseum.org.uk/collection/jet-and-jet-jewellery/",
+        "checkedAt": "2026-10-30"
+      },
+      {
+        "url": "https://www.gia.edu/gia-website/whitby-jet-reading-list",
+        "checkedAt": "2026-10-30"
+      }
+    ],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s004",
+    "name": "シャーマナイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [
+      "https://pascle.net/stone/shamanite",
+      "https://www.ishi-imi.com/2009/05/post_394.html"
+    ],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [],
+    "originalSourceDateHistory": [
+      {
+        "url": "https://pascle.net/stone/shamanite",
+        "checkedAt": "2026-10-30"
+      },
+      {
+        "url": "https://www.ishi-imi.com/2009/05/post_394.html",
+        "checkedAt": "2026-10-30"
+      }
+    ],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s005",
+    "name": "シュンガイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [
+      "https://kotobank.jp/word/%E3%81%97%E3%82%86%E3%82%93%E3%81%8C%E3%81%84%E3%81%A8-3249354",
+      "https://shungitnpk.ru/en/history"
+    ],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [],
+    "originalSourceDateHistory": [
+      {
+        "url": "https://kotobank.jp/word/%E3%81%97%E3%82%86%E3%82%93%E3%81%8C%E3%81%84%E3%81%A8-3249354",
+        "checkedAt": "2026-10-30"
+      },
+      { "url": "https://shungitnpk.ru/en/history", "checkedAt": "2026-10-30" }
+    ],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s006",
+    "name": "スタウロライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [
+      "https://www.dcr.virginia.gov/state-parks/fairystones",
+      "https://www.dcr.virginia.gov/state-parks/blog/legend-of-the-fairy-stone?id=legend-of-the-fairy-stone"
+    ],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [],
+    "originalSourceDateHistory": [
+      {
+        "url": "https://www.dcr.virginia.gov/state-parks/fairystones",
+        "checkedAt": "2026-10-30"
+      },
+      {
+        "url": "https://www.dcr.virginia.gov/state-parks/blog/legend-of-the-fairy-stone?id=legend-of-the-fairy-stone",
+        "checkedAt": "2026-10-30"
+      }
+    ],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s007",
+    "name": "スティブナイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P1",
+    "priorityReason": "既存の有害性/繊維/粉/水の注意について、適用条件・素材同定・安全な扱いを最優先で資料照合。危険性を新しく認定したものではない。",
+    "existingReferenceUrls": [
+      "https://doi.org/10.3390/cosmetics10030071",
+      "https://www.spiritofisis.org/knowledge/crystal_files/stibnite.htm"
+    ],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [],
+    "originalSourceDateHistory": [
+      {
+        "url": "https://doi.org/10.3390/cosmetics10030071",
+        "checkedAt": "2026-10-30"
+      },
+      {
+        "url": "https://www.spiritofisis.org/knowledge/crystal_files/stibnite.htm",
+        "checkedAt": "2026-10-30"
+      }
+    ],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s008",
+    "name": "スモーキークォーツ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [
+      "https://www.nms.ac.uk/discover-catalogue/geology-to-jewellery-the-history-and-science-of-cairngorm-quartz",
+      "https://www.countyargyle.com/a-guide-to-scottish-gemstones/5/"
+    ],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [],
+    "originalSourceDateHistory": [
+      {
+        "url": "https://www.nms.ac.uk/discover-catalogue/geology-to-jewellery-the-history-and-science-of-cairngorm-quartz",
+        "checkedAt": "2026-10-30"
+      },
+      {
+        "url": "https://www.countyargyle.com/a-guide-to-scottish-gemstones/5/",
+        "checkedAt": "2026-10-30"
+      }
+    ],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s009",
+    "name": "スレイマンアゲート",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [
+      "https://naturalgems.pk/blog/sulemani-agate-guide",
+      "https://gemstore.pk/purpose/protection"
+    ],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [],
+    "originalSourceDateHistory": [
+      {
+        "url": "https://naturalgems.pk/blog/sulemani-agate-guide",
+        "checkedAt": "2026-10-30"
+      },
+      {
+        "url": "https://gemstore.pk/purpose/protection",
+        "checkedAt": "2026-10-30"
+      }
+    ],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s010",
+    "name": "テクタイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [
+      "https://www.tshaonline.org/handbook/entries/tektites",
+      "https://www.nornenthal.net/index.php?id=136&language=en&page=1&site=edelsteinlexikon.php&sub=details"
+    ],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [],
+    "originalSourceDateHistory": [
+      {
+        "url": "https://www.tshaonline.org/handbook/entries/tektites",
+        "checkedAt": "2026-10-30"
+      },
+      {
+        "url": "https://www.nornenthal.net/index.php?id=136&language=en&page=1&site=edelsteinlexikon.php&sub=details",
+        "checkedAt": "2026-10-30"
+      }
+    ],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s011",
+    "name": "デザートローズ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [
+      "https://www.ishi-imi.com/2009/05/post_416.html",
+      "https://www.anahitastones.com/en/stone-library/wish/details/desert_rose.html"
+    ],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [],
+    "originalSourceDateHistory": [
+      {
+        "url": "https://www.ishi-imi.com/2009/05/post_416.html",
+        "checkedAt": "2026-10-30"
+      },
+      {
+        "url": "https://www.anahitastones.com/en/stone-library/wish/details/desert_rose.html",
+        "checkedAt": "2026-10-30"
+      }
+    ],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s012",
+    "name": "ヌーマイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [
+      "https://www.igc-gemmology.org/igc-2023/a-nuummite-occurrence-from-kangerluarsuk-in-the-maniitsoq-region-west-greenland/",
+      "https://www.crystalvaults.com/crystal-encyclopedia/nuummite/"
+    ],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [],
+    "originalSourceDateHistory": [
+      {
+        "url": "https://www.igc-gemmology.org/igc-2023/a-nuummite-occurrence-from-kangerluarsuk-in-the-maniitsoq-region-west-greenland/",
+        "checkedAt": "2026-10-30"
+      },
+      {
+        "url": "https://www.crystalvaults.com/crystal-encyclopedia/nuummite/",
+        "checkedAt": "2026-10-30"
+      }
+    ],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s013",
+    "name": "ピクチャーサンドストーン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [
+      "https://stonecage.blog.shinobi.jp/Category/7/",
+      "https://bodhitreejp.com/natural-stone/picture-stone/"
+    ],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [],
+    "originalSourceDateHistory": [
+      {
+        "url": "https://stonecage.blog.shinobi.jp/Category/7/",
+        "checkedAt": "2026-10-30"
+      },
+      {
+        "url": "https://bodhitreejp.com/natural-stone/picture-stone/",
+        "checkedAt": "2026-10-30"
+      }
+    ],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s014",
+    "name": "レッドサンドストーン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [
+      "https://www.nps.gov/zion/learn/nature/navajo-colors.htm",
+      "https://www.astrology.com/crystals/sandstone-crystal"
+    ],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [],
+    "originalSourceDateHistory": [
+      {
+        "url": "https://www.nps.gov/zion/learn/nature/navajo-colors.htm",
+        "checkedAt": "2026-10-30"
+      },
+      {
+        "url": "https://www.astrology.com/crystals/sandstone-crystal",
+        "checkedAt": "2026-10-30"
+      }
+    ],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s015",
+    "name": "ブラックオニキス",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [
+      "https://www.thejewelrymagazine.com/jewelry-information-center/about-gemstones/onyx/",
+      "https://www.sothebys.com/en/articles/the-a-z-of-jewelry-o-is-for-onyx",
+      "https://www.gemsociety.org/article/black-onyx-jewelry-and-gemstone-information/"
+    ],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [],
+    "originalSourceDateHistory": [
+      {
+        "url": "https://www.thejewelrymagazine.com/jewelry-information-center/about-gemstones/onyx/",
+        "checkedAt": "2026-10-30"
+      },
+      {
+        "url": "https://www.sothebys.com/en/articles/the-a-z-of-jewelry-o-is-for-onyx",
+        "checkedAt": "2026-10-30"
+      },
+      {
+        "url": "https://www.gemsociety.org/article/black-onyx-jewelry-and-gemstone-information/",
+        "checkedAt": "2026-10-30"
+      }
+    ],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s016",
+    "name": "フリント",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [
+      "https://www.nps.gov/articles/flint-part-2.htm",
+      "https://www.nps.gov/pisp/learn/historyculture/flint-and-steel.htm"
+    ],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [],
+    "originalSourceDateHistory": [
+      {
+        "url": "https://www.nps.gov/articles/flint-part-2.htm",
+        "checkedAt": "2026-10-30"
+      },
+      {
+        "url": "https://www.nps.gov/pisp/learn/historyculture/flint-and-steel.htm",
+        "checkedAt": "2026-10-30"
+      }
+    ],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s017",
+    "name": "ヘマタイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [
+      "https://www.metmuseum.org/art/collection/search/552959",
+      "https://www.metmuseum.org/art/collection/search/545370"
+    ],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [],
+    "originalSourceDateHistory": [
+      {
+        "url": "https://www.metmuseum.org/art/collection/search/552959",
+        "checkedAt": "2026-10-30"
+      },
+      {
+        "url": "https://www.metmuseum.org/art/collection/search/545370",
+        "checkedAt": "2026-10-30"
+      }
+    ],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s018",
+    "name": "メテオライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [
+      "https://doi.org/10.1111/maps.12664",
+      "https://www.nature.com/articles/d41586-022-00436-5"
+    ],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [],
+    "originalSourceDateHistory": [
+      {
+        "url": "https://doi.org/10.1111/maps.12664",
+        "checkedAt": "2026-10-30"
+      },
+      {
+        "url": "https://www.nature.com/articles/d41586-022-00436-5",
+        "checkedAt": "2026-10-30"
+      }
+    ],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s019",
+    "name": "モリオン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [
+      "https://www.gemdat.org/gem-6270.html",
+      "https://www.edelsteine.at/en/glossaries/lexicon/smoky-quartz/"
+    ],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [],
+    "originalSourceDateHistory": [
+      {
+        "url": "https://www.gemdat.org/gem-6270.html",
+        "checkedAt": "2026-10-30"
+      },
+      {
+        "url": "https://www.edelsteine.at/en/glossaries/lexicon/smoky-quartz/",
+        "checkedAt": "2026-10-30"
+      }
+    ],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s020",
+    "name": "ラヴァ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [
+      "https://www.usgs.gov/educational-resources/find-feature-vesicles",
+      "https://jeffreyburroughs.com/lava-stone/"
+    ],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [],
+    "originalSourceDateHistory": [
+      {
+        "url": "https://www.usgs.gov/educational-resources/find-feature-vesicles",
+        "checkedAt": "2026-10-30"
+      },
+      {
+        "url": "https://jeffreyburroughs.com/lava-stone/",
+        "checkedAt": "2026-10-30"
+      }
+    ],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s021",
+    "name": "アゲート",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Agate"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s022",
+    "name": "グリーンアゲート",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Green%20Agate"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s023",
+    "name": "ファイヤーアゲート",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Fire%20Agate"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s024",
+    "name": "モスアゲート",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Moss%20Agate"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s025",
+    "name": "レッドアゲート",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Red%20Agate"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s026",
+    "name": "アンデシン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Andesine"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s027",
+    "name": "アンモライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Ammolite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s028",
+    "name": "ガーネット",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": ["https://www.gia.edu/garnet-history-lore"],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s029",
+    "name": "アルマンディン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Almandine"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s030",
+    "name": "アンドラダイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Andradite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s031",
+    "name": "ウバロバイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Uvarovite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s032",
+    "name": "グロッシュラー",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Grossular"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s033",
+    "name": "スペサルティン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Spessartine"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s034",
+    "name": "パイロープ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Pyrope"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s035",
+    "name": "キュープライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P1",
+    "priorityReason": "既存の有害性/繊維/粉/水の注意について、適用条件・素材同定・安全な扱いを最優先で資料照合。危険性を新しく認定したものではない。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Cuprite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s036",
+    "name": "コーラル",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Coral"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s037",
+    "name": "ジャスパー",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Jasper"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s038",
+    "name": "シンナバー",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P1",
+    "priorityReason": "既存の有害性/繊維/粉/水の注意について、適用条件・素材同定・安全な扱いを最優先で資料照合。危険性を新しく認定したものではない。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Cinnabar"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s039",
+    "name": "スピネル",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Spinel"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s040",
+    "name": "デンドライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Dendrite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s041",
+    "name": "ブラッドストーン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Bloodstone"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s042",
+    "name": "ペトリファイドウッド",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.nps.gov/pefo/learn/nature/petrified-wood.htm"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s043",
+    "name": "モッカイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Mookaite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s044",
+    "name": "ユーディアライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Eudialyte"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s045",
+    "name": "アンバー",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/amber"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s046",
+    "name": "カーネリアン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Carnelian"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s047",
+    "name": "サンストーン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/sunstone"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s048",
+    "name": "シトリン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/citrine"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s049",
+    "name": "タンジェリンクォーツ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Tangerine%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s050",
+    "name": "トパーズ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/topaz"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s051",
+    "name": "インペリアルトパーズ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/topaz"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s052",
+    "name": "ブルートパーズ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/topaz"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s053",
+    "name": "アラゴナイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Aragonite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s054",
+    "name": "インパクトガラス",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Impact%20Glass"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s055",
+    "name": "オウロヴェルデクォーツ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Ouro%20Verde%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s056",
+    "name": "サルファー",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P1",
+    "priorityReason": "既存の有害性/繊維/粉/水の注意について、適用条件・素材同定・安全な扱いを最優先で資料照合。危険性を新しく認定したものではない。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Sulfur"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s057",
+    "name": "タイガーアイ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Tiger%27s%20Eye"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s058",
+    "name": "ピーターサイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Pietersite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s059",
+    "name": "ブルズアイ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Bull%27s%20Eye"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s060",
+    "name": "ホークスアイ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Hawk%27s%20Eye"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s061",
+    "name": "チャルコパイライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Chalcopyrite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s062",
+    "name": "パイライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Pyrite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s063",
+    "name": "ムーンストーン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": ["https://www.gia.edu/jp/moonstone-history-lore"],
+    "legendUrlRegisteredInSources": false,
+    "candidateUrls": ["https://www.gia.edu/jp/moonstone-history-lore"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s064",
+    "name": "ルチルクォーツ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Rutilated%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s065",
+    "name": "キャッツアイオレンジルチルクォーツ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Cat%27s%20Eye%20Orange%20Rutilated%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s066",
+    "name": "シルバールチルクォーツ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Silver%20Rutilated%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s067",
+    "name": "レモンクォーツ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Lemon%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s068",
+    "name": "アクチノライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P1",
+    "priorityReason": "既存の有害性/繊維/粉/水の注意について、適用条件・素材同定・安全な扱いを最優先で資料照合。危険性を新しく認定したものではない。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Actinolite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s069",
+    "name": "アベンチュリン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Aventurine"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s070",
+    "name": "アマゾナイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Amazonite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s071",
+    "name": "エピドート",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Epidote"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s072",
+    "name": "エメラルド",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": ["https://4cs.gia.edu/en-us/blog/page/7/"],
+    "legendUrlRegisteredInSources": false,
+    "candidateUrls": ["https://www.gia.edu/emerald"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s073",
+    "name": "ガーデンクォーツ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Garden%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s074",
+    "name": "クリソコラ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Chrysocolla"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s075",
+    "name": "クリソプレーズ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Chrysoprase"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s076",
+    "name": "クリソベリル",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Chrysoberyl"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s077",
+    "name": "クンツァイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/kunzite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s078",
+    "name": "コスモクロア",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Kosmochlor"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s079",
+    "name": "サーペンチン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P1",
+    "priorityReason": "既存の有害性/繊維/粉/水の注意について、適用条件・素材同定・安全な扱いを最優先で資料照合。危険性を新しく認定したものではない。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Serpentine"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s080",
+    "name": "ジェダイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": ["https://www.gia.edu/jade"],
+    "legendUrlRegisteredInSources": false,
+    "candidateUrls": ["https://www.gia.edu/jade"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s081",
+    "name": "ストロベリークォーツ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Strawberry%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s082",
+    "name": "スフェーン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Sphene"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s083",
+    "name": "スミソナイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Smithsonite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s084",
+    "name": "セラフィナイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Seraphinite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s085",
+    "name": "ダイオプサイド",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Diopside"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s086",
+    "name": "ダイオプテーズ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Dioptase"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s087",
+    "name": "タンザナイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/tanzanite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s088",
+    "name": "トルマリン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/tourmaline"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s089",
+    "name": "イエロートルマリン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/tourmaline"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s090",
+    "name": "グリーントルマリン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/tourmaline"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s091",
+    "name": "ピンクトルマリン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/tourmaline"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s092",
+    "name": "ウォーターメロントルマリン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/tourmaline"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s093",
+    "name": "ブラックトルマリン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/tourmaline"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s094",
+    "name": "ブルートルマリン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/tourmaline"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s095",
+    "name": "ネフライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": ["https://www.gia.edu/jade"],
+    "legendUrlRegisteredInSources": false,
+    "candidateUrls": ["https://www.gia.edu/jade"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s096",
+    "name": "プレナイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Prehnite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s097",
+    "name": "フローライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Fluorite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s098",
+    "name": "グリーンフローライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Green%20Fluorite"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s099",
+    "name": "パープルフローライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Purple%20Fluorite"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s100",
+    "name": "ブルーフローライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Blue%20Fluorite"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s101",
+    "name": "ペリドット",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": ["https://www.gia.edu/peridot"],
+    "legendUrlRegisteredInSources": false,
+    "candidateUrls": ["https://www.gia.edu/peridot"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s102",
+    "name": "マスコバイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Muscovite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s103",
+    "name": "マラカイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P1",
+    "priorityReason": "既存の有害性/繊維/粉/水の注意について、適用条件・素材同定・安全な扱いを最優先で資料照合。危険性を新しく認定したものではない。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Malachite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s104",
+    "name": "モルダバイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Moldavite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s105",
+    "name": "ユナカイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Unakite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s106",
+    "name": "ルビー",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": ["https://my.gia.edu/ruby"],
+    "legendUrlRegisteredInSources": false,
+    "candidateUrls": ["https://www.gia.edu/ruby"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s107",
+    "name": "ローズクォーツ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/rose-quartz"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s108",
+    "name": "ロードクロサイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Rhodochrosite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s109",
+    "name": "ロードナイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Rhodonite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s110",
+    "name": "アクアマリン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": ["https://4cs.gia.edu/en-us/blog-/page/8/"],
+    "legendUrlRegisteredInSources": false,
+    "candidateUrls": ["https://www.gia.edu/aquamarine"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s111",
+    "name": "アパタイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Apatite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s112",
+    "name": "アンハイドライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Anhydrite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s113",
+    "name": "カイヤナイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Kyanite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s114",
+    "name": "カバンサイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Cavansite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s115",
+    "name": "カルセドニー",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Chalcedony"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s116",
+    "name": "シーブルーカルセドニー",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Sea%20Blue%20Chalcedony"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s117",
+    "name": "ブルーカルセドニー",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Blue%20Chalcedony"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s118",
+    "name": "ピンクカルセドニー",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Pink%20Chalcedony"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s119",
+    "name": "クォンタムクリソコラ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Quantum%20Chrysocolla"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s120",
+    "name": "セレスタイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Celestite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s121",
+    "name": "ソーダライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Sodalite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s122",
+    "name": "ターコイズ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": ["https://www.gia.edu/turquoise-history-lore"],
+    "legendUrlRegisteredInSources": false,
+    "candidateUrls": ["https://www.gia.edu/turquoise-history-lore"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s123",
+    "name": "デュモルチェライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Dumortierite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s124",
+    "name": "ブルーレースアゲート",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Blue%20Lace%20Agate"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s125",
+    "name": "ペリステライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Peristerite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s126",
+    "name": "ラリマー",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Larimar"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s127",
+    "name": "アイオライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/iolite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s128",
+    "name": "アズライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P1",
+    "priorityReason": "既存の有害性/繊維/粉/水の注意について、適用条件・素材同定・安全な扱いを最優先で資料照合。危険性を新しく認定したものではない。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Azurite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s129",
+    "name": "サファイア",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": ["https://my.gia.edu/sapphire-history-lore"],
+    "legendUrlRegisteredInSources": false,
+    "candidateUrls": ["https://www.gia.edu/sapphire"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s130",
+    "name": "シャッタカイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Shattuckite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s131",
+    "name": "プレセリブルーストーン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Preseli%20Bluestone"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s132",
+    "name": "ラピスラズリ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/lapis-lazuli"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s133",
+    "name": "ラブラドライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Labradorite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s134",
+    "name": "アメジスト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": ["https://www.gia.edu/jp/amethyst-history-lore"],
+    "legendUrlRegisteredInSources": false,
+    "candidateUrls": ["https://www.gia.edu/jp/amethyst-history-lore"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s135",
+    "name": "エレスチャルアメジスト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Elestial%20Amethyst"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s136",
+    "name": "プラシオライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Prasiolite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s137",
+    "name": "ラベンダーアメジスト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Lavender%20Amethyst"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s138",
+    "name": "アメトリン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/ametrine"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s139",
+    "name": "スギライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Sugilite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s140",
+    "name": "チャロアイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Charoite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s141",
+    "name": "ハイパーシーン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Hypersthene"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s142",
+    "name": "フォスフォシデライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Phosphosiderite"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s143",
+    "name": "レピドライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Lepidolite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s144",
+    "name": "アイスクリスタル",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Ice%20Crystal"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s145",
+    "name": "アゼツライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Azeztulite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s146",
+    "name": "アポフィライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Apophyllite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s147",
+    "name": "オーラクォーツ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Aura%20Quartz"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s148",
+    "name": "オパール",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": ["https://my.gia.edu/gia-website/opal"],
+    "legendUrlRegisteredInSources": false,
+    "candidateUrls": ["https://www.gia.edu/opal"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s149",
+    "name": "イエローオパール",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/opal"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s150",
+    "name": "ピンクオパール",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/opal"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s151",
+    "name": "ブラックマトリックスオパール",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/opal"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s152",
+    "name": "プレシャスオパール",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/opal"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s153",
+    "name": "ガネッシュヒマールクォーツ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Ganesh%20Himal%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s154",
+    "name": "カルサイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Calcite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s155",
+    "name": "オプティカルカルサイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Optical%20Calcite"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s156",
+    "name": "オレンジカルサイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Orange%20Calcite"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s157",
+    "name": "グリーンカルサイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Green%20Calcite"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s158",
+    "name": "バイオレットカルサイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Violet%20Calcite"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s159",
+    "name": "ピンクカルサイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Pink%20Calcite"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s160",
+    "name": "ブルーカルサイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Blue%20Calcite"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s161",
+    "name": "クォーツァイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Quartzite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s162",
+    "name": "グリーンクォーツァイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Green%20Quartzite"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s163",
+    "name": "ブルークォーツァイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Blue%20Quartzite"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s164",
+    "name": "ホワイトクォーツァイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=White%20Quartzite"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s165",
+    "name": "スキャポライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Scapolite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s166",
+    "name": "ブラックスキャポライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Black%20Scapolite"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s167",
+    "name": "マリアライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Marialite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s168",
+    "name": "ゼオライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Zeolite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s169",
+    "name": "セレナイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Selenite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s170",
+    "name": "ダイヤモンド",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/diamond"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s171",
+    "name": "ダンビュライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Danburite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s172",
+    "name": "ハーライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P1",
+    "priorityReason": "既存の有害性/繊維/粉/水の注意について、適用条件・素材同定・安全な扱いを最優先で資料照合。危険性を新しく認定したものではない。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Halite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s173",
+    "name": "パール",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": ["https://www.gia.edu/pearl-history-lore"],
+    "legendUrlRegisteredInSources": false,
+    "candidateUrls": ["https://www.gia.edu/pearl-history-lore"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s174",
+    "name": "淡水パール",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/pearl"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s175",
+    "name": "マザーオブパール",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Mother%20of%20Pearl"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s176",
+    "name": "ハウライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Howlite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s177",
+    "name": "ファントムクォーツ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Phantom%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s178",
+    "name": "フェナカイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Phenakite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s179",
+    "name": "プラチナクォーツ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Platinum%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s180",
+    "name": "ペタライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Petalite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s181",
+    "name": "ベリル",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/beryl"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s182",
+    "name": "マグネサイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Magnesite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s183",
+    "name": "ミルキークォーツ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Milky%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s184",
+    "name": "メタモルフォーゼスクォーツ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Metamorphosis%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s185",
+    "name": "レインボークォーツ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Rainbow%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s186",
+    "name": "レピドクロサイトインクォーツ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Lepidocrocite%20in%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s187",
+    "name": "ロッククリスタル",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.mindat.org/search.php?search=Quartz"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s188",
+    "name": "アイリスクォーツ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Iris%20Rainbow%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s189",
+    "name": "ウィンドウ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Window%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s190",
+    "name": "エレスチャル",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Elestial%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s191",
+    "name": "カテドラル",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Cathedral%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s192",
+    "name": "キャンドル",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Candle%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s193",
+    "name": "クラスター",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Quartz%20Cluster"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s194",
+    "name": "ジャパニーズローツイン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Japan%20Law%20Twin%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s195",
+    "name": "セプター",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Scepter%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s196",
+    "name": "セルフヒールド",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Self%20Healed%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s197",
+    "name": "タイムリンク",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Time%20Link%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s198",
+    "name": "ダブルターミネーテッド",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Double%20Terminated%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s199",
+    "name": "トライゴーニック",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Trigonic%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s200",
+    "name": "ファーデン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Faden%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s201",
+    "name": "ライトニング",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Lightning%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s202",
+    "name": "レーザー",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Laser%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s203",
+    "name": "レコードキーパー",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Record%20Keeper%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s204",
+    "name": "レムリアンシード",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Lemurian%20Seed%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s205",
+    "name": "ルベライト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/tourmaline"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s206",
+    "name": "モルガナイト",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/morganite"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s207",
+    "name": "ピンクサファイア",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/sapphire"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s208",
+    "name": "ピンクシラームーンストーン",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/moonstone"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s209",
+    "name": "ゴールデンルチルクォーツ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": [
+      "https://www.mindat.org/search.php?search=Rutilated%20Quartz"
+    ],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  },
+  {
+    "id": "s210",
+    "name": "スターローズクォーツ",
+    "externalStatus": "unverified",
+    "checkedAt": null,
+    "priority": "P2",
+    "priorityReason": "名称/分類/成分/硬度/処理、歴史の原典と引用箇所を照合。",
+    "existingReferenceUrls": [],
+    "legendUrlRegisteredInSources": true,
+    "candidateUrls": ["https://www.gia.edu/rose-quartz"],
+    "originalSourceDateHistory": [],
+    "checks": [
+      "P2: 正式名称・和名・別名・分類・成分・モース硬度・処理を資料で確認。",
+      "P2: 歴史や伝説がある場合は原典・地域・時代・引用箇所を照合。",
+      "P3: 意味・象徴・形状名の物語を鉱物学と区別し、出典なしの口コミや保証表現を追加しない。"
+    ]
+  }
+]
