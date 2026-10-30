@@ -24,7 +24,7 @@ it('keeps pairing labels and comparison routes coherent while distinguishing the
   expect(new Set(batch.map((s) => s.quality)).size).toBe(20);
   expect(stones[133].legend).toContain('ギリシャ語');
   expect(stones[133].legend).toContain('後世');
-  expect(stones[131].synergyNote).toContain('ロッククリスタル');
+  expect(stones[131].synergyNote).toContain('水晶');
   for (const s of batch) {
     expect(s.handling).not.toContain('移行資料の注意メモ');
     expect(s.related).not.toContain(s.id);
