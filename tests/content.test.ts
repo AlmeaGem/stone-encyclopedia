@@ -152,9 +152,7 @@ it('keeps the first twenty story citations aligned and fragile specimens distinc
   expect(stones.find((s) => s.id === 's007')!.synergyNote).toContain(
     '別置きの標本',
   );
-  expect(stones.find((s) => s.id === 's011')!.synergyNote).toContain(
-    '石膏質',
-  );
+  expect(stones.find((s) => s.id === 's011')!.synergyNote).toContain('石膏質');
 });
 
 it('keeps the second twenty identities and aligns the existing garnet citation without marking it verified', () => {
