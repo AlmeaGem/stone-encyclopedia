@@ -1,0 +1,56 @@
+{
+  "scope": "s001-s210",
+  "verificationKind": "internal consistency only; external bodies not retrieved",
+  "catalog": {
+    "records": 210,
+    "uniqueIds": 210,
+    "uniqueSlugs": 210,
+    "uniqueNames": 210,
+    "uniqueEnglishNames": 210,
+    "nameAndAliasQueries": 474,
+    "categories": 12,
+    "relatedLinks": 622,
+    "pairingLinks": 118
+  },
+  "externalEvidence": {
+    "confirmed": 0,
+    "partiallyConfirmed": 0,
+    "unverifiedStones": 210,
+    "uniqueExistingReferenceUrls": 53,
+    "existingUrlSourceRecords": 42,
+    "retainedLegacyDateRecords": 41,
+    "priorities": { "P1": 9, "P2": 201 },
+    "caveat": "今回の再照合記録上の状態。過去のcheckedAtは履歴として保持するが、その日付だけで今回の本文照合を確認済みとはしない。"
+  },
+  "photos": {
+    "repositoryOnly": true,
+    "approvedImageStones": 2,
+    "realPhotoStones": 0,
+    "illustrationStones": 2,
+    "withoutApprovedImage": 208,
+    "withoutRealPhoto": 210,
+    "remoteOrMacImagesAudited": false
+  },
+  "remaining": {
+    "legendLinksNotAlsoInSources": [
+      "s063",
+      "s072",
+      "s080",
+      "s095",
+      "s101",
+      "s106",
+      "s110",
+      "s122",
+      "s129",
+      "s134",
+      "s148",
+      "s173"
+    ],
+    "blankMineralFields": 210,
+    "blankHardnessFields": 210,
+    "missingDedicatedLegends": 177,
+    "missingDedicatedMeanings": 144,
+    "missingDedicatedPairings": 161,
+    "genericCharacteristics": 147
+  }
+}
