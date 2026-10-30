@@ -50,7 +50,7 @@ it('keeps last thirty shape/trade names distinct from guaranteed effects and lin
   expect(new Set(last.map((s) => s.quality)).size).toBe(30);
   expect(stones[203].quality).toContain('産地');
   expect(stones[195].selection).toContain('治療作用');
-  expect(stones[209].handling).toContain('星の見え方');
+  expect(stones[209].handling).toContain('星の鮮明さ');
   for (const s of last) {
     expect(s.handling).not.toContain('移行資料の注意メモ');
     for (const id of s.synergyStoneIds || [])
