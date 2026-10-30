@@ -153,7 +153,7 @@ it('keeps the first twenty story citations aligned and fragile specimens distinc
     '別置きの標本',
   );
   expect(stones.find((s) => s.id === 's011')!.synergyNote).toContain(
-    '重晶石質のものとは区別',
+    '石膏質',
   );
 });
 
