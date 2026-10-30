@@ -15,7 +15,9 @@ it('keeps migration notes internally while excluding them from all 210 public re
     ).toBe(false);
     expect(JSON.stringify(stone)).toBe(before);
     expect(stone.mineral.length).toBeGreaterThan(0);
-    expect(stone.sources.every((s) => !/移行資料|内部管理/u.test(s.label))).toBe(true);
+    expect(
+      stone.sources.every((s) => !/移行資料|内部管理/u.test(s.label)),
+    ).toBe(true);
   }
 });
 it('preserves real web citations and print bibliography without requiring a URL', () => {
