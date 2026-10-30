@@ -150,7 +150,7 @@ it('keeps the first twenty story citations aligned and fragile specimens distinc
     '単結晶の組み合わせ',
   );
   expect(stones.find((s) => s.id === 's007')!.synergyNote).toContain(
-    '鑑賞用標本',
+    '別置きの標本',
   );
   expect(stones.find((s) => s.id === 's011')!.synergyNote).toContain(
     '重晶石質のものとは区別',
