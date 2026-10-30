@@ -145,7 +145,7 @@ it('keeps the first twenty story citations aligned and fragile specimens distinc
   }
   const onyx = stones.find((s) => s.id === 's015')!;
   expect(onyx.legendSourceUrl).toContain('thejewelrymagazine.com');
-  expect((onyx.legend?.length || 0)).toBeGreaterThan(25);
+  expect(onyx.legend?.length || 0).toBeGreaterThan(25);
   expect(stones.find((s) => s.id === 's006')!.characteristics).not.toContain(
     '単結晶の組み合わせ',
   );
