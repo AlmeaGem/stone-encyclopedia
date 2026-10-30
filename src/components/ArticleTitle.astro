@@ -1,0 +1,44 @@
+---
+interface Props {
+  title: string;
+  level?: 'h1' | 'h2' | 'h3';
+  protectWords?: boolean;
+}
+const { title, level = 'h3', protectWords = false } = Astro.props;
+const Tag = level;
+const phrases = title.match(/[^。、！？]+[。、！？]?/gu) || [title];
+const protectedPhrases = [
+  'ものではありません',
+  'ではありません',
+  'ひとつの鉱物',
+  '限りません',
+  '身につける',
+  '名前より先に',
+  '完璧ではない',
+  '傷めない',
+  '鉱物名',
+  '流通名',
+  '形状名',
+];
+const protectedPattern = new RegExp(`(${protectedPhrases.join('|')})`, 'u');
+---
+
+<Tag class="article-title">
+  {phrases.map((phrase) =>
+    protectWords ? (
+      <span>
+        {phrase
+          .split(protectedPattern)
+          .map((part) =>
+            protectedPhrases.includes(part) ? (
+              <span class="title-run">{part}</span>
+            ) : (
+              part
+            ),
+          )}
+      </span>
+    ) : (
+      phrase.split(/(?<=・)/u).map((part) => <span>{part}</span>)
+    ),
+  )}
+</Tag>

@@ -1,0 +1,15 @@
+---
+import Page from '../layouts/Page.astro';
+import { pathTo } from '../lib/urls';
+---
+
+<Page title="ページが見つかりません">
+  <section class="wrap empty">
+    <p class="eyebrow">404 / NOT FOUND</p>
+    <h1>まだ、見つからない石。</h1>
+    <p>URLをご確認いただくか、図鑑からお探しください。</p>
+    <a class="button" href={pathTo('stones/')}>
+      図鑑を開く →
+    </a>
+  </section>
+</Page>

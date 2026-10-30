@@ -1,0 +1,82 @@
+[
+  {
+    "id": "s001",
+    "name": "オブシディアン",
+    "before": "\"Obsidian\" filetype:bitmap",
+    "after": "\"Obsidian\" (sphere OR \"crystal ball\" OR \"crystal sphere\" OR \"gemstone sphere\" OR \"polished stone sphere\") filetype:bitmap",
+    "actualPhotoComparison": "未実施：この環境のCommons接続はCONNECT 403",
+    "automaticShape": "形状未確認"
+  },
+  {
+    "id": "s002",
+    "name": "キャストライト",
+    "before": "\"Chiastolite\" filetype:bitmap",
+    "after": "\"Chiastolite\" (sphere OR \"crystal ball\" OR \"crystal sphere\" OR \"gemstone sphere\" OR \"polished stone sphere\") filetype:bitmap",
+    "actualPhotoComparison": "未実施：この環境のCommons接続はCONNECT 403",
+    "automaticShape": "形状未確認"
+  },
+  {
+    "id": "s003",
+    "name": "ジェット",
+    "before": "\"Jet\" filetype:bitmap",
+    "after": "\"Jet\" (sphere OR \"crystal ball\" OR \"crystal sphere\" OR \"gemstone sphere\" OR \"polished stone sphere\") filetype:bitmap",
+    "actualPhotoComparison": "未実施：この環境のCommons接続はCONNECT 403",
+    "automaticShape": "形状未確認"
+  },
+  {
+    "id": "s004",
+    "name": "シャーマナイト",
+    "before": "\"Shamanite\" filetype:bitmap",
+    "after": "\"Shamanite\" (sphere OR \"crystal ball\" OR \"crystal sphere\" OR \"gemstone sphere\" OR \"polished stone sphere\") filetype:bitmap",
+    "actualPhotoComparison": "未実施：この環境のCommons接続はCONNECT 403",
+    "automaticShape": "形状未確認"
+  },
+  {
+    "id": "s005",
+    "name": "シュンガイト",
+    "before": "\"Shungite\" filetype:bitmap",
+    "after": "\"Shungite\" (sphere OR \"crystal ball\" OR \"crystal sphere\" OR \"gemstone sphere\" OR \"polished stone sphere\") filetype:bitmap",
+    "actualPhotoComparison": "未実施：この環境のCommons接続はCONNECT 403",
+    "automaticShape": "形状未確認"
+  },
+  {
+    "id": "s006",
+    "name": "スタウロライト",
+    "before": "\"Staurolite\" filetype:bitmap",
+    "after": "\"Staurolite\" (sphere OR \"crystal ball\" OR \"crystal sphere\" OR \"gemstone sphere\" OR \"polished stone sphere\") filetype:bitmap",
+    "actualPhotoComparison": "未実施：この環境のCommons接続はCONNECT 403",
+    "automaticShape": "形状未確認"
+  },
+  {
+    "id": "s007",
+    "name": "スティブナイト",
+    "before": "\"Stibnite\" filetype:bitmap",
+    "after": "\"Stibnite\" (sphere OR \"crystal ball\" OR \"crystal sphere\" OR \"gemstone sphere\" OR \"polished stone sphere\") filetype:bitmap",
+    "actualPhotoComparison": "未実施：この環境のCommons接続はCONNECT 403",
+    "automaticShape": "形状未確認"
+  },
+  {
+    "id": "s008",
+    "name": "スモーキークォーツ",
+    "before": "\"Smoky Quartz\" filetype:bitmap",
+    "after": "\"Smoky Quartz\" (sphere OR \"crystal ball\" OR \"crystal sphere\" OR \"gemstone sphere\" OR \"polished stone sphere\") filetype:bitmap",
+    "actualPhotoComparison": "未実施：この環境のCommons接続はCONNECT 403",
+    "automaticShape": "形状未確認"
+  },
+  {
+    "id": "s009",
+    "name": "スレイマンアゲート",
+    "before": "\"Sulemani Agate\" filetype:bitmap",
+    "after": "\"Sulemani Agate\" (sphere OR \"crystal ball\" OR \"crystal sphere\" OR \"gemstone sphere\" OR \"polished stone sphere\") filetype:bitmap",
+    "actualPhotoComparison": "未実施：この環境のCommons接続はCONNECT 403",
+    "automaticShape": "形状未確認"
+  },
+  {
+    "id": "s010",
+    "name": "テクタイト",
+    "before": "\"Tektite\" filetype:bitmap",
+    "after": "\"Tektite\" (sphere OR \"crystal ball\" OR \"crystal sphere\" OR \"gemstone sphere\" OR \"polished stone sphere\") filetype:bitmap",
+    "actualPhotoComparison": "未実施：この環境のCommons接続はCONNECT 403",
+    "automaticShape": "形状未確認"
+  }
+]

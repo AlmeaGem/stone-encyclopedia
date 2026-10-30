@@ -1,0 +1,176 @@
+{
+  "attemptedOn": "2026-10-30",
+  "scope": "s001-s020",
+  "method": "既存の参考URLへ通常のHTTPS GETを試行。接続前のネットワークプロキシ403で本文は取得できていない。URLの404や記述の誤りを判定したものではない。",
+  "externallyVerified": false,
+  "results": [
+    {
+      "url": "https://www.getty.edu/research/exhibitions_events/exhibitions/obsidian_mirror/through_the_mirror.html",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.instituteofmaking.org.uk/materials-library/library/obsidian-mirror",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.wakou-stone.co.jp/view/item/000000010202",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://taslar.bumba.tr/en/stones/chiastolite/",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://whitbymuseum.org.uk/collection/jet-and-jet-jewellery/",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.gia.edu/gia-website/whitby-jet-reading-list",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://pascle.net/stone/shamanite",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.ishi-imi.com/2009/05/post_394.html",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://kotobank.jp/word/%E3%81%97%E3%82%86%E3%82%93%E3%81%8C%E3%81%84%E3%81%A8-3249354",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://shungitnpk.ru/en/history",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.dcr.virginia.gov/state-parks/fairystones",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.dcr.virginia.gov/state-parks/blog/legend-of-the-fairy-stone?id=legend-of-the-fairy-stone",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://doi.org/10.3390/cosmetics10030071",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.spiritofisis.org/knowledge/crystal_files/stibnite.htm",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.nms.ac.uk/discover-catalogue/geology-to-jewellery-the-history-and-science-of-cairngorm-quartz",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.countyargyle.com/a-guide-to-scottish-gemstones/5/",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://naturalgems.pk/blog/sulemani-agate-guide",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://gemstore.pk/purpose/protection",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.tshaonline.org/handbook/entries/tektites",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.nornenthal.net/index.php?id=136&language=en&page=1&site=edelsteinlexikon.php&sub=details",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.ishi-imi.com/2009/05/post_416.html",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.anahitastones.com/en/stone-library/wish/details/desert_rose.html",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.igc-gemmology.org/igc-2023/a-nuummite-occurrence-from-kangerluarsuk-in-the-maniitsoq-region-west-greenland/",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.crystalvaults.com/crystal-encyclopedia/nuummite/",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://stonecage.blog.shinobi.jp/Category/7/",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://bodhitreejp.com/natural-stone/picture-stone/",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.nps.gov/zion/learn/nature/navajo-colors.htm",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.astrology.com/crystals/sandstone-crystal",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.thejewelrymagazine.com/jewelry-information-center/about-gemstones/onyx/",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.sothebys.com/en/articles/the-a-z-of-jewelry-o-is-for-onyx",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.gemsociety.org/article/black-onyx-jewelry-and-gemstone-information/",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.nps.gov/articles/flint-part-2.htm",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.nps.gov/pisp/learn/historyculture/flint-and-steel.htm",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.metmuseum.org/art/collection/search/552959",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.metmuseum.org/art/collection/search/545370",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://doi.org/10.1111/maps.12664",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.nature.com/articles/d41586-022-00436-5",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.gemdat.org/gem-6270.html",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.edelsteine.at/en/glossaries/lexicon/smoky-quartz/",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://www.usgs.gov/educational-resources/find-feature-vesicles",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    },
+    {
+      "url": "https://jeffreyburroughs.com/lava-stone/",
+      "error": "<urlopen error Tunnel connection failed: 403 Forbidden>"
+    }
+  ],
+  "browserFallback": {
+    "url": "https://www.dcr.virginia.gov/state-parks/fairystones",
+    "result": "通常のChromiumでのアクセスもERR_TUNNEL_CONNECTION_FAILED。本文は未取得。"
+  }
+}

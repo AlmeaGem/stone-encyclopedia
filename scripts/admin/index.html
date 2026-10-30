@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>ALMÉA GEM · 編集管理</title>
+    <link rel="stylesheet" href="/editor.css" />
+  </head>
+  <body>
+    <header>
+      <span>ALMÉA GEM / PRIVATE EDITOR</span
+      ><button id="logout">ログアウト</button>
+    </header>
+    <main>
+      <h1>図鑑の編集室</h1>
+      <p class="notice">
+        下書きと未承認候補は .editor/
+        に保存し、公開しません。「公開用データへ反映」はローカルファイルの更新です。確認・テスト後、GitHubのPRで承認してからデプロイしてください。公開サイトに管理APIはありません。
+      </p>
+      <p id="status" role="status"></p>
+      <nav>
+        <button data-tab="content">石・記事・テーマ</button
+        ><button data-tab="images">写真候補・ライセンス</button>
+      </nav>
+      <section id="content">
+        <div class="row">
+          <label
+            >編集対象<select id="collection">
+              <option value="stones">石の図鑑</option>
+              <option value="articles">読みもの</option>
+              <option value="categories">願いのカテゴリ</option>
+            </select></label
+          ><label>項目<select id="entry"></select></label
+          ><button id="load">開く</button
+          ><button id="new-article">新しい記事</button>
+        </div>
+        <div id="fields"></div>
+        <details>
+          <summary>構造化データ（出典・分類・公開状態など）</summary>
+          <textarea
+            id="document"
+            rows="18"
+            spellcheck="false"
+            aria-label="編集データJSON"
+          ></textarea
+          ><button id="apply-json">JSONをフォームへ反映</button>
+        </details>
+        <div class="row">
+          <button id="save-draft">下書きを保存</button
+          ><button id="publish" disabled>確認して公開用データへ反映</button>
+        </div>
+        <p class="muted">
+          石の固定IDとURLは変更できません。未確認情報を推測で埋めず、出典の確認日も記録してください。料金・診断ロジック・購入履歴はフェーズ2です。
+        </p>
+      </section>
+      <section id="images" hidden>
+        <h2>210種類の写真を選ぶ</h2>
+        <p>
+          石を選ぶ → 写真と出典を入力 → プレビュー確認 → 採用 →
+          承認済みを一括反映。コード・JSONの編集は不要です。
+        </p>
+        <label>対象の石<select id="image-stone"></select></label>
+        <section id="bulk-photos" aria-labelledby="bulk-photo-title">
+          <h3 id="bulk-photo-title">仮保存画像の一括採用</h3>
+          <p>
+            このMacの保存済み候補を読み込みます。採用だけでは公開されません。既存の代表写真は一括操作で上書きしません。
+          </p>
+          <div class="row">
+            <label>石名・IDで検索<input id="bulk-search" type="search" /></label
+            ><label
+              >状態<select id="bulk-filter">
+                <option value="pending">仮保存・確認待ち</option>
+                <option value="all">すべて</option>
+                <option value="approved">承認済み・反映待ち</option>
+              </select></label
+            >
+          </div>
+          <p id="bulk-counts" role="status"></p>
+          <div class="row">
+            <button id="bulk-select-all">候補を全選択</button
+            ><button id="bulk-clear">選択解除</button
+            ><button id="bulk-reload">保存済み候補を再読込</button
+            ><button id="bulk-delete-selected" class="candidate-delete">
+              選択画像を削除
+            </button>
+          </div>
+          <div id="bulk-candidates" class="bulk-grid"></div>
+          <div class="row">
+            <button id="bulk-prev">前の30件</button><span id="bulk-page"></span
+            ><button id="bulk-next">次の30件</button>
+          </div>
+          <label
+            ><input
+              id="bulk-identity"
+              type="checkbox"
+            />選択したすべての写真の石ID・石種・写真区分を確認しました</label
+          >
+          <label
+            ><input
+              id="bulk-rights"
+              type="checkbox"
+            />選択したすべての写真の出典・クレジット・商用利用権限を確認しました</label
+          >
+          <button id="bulk-preview">
+            選択した画像をまとめて採用（確認へ）
+          </button>
+          <p id="bulk-job" role="status" aria-live="polite"></p>
+          <button id="bulk-apply">
+            承認済みの代表画像をまとめて公開用データへ反映（既存写真を保護）
+          </button>
+          <p>
+            反映済みでもWeb公開ではありません。GitHub
+            DesktopでCommit・Pushし、GitHub
+            Actionsでプレビューを公開してください。
+          </p>
+        </section>
+        <details id="photo-trash-panel">
+          <summary>候補画像のゴミ箱（30日間復元可能）</summary>
+          <p>
+            仮保存・確認待ちの候補だけを一覧から外します。原本・権利記録は保持します。30日経過後も自動消去しませんが、この画面からの復元は期限内に行ってください。
+          </p>
+          <p id="photo-trash-count" role="status"></p>
+          <div id="photo-trash-list" class="bulk-grid"></div>
+          <div class="row">
+            <button id="photo-trash-prev">前の30件</button
+            ><span id="photo-trash-page"></span
+            ><button id="photo-trash-next">次の30件</button>
+          </div>
+        </details>
+        <dialog id="photo-trash-dialog" aria-labelledby="photo-trash-title">
+          <h3 id="photo-trash-title">候補画像の削除確認</h3>
+          <p>
+            チェックした候補だけをゴミ箱へ移動します。公開済み・承認済みの代表写真は削除しません。30日以内なら復元できます。
+          </p>
+          <p id="photo-trash-selection-count" role="status"></p>
+          <div id="photo-trash-confirm-list" class="bulk-grid"></div>
+          <p id="photo-trash-error" role="alert"></p>
+          <div class="row">
+            <button id="photo-trash-confirm" class="candidate-delete">
+              チェックした候補をゴミ箱へ</button
+            ><button id="photo-trash-cancel">キャンセル</button>
+          </div>
+        </dialog>
+        <section id="bulk-upload">
+          <h3>複数画像をまとめて仮保存</h3>
+          <p>
+            1回に最大30枚。各行の石を必ず指定してください。ファイル名から自動確定しません。仮保存できた画像はブラウザを閉じてもこのMacに残ります。未保存のファイル選択は画面を閉じると失われます。
+          </p>
+          <label
+            >JPEG・PNG・WebPを複数選択（各10MB以下）<input
+              id="bulk-files"
+              type="file"
+              multiple
+              accept="image/jpeg,image/png,image/webp"
+          /></label>
+          <div id="bulk-upload-rows" class="bulk-grid"></div>
+          <button id="bulk-save-uploads">選択した画像をまとめて仮保存</button>
+          <p id="bulk-upload-result" role="status"></p>
+        </section>
+        <dialog id="bulk-confirm-dialog">
+          <h3>一括採用の最終確認</h3>
+          <p>
+            正常な候補だけを採用します。除外理由を確認してください。既存写真は上書きしません。
+          </p>
+          <div id="bulk-confirm-results"></div>
+          <button id="bulk-confirm-adopt">確認した正常画像を採用</button
+          ><button id="bulk-cancel-adopt">戻って修正</button>
+        </dialog>
+        <section id="manual-upload" aria-labelledby="manual-photo-title">
+          <h3 id="manual-photo-title">1. Macから写真を選び、出典を登録</h3>
+          <p>
+            JPEG・PNG・WebPを選び、出典とライセンスを入力してください。Commons画像・自社撮影・個別許諾に対応します。
+          </p>
+          <label
+            >写真ファイル（10MB以下）<input
+              id="photo-file"
+              type="file"
+              accept="image/jpeg,image/png,image/webp"
+          /></label>
+          <label
+            >権利の種類<select id="upload-license">
+              <option value="">ライセンスを選択してください</option>
+              <option value="CC0">Commons：CC0 1.0</option>
+              <option value="CC BY 2.0">Commons：CC BY 2.0</option>
+              <option value="CC BY 2.5">Commons：CC BY 2.5</option>
+              <option value="CC BY-SA 2.0">Commons：CC BY-SA 2.0</option>
+              <option value="CC BY-SA 2.5">Commons：CC BY-SA 2.5</option>
+              <option value="CC BY 4.0">Commons：CC BY 4.0</option>
+              <option value="CC BY 3.0">Commons：CC BY 3.0</option>
+              <option value="CC BY-SA 4.0">Commons：CC BY-SA 4.0</option>
+              <option value="CC BY-SA 3.0">Commons：CC BY-SA 3.0</option>
+              <option value="Own photo">自分・自社で撮影（権利留保）</option>
+              <option value="AI-generated">
+                AI生成画像（イメージ写真と表示）
+              </option>
+              <option value="Commercial permission">
+                商用利用・加工の許諾を取得
+              </option>
+            </select></label
+          >
+          <label
+            >撮影者（公開クレジット）<input id="upload-author" maxlength="500"
+          /></label>
+          <label
+            >確認・許諾の記録（非公開／個別許諾は10文字以上）<textarea
+              id="upload-note"
+              maxlength="3000"
+            ></textarea>
+          </label>
+          <label
+            >出典ページURL（CommonsはFileページ必須・HTTPS）<input
+              id="upload-source"
+              type="url"
+          /></label>
+          <label
+            >公開クレジット補足（許諾条件に応じて）<input
+              id="upload-credit"
+              maxlength="1000"
+          /></label>
+          <label
+            >元画像のURL（任意・HTTPS）<input id="upload-original" type="url"
+          /></label>
+          <label
+            >ライセンスURL（選択内容から自動設定）<input
+              id="upload-license-url"
+              readonly
+          /></label>
+          <label
+            >写真の説明（省略時は石名から作成）<input
+              id="upload-alt"
+              maxlength="300"
+          /></label>
+          <h3>2. プレビューと利用条件を確認</h3>
+          <figure id="manual-preview" hidden>
+            <img
+              id="manual-preview-image"
+              alt="アップロード前の写真プレビュー"
+            />
+            <figcaption id="manual-preview-info"></figcaption>
+          </figure>
+          <p id="manual-target"></p>
+          <label class="check"
+            ><input id="manual-identity" type="checkbox" /><span
+              id="manual-identity-label"
+              >選択した石と実物写真が一致していることを確認しました</span
+            ></label
+          >
+          <label class="check"
+            ><input
+              id="manual-rights"
+              type="checkbox"
+            />指定したライセンス・商用掲載・加工・クレジット条件を確認しました</label
+          >
+          <div class="row">
+            <button id="manual-adopt">代表写真として採用</button
+            ><button id="upload-photo">写真を非公開候補へ追加</button>
+          </div>
+          <p>
+            採用後も図鑑にはまだ公開しません。下の一括反映ボタンで承認済みだけを反映します。
+          </p>
+          <p>
+            JPEG・PNG・WebP対応。HEICは端末でJPEGに変換してから選択してください。追加だけでは承認・公開しません。
+          </p>
+        </section>
+        <h3>3. 承認済み写真をまとめて図鑑へ反映</h3>
+        <label
+          ><input
+            id="allow-photo-replacement"
+            type="checkbox"
+          />単品で確認済みの既存代表写真を差し替える（通常はオフ）</label
+        >
+        <button id="apply-photos">
+          承認済みの代表画像をまとめて公開用データへ反映
+        </button>
+        <button id="build-photos">反映した画像をビルドして確認</button>
+        <h3>210種類の写真登録状況</h3>
+        <div class="row">
+          <label
+            >表示を絞り込む<select id="photo-status">
+              <option value="all">すべて</option>
+              <option>登録済み</option>
+              <option>候補あり</option>
+              <option>承認済み・反映待ち</option>
+              <option>写真なし</option>
+              <option>要確認</option>
+            </select></label
+          >
+        </div>
+        <p id="photo-summary"></p>
+        <div class="row">
+          <button id="select-ten">最初の10種類を選択</button
+          ><button id="select-all-stones">210種類を選択</button
+          ><button id="clear-stones">選択解除</button>
+        </div>
+        <details open id="photo-progress">
+          <summary>収集する石を選ぶ（210種類の状態一覧）</summary>
+          <div id="photo-overview"></div>
+        </details>
+        <details id="auto-search">
+          <summary>自動検索・既存候補から選ぶ（必要なとき）</summary>
+          <div class="row">
+            <label
+              >日次検索上限（無料API）<input
+                id="image-limit"
+                type="number"
+                min="1"
+                max="1000"
+                value="100"
+            /></label>
+            <button id="save-image-limit">上限を保存</button>
+          </div>
+          <label
+            >検索する写真の種類<select id="photo-search-mode">
+              <option value="sphere">丸玉・スフィア優先</option>
+              <option value="polished">研磨石・タンブル</option>
+              <option value="loose">宝石ルース</option>
+              <option value="rough">原石・鉱物標本</option>
+              <option value="all">すべて</option>
+            </select></label
+          >
+          <p>
+            検索語は形状の証明ではありません。石種・実物写真・形状は候補ごとに確認してください。
+          </p>
+          <p id="collection-plan"></p>
+          <div class="row">
+            <button id="batch-start">選択した石の収集を開始</button
+            ><button id="batch-pause">一時停止</button
+            ><button id="batch-resume">停止したジョブを再開</button>
+          </div>
+          <p id="image-job" role="status"></p>
+          <div class="row">
+            <button id="collect">この石をCommonsで検索（最大10枚）</button
+            ><button id="manual-candidate">
+              詳細な候補を手動登録（上級者向け）
+            </button>
+          </div>
+          <label
+            >確認済みの形状で候補を表示<select id="photo-shape-filter">
+              <option value="all">すべて</option>
+              <option value="sphere">丸玉・スフィア</option>
+              <option value="polished">研磨石・タンブル</option>
+              <option value="loose">宝石ルース</option>
+              <option value="rough">原石・鉱物標本</option>
+              <option value="unknown">形状未確認</option>
+            </select></label
+          >
+          <p>
+            寸法は検索元の原画像、アップロードは保存候補の画素数です。ピント・自然な色・艶・背景・被写体の大きさ・透かしの有無は目視で確認し、見た目より石種の正確性を優先してください。
+          </p>
+          <div id="candidates"></div>
+
+          <h3>候補の確認・編集</h3>
+          <p id="chosen-photo">写真候補を選んでください。</p>
+          <div class="row">
+            <label>撮影者<input id="photo-author" /></label
+            ><label>画像の説明<input id="photo-alt" maxlength="300" /></label>
+          </div>
+          <label
+            >この写真の形状（目視確認して設定）<select id="photo-shape">
+              <option value="unknown">形状未確認</option>
+              <option value="sphere">丸玉・スフィア</option>
+              <option value="polished">研磨石・タンブル</option>
+              <option value="loose">宝石ルース</option>
+              <option value="rough">原石・鉱物標本</option>
+            </select></label
+          >
+          <details>
+            <summary>詳細情報（通常は編集不要）</summary>
+            <textarea
+              id="candidate-json"
+              rows="18"
+              spellcheck="false"
+              aria-label="写真候補JSON"
+            ></textarea>
+          </details>
+          <div class="row">
+            <label class="check"
+              ><input
+                type="checkbox"
+                id="identity"
+              />この石IDと実物写真の一致を確認した（AI画像・絵・別の石ではない）</label
+            ><label class="check"
+              ><input
+                type="checkbox"
+                id="rights"
+              />商用利用・改変・帰属・継承条件を原ページで確認した</label
+            >
+          </div>
+          <div class="row">
+            <button id="save-candidate">候補だけ保存</button
+            ><button id="approve">代表画像として採用（公開反映前）</button
+            ><button id="remove-photo">選択した石の写真を表示から外す</button>
+          </div>
+          <p class="muted">
+            ライセンス不明・非商用・改変禁止は採用できません。採用後の画像は縮小・WebP変換し、撮影者とライセンスを公開します。元ファイルは自動削除しません。
+          </p>
+          <h3>採用済み写真</h3>
+          <div id="approved"></div>
+        </details>
+      </section>
+      <dialog id="photo-dialog">
+        <button id="close-photo-dialog">閉じる</button
+        ><img id="photo-large" alt="候補写真の拡大" />
+        <p id="photo-dialog-info"></p>
+        <a id="photo-dialog-source" target="_blank" rel="noopener noreferrer"
+          >出典ページを開く ↗</a
+        >
+      </dialog>
+    </main>
+    <script type="module" src="/editor.js" defer></script>
+  </body>
+</html>

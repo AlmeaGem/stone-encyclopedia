@@ -1,0 +1,32 @@
+---
+import Page from '../../layouts/Page.astro';
+import ArticleCover from '../../components/ArticleCover.astro';
+import ArticleTitle from '../../components/ArticleTitle.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { articles } from '../../lib/content';
+import { pathTo } from '../../lib/urls';
+---
+
+<Page title="天然石の選び方・品質・お手入れの読みもの" path="articles/">
+  <div class="wrap">
+    <Breadcrumbs items={[{ name: '読みもの' }]} />
+    <div class="page-intro">
+      <p class="eyebrow">FIELD NOTES</p>
+      <h1>天然石の選び方・基礎知識</h1>
+      <p>ブレスレットの石選びから、長く大切にするお手入れまで。</p>
+    </div>
+    <div class="article-grid">
+      {articles.map((a, i) => (
+        <a class="article-card" href={pathTo(`articles/${a.slug}/`)}>
+          <ArticleCover slug={a.slug} number={i + 1} />
+          <p class="eyebrow">{a.category}</p>
+          <ArticleTitle title={a.title} level="h2" />
+          <p>{a.description}</p>
+          <span class="open-label">
+            記事を読む <span aria-hidden="true">↗</span>
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Page>

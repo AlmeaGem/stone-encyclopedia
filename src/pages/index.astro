@@ -1,0 +1,206 @@
+---
+import Page from '../layouts/Page.astro';
+import ReportOffer from '../components/ReportOffer.astro';
+import ServiceComparison from '../components/ServiceComparison.astro';
+import ArticleCover from '../components/ArticleCover.astro';
+import ArticleTitle from '../components/ArticleTitle.astro';
+import HeroGem from '../components/HeroGem.astro';
+import Card from '../components/Card.astro';
+import { stones, categories, articles } from '../lib/content';
+import { pathTo, canonical } from '../lib/urls';
+const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
+  stones.find((s) => s.id === id)!,
+);
+---
+
+<Page
+  schema={{
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: '天然石・パワーストーン大図鑑',
+    url: canonical(),
+    inLanguage: 'ja-JP',
+    publisher: { '@type': 'Organization', name: 'ALMÉA GEM' },
+  }}
+>
+  <section class="home-hero wrap typography-hero">
+    <div class="hero-copy">
+      <p class="eyebrow">POWER STONES · BY ALMÉA GEM</p>
+      <h1>
+        <span class="hero-line">
+          本物の石は
+          <br class="hero-mobile-break" />
+          あなたのパワーになる。
+        </span>
+        <span class="hero-line">まだ知らない石の世界へ。</span>
+        <HeroGem />
+      </h1>
+      <p>
+        パワーストーンアイテムを手がけるALMÉA GEMから。
+        <br />
+        石の個性と意味を知り、あなたの願いに寄り添う一粒を。
+      </p>
+      <nav class="entry-actions" aria-label="利用するサービスを選ぶ">
+        <a href={pathTo('stones/')}>
+          <strong>石を調べる</strong>
+          <span>無料図鑑 ↗</span>
+        </a>
+        <a href={pathTo('wishes/')}>
+          <strong>願いから探す</strong>
+          <span>無料検索 ↗</span>
+        </a>
+        <a href={pathTo('diagnosis/')}>
+          <strong>パーソナル診断</strong>
+          <span>結果790円・販売準備中 ↗</span>
+        </a>
+      </nav>
+    </div>
+  </section>
+  <section class="home-search wrap" aria-labelledby="find-title">
+    <h2 id="find-title">今日、気になる石は？</h2>
+    <p class="search-intro">石名・別名・願望・タグから探せます。</p>
+    <form action={pathTo('stones/')} role="search">
+      <label class="sr-only" for="home-q">
+        石名・英語名・別名
+      </label>
+      <input id="home-q" name="q" type="search" placeholder="石名・願望など" />
+      <button class="button" type="submit">
+        検索 <span aria-hidden="true">→</span>
+      </button>
+    </form>
+    <div class="search-suggestions">
+      <span>たとえば</span>
+      <a href={pathTo('stones/rose-quartz/')}>ローズクォーツ</a>
+      <a href={pathTo('stones/amethyst/')}>アメジスト</a>
+      <a href={pathTo('stones/labradorite/')}>ラブラドライト</a>
+    </div>
+    <div class="wish-search-shortcuts">
+      <p class="eyebrow">願いから探す · 無料の図鑑検索</p>
+      <nav class="wish-search-links" aria-label="願望から石を探す">
+        {categories.map((c) => (
+          <a href={pathTo(`wishes/${c.id}/`)}>
+            {c.name}
+            <span aria-hidden="true">↗</span>
+          </a>
+        ))}
+      </nav>
+      <p class="fine-print">
+        石に伝えられる一般的な意味・象徴を探す検索です。
+        <br />
+        個別ランキングやオーダーメイドの組み合わせ選定ではありません。
+      </p>
+    </div>
+  </section>
+  <section class="wrap section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">STONE LIBRARY</p>
+        <h2 class="library-title">
+          <span>POWER STONE</span> <span>ENCYCLOPEDIA</span>
+        </h2>
+      </div>
+      <a class="text-link" href={pathTo('stones/')}>
+        すべての石を見る ↗
+      </a>
+    </div>
+    <div class="stone-grid">
+      {picks.map((stone) => (
+        <Card stone={stone} />
+      ))}
+    </div>
+    <p class="quiet-note">
+      写真のない項目は、実物写真ではない抽象的な色のイメージで表示しています。
+    </p>
+  </section>
+  <section class="wisdom-band">
+    <div class="wrap three-views">
+      <a class="view-card" href={pathTo('articles/names-and-varieties/')}>
+        <span>01 / NATURE</span>
+        <h2>鉱物情報を調べる</h2>
+        <p>
+          色、硬さ、内包物。
+          <br />
+          身につける石の個性を知る、最初の一歩に。
+        </p>
+        <span class="view-cta">
+          詳しく見る <span aria-hidden="true">↗</span>
+        </span>
+      </a>
+      <a class="view-card" href={pathTo('articles/first-stone/')}>
+        <span>02 / QUALITY</span>
+        <h2>品質の見方を知る</h2>
+        <p>
+          色合い、透明感、一粒ごとの表情。
+          <br />
+          大切にしたくなるブレスレット選びのために。
+        </p>
+        <span class="view-cta">
+          詳しく見る <span aria-hidden="true">↗</span>
+        </span>
+      </a>
+      <a class="view-card" href={pathTo('wishes/')}>
+        <span>03 / STORY</span>
+        <h2>意味・伝承を知る</h2>
+        <p>
+          願いに重ねて、石の意味や象徴を楽しむ。
+          <br />
+          毎日身につける、お守りのような存在へ。
+        </p>
+        <span class="view-cta">
+          詳しく見る <span aria-hidden="true">↗</span>
+        </span>
+      </a>
+    </div>
+  </section>
+  <section class="wrap section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">FIND YOUR THEME</p>
+        <h2>願いから、石を探す。</h2>
+      </div>
+      <a class="text-link" href={pathTo('wishes/')}>
+        12のテーマを見る ↗
+      </a>
+    </div>
+    <div class="wish-grid">
+      {categories.slice(0, 6).map((c, i) => (
+        <a class="wish-link" href={pathTo(`wishes/${c.id}/`)}>
+          <span class="wish-number">{i + 1}</span>
+          <div>
+            <h3>{c.name}</h3>
+            <p>{c.description}</p>
+          </div>
+          <span aria-hidden="true">↗</span>
+        </a>
+      ))}
+    </div>
+  </section>
+  <section class="wrap section">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">READ & DISCOVER</p>
+        <h2>天然石の選び方・基礎知識</h2>
+      </div>
+      <a class="text-link" href={pathTo('articles/')}>
+        読みもの一覧 ↗
+      </a>
+    </div>
+    <div class="article-grid">
+      {articles.slice(0, 3).map((a, i) => (
+        <a class="article-card" href={pathTo(`articles/${a.slug}/`)}>
+          <ArticleCover slug={a.slug} number={i + 1} />
+          <p class="eyebrow">{a.category}</p>
+          <ArticleTitle title={a.title} />
+          <p>{a.description}</p>
+          <span class="open-label">
+            記事を読む <span aria-hidden="true">↗</span>
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
+  <div class="wrap section">
+    <ReportOffer />
+    <ServiceComparison />
+  </div>
+</Page>

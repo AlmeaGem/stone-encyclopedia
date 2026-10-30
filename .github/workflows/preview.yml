@@ -1,5 +1,7 @@
 name: Deploy independent preview
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
     inputs:
       ref:
@@ -19,10 +21,11 @@ jobs:
       SITE_URL: https://${{ github.repository_owner }}.github.io
       BASE_PATH: /${{ github.event.repository.name }}
       PUBLIC_LAUNCH: 'false'
+      PUBLIC_PHOTO_API_ORIGIN: ${{ vars.PUBLIC_PHOTO_API_ORIGIN }}
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.ref }}
+          ref: ${{ inputs.ref || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version: 24

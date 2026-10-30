@@ -1,0 +1,34 @@
+---
+import Page from '../../layouts/Page.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import { categories } from '../../lib/content';
+import { pathTo } from '../../lib/urls';
+---
+
+<Page title="12の願い・テーマから天然石を探す" path="wishes/">
+  <div class="wrap">
+    <Breadcrumbs items={[{ name: '願いから探す' }]} />
+    <div class="page-intro">
+      <p class="eyebrow">TWELVE THEMES</p>
+      <h1>願望カテゴリーから探す</h1>
+      <p>
+        伝承に込められた12のテーマ。
+        <br />
+        大切な願いを、身につけるブレスレットに託して。
+      </p>
+    </div>
+
+    <div class="wish-grid">
+      {categories.map((c, i) => (
+        <a class="wish-link" href={pathTo(`wishes/${c.id}/`)}>
+          <span class="wish-number">{i + 1}</span>
+          <div>
+            <h2>{c.name}</h2>
+            <p>{c.description}</p>
+          </div>
+          <span>↗</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</Page>

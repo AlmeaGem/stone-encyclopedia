@@ -1,0 +1,182 @@
+---
+import Page from '../layouts/Page.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { stoneById } from '../lib/content';
+import { pathTo } from '../lib/urls';
+import {
+  fictionalAnswers,
+  sampleSelections,
+  sampleCombinations,
+} from '../lib/sample-report';
+const selections = sampleSelections.map((item) => ({
+  ...item,
+  stone: stoneById(item.id)!,
+}));
+---
+
+<Page
+  title="パーソナル天然石選定レポートの無料サンプル"
+  path="sample-report/"
+  description="架空の回答に基づく固定サンプル。おすすめ7選、理由、組み合わせ3案、品質・お手入れ、PDFレイアウトの見本を無料で確認できます。"
+>
+  <div class="wrap sample-report">
+    <Breadcrumbs
+      items={[
+        { name: 'パーソナル診断', path: 'diagnosis/' },
+        { name: '無料サンプル' },
+      ]}
+    />
+    <header class="page-intro">
+      <p class="eyebrow">PUBLIC SAMPLE</p>
+      <h1>レポートの無料サンプル</h1>
+      <p>
+        7種類の石と3つの組み合わせを、どのように比較・説明するかをご覧いただけます。
+      </p>
+    </header>
+    <div class="sample-scope">
+      <strong>架空の回答例に基づく固定サンプルです。</strong>
+      <p>
+        入力した回答から生成される結果ではありません。実際の個人向け選定ではなく、文章と構成の見本です。レポートは販売準備中です。
+      </p>
+    </div>
+    <nav class="sample-toc" aria-label="サンプルの目次">
+      <a href="#example-answers">回答例</a>
+      <a href="#seven-stones">石7選</a>
+      <a href="#three-combinations">組み合わせ3案</a>
+      <a href="#quality-guide">品質・お手入れ</a>
+      <a href="#pdf-preview">PDFの見本</a>
+    </nav>
+    <section id="example-answers" class="sample-section">
+      <h2>架空の診断回答例</h2>
+      <dl class="fact-list">
+        {fictionalAnswers.map(([label, value]) => (
+          <div>
+            <dt>{label}</dt>
+            <dd>{value}</dd>
+          </div>
+        ))}
+      </dl>
+      <p>
+        この例では、淡い色の普段使いのブレスレットを考える人を想定しています。石の購入予算は、790円のレポート料金とは別です。
+      </p>
+    </section>
+    <section id="seven-stones" class="sample-section">
+      <p class="eyebrow">SAMPLE / 7 SELECTIONS</p>
+      <h2>おすすめ石7選の紹介形式</h2>
+      <p>
+        以下の順序はサンプル用の仮の優先順位です。色・予算・好みが変われば比較する条件も変わります。
+      </p>
+      <ol class="sample-selections">
+        {selections.map((item, i) => (
+          <li>
+            <div class="sample-item-heading">
+              <span class="sample-rank">{i + 1}</span>
+              <div>
+                <p class="service-label">固定サンプル</p>
+                <h3>{item.stone.name}</h3>
+                <p class="sample-english">{item.stone.english}</p>
+              </div>
+            </div>
+            <h4>選定理由の文章例</h4>
+            <p>{item.reason}</p>
+            <h4>購入時に確認する品質</h4>
+            <p>{item.quality}</p>
+            <a
+              class="sample-text-link"
+              href={pathTo(`stones/${item.stone.slug}/`)}
+            >
+              この石の無料図鑑を見る ↗
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+    <section id="three-combinations" class="sample-section">
+      <p class="eyebrow">SAMPLE / 3 COMBINATIONS</p>
+      <h2>組み合わせ3パターンの見せ方</h2>
+      <div class="sample-combinations">
+        {sampleCombinations.map((combo, i) => (
+          <article>
+            <p class="service-label">組み合わせ例 {i + 1}</p>
+            <h3>{combo.title}</h3>
+            <ul>
+              {combo.ids.map((id) => (
+                <li>{stoneById(id)!.name}</li>
+              ))}
+            </ul>
+            <p>{combo.body}</p>
+          </article>
+        ))}
+      </div>
+      <p>
+        完成サイズや必要粒数、購入費用は、使う粒径・素材・販売価格によって異なります。この見本に完成品の注文・購入機能はありません。
+      </p>
+    </section>
+    <section id="quality-guide" class="sample-section">
+      <h2>品質・形状・お手入れの文章例</h2>
+      <h3>色・透明度・内包物を分けて確認する</h3>
+      <p>
+        透明感があることだけを「良い品質」の条件にはしません。色の好み、天然の表情として楽しめる内包物、耐久性に関係する傷や割れを分けて観察します。写真だけでは内包物の成分や処理の有無を断定せず、販売表示や鑑別情報を確認してください。
+      </p>
+      <h3>形状とサイズを比較する</h3>
+      <p>
+        丸玉・カット・タンブルなどは、同じ素材でも見え方や使い心地が変わります。ブレスレットなら粒径だけでなく、穴まわりの仕上がり、重さ、全体のサイズも確認します。レポート内の案を、そのまま一定の原価や完成サイズとみなすことはできません。
+      </p>
+      <h3>取り扱いは素材・処理に合わせる</h3>
+      <p>
+        使用後はやわらかな布で表面を拭き、ほかの硬い物と強くぶつからないように保管します。水・塩・直射日光を使う前に、その石と処理に適した方法か販売者へ確認してください。浄化にまつわる伝承と、物理的なお手入れは別のものです。
+      </p>
+    </section>
+    <section id="pdf-preview" class="sample-section">
+      <h2>PDFの完成イメージ</h2>
+      <p>
+        見出し・比較表・組み合わせを整理したレイアウトの見本です。PDF保存と購入後の再閲覧は提供予定で、現在は利用できません。
+      </p>
+      <div class="pdf-preview" aria-label="PDFのレイアウト見本">
+        <figure class="sample-paper">
+          <p class="eyebrow">ALMÉA GEM / SAMPLE</p>
+          <h3>
+            パーソナル天然石
+            <br />
+            選定レポート
+          </h3>
+          <p>架空の回答例</p>
+          <hr />
+          <h4>比較する7種類</h4>
+          <ol>
+            {selections.map((item) => (
+              <li>{item.stone.name}</li>
+            ))}
+          </ol>
+          <figcaption>SAMPLE · 01</figcaption>
+        </figure>
+        <figure class="sample-paper">
+          <p class="eyebrow">ALMÉA GEM / SAMPLE</p>
+          <h3>組み合わせと品質</h3>
+          {sampleCombinations.map((combo, i) => (
+            <div>
+              <h4>
+                案{i + 1} / {combo.title}
+              </h4>
+              <p>{combo.ids.map((id) => stoneById(id)!.name).join('・')}</p>
+            </div>
+          ))}
+          <hr />
+          <p>
+            色・透明度・内包物・形状・取り扱いを比較する内容を掲載予定です。
+          </p>
+          <figcaption>SAMPLE · 02</figcaption>
+        </figure>
+      </div>
+    </section>
+    <section class="report-nudge">
+      <h2>自分の条件を整理してみる</h2>
+      <p>
+        質問への回答と回答内容の確認は無料です。790円（税込・買い切り）の個別レポートは販売準備中です。
+      </p>
+      <a class="text-link" href={pathTo('diagnosis/')}>
+        パーソナル天然石診断を見る ↗
+      </a>
+    </section>
+  </div>
+</Page>

@@ -1,0 +1,38 @@
+name: CI
+on:
+  pull_request:
+  push:
+    branches: [main, feat/phase-one-encyclopedia]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    env:
+      ASTRO_TELEMETRY_DISABLED: '1'
+      PUBLIC_LAUNCH: 'false'
+      # Browser tests intercept this fixture origin; this job never deploys.
+      PUBLIC_PHOTO_API_ORIGIN: https://photos.example.test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run validate
+      - run: npm test
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e -- --reporter=list,github
+      - name: Verify subpath deployment
+        env:
+          SITE_URL: https://almeagem.github.io
+          BASE_PATH: /stone-encyclopedia
+        run: npm run build
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: browser-test-results
+          path: test-results/

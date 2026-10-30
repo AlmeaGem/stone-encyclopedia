@@ -1,0 +1,191 @@
+---
+import { photoFor, colorClass } from '../lib/content';
+import { pathTo } from '../lib/urls';
+import { cloudPhotoOrigin } from '../lib/cloud-photos';
+import type { Stone } from '../lib/schema';
+const { stone, detail = false } = Astro.props as {
+  stone: Stone;
+  detail?: boolean;
+};
+const photo = photoFor(stone);
+const cloudOrigin = cloudPhotoOrigin(import.meta.env.PUBLIC_PHOTO_API_ORIGIN);
+---
+
+<div
+  class="cloud-photo-slot"
+  data-cloud-photo={cloudOrigin ? stone.id : undefined}
+  data-photo-origin={cloudOrigin}
+  data-photo-detail={detail ? 'true' : 'false'}
+>
+  {photo?.localPath ? (
+    <figure class:list={['stone-figure', { detail }]}>
+      <img
+        src={pathTo(photo.localPath)}
+        width={photo.width!}
+        height={photo.height!}
+        loading="lazy"
+        decoding="async"
+        alt={
+          ['ai-generated', 'illustrative-photo'].includes(photo.imageKind || '')
+            ? `${stone.name}のイメージ写真`
+            : photo.alt || `${stone.name}の承認済み写真`
+        }
+      />
+      {['ai-generated', 'illustrative-photo'].includes(
+        photo.imageKind || '',
+      ) && <span class="image-impression-label">イメージ写真</span>}
+      {detail && photo.imageKind !== 'ai-generated' && (
+        <figcaption>
+          写真：{photo.photographer} ·{' '}
+          {photo.uploadSha256 &&
+          photo.pageUrl === 'https://almeagem.github.io/stone-encyclopedia/' ? (
+            <span>提供写真</span>
+          ) : (
+            <a href={photo.pageUrl} rel="noopener noreferrer" target="_blank">
+              {photo.provider}
+            </a>
+          )}{' '}
+          ·{' '}
+          {photo.licenseUrl ? (
+            <a
+              href={photo.licenseUrl}
+              rel="license noopener noreferrer"
+              target="_blank"
+            >
+              {photo.license}
+            </a>
+          ) : (
+            <span>
+              {photo.license === 'Own photo'
+                ? '自社撮影・無断転載不可'
+                : '商用利用許諾済み・権利留保'}
+            </span>
+          )}{' '}
+          {photo.creditText && <span> · {photo.creditText}</span>}·{' '}
+          {photo.modified ? '掲載用に縮小・変換' : '加工なし'} · 確認日{' '}
+          {photo.reviewedAt}
+        </figcaption>
+      )}
+    </figure>
+  ) : (
+    <div
+      class:list={['stone-placeholder', colorClass(stone), { detail }]}
+      aria-label="色の抽象イメージ。実物写真ではありません"
+    >
+      <span class="crystal" aria-hidden="true"></span>
+      <span class="visual-caption">COLOR IMPRESSION · 写真準備中</span>
+    </div>
+  )}
+</div>
+<script>
+  const slots = [
+    ...document.querySelectorAll<HTMLElement>('[data-cloud-photo]'),
+  ];
+  const origin = slots[0]?.dataset.photoOrigin;
+  if (origin) {
+    // One manifest request per page. No private endpoints or shared user cache.
+    fetch(origin + '/public/photos', { credentials: 'omit', cache: 'no-store' })
+      .then((r) => {
+        if (!r.ok) throw Error('photos unavailable');
+        return r.json();
+      })
+      .then(({ photos }) => {
+        for (const slot of slots) {
+          const photo = photos.find(
+            (p: { stoneId: string }) => p.stoneId === slot.dataset.cloudPhoto,
+          );
+          if (!photo) continue; // Preserve every existing static photo by default.
+          if (photo.state !== 'published') {
+            const placeholder = document.createElement('div');
+            placeholder.className = 'stone-placeholder';
+            placeholder.textContent = '写真準備中';
+            slot.replaceChildren(placeholder);
+            continue;
+          }
+          const figure = document.createElement('figure');
+          figure.className =
+            'stone-figure' +
+            (slot.dataset.photoDetail === 'true' ? ' detail' : '');
+          const img = document.createElement('img');
+          img.src =
+            origin +
+            '/public/image/' +
+            encodeURIComponent(photo.stoneId) +
+            '?v=' +
+            encodeURIComponent(photo.revision);
+          img.alt = photo.alt;
+          img.loading = 'lazy';
+          img.decoding = 'async';
+          img.width = 1440;
+          img.height = 1440;
+          figure.append(img);
+          const caption = document.createElement('figcaption');
+          const label = photo.kind === 'illustrative' ? 'イメージ写真 · ' : '';
+          caption.append(
+            document.createTextNode(
+              label + '写真：' + photo.photographer + ' · ',
+            ),
+          );
+          function link(url: string, text: string) {
+            if (slot.dataset.photoDetail !== 'true') {
+              caption.append(text);
+              return;
+            }
+            try {
+              const u = new URL(url);
+              if (u.protocol !== 'https:' || u.username || u.password) return;
+              const a = document.createElement('a');
+              a.href = u.href;
+              a.textContent = text;
+              a.target = '_blank';
+              a.rel = 'noopener noreferrer';
+              caption.append(a);
+            } catch {
+              /* optional metadata */
+            }
+          }
+          link(photo.sourceUrl, '出典');
+          caption.append(' · ');
+          if (photo.licenseUrl) link(photo.licenseUrl, photo.license);
+          else
+            caption.append(
+              photo.license === 'Own photo'
+                ? '自社撮影・無断転載不可'
+                : '商用利用許諾済み・権利留保',
+            );
+          if (photo.credit) caption.append(' · ' + photo.credit);
+          caption.append(' · 掲載用に縮小・変換');
+          figure.append(caption);
+          img.addEventListener(
+            'error',
+            () => {
+              const placeholder = document.createElement('div');
+              placeholder.className = 'stone-placeholder';
+              placeholder.textContent = '写真準備中';
+              slot.replaceChildren(placeholder);
+            },
+            { once: true },
+          );
+          slot.replaceChildren(figure);
+        }
+      })
+      .catch(() => {
+        /* Network outage: retain existing catalog content. */
+      });
+  }
+</script>
+<style>
+  .cloud-photo-slot {
+    min-width: 0;
+    display: contents;
+  }
+  .cloud-photo-slot :global(.stone-figure img) {
+    object-fit: contain;
+  }
+  .cloud-photo-slot :global(figcaption) {
+    font-size: 11px;
+    line-height: 1.6;
+    padding: 8px;
+    overflow-wrap: anywhere;
+  }
+</style>

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "almea-encyclopedia-photos",
+  "main": "worker.ts",
+  "compatibility_date": "2026-08-01",
+  "workers_dev": false,
+  "preview_urls": false,
+  "vars": {
+    "ADMIN_ORIGIN": "https://photos-admin.example.invalid",
+    "PUBLIC_ORIGIN": "https://almeagem.github.io",
+    "ACCESS_TEAM": "REPLACE.cloudflareaccess.com",
+    "ACCESS_AUD": "REPLACE",
+    "ADMIN_EMAILS": "REPLACE",
+    "UPLOADS_ENABLED": "false",
+  },
+  "r2_buckets": [
+    { "binding": "IMAGES", "bucket_name": "almea-encyclopedia-photos" },
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "almea-encyclopedia-photos",
+      "database_id": "REPLACE",
+      "migrations_dir": "migrations",
+    },
+  ],
+  "observability": { "enabled": false },
+}
