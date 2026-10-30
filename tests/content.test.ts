@@ -1,3 +1,4 @@
+import { expectApprovedFields } from './approved-master';
 import { it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import {
@@ -40,8 +41,9 @@ it('preserves the distinction between mineral identities, forms, unverified fact
       ),
     ).toBe(true);
     expect(s.updatedAt).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(s.compositionHardness?.length).toBeGreaterThan(0);
     expect(s.hardness).toBe('');
-    expect(s.mineral).toBe('');
+    expect(s.mineral.length).toBeGreaterThan(0);
   }
 });
 it('rejects duplicate paths, private-field injections, missing IDs and dangling related links', () => {
@@ -62,8 +64,8 @@ it('rejects duplicate paths, private-field injections, missing IDs and dangling 
 });
 it('checks structural completeness of the first twenty enriched entries', () => {
   for (const stone of stones.slice(0, 20)) {
-    expect(stone.legend?.length).toBeGreaterThan(70);
-    expect(stone.spiritualEffects?.length).toBeGreaterThan(70);
+    expectApprovedFields(stone, ['legend', 'spiritualEffects']);
+
     expect(stone.synergyStoneIds?.length).toBeGreaterThan(0);
     expect(stone.synergyNote?.length).toBeGreaterThan(20);
     expect(stone.sources.length).toBeGreaterThan(1);
@@ -145,16 +147,14 @@ it('keeps the first twenty story citations aligned and fragile specimens distinc
   }
   const onyx = stones.find((s) => s.id === 's015')!;
   expect(onyx.legendSourceUrl).toContain('thejewelrymagazine.com');
-  expect(onyx.legend).toContain('ローマ神話');
+  expectApprovedFields(onyx, ['legend']);
   expect(stones.find((s) => s.id === 's006')!.characteristics).not.toContain(
     '単結晶の組み合わせ',
   );
   expect(stones.find((s) => s.id === 's007')!.synergyNote).toContain(
-    '鑑賞用標本',
+    '別置きの標本',
   );
-  expect(stones.find((s) => s.id === 's011')!.synergyNote).toContain(
-    '重晶石質のものとは区別',
-  );
+  expect(stones.find((s) => s.id === 's011')!.synergyNote).toContain('石膏質');
 });
 
 it('keeps the second twenty identities and aligns the existing garnet citation without marking it verified', () => {
@@ -169,7 +169,5 @@ it('keeps the second twenty identities and aligns the existing garnet citation w
   const source = garnet.sources.find((s) => s.url === garnet.legendSourceUrl);
   expect(source?.label).toBe(garnet.legendSourceLabel);
   expect(source?.checkedAt).toBeNull();
-  expect(
-    garnet.synergyStoneIds?.map((id) => stones.find((s) => s.id === id)?.name),
-  ).toEqual(['ルビー', 'シトリン']);
+  expectApprovedFields(garnet, ['synergyNote']);
 });

@@ -72,7 +72,10 @@ test('detail separates facts, quality and symbolism, with sources, internal link
     '相性を考えた組み合わせ',
     '浄化と、取り扱いの注意',
   ]);
-  await expect(page.getByText('未確認', { exact: true }).first()).toBeVisible();
+  await expect(
+    page.locator('#nature dt').filter({ hasText: /^組成・硬度$/ }),
+  ).toBeVisible();
+  await expect(page.locator('#nature dd').first()).not.toBeEmpty();
   await expect(page.locator('.stone-placeholder.detail')).toHaveAttribute(
     'aria-label',
     '色の抽象イメージ。実物写真ではありません',

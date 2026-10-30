@@ -3,7 +3,9 @@ import type { Stone } from './schema';
 /** Public citations exclude production notes; the original records stay intact. */
 export function publicReferences(sources: Stone['sources']) {
   return sources.filter(
-    (source) => !/^移行資料|出典確認状況|内部管理/u.test(source.label),
+    (source) =>
+      source.publication !== 'internal' &&
+      !/^移行資料|出典確認状況|内部管理/u.test(source.label),
   );
 }
 

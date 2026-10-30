@@ -1,3 +1,4 @@
+import { expectApprovedFields } from './approved-master';
 import { it, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { validateCatalog } from '../src/lib/schema';
@@ -36,7 +37,7 @@ it('uses distinct buying guidance and preserves the existing pairing identities 
     const s = stones.find((s) => s.id === id)!;
     expect(matches(old, [s.english, ...s.aliases].join(' '))).toBe(true);
   }
-  expect(stones[44].synergyNote).toContain('接触');
-  expect(stones[47].synergyNote).toContain(stones[208].name);
+  expectApprovedFields(stones[44], ['synergyNote']);
+  expectApprovedFields(stones[47], ['synergyNote']);
   expect(stones[55].selection).toContain('ブレスレットの材料');
 });

@@ -1,0 +1,4244 @@
+[
+  {
+    "id": "s001",
+    "slug": "obsidian",
+    "name": "オブシディアン",
+    "english": "Obsidian",
+    "aliases": [],
+    "colors": ["黒"],
+    "wishes": ["protection", "challenge"],
+    "themes": ["浄化・守護", "勝負・行動"],
+    "related": ["s003", "s004", "s005"],
+    "sources": [
+      {
+        "label": "Getty Research Institute｜古代の黒曜石鏡",
+        "url": "https://www.getty.edu/research/exhibitions_events/exhibitions/obsidian_mirror/through_the_mirror.html",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・名称・歴史に関する参照情報。"
+      },
+      {
+        "label": "Institute of Making｜占術に用いられた鏡",
+        "url": "https://www.instituteofmaking.org.uk/materials-library/library/obsidian-mirror",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・文化・現代の紹介記事を参照。組み合わせの提案はALMÉA GEMによる編集上の提案。"
+      },
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 78。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s002",
+    "slug": "chiastolite",
+    "name": "キャストライト",
+    "english": "Chiastolite",
+    "aliases": ["キアストライト", "カイアストライト", "空晶石"],
+    "colors": [],
+    "wishes": ["wellbeing", "fortune"],
+    "themes": ["癒し・安定", "変化・再生"],
+    "related": ["s003", "s004", "s005"],
+    "sources": [
+      {
+        "label": "天然石専門店WAKOU｜キャストライト",
+        "url": "https://www.wakou-stone.co.jp/view/item/000000010202",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・名称・歴史に関する参照情報。"
+      },
+      {
+        "label": "Chiastolite解説｜十字模様と護符",
+        "url": "https://taslar.bumba.tr/en/stones/chiastolite/",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・文化・現代の紹介記事を参照。組み合わせの提案はALMÉA GEMによる編集上の提案。"
+      },
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 79。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s003",
+    "slug": "jet",
+    "name": "ジェット",
+    "english": "Jet",
+    "aliases": ["黒玉"],
+    "colors": [],
+    "wishes": ["protection", "wellbeing"],
+    "themes": ["浄化・守護", "癒し・安定"],
+    "related": ["s001", "s002", "s004"],
+    "sources": [
+      {
+        "label": "Whitby Museum｜ジェットと追悼装身具",
+        "url": "https://whitbymuseum.org.uk/collection/jet-and-jet-jewellery/",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・名称・歴史に関する参照情報。"
+      },
+      {
+        "label": "GIA｜ウィットビージェットの歴史",
+        "url": "https://www.gia.edu/gia-website/whitby-jet-reading-list",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・文化・現代の紹介記事を参照。組み合わせの提案はALMÉA GEMによる編集上の提案。"
+      },
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 80。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s004",
+    "slug": "shamanite",
+    "name": "シャーマナイト",
+    "english": "Shamanite",
+    "aliases": ["シャーマン石"],
+    "colors": [],
+    "wishes": ["protection", "wellbeing"],
+    "themes": ["浄化・守護", "癒し・安定"],
+    "related": ["s001", "s002", "s003"],
+    "sources": [
+      {
+        "label": "Pascle｜シャーマナイトの流通説明",
+        "url": "https://pascle.net/stone/shamanite",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・名称・歴史に関する参照情報。"
+      },
+      {
+        "label": "天然石・パワーストーン意味辞典｜シャーマナイト",
+        "url": "https://www.ishi-imi.com/2009/05/post_394.html",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・文化・現代の紹介記事を参照。組み合わせの提案はALMÉA GEMによる編集上の提案。"
+      },
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 81。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s005",
+    "slug": "shungite",
+    "name": "シュンガイト",
+    "english": "Shungite",
+    "aliases": ["シュンガ石"],
+    "colors": [],
+    "wishes": ["protection", "wellbeing"],
+    "themes": ["浄化・守護", "癒し・安定"],
+    "related": ["s001", "s002", "s003"],
+    "sources": [
+      {
+        "label": "平凡社『最新 地学事典』｜シュンガイト",
+        "url": "https://kotobank.jp/word/%E3%81%97%E3%82%86%E3%82%93%E3%81%8C%E3%81%84%E3%81%A8-3249354",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・名称・歴史に関する参照情報。"
+      },
+      {
+        "label": "産地事業者｜シュンガイトにまつわる地域史",
+        "url": "https://shungitnpk.ru/en/history",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・文化・現代の紹介記事を参照。組み合わせの提案はALMÉA GEMによる編集上の提案。"
+      },
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 82。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s006",
+    "slug": "staurolite",
+    "name": "スタウロライト",
+    "english": "Staurolite",
+    "aliases": ["十字石", "フェアリークロス"],
+    "colors": [],
+    "wishes": ["protection", "relationships"],
+    "themes": ["浄化・守護", "対人・コミュニケーション"],
+    "related": ["s001", "s003", "s004"],
+    "sources": [
+      {
+        "label": "Virginia State Parks｜フェアリーストーン伝説",
+        "url": "https://www.dcr.virginia.gov/state-parks/fairystones",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・名称・歴史に関する参照情報。"
+      },
+      {
+        "label": "Virginia State Parks｜護符の言い伝え",
+        "url": "https://www.dcr.virginia.gov/state-parks/blog/legend-of-the-fairy-stone?id=legend-of-the-fairy-stone",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・文化・現代の紹介記事を参照。組み合わせの提案はALMÉA GEMによる編集上の提案。"
+      },
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 83。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s007",
+    "slug": "stibnite",
+    "name": "スティブナイト",
+    "english": "Stibnite",
+    "aliases": ["スティーブナイト", "輝安鉱"],
+    "colors": [],
+    "wishes": ["prosperity", "relationships"],
+    "themes": ["仕事・成功", "対人・コミュニケーション"],
+    "related": ["s006", "s015", "s016"],
+    "sources": [
+      {
+        "label": "Cosmetics（学術誌）｜コールに用いられた鉱物",
+        "url": "https://doi.org/10.3390/cosmetics10030071",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・名称・歴史に関する参照情報。"
+      },
+      {
+        "label": "Spirit of ISIS｜スティブナイトの意味",
+        "url": "https://www.spiritofisis.org/knowledge/crystal_files/stibnite.htm",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・文化・現代の紹介記事を参照。組み合わせの提案はALMÉA GEMによる編集上の提案。"
+      },
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 84。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s008",
+    "slug": "smoky-quartz",
+    "name": "スモーキークォーツ",
+    "english": "Smoky Quartz",
+    "aliases": ["煙水晶", "ケアンゴーム"],
+    "colors": [],
+    "wishes": ["wellbeing", "protection"],
+    "themes": ["癒し・安定", "浄化・守護"],
+    "related": ["s001", "s002", "s003"],
+    "sources": [
+      {
+        "label": "National Museums Scotland｜ケアンゴーム水晶の歴史",
+        "url": "https://www.nms.ac.uk/discover-catalogue/geology-to-jewellery-the-history-and-science-of-cairngorm-quartz",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・名称・歴史に関する参照情報。"
+      },
+      {
+        "label": "County Argyle｜煙水晶の伝承",
+        "url": "https://www.countyargyle.com/a-guide-to-scottish-gemstones/5/",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・文化・現代の紹介記事を参照。組み合わせの提案はALMÉA GEMによる編集上の提案。"
+      },
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 85。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s009",
+    "slug": "sulemani-agate",
+    "name": "スレイマンアゲート",
+    "english": "Sulemani Agate",
+    "aliases": ["スレイマニアゲート", "スレマニアゲート", "スレイマンアキーク"],
+    "colors": [],
+    "wishes": ["intuition", "wellbeing"],
+    "themes": ["直感・精神性", "癒し・安定"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "Natural Gems Pakistan｜スレイマニアゲートの習俗",
+        "url": "https://naturalgems.pk/blog/sulemani-agate-guide",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・名称・歴史に関する参照情報。"
+      },
+      {
+        "label": "GemStore｜アキークとナザル除け",
+        "url": "https://gemstore.pk/purpose/protection",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・文化・現代の紹介記事を参照。組み合わせの提案はALMÉA GEMによる編集上の提案。"
+      },
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 86。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s010",
+    "slug": "tektite",
+    "name": "テクタイト",
+    "english": "Tektite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["fortune", "intuition"],
+    "themes": ["変化・再生", "直感・精神性"],
+    "related": ["s002", "s009", "s011"],
+    "sources": [
+      {
+        "label": "Texas State Historical Association｜テクタイトの成り立ち",
+        "url": "https://www.tshaonline.org/handbook/entries/tektites",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・名称・歴史に関する参照情報。"
+      },
+      {
+        "label": "Nornenthal｜テクタイトの象徴",
+        "url": "https://www.nornenthal.net/index.php?id=136&language=en&page=1&site=edelsteinlexikon.php&sub=details",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・文化・現代の紹介記事を参照。組み合わせの提案はALMÉA GEMによる編集上の提案。"
+      },
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 87。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s011",
+    "slug": "desert-rose",
+    "name": "デザートローズ",
+    "english": "Desert Rose",
+    "aliases": ["砂漠の薔薇", "砂漠のバラ"],
+    "colors": [],
+    "wishes": ["protection", "fortune"],
+    "themes": ["浄化・守護", "変化・再生"],
+    "related": ["s001", "s002", "s003"],
+    "sources": [
+      {
+        "label": "天然石・パワーストーン意味辞典｜デザートローズ",
+        "url": "https://www.ishi-imi.com/2009/05/post_416.html",
+        "checkedAt": "2026-10-30",
+        "note": "名称・来歴・歴史・素材の確認に参照。"
+      },
+      {
+        "label": "ANAHITA STONES｜願望成就の石",
+        "url": "https://www.anahitastones.com/en/stone-library/wish/details/desert_rose.html",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・文化・現代の紹介記事を参照。組み合わせの提案はALMÉA GEMによる編集上の提案。"
+      },
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 88。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s012",
+    "slug": "nuummite",
+    "name": "ヌーマイト",
+    "english": "Nuummite",
+    "aliases": ["ヌームイト", "ヌウマイト"],
+    "colors": [],
+    "wishes": ["intuition", "fortune"],
+    "themes": ["直感・精神性", "変化・再生"],
+    "related": ["s002", "s009", "s010"],
+    "sources": [
+      {
+        "label": "国際宝石学会議｜ヌーマイトの産地と歴史",
+        "url": "https://www.igc-gemmology.org/igc-2023/a-nuummite-occurrence-from-kangerluarsuk-in-the-maniitsoq-region-west-greenland/",
+        "checkedAt": "2026-10-30",
+        "note": "名称・来歴・歴史・素材の確認に参照。"
+      },
+      {
+        "label": "Crystal Vaults｜ヌーマイトの現代的象徴",
+        "url": "https://www.crystalvaults.com/crystal-encyclopedia/nuummite/",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・文化・現代の紹介記事を参照。組み合わせの提案はALMÉA GEMによる編集上の提案。"
+      },
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 89。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s013",
+    "slug": "picture-sandstone",
+    "name": "ピクチャーサンドストーン",
+    "english": "Picture Sandstone",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "learning"],
+    "themes": ["癒し・安定", "学習・集中"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "天然石工房ブログ｜シリシファイド・ピクチャーサンドストーン",
+        "url": "https://stonecage.blog.shinobi.jp/Category/7/",
+        "checkedAt": "2026-10-30",
+        "note": "名称・来歴・歴史・素材の確認に参照。"
+      },
+      {
+        "label": "BodhiTree｜風景模様の石と流通名",
+        "url": "https://bodhitreejp.com/natural-stone/picture-stone/",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・文化・現代の紹介記事を参照。組み合わせの提案はALMÉA GEMによる編集上の提案。"
+      },
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 90。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s014",
+    "slug": "red-sandstone",
+    "name": "レッドサンドストーン",
+    "english": "Red Sandstone",
+    "aliases": ["赤砂岩"],
+    "colors": [],
+    "wishes": ["wellbeing", "challenge"],
+    "themes": ["癒し・安定", "勝負・行動"],
+    "related": ["s001", "s002", "s003"],
+    "sources": [
+      {
+        "label": "米国国立公園局｜赤い砂岩と鉄酸化物",
+        "url": "https://www.nps.gov/zion/learn/nature/navajo-colors.htm",
+        "checkedAt": "2026-10-30",
+        "note": "名称・来歴・歴史・素材の確認に参照。"
+      },
+      {
+        "label": "Astrology.com｜サンドストーンの象徴",
+        "url": "https://www.astrology.com/crystals/sandstone-crystal",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・文化・現代の紹介記事を参照。組み合わせの提案はALMÉA GEMによる編集上の提案。"
+      },
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 90。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s015",
+    "slug": "black-onyx",
+    "name": "ブラックオニキス",
+    "english": "Black Onyx",
+    "aliases": ["ブラックオニクス"],
+    "colors": ["黒"],
+    "wishes": ["protection", "prosperity"],
+    "themes": ["浄化・守護", "仕事・成功"],
+    "related": ["s001", "s003", "s004"],
+    "sources": [
+      {
+        "label": "The Jewelry Magazine｜ヴィーナスの爪の伝説",
+        "url": "https://www.thejewelrymagazine.com/jewelry-information-center/about-gemstones/onyx/",
+        "checkedAt": "2026-10-30",
+        "note": "現代の宝石紹介で語られる、オニキスの爪の物語の参照先。"
+      },
+      {
+        "label": "Sotheby's｜オニキスの歴史と装飾",
+        "url": "https://www.sothebys.com/en/articles/the-a-z-of-jewelry-o-is-for-onyx",
+        "checkedAt": "2026-10-30",
+        "note": "名称・来歴・歴史・素材の確認に参照。"
+      },
+      {
+        "label": "International Gem Society｜ブラックオニキスの流通と特徴",
+        "url": "https://www.gemsociety.org/article/black-onyx-jewelry-and-gemstone-information/",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・文化・現代の紹介記事を参照。組み合わせの提案はALMÉA GEMによる編集上の提案。"
+      },
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 91。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s016",
+    "slug": "flint",
+    "name": "フリント",
+    "english": "Flint",
+    "aliases": ["火打石", "燧石"],
+    "colors": [],
+    "wishes": ["protection", "relationships"],
+    "themes": ["浄化・守護", "対人・コミュニケーション"],
+    "related": ["s001", "s003", "s004"],
+    "sources": [
+      {
+        "label": "米国国立公園局｜フリントの道具と火起こし",
+        "url": "https://www.nps.gov/articles/flint-part-2.htm",
+        "checkedAt": "2026-10-30",
+        "note": "名称・来歴・歴史・素材の確認に参照。"
+      },
+      {
+        "label": "米国国立公園局｜火打石と火花",
+        "url": "https://www.nps.gov/pisp/learn/historyculture/flint-and-steel.htm",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・文化・現代の紹介記事を参照。組み合わせの提案はALMÉA GEMによる編集上の提案。"
+      },
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 92。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s017",
+    "slug": "hematite",
+    "name": "ヘマタイト",
+    "english": "Hematite",
+    "aliases": ["赤鉄鉱"],
+    "colors": ["グレー"],
+    "wishes": ["challenge", "protection"],
+    "themes": ["勝負・行動", "浄化・守護"],
+    "related": ["s001", "s003", "s004"],
+    "sources": [
+      {
+        "label": "Metropolitan Museum｜古代エジプトのヘマタイト護符",
+        "url": "https://www.metmuseum.org/art/collection/search/552959",
+        "checkedAt": "2026-10-30",
+        "note": "名称・来歴・歴史・素材の確認に参照。"
+      },
+      {
+        "label": "Metropolitan Museum｜古代エジプトの直角形ヘマタイト護符",
+        "url": "https://www.metmuseum.org/art/collection/search/545370",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・文化・現代の紹介記事を参照。組み合わせの提案はALMÉA GEMによる編集上の提案。"
+      },
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 93。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s018",
+    "slug": "meteorite",
+    "name": "メテオライト",
+    "english": "Meteorite",
+    "aliases": ["隕石"],
+    "colors": [],
+    "wishes": ["intuition", "fortune"],
+    "themes": ["直感・精神性", "変化・再生"],
+    "related": ["s002", "s009", "s010"],
+    "sources": [
+      {
+        "label": "Meteoritics & Planetary Science｜ツタンカーメン王の隕鉄短剣",
+        "url": "https://doi.org/10.1111/maps.12664",
+        "checkedAt": "2026-10-30",
+        "note": "名称・来歴・歴史・素材の確認に参照。"
+      },
+      {
+        "label": "Nature｜ツタンカーメン王の隕鉄短剣",
+        "url": "https://www.nature.com/articles/d41586-022-00436-5",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・文化・現代の紹介記事を参照。組み合わせの提案はALMÉA GEMによる編集上の提案。"
+      },
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 94。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s019",
+    "slug": "morion",
+    "name": "モリオン",
+    "english": "Morion",
+    "aliases": ["黒水晶"],
+    "colors": [],
+    "wishes": ["protection", "wellbeing"],
+    "themes": ["浄化・守護", "癒し・安定"],
+    "related": ["s001", "s002", "s003"],
+    "sources": [
+      {
+        "label": "Gemdat｜黒色煙水晶モリオンの定義",
+        "url": "https://www.gemdat.org/gem-6270.html",
+        "checkedAt": "2026-10-30",
+        "note": "名称・来歴・歴史・素材の確認に参照。"
+      },
+      {
+        "label": "宝石辞典｜煙水晶とモルモリオンの名",
+        "url": "https://www.edelsteine.at/en/glossaries/lexicon/smoky-quartz/",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・文化・現代の紹介記事を参照。組み合わせの提案はALMÉA GEMによる編集上の提案。"
+      },
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 95。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s020",
+    "slug": "lava",
+    "name": "ラヴァ",
+    "english": "Lava",
+    "aliases": ["ラバストーン", "ラヴァストーン", "溶岩石"],
+    "colors": [],
+    "wishes": ["wellbeing", "relationships"],
+    "themes": ["癒し・安定", "対人・コミュニケーション"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "米国地質調査所｜溶岩の気泡跡と火山岩",
+        "url": "https://www.usgs.gov/educational-resources/find-feature-vesicles",
+        "checkedAt": "2026-10-30",
+        "note": "名称・来歴・歴史・素材の確認に参照。"
+      },
+      {
+        "label": "Gemstone Guide｜ラヴァストーンの現代的意味",
+        "url": "https://jeffreyburroughs.com/lava-stone/",
+        "checkedAt": "2026-10-30",
+        "note": "石の来歴・文化・現代の紹介記事を参照。組み合わせの提案はALMÉA GEMによる編集上の提案。"
+      },
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 96。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s021",
+    "slug": "agate",
+    "name": "アゲート",
+    "english": "Agate",
+    "aliases": ["瑪瑙"],
+    "colors": [],
+    "wishes": ["relationships", "wellbeing"],
+    "themes": ["対人・コミュニケーション", "癒し・安定"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 97。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s022",
+    "slug": "green-agate",
+    "name": "グリーンアゲート",
+    "english": "Green Agate",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["love", "home", "wellbeing"],
+    "themes": ["愛情・絆", "癒し・安定"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 98。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s023",
+    "slug": "fire-agate",
+    "name": "ファイヤーアゲート",
+    "english": "Fire Agate",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["challenge", "protection"],
+    "themes": ["勝負・行動", "浄化・守護"],
+    "related": ["s001", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 98。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s024",
+    "slug": "moss-agate",
+    "name": "モスアゲート",
+    "english": "Moss Agate",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "prosperity"],
+    "themes": ["癒し・安定", "金運・繁栄"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 98。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s025",
+    "slug": "red-agate",
+    "name": "レッドアゲート",
+    "english": "Red Agate",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["love", "home", "challenge"],
+    "themes": ["愛情・絆", "勝負・行動"],
+    "related": ["s001", "s014", "s017"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 98。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s026",
+    "slug": "andesine",
+    "name": "アンデシン",
+    "english": "Andesine",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["fortune", "challenge"],
+    "themes": ["変化・再生", "勝負・行動"],
+    "related": ["s001", "s002", "s010"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 99。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s027",
+    "slug": "ammolite",
+    "name": "アンモライト",
+    "english": "Ammolite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["prosperity", "challenge"],
+    "themes": ["金運・繁栄", "勝負・行動"],
+    "related": ["s001", "s014", "s017"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 100。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s028",
+    "slug": "garnet",
+    "name": "ガーネット",
+    "english": "Garnet",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["challenge", "love", "home"],
+    "themes": ["勝負・行動", "愛情・絆"],
+    "related": ["s001", "s014", "s017"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 101。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      },
+      {
+        "label": "GIA｜ガーネットの歴史",
+        "url": "https://www.gia.edu/garnet-history-lore",
+        "checkedAt": null,
+        "note": "既存の伝承リンクを参考資料一覧にも登録。2026-10-30の本文再取得は接続プロキシ403のため未確認。古代の使用例と現代のスピリチュアルな解釈は別に確認する。"
+      }
+    ]
+  },
+  {
+    "id": "s029",
+    "slug": "almandine",
+    "name": "アルマンディン",
+    "english": "Almandine",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["challenge", "wellbeing"],
+    "themes": ["勝負・行動", "癒し・安定"],
+    "related": ["s001", "s002", "s003"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 102。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s030",
+    "slug": "andradite",
+    "name": "アンドラダイト",
+    "english": "Andradite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["fortune", "challenge"],
+    "themes": ["変化・再生", "勝負・行動"],
+    "related": ["s001", "s002", "s010"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 102。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s031",
+    "slug": "uvarovite",
+    "name": "ウバロバイト",
+    "english": "Uvarovite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["relationships", "presence", "wellbeing"],
+    "themes": ["対人・コミュニケーション", "魅力・自己肯定"],
+    "related": ["s006", "s007", "s016"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 102。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s032",
+    "slug": "grossular",
+    "name": "グロッシュラー",
+    "english": "Grossular",
+    "aliases": ["グロッシュラーライト"],
+    "colors": [],
+    "wishes": ["challenge", "protection"],
+    "themes": ["勝負・行動", "浄化・守護"],
+    "related": ["s001", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 102。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s033",
+    "slug": "spessartine",
+    "name": "スペサルティン",
+    "english": "Spessartine",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["presence", "wellbeing", "love", "home"],
+    "themes": ["魅力・自己肯定", "愛情・絆"],
+    "related": ["s022", "s025", "s028"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 102。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s034",
+    "slug": "pyrope",
+    "name": "パイロープ",
+    "english": "Pyrope",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["love", "home", "challenge"],
+    "themes": ["愛情・絆", "勝負・行動"],
+    "related": ["s001", "s014", "s017"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 102。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s035",
+    "slug": "cuprite",
+    "name": "キュープライト",
+    "english": "Cuprite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "presence"],
+    "themes": ["癒し・安定", "魅力・自己肯定"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 103。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s036",
+    "slug": "coral",
+    "name": "コーラル",
+    "english": "Coral",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["protection", "love", "home"],
+    "themes": ["浄化・守護", "愛情・絆"],
+    "related": ["s001", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 104。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s037",
+    "slug": "jasper",
+    "name": "ジャスパー",
+    "english": "Jasper",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "learning"],
+    "themes": ["癒し・安定", "学習・集中"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 105。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s038",
+    "slug": "cinnabar",
+    "name": "シンナバー",
+    "english": "Cinnabar",
+    "aliases": [],
+    "colors": ["赤"],
+    "wishes": ["presence", "wellbeing", "prosperity"],
+    "themes": ["魅力・自己肯定", "仕事・成功"],
+    "related": ["s007", "s015", "s031"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 106。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s039",
+    "slug": "spinel",
+    "name": "スピネル",
+    "english": "Spinel",
+    "aliases": ["ピンクスピネル", "レッドスピネル"],
+    "colors": [],
+    "wishes": ["challenge", "prosperity"],
+    "themes": ["勝負・行動", "仕事・成功"],
+    "related": ["s001", "s007", "s014"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 107。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s040",
+    "slug": "dendrite",
+    "name": "デンドライト",
+    "english": "Dendrite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "fortune"],
+    "themes": ["癒し・安定", "変化・再生"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 108。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s041",
+    "slug": "bloodstone",
+    "name": "ブラッドストーン",
+    "english": "Bloodstone",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["challenge", "protection"],
+    "themes": ["勝負・行動", "浄化・守護"],
+    "related": ["s001", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 109。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s042",
+    "slug": "petrified-wood",
+    "name": "ペトリファイドウッド",
+    "english": "Petrified Wood",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "prosperity"],
+    "themes": ["癒し・安定", "仕事・成功"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 110。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s043",
+    "slug": "mookaite",
+    "name": "モッカイト",
+    "english": "Mookaite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "challenge"],
+    "themes": ["癒し・安定", "勝負・行動"],
+    "related": ["s001", "s002", "s003"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 111。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s044",
+    "slug": "eudialyte",
+    "name": "ユーディアライト",
+    "english": "Eudialyte",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["presence", "wellbeing", "challenge"],
+    "themes": ["魅力・自己肯定", "勝負・行動"],
+    "related": ["s001", "s014", "s017"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 112。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s045",
+    "slug": "amber",
+    "name": "アンバー",
+    "english": "Amber",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["prosperity", "presence", "wellbeing"],
+    "themes": ["金運・繁栄", "魅力・自己肯定"],
+    "related": ["s024", "s027", "s031"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 113。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s046",
+    "slug": "carnelian",
+    "name": "カーネリアン",
+    "english": "Carnelian",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["challenge", "presence", "wellbeing"],
+    "themes": ["勝負・行動", "魅力・自己肯定"],
+    "related": ["s001", "s014", "s017"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 114。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s047",
+    "slug": "sunstone",
+    "name": "サンストーン",
+    "english": "Sunstone",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["challenge", "prosperity"],
+    "themes": ["勝負・行動", "仕事・成功"],
+    "related": ["s001", "s007", "s014"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 115。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s048",
+    "slug": "citrine",
+    "name": "シトリン",
+    "english": "Citrine",
+    "aliases": [],
+    "colors": ["黄"],
+    "wishes": ["prosperity"],
+    "themes": ["金運・繁栄", "仕事・成功"],
+    "related": ["s007", "s015", "s024"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 116。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s049",
+    "slug": "tangerine-quartz",
+    "name": "タンジェリンクォーツ",
+    "english": "Tangerine Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["challenge", "presence", "wellbeing"],
+    "themes": ["勝負・行動", "魅力・自己肯定"],
+    "related": ["s001", "s014", "s017"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 117。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s050",
+    "slug": "topaz",
+    "name": "トパーズ",
+    "english": "Topaz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["learning", "love", "home"],
+    "themes": ["学習・集中", "愛情・絆"],
+    "related": ["s013", "s022", "s025"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 118。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s051",
+    "slug": "imperial-topaz",
+    "name": "インペリアルトパーズ",
+    "english": "Imperial Topaz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["prosperity", "challenge"],
+    "themes": ["金運・繁栄", "勝負・行動"],
+    "related": ["s001", "s014", "s017"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 119。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s052",
+    "slug": "blue-topaz",
+    "name": "ブルートパーズ",
+    "english": "Blue Topaz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["learning", "prosperity"],
+    "themes": ["学習・集中", "仕事・成功"],
+    "related": ["s007", "s013", "s015"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 119。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s053",
+    "slug": "aragonite",
+    "name": "アラゴナイト",
+    "english": "Aragonite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["relationships", "presence", "wellbeing"],
+    "themes": ["対人・コミュニケーション", "魅力・自己肯定"],
+    "related": ["s006", "s007", "s016"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 120。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s054",
+    "slug": "impact-glass",
+    "name": "インパクトガラス",
+    "english": "Impact Glass",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["intuition", "fortune"],
+    "themes": ["直感・精神性", "変化・再生"],
+    "related": ["s002", "s009", "s010"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 121。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s055",
+    "slug": "ouro-verde-quartz",
+    "name": "オウロヴェルデクォーツ",
+    "english": "Ouro Verde Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["fortune", "prosperity"],
+    "themes": ["変化・再生", "仕事・成功"],
+    "related": ["s002", "s007", "s010"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 122。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s056",
+    "slug": "sulfur",
+    "name": "サルファー",
+    "english": "Sulfur",
+    "aliases": [],
+    "colors": ["黄"],
+    "wishes": ["wellbeing", "learning"],
+    "themes": ["癒し・安定", "学習・集中"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 123。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s057",
+    "slug": "tiger-eye",
+    "name": "タイガーアイ",
+    "english": "Tiger's Eye",
+    "aliases": ["Tiger Eye"],
+    "colors": ["茶", "金"],
+    "wishes": ["prosperity", "challenge"],
+    "themes": ["金運・繁栄", "勝負・行動"],
+    "related": ["s001", "s014", "s017"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 124。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s058",
+    "slug": "pietersite",
+    "name": "ピーターサイト",
+    "english": "Pietersite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["fortune", "challenge"],
+    "themes": ["変化・再生", "勝負・行動"],
+    "related": ["s001", "s002", "s010"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 125。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s059",
+    "slug": "bulls-eye",
+    "name": "ブルズアイ",
+    "english": "Bull's Eye",
+    "aliases": ["Bulls Eye"],
+    "colors": [],
+    "wishes": ["challenge", "prosperity"],
+    "themes": ["勝負・行動", "仕事・成功"],
+    "related": ["s001", "s007", "s014"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 125。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s060",
+    "slug": "hawks-eye",
+    "name": "ホークスアイ",
+    "english": "Hawk's Eye",
+    "aliases": ["Hawks Eye"],
+    "colors": [],
+    "wishes": ["learning", "prosperity"],
+    "themes": ["学習・集中", "金運・繁栄"],
+    "related": ["s013", "s024", "s027"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 125。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s061",
+    "slug": "chalcopyrite",
+    "name": "チャルコパイライト",
+    "english": "Chalcopyrite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["learning", "challenge"],
+    "themes": ["学習・集中", "勝負・行動"],
+    "related": ["s001", "s013", "s014"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 126。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s062",
+    "slug": "pyrite",
+    "name": "パイライト",
+    "english": "Pyrite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["protection", "learning"],
+    "themes": ["浄化・守護", "学習・集中"],
+    "related": ["s001", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 127。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s063",
+    "slug": "moonstone",
+    "name": "ムーンストーン",
+    "english": "Moonstone",
+    "aliases": ["ホワイトムーンストーン"],
+    "colors": ["白"],
+    "wishes": ["love", "intuition"],
+    "themes": ["恋愛・出会い", "直感・精神性"],
+    "related": ["s009", "s010", "s012"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 128。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s064",
+    "slug": "rutilated-quartz",
+    "name": "ルチルクォーツ",
+    "english": "Rutilated Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["prosperity", "challenge"],
+    "themes": ["金運・繁栄", "勝負・行動"],
+    "related": ["s001", "s014", "s017"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 129。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s065",
+    "slug": "cats-eye-orange-rutilated-quartz",
+    "name": "キャッツアイオレンジルチルクォーツ",
+    "english": "Cat's Eye Orange Rutilated Quartz",
+    "aliases": ["Cats Eye Orange Rutilated Quartz"],
+    "colors": [],
+    "wishes": ["prosperity"],
+    "themes": ["金運・繁栄", "仕事・成功"],
+    "related": ["s007", "s015", "s024"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 130。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s066",
+    "slug": "silver-rutilated-quartz",
+    "name": "シルバールチルクォーツ",
+    "english": "Silver Rutilated Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["relationships", "prosperity"],
+    "themes": ["対人・コミュニケーション", "金運・繁栄"],
+    "related": ["s006", "s007", "s016"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 130。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s067",
+    "slug": "lemon-quartz",
+    "name": "レモンクォーツ",
+    "english": "Lemon Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "prosperity"],
+    "themes": ["癒し・安定", "金運・繁栄"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 131。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s068",
+    "slug": "actinolite",
+    "name": "アクチノライト",
+    "english": "Actinolite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["protection", "prosperity"],
+    "themes": ["浄化・守護", "仕事・成功"],
+    "related": ["s001", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 132。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s069",
+    "slug": "aventurine",
+    "name": "アベンチュリン",
+    "english": "Aventurine",
+    "aliases": ["グリーンアベンチュリン"],
+    "colors": [],
+    "wishes": ["wellbeing", "relationships"],
+    "themes": ["癒し・安定", "対人・コミュニケーション"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 133。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s070",
+    "slug": "amazonite",
+    "name": "アマゾナイト",
+    "english": "Amazonite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["fortune", "relationships"],
+    "themes": ["変化・再生", "対人・コミュニケーション"],
+    "related": ["s002", "s006", "s007"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 134。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s071",
+    "slug": "epidote",
+    "name": "エピドート",
+    "english": "Epidote",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["fortune", "intuition"],
+    "themes": ["変化・再生", "直感・精神性"],
+    "related": ["s002", "s009", "s010"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 135。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s072",
+    "slug": "emerald",
+    "name": "エメラルド",
+    "english": "Emerald",
+    "aliases": [],
+    "colors": ["緑"],
+    "wishes": ["love", "home", "learning"],
+    "themes": ["愛情・絆", "学習・集中"],
+    "related": ["s013", "s022", "s025"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 136。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s073",
+    "slug": "garden-quartz",
+    "name": "ガーデンクォーツ",
+    "english": "Garden Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["prosperity", "wellbeing"],
+    "themes": ["金運・繁栄", "癒し・安定"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 137。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s074",
+    "slug": "chrysocolla",
+    "name": "クリソコラ",
+    "english": "Chrysocolla",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "presence"],
+    "themes": ["癒し・安定", "魅力・自己肯定"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 138。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s075",
+    "slug": "chrysoprase",
+    "name": "クリソプレーズ",
+    "english": "Chrysoprase",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["fortune", "challenge"],
+    "themes": ["変化・再生", "勝負・行動"],
+    "related": ["s001", "s002", "s010"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 139。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s076",
+    "slug": "chrysoberyl",
+    "name": "クリソベリル",
+    "english": "Chrysoberyl",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["challenge", "intuition"],
+    "themes": ["勝負・行動", "直感・精神性"],
+    "related": ["s001", "s009", "s010"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 140。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s077",
+    "slug": "kunzite",
+    "name": "クンツァイト",
+    "english": "Kunzite",
+    "aliases": [],
+    "colors": ["ピンク"],
+    "wishes": ["love", "home", "wellbeing"],
+    "themes": ["愛情・絆", "癒し・安定"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 141。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s078",
+    "slug": "kosmochlor",
+    "name": "コスモクロア",
+    "english": "Kosmochlor",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["intuition", "wellbeing"],
+    "themes": ["直感・精神性", "癒し・安定"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 142。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s079",
+    "slug": "serpentine",
+    "name": "サーペンチン",
+    "english": "Serpentine",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["protection", "fortune"],
+    "themes": ["浄化・守護", "変化・再生"],
+    "related": ["s001", "s002", "s003"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 143。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s080",
+    "slug": "jadeite",
+    "name": "ジェダイト",
+    "english": "Jadeite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["prosperity", "fortune"],
+    "themes": ["仕事・成功", "変化・再生"],
+    "related": ["s002", "s007", "s010"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 144。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s081",
+    "slug": "strawberry-quartz",
+    "name": "ストロベリークォーツ",
+    "english": "Strawberry Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["love", "presence", "wellbeing"],
+    "themes": ["恋愛・出会い", "魅力・自己肯定"],
+    "related": ["s031", "s033", "s035"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 145。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s082",
+    "slug": "sphene",
+    "name": "スフェーン",
+    "english": "Sphene",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["presence", "wellbeing", "prosperity"],
+    "themes": ["魅力・自己肯定", "仕事・成功"],
+    "related": ["s007", "s015", "s031"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 146。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s083",
+    "slug": "smithsonite",
+    "name": "スミソナイト",
+    "english": "Smithsonite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "love", "home"],
+    "themes": ["癒し・安定", "愛情・絆"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 147。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s084",
+    "slug": "seraphinite",
+    "name": "セラフィナイト",
+    "english": "Seraphinite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "relationships"],
+    "themes": ["癒し・安定", "対人・コミュニケーション"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 148。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s085",
+    "slug": "diopside",
+    "name": "ダイオプサイド",
+    "english": "Diopside",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["learning", "fortune"],
+    "themes": ["学習・集中", "変化・再生"],
+    "related": ["s002", "s010", "s011"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 149。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s086",
+    "slug": "dioptase",
+    "name": "ダイオプテーズ",
+    "english": "Dioptase",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["love", "home", "wellbeing"],
+    "themes": ["愛情・絆", "癒し・安定"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 150。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s087",
+    "slug": "tanzanite",
+    "name": "タンザナイト",
+    "english": "Tanzanite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["fortune", "challenge"],
+    "themes": ["変化・再生", "勝負・行動"],
+    "related": ["s001", "s002", "s010"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 151。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s088",
+    "slug": "tourmaline",
+    "name": "トルマリン",
+    "english": "Tourmaline",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["intuition", "presence", "wellbeing"],
+    "themes": ["直感・精神性", "魅力・自己肯定"],
+    "related": ["s009", "s010", "s012"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 152。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s089",
+    "slug": "yellow-tourmaline",
+    "name": "イエロートルマリン",
+    "english": "Yellow Tourmaline",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["relationships", "presence", "wellbeing"],
+    "themes": ["対人・コミュニケーション", "魅力・自己肯定"],
+    "related": ["s006", "s007", "s016"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 153。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s090",
+    "slug": "green-tourmaline",
+    "name": "グリーントルマリン",
+    "english": "Green Tourmaline",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "fortune"],
+    "themes": ["癒し・安定", "変化・再生"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 153。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s091",
+    "slug": "pink-tourmaline",
+    "name": "ピンクトルマリン",
+    "english": "Pink Tourmaline",
+    "aliases": ["ルベライト（赤色系のトルマリン）"],
+    "colors": [],
+    "wishes": ["love", "home"],
+    "themes": ["恋愛・出会い", "愛情・絆"],
+    "related": ["s022", "s025", "s028"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 153。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s092",
+    "slug": "watermelon-tourmaline",
+    "name": "ウォーターメロントルマリン",
+    "english": "Watermelon Tourmaline",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["love", "home", "wellbeing"],
+    "themes": ["愛情・絆", "癒し・安定"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 153。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s093",
+    "slug": "black-tourmaline",
+    "name": "ブラックトルマリン",
+    "english": "Black Tourmaline",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["protection", "wellbeing"],
+    "themes": ["浄化・守護", "癒し・安定"],
+    "related": ["s001", "s002", "s003"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 153。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s094",
+    "slug": "blue-tourmaline",
+    "name": "ブルートルマリン",
+    "english": "Blue Tourmaline",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["learning", "intuition"],
+    "themes": ["学習・集中", "直感・精神性"],
+    "related": ["s009", "s010", "s012"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 153。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s095",
+    "slug": "nephrite",
+    "name": "ネフライト",
+    "english": "Nephrite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "protection"],
+    "themes": ["癒し・安定", "浄化・守護"],
+    "related": ["s001", "s002", "s003"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 154。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s096",
+    "slug": "prehnite",
+    "name": "プレナイト",
+    "english": "Prehnite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["learning", "wellbeing"],
+    "themes": ["学習・集中", "癒し・安定"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 155。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s097",
+    "slug": "fluorite",
+    "name": "フローライト",
+    "english": "Fluorite",
+    "aliases": [],
+    "colors": ["緑", "紫"],
+    "wishes": ["learning", "fortune"],
+    "themes": ["学習・集中", "変化・再生"],
+    "related": ["s002", "s010", "s011"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 156。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s098",
+    "slug": "green-fluorite",
+    "name": "グリーンフローライト",
+    "english": "Green Fluorite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "relationships"],
+    "themes": ["癒し・安定", "対人・コミュニケーション"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 157。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s099",
+    "slug": "purple-fluorite",
+    "name": "パープルフローライト",
+    "english": "Purple Fluorite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["intuition", "learning"],
+    "themes": ["直感・精神性", "学習・集中"],
+    "related": ["s009", "s010", "s012"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 157。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s100",
+    "slug": "blue-fluorite",
+    "name": "ブルーフローライト",
+    "english": "Blue Fluorite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["learning", "wellbeing"],
+    "themes": ["学習・集中", "癒し・安定"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 157。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s101",
+    "slug": "peridot",
+    "name": "ペリドット",
+    "english": "Peridot",
+    "aliases": ["オリビン"],
+    "colors": ["緑"],
+    "wishes": ["challenge", "love", "home"],
+    "themes": ["勝負・行動", "愛情・絆"],
+    "related": ["s001", "s014", "s017"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 158。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s102",
+    "slug": "muscovite",
+    "name": "マスコバイト",
+    "english": "Muscovite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["learning", "fortune"],
+    "themes": ["学習・集中", "変化・再生"],
+    "related": ["s002", "s010", "s011"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 159。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s103",
+    "slug": "malachite",
+    "name": "マラカイト",
+    "english": "Malachite",
+    "aliases": [],
+    "colors": ["緑"],
+    "wishes": ["protection", "fortune"],
+    "themes": ["浄化・守護", "変化・再生"],
+    "related": ["s001", "s002", "s003"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 160。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s104",
+    "slug": "moldavite",
+    "name": "モルダバイト",
+    "english": "Moldavite",
+    "aliases": ["モルダウ石"],
+    "colors": [],
+    "wishes": ["fortune", "intuition"],
+    "themes": ["変化・再生", "直感・精神性"],
+    "related": ["s002", "s009", "s010"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 161。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s105",
+    "slug": "unakite",
+    "name": "ユナカイト",
+    "english": "Unakite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "love", "home"],
+    "themes": ["癒し・安定", "愛情・絆"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 162。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s106",
+    "slug": "ruby",
+    "name": "ルビー",
+    "english": "Ruby",
+    "aliases": [],
+    "colors": ["赤"],
+    "wishes": ["presence", "wellbeing", "challenge"],
+    "themes": ["魅力・自己肯定", "勝負・行動"],
+    "related": ["s001", "s014", "s017"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 163。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s107",
+    "slug": "rose-quartz",
+    "name": "ローズクォーツ",
+    "english": "Rose Quartz",
+    "aliases": ["紅水晶"],
+    "colors": ["ピンク"],
+    "wishes": ["love", "home"],
+    "themes": ["恋愛・出会い", "愛情・絆"],
+    "related": ["s022", "s025", "s028"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 164。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s108",
+    "slug": "rhodochrosite",
+    "name": "ロードクロサイト",
+    "english": "Rhodochrosite",
+    "aliases": ["インカローズ"],
+    "colors": ["ピンク"],
+    "wishes": ["love", "presence", "wellbeing"],
+    "themes": ["恋愛・出会い", "魅力・自己肯定"],
+    "related": ["s109", "s107", "s118"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 165。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s109",
+    "slug": "rhodonite",
+    "name": "ロードナイト",
+    "english": "Rhodonite",
+    "aliases": [],
+    "colors": ["ピンク"],
+    "wishes": ["love", "home", "wellbeing"],
+    "themes": ["愛情・絆", "癒し・安定"],
+    "related": ["s108", "s107", "s118"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 166。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s110",
+    "slug": "aquamarine",
+    "name": "アクアマリン",
+    "english": "Aquamarine",
+    "aliases": [],
+    "colors": ["青"],
+    "wishes": ["love", "home", "relationships"],
+    "themes": ["愛情・絆", "対人・コミュニケーション"],
+    "related": ["s107", "s206", "s117"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 167。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s111",
+    "slug": "apatite",
+    "name": "アパタイト",
+    "english": "Apatite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["relationships", "love", "home"],
+    "themes": ["対人・コミュニケーション", "愛情・絆"],
+    "related": ["s006", "s007", "s016"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 168。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s112",
+    "slug": "anhydrite",
+    "name": "アンハイドライト",
+    "english": "Anhydrite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "presence"],
+    "themes": ["癒し・安定", "魅力・自己肯定"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 169。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s113",
+    "slug": "kyanite",
+    "name": "カイヤナイト",
+    "english": "Kyanite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["learning", "fortune"],
+    "themes": ["学習・集中", "変化・再生"],
+    "related": ["s002", "s010", "s011"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 170。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s114",
+    "slug": "cavansite",
+    "name": "カバンサイト",
+    "english": "Cavansite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["intuition", "wellbeing"],
+    "themes": ["直感・精神性", "癒し・安定"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 171。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s115",
+    "slug": "chalcedony",
+    "name": "カルセドニー",
+    "english": "Chalcedony",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["relationships", "love", "home"],
+    "themes": ["対人・コミュニケーション", "愛情・絆"],
+    "related": ["s116", "s117", "s118"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 172。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s116",
+    "slug": "sea-blue-chalcedony",
+    "name": "シーブルーカルセドニー",
+    "english": "Sea Blue Chalcedony",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["relationships", "wellbeing"],
+    "themes": ["対人・コミュニケーション", "癒し・安定"],
+    "related": ["s115", "s117", "s118"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 173。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s117",
+    "slug": "blue-chalcedony",
+    "name": "ブルーカルセドニー",
+    "english": "Blue Chalcedony",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["relationships", "wellbeing"],
+    "themes": ["対人・コミュニケーション", "癒し・安定"],
+    "related": ["s115", "s116", "s118"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 173。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s118",
+    "slug": "pink-chalcedony",
+    "name": "ピンクカルセドニー",
+    "english": "Pink Chalcedony",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["love", "home", "presence", "wellbeing"],
+    "themes": ["愛情・絆", "魅力・自己肯定"],
+    "related": ["s115", "s116", "s117"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 173。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s119",
+    "slug": "quantum-chrysocolla",
+    "name": "クォンタムクリソコラ",
+    "english": "Quantum Chrysocolla",
+    "aliases": ["クォンタムシリカ（流通名）"],
+    "colors": [],
+    "wishes": ["intuition", "wellbeing"],
+    "themes": ["直感・精神性", "癒し・安定"],
+    "related": ["s074", "s115", "s117"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 174。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s120",
+    "slug": "celestite",
+    "name": "セレスタイト",
+    "english": "Celestite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "intuition"],
+    "themes": ["癒し・安定", "直感・精神性"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 175。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s121",
+    "slug": "sodalite",
+    "name": "ソーダライト",
+    "english": "Sodalite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["learning", "wellbeing"],
+    "themes": ["学習・集中", "癒し・安定"],
+    "related": ["s132", "s122", "s117"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 176。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s122",
+    "slug": "turquoise",
+    "name": "ターコイズ",
+    "english": "Turquoise",
+    "aliases": [],
+    "colors": ["青"],
+    "wishes": ["protection", "journey"],
+    "themes": ["浄化・守護", "旅・安全"],
+    "related": ["s001", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 177。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s123",
+    "slug": "dumortierite",
+    "name": "デュモルチェライト",
+    "english": "Dumortierite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["learning", "presence", "wellbeing"],
+    "themes": ["学習・集中", "魅力・自己肯定"],
+    "related": ["s013", "s031", "s033"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 178。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s124",
+    "slug": "blue-lace-agate",
+    "name": "ブルーレースアゲート",
+    "english": "Blue Lace Agate",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["relationships", "wellbeing"],
+    "themes": ["対人・コミュニケーション", "癒し・安定"],
+    "related": ["s021", "s115", "s117"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 179。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s125",
+    "slug": "peristerite",
+    "name": "ペリステライト",
+    "english": "Peristerite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "love", "home"],
+    "themes": ["癒し・安定", "愛情・絆"],
+    "related": ["s063", "s133", "s208"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 180。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s126",
+    "slug": "larimar",
+    "name": "ラリマー",
+    "english": "Larimar",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "love", "home"],
+    "themes": ["癒し・安定", "愛情・絆"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 181。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s127",
+    "slug": "iolite",
+    "name": "アイオライト",
+    "english": "Iolite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["challenge", "learning"],
+    "themes": ["勝負・行動", "学習・集中"],
+    "related": ["s001", "s013", "s014"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 182。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s128",
+    "slug": "azurite",
+    "name": "アズライト",
+    "english": "Azurite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["intuition", "learning"],
+    "themes": ["直感・精神性", "学習・集中"],
+    "related": ["s103", "s130", "s132"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 183。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s129",
+    "slug": "sapphire",
+    "name": "サファイア",
+    "english": "Sapphire",
+    "aliases": ["ブルーサファイア"],
+    "colors": ["青"],
+    "wishes": ["prosperity", "challenge"],
+    "themes": ["仕事・成功", "勝負・行動"],
+    "related": ["s001", "s007", "s014"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 184。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s130",
+    "slug": "shattuckite",
+    "name": "シャッタカイト",
+    "english": "Shattuckite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["relationships", "intuition"],
+    "themes": ["対人・コミュニケーション", "直感・精神性"],
+    "related": ["s074", "s128", "s119"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 185。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s131",
+    "slug": "preseli-bluestone",
+    "name": "プレセリブルーストーン",
+    "english": "Preseli Bluestone",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "intuition"],
+    "themes": ["癒し・安定", "直感・精神性"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 186。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s132",
+    "slug": "lapis-lazuli",
+    "name": "ラピスラズリ",
+    "english": "Lapis Lazuli",
+    "aliases": [],
+    "colors": ["青"],
+    "wishes": ["prosperity", "intuition"],
+    "themes": ["仕事・成功", "直感・精神性"],
+    "related": ["s121", "s128", "s134"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 187。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s133",
+    "slug": "labradorite",
+    "name": "ラブラドライト",
+    "english": "Labradorite",
+    "aliases": ["曹灰長石"],
+    "colors": ["グレー", "青"],
+    "wishes": ["intuition", "fortune"],
+    "themes": ["直感・精神性", "変化・再生"],
+    "related": ["s125", "s063", "s104"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 188。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s134",
+    "slug": "amethyst",
+    "name": "アメジスト",
+    "english": "Amethyst",
+    "aliases": ["紫水晶"],
+    "colors": ["紫"],
+    "wishes": ["wellbeing", "love", "home"],
+    "themes": ["癒し・安定", "愛情・絆"],
+    "related": ["s137", "s138", "s107"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 189。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s135",
+    "slug": "elestial-amethyst",
+    "name": "エレスチャルアメジスト",
+    "english": "Elestial Amethyst",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["fortune", "intuition"],
+    "themes": ["変化・再生", "直感・精神性"],
+    "related": ["s134", "s137", "s187"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 190。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s136",
+    "slug": "prasiolite",
+    "name": "プラシオライト",
+    "english": "Prasiolite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["love", "home", "wellbeing"],
+    "themes": ["愛情・絆", "癒し・安定"],
+    "related": ["s134", "s048", "s137"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 190。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s137",
+    "slug": "lavender-amethyst",
+    "name": "ラベンダーアメジスト",
+    "english": "Lavender Amethyst",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "love", "home"],
+    "themes": ["癒し・安定", "愛情・絆"],
+    "related": ["s134", "s135", "s138"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 190。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s138",
+    "slug": "ametrine",
+    "name": "アメトリン",
+    "english": "Ametrine",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "prosperity"],
+    "themes": ["癒し・安定", "金運・繁栄"],
+    "related": ["s134", "s048", "s137"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 191。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s139",
+    "slug": "sugilite",
+    "name": "スギライト",
+    "english": "Sugilite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["protection", "wellbeing"],
+    "themes": ["浄化・守護", "癒し・安定"],
+    "related": ["s140", "s134"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 192。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s140",
+    "slug": "charoite",
+    "name": "チャロアイト",
+    "english": "Charoite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "fortune"],
+    "themes": ["癒し・安定", "変化・再生"],
+    "related": ["s139", "s134"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 193。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s141",
+    "slug": "hypersthene",
+    "name": "ハイパーシーン",
+    "english": "Hypersthene",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["prosperity", "relationships"],
+    "themes": ["仕事・成功", "対人・コミュニケーション"],
+    "related": ["s006", "s007", "s015"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 194。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s142",
+    "slug": "phosphosiderite",
+    "name": "フォスフォシデライト",
+    "english": "Phosphosiderite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "love", "home"],
+    "themes": ["癒し・安定", "愛情・絆"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 195。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s143",
+    "slug": "lepidolite",
+    "name": "レピドライト",
+    "english": "Lepidolite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["fortune", "wellbeing"],
+    "themes": ["変化・再生", "癒し・安定"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 196。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s144",
+    "slug": "ice-crystal",
+    "name": "アイスクリスタル",
+    "english": "Ice Crystal",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["intuition", "fortune"],
+    "themes": ["直感・精神性", "変化・再生"],
+    "related": ["s153", "s187", "s147"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 197。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s145",
+    "slug": "azeztulite",
+    "name": "アゼツライト",
+    "english": "Azeztulite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["intuition", "fortune"],
+    "themes": ["直感・精神性", "変化・再生"],
+    "related": ["s187", "s144", "s153"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 198。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s146",
+    "slug": "apophyllite",
+    "name": "アポフィライト",
+    "english": "Apophyllite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "intuition"],
+    "themes": ["癒し・安定", "直感・精神性"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 199。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s147",
+    "slug": "aura-quartz",
+    "name": "オーラクォーツ",
+    "english": "Aura Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["presence", "wellbeing", "intuition"],
+    "themes": ["魅力・自己肯定", "直感・精神性"],
+    "related": ["s187", "s144", "s153"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 200。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s148",
+    "slug": "opal",
+    "name": "オパール",
+    "english": "Opal",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["presence", "wellbeing", "fortune"],
+    "themes": ["魅力・自己肯定", "変化・再生"],
+    "related": ["s149", "s150", "s152"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 201。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s149",
+    "slug": "yellow-opal",
+    "name": "イエローオパール",
+    "english": "Yellow Opal",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["presence", "wellbeing", "challenge"],
+    "themes": ["魅力・自己肯定", "勝負・行動"],
+    "related": ["s148", "s150", "s152"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 202。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s150",
+    "slug": "pink-opal",
+    "name": "ピンクオパール",
+    "english": "Pink Opal",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["love", "presence", "wellbeing"],
+    "themes": ["恋愛・出会い", "魅力・自己肯定"],
+    "related": ["s148", "s149", "s152"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 202。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s151",
+    "slug": "black-matrix-opal",
+    "name": "ブラックマトリックスオパール",
+    "english": "Black Matrix Opal",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["fortune", "presence", "wellbeing"],
+    "themes": ["変化・再生", "魅力・自己肯定"],
+    "related": ["s148", "s152", "s149"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 202。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s152",
+    "slug": "precious-opal",
+    "name": "プレシャスオパール",
+    "english": "Precious Opal",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["presence", "wellbeing", "intuition"],
+    "themes": ["魅力・自己肯定", "直感・精神性"],
+    "related": ["s148", "s151", "s150"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 202。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s153",
+    "slug": "ganesh-himal-quartz",
+    "name": "ガネッシュヒマールクォーツ",
+    "english": "Ganesh Himal Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["protection", "intuition"],
+    "themes": ["浄化・守護", "直感・精神性"],
+    "related": ["s144", "s187", "s145"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 203。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s154",
+    "slug": "calcite",
+    "name": "カルサイト",
+    "english": "Calcite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["fortune", "wellbeing"],
+    "themes": ["変化・再生", "癒し・安定"],
+    "related": ["s155", "s156", "s157"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 204。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s155",
+    "slug": "optical-calcite",
+    "name": "オプティカルカルサイト",
+    "english": "Optical Calcite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["fortune", "learning"],
+    "themes": ["変化・再生", "学習・集中"],
+    "related": ["s154", "s159", "s160"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 205。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s156",
+    "slug": "orange-calcite",
+    "name": "オレンジカルサイト",
+    "english": "Orange Calcite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["challenge", "wellbeing"],
+    "themes": ["勝負・行動", "癒し・安定"],
+    "related": ["s154", "s157", "s159"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 205。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s157",
+    "slug": "green-calcite",
+    "name": "グリーンカルサイト",
+    "english": "Green Calcite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "intuition"],
+    "themes": ["癒し・安定", "直感・精神性"],
+    "related": ["s154", "s156", "s160"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 205。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s158",
+    "slug": "violet-calcite",
+    "name": "バイオレットカルサイト",
+    "english": "Violet Calcite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["intuition", "wellbeing"],
+    "themes": ["直感・精神性", "癒し・安定"],
+    "related": ["s154", "s159", "s160"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 205。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s159",
+    "slug": "pink-calcite",
+    "name": "ピンクカルサイト",
+    "english": "Pink Calcite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["love", "wellbeing"],
+    "themes": ["恋愛・出会い", "癒し・安定"],
+    "related": ["s154", "s158", "s156"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 205。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s160",
+    "slug": "blue-calcite",
+    "name": "ブルーカルサイト",
+    "english": "Blue Calcite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "relationships"],
+    "themes": ["癒し・安定", "対人・コミュニケーション"],
+    "related": ["s154", "s157", "s155"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 205。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s161",
+    "slug": "quartzite",
+    "name": "クォーツァイト",
+    "english": "Quartzite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "learning"],
+    "themes": ["癒し・安定", "学習・集中"],
+    "related": ["s162", "s163", "s164"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 206。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s162",
+    "slug": "green-quartzite",
+    "name": "グリーンクォーツァイト",
+    "english": "Green Quartzite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "love", "home"],
+    "themes": ["癒し・安定", "愛情・絆"],
+    "related": ["s161", "s163", "s164"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 207。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s163",
+    "slug": "blue-quartzite",
+    "name": "ブルークォーツァイト",
+    "english": "Blue Quartzite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "relationships"],
+    "themes": ["癒し・安定", "対人・コミュニケーション"],
+    "related": ["s161", "s162", "s164"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 207。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s164",
+    "slug": "white-quartzite",
+    "name": "ホワイトクォーツァイト",
+    "english": "White Quartzite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["protection", "wellbeing"],
+    "themes": ["浄化・守護", "癒し・安定"],
+    "related": ["s161", "s162", "s163"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 207。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s165",
+    "slug": "scapolite",
+    "name": "スキャポライト",
+    "english": "Scapolite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["challenge", "learning"],
+    "themes": ["勝負・行動", "学習・集中"],
+    "related": ["s166", "s167"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 208。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s166",
+    "slug": "black-scapolite",
+    "name": "ブラックスキャポライト",
+    "english": "Black Scapolite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "intuition"],
+    "themes": ["癒し・安定", "直感・精神性"],
+    "related": ["s165", "s167"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 209。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s167",
+    "slug": "marialite",
+    "name": "マリアライト",
+    "english": "Marialite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["fortune", "wellbeing"],
+    "themes": ["変化・再生", "癒し・安定"],
+    "related": ["s165", "s166"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 209。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s168",
+    "slug": "zeolite",
+    "name": "ゼオライト",
+    "english": "Zeolite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["protection", "wellbeing"],
+    "themes": ["浄化・守護", "癒し・安定"],
+    "related": ["s001", "s002", "s003"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 210。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s169",
+    "slug": "selenite",
+    "name": "セレナイト",
+    "english": "Selenite",
+    "aliases": [],
+    "colors": ["白"],
+    "wishes": ["protection", "wellbeing"],
+    "themes": ["浄化・守護", "癒し・安定"],
+    "related": ["s001", "s002", "s003"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 211。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s170",
+    "slug": "diamond",
+    "name": "ダイヤモンド",
+    "english": "Diamond",
+    "aliases": ["ダイアモンド"],
+    "colors": [],
+    "wishes": ["love", "home", "prosperity"],
+    "themes": ["愛情・絆", "仕事・成功"],
+    "related": ["s007", "s015", "s022"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 212。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s171",
+    "slug": "danburite",
+    "name": "ダンビュライト",
+    "english": "Danburite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["intuition", "wellbeing"],
+    "themes": ["直感・精神性", "癒し・安定"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 213。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s172",
+    "slug": "halite",
+    "name": "ハーライト",
+    "english": "Halite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["protection", "wellbeing"],
+    "themes": ["浄化・守護", "癒し・安定"],
+    "related": ["s001", "s002", "s003"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 214。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s173",
+    "slug": "pearl",
+    "name": "パール",
+    "english": "Pearl",
+    "aliases": [],
+    "colors": ["白"],
+    "wishes": ["love", "home", "presence", "wellbeing"],
+    "themes": ["愛情・絆", "魅力・自己肯定"],
+    "related": ["s174", "s175"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 215。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s174",
+    "slug": "freshwater-pearl",
+    "name": "淡水パール",
+    "english": "Freshwater Pearl",
+    "aliases": [],
+    "colors": ["白"],
+    "wishes": ["wellbeing", "presence"],
+    "themes": ["癒し・安定", "魅力・自己肯定"],
+    "related": ["s173", "s175"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 216。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s175",
+    "slug": "mother-of-pearl",
+    "name": "マザーオブパール",
+    "english": "Mother of Pearl",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["love", "home", "wellbeing"],
+    "themes": ["愛情・絆", "癒し・安定"],
+    "related": ["s173", "s174"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 216。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s176",
+    "slug": "howlite",
+    "name": "ハウライト",
+    "english": "Howlite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "presence"],
+    "themes": ["癒し・安定", "魅力・自己肯定"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 217。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s177",
+    "slug": "phantom-quartz",
+    "name": "ファントムクォーツ",
+    "english": "Phantom Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["prosperity", "learning"],
+    "themes": ["仕事・成功", "学習・集中"],
+    "related": ["s064", "s073", "s187"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 218。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s178",
+    "slug": "phenakite",
+    "name": "フェナカイト",
+    "english": "Phenakite",
+    "aliases": ["フェナサイト"],
+    "colors": [],
+    "wishes": ["intuition", "fortune"],
+    "themes": ["直感・精神性", "変化・再生"],
+    "related": ["s171", "s180", "s187"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 219。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s179",
+    "slug": "platinum-quartz",
+    "name": "プラチナクォーツ",
+    "english": "Platinum Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["prosperity", "fortune"],
+    "themes": ["仕事・成功", "変化・再生"],
+    "related": ["s064", "s066", "s187"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 220。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s180",
+    "slug": "petalite",
+    "name": "ペタライト",
+    "english": "Petalite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "intuition"],
+    "themes": ["癒し・安定", "直感・精神性"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 221。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s181",
+    "slug": "beryl",
+    "name": "ベリル",
+    "english": "Beryl",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["presence", "wellbeing", "prosperity"],
+    "themes": ["魅力・自己肯定", "仕事・成功"],
+    "related": ["s072", "s110", "s206"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 222。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s182",
+    "slug": "magnesite",
+    "name": "マグネサイト",
+    "english": "Magnesite",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "presence"],
+    "themes": ["癒し・安定", "魅力・自己肯定"],
+    "related": ["s002", "s003", "s004"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 223。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s183",
+    "slug": "milky-quartz",
+    "name": "ミルキークォーツ",
+    "english": "Milky Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "love", "home"],
+    "themes": ["癒し・安定", "愛情・絆"],
+    "related": ["s187", "s184", "s164"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 224。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s184",
+    "slug": "metamorphosis-quartz",
+    "name": "メタモルフォーゼスクォーツ",
+    "english": "Metamorphosis Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["fortune", "intuition"],
+    "themes": ["変化・再生", "直感・精神性"],
+    "related": ["s183", "s187", "s145"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 225。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s185",
+    "slug": "rainbow-quartz",
+    "name": "レインボークォーツ",
+    "english": "Rainbow Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["fortune", "love"],
+    "themes": ["変化・再生", "恋愛・出会い"],
+    "related": ["s188", "s147", "s187"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 226。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s186",
+    "slug": "lepidocrocite-in-quartz",
+    "name": "レピドクロサイトインクォーツ",
+    "english": "Lepidocrocite in Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["challenge", "prosperity"],
+    "themes": ["勝負・行動", "仕事・成功"],
+    "related": ["s081", "s064", "s073"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 227。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s187",
+    "slug": "rock-crystal",
+    "name": "ロッククリスタル",
+    "english": "Rock Crystal",
+    "aliases": ["水晶", "透明水晶"],
+    "colors": ["透明"],
+    "wishes": ["protection", "wellbeing"],
+    "themes": ["浄化・守護", "癒し・安定"],
+    "related": ["s183", "s177", "s188"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 228。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s188",
+    "slug": "iris-rainbow-quartz",
+    "name": "アイリスクォーツ",
+    "english": "Iris Rainbow Quartz",
+    "aliases": ["アイリス（レインボー）", "レインボークォーツ"],
+    "colors": [],
+    "wishes": ["fortune", "love"],
+    "themes": ["変化・再生", "恋愛・出会い"],
+    "related": ["s187", "s177", "s185"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 229。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s189",
+    "slug": "window-quartz",
+    "name": "ウィンドウ",
+    "english": "Window Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["intuition", "learning"],
+    "themes": ["直感・精神性", "学習・集中"],
+    "related": ["s187", "s177", "s185"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 229。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s190",
+    "slug": "elestial-quartz",
+    "name": "エレスチャル",
+    "english": "Elestial Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["intuition", "fortune"],
+    "themes": ["直感・精神性", "変化・再生"],
+    "related": ["s135", "s191", "s193"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 230。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s191",
+    "slug": "cathedral-quartz",
+    "name": "カテドラル",
+    "english": "Cathedral Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["learning", "relationships"],
+    "themes": ["学習・集中", "対人・コミュニケーション"],
+    "related": ["s190", "s192", "s193"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 230。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s192",
+    "slug": "candle-quartz",
+    "name": "キャンドル",
+    "english": "Candle Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "protection"],
+    "themes": ["癒し・安定", "浄化・守護"],
+    "related": ["s190", "s191", "s193"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 230。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s193",
+    "slug": "quartz-cluster",
+    "name": "クラスター",
+    "english": "Quartz Cluster",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["protection", "wellbeing"],
+    "themes": ["浄化・守護", "癒し・安定"],
+    "related": ["s187", "s177", "s185"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 231。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s194",
+    "slug": "japan-law-twin-quartz",
+    "name": "ジャパニーズローツイン",
+    "english": "Japan Law Twin Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["love", "home", "relationships"],
+    "themes": ["愛情・絆", "対人・コミュニケーション"],
+    "related": ["s198", "s193", "s187"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 231。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s195",
+    "slug": "scepter-quartz",
+    "name": "セプター",
+    "english": "Scepter Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["prosperity", "challenge"],
+    "themes": ["仕事・成功", "勝負・行動"],
+    "related": ["s198", "s193", "s190"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 231。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s196",
+    "slug": "self-healed-quartz",
+    "name": "セルフヒールド",
+    "english": "Self Healed Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["fortune", "wellbeing"],
+    "themes": ["変化・再生", "癒し・安定"],
+    "related": ["s200", "s193", "s187"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 232。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s197",
+    "slug": "time-link-quartz",
+    "name": "タイムリンク",
+    "english": "Time Link Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["intuition", "fortune"],
+    "themes": ["直感・精神性", "変化・再生"],
+    "related": ["s189", "s203", "s187"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 232。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s198",
+    "slug": "double-terminated-quartz",
+    "name": "ダブルターミネーテッド",
+    "english": "Double Terminated Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["wellbeing", "protection"],
+    "themes": ["癒し・安定", "浄化・守護"],
+    "related": ["s187", "s177", "s185"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 232。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s199",
+    "slug": "trigonic-quartz",
+    "name": "トライゴーニック",
+    "english": "Trigonic Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["intuition", "fortune"],
+    "themes": ["直感・精神性", "変化・再生"],
+    "related": ["s203", "s189", "s187"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 233。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s200",
+    "slug": "faden-quartz",
+    "name": "ファーデン",
+    "english": "Faden Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["love", "home", "wellbeing"],
+    "themes": ["愛情・絆", "癒し・安定"],
+    "related": ["s196", "s177", "s187"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 233。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s201",
+    "slug": "lightning-quartz",
+    "name": "ライトニング",
+    "english": "Lightning Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["fortune", "challenge"],
+    "themes": ["変化・再生", "勝負・行動"],
+    "related": ["s187", "s188", "s185"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 233。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s202",
+    "slug": "laser-quartz",
+    "name": "レーザー",
+    "english": "Laser Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["protection", "intuition"],
+    "themes": ["浄化・守護", "直感・精神性"],
+    "related": ["s198", "s193", "s187"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 234。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s203",
+    "slug": "record-keeper-quartz",
+    "name": "レコードキーパー",
+    "english": "Record Keeper Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["learning", "intuition"],
+    "themes": ["学習・集中", "直感・精神性"],
+    "related": ["s199", "s189", "s187"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 234。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s204",
+    "slug": "lemurian-seed-quartz",
+    "name": "レムリアンシード",
+    "english": "Lemurian Seed Quartz",
+    "aliases": [],
+    "colors": [],
+    "wishes": ["intuition", "fortune"],
+    "themes": ["直感・精神性", "変化・再生"],
+    "related": ["s187", "s144", "s153"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 234。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s205",
+    "slug": "rubellite",
+    "name": "ルベライト",
+    "english": "Rubellite",
+    "aliases": [],
+    "colors": ["赤", "ピンク"],
+    "wishes": ["love", "home"],
+    "themes": ["恋愛・出会い", "愛情・絆"],
+    "related": ["s091", "s106", "s108"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 152。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s206",
+    "slug": "morganite",
+    "name": "モルガナイト",
+    "english": "Morganite",
+    "aliases": [],
+    "colors": ["ピンク"],
+    "wishes": ["love", "home", "wellbeing"],
+    "themes": ["愛情・絆", "癒し・安定"],
+    "related": ["s181", "s110", "s107"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 222。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s207",
+    "slug": "pink-sapphire",
+    "name": "ピンクサファイア",
+    "english": "Pink Sapphire",
+    "aliases": [],
+    "colors": ["ピンク"],
+    "wishes": ["love", "home", "challenge"],
+    "themes": ["愛情・絆", "勝負・行動"],
+    "related": ["s129", "s106", "s206"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 184。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s208",
+    "slug": "pink-schiller-moonstone",
+    "name": "ピンクシラームーンストーン",
+    "english": "Pink Schiller Moonstone",
+    "aliases": [],
+    "colors": ["ピンク"],
+    "wishes": ["love", "intuition"],
+    "themes": ["恋愛・出会い", "直感・精神性"],
+    "related": ["s063", "s125", "s133"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 128。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s209",
+    "slug": "golden-rutilated-quartz",
+    "name": "ゴールデンルチルクォーツ",
+    "english": "Golden Rutilated Quartz",
+    "aliases": [],
+    "colors": ["金", "透明"],
+    "wishes": ["prosperity"],
+    "themes": ["金運・繁栄", "仕事・成功"],
+    "related": ["s064", "s066", "s179"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 129。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  },
+  {
+    "id": "s210",
+    "slug": "star-rose-quartz",
+    "name": "スターローズクォーツ",
+    "english": "Star Rose Quartz",
+    "aliases": [],
+    "colors": ["ピンク"],
+    "wishes": ["love", "home"],
+    "themes": ["恋愛・出会い", "愛情・絆"],
+    "related": ["s107", "s188", "s063"],
+    "sources": [
+      {
+        "label": "移行資料の参照記録",
+        "url": "",
+        "checkedAt": null,
+        "note": "参照ページ 164。書名・著者・版は未確認。独自の短い編集メモに再構成し、鉱物学的根拠としては扱っていません。"
+      }
+    ]
+  }
+]

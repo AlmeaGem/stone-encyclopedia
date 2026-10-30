@@ -40,6 +40,20 @@ async function files(dir) {
   ).flat();
 }
 const output = await files('dist');
+const restrictedReferenceUrls = new Set(
+  stones.flatMap((s) =>
+    s.sources
+      .filter((r) => r.publication === 'internal' && r.url)
+      .map((r) => r.url),
+  ),
+);
+for (const file of output.filter((p) => /\.(html|js|json|xml|txt)$/.test(p))) {
+  const text = await readFile(file, 'utf8');
+  for (const url of restrictedReferenceUrls)
+    if (text.includes(url))
+      throw new Error(`${file} exposes a restricted reference URL`);
+}
+
 for (const p of output) {
   if (p.endsWith('.html')) {
     const html = await readFile(p, 'utf8');

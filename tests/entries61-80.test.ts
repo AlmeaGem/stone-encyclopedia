@@ -33,7 +33,7 @@ it('keeps optical trade names searchable and separates unverified lore from phys
   expect(stones[62].legend).not.toContain('口に含む');
   expect(stones[71].legendSourceLabel).toContain('個別の歴史記事は未特定');
   expect(stones[79].legend).toContain('ネフライト');
-  expect(stones[67].handling).toContain('粉を出す');
+  expect(stones[67].handling).toContain('粉じん');
   for (const s of batch) {
     expect(s.handling).not.toContain('移行資料の注意メモ');
     for (const id of s.synergyStoneIds || [])

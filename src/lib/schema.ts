@@ -10,6 +10,7 @@ export const sourceSchema = z
       .or(z.literal('')),
     checkedAt: z.iso.date().nullable(),
     note: text,
+    publication: z.enum(['public', 'internal']).optional(),
   })
   .strict();
 export const stoneSchema = z
@@ -26,6 +27,8 @@ export const stoneSchema = z
     introduction: text,
     mineral: text,
     hardness: text,
+    compositionHardness: text.optional(),
+    classification: text.optional(),
     characteristics: text,
     inclusions: text,
     quality: text,
