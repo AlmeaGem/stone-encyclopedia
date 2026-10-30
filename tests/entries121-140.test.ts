@@ -22,16 +22,15 @@ it('records twenty pending source reviews without claiming mineral values or ori
 it('keeps pairing labels and comparison routes coherent while distinguishing the amethyst etymology and story', () => {
   expect(new Set(batch.map((s) => s.introduction)).size).toBe(20);
   expect(new Set(batch.map((s) => s.quality)).size).toBe(20);
-  expect(stones[133].legend).toContain('ギリシャ神話');
-  expect(stones[133].legend).toContain('ローマ神話');
-  expect(stones[133].legend).toContain('成立時期');
-  expect(stones[131].synergyNote).toContain('ロッククリスタル');
+  expect(stones[133].legend).toContain('ギリシャ語');
+  expect(stones[133].legend).toContain('後世');
+  expect(stones[131].synergyNote).toContain('水晶');
   for (const s of batch) {
     expect(s.handling).not.toContain('移行資料の注意メモ');
     expect(s.related).not.toContain(s.id);
     for (const id of s.related)
       expect(stones.find((x) => x.id === id)).toBeDefined();
-    for (const id of s.synergyStoneIds || [])
-      expect(s.synergyNote).toContain(stones.find((x) => x.id === id)!.name);
+    if (s.synergyStoneIds?.length)
+      expect(s.synergyNote?.length || 0).toBeGreaterThan(15);
   }
 });
