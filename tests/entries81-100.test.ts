@@ -22,7 +22,7 @@ it('lists all twenty pending source reviews without claiming mineral or historic
 it('distinguishes buying guidance and checks the existing pairing and jade-material boundaries', () => {
   expect(new Set(batch.map((s) => s.introduction)).size).toBe(20);
   expect(new Set(batch.map((s) => s.quality)).size).toBe(20);
-  expect((stones[94].legend?.length || 0)).toBeGreaterThan(20);
+  expect(stones[94].legend?.length || 0).toBeGreaterThan(20);
   expect(stones[90].synergyStoneIds).toEqual(['s205', 's208']);
   for (const id of stones[90].synergyStoneIds || []) {
     expect(stones[90].synergyNote).toContain(
