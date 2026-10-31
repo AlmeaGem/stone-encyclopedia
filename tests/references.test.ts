@@ -61,3 +61,19 @@ it('keeps permission-pending citations in saved data while withholding them from
   expect(publicReferences([source])).toEqual([]);
   expect(JSON.stringify(source)).toBe(before);
 });
+
+it('presents the shared editorial pairing note naturally without losing citation or provenance metadata', () => {
+  const source = {
+    label: '正式な参考資料',
+    url: 'https://example.com/reference',
+    checkedAt: '2026-10-30',
+    note: '石の来歴・文化・現代の紹介記事を参照。組み合わせの提案はALMÉA GEMによる編集上の提案。',
+  };
+  const before = JSON.stringify(source),
+    result = publicReferences([source])[0];
+  expect(result.note).not.toContain('編集上の提案');
+  expect(result.note).toContain('ALMÉA GEMの提案');
+  for (const field of ['label', 'url', 'checkedAt'] as const)
+    expect(result[field]).toBe(source[field]);
+  expect(JSON.stringify(source)).toBe(before);
+});

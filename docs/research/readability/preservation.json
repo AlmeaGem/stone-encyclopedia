@@ -1,0 +1,24 @@
+{
+  "base": "b2e4ddf",
+  "protectedFiles": {
+    "src/content/stones.json": {
+      "unchanged": true,
+      "sha256": "51e9203c2323382f190b7dbcb2955f40d5a3881fde9534050fb07ccda6542519"
+    },
+    "src/content/images.json": {
+      "unchanged": true,
+      "sha256": "1fe764b7267aac65715a72b4d7e90d8907cb260220ad00aff89ae539a0e67a70"
+    },
+    "src/content/articles.json": {
+      "unchanged": true,
+      "sha256": "5c74399e81010484737bfc81d8cf9246b68d8ea465374fedb2d11cdb37c04a0a"
+    },
+    "src/content/categories.json": {
+      "unchanged": true,
+      "sha256": "ab71f79584b07ea75a847a00caf1d14e198e92ceb682d7cafdd9e56e3f886d16"
+    }
+  },
+  "images": 25,
+  "approvedImageFilesUnchanged": true,
+  "managerTouched": false
+}

@@ -1,7 +1,10 @@
+import { publicStone } from '../../src/lib/public-stone';
 import { test, expect } from '@playwright/test';
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import sharp from 'sharp';
-const stones = JSON.parse(await readFile('src/content/stones.json', 'utf8'));
+const stones = JSON.parse(
+  await readFile('src/content/stones.json', 'utf8'),
+).map(publicStone);
 const categories = JSON.parse(
   await readFile('src/content/categories.json', 'utf8'),
 );

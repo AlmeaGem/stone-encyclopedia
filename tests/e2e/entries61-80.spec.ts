@@ -1,6 +1,9 @@
+import { publicStone } from '../../src/lib/public-stone';
 import { test, expect } from '@playwright/test';
 import { readFile, mkdir } from 'node:fs/promises';
-const all = JSON.parse(await readFile('src/content/stones.json', 'utf8'));
+const all = JSON.parse(await readFile('src/content/stones.json', 'utf8')).map(
+  publicStone,
+);
 const batch = all.slice(60, 80);
 test('all details 61-80 support search, category and related navigation without overflow', async ({
   page,

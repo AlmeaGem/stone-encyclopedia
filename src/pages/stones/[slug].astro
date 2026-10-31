@@ -33,9 +33,9 @@ const sections = [
     stone.compositionHardness ? '組成・硬度' : 'モース硬度',
     stone.compositionHardness || stone.hardness,
   ],
-  ['特徴', stone.characteristics],
+  ['特徴・色や模様', stone.characteristics],
   ['内包物・模様', stone.inclusions],
-];
+].filter(([, value]) => value?.trim());
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
@@ -96,7 +96,7 @@ const schema = {
         <a href="#nature">鉱物・物理的な情報</a>
         <a href="#quality">品質・選び方</a>
         <a href="#story">伝説・スピリチュアルな意味</a>
-        <a href="#pairing">意味と相性・おすすめの組み合わせ</a>
+        <a href="#pairing">意味・相性と組み合わせ</a>
         <a href="#care">浄化・取り扱い</a>
         {references.length > 0 && <a href="#references">参考文献・出典</a>}
       </aside>
@@ -111,19 +111,16 @@ const schema = {
                 <dd class:list={{ unconfirmed: !value }}>{value || unknown}</dd>
               </div>
             ))}
+            {stone.colors.length > 0 && (
+              <div>
+                <dt>代表色</dt>
+                <dd>{stone.colors.join('・')}（個体により異なります）</dd>
+              </div>
+            )}
             <div>
-              <dt>色</dt>
+              <dt>個体の産地・処理</dt>
               <dd>
-                {stone.colors.length
-                  ? stone.colors.join('・') +
-                    '（検索用の代表色。個体により異なります）'
-                  : unknown}
-              </dd>
-            </div>
-            <div>
-              <dt>産地・処理の確定</dt>
-              <dd class="unconfirmed">
-                未確認。個体ごとに販売表示や鑑別情報を確認してください。
+                個々の商品の産地や処理は、販売表示や鑑別情報でご確認ください。
               </dd>
             </div>
           </dl>
@@ -140,7 +137,7 @@ const schema = {
           <h3>模造品・処理石を確認する</h3>
           <p>
             {stone.treatments ||
-              '個別の見分け方は未確認です。色や写真だけで天然・合成・模造・処理の有無を断定できません。購入時に素材、処理表示、鑑別情報を確認してください。'}
+              '色や写真だけで天然・合成・模造・処理の有無を断定できません。購入時には素材、処理表示、鑑別情報を確認してください。'}
           </p>
           <h3>選ぶときの視点</h3>
           <Prose text={stone.selection} />
