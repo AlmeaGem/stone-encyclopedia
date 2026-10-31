@@ -53,7 +53,12 @@ const schema = {
       </p>
       {article.sections.map((s) => (
         <section>
-          <ArticleTitle title={s.heading} level="h2" protectWords />
+          <ArticleTitle
+            title={s.heading}
+            level="h2"
+            protectWords
+            sectionHeading
+          />
           <Prose text={s.body} />
         </section>
       ))}

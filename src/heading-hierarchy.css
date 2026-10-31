@@ -1,0 +1,114 @@
+/* Public editorial sections only: card, form and navigation headings stay distinct. */
+:root {
+  --heading-ink: #332c29;
+  --subheading-ink: #493b36;
+  --heading-marker: #f1ddda;
+  --heading-rule: #c79e98;
+  --section-label: #74655d;
+}
+
+.detail-body .detail-section,
+.reading > section {
+  padding-block: 52px;
+  border-bottom: 1px solid var(--line);
+}
+.reading > section {
+  margin-block: 0;
+}
+
+.detail-section > h2.section-title,
+.reading > section > h2.article-title.section-title,
+.section-heading h2.section-title {
+  color: var(--heading-ink);
+  font-family: var(--serif);
+  font-size: clamp(26px, 2.4vw, 34px);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.025em;
+  margin: 0 0 24px;
+  max-width: 100%;
+  word-break: normal;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+.heading-mark,
+.reading > section > h2.section-title > span {
+  display: inline;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 65%,
+    var(--heading-marker) 65%,
+    var(--heading-marker) 91%,
+    transparent 91%
+  );
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.heading-mark > .heading-run {
+  display: inline-block;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+.detail-section > h3 {
+  color: var(--subheading-ink);
+  font-size: clamp(20px, 1.7vw, 23px);
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.015em;
+  border-left: 3px solid var(--heading-rule);
+  padding-left: 12px;
+  margin: 36px 0 16px;
+}
+.detail-section > .eyebrow {
+  color: var(--section-label);
+  font-size: 12px;
+  line-height: 1.6;
+  letter-spacing: 0.14em;
+  margin-bottom: 12px;
+}
+.detail-body p,
+.detail-body dd,
+.reading > section p {
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.85;
+}
+.detail-body p + p,
+.reading > section p + p {
+  margin-top: 16px;
+}
+.detail-body .quiet-note,
+.detail-body .source-list p,
+.detail-body .source-list small {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.85;
+}
+.detail-toc {
+  color: var(--link);
+  gap: 8px;
+}
+.detail-toc a {
+  line-height: 1.65;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+.detail-section {
+  scroll-margin-top: 24px;
+}
+@media (max-width: 640px) {
+  .detail-body .detail-section,
+  .reading > section {
+    padding-block: 48px;
+  }
+  .detail-section > h2.section-title,
+  .reading > section > h2.article-title.section-title,
+  .section-heading h2.section-title {
+    font-size: 26px;
+  }
+  .detail-toc {
+    gap: 6px 16px;
+  }
+}

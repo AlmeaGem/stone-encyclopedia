@@ -1,4 +1,5 @@
 ---
+import SectionHeading from '../components/SectionHeading.astro';
 import Page from '../layouts/Page.astro';
 import ReportOffer from '../components/ReportOffer.astro';
 import ServiceComparison from '../components/ServiceComparison.astro';
@@ -156,7 +157,7 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
     <div class="section-heading">
       <div>
         <p class="eyebrow">FIND YOUR THEME</p>
-        <h2>願いから、石を探す。</h2>
+        <SectionHeading>願いから、石を探す。</SectionHeading>
       </div>
       <a class="text-link" href={pathTo('wishes/')}>
         12のテーマを見る ↗
@@ -179,7 +180,7 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
     <div class="section-heading">
       <div>
         <p class="eyebrow">READ & DISCOVER</p>
-        <h2>天然石の選び方・基礎知識</h2>
+        <SectionHeading>天然石の選び方・基礎知識</SectionHeading>
       </div>
       <a class="text-link" href={pathTo('articles/')}>
         読みもの一覧 ↗
