@@ -3,8 +3,14 @@ interface Props {
   title: string;
   level?: 'h1' | 'h2' | 'h3';
   protectWords?: boolean;
+  sectionHeading?: boolean;
 }
-const { title, level = 'h3', protectWords = false } = Astro.props;
+const {
+  title,
+  level = 'h3',
+  protectWords = false,
+  sectionHeading = false,
+} = Astro.props;
 const Tag = level;
 const phrases = title.match(/[^。、！？]+[。、！？]?/gu) || [title];
 const protectedPhrases = [
@@ -23,7 +29,7 @@ const protectedPhrases = [
 const protectedPattern = new RegExp(`(${protectedPhrases.join('|')})`, 'u');
 ---
 
-<Tag class="article-title">
+<Tag class:list={['article-title', { 'section-title': sectionHeading }]}>
   {phrases.map((phrase) =>
     protectWords ? (
       <span>
