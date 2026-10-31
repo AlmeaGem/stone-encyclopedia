@@ -1,0 +1,5067 @@
+{
+  "widths": [768, 1280, 1440],
+  "pages": 241,
+  "reports": [
+    {
+      "width": 768,
+      "path": "/",
+      "checked": 185,
+      "minimumRatio": 5.08,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/",
+      "checked": 157,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/wishes/",
+      "checked": 74,
+      "minimumRatio": 5.08,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/articles/",
+      "checked": 61,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/diagnosis/",
+      "checked": 83,
+      "minimumRatio": 5.48,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/sample-report/",
+      "checked": 167,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/about/",
+      "checked": 36,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/terms/",
+      "checked": 40,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/privacy/",
+      "checked": 40,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/commerce/",
+      "checked": 35,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/refund/",
+      "checked": 34,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/contact/",
+      "checked": 33,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/404.html",
+      "checked": 24,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/obsidian/",
+      "checked": 127,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/chiastolite/",
+      "checked": 127,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/jet/",
+      "checked": 125,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/shamanite/",
+      "checked": 126,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/shungite/",
+      "checked": 127,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/staurolite/",
+      "checked": 125,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/stibnite/",
+      "checked": 127,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/smoky-quartz/",
+      "checked": 125,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/sulemani-agate/",
+      "checked": 124,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/tektite/",
+      "checked": 124,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/desert-rose/",
+      "checked": 125,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/nuummite/",
+      "checked": 124,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/picture-sandstone/",
+      "checked": 123,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/red-sandstone/",
+      "checked": 121,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/black-onyx/",
+      "checked": 128,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/flint/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/hematite/",
+      "checked": 125,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/meteorite/",
+      "checked": 122,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/morion/",
+      "checked": 121,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/lava/",
+      "checked": 121,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/agate/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/green-agate/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/fire-agate/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/moss-agate/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/red-agate/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/andesine/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/ammolite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/garnet/",
+      "checked": 124,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/almandine/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/andradite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/uvarovite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/grossular/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/spessartine/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/pyrope/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/cuprite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/coral/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/jasper/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/cinnabar/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/spinel/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/dendrite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/bloodstone/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/petrified-wood/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/mookaite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/eudialyte/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/amber/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/carnelian/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/sunstone/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/citrine/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/tangerine-quartz/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/topaz/",
+      "checked": 121,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/imperial-topaz/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/blue-topaz/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/aragonite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/impact-glass/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/ouro-verde-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/sulfur/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/tiger-eye/",
+      "checked": 124,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/pietersite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/bulls-eye/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/hawks-eye/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/chalcopyrite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/pyrite/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/moonstone/",
+      "checked": 125,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/rutilated-quartz/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/cats-eye-orange-rutilated-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/silver-rutilated-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/lemon-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/actinolite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/aventurine/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/amazonite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/epidote/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/emerald/",
+      "checked": 125,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/garden-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/chrysocolla/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/chrysoprase/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/chrysoberyl/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/kunzite/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/kosmochlor/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/serpentine/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/jadeite/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/strawberry-quartz/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/sphene/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/smithsonite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/seraphinite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/diopside/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/dioptase/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/tanzanite/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/tourmaline/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/yellow-tourmaline/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/green-tourmaline/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/pink-tourmaline/",
+      "checked": 122,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/watermelon-tourmaline/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/black-tourmaline/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/blue-tourmaline/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/nephrite/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/prehnite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/fluorite/",
+      "checked": 122,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/green-fluorite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/purple-fluorite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/blue-fluorite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/peridot/",
+      "checked": 124,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/muscovite/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/malachite/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/moldavite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/unakite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/ruby/",
+      "checked": 123,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/rose-quartz/",
+      "checked": 121,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/rhodochrosite/",
+      "checked": 123,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/rhodonite/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/aquamarine/",
+      "checked": 123,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/apatite/",
+      "checked": 121,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/anhydrite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/kyanite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/cavansite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/chalcedony/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/sea-blue-chalcedony/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/blue-chalcedony/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/pink-chalcedony/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/quantum-chrysocolla/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/celestite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/sodalite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/turquoise/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/dumortierite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/blue-lace-agate/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/peristerite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/larimar/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/iolite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/azurite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/sapphire/",
+      "checked": 122,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/shattuckite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/preseli-bluestone/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/lapis-lazuli/",
+      "checked": 121,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/labradorite/",
+      "checked": 121,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/amethyst/",
+      "checked": 122,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/elestial-amethyst/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/prasiolite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/lavender-amethyst/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/ametrine/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/sugilite/",
+      "checked": 110,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/charoite/",
+      "checked": 111,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/hypersthene/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/phosphosiderite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/lepidolite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/ice-crystal/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/azeztulite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/apophyllite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/aura-quartz/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/opal/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/yellow-opal/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/pink-opal/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/black-matrix-opal/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/precious-opal/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/ganesh-himal-quartz/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/calcite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/optical-calcite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/orange-calcite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/green-calcite/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/violet-calcite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/pink-calcite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/blue-calcite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/quartzite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/green-quartzite/",
+      "checked": 113,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/blue-quartzite/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/white-quartzite/",
+      "checked": 113,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/scapolite/",
+      "checked": 110,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/black-scapolite/",
+      "checked": 108,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/marialite/",
+      "checked": 111,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/zeolite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/selenite/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/diamond/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/danburite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/halite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/pearl/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/freshwater-pearl/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/mother-of-pearl/",
+      "checked": 110,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/howlite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/phantom-quartz/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/phenakite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/platinum-quartz/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/petalite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/beryl/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/magnesite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/milky-quartz/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/metamorphosis-quartz/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/rainbow-quartz/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/lepidocrocite-in-quartz/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/rock-crystal/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/iris-rainbow-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/window-quartz/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/elestial-quartz/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/cathedral-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/candle-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/quartz-cluster/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/japan-law-twin-quartz/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/scepter-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/self-healed-quartz/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/time-link-quartz/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/double-terminated-quartz/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/trigonic-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/faden-quartz/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/lightning-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/laser-quartz/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/record-keeper-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/lemurian-seed-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/rubellite/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/morganite/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/pink-sapphire/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/pink-schiller-moonstone/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/golden-rutilated-quartz/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/stones/star-rose-quartz/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/wishes/love/",
+      "checked": 275,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/wishes/prosperity/",
+      "checked": 220,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/wishes/fortune/",
+      "checked": 274,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/wishes/protection/",
+      "checked": 209,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/wishes/wellbeing/",
+      "checked": 602,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/wishes/relationships/",
+      "checked": 169,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/wishes/challenge/",
+      "checked": 239,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/wishes/presence/",
+      "checked": 195,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/wishes/learning/",
+      "checked": 185,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/wishes/home/",
+      "checked": 233,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/wishes/journey/",
+      "checked": 41,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/wishes/intuition/",
+      "checked": 259,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/articles/first-stone/",
+      "checked": 82,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/articles/names-and-varieties/",
+      "checked": 89,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/articles/inclusions/",
+      "checked": 78,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/articles/care/",
+      "checked": 85,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/articles/compare-pink-stones/",
+      "checked": 84,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 768,
+      "path": "/articles/editorial-policy/",
+      "checked": 66,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/",
+      "checked": 185,
+      "minimumRatio": 5.08,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/",
+      "checked": 157,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/wishes/",
+      "checked": 74,
+      "minimumRatio": 5.08,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/articles/",
+      "checked": 61,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/diagnosis/",
+      "checked": 83,
+      "minimumRatio": 5.48,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/sample-report/",
+      "checked": 167,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/about/",
+      "checked": 36,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/terms/",
+      "checked": 40,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/privacy/",
+      "checked": 40,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/commerce/",
+      "checked": 35,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/refund/",
+      "checked": 34,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/contact/",
+      "checked": 33,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/404.html",
+      "checked": 24,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/obsidian/",
+      "checked": 127,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/chiastolite/",
+      "checked": 127,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/jet/",
+      "checked": 125,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/shamanite/",
+      "checked": 126,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/shungite/",
+      "checked": 127,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/staurolite/",
+      "checked": 125,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/stibnite/",
+      "checked": 127,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/smoky-quartz/",
+      "checked": 125,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/sulemani-agate/",
+      "checked": 124,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/tektite/",
+      "checked": 124,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/desert-rose/",
+      "checked": 125,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/nuummite/",
+      "checked": 124,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/picture-sandstone/",
+      "checked": 123,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/red-sandstone/",
+      "checked": 121,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/black-onyx/",
+      "checked": 128,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/flint/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/hematite/",
+      "checked": 125,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/meteorite/",
+      "checked": 122,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/morion/",
+      "checked": 121,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/lava/",
+      "checked": 121,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/agate/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/green-agate/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/fire-agate/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/moss-agate/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/red-agate/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/andesine/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/ammolite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/garnet/",
+      "checked": 124,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/almandine/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/andradite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/uvarovite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/grossular/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/spessartine/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/pyrope/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/cuprite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/coral/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/jasper/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/cinnabar/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/spinel/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/dendrite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/bloodstone/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/petrified-wood/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/mookaite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/eudialyte/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/amber/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/carnelian/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/sunstone/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/citrine/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/tangerine-quartz/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/topaz/",
+      "checked": 121,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/imperial-topaz/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/blue-topaz/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/aragonite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/impact-glass/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/ouro-verde-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/sulfur/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/tiger-eye/",
+      "checked": 124,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/pietersite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/bulls-eye/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/hawks-eye/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/chalcopyrite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/pyrite/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/moonstone/",
+      "checked": 125,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/rutilated-quartz/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/cats-eye-orange-rutilated-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/silver-rutilated-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/lemon-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/actinolite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/aventurine/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/amazonite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/epidote/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/emerald/",
+      "checked": 125,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/garden-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/chrysocolla/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/chrysoprase/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/chrysoberyl/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/kunzite/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/kosmochlor/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/serpentine/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/jadeite/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/strawberry-quartz/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/sphene/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/smithsonite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/seraphinite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/diopside/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/dioptase/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/tanzanite/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/tourmaline/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/yellow-tourmaline/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/green-tourmaline/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/pink-tourmaline/",
+      "checked": 122,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/watermelon-tourmaline/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/black-tourmaline/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/blue-tourmaline/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/nephrite/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/prehnite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/fluorite/",
+      "checked": 122,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/green-fluorite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/purple-fluorite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/blue-fluorite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/peridot/",
+      "checked": 124,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/muscovite/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/malachite/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/moldavite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/unakite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/ruby/",
+      "checked": 123,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/rose-quartz/",
+      "checked": 121,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/rhodochrosite/",
+      "checked": 123,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/rhodonite/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/aquamarine/",
+      "checked": 123,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/apatite/",
+      "checked": 121,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/anhydrite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/kyanite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/cavansite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/chalcedony/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/sea-blue-chalcedony/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/blue-chalcedony/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/pink-chalcedony/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/quantum-chrysocolla/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/celestite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/sodalite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/turquoise/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/dumortierite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/blue-lace-agate/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/peristerite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/larimar/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/iolite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/azurite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/sapphire/",
+      "checked": 122,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/shattuckite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/preseli-bluestone/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/lapis-lazuli/",
+      "checked": 121,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/labradorite/",
+      "checked": 121,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/amethyst/",
+      "checked": 122,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/elestial-amethyst/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/prasiolite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/lavender-amethyst/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/ametrine/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/sugilite/",
+      "checked": 110,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/charoite/",
+      "checked": 111,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/hypersthene/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/phosphosiderite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/lepidolite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/ice-crystal/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/azeztulite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/apophyllite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/aura-quartz/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/opal/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/yellow-opal/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/pink-opal/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/black-matrix-opal/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/precious-opal/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/ganesh-himal-quartz/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/calcite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/optical-calcite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/orange-calcite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/green-calcite/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/violet-calcite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/pink-calcite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/blue-calcite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/quartzite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/green-quartzite/",
+      "checked": 113,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/blue-quartzite/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/white-quartzite/",
+      "checked": 113,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/scapolite/",
+      "checked": 110,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/black-scapolite/",
+      "checked": 108,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/marialite/",
+      "checked": 111,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/zeolite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/selenite/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/diamond/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/danburite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/halite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/pearl/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/freshwater-pearl/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/mother-of-pearl/",
+      "checked": 110,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/howlite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/phantom-quartz/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/phenakite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/platinum-quartz/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/petalite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/beryl/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/magnesite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/milky-quartz/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/metamorphosis-quartz/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/rainbow-quartz/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/lepidocrocite-in-quartz/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/rock-crystal/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/iris-rainbow-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/window-quartz/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/elestial-quartz/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/cathedral-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/candle-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/quartz-cluster/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/japan-law-twin-quartz/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/scepter-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/self-healed-quartz/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/time-link-quartz/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/double-terminated-quartz/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/trigonic-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/faden-quartz/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/lightning-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/laser-quartz/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/record-keeper-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/lemurian-seed-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/rubellite/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/morganite/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/pink-sapphire/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/pink-schiller-moonstone/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/golden-rutilated-quartz/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/stones/star-rose-quartz/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/wishes/love/",
+      "checked": 275,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/wishes/prosperity/",
+      "checked": 220,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/wishes/fortune/",
+      "checked": 274,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/wishes/protection/",
+      "checked": 209,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/wishes/wellbeing/",
+      "checked": 602,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/wishes/relationships/",
+      "checked": 169,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/wishes/challenge/",
+      "checked": 239,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/wishes/presence/",
+      "checked": 195,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/wishes/learning/",
+      "checked": 185,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/wishes/home/",
+      "checked": 233,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/wishes/journey/",
+      "checked": 41,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/wishes/intuition/",
+      "checked": 259,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/articles/first-stone/",
+      "checked": 82,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/articles/names-and-varieties/",
+      "checked": 89,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/articles/inclusions/",
+      "checked": 78,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/articles/care/",
+      "checked": 85,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/articles/compare-pink-stones/",
+      "checked": 84,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1280,
+      "path": "/articles/editorial-policy/",
+      "checked": 66,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/",
+      "checked": 185,
+      "minimumRatio": 5.08,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/",
+      "checked": 157,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/wishes/",
+      "checked": 74,
+      "minimumRatio": 5.08,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/articles/",
+      "checked": 61,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/diagnosis/",
+      "checked": 83,
+      "minimumRatio": 5.48,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/sample-report/",
+      "checked": 167,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/about/",
+      "checked": 36,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/terms/",
+      "checked": 40,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/privacy/",
+      "checked": 40,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/commerce/",
+      "checked": 35,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/refund/",
+      "checked": 34,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/contact/",
+      "checked": 33,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/404.html",
+      "checked": 24,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/obsidian/",
+      "checked": 127,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/chiastolite/",
+      "checked": 127,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/jet/",
+      "checked": 125,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/shamanite/",
+      "checked": 126,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/shungite/",
+      "checked": 127,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/staurolite/",
+      "checked": 125,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/stibnite/",
+      "checked": 127,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/smoky-quartz/",
+      "checked": 125,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/sulemani-agate/",
+      "checked": 124,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/tektite/",
+      "checked": 124,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/desert-rose/",
+      "checked": 125,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/nuummite/",
+      "checked": 124,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/picture-sandstone/",
+      "checked": 123,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/red-sandstone/",
+      "checked": 121,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/black-onyx/",
+      "checked": 128,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/flint/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/hematite/",
+      "checked": 125,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/meteorite/",
+      "checked": 122,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/morion/",
+      "checked": 121,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/lava/",
+      "checked": 121,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/agate/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/green-agate/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/fire-agate/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/moss-agate/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/red-agate/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/andesine/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/ammolite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/garnet/",
+      "checked": 124,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/almandine/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/andradite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/uvarovite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/grossular/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/spessartine/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/pyrope/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/cuprite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/coral/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/jasper/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/cinnabar/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/spinel/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/dendrite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/bloodstone/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/petrified-wood/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/mookaite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/eudialyte/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/amber/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/carnelian/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/sunstone/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/citrine/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/tangerine-quartz/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/topaz/",
+      "checked": 121,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/imperial-topaz/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/blue-topaz/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/aragonite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/impact-glass/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/ouro-verde-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/sulfur/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/tiger-eye/",
+      "checked": 124,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/pietersite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/bulls-eye/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/hawks-eye/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/chalcopyrite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/pyrite/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/moonstone/",
+      "checked": 125,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/rutilated-quartz/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/cats-eye-orange-rutilated-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/silver-rutilated-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/lemon-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/actinolite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/aventurine/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/amazonite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/epidote/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/emerald/",
+      "checked": 125,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/garden-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/chrysocolla/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/chrysoprase/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/chrysoberyl/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/kunzite/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/kosmochlor/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/serpentine/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/jadeite/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/strawberry-quartz/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/sphene/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/smithsonite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/seraphinite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/diopside/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/dioptase/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/tanzanite/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/tourmaline/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/yellow-tourmaline/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/green-tourmaline/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/pink-tourmaline/",
+      "checked": 122,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/watermelon-tourmaline/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/black-tourmaline/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/blue-tourmaline/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/nephrite/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/prehnite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/fluorite/",
+      "checked": 122,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/green-fluorite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/purple-fluorite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/blue-fluorite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/peridot/",
+      "checked": 124,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/muscovite/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/malachite/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/moldavite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/unakite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/ruby/",
+      "checked": 123,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/rose-quartz/",
+      "checked": 121,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/rhodochrosite/",
+      "checked": 123,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/rhodonite/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/aquamarine/",
+      "checked": 123,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/apatite/",
+      "checked": 121,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/anhydrite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/kyanite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/cavansite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/chalcedony/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/sea-blue-chalcedony/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/blue-chalcedony/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/pink-chalcedony/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/quantum-chrysocolla/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/celestite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/sodalite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/turquoise/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/dumortierite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/blue-lace-agate/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/peristerite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/larimar/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/iolite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/azurite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/sapphire/",
+      "checked": 122,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/shattuckite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/preseli-bluestone/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/lapis-lazuli/",
+      "checked": 121,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/labradorite/",
+      "checked": 121,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/amethyst/",
+      "checked": 122,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/elestial-amethyst/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/prasiolite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/lavender-amethyst/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/ametrine/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/sugilite/",
+      "checked": 110,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/charoite/",
+      "checked": 111,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/hypersthene/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/phosphosiderite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/lepidolite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/ice-crystal/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/azeztulite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/apophyllite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/aura-quartz/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/opal/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/yellow-opal/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/pink-opal/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/black-matrix-opal/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/precious-opal/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/ganesh-himal-quartz/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/calcite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/optical-calcite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/orange-calcite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/green-calcite/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/violet-calcite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/pink-calcite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/blue-calcite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/quartzite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/green-quartzite/",
+      "checked": 113,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/blue-quartzite/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/white-quartzite/",
+      "checked": 113,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/scapolite/",
+      "checked": 110,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/black-scapolite/",
+      "checked": 108,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/marialite/",
+      "checked": 111,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/zeolite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/selenite/",
+      "checked": 119,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/diamond/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/danburite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/halite/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/pearl/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/freshwater-pearl/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/mother-of-pearl/",
+      "checked": 110,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/howlite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/phantom-quartz/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/phenakite/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/platinum-quartz/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/petalite/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/beryl/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/magnesite/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/milky-quartz/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/metamorphosis-quartz/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/rainbow-quartz/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/lepidocrocite-in-quartz/",
+      "checked": 114,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/rock-crystal/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/iris-rainbow-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/window-quartz/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/elestial-quartz/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/cathedral-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/candle-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/quartz-cluster/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/japan-law-twin-quartz/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/scepter-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/self-healed-quartz/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/time-link-quartz/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/double-terminated-quartz/",
+      "checked": 115,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/trigonic-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/faden-quartz/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/lightning-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/laser-quartz/",
+      "checked": 116,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/record-keeper-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/lemurian-seed-quartz/",
+      "checked": 117,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/rubellite/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/morganite/",
+      "checked": 120,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/pink-sapphire/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/pink-schiller-moonstone/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/golden-rutilated-quartz/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/stones/star-rose-quartz/",
+      "checked": 118,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/wishes/love/",
+      "checked": 275,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/wishes/prosperity/",
+      "checked": 220,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/wishes/fortune/",
+      "checked": 274,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/wishes/protection/",
+      "checked": 209,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/wishes/wellbeing/",
+      "checked": 602,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/wishes/relationships/",
+      "checked": 169,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/wishes/challenge/",
+      "checked": 239,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/wishes/presence/",
+      "checked": 195,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/wishes/learning/",
+      "checked": 185,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/wishes/home/",
+      "checked": 233,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/wishes/journey/",
+      "checked": 41,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/wishes/intuition/",
+      "checked": 259,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/articles/first-stone/",
+      "checked": 82,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/articles/names-and-varieties/",
+      "checked": 89,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/articles/inclusions/",
+      "checked": 78,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/articles/care/",
+      "checked": 85,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/articles/compare-pink-stones/",
+      "checked": 84,
+      "minimumRatio": 5.57,
+      "issues": []
+    },
+    {
+      "width": 1440,
+      "path": "/articles/editorial-policy/",
+      "checked": 66,
+      "minimumRatio": 5.57,
+      "issues": []
+    }
+  ]
+}

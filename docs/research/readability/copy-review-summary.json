@@ -1,0 +1,23 @@
+{
+  "baseCommit": "b2e4ddf",
+  "reviewedStones": 210,
+  "publicCopyRecords": 210,
+  "publicCopyFieldsChanged": 571,
+  "fields": {
+    "spiritualEffects": 148,
+    "symbolism": 210,
+    "synergyNote": 3,
+    "legend": 55,
+    "selection": 138,
+    "characteristics": 7,
+    "classification": 1,
+    "quality": 8,
+    "introduction": 1
+  },
+  "originalManuscriptPreserved": true,
+  "shapesExactTextPreserved": 210,
+  "emptyInclusionsRowsOmitted": 210,
+  "emptyColorRowsOmitted": 177,
+  "imagesManifestPreserved": 25,
+  "externalResearchPerformed": false
+}

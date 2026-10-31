@@ -1,0 +1,12 @@
+{
+  "pages": 241,
+  "widths": [375, 390, 430, 768, 1280, 1440],
+  "pageViewportChecks": 1446,
+  "textChecks": 174828,
+  "minimumContrastRatio": 5.08,
+  "contrastFailures": 0,
+  "unitTests": 85,
+  "browserTests": 80,
+  "browserEngine": "Chromium",
+  "externalSourceReachabilityVerified": false
+}

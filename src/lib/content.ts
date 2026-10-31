@@ -1,4 +1,5 @@
 import rawStones from '../content/stones.json';
+import { publicStone } from './public-stone';
 import { publicArticle } from './public-copy';
 import rawCategories from '../content/categories.json';
 import rawArticles from '../content/articles.json';
@@ -12,9 +13,9 @@ import {
   type Candidate,
 } from './schema';
 import { z } from 'zod';
-export const stones = validateCatalog(rawStones).filter(
-  (s) => s.status === 'published',
-);
+export const stones = validateCatalog(rawStones)
+  .filter((s) => s.status === 'published')
+  .map(publicStone);
 export const categories = z
   .array(categorySchema)
   .length(12)

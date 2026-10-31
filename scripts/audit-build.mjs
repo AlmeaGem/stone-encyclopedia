@@ -55,6 +55,18 @@ for (const file of output.filter((p) => /\.(html|js|json|xml|txt)$/.test(p))) {
 }
 
 for (const p of output) {
+  if (/\.(html|js|json)$/.test(p)) {
+    const published = await readFile(p, 'utf8');
+    if (
+      /という表現が適切|編集提案|編集上の提案|書籍では|今回の調査では|として紹介します|として説明できます|掲載テーマ|既存の象徴/u.test(
+        published,
+      )
+    )
+      throw new Error(`${p} contains reader-inappropriate editorial copy`);
+    if (p.includes('public-stone-copy'))
+      throw new Error('公開文の比較用原稿が配信されています');
+  }
+
   if (p.endsWith('.html')) {
     const html = await readFile(p, 'utf8');
     if (

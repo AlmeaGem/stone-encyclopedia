@@ -1,8 +1,9 @@
+import { publicStone } from '../../src/lib/public-stone';
 import { test, expect } from '@playwright/test';
 import { readFile, mkdir } from 'node:fs/promises';
-const stones = JSON.parse(
-  await readFile('src/content/stones.json', 'utf8'),
-).slice(20, 40);
+const stones = JSON.parse(await readFile('src/content/stones.json', 'utf8'))
+  .map(publicStone)
+  .slice(20, 40);
 test('entries 21-40 preserve names, source links and responsive detail sections', async ({
   page,
 }, info) => {

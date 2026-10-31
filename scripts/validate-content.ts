@@ -1,3 +1,4 @@
+import { publicStone } from '../src/lib/public-stone';
 import { createHash } from 'node:crypto';
 import sharp from 'sharp';
 import { readFile } from 'node:fs/promises';
@@ -13,6 +14,7 @@ export async function validateContent(root = process.cwd()) {
   const read = async (name: string) =>
     JSON.parse(await readFile(`${root}/src/content/${name}.json`, 'utf8'));
   const stones = validateCatalog(await read('stones'));
+  validateCatalog(stones.map(publicStone));
   const categories = z
     .array(categorySchema)
     .length(12)

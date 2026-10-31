@@ -1,8 +1,11 @@
+import { publicStone } from '../../src/lib/public-stone';
 import { test, expect } from '@playwright/test';
 import { readFile, mkdir } from 'node:fs/promises';
 const firstTwenty = JSON.parse(
   await readFile('src/content/stones.json', 'utf8'),
-).slice(0, 20);
+)
+  .map(publicStone)
+  .slice(0, 20);
 test('all twenty detail pages separate scientific facts, stories and editorial pairings', async ({
   page,
 }, info) => {
