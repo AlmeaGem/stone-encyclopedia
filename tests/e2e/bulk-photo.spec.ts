@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { mkdtemp, cp, readFile, rm } from 'node:fs/promises';
+import { mkdtemp, cp, readFile, writeFile, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import type { Server } from 'node:http';
@@ -12,6 +12,17 @@ test.beforeAll(async () => {
   await cp('assets/approved-images', join(root, 'assets/approved-images'), {
     recursive: true,
   });
+  // The adoption scenario needs empty s003-s012 slots in this private fixture only.
+  const manifestPath = join(root, 'src/content/images.json');
+  const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
+  await writeFile(
+    manifestPath,
+    JSON.stringify(
+      manifest.filter((photo: { stoneId: string }) =>
+        ['s001', 's002'].includes(photo.stoneId),
+      ),
+    ),
+  );
   server = await startEditor(
     root,
     'bulk-browser-fixture-passphrase',

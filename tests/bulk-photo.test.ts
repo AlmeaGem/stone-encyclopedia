@@ -13,6 +13,18 @@ async function setup() {
   await cp('assets/approved-images', join(root, 'assets/approved-images'), {
     recursive: true,
   });
+  // This scenario deliberately starts with two protected photos and empty s003-s020 slots.
+  // Isolate the temporary fixture from new production photos; never rewrite the source manifest.
+  const manifestPath = join(root, 'src/content/images.json');
+  const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
+  await writeFile(
+    manifestPath,
+    JSON.stringify(
+      manifest.filter((photo: { stoneId: string }) =>
+        ['s001', 's002'].includes(photo.stoneId),
+      ),
+    ),
+  );
   const store = new EditorStore(root),
     media = new PhotoMedia(store),
     bulk = new PhotoBulk(store);
