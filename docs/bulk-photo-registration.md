@@ -56,9 +56,9 @@ Mac内の`.editor/`はGitに含まれず、Codex環境からあなたの実際�
 ## GitHub Desktop・Actionsで公開
 
 1. 一括反映後、GitHub DesktopのChangesで `src/content/images.json` と `assets/approved-images/` の追加を確認します。`.editor/`や`.env`が含まれていないことを確認します。
-2. 内容を説明するSummaryを入れて作業ブランチへCommitし、`Push origin`を押します。PR #1はマージしません。
-3. リポジトリのActions → **Deploy independent preview** → **Run workflow**。
-4. workflowの実行元を **main**、入力 `ref` を **feat/phase-one-encyclopedia** にして実行。
+2. 内容を説明するSummaryを入れて作業ブランチへCommitし、`Push origin`を押します。最新mainを基点に写真関連の変更だけをPRで確認・マージすると、自動プレビューデプロイが実行されます。
+3. 手動で更新する場合は、リポジトリのActions → **Deploy independent preview** → **Run workflow**。
+4. workflowの実行元と入力 `ref` をともに **main** にして新規実行。古い実行のRe-run jobsでは、当時の古いrefが再利用されます。
 5. 成功後、`https://almeagem.github.io/stone-encyclopedia/`を再読込し、採用した石の写真とイメージ表示を確認します。
 
 オブシディアン・キャストライトなど既存写真は一括操作で保持します。将来、単品の既存写真を意図的に変更する場合だけ、従来の単品登録・採用後、「単品で確認済みの既存代表写真を差し替える」を明示的にオンにし、対象名の確認を経て従来の反映ボタンを使います。通常の一括作業ではオンにしないでください。

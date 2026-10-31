@@ -189,3 +189,56 @@ it('rejects stale review plans and reports interrupted jobs without losing saved
     await rm(x.root, { recursive: true, force: true });
   }
 });
+
+it('keeps newly published photos protected while allowing unrelated new photos after the published set grows', async () => {
+  const sourceManifest = await readFile('src/content/images.json', 'utf8');
+  const x = await setup();
+  try {
+    const original = await x.store.read('images');
+    const first = await x.upload('s003');
+    const firstPlan = await x.bulk.preview([await x.decision(first.c)]);
+    expect((await x.bulk.adopt(firstPlan.token)).results[0].status).toBe(
+      'adopted',
+    );
+    expect(await x.store.applyApproved(true)).toEqual({ applied: 1 });
+    const published = await x.store.read('images');
+    expect(published).toHaveLength(original.length + 1);
+    const replacement = await x.upload('s003');
+    const fresh = await x.upload('s026');
+    const unconfirmed = await x.upload('s027');
+    const missingRights = {
+      ...(await x.decision(unconfirmed.c)),
+      rightsConfirmed: false,
+    };
+    const plan = await x.bulk.preview([
+      await x.decision(replacement.c),
+      await x.decision(fresh.c),
+      missingRights,
+    ]);
+    expect(plan.results.map((r) => r.status)).toEqual([
+      'excluded',
+      'ready',
+      'excluded',
+    ]);
+    expect(plan.results[0].reason).toContain('既存の代表写真を保護');
+    expect(plan.results[2].reason).toContain('利用権限');
+    const job = await x.bulk.adopt(plan.token);
+    expect(job.results.map((r) => r.status)).toEqual([
+      'excluded',
+      'adopted',
+      'excluded',
+    ]);
+    expect(await x.store.applyApproved(true)).toEqual({ applied: 1 });
+    const after = await x.store.read('images');
+    expect(after).toHaveLength(published.length + 1);
+    for (const photo of published)
+      expect(
+        after.find((p: { stoneId: string }) => p.stoneId === photo.stoneId),
+      ).toEqual(photo);
+    expect(await readFile('src/content/images.json', 'utf8')).toBe(
+      sourceManifest,
+    );
+  } finally {
+    await rm(x.root, { recursive: true, force: true });
+  }
+});

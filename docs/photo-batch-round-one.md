@@ -60,7 +60,7 @@ Commonsの検索結果に必ず5〜10枚あるとは限りません。候補0枚
 2. `.env` と `.editor/` はGit対象外です。未承認キュー・パスフレーズを追加しないでください。
 3. 作業ブランチへコミットしてPushします。コードを手入力する必要はありません。PR #1はマージしません。
 4. GitHubのActions → Deploy independent preview → Run workflowを開きます。
-5. 実行元main、入力refはfeat/phase-one-encyclopediaで実行します。
+5. 写真関連の変更をPRで最新mainへマージ後、実行元と入力refをともにmainにして新規実行します。mainへのマージ時には自動プレビューデプロイも実行されます。古い実行のRe-run jobsは使わず、Run workflowから作り直してください。
 6. 成功後、公開プレビューの図鑑で写真・クレジットを確認します。noindexと販売準備中は維持します。
 
 GitHub Pagesは静的サイトなので、ローカルのボタンだけで安全にGitHubへPushする認証や公開承認までは実装していません。GitHub Desktopと既存ワークフローを使います。APIキーやトークンをチャットへ貼る必要はありません。
