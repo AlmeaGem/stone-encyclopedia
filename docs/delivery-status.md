@@ -47,7 +47,7 @@
 ## 次に必要な操作
 
 1. 無料プレビューURLで内容と表示をレビューする。Pages有効化と初回デプロイは完了。
-2. PRのCIと内容を確認後にマージする。プレビューは手動デプロイのため、更新時はActionsの `Deploy independent preview` で対象refを指定して再実行する。
+2. PRのCIと内容を確認後にmainへマージすると、自動プレビューデプロイされる。手動更新はActionsの `Deploy independent preview` から新規Run workflowを実行し、実行元と入力refをともにmainにする。古い実行のRe-run jobsは当時のrefが再利用されるため避ける。
 3. 本番商用公開は新しいCloudflare Pagesプロジェクトを推奨。接続手順は下記の公開手順を参照。
 4. 本番前に石の未確認項目・写真の権利・運営者表示・問い合わせ先を確認。独自ドメインの購入・DNS変更・本番インデックス有効化は未実施。
 
