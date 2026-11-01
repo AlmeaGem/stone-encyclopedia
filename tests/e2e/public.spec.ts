@@ -1,9 +1,13 @@
 import { test, expect } from '@playwright/test';
 import { readFileSync } from 'node:fs';
 const stones = JSON.parse(readFileSync('src/content/stones.json', 'utf8')) as {
+  id: string;
   slug: string;
   name: string;
 }[];
+const approvedImages = JSON.parse(
+  readFileSync('src/content/images.json', 'utf8'),
+) as { stoneId: string; localPath: string; imageKind?: string }[];
 test('editorial home has immediate content, separate navigation and no mobile overflow', async ({
   page,
 }) => {
@@ -58,7 +62,7 @@ test('Japanese, English, aliases and kana searches, pagination, theme and color 
     fullPage: true,
   });
 });
-test('detail separates facts, quality and symbolism, with sources, internal links and image placeholders', async ({
+test('detail separates facts, quality and symbolism, with sources, internal links and registered image states', async ({
   page,
 }) => {
   await page.goto('/stones/rose-quartz/');
@@ -76,10 +80,27 @@ test('detail separates facts, quality and symbolism, with sources, internal link
     page.locator('#nature dt').filter({ hasText: /^組成・硬度$/ }),
   ).toBeVisible();
   await expect(page.locator('#nature dd').first()).not.toBeEmpty();
-  await expect(page.locator('.stone-placeholder.detail')).toHaveAttribute(
-    'aria-label',
-    '色の抽象イメージ。実物写真ではありません',
-  );
+  const stone = stones.find((s) => s.slug === 'rose-quartz')!;
+  const photo = approvedImages.find((image) => image.stoneId === stone.id);
+  if (photo) {
+    const image = page.locator('.stone-figure.detail img');
+    await expect(image).toHaveAttribute('src', photo.localPath);
+    await image.scrollIntoViewIfNeeded();
+    await expect(image).toHaveJSProperty('complete', true);
+    expect(
+      await image.evaluate((el: HTMLImageElement) => el.naturalWidth),
+    ).toBeGreaterThan(0);
+    await expect(page.locator('.stone-placeholder.detail')).toHaveCount(0);
+    if (['ai-generated', 'illustrative-photo'].includes(photo.imageKind || ''))
+      await expect(
+        page.locator('.stone-figure.detail .image-impression-label'),
+      ).toHaveText('イメージ写真');
+  } else {
+    await expect(page.locator('.stone-placeholder.detail')).toHaveAttribute(
+      'aria-label',
+      '色の抽象イメージ。実物写真ではありません',
+    );
+  }
   await expect(page.locator('link[rel=canonical]')).toHaveAttribute(
     'href',
     /\/stones\/rose-quartz\/$/,
@@ -100,6 +121,18 @@ test('detail separates facts, quality and symbolism, with sources, internal link
     path: test.info().outputPath('detail.png'),
     fullPage: true,
   });
+  // Keep the fallback assertion even after the sample stone gains an approved photo.
+  const unregistered = stones.find(
+    (s) => !approvedImages.some((image) => image.stoneId === s.id),
+  );
+  if (unregistered) {
+    await page.goto(`/stones/${unregistered.slug}/`);
+    await expect(page.locator('.stone-placeholder.detail')).toHaveAttribute(
+      'aria-label',
+      '色の抽象イメージ。実物写真ではありません',
+    );
+    await expect(page.locator('.stone-figure.detail img')).toHaveCount(0);
+  }
 });
 test('all 210 pages exist and have distinct canonical URLs, titles and sitemap entries', async ({
   request,

@@ -1,5 +1,5 @@
 import { it, expect } from 'vitest';
-import { mkdtemp, cp, readFile, writeFile, rm } from 'node:fs/promises';
+import { mkdtemp, cp, readFile, writeFile, rm, mkdir } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { randomUUID } from 'node:crypto';
@@ -12,9 +12,23 @@ import type { Candidate } from '../src/lib/schema';
 async function setup() {
   const root = await mkdtemp(join(tmpdir(), 'almea-trash-'));
   await cp('src/content', join(root, 'src/content'), { recursive: true });
-  await cp('assets/approved-images', join(root, 'assets/approved-images'), {
-    recursive: true,
-  });
+  // Keep two published protection fixtures, independent of production photo growth.
+  // Only the temporary manifest is reduced; the real manifest and originals stay intact.
+  const manifestPath = join(root, 'src/content/images.json');
+  const published: Candidate[] = JSON.parse(
+    await readFile(manifestPath, 'utf8'),
+  );
+  const fixtures = published.filter((photo) =>
+    ['s001', 's002'].includes(photo.stoneId),
+  );
+  expect(fixtures.map((photo) => photo.stoneId)).toEqual(['s001', 's002']);
+  await writeFile(manifestPath, JSON.stringify(fixtures));
+  for (const photo of fixtures) {
+    const relative = photo.localPath!.replace(/^\/images\//, '');
+    const target = join(root, 'assets/approved-images', relative);
+    await mkdir(join(target, '..'), { recursive: true });
+    await cp(join('assets/approved-images', relative), target);
+  }
   const store = new EditorStore(root),
     media = new PhotoMedia(store);
   let clock = Date.parse('2026-10-29T00:00:00Z');
