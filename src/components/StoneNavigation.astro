@@ -1,0 +1,83 @@
+---
+import { stones } from '../lib/content';
+import { pathTo } from '../lib/urls';
+import type { Stone } from '../lib/schema';
+import '../stone-navigation.css';
+const { stone } = Astro.props as { stone: Stone };
+const ordered = [...stones].sort((a, b) => a.id.localeCompare(b.id));
+const index = ordered.findIndex((entry) => entry.id === stone.id);
+const previous = ordered[index - 1];
+const next = ordered[index + 1];
+---
+
+<nav
+  class="stone-navigation"
+  aria-label="石の前後ナビゲーション"
+  data-stone-navigation
+>
+  {previous ? (
+    <a
+      class="stone-nav-link"
+      data-stone-prev
+      href={pathTo(`stones/${previous.slug}/`)}
+      aria-label={`前の石：${previous.name}`}
+    >
+      <span class="stone-nav-label">
+        <span aria-hidden="true">←</span> 前の石
+      </span>
+      <small class="stone-nav-name">{previous.name}</small>
+    </a>
+  ) : (
+    <span
+      class="stone-nav-link"
+      data-stone-prev
+      role="link"
+      aria-disabled="true"
+      aria-label="前の石はありません"
+    >
+      <span class="stone-nav-label">
+        <span aria-hidden="true">←</span> 前の石
+      </span>
+    </span>
+  )}
+  <a
+    class="stone-nav-link stone-nav-list"
+    data-stone-list
+    href={pathTo('stones/')}
+    aria-label="石の一覧へ戻る"
+  >
+    <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true">
+      <path
+        d="M1 1h5v5H1zM10 1h5v5h-5zM1 10h5v5H1zM10 10h5v5h-5z"
+        fill="none"
+        stroke="currentColor"
+      />
+    </svg>
+    一覧
+  </a>
+  {next ? (
+    <a
+      class="stone-nav-link"
+      data-stone-next
+      href={pathTo(`stones/${next.slug}/`)}
+      aria-label={`次の石：${next.name}`}
+    >
+      <span class="stone-nav-label">
+        次の石 <span aria-hidden="true">→</span>
+      </span>
+      <small class="stone-nav-name">{next.name}</small>
+    </a>
+  ) : (
+    <span
+      class="stone-nav-link"
+      data-stone-next
+      role="link"
+      aria-disabled="true"
+      aria-label="次の石はありません"
+    >
+      <span class="stone-nav-label">
+        次の石 <span aria-hidden="true">→</span>
+      </span>
+    </span>
+  )}
+</nav>

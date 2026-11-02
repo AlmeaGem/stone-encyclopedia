@@ -1,4 +1,5 @@
 ---
+import StoneNavigation from '../../components/StoneNavigation.astro';
 import SectionHeading from '../../components/SectionHeading.astro';
 import Prose from '../../components/Prose.astro';
 import ReportNudge from '../../components/ReportNudge.astro';
@@ -61,6 +62,7 @@ const schema = {
   path={`stones/${stone.slug}/`}
   description={`${stone.name}の鉱物・素材、組成・硬度、品質と選び方、歴史・伝承、象徴的な意味、組み合わせ、取り扱いを紹介します。`}
   schema={schema}
+  stoneNavigation
 >
   <div class="wrap">
     <Breadcrumbs
@@ -270,5 +272,6 @@ const schema = {
       </div>
     </section>
     <ReportNudge kind="stone" />
+    <StoneNavigation stone={stone} />
   </div>
 </Page>

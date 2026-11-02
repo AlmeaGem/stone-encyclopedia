@@ -11,12 +11,14 @@ interface Props {
   description?: string;
   path?: string;
   schema?: Record<string, unknown>;
+  stoneNavigation?: boolean;
 }
 const {
   title = siteName,
   description = 'パワーストーンブレスレットのALMÉA GEMが届ける天然石図鑑。210項目の石の個性・意味・選び方を知り、あなたの願いに寄り添う一粒を。',
   path = '',
   schema,
+  stoneNavigation = false,
 } = Astro.props;
 const url = canonical(path);
 ---
@@ -78,7 +80,7 @@ const url = canonical(path);
       />
     )}
   </head>
-  <body>
+  <body class:list={{ 'stone-navigation-page': stoneNavigation }}>
     <a class="skip" href="#main">
       本文へ
     </a>
