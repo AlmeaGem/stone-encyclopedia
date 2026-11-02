@@ -1,13 +1,17 @@
-# ALMÉA GEM 原稿確認
+# ALMÉA GEM 原稿管理
 
-## 現在の確認対象
+## 正式採用原稿
 
-[神秘的な世界観の5石・文体確認稿](manuscripts/style-pilot-05/README.md)
+[ChatGPT承認済み s001〜s020](manuscripts/approved-chatgpt/batch-01/README.md)
 
-s001・s003・s012・s019・s028の5種類だけを全面改稿。5石の文体承認までは、ほかの石の量産と公開サイトへの反映を停止しています。
+添付Markdownを正本として全文を変更せず保存しています。石ID・石名20件を照合済み。次のs021〜s040はChatGPT側の完成原稿を待ちます。
 
-- [最新の制作方針と停止範囲](EDITORIAL_POLICY.md)
-- [前回の第1組・比較元](manuscripts/batch-01/README.md)
-- [前回の第2組・比較元](manuscripts/batch-02/README.md)
+[最終確定した採用・実装方針](EDITORIAL_POLICY.md)
 
-原稿は確認用ブランチに保存する下書きです。公開データへの取り込み、PR、マージ、デプロイは行いません。
+## 参考資料（非採用・本文へ混ぜない）
+
+- [Codex制作の神秘的な5石](manuscripts/style-pilot-05/README.md)
+- [旧第1組](manuscripts/batch-01/README.md)
+- [旧第2組](manuscripts/batch-02/README.md)
+
+参考資料は履歴として保持します。正式原稿への無断の要約・加筆・修正・統合はしません。全210種類の完成までは公開サイト本文を維持し、現段階で公開用PR・マージ・デプロイは行いません。
