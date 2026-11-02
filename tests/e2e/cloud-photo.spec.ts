@@ -102,9 +102,7 @@ test('cloud management: upload, preview, publish, replacement, pause and delete 
   expect(await manifest.text()).toContain('Test owner');
   if (process.env.PUBLIC_PHOTO_API_ORIGIN === api) {
     await page.goto('/stones/obsidian/');
-    await expect(
-      page.locator('figcaption').filter({ hasText: 'イメージ写真' }),
-    ).toBeVisible();
+    await expect(page.locator('.image-impression-label').first()).toBeVisible();
     await expect(page.locator('img[alt="確認用イメージ写真"]')).toBeVisible();
     await expect
       .poll(() =>

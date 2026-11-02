@@ -18,6 +18,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "images:prepare": "node --import tsx scripts/prepare-images.ts",
+    "images:watermark-preview": "node --import tsx scripts/watermark-preview.ts",
     "lint": "npm run format:check && node --env-file-if-exists=.env scripts/astro.mjs check",
     "audit:ui": "node scripts/audit-public-ui.mjs",
     "photos:dev": "wrangler dev --config cloud/photos/wrangler.jsonc",

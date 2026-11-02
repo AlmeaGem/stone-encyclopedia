@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 import { readFile, readdir, stat } from 'node:fs/promises';
 import { join } from 'node:path';
+import sharp from 'sharp';
 const stones = JSON.parse(
   await readFile('src/content/stones.json', 'utf8'),
 ).filter((s) => s.status === 'published');
@@ -124,6 +125,38 @@ const allowedImages = new Set(
   JSON.parse(await readFile('src/content/images.json', 'utf8')).map(
     (image) => 'dist' + image.localPath,
   ),
+);
+const publicImages = JSON.parse(
+  await readFile('.astro/public-images.json', 'utf8'),
+);
+if (publicImages.length !== allowedImages.size)
+  throw Error('Public image provenance count differs from approved images');
+for (const image of publicImages) {
+  const file = 'dist' + image.localPath;
+  if (!allowedImages.has(file)) throw Error('Unapproved public image: ' + file);
+  const bytes = await readFile(file);
+  const hash = createHash('sha256').update(bytes).digest('hex');
+  const metadata = await sharp(bytes).metadata();
+  if (
+    hash !== image.publicSha256 ||
+    metadata.width !== image.width ||
+    metadata.height !== image.height ||
+    Math.max(metadata.width, metadata.height) > 960
+  )
+    throw Error('Public image integrity or size mismatch: ' + file);
+}
+if (
+  output.some((file) =>
+    /(?:approved-images|watermark-preview|public-images\.json|watermark-manifest)/.test(
+      file,
+    ),
+  )
+)
+  throw Error(
+    'Source images or private image provenance entered public output',
+  );
+console.log(
+  'Public image audit: approved derivatives only, SHA256 and 960px limit OK',
 );
 for (const file of output.filter((p) => p.startsWith('dist/images/')))
   if (!allowedImages.has(file))

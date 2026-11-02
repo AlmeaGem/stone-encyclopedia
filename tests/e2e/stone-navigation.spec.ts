@@ -11,6 +11,41 @@ const stones = (
   .filter((stone) => stone.status === 'published')
   .sort((a, b) => a.id.localeCompare(b.id, 'en', { numeric: true }));
 
+test('touch navigation preserves first and last stone boundaries', async ({
+  browser,
+  baseURL,
+}) => {
+  const context = await browser.newContext({
+    baseURL,
+    hasTouch: true,
+    isMobile: true,
+    viewport: { width: 390, height: 844 },
+  });
+  try {
+    const page = await context.newPage();
+    await page.route('**/*', (route) =>
+      route.request().resourceType() === 'image'
+        ? route.abort()
+        : route.continue(),
+    );
+    await page.goto(`/stones/${stones[0].slug}/`);
+    const nav = page.getByRole('navigation', { name: '石のページ移動' });
+    await expect(nav.getByRole('link', { name: /^前の石/ })).toHaveCount(0);
+    await nav.getByRole('link', { name: /^次の石/ }).tap();
+    await expect(page).toHaveURL(`/stones/${stones[1].slug}/`);
+    await nav.getByRole('link', { name: /^前の石/ }).tap();
+    await expect(page).toHaveURL(`/stones/${stones[0].slug}/`);
+    await page.goto(`/stones/${stones.at(-1)!.slug}/`);
+    await expect(nav.getByRole('link', { name: /^次の石/ })).toHaveCount(0);
+    await nav.getByRole('link', { name: /^前の石/ }).tap();
+    await expect(page).toHaveURL(`/stones/${stones.at(-2)!.slug}/`);
+    await nav.getByRole('link', { name: '一覧', exact: true }).tap();
+    await expect(page).toHaveURL('/stones/');
+  } finally {
+    await context.close();
+  }
+});
+
 test('every detail page links to its ID neighbors without wrapping', async ({
   request,
 }, info) => {
@@ -47,7 +82,7 @@ test('navigation stays reachable with safe-area clearance on mobile and in page 
       ? route.abort()
       : route.continue(),
   );
-  for (const width of [375, 430, 768, 1440]) {
+  for (const width of [320, 375, 390, 430, 768, 1280, 1440]) {
     await page.setViewportSize({ width, height: 844 });
     await page.goto(`/stones/${stones[1].slug}/`);
     const navigation = page.getByRole('navigation', {

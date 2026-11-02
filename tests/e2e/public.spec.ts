@@ -94,7 +94,7 @@ test('detail separates facts, quality and symbolism, with sources, internal link
     if (['ai-generated', 'illustrative-photo'].includes(photo.imageKind || ''))
       await expect(
         page.locator('.stone-figure.detail .image-impression-label'),
-      ).toHaveText('イメージ写真');
+      ).toHaveText('※ イメージ画像');
   } else {
     await expect(page.locator('.stone-placeholder.detail')).toHaveAttribute(
       'aria-label',

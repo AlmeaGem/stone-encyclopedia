@@ -25,15 +25,21 @@ const cloudOrigin = cloudPhotoOrigin(import.meta.env.PUBLIC_PHOTO_API_ORIGIN);
         height={photo.height!}
         loading="lazy"
         decoding="async"
+        draggable="false"
         alt={
           ['ai-generated', 'illustrative-photo'].includes(photo.imageKind || '')
-            ? `${stone.name}のイメージ写真`
+            ? `${stone.name}のイメージ画像${photo.imageKind === 'ai-generated' ? '（AI生成。実物写真ではありません）' : '（実物の品質を示すものではありません）'}`
             : photo.alt || `${stone.name}の承認済み写真`
         }
       />
       {['ai-generated', 'illustrative-photo'].includes(
         photo.imageKind || '',
-      ) && <span class="image-impression-label">イメージ写真</span>}
+      ) && <span class="image-impression-label">※ イメージ画像</span>}
+      {detail && photo.imageKind === 'ai-generated' && (
+        <figcaption>
+          AI生成による参考イメージです。実物の撮影写真や個体の品質・鑑別を示すものではありません。
+        </figcaption>
+      )}
       {detail && photo.imageKind !== 'ai-generated' && (
         <figcaption>
           写真：{photo.photographer} ·{' '}
@@ -78,6 +84,16 @@ const cloudOrigin = cloudPhotoOrigin(import.meta.env.PUBLIC_PHOTO_API_ORIGIN);
   )}
 </div>
 <script>
+  // Only the image surface: links, keyboard menus, text selection and touch scrolling stay native.
+  for (const type of ['contextmenu', 'dragstart']) {
+    document.addEventListener(type, (event) => {
+      if (
+        event.target instanceof HTMLImageElement &&
+        event.target.closest('.stone-figure')
+      )
+        event.preventDefault();
+    });
+  }
   const slots = [
     ...document.querySelectorAll<HTMLElement>('[data-cloud-photo]'),
   ];
@@ -116,15 +132,19 @@ const cloudOrigin = cloudPhotoOrigin(import.meta.env.PUBLIC_PHOTO_API_ORIGIN);
           img.alt = photo.alt;
           img.loading = 'lazy';
           img.decoding = 'async';
+          img.draggable = false;
           img.width = 1440;
           img.height = 1440;
           figure.append(img);
+          if (photo.kind === 'illustrative') {
+            const label = document.createElement('span');
+            label.className = 'image-impression-label';
+            label.textContent = '※ イメージ画像';
+            figure.append(label);
+          }
           const caption = document.createElement('figcaption');
-          const label = photo.kind === 'illustrative' ? 'イメージ写真 · ' : '';
           caption.append(
-            document.createTextNode(
-              label + '写真：' + photo.photographer + ' · ',
-            ),
+            document.createTextNode('写真：' + photo.photographer + ' · '),
           );
           function link(url: string, text: string) {
             if (slot.dataset.photoDetail !== 'true') {
