@@ -564,19 +564,19 @@
     position: relative;
   }
   .stone-figure .image-impression-label {
-    position: absolute;
-    right: 9px;
-    bottom: 9px;
-    padding: 2px 5px;
-    border-radius: 3px;
-    background: rgba(250, 247, 243, 0.88);
-    color: var(--muted);
-    font: 10px/1.5 var(--sans);
+    display: block;
+    margin-top: 5px;
+    text-align: right;
+    white-space: nowrap;
+    background: transparent;
+    color: #746355;
+    font: 11px/1.5 var(--sans);
     letter-spacing: 0;
   }
-  .stone-figure.detail .image-impression-label {
-    bottom: auto;
-    top: 9px;
+  @media (max-width: 767px) {
+    .stone-figure .image-impression-label {
+      font-size: 10px;
+    }
   }
   .stone-figure img {
     width: 100%;
