@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { readFile, readdir, stat } from 'node:fs/promises';
 import { join } from 'node:path';
 const stones = JSON.parse(
@@ -128,7 +129,20 @@ for (const file of output.filter((p) => p.startsWith('dist/images/')))
   if (!allowedImages.has(file))
     throw new Error('Unselected image entered public output: ' + file);
 
-// App icons must stay inside the deployment base on GitHub Pages.
+// App icons must stay inside the deployment base and use the current artwork revision.
+const iconHash = createHash('sha256');
+for (const file of [
+  'favicon.ico',
+  'favicon-32.png',
+  'favicon-48.png',
+  'apple-touch-icon.png',
+  'icon-192.png',
+  'icon-512.png',
+]) {
+  iconHash.update(file + '\0');
+  iconHash.update(await readFile('dist/' + file));
+}
+const iconVersion = iconHash.digest('hex').slice(0, 16);
 const manifest = JSON.parse(await readFile('dist/site.webmanifest', 'utf8'));
 for (const field of ['id', 'scope', 'start_url']) {
   if (manifest[field] !== prefix)
@@ -138,7 +152,7 @@ for (const size of [192, 512]) {
   if (
     !manifest.icons.some(
       (icon) =>
-        icon.src === `${prefix}icon-${size}.png` &&
+        icon.src === `${prefix}icon-${size}.png?v=${iconVersion}` &&
         icon.sizes === `${size}x${size}` &&
         icon.purpose === 'any',
     )
@@ -152,7 +166,7 @@ for (const file of output.filter((p) => p.endsWith('.html'))) {
     'favicon.ico',
     'site.webmanifest',
   ]) {
-    if (!html.includes(`href="${prefix}${asset}"`))
+    if (!html.includes(`href="${prefix}${asset}?v=${iconVersion}"`))
       throw new Error(`${file} lacks app icon link ${asset}`);
   }
   if (html.includes('favicon.svg'))

@@ -1,10 +1,27 @@
 import { test, expect, devices } from '@playwright/test';
 import sharp from 'sharp';
-import { mkdir } from 'node:fs/promises';
+import { mkdir, readFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 
-test('supplied icons load on desktop, iPhone Safari and Android browser profiles', async ({
+test('supplied icons use content-versioned URLs on desktop, iPhone and Android browser profiles', async ({
   browser,
 }, info) => {
+  const files = [
+    'favicon.ico',
+    'favicon-32.png',
+    'favicon-48.png',
+    'apple-touch-icon.png',
+    'icon-192.png',
+    'icon-512.png',
+  ];
+  const hash = createHash('sha256');
+  for (const file of files) {
+    hash.update(file + '\0');
+    hash.update(await readFile('public/' + file));
+  }
+  const version = hash.digest('hex').slice(0, 16);
+  const base = (process.env.BASE_PATH || '/').replace(/\/?$/, '/');
+  const iconUrl = (file: string) => `${base}${file}?v=${version}`;
   for (const [name, options] of [
     ['desktop', { viewport: { width: 1440, height: 1000 } }],
     ['iphone', devices['iPhone 13']],
@@ -12,23 +29,47 @@ test('supplied icons load on desktop, iPhone Safari and Android browser profiles
   ] as const) {
     const context = await browser.newContext(options);
     const page = await context.newPage();
-    await page.goto('/');
+    await page.goto(base);
     const apple = page.locator('link[rel="apple-touch-icon"]');
     const applePath = await apple.getAttribute('href');
-    expect(applePath).toBe('/apple-touch-icon.png');
+    expect(applePath).toBe(iconUrl('apple-touch-icon.png'));
     for (const [path, size] of [
       [applePath!, 180],
-      ['/icon-192.png', 192],
-      ['/icon-512.png', 512],
-      ['/favicon-32.png', 32],
-      ['/favicon-48.png', 48],
+      [iconUrl('icon-192.png'), 192],
+      [iconUrl('icon-512.png'), 512],
+      [iconUrl('favicon-32.png'), 32],
+      [iconUrl('favicon-48.png'), 48],
     ] as const) {
       const response = await page.request.get(path);
       expect(response.status()).toBe(200);
-      const meta = await sharp(await response.body()).metadata();
+      const bytes = await response.body();
+      const filename = new URL(path, 'http://localhost').pathname.slice(
+        base.length,
+      );
+      expect(bytes.equals(await readFile('public/' + filename))).toBe(true);
+      const meta = await sharp(bytes).metadata();
       expect([meta.width, meta.height]).toEqual([size, size]);
     }
-    const favicon = await page.request.get('/favicon.ico');
+    for (const [size, type] of [
+      ['32x32', 'image/png'],
+      ['48x48', 'image/png'],
+      ['16x16 32x32 48x48', 'image/x-icon'],
+    ]) {
+      await expect(
+        page.locator(`link[rel="icon"][sizes="${size}"]`),
+      ).toHaveAttribute(
+        'href',
+        iconUrl(
+          type === 'image/x-icon'
+            ? 'favicon.ico'
+            : `favicon-${size.split('x')[0]}.png`,
+        ),
+      );
+    }
+    const favicon = await page.request.get(iconUrl('favicon.ico'));
+    expect(
+      (await favicon.body()).equals(await readFile('public/favicon.ico')),
+    ).toBe(true);
     expect(favicon.status()).toBe(200);
     expect((await favicon.body()).subarray(0, 4)).toEqual(
       Buffer.from([0, 0, 1, 0]),
@@ -36,9 +77,16 @@ test('supplied icons load on desktop, iPhone Safari and Android browser profiles
     const manifestPath = await page
       .locator('link[rel="manifest"]')
       .getAttribute('href');
+    expect(manifestPath).toBe(iconUrl('site.webmanifest'));
     const manifest = await (await page.request.get(manifestPath!)).json();
-    expect(manifest.start_url).toBe('/');
-    expect(manifest.scope).toBe('/');
+    expect(manifest.icons.map((icon: { src: string }) => icon.src)).toEqual([
+      iconUrl('icon-192.png'),
+      iconUrl('icon-512.png'),
+    ]);
+    for (const icon of manifest.icons)
+      expect((await page.request.get(icon.src)).status()).toBe(200);
+    expect(manifest.start_url).toBe(base);
+    expect(manifest.scope).toBe(base);
     expect(manifest.icons.map((icon: { sizes: string }) => icon.sizes)).toEqual(
       ['192x192', '512x512'],
     );

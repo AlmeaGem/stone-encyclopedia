@@ -1,5 +1,6 @@
 ---
 import GemIcon from '../components/GemIcon.astro';
+import { appIconPath } from '../lib/app-icons';
 import '../styles.css';
 import '../tactile.css';
 import '../report-experience.css';
@@ -46,28 +47,28 @@ const url = canonical(path);
     <meta name="twitter:card" content="summary_large_image" />
     <link
       rel="icon"
-      href={pathTo('favicon.ico')}
+      href={appIconPath('favicon.ico')}
       type="image/x-icon"
       sizes="16x16 32x32 48x48"
     />
     <link
       rel="icon"
-      href={pathTo('favicon-32.png')}
+      href={appIconPath('favicon-32.png')}
       type="image/png"
       sizes="32x32"
     />
     <link
       rel="icon"
-      href={pathTo('favicon-48.png')}
+      href={appIconPath('favicon-48.png')}
       type="image/png"
       sizes="48x48"
     />
     <link
       rel="apple-touch-icon"
-      href={pathTo('apple-touch-icon.png')}
+      href={appIconPath('apple-touch-icon.png')}
       sizes="180x180"
     />
-    <link rel="manifest" href={pathTo('site.webmanifest')} />
+    <link rel="manifest" href={appIconPath('site.webmanifest')} />
     <meta name="application-name" content="ALMÉA GEM" />
     <meta name="apple-mobile-web-app-title" content="ALMÉA GEM" />
     {schema && (
