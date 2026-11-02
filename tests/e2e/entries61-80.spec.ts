@@ -21,7 +21,7 @@ test('all details 61-80 support search, category and related navigation without 
       await expect(page.locator('#care')).toContainText(stone.handling);
       await expect(
         page.locator('link[rel="apple-touch-icon"]'),
-      ).toHaveAttribute('href', '/apple-touch-icon.png');
+      ).toHaveAttribute('href', /\/apple-touch-icon\.png\?v=[a-f0-9]{16}$/);
       expect(
         await page.evaluate(
           () => document.documentElement.scrollWidth <= innerWidth,
