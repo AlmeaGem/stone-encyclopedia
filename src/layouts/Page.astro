@@ -11,12 +11,14 @@ interface Props {
   description?: string;
   path?: string;
   schema?: Record<string, unknown>;
+  safeArea?: boolean;
 }
 const {
   title = siteName,
   description = 'パワーストーンブレスレットのALMÉA GEMが届ける天然石図鑑。210項目の石の個性・意味・選び方を知り、あなたの願いに寄り添う一粒を。',
   path = '',
   schema,
+  safeArea = false,
 } = Astro.props;
 const url = canonical(path);
 ---
@@ -25,7 +27,10 @@ const url = canonical(path);
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content={`width=device-width, initial-scale=1${safeArea ? ', viewport-fit=cover' : ''}`}
+    />
     <title>{title===siteName?`${title} | by ALMÉA GEM`:`${title} | ${siteName}`}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={url} />
