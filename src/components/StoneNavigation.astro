@@ -71,24 +71,4 @@ const next = index >= 0 ? ordered[index + 1] : undefined;
   .unavailable {
     color: var(--muted);
   }
-  @media (max-width: 767px) {
-    .stone-navigation {
-      position: fixed;
-      inset: auto 0 0;
-      z-index: 9;
-      margin: 0;
-      border-radius: 0;
-      border-width: 1px 0 0;
-      padding: 8px max(8px, env(safe-area-inset-right))
-        calc(8px + env(safe-area-inset-bottom))
-        max(8px, env(safe-area-inset-left));
-      box-shadow: 0 -3px 16px rgb(51 44 41 / 6%);
-    }
-    :global(body:has(.stone-navigation)) {
-      padding-bottom: calc(81px + env(safe-area-inset-bottom));
-    }
-    :global(html:has(.stone-navigation)) {
-      scroll-padding-bottom: calc(81px + env(safe-area-inset-bottom));
-    }
-  }
 </style>

@@ -91,9 +91,9 @@ test('navigation stays reachable with safe-area clearance on mobile and in page 
     const mobile = width < 768;
     expect(
       await navigation.evaluate((el) => getComputedStyle(el).position),
-    ).toBe(mobile ? 'fixed' : 'static');
+    ).toBe('static');
     for (const link of await navigation.getByRole('link').all()) {
-      if (!mobile) await link.scrollIntoViewIfNeeded();
+      await link.scrollIntoViewIfNeeded();
       const box = (await link.boundingBox())!;
       expect(box.height).toBeGreaterThanOrEqual(44);
       expect(box.x).toBeGreaterThanOrEqual(0);
@@ -101,6 +101,9 @@ test('navigation stays reachable with safe-area clearance on mobile and in page 
       await link.focus();
       await expect(link).toBeFocused();
     }
+    const historyNavigation = page.getByRole('navigation', {
+      name: '閲覧履歴の移動',
+    });
     if (mobile) {
       await expect(page.locator('meta[name="viewport"]')).toHaveAttribute(
         'content',
@@ -111,12 +114,12 @@ test('navigation stays reachable with safe-area clearance on mobile and in page 
         insets: { bottom: 34, left: 0, right: 0, top: 0 },
       });
       expect(
-        await navigation.evaluate((el) =>
+        await historyNavigation.evaluate((el) =>
           parseFloat(getComputedStyle(el).paddingBottom),
         ),
       ).toBe(42);
       await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-      const navBox = (await navigation.boundingBox())!;
+      const navBox = (await historyNavigation.boundingBox())!;
       const footerBox = (await page.locator('.site-footer').boundingBox())!;
       expect(footerBox.y + footerBox.height).toBeLessThanOrEqual(navBox.y);
       expect(navBox.y + navBox.height).toBe(844);
@@ -148,6 +151,6 @@ test('navigation stays reachable with safe-area clearance on mobile and in page 
       await page
         .locator('body')
         .evaluate((el) => getComputedStyle(el).paddingBottom),
-    ).toBe('0px');
+    ).toBe(mobile ? '81px' : '0px');
   }
 });

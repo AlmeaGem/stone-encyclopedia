@@ -1,0 +1,72 @@
+---
+import { pathTo } from '../lib/urls';
+---
+
+<nav
+  class="history-navigation"
+  aria-label="閲覧履歴の移動"
+  data-history-base={pathTo()}
+>
+  <button type="button" data-history-direction="-1" disabled>
+    ← 戻る
+  </button>
+  <button type="button" data-history-direction="1" disabled>
+    進む →
+  </button>
+</nav>
+
+<script>
+  import { initializeHistoryNavigation } from '../lib/history-navigation';
+  initializeHistoryNavigation();
+</script>
+
+<style>
+  .history-navigation {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 12px max(20px, calc((100% - 1180px) / 2));
+    color: var(--ink);
+  }
+  button {
+    min-height: 48px;
+    min-width: 112px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--beige);
+    color: inherit;
+    font: 14px/1.5 var(--sans);
+  }
+  button:disabled {
+    opacity: 1;
+    color: var(--muted);
+    border-style: dashed;
+    cursor: default;
+  }
+  button:not(:disabled):hover {
+    background: var(--paper);
+  }
+  @media (max-width: 767px) {
+    .history-navigation {
+      position: fixed;
+      inset: auto 0 0;
+      z-index: 9;
+      padding: 8px max(8px, env(safe-area-inset-right))
+        calc(8px + env(safe-area-inset-bottom))
+        max(8px, env(safe-area-inset-left));
+      background: var(--beige);
+      border-top: 1px solid var(--line);
+      box-shadow: 0 -3px 16px rgb(51 44 41 / 6%);
+    }
+    button {
+      flex: 1;
+      min-width: 0;
+    }
+    :global(body) {
+      padding-bottom: calc(81px + env(safe-area-inset-bottom));
+    }
+    :global(html) {
+      scroll-padding-bottom: calc(81px + env(safe-area-inset-bottom));
+    }
+  }
+</style>

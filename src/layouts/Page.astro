@@ -1,5 +1,6 @@
 ---
 import GemIcon from '../components/GemIcon.astro';
+import HistoryNavigation from '../components/HistoryNavigation.astro';
 import { appIconPath } from '../lib/app-icons';
 import '../styles.css';
 import '../tactile.css';
@@ -18,7 +19,7 @@ const {
   description = 'パワーストーンブレスレットのALMÉA GEMが届ける天然石図鑑。210項目の石の個性・意味・選び方を知り、あなたの願いに寄り添う一粒を。',
   path = '',
   schema,
-  safeArea = false,
+  safeArea = true,
 } = Astro.props;
 const url = canonical(path);
 ---
@@ -118,6 +119,7 @@ const url = canonical(path);
     <main id="main">
       <slot />
     </main>
+    <HistoryNavigation />
     <footer class="site-footer">
       <div>
         <span class="footer-brand">ALMÉA GEM</span>
