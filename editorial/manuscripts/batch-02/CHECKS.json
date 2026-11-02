@@ -1,0 +1,190 @@
+{
+  "batch": "batch-02",
+  "status": "draft-awaiting-editorial-approval",
+  "revision": 1,
+  "records": 20,
+  "ids": [
+    "s021",
+    "s022",
+    "s023",
+    "s024",
+    "s025",
+    "s026",
+    "s027",
+    "s028",
+    "s029",
+    "s030",
+    "s031",
+    "s032",
+    "s033",
+    "s034",
+    "s035",
+    "s036",
+    "s037",
+    "s038",
+    "s039",
+    "s040"
+  ],
+  "fieldCount": 120,
+  "readerWishes": 80,
+  "minCharacters": 964,
+  "maxCharacters": 1065,
+  "baselineIdentityAndFieldsMatched": true,
+  "previousReviewedDraftPreserved": false,
+  "safetyAndMineralogyPreserved": true,
+  "duplicates": [],
+  "protectedProductionChanges": [],
+  "publication": false,
+  "hashScheme": "sha256-json-fields-and-readerWishes-v2",
+  "entries": [
+    {
+      "id": "s021",
+      "slug": "agate",
+      "characterCount": 1031,
+      "draftSha256": "e33e2740f2f84f4a01267ac2a6c5f4d8e7a9ef75541aecf014cb2d76a843de2d"
+    },
+    {
+      "id": "s022",
+      "slug": "green-agate",
+      "characterCount": 968,
+      "draftSha256": "1553397d371744fcb28b57cce40af7527ea23e1c9cf7eed8cdbe28230010c3c7"
+    },
+    {
+      "id": "s023",
+      "slug": "fire-agate",
+      "characterCount": 965,
+      "draftSha256": "96dd45b5118a75fdb4edddf947b349d28ccb04c121cc8c14e095fd0753f1ff1e"
+    },
+    {
+      "id": "s024",
+      "slug": "moss-agate",
+      "characterCount": 988,
+      "draftSha256": "c84790dfac4fb4401dbfc8ac57a89a9151ce14a6e2361f19e60e812e20ea9077"
+    },
+    {
+      "id": "s025",
+      "slug": "red-agate",
+      "characterCount": 1023,
+      "draftSha256": "1602b86d393f51d797d00db58b9d6a0bbe490227d111869d2d8ee653e04669f0"
+    },
+    {
+      "id": "s026",
+      "slug": "andesine",
+      "characterCount": 1005,
+      "draftSha256": "95310ec67d0fe33a64cf6e9b00f4d17133ad0b808d97290668d5756e86fe0a6f"
+    },
+    {
+      "id": "s027",
+      "slug": "ammolite",
+      "characterCount": 1042,
+      "draftSha256": "00841779dca2c781dd4f7fd2e59f7ac785222e51fc6899023d6056c1e7586098"
+    },
+    {
+      "id": "s028",
+      "slug": "garnet",
+      "characterCount": 1017,
+      "draftSha256": "f49243cda98d27f1ae25c5a0d12d9632815c54d53cf4cb9bd4ea395a06efdb7e"
+    },
+    {
+      "id": "s029",
+      "slug": "almandine",
+      "characterCount": 1010,
+      "draftSha256": "3122b201231f6900bf237264bce678581807268d19894dabb8673ad87b4038d0"
+    },
+    {
+      "id": "s030",
+      "slug": "andradite",
+      "characterCount": 982,
+      "draftSha256": "080a2e05d98fe57a32c7183994d310907c200bda7cefbb822f2db660391e6feb"
+    },
+    {
+      "id": "s031",
+      "slug": "uvarovite",
+      "characterCount": 987,
+      "draftSha256": "9e8702b4631e4ff7528af8273acff32ccc84174c27c87f4260dd617b6c92fc3b"
+    },
+    {
+      "id": "s032",
+      "slug": "grossular",
+      "characterCount": 983,
+      "draftSha256": "cf24aa42b8375cfee942e6d017c1d4c791ad9176f051c35edb5e5576784bb534"
+    },
+    {
+      "id": "s033",
+      "slug": "spessartine",
+      "characterCount": 964,
+      "draftSha256": "1495afacde27136dbd8745a9091dedfcf4f2a542137ed8443230354b3db2e917"
+    },
+    {
+      "id": "s034",
+      "slug": "pyrope",
+      "characterCount": 998,
+      "draftSha256": "3b052e8cab7283213095fda1164ed1281409f57c62b00cde47c522b7f474cca1"
+    },
+    {
+      "id": "s035",
+      "slug": "cuprite",
+      "characterCount": 1027,
+      "draftSha256": "c3d6bbc98d74f86e85ebf107828b31c435eebd08be81f35240710c181e63fa00"
+    },
+    {
+      "id": "s036",
+      "slug": "coral",
+      "characterCount": 979,
+      "draftSha256": "6bb0387e412fb8e8f35a83728b70c9fca0cc62a127432957016c8f98a562fa96"
+    },
+    {
+      "id": "s037",
+      "slug": "jasper",
+      "characterCount": 972,
+      "draftSha256": "d86d29502932fba73ce2eabc2579e68678317303f8f48986ceaf15b2cbedb18b"
+    },
+    {
+      "id": "s038",
+      "slug": "cinnabar",
+      "characterCount": 1065,
+      "draftSha256": "146a410dadbcfe738823373b919aa37e1570d76720a3ccd5b6f1efaf68aa4bb3"
+    },
+    {
+      "id": "s039",
+      "slug": "spinel",
+      "characterCount": 1004,
+      "draftSha256": "169ce0eafeda53e2ee09788f1f2672e5ef603dae187ae1975175b9344dc3570f"
+    },
+    {
+      "id": "s040",
+      "slug": "dendrite",
+      "characterCount": 1022,
+      "draftSha256": "20729ab677aa13f94cf89d7c6979268be0b0ab7c50889458cf924f1d4db538ce"
+    }
+  ],
+  "browserReview": [
+    {
+      "width": 375,
+      "overflow": false,
+      "font": 17,
+      "compared": 280
+    },
+    {
+      "width": 1280,
+      "overflow": false,
+      "font": 17,
+      "compared": 280
+    }
+  ],
+  "externalNetworkRequests": 0,
+  "renderedTextMatchesCanonicalDrafts": true,
+  "sitePublication": false,
+  "delivery": "draft review branch only; no PR, merge or deploy",
+  "registeredPairingNamesMatched": true,
+  "sourceValidation": {
+    "stones": 210,
+    "images": 210,
+    "passed": true
+  },
+  "repeatedStockPhrases": {
+    "願いを託す": 0,
+    "石物語として楽しむ": 0,
+    "自分を大切にする": 0
+  }
+}

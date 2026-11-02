@@ -1,0 +1,190 @@
+{
+  "batch": "batch-01",
+  "status": "draft-awaiting-editorial-approval",
+  "revision": 2,
+  "records": 20,
+  "ids": [
+    "s001",
+    "s002",
+    "s003",
+    "s004",
+    "s005",
+    "s006",
+    "s007",
+    "s008",
+    "s009",
+    "s010",
+    "s011",
+    "s012",
+    "s013",
+    "s014",
+    "s015",
+    "s016",
+    "s017",
+    "s018",
+    "s019",
+    "s020"
+  ],
+  "fieldCount": 120,
+  "readerWishes": 80,
+  "minCharacters": 1031,
+  "maxCharacters": 1274,
+  "baselineIdentityAndFieldsMatched": true,
+  "previousReviewedDraftPreserved": true,
+  "safetyAndMineralogyPreserved": true,
+  "duplicates": [],
+  "protectedProductionChanges": [],
+  "publication": false,
+  "hashScheme": "sha256-json-fields-and-readerWishes-v2",
+  "entries": [
+    {
+      "id": "s001",
+      "slug": "obsidian",
+      "characterCount": 1268,
+      "draftSha256": "ab9f6f4038874f3a9199c96ace8f236a58b7e4cef89a8bf57e6a3047dfa666c8"
+    },
+    {
+      "id": "s002",
+      "slug": "chiastolite",
+      "characterCount": 1123,
+      "draftSha256": "e7c3a9de4e1d6b4a22561fa4d8215d5e9111681e41a7d310729a5696065007a1"
+    },
+    {
+      "id": "s003",
+      "slug": "jet",
+      "characterCount": 1271,
+      "draftSha256": "bfc1e6aa0c730cd973ddd5cffdbcaa7102ea867cc85e65209e8a8a6c8e523a0e"
+    },
+    {
+      "id": "s004",
+      "slug": "shamanite",
+      "characterCount": 1100,
+      "draftSha256": "95364c5f0eb23f188ac30e28f11dd4a73321b88b5490407bc158eaf94c9de302"
+    },
+    {
+      "id": "s005",
+      "slug": "shungite",
+      "characterCount": 1097,
+      "draftSha256": "c361d97d30dc809347211533f5b488fd2a221effa1bd907d9668fb2f17e98b9e"
+    },
+    {
+      "id": "s006",
+      "slug": "staurolite",
+      "characterCount": 1129,
+      "draftSha256": "b0c62555b90f3fa9593fc325174b40efb3dd088329015366fe7c45582f5772f5"
+    },
+    {
+      "id": "s007",
+      "slug": "stibnite",
+      "characterCount": 1261,
+      "draftSha256": "7b55a0588dd0a293d89187ecb3b46c4b2bf048a2d5425acab99945630b995ae0"
+    },
+    {
+      "id": "s008",
+      "slug": "smoky-quartz",
+      "characterCount": 1096,
+      "draftSha256": "c8282575134e86746fc1a9fe5052d9ecc7f53b91477c42b35cc4af9319f27d93"
+    },
+    {
+      "id": "s009",
+      "slug": "sulemani-agate",
+      "characterCount": 1106,
+      "draftSha256": "5057718d3bd5f948f4666f573b90444318723a0ed8f75da4129a7b981add448f"
+    },
+    {
+      "id": "s010",
+      "slug": "tektite",
+      "characterCount": 1102,
+      "draftSha256": "5cad46222eb496b210810eaa66f08d0c55885b520c3ef9091d8c1a1fda945ae4"
+    },
+    {
+      "id": "s011",
+      "slug": "desert-rose",
+      "characterCount": 1130,
+      "draftSha256": "3ca9d99e3c0aa58e85bf510264b1110c32741049806680e07f7e53ab6f496373"
+    },
+    {
+      "id": "s012",
+      "slug": "nuummite",
+      "characterCount": 1274,
+      "draftSha256": "9c85266eb123c8f0766ef05f44e93fedd85d28508b1eab91530837359cfc27f3"
+    },
+    {
+      "id": "s013",
+      "slug": "picture-sandstone",
+      "characterCount": 1106,
+      "draftSha256": "98b4448631cae84d06bc7b2f05e79b678d1200ea051211e7ad594aaab91bf83d"
+    },
+    {
+      "id": "s014",
+      "slug": "red-sandstone",
+      "characterCount": 1031,
+      "draftSha256": "e1996b81d5c19fb3606369b89de0ab050c8495bcebb0e4e3219c043341340294"
+    },
+    {
+      "id": "s015",
+      "slug": "black-onyx",
+      "characterCount": 1042,
+      "draftSha256": "bd1ba528449d80ae21f72d44ede28481a4d134379e66713c5880381435d8f9a0"
+    },
+    {
+      "id": "s016",
+      "slug": "flint",
+      "characterCount": 1100,
+      "draftSha256": "e7709af9fb5f7b9d02f221b38d48ce6bb7cb7e7d84c8b3bef74a65fce681f5f3"
+    },
+    {
+      "id": "s017",
+      "slug": "hematite",
+      "characterCount": 1124,
+      "draftSha256": "7685085245ef00cd52c6798af703cb0626175c2cd3f2014a887b228d8cb4a4b5"
+    },
+    {
+      "id": "s018",
+      "slug": "meteorite",
+      "characterCount": 1147,
+      "draftSha256": "428a92b2db10c4b9900ad16b7e12b07c5d2ec883e730882d3f6caf303abcd5aa"
+    },
+    {
+      "id": "s019",
+      "slug": "morion",
+      "characterCount": 1257,
+      "draftSha256": "c26d786aa515ca54d9204437bfe27e7aa7064607d1102ab7b5ee09d993e675a1"
+    },
+    {
+      "id": "s020",
+      "slug": "lava",
+      "characterCount": 1068,
+      "draftSha256": "87df2750f05bf465dae32224868032a24e38d1e0f4062cd67ef0fa0fe3dc91af"
+    }
+  ],
+  "browserReview": [
+    {
+      "width": 375,
+      "overflow": false,
+      "font": 17,
+      "compared": 280
+    },
+    {
+      "width": 1280,
+      "overflow": false,
+      "font": 17,
+      "compared": 280
+    }
+  ],
+  "externalNetworkRequests": 0,
+  "renderedTextMatchesCanonicalDrafts": true,
+  "sitePublication": false,
+  "delivery": "draft review branch only; no PR, merge or deploy",
+  "registeredPairingNamesMatched": true,
+  "sourceValidation": {
+    "stones": 210,
+    "images": 210,
+    "passed": true
+  },
+  "repeatedStockPhrases": {
+    "願いを託す": 0,
+    "石物語として楽しむ": 0,
+    "自分を大切にする": 0
+  }
+}
