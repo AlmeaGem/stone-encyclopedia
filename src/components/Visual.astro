@@ -19,27 +19,26 @@ const cloudOrigin = cloudPhotoOrigin(import.meta.env.PUBLIC_PHOTO_API_ORIGIN);
 >
   {photo?.localPath ? (
     <figure class:list={['stone-figure', { detail }]}>
-      <img
-        src={pathTo(photo.localPath)}
-        width={photo.width!}
-        height={photo.height!}
-        loading="lazy"
-        decoding="async"
-        draggable="false"
-        alt={
-          ['ai-generated', 'illustrative-photo'].includes(photo.imageKind || '')
-            ? `${stone.name}のイメージ画像${photo.imageKind === 'ai-generated' ? '（AI生成。実物写真ではありません）' : '（実物の品質を示すものではありません）'}`
-            : photo.alt || `${stone.name}の承認済み写真`
-        }
-      />
-      {['ai-generated', 'illustrative-photo'].includes(
-        photo.imageKind || '',
-      ) && <span class="image-impression-label">※ イメージ画像</span>}
-      {detail && photo.imageKind === 'ai-generated' && (
-        <figcaption>
-          AI生成による参考イメージです。実物の撮影写真や個体の品質・鑑別を示すものではありません。
-        </figcaption>
-      )}
+      <div class="stone-image-frame">
+        <img
+          src={pathTo(photo.localPath)}
+          width={photo.width!}
+          height={photo.height!}
+          loading="lazy"
+          decoding="async"
+          draggable="false"
+          alt={
+            ['ai-generated', 'illustrative-photo'].includes(
+              photo.imageKind || '',
+            )
+              ? `${stone.name}のイメージ画像${photo.imageKind === 'ai-generated' ? '（AI生成）' : ''}`
+              : photo.alt || `${stone.name}の承認済み写真`
+          }
+        />
+        {['ai-generated', 'illustrative-photo'].includes(
+          photo.imageKind || '',
+        ) && <span class="image-impression-label">※ イメージ画像</span>}
+      </div>
       {detail && photo.imageKind !== 'ai-generated' && (
         <figcaption>
           写真：{photo.photographer} ·{' '}
@@ -135,12 +134,15 @@ const cloudOrigin = cloudPhotoOrigin(import.meta.env.PUBLIC_PHOTO_API_ORIGIN);
           img.draggable = false;
           img.width = 1440;
           img.height = 1440;
-          figure.append(img);
+          const frame = document.createElement('div');
+          frame.className = 'stone-image-frame';
+          frame.append(img);
+          figure.append(frame);
           if (photo.kind === 'illustrative') {
             const label = document.createElement('span');
             label.className = 'image-impression-label';
             label.textContent = '※ イメージ画像';
-            figure.append(label);
+            frame.append(label);
           }
           const caption = document.createElement('figcaption');
           caption.append(

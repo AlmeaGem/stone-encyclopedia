@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import { mkdir } from 'node:fs/promises';
 import { auditVisibleText } from './text-audit';
 
-test('image labels sit outside photos at all requested widths and surfaces', async ({
+test('image labels overlay the bottom-right of photos at all requested widths and surfaces', async ({
   page,
 }, info) => {
   test.setTimeout(90000);
@@ -29,21 +29,21 @@ test('image labels sit outside photos at all requested widths and surfaces', asy
           const imageBox = image.getBoundingClientRect();
           const style = getComputedStyle(el);
           return {
-            gap: labelBox.top - imageBox.bottom,
-            right: labelBox.right - imageBox.right,
+            gap: imageBox.bottom - labelBox.bottom,
+            right: imageBox.right - labelBox.right,
             position: style.position,
             font: parseFloat(style.fontSize),
             whiteSpace: style.whiteSpace,
             background: style.backgroundColor,
           };
         });
-        expect(layout.gap).toBeGreaterThanOrEqual(4);
-        expect(layout.gap).toBeLessThanOrEqual(6);
-        expect(Math.abs(layout.right)).toBeLessThan(1);
-        expect(layout.position).toBe('static');
+        expect(layout.gap).toBeGreaterThanOrEqual(8);
+        expect(layout.gap).toBeLessThanOrEqual(10);
+        expect(layout.right).toBe(9);
+        expect(layout.position).toBe('absolute');
         expect(layout.font).toBe(width < 768 ? 10 : 11);
         expect(layout.whiteSpace).toBe('nowrap');
-        expect(layout.background).toBe('rgba(0, 0, 0, 0)');
+        expect(layout.background).toBe('rgba(250, 247, 243, 0.9)');
       }
       expect(
         await page.evaluate(
@@ -54,7 +54,7 @@ test('image labels sit outside photos at all requested widths and surfaces', asy
       const audit = await page.evaluate(auditVisibleText);
       expect(audit.issues, `${width} ${path}`).toEqual([]);
       if (width === 390 && (path === '/' || path === '/stones/rose-quartz/')) {
-        await mkdir('docs/screenshots/image-protection', { recursive: true });
+        await mkdir('test-results/image-overlay', { recursive: true });
         const figure = page
           .locator(path === '/' ? '.stone-figure' : '.stone-figure.detail')
           .first();
@@ -63,7 +63,7 @@ test('image labels sit outside photos at all requested widths and surfaces', asy
           .locator('img')
           .evaluate((el: HTMLImageElement) => el.decode());
         await figure.screenshot({
-          path: `docs/screenshots/image-protection/after-${path === '/' ? 'card' : 'detail'}.png`,
+          path: `test-results/image-overlay/after-${path === '/' ? 'card' : 'detail'}.png`,
         });
       }
     }
@@ -110,9 +110,7 @@ test('only image saving gestures are suppressed while links and text remain nati
   await link.focus();
   await page.keyboard.press('Enter');
   await expect(page).toHaveURL(href!);
-  await expect(page.locator('.stone-figure.detail figcaption')).toContainText(
-    'AI生成',
-  );
+  await expect(page.locator('.stone-figure.detail figcaption')).toHaveCount(0);
   await page.goto('/terms/');
   await expect(page.locator('main')).toContainText('法令上認められる引用');
   await expect(page.locator('main')).toContainText(

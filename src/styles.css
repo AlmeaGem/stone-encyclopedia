@@ -560,15 +560,20 @@
   .home-hero + .home-search + .section .card-theme {
     font-size: 9px;
   }
-  .stone-figure {
+  .stone-figure,
+  .stone-image-frame {
     position: relative;
   }
   .stone-figure .image-impression-label {
+    position: absolute;
+    right: 9px;
+    bottom: 9px;
     display: block;
-    margin-top: 5px;
+    padding: 2px 5px;
+    border-radius: 3px;
     text-align: right;
     white-space: nowrap;
-    background: transparent;
+    background: rgba(250, 247, 243, 0.9);
     color: #746355;
     font: 11px/1.5 var(--sans);
     letter-spacing: 0;
