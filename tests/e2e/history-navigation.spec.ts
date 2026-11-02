@@ -52,18 +52,24 @@ for (const fallback of [false, true]) {
       .getByRole('link', { name: '読みもの', exact: true })
       .click();
     await expect(back).toBeEnabled();
+    // Count dispatches without navigating inside evaluate: a real navigation
+    // would destroy this execution context before the assertion can complete.
     const calls = await back.evaluate((element) => {
       let count = 0;
-      const go = history.go.bind(history);
-      history.go = (delta) => {
+      const original = history.go;
+      history.go = (_delta: number) => {
         count++;
-        go(delta);
       };
-      (element as HTMLButtonElement).click();
-      (element as HTMLButtonElement).click();
+      try {
+        (element as HTMLButtonElement).click();
+        (element as HTMLButtonElement).click();
+      } finally {
+        history.go = original;
+      }
       return count;
     });
     expect(calls).toBe(1);
+    await page.goBack();
     await expect(page).toHaveURL('/');
     await expect(back).toBeDisabled();
   });
