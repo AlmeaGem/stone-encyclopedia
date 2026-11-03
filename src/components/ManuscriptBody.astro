@@ -37,9 +37,11 @@ const stoneById = new Map(stones.map((stone) => [stone.id, stone]));
           {pairing.name}
         </a>
         <span class="manuscript-pairing-separator">：</span>
-        {inlineManuscript(pairing.description).map((part) =>
-          part.strong ? <strong>{part.text}</strong> : part.text,
-        )}
+        <span class="manuscript-pairing-description">
+          {inlineManuscript(pairing.description).map((part) =>
+            part.strong ? <strong>{part.text}</strong> : part.text,
+          )}
+        </span>
       </p>
     ))}
   </div>

@@ -2,6 +2,7 @@
 import ManuscriptBody from '../../components/ManuscriptBody.astro';
 import { approvedManuscript } from '../../lib/approved-manuscripts';
 import '../../manuscript-layout.css';
+import ManuscriptHeading from '../../components/ManuscriptHeading.astro';
 import SectionHeading from '../../components/SectionHeading.astro';
 import Prose from '../../components/Prose.astro';
 import ReportNudge from '../../components/ReportNudge.astro';
@@ -124,12 +125,16 @@ const schema = {
           {storySections.map((section) =>
             section.subordinate ? (
               <section class="manuscript-subsection">
-                <h3>{section.heading}</h3>
+                <h3>
+                  <ManuscriptHeading text={section.heading} />
+                </h3>
                 <ManuscriptBody section={section} />
               </section>
             ) : (
               <section class="detail-section manuscript-section">
-                <SectionHeading>{section.heading}</SectionHeading>
+                <SectionHeading>
+                  <ManuscriptHeading text={section.heading} />
+                </SectionHeading>
                 <ManuscriptBody section={section} />
               </section>
             ),
@@ -158,7 +163,9 @@ const schema = {
         <section id="pairing" class="detail-section manuscript-section">
           {pairSections.map((section) => (
             <>
-              <SectionHeading>{section.heading}</SectionHeading>
+              <SectionHeading>
+                <ManuscriptHeading text={section.heading} />
+              </SectionHeading>
               <ManuscriptBody section={section} />
             </>
           ))}
@@ -178,7 +185,9 @@ const schema = {
         <section id="quality" class="detail-section manuscript-section">
           {qualitySections.map((section) => (
             <>
-              <SectionHeading>{section.heading}</SectionHeading>
+              <SectionHeading>
+                <ManuscriptHeading text={section.heading} />
+              </SectionHeading>
               <ManuscriptBody section={section} />
             </>
           ))}
@@ -224,7 +233,9 @@ const schema = {
           <SectionHeading>浄化と、取り扱いの注意</SectionHeading>
           {careSections.map((section) => (
             <div class="manuscript-care">
-              <h3>{section.heading}</h3>
+              <h3>
+                <ManuscriptHeading text={section.heading} />
+              </h3>
               <ManuscriptBody section={section} />
             </div>
           ))}

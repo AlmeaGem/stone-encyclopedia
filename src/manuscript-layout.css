@@ -90,3 +90,42 @@
     letter-spacing: 0.015em;
   }
 }
+
+.manuscript-heading-break {
+  display: none;
+}
+@media (max-width: 430px) {
+  .manuscript-heading-break {
+    display: block;
+  }
+  .manuscript-pairings .manuscript-pairing-name {
+    display: inline-block;
+  }
+  .manuscript-pairing-separator {
+    display: none;
+  }
+  .manuscript-pairing-description {
+    display: block;
+    margin-top: 0.5em;
+    line-height: 1.85;
+  }
+}
+
+.detail-body .manuscript-section,
+.detail-body .manuscript-subsection {
+  scroll-margin-top: 24px;
+}
+.manuscript-pairings .manuscript-pairing-name {
+  transition:
+    color 160ms ease,
+    background-color 160ms ease;
+}
+.manuscript-pairings .manuscript-pairing-name:hover {
+  color: #65453f;
+  background-color: #f6eae6;
+}
+@media (prefers-reduced-motion: reduce) {
+  .manuscript-pairings .manuscript-pairing-name {
+    transition: none;
+  }
+}
