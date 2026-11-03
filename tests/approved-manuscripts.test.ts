@@ -4,6 +4,7 @@ import {
   approvedManuscript,
   manuscriptItems,
   manuscriptPairings,
+  manuscriptPairings,
 } from '../src/lib/approved-manuscripts';
 import stones from '../src/content/stones.json' with { type: 'json' };
 
@@ -30,6 +31,19 @@ describe('approved manuscripts', () => {
           normalize(section.paragraphs.join('')),
         );
         expect(section.paragraphs.join('')).not.toMatch(/Codex|編集メモ/);
+      }
+      const pairSections = manuscript.sections.filter((s) => s.kind === 'pairings');
+      expect(pairSections).toHaveLength(1);
+      const pairs = manuscriptPairings(pairSections[0]);
+      expect(pairs.length, stone.id).toBeGreaterThan(1);
+      const source = pairSections[0].paragraphs.join('').replace(/\\s/g, '');
+      expect(pairs.map((p) => p.sourceText).join('').replace(/\\s/g, ''))
+        .toBe(source);
+      for (const pair of pairs) {
+        const target = stones.find((s) => s.id === pair.stoneId);
+        expect(target, `${stone.id} → ${pair.name}`).toBeDefined();
+        expect([target!.name, ...target!.aliases]).toContain(pair.name);
+        expect(pair.description.trim()).not.toBe('');
       }
       if (['s205', 's206', 's207', 's208', 's210'].includes(stone.id))
         expect(manuscript.sections).toHaveLength(9);
