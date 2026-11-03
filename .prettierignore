@@ -5,3 +5,6 @@ dist
 test-results
 playwright-report
 package-lock.json
+
+# Byte-exact approved originals and their immutable identity records.
+editorial/manuscripts/approved-chatgpt/

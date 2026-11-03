@@ -59,9 +59,16 @@ for (const file of output.filter((p) => /\.(html|js|json|xml|txt)$/.test(p))) {
 for (const p of output) {
   if (/\.(html|js|json)$/.test(p)) {
     const published = await readFile(p, 'utf8');
+    // Approved reader prose is byte-checked at build time and covered by the
+    // full-text E2E audit. Keep heuristic wording checks on legacy surfaces;
+    // approved s125/s173 intentionally contain 「として紹介します」.
+    const editorialText = published.replace(
+      /<p\b[^>]*class="[^"]*manuscript-paragraph[^"]*"[^>]*>[\s\S]*?<\/p>/g,
+      '',
+    );
     if (
       /という表現が適切|編集提案|編集上の提案|書籍では|今回の調査では|として紹介します|として説明できます|掲載テーマ|既存の象徴/u.test(
-        published,
+        editorialText,
       )
     )
       throw new Error(`${p} contains reader-inappropriate editorial copy`);

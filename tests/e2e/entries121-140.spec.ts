@@ -1,3 +1,4 @@
+import { approvedText } from '../helpers/approved-text';
 import { publicStone } from '../../src/lib/public-stone';
 import { test, expect } from '@playwright/test';
 import { readFile, mkdir } from 'node:fs/promises';
@@ -14,9 +15,11 @@ test('all details 121-140 support search, category and related navigation withou
     for (const stone of batch) {
       await page.goto(`/stones/${stone.slug}/`);
       await expect(page.locator('h1')).toHaveText(stone.name);
-      await expect(page.locator('#quality')).toContainText(stone.quality);
+      await expect(page.locator('#quality')).toContainText(
+        approvedText(stone.id, '見どころ・選び方'),
+      );
       await expect(page.locator('#story')).toContainText(
-        stone.spiritualEffects || stone.symbolism,
+        approvedText(stone.id, 'スピリチュアルな意味'),
       );
       await expect(page.locator('#care')).toContainText(stone.handling);
       await expect(

@@ -1,0 +1,79 @@
+/* Reading layout only. Inherit every existing font family. */
+.stone-heading h1 {
+  font-size: clamp(34px, 3.2vw, 46px);
+  font-weight: 600;
+  line-height: 1.4;
+}
+.stone-heading .manuscript-catchphrase {
+  color: #705047;
+  font-size: clamp(17px, 1.7vw, 21px);
+  font-weight: 500;
+  line-height: 1.8;
+  margin: 16px 0 22px;
+  max-width: 36em;
+}
+.detail-body {
+  min-width: 0;
+  max-width: 48rem;
+}
+.manuscript-section p,
+.manuscript-subsection p,
+.manuscript-care p,
+.manuscript-wishes li {
+  font-size: 15px;
+  line-height: 1.85;
+  word-break: normal;
+  overflow-wrap: break-word;
+  line-break: strict;
+}
+.manuscript-paragraph {
+  white-space: pre-line;
+  margin: 0 0 1.2em;
+}
+.manuscript-section .prose-lines {
+  display: block;
+}
+.manuscript-subsection {
+  padding-block: 20px;
+}
+.manuscript-subsection h3,
+.manuscript-care h3 {
+  color: var(--subheading-ink);
+  font-size: clamp(20px, 1.7vw, 23px);
+  font-weight: 600;
+  line-height: 1.5;
+  border-left: 3px solid var(--heading-rule);
+  padding-left: 12px;
+  margin: 20px 0 16px;
+}
+.manuscript-wishes {
+  padding-left: 1.5em;
+  margin: 0;
+}
+.manuscript-wishes li + li {
+  margin-top: 0.7em;
+}
+.manuscript-wishes li::marker {
+  color: #98665e;
+}
+.manuscript-pairings {
+  display: grid;
+  gap: 16px;
+}
+.manuscript-pairings > p {
+  border-left: 2px solid #e5d4c7;
+  padding: 8px 0 8px 16px;
+  margin: 0;
+}
+.manuscript-pairings strong {
+  color: #705047;
+}
+.approved-story {
+  scroll-margin-top: 24px;
+}
+@media (max-width: 640px) {
+  .manuscript-section,
+  .manuscript-subsection {
+    letter-spacing: 0.015em;
+  }
+}

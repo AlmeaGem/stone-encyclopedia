@@ -6,7 +6,7 @@ test('editorial headings retain a clear hierarchy and line-level markers at six 
   for (const width of [375, 390, 430, 768, 1280, 1440]) {
     await page.setViewportSize({ width, height: 1000 });
     await page.goto('/stones/chiastolite/');
-    const styles = await page.locator('#story').evaluate((section) => {
+    const styles = await page.locator('#quality').evaluate((section) => {
       const h2 = section.querySelector('h2')!;
       const h3 = section.querySelector('h3')!;
       const p = section.querySelector('.prose-lines')!;

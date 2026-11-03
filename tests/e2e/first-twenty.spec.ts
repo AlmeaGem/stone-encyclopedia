@@ -1,3 +1,4 @@
+import { approvedText } from '../helpers/approved-text';
 import { publicStone } from '../../src/lib/public-stone';
 import { test, expect } from '@playwright/test';
 import { readFile, mkdir } from 'node:fs/promises';
@@ -14,15 +15,16 @@ test('all twenty detail pages separate scientific facts, stories and editorial p
     await expect(page.locator('h1')).toHaveText(stone.name);
     await expect(page.locator('#nature')).toContainText(stone.characteristics);
     await expect(page.locator('#story')).toContainText(
-      '鉱物の性質とは分けてお読みください',
+      approvedText(stone.id, '導入・神秘の物語'),
     );
-    await expect(page.locator('#story')).toContainText(stone.legend);
-    await expect(page.locator('#story')).toContainText(stone.spiritualEffects);
+    await expect(page.locator('#story')).toContainText(
+      approvedText(stone.id, 'スピリチュアルな意味'),
+    );
     const link = page
       .locator('#story a')
       .filter({ hasText: '来歴・伝承の参考資料' });
     await expect(link).toHaveAttribute('href', stone.legendSourceUrl);
-    await expect(page.locator('#pairing')).toContainText('ALMÉA GEMの提案');
+    await expect(page.locator('#pairing')).toContainText('相性のよい石');
     await expect(page.locator('#pairing .tag-list a')).toHaveCount(
       stone.synergyStoneIds.length,
     );

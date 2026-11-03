@@ -70,10 +70,12 @@ test('detail separates facts, quality and symbolism, with sources, internal link
     'ローズクォーツ',
   );
   await expect(page.locator('h2')).toContainText([
+    '導入・神秘の物語',
+    'スピリチュアルな意味',
+    'こんな願いに',
+    '相性のよい石',
+    '見どころ・選び方',
     '鉱物・物理的な情報',
-    '宝石としての見方・選び方',
-    '伝説と、スピリチュアルな意味',
-    '相性を考えた組み合わせ',
     '浄化と、取り扱いの注意',
   ]);
   await expect(

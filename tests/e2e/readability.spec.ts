@@ -64,7 +64,7 @@ test('all public pages keep text contrast, reader copy and responsive bounds', a
       if (path.startsWith('/stones/') && path !== '/stones/') {
         const body = page.locator('.detail-body');
         await expect(body).not.toContainText(
-          /という表現が適切|編集提案|編集上の提案|書籍では|今回の調査|紹介します|説明できます|掲載テーマ|既存の象徴/,
+          /という表現が適切|編集提案|編集上の提案|書籍では|今回の調査|Codex|編集メモ|制作区分|掲載テーマ|既存の象徴/,
         );
         await expect(page.locator('#quality')).toContainText(
           '形だけで運勢や効果の強さは決まりません。波動も大切です。',
