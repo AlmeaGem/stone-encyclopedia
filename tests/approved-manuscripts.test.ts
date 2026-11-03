@@ -38,9 +38,12 @@ describe('approved manuscripts', () => {
       const pairs = manuscriptPairings(pairSections[0]);
       expect(pairs.length, stone.id).toBeGreaterThan(1);
       const source = pairSections[0].paragraphs.join('').replace(/\s/g, '');
-      expect(pairs.map((p) => p.sourceText).join('').replace(/\s/g, '')).toBe(
-        source,
-      );
+      expect(
+        pairs
+          .map((p) => p.sourceText)
+          .join('')
+          .replace(/\s/g, ''),
+      ).toBe(source);
       for (const pair of pairs) {
         const target = stones.find((s) => s.id === pair.stoneId);
         expect(target, `${stone.id} → ${pair.name}`).toBeDefined();
@@ -70,7 +73,8 @@ describe('approved manuscripts', () => {
           const target = byId.get(entry.stoneId);
           expect(target, stone.id).toBeDefined();
           expect(
-            entry.name === target!.name || target!.aliases.includes(entry.name),
+            entry.name === target!.name ||
+              (target!.aliases as readonly string[]).includes(entry.name),
             stone.id,
           ).toBe(true);
         }

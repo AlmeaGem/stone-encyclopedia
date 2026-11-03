@@ -48,8 +48,12 @@ test('all 210 detail pages have responsive content, valid links, loaded images a
     await expect(page.locator('#story')).toContainText(
       approvedText(stone.id, '導入・神秘の物語'),
     );
-    await expect(page.locator('#pairing')).toContainText(
-      approvedText(stone.id, '相性のよい石'),
+    const firstPairing = await page
+      .locator('#pairing .manuscript-pairings > p')
+      .first()
+      .textContent();
+    expect(firstPairing?.replace(/\s/g, '')).toContain(
+      approvedText(stone.id, '相性のよい石').replace(/\s/g, ''),
     );
     await expect(
       page.locator('#nature dt').filter({ hasText: /^モース硬度$/ }),

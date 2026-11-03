@@ -116,9 +116,7 @@ const nameAlternation = [...registeredStoneNames.keys()]
   .map(escapeRegExp)
   .join('|');
 const pairingBoundary = new RegExp(
-  '(?<=[。！？])\\s*(?=(?:\\*\\*)?(?:' +
-    nameAlternation +
-    ')(?:\\*\\*)?[：:])',
+  '(?<=[。！？])\\s*(?=(?:\\*\\*)?(?:' + nameAlternation + ')(?:\\*\\*)?[：:])',
   'gu',
 );
 const pairingLabel = new RegExp(
