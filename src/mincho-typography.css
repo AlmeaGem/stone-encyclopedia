@@ -1,0 +1,25 @@
+/* Shared font roles; decorative heading markers and navigation layout remain unchanged. */
+h1,
+h2,
+h3 {
+  font-family: var(--heading-font);
+  font-weight: 500;
+}
+strong,
+b {
+  font-weight: 600;
+}
+.stone-heading .manuscript-catchphrase {
+  font-family: var(--heading-font);
+  font-weight: 400;
+}
+
+button,
+input,
+select,
+textarea,
+.button,
+nav a {
+  font-family: var(--body-font);
+  font-weight: 500;
+}

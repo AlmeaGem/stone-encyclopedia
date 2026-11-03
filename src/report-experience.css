@@ -79,7 +79,7 @@
   background: #fffaf6c9;
 }
 .report-features h3 {
-  font: 600 15px/1.6 var(--sans);
+  font: 500 15px/1.6 var(--heading-font);
   letter-spacing: 0;
   margin-bottom: 6px;
 }
