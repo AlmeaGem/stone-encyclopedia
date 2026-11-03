@@ -127,7 +127,9 @@ const pairingLabel = new RegExp(
 );
 
 /** Keep the approved prose unchanged; split it only for display. */
-export function manuscriptPairings(section: ManuscriptSection): ManuscriptPairing[] {
+export function manuscriptPairings(
+  section: ManuscriptSection,
+): ManuscriptPairing[] {
   if (section.kind !== 'pairings') return [];
   return section.paragraphs.flatMap((paragraph) =>
     paragraph
