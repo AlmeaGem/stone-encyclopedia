@@ -37,9 +37,10 @@ describe('approved manuscripts', () => {
       expect(pairSections).toHaveLength(1);
       const pairs = manuscriptPairings(pairSections[0]);
       expect(pairs.length, stone.id).toBeGreaterThan(1);
-      const source = pairSections[0].paragraphs.join('').replace(/\\s/g, '');
-      expect(pairs.map((p) => p.sourceText).join('').replace(/\\s/g, ''))
-        .toBe(source);
+      const source = pairSections[0].paragraphs.join('').replace(/\s/g, '');
+      expect(pairs.map((p) => p.sourceText).join('').replace(/\s/g, '')).toBe(
+        source,
+      );
       for (const pair of pairs) {
         const target = stones.find((s) => s.id === pair.stoneId);
         expect(target, `${stone.id} → ${pair.name}`).toBeDefined();
@@ -73,9 +74,11 @@ describe('approved manuscripts', () => {
             stone.id,
           ).toBe(true);
         }
-        const normalize = (value: string) => value.replace(/\\s/g, '');
-        expect(normalize(entries.map((entry) => entry.sourceText).join('')), stone.id)
-          .toBe(normalize(section.paragraphs.join('')));
+        const normalize = (value: string) => value.replace(/\s/g, '');
+        expect(
+          normalize(entries.map((entry) => entry.sourceText).join('')),
+          stone.id,
+        ).toBe(normalize(section.paragraphs.join('')));
       }
     }
     expect(total).toBeGreaterThan(210);
