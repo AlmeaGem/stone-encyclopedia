@@ -1883,11 +1883,6 @@
     aspect-ratio: 1.25;
     object-fit: cover;
   }
-  .daily-image .image-impression-label {
-    position: absolute;
-    right: 8px;
-    bottom: 8px;
-  }
   .daily-image .image-impression-label[hidden] {
     display: none;
   }
@@ -1951,9 +1946,6 @@
     .daily-image img {
       height: auto;
       aspect-ratio: 1;
-    }
-    .daily-image .image-impression-label[hidden] {
-      display: none;
     }
     .daily-copy {
       padding: 18px 14px;
