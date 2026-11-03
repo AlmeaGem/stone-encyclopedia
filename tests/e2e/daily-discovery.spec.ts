@@ -60,6 +60,31 @@ test('daily card matches the catalog and changes at Japan midnight', async ({
     ).toBe(true);
     const box = (await card.boundingBox())!;
     expect(box.width).toBeLessThanOrEqual(width);
+    if (width <= 430) {
+      const selectors = [
+        '.daily-eyebrow',
+        '#daily-title',
+        '.daily-intro',
+        '.daily-image',
+        '[data-daily-id]',
+        '[data-daily-name]',
+        '[data-daily-catchphrase]',
+        '[data-daily-link]',
+      ];
+      const boxes = await Promise.all(
+        selectors.map((selector) => card.locator(selector).boundingBox()),
+      );
+      for (let i = 1; i < boxes.length; i++)
+        expect(boxes[i]!.y).toBeGreaterThanOrEqual(
+          boxes[i - 1]!.y + boxes[i - 1]!.height - 1,
+        );
+      expect(boxes[3]!.width).toBeGreaterThan(width * 0.65);
+      expect(Math.abs(boxes[3]!.width - boxes[3]!.height)).toBeLessThan(2);
+      await expect(page.locator('.history-navigation')).toBeHidden();
+      await expect(
+        page.getByRole('searchbox', { name: '石名・英語名・別名' }),
+      ).toBeVisible();
+    }
     if (width === 390 || width === 1440)
       await card.screenshot({
         path: test.info().outputPath(`daily-${width}.png`),
