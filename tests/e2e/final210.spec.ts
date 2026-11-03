@@ -1,3 +1,5 @@
+import { approvedManuscript } from '../../src/lib/approved-manuscripts';
+import { approvedText } from '../helpers/approved-text';
 import { publicStone } from '../../src/lib/public-stone';
 import { test, expect } from '@playwright/test';
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
@@ -38,16 +40,22 @@ test('all 210 detail pages have responsive content, valid links, loaded images a
     for (const field of ['mineral', 'compositionHardness', 'characteristics'])
       await expect(page.locator('#nature')).toContainText(stone[field]);
     await expect(page.locator('.stone-heading')).toContainText(
-      stone.introduction,
+      approvedManuscript(stone.id).catchphrase,
     );
-    await expect(page.locator('#quality')).toContainText(stone.quality);
-    await expect(page.locator('#story')).toContainText(stone.legend);
-    await expect(page.locator('#pairing')).toContainText(stone.synergyNote);
+    await expect(page.locator('#quality')).toContainText(
+      approvedText(stone.id, '見どころ・選び方'),
+    );
+    await expect(page.locator('#story')).toContainText(
+      approvedText(stone.id, '導入・神秘の物語'),
+    );
+    await expect(page.locator('#pairing')).toContainText(
+      approvedText(stone.id, '相性のよい石'),
+    );
     await expect(
       page.locator('#nature dt').filter({ hasText: /^モース硬度$/ }),
     ).toHaveCount(0);
     await expect(page.locator('#story')).toContainText(
-      stone.spiritualEffects || stone.symbolism,
+      approvedText(stone.id, 'スピリチュアルな意味'),
     );
     await expect(page.locator('#care')).toContainText(
       stone.handling.replace(/^移行資料の注意メモ：/, ''),

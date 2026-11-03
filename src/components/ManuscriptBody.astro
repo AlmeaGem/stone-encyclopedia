@@ -1,0 +1,42 @@
+---
+import {
+  inlineManuscript,
+  manuscriptItems,
+  type ManuscriptSection,
+} from '../lib/approved-manuscripts';
+interface Props {
+  section: ManuscriptSection;
+}
+const { section } = Astro.props;
+const items = manuscriptItems(section);
+---
+
+{section.kind === 'wishes' ? (
+  <ul class="manuscript-wishes">
+    {items.map((text) => (
+      <li>
+        {inlineManuscript(text).map((part) =>
+          part.strong ? <strong>{part.text}</strong> : part.text,
+        )}
+      </li>
+    ))}
+  </ul>
+) : section.kind === 'pairings' ? (
+  <div class="manuscript-pairings">
+    {items.map((text) => (
+      <p class="manuscript-paragraph">
+        {inlineManuscript(text).map((part) =>
+          part.strong ? <strong>{part.text}</strong> : part.text,
+        )}
+      </p>
+    ))}
+  </div>
+) : (
+  items.map((text) => (
+    <p class="prose-lines manuscript-paragraph">
+      {inlineManuscript(text).map((part) =>
+        part.strong ? <strong>{part.text}</strong> : part.text,
+      )}
+    </p>
+  ))
+)}

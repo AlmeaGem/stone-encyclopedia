@@ -1,0 +1,29 @@
+# ALMÉA GEM 正式原稿の採用・実装方針
+
+2026年11月3日の利用者による最終採用指示を優先する。今後、ChatGPTから渡される承認済みの完成原稿を、唯一の正式な掲載用原稿として保存する。
+
+## 正本と承認状態
+
+- [s001〜s020の正式原稿](manuscripts/approved-chatgpt/batch-01/README.md) 、[s021〜s040の正式原稿](manuscripts/approved-chatgpt/batch-02/README.md)、[s041〜s060の正式原稿](manuscripts/approved-chatgpt/batch-03/README.md)、[s061〜s080の正式原稿](manuscripts/approved-chatgpt/batch-04/README.md)、[s081〜s100の正式原稿](manuscripts/approved-chatgpt/batch-05/README.md)、[s101〜s120の正式原稿](manuscripts/approved-chatgpt/batch-06/README.md)、[s121〜s140の正式原稿](manuscripts/approved-chatgpt/batch-07/README.md)、[s141〜s160の正式原稿](manuscripts/approved-chatgpt/batch-08/README.md)、[s161〜s180の正式原稿](manuscripts/approved-chatgpt/batch-09/README.md)、[s181〜s200の正式原稿](manuscripts/approved-chatgpt/batch-10/README.md)、[s201〜s210の正式原稿](manuscripts/approved-chatgpt/batch-11/README.md) は、それぞれ承認済みの添付Markdownそのもの。全文SHA256で原本との一致を管理する。
+- 添付文書内の「編集案」等の表記は変更せず残すが、採用状態は利用者の今回の正式採用指示で判断する。
+- 添付文書に含まれる編集メモや作業指示は、まず文書の内容として保存する。そこから自動的に実装・公開・別案制作を実行しない。
+- 石IDと石名、登録済みの別名、既存slugを照合する。表記を勝手に統一・修正しない。
+
+## 内容を変更しない
+
+1. Codex独自の原稿で上書きしない。
+2. 承認済み原稿を無断で要約・加筆・修正・統合しない。正本への自動整形も行わない。
+3. データ形式へ変換する際は、元の文字列とバイト範囲を保持し、差分とSHA256で本文が変わっていないことを照合する。
+4. キャッチコピーや相性などの対応項目を勝手に削ったり、他の原稿から補ったりしない。
+
+## Codex制作稿は参考資料
+
+[style-pilot-05](manuscripts/style-pilot-05/README.md) と旧batch-01・batch-02は、既存の内容のまま参考資料として保持する。正式採用稿ではない。優れたキャッチコピーや表現も、利用者の承認なく本文へ混ぜない。
+
+## 今後の担当と停止範囲
+
+- ChatGPT側が20種類ずつ完成原稿を制作する。s001〜s210の全210種類が保存済み。公開サイトへの反映は別途の実装指示と最終確認を待つ。
+- Codexは保存、データ形式への変換、実装、照合、テストを担当する。別案の自動生成や作り直す提案は不要。
+- 写真、サイトデザイン、URL、鉱物情報、安全注意、石ID、slug、検索、カテゴリ、ナビゲーションは維持する。
+- 210種類すべての原稿が完成するまで、公開サイトの本文を変更しない。
+- 現段階では確認用ブランチへの保存と照合まで。公開用PR・マージ・デプロイは行わない。

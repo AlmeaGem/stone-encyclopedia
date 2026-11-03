@@ -1,4 +1,7 @@
 ---
+import ManuscriptBody from '../../components/ManuscriptBody.astro';
+import { approvedManuscript } from '../../lib/approved-manuscripts';
+import '../../manuscript-layout.css';
 import SectionHeading from '../../components/SectionHeading.astro';
 import Prose from '../../components/Prose.astro';
 import ReportNudge from '../../components/ReportNudge.astro';
@@ -24,6 +27,20 @@ export function getStaticPaths() {
   }));
 }
 const { stone } = Astro.props;
+const manuscript = approvedManuscript(stone.id);
+const storySections = manuscript.sections.filter(
+  (s) =>
+    s.kind !== 'pairings' &&
+    !s.heading.startsWith('見どころ') &&
+    !s.heading.startsWith('取り扱い'),
+);
+const pairSections = manuscript.sections.filter((s) => s.kind === 'pairings');
+const qualitySections = manuscript.sections.filter((s) =>
+  s.heading.startsWith('見どころ'),
+);
+const careSections = manuscript.sections.filter((s) =>
+  s.heading.startsWith('取り扱い'),
+);
 const references = publicReferences(stone.sources);
 const related = stone.related.map(stoneById).filter(Boolean);
 const synergies = (stone.synergyStoneIds || []).map(stoneById).filter(Boolean);
@@ -42,7 +59,7 @@ const schema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: `${stone.name}の特徴・選び方・伝承`,
-  description: stone.introduction,
+  description: manuscript.catchphrase,
   dateModified: stone.updatedAt,
   inLanguage: 'ja-JP',
   mainEntityOfPage: canonical(`stones/${stone.slug}/`),
@@ -75,13 +92,13 @@ const schema = {
           {stone.classification || kindLabels[stone.kind]}
         </span>
         <h1>{stone.name}</h1>
+        <p class="manuscript-catchphrase">{manuscript.catchphrase}</p>
         <p class="detail-english">{stone.english}</p>
         {stone.aliases.length > 0 && (
           <p class="aliases">
             別名・関連する流通名：{stone.aliases.join(' / ')}
           </p>
         )}
-        <Prose text={stone.introduction} />
         <div class="tag-list">
           {stone.colors.map((c) => (
             <span>{c}</span>
@@ -96,14 +113,92 @@ const schema = {
     <div class="detail-layout">
       <aside class="detail-toc">
         <p class="eyebrow">ON THIS PAGE</p>
+        <a href="#story">物語・スピリチュアルな意味・願い</a>
+        <a href="#pairing">相性のよい石</a>
+        <a href="#quality">見どころ・選び方</a>
         <a href="#nature">鉱物・物理的な情報</a>
-        <a href="#quality">品質・選び方</a>
-        <a href="#story">伝説・スピリチュアルな意味</a>
-        <a href="#pairing">意味・相性と組み合わせ</a>
         <a href="#care">浄化・取り扱い</a>
         {references.length > 0 && <a href="#references">参考文献・出典</a>}
       </aside>
       <div class="detail-body">
+        <div id="story" class="approved-story" data-manuscript-id={stone.id}>
+          {storySections.map((section) =>
+            section.subordinate ? (
+              <section class="manuscript-subsection">
+                <h3>{section.heading}</h3>
+                <ManuscriptBody section={section} />
+              </section>
+            ) : (
+              <section class="detail-section manuscript-section">
+                <SectionHeading>{section.heading}</SectionHeading>
+                <ManuscriptBody section={section} />
+              </section>
+            ),
+          )}
+          {stone.legendSourceUrl && (
+            <p class="quiet-note">
+              <a
+                class="text-link"
+                href={stone.legendSourceUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                来歴・伝承の参考資料：{stone.legendSourceLabel || '出典を開く'}{' '}
+                ↗
+              </a>
+            </p>
+          )}
+          <div class="tag-list">
+            {stone.wishes.map((id) => (
+              <a href={pathTo(`wishes/${id}/`)}>
+                {categories.find((c) => c.id === id)?.name} ↗
+              </a>
+            ))}
+          </div>
+        </div>
+        <section id="pairing" class="detail-section manuscript-section">
+          {pairSections.map((section) => (
+            <>
+              <SectionHeading>{section.heading}</SectionHeading>
+              <ManuscriptBody section={section} />
+            </>
+          ))}
+          {synergies.length > 0 && (
+            <div class="tag-list">
+              {synergies.map(
+                (s) =>
+                  s && <a href={pathTo(`stones/${s.slug}/`)}>{s.name} ↗</a>,
+              )}
+            </div>
+          )}
+          {cautions.length > 0 && stone.cautionNote && (
+            <>
+              <h3>組み合わせを避けたい石</h3>
+              <Prose text={stone.cautionNote} />
+              <div class="tag-list">
+                {cautions.map(
+                  (s) =>
+                    s && <a href={pathTo(`stones/${s.slug}/`)}>{s.name} ↗</a>,
+                )}
+              </div>
+            </>
+          )}
+        </section>
+        <section id="quality" class="detail-section manuscript-section">
+          {qualitySections.map((section) => (
+            <>
+              <SectionHeading>{section.heading}</SectionHeading>
+              <ManuscriptBody section={section} />
+            </>
+          ))}
+          <h3>模造品・処理石を確認する</h3>
+          <p>
+            {stone.treatments ||
+              '色や写真だけで天然・合成・模造・処理の有無を断定できません。購入時には素材、処理表示、鑑別情報を確認してください。'}
+          </p>
+          <h3>形状の違い</h3>
+          <Prose text={stone.shapes} />
+        </section>
         <section id="nature" class="detail-section">
           <p class="eyebrow">01 / NATURE</p>
           <SectionHeading>鉱物・物理的な情報</SectionHeading>
@@ -133,93 +228,15 @@ const schema = {
             </p>
           )}
         </section>
-        <section id="quality" class="detail-section">
-          <p class="eyebrow">02 / QUALITY</p>
-          <SectionHeading>宝石としての見方・選び方</SectionHeading>
-          <Prose text={stone.quality} />
-          <h3>模造品・処理石を確認する</h3>
-          <p>
-            {stone.treatments ||
-              '色や写真だけで天然・合成・模造・処理の有無を断定できません。購入時には素材、処理表示、鑑別情報を確認してください。'}
-          </p>
-          <h3>選ぶときの視点</h3>
-          <Prose text={stone.selection} />
-          <h3>形状の違い</h3>
-          <Prose text={stone.shapes} />
-        </section>
-        <section id="story" class="detail-section story-section">
-          <p class="eyebrow">03 / SPIRITUAL MEANING</p>
-          <SectionHeading>
-            伝説と、<span class="heading-run">スピリチュアルな意味</span>
-          </SectionHeading>
-          <p class="quiet-note">
-            ここで紹介する意味は、文化的な伝承や現代のクリスタル文化の解釈です。鉱物の性質とは分けてお読みください。
-          </p>
-          <h3>来歴・伝説・言い伝え</h3>
-          {stone.legend ? (
-            <Prose text={stone.legend} />
-          ) : (
-            <p class="quiet-note">
-              この石ならではの伝承は調査中です。確認できたものから順次掲載します。
-            </p>
-          )}
-          {stone.legendSourceUrl && (
-            <p class="quiet-note">
-              <a
-                class="text-link"
-                href={stone.legendSourceUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                来歴・伝承の参考資料：{stone.legendSourceLabel || '出典を開く'}{' '}
-                ↗
-              </a>
-            </p>
-          )}
-          <h3>スピリチュアルな意味・象徴</h3>
-          <Prose text={stone.spiritualEffects || stone.symbolism} />
-          <h3>こんな願いを持つ人に</h3>
-          <div class="tag-list">
-            {stone.wishes.map((id) => {
-              const c = categories.find((x) => x.id === id);
-              return c && <a href={pathTo(`wishes/${id}/`)}>{c.name} ↗</a>;
-            })}
-          </div>
-        </section>
-        <section id="pairing" class="detail-section">
-          <p class="eyebrow">04 / STONE PAIRINGS</p>
-          <SectionHeading>相性を考えた組み合わせ</SectionHeading>
-          <p class="quiet-note">
-            伝承の意味や色・質感を重ねたALMÉA GEMの提案です。
-          </p>
-          <h3>意味やテーマを重ねる石</h3>
-          {stone.synergyNote && <Prose text={stone.synergyNote} />}
-          {synergies.length > 0 ? (
-            <div class="tag-list">
-              {synergies.map(
-                (s) =>
-                  s && <a href={pathTo(`stones/${s.slug}/`)}>{s.name} ↗</a>,
-              )}
-            </div>
-          ) : !stone.synergyNote ? (
-            <p class="quiet-note">組み合わせの紹介を準備しています。</p>
-          ) : null}
-          {cautions.length > 0 && stone.cautionNote && (
-            <>
-              <h3>組み合わせを避けたい石</h3>
-              <Prose text={stone.cautionNote} />
-              <div class="tag-list">
-                {cautions.map(
-                  (s) =>
-                    s && <a href={pathTo(`stones/${s.slug}/`)}>{s.name} ↗</a>,
-                )}
-              </div>
-            </>
-          )}
-        </section>
         <section id="care" class="detail-section">
           <p class="eyebrow">05 / CARE</p>
           <SectionHeading>浄化と、取り扱いの注意</SectionHeading>
+          {careSections.map((section) => (
+            <div class="manuscript-care">
+              <h3>{section.heading}</h3>
+              <ManuscriptBody section={section} />
+            </div>
+          ))}
           <Prose text={stone.cleansing} />
           <div class="notice">{publicHandling(stone.handling)}</div>
           <a class="text-link" href={pathTo('articles/care/')}>

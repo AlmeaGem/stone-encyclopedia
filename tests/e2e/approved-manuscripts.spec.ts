@@ -1,0 +1,85 @@
+import { test, expect } from '@playwright/test';
+import { mkdir } from 'node:fs/promises';
+import stones from '../../src/content/stones.json' with { type: 'json' };
+import {
+  approvedManuscript,
+  manuscriptItems,
+} from '../../src/lib/approved-manuscripts';
+
+const plain = (text: string) => text.replace(/\*\*/g, '').replace(/\s/g, '');
+test('all 210 pages render every approved paragraph once and retain safety information', async ({
+  page,
+}) => {
+  test.setTimeout(300000);
+  for (const stone of stones) {
+    await page.goto(`/stones/${stone.slug}/`);
+    const manuscript = approvedManuscript(stone.id);
+    await expect(page.locator('h1')).toHaveText(stone.name);
+    await expect(page.locator('h1 + .manuscript-catchphrase')).toHaveText(
+      manuscript.catchphrase,
+    );
+    const rendered = await page
+      .locator('.manuscript-paragraph, .manuscript-wishes li')
+      .allTextContents();
+    const expected = manuscript.sections
+      .flatMap((s) => manuscriptItems(s))
+      .map(plain)
+      .sort();
+    expect(rendered.map(plain).sort(), stone.id).toEqual(expected);
+    await expect(page.locator('#care')).toContainText(
+      stone.handling.replace(/^移行資料の注意メモ[：:]/u, '取り扱いの注意：'),
+    );
+    await expect(page.locator('.detail-body')).not.toContainText(
+      /Codex|編集メモ|制作区分/,
+    );
+  }
+});
+
+test('approved long copy remains readable at phone and desktop widths', async ({
+  page,
+}, info) => {
+  for (const width of [375, 390, 430, 1440]) {
+    await page.setViewportSize({ width, height: 1000 });
+    for (const id of ['s001', 's007', 's178', 's187', 's205', 's210']) {
+      const stone = stones.find((s) => s.id === id)!;
+      await page.goto(`/stones/${stone.slug}/`);
+      expect(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth <= innerWidth,
+        ),
+      ).toBe(true);
+      const reading = await page
+        .locator('.manuscript-paragraph')
+        .first()
+        .evaluate((el) => {
+          const style = getComputedStyle(el);
+          return {
+            ratio: parseFloat(style.lineHeight) / parseFloat(style.fontSize),
+            width: el.getBoundingClientRect().width,
+            viewport: innerWidth,
+          };
+        });
+      expect(reading.ratio).toBeGreaterThanOrEqual(1.8);
+      expect(reading.width).toBeLessThanOrEqual(768);
+      expect(reading.width).toBeLessThan(reading.viewport);
+      const sizes = await page
+        .locator('h1, .manuscript-section h2')
+        .evaluateAll((nodes) =>
+          nodes.map((node) => parseFloat(getComputedStyle(node).fontSize)),
+        );
+      expect(sizes[0]).toBeGreaterThan(Math.max(...sizes.slice(1)));
+      await expect(page.locator('.manuscript-wishes li').first()).toBeVisible();
+      if (
+        info.project.name === 'desktop' &&
+        ['s001', 's210'].includes(id) &&
+        [390, 1440].includes(width)
+      ) {
+        await mkdir('test-results/approved-manuscripts', { recursive: true });
+        await page.screenshot({
+          path: `test-results/approved-manuscripts/${id}-${width}.png`,
+          fullPage: true,
+        });
+      }
+    }
+  }
+});

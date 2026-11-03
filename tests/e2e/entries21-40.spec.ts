@@ -1,3 +1,4 @@
+import { approvedText } from '../helpers/approved-text';
 import { publicStone } from '../../src/lib/public-stone';
 import { test, expect } from '@playwright/test';
 import { readFile, mkdir } from 'node:fs/promises';
@@ -17,7 +18,7 @@ test('entries 21-40 preserve names, source links and responsive detail sections'
         stone.characteristics,
       );
       await expect(page.locator('#story')).toContainText(
-        stone.spiritualEffects || stone.symbolism,
+        approvedText(stone.id, 'スピリチュアルな意味'),
       );
       await expect(page.locator('#pairing')).toBeVisible();
       if (stone.legendSourceUrl) {

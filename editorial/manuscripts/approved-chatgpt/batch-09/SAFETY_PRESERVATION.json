@@ -1,0 +1,15 @@
+{
+  "id": "s178",
+  "name": "フェナカイト",
+  "sourceFile": "src/content/stones.json",
+  "sourceSha256": "51e9203c2323382f190b7dbcb2955f40d5a3881fde9534050fb07ccda6542519",
+  "catalogUnchanged": true,
+  "preservedFields": {
+    "mineral": "ベリリウムケイ酸塩鉱物。無色の透明ルースと粉じんの出る加工工程は区別する",
+    "characteristics": "フェナカイトはベリリウムを含む無色透明のケイ酸塩鉱物で、水晶に似た外観を持つものの組成・硬度が異なります。鉱物の正式表記はPhenakiteで、Phenaciteは別綴りです。",
+    "handling": "ベリリウムを含む素材の粉じん・煙・ミストを吸入する加工は健康上のリスクを伴います。完成した研磨ルースと粉じんを出す自家切削・粉砕を区別し、原石の加工は安全管理のある専門業者へ委ねてください。",
+    "classification": "独立したベリリウムケイ酸塩鉱物・フェナサイト"
+  },
+  "handlingSha256": "5dba126c3f50eef5db047352addbc5cf28c59bef5be1ad6a108e17656d1691ef",
+  "publicationStatus": "not-published; existing safety information retained without edits"
+}

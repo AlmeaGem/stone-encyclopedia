@@ -26,14 +26,15 @@ const paths = [
   ...categories.map((c: any) => `/wishes/${c.id}/`),
   ...articles.map((a: any) => `/articles/${a.slug}/`),
 ];
-test('all public pages keep text contrast, reader copy and responsive bounds', async ({
-  page,
-}, info) => {
-  test.setTimeout(360000);
-  const widths =
-    info.project.name === 'mobile' ? [375, 390, 430] : [768, 1280, 1440];
-  const reports = [];
-  for (const width of widths) {
+for (const index of [0, 1, 2]) {
+  test(`all public pages keep text contrast, reader copy and responsive bounds at ${[375, 390, 430][index]}px mobile / ${[768, 1280, 1440][index]}px desktop`, async ({
+    page,
+  }, info) => {
+    const width = (
+      info.project.name === 'mobile' ? [375, 390, 430] : [768, 1280, 1440]
+    )[index];
+    test.setTimeout(300000);
+    const reports = [];
     await page.setViewportSize({ width, height: 1000 });
     for (const path of paths) {
       const response = await page.goto(path);
@@ -64,7 +65,7 @@ test('all public pages keep text contrast, reader copy and responsive bounds', a
       if (path.startsWith('/stones/') && path !== '/stones/') {
         const body = page.locator('.detail-body');
         await expect(body).not.toContainText(
-          /という表現が適切|編集提案|編集上の提案|書籍では|今回の調査|紹介します|説明できます|掲載テーマ|既存の象徴/,
+          /という表現が適切|編集提案|編集上の提案|書籍では|今回の調査|Codex|編集メモ|制作区分|掲載テーマ|既存の象徴/,
         );
         await expect(page.locator('#quality')).toContainText(
           '形だけで運勢や効果の強さは決まりません。波動も大切です。',
@@ -75,10 +76,10 @@ test('all public pages keep text contrast, reader copy and responsive bounds', a
       }
       reports.push({ width, path, ...audit });
     }
-  }
-  await mkdir('test-results/readability', { recursive: true });
-  await writeFile(
-    `test-results/readability/contrast-${info.project.name}.json`,
-    JSON.stringify({ widths, pages: paths.length, reports }, null, 2),
-  );
-});
+    await mkdir('test-results/readability', { recursive: true });
+    await writeFile(
+      `test-results/readability/contrast-${info.project.name}-${width}.json`,
+      JSON.stringify({ width, pages: paths.length, reports }, null, 2),
+    );
+  });
+}

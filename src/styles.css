@@ -65,10 +65,13 @@
     --line: #e7dfd5;
     --rose: #80565e;
     --beige: #f3eee6;
-    --serif: 'Noto Serif CJK JP', 'Yu Mincho', 'Hiragino Mincho ProN', serif;
+    --heading-font:
+      'Zen Kaku Gothic New', 'Noto Sans CJK JP', 'Hiragino Kaku Gothic ProN',
+      'Yu Gothic', sans-serif;
+    --serif: var(--heading-font);
     --sans:
-      Arial, 'Noto Sans CJK JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic',
-      sans-serif;
+      'Zen Maru Gothic', Arial, 'Noto Sans CJK JP', 'Hiragino Kaku Gothic ProN',
+      'Yu Gothic', sans-serif;
   }
   body {
     background: var(--paper);
@@ -95,7 +98,7 @@
     font-size: 17px;
   }
   p {
-    line-height: 1.95;
+    line-height: 1.85;
   }
   button,
   input,
@@ -1699,7 +1702,7 @@
   .stone-heading > div > p:not(.eyebrow, .detail-english, .aliases) {
     color: var(--text);
     font-size: 15px;
-    line-height: 1.95;
+    line-height: 1.85;
   }
   .quiet-note,
   .fine-print,

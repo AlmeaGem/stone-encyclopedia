@@ -1,0 +1,24 @@
+{
+  "policy": "The approved manuscript is stored unchanged. Existing mineral information and safety notices are not replaced or shortened; no safety clearance for wearing or processing is inferred.",
+  "catalogFile": "src/content/stones.json",
+  "catalogFileSha256": "51e9203c2323382f190b7dbcb2955f40d5a3881fde9534050fb07ccda6542519",
+  "siteUpdated": false,
+  "entries": [
+    {
+      "id": "s068",
+      "name": "アクチノライト",
+      "slug": "actinolite",
+      "existingSafetyNotice": "石綿状の繊維は吸入による重大な健康リスクがあります。形態未確認の原石を切削・研磨・穴あけ・洗浄して粉じんを舞わせず、商品化・着用を保留してください。",
+      "existingSafetyNoticeSha256": "b2174797492bbbf1f5e7bb1d3371cf88d49df291ab370804935fd41041f6accc",
+      "sourcePreserved": true
+    },
+    {
+      "id": "s079",
+      "name": "サーペンチン",
+      "slug": "serpentine",
+      "existingSafetyNotice": "原料の石綿成分が不明なら研磨・穴あけ・粉砕を行わず、着用品への使用を保留します。安全性を目視・水洗いで証明することはできません。",
+      "existingSafetyNoticeSha256": "b835909f73d6a453c19bd9a0a53823d7f8bc133804c78235ca88bf2b552f4c01",
+      "sourcePreserved": true
+    }
+  ]
+}

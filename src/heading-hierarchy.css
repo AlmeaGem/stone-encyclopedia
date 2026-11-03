@@ -54,7 +54,7 @@
 .detail-section > h3 {
   color: var(--subheading-ink);
   font-size: clamp(20px, 1.7vw, 23px);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.5;
   letter-spacing: 0.015em;
   border-left: 3px solid var(--heading-rule);

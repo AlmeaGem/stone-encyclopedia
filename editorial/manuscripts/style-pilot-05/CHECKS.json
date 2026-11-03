@@ -1,0 +1,75 @@
+{
+  "status": "style-pilot-awaiting-approval",
+  "ids": ["s001", "s003", "s012", "s019", "s028"],
+  "records": 5,
+  "catchCopies": 5,
+  "wishes": 20,
+  "originalPairingsPreserved": true,
+  "identityMineralogySafetyPreserved": true,
+  "previousDraftsPreserved": true,
+  "otherDraftBatchesChanged": [],
+  "productionChanges": [],
+  "s041AndLaterStarted": false,
+  "otherStoneProductionPaused": true,
+  "siteUpdated": false,
+  "prCreated": false,
+  "merged": false,
+  "deployed": false,
+  "bannedStockPhrasesInManuscripts": 0,
+  "externalSourceRecheck": "blocked by proxy 403; not independently verified",
+  "entries": [
+    {
+      "id": "s001",
+      "name": "オブシディアン",
+      "slug": "obsidian",
+      "characters": 1326,
+      "manuscriptSha256": "2493d2dbd96136e693c3bc99648fec52bc5bd7bfd55bdb1be684c6428d1e98d0"
+    },
+    {
+      "id": "s003",
+      "name": "ジェット",
+      "slug": "jet",
+      "characters": 1290,
+      "manuscriptSha256": "22966d645cf26c4edca2d6cf088277ba0ca447512fc0313a64d9a56df5a185db"
+    },
+    {
+      "id": "s012",
+      "name": "ヌーマイト",
+      "slug": "nuummite",
+      "characters": 1307,
+      "manuscriptSha256": "1b602f36aa601eee9a4f0e0075ecacffda0f6d6628a6ba8e5302fd219df1dbd4"
+    },
+    {
+      "id": "s019",
+      "name": "モリオン",
+      "slug": "morion",
+      "characters": 1164,
+      "manuscriptSha256": "d9a69358ff4d289e673614362671e79ab902c37f411642cf5cde348e4c690f1d"
+    },
+    {
+      "id": "s028",
+      "name": "ガーネット",
+      "slug": "garnet",
+      "characters": 1266,
+      "manuscriptSha256": "b7a91177d67cc054537c7c14840c71b510e17af667bb7191cd31bde939b7625a"
+    }
+  ],
+  "browserReview": [
+    {
+      "width": 375,
+      "overflow": false,
+      "font": 17,
+      "textFieldsCompared": 142,
+      "safetyFieldsCompared": 5
+    },
+    {
+      "width": 1280,
+      "overflow": false,
+      "font": 17,
+      "textFieldsCompared": 142,
+      "safetyFieldsCompared": 5
+    }
+  ],
+  "renderedTextMatchesCanonicalDrafts": true,
+  "externalRequestsFromReview": 0
+}
