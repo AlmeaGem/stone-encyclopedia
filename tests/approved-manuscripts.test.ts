@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import {
   approvedManuscript,
   manuscriptItems,
+  manuscriptPairings,
 } from '../src/lib/approved-manuscripts';
 import stones from '../src/content/stones.json' with { type: 'json' };
 
@@ -34,6 +35,37 @@ describe('approved manuscripts', () => {
         expect(manuscript.sections).toHaveLength(9);
     });
   }
+  it('resolves every approved pairing to its named stone without editing source text', () => {
+    const byId = new Map(stones.map((stone) => [stone.id, stone]));
+    let total = 0;
+    let unbolded = 0;
+    for (const stone of stones) {
+      const sections = approvedManuscript(stone.id).sections.filter(
+        (section) => section.kind === 'pairings',
+      );
+      expect(sections.length, stone.id).toBeGreaterThan(0);
+      for (const section of sections) {
+        const entries = manuscriptPairings(section);
+        expect(entries.length, stone.id).toBeGreaterThan(0);
+        for (const entry of entries) {
+          total++;
+          if (!entry.sourceText.startsWith('**')) unbolded++;
+          expect(entry.description.length, stone.id).toBeGreaterThan(0);
+          const target = byId.get(entry.stoneId);
+          expect(target, stone.id).toBeDefined();
+          expect(
+            entry.name === target!.name || target!.aliases.includes(entry.name),
+            stone.id,
+          ).toBe(true);
+        }
+        const normalize = (value: string) => value.replace(/\\s/g, '');
+        expect(normalize(entries.map((entry) => entry.sourceText).join('')), stone.id)
+          .toBe(normalize(section.paragraphs.join('')));
+      }
+    }
+    expect(total).toBeGreaterThan(210);
+    expect(unbolded).toBeGreaterThan(0);
+  });
   it('rejects missing IDs instead of silently displaying old copy', () => {
     expect(() => approvedManuscript('s999')).toThrow();
   });
