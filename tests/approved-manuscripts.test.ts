@@ -4,7 +4,6 @@ import {
   approvedManuscript,
   manuscriptItems,
   manuscriptPairings,
-  manuscriptPairings,
 } from '../src/lib/approved-manuscripts';
 import stones from '../src/content/stones.json' with { type: 'json' };
 
@@ -32,7 +31,9 @@ describe('approved manuscripts', () => {
         );
         expect(section.paragraphs.join('')).not.toMatch(/Codex|編集メモ/);
       }
-      const pairSections = manuscript.sections.filter((s) => s.kind === 'pairings');
+      const pairSections = manuscript.sections.filter(
+        (s) => s.kind === 'pairings',
+      );
       expect(pairSections).toHaveLength(1);
       const pairs = manuscriptPairings(pairSections[0]);
       expect(pairs.length, stone.id).toBeGreaterThan(1);
