@@ -1,0 +1,18 @@
+---
+interface Props {
+  text: string;
+}
+const { text } = Astro.props;
+const parts = text.split('｜');
+---
+
+{parts.map((part, index) => (
+  <>
+    {index > 0 && (
+      <>
+        ｜<br class="manuscript-heading-break" />
+      </>
+    )}
+    {part}
+  </>
+))}
