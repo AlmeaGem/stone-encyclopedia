@@ -1,10 +1,11 @@
 /* Reading layout only. Inherit every existing font family. */
 .stone-heading h1 {
   font-size: clamp(34px, 3.2vw, 46px);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.4;
 }
 .stone-heading .manuscript-catchphrase {
+  font-family: var(--heading-font);
   color: #705047;
   font-size: clamp(17px, 1.7vw, 21px);
   font-weight: 500;
@@ -40,7 +41,7 @@
 .manuscript-care h3 {
   color: var(--subheading-ink);
   font-size: clamp(20px, 1.7vw, 23px);
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.5;
   border-left: 3px solid var(--heading-rule);
   padding-left: 12px;
