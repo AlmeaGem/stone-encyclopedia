@@ -1,0 +1,127 @@
+---
+import { stones, photoFor } from '../lib/content';
+import { approvedManuscript } from '../lib/approved-manuscripts';
+import { dailyOrder } from '../lib/daily-discovery';
+import { pathTo } from '../lib/urls';
+const byId = new Map(stones.map((stone) => [stone.id, stone]));
+const catalog = dailyOrder(stones.map((stone) => stone.id)).map((id) => {
+  const stone = byId.get(id)!;
+  const photo = photoFor(stone);
+  if (!photo?.localPath) throw new Error(`Missing approved daily image: ${id}`);
+  const impression = ['ai-generated', 'illustrative-photo'].includes(
+    photo.imageKind || '',
+  );
+  return {
+    id,
+    name: stone.name,
+    catchphrase: approvedManuscript(id).catchphrase,
+    href: pathTo(`stones/${stone.slug}/`),
+    image: pathTo(photo.localPath),
+    alt: impression
+      ? `${stone.name}のイメージ画像${photo.imageKind === 'ai-generated' ? '（AI生成）' : ''}`
+      : photo.alt || `${stone.name}の承認済み写真`,
+    impression,
+  };
+});
+const fallback = catalog[0];
+---
+
+<section
+  class="daily-discovery wrap"
+  aria-labelledby="daily-title"
+  data-daily-catalog={JSON.stringify(catalog)}
+>
+  <div class="daily-discovery-inner">
+    <div class="daily-image stone-figure">
+      <img
+        src={fallback.image}
+        alt={fallback.alt}
+        width="960"
+        height="960"
+        loading="lazy"
+        decoding="async"
+        draggable="false"
+        data-daily-image
+      />
+      <span
+        class="image-impression-label"
+        data-daily-impression
+        hidden={!fallback.impression}
+      >
+        ※ イメージ画像
+      </span>
+    </div>
+    <div class="daily-copy">
+      <p class="daily-eyebrow">DAILY DISCOVERY</p>
+      <h2 id="daily-title">今日ひらく石</h2>
+      <p class="daily-intro">210の石の物語から、今日の一頁を。</p>
+      <p class="daily-id" data-daily-id>
+        {fallback.id.toUpperCase()}
+      </p>
+      <h3 data-daily-name>{fallback.name}</h3>
+      <p class="daily-catchphrase" data-daily-catchphrase>
+        {fallback.catchphrase}
+      </p>
+      <a class="daily-link" href={fallback.href} data-daily-link>
+        この石の物語を読む <span aria-hidden="true">↗</span>
+      </a>
+      <noscript>
+        <p class="daily-noscript">図鑑から一石をご紹介しています。</p>
+      </noscript>
+    </div>
+  </div>
+</section>
+<script>
+  import {
+    dailyIndex,
+    millisecondsUntilTokyoMidnight,
+  } from '../lib/daily-discovery';
+  type Entry = {
+    id: string;
+    name: string;
+    catchphrase: string;
+    href: string;
+    image: string;
+    alt: string;
+    impression: boolean;
+  };
+  const root = document.querySelector<HTMLElement>('[data-daily-catalog]');
+  if (root?.dataset.dailyCatalog) {
+    const catalog: Entry[] = JSON.parse(root.dataset.dailyCatalog);
+    const img = root.querySelector<HTMLImageElement>('[data-daily-image]')!;
+    const label = root.querySelector<HTMLElement>('[data-daily-impression]')!;
+    const id = root.querySelector<HTMLElement>('[data-daily-id]')!;
+    const name = root.querySelector<HTMLElement>('[data-daily-name]')!;
+    const catchphrase = root.querySelector<HTMLElement>(
+      '[data-daily-catchphrase]',
+    )!;
+    const link = root.querySelector<HTMLAnchorElement>('[data-daily-link]')!;
+    let current = -1;
+    let timer: number;
+    const update = () => {
+      const now = Date.now();
+      const index = dailyIndex(now, catalog.length);
+      if (index !== current) {
+        current = index;
+        const entry = catalog[index];
+        img.src = entry.image;
+        img.alt = entry.alt;
+        label.hidden = !entry.impression;
+        id.textContent = entry.id.toUpperCase();
+        name.textContent = entry.name;
+        catchphrase.textContent = entry.catchphrase;
+        link.href = entry.href;
+      }
+      window.clearTimeout(timer);
+      timer = window.setTimeout(
+        update,
+        millisecondsUntilTokyoMidnight(now) + 100,
+      );
+    };
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden) update();
+    });
+    window.addEventListener('pageshow', update);
+    update();
+  }
+</script>

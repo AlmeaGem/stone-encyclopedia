@@ -1859,3 +1859,115 @@
     border-top: 1px solid #e7dcd2;
   }
 }
+
+@layer components {
+  .daily-discovery {
+    margin-block: 28px 48px;
+  }
+  .daily-discovery-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: center;
+    background: #faf6f1;
+    border-block: 1px solid #dfd1c3;
+  }
+  .daily-image {
+    position: relative;
+    margin: 0;
+    min-width: 0;
+  }
+  .daily-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1.25;
+    object-fit: cover;
+  }
+  .daily-image .image-impression-label {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+  }
+  .daily-image .image-impression-label[hidden] {
+    display: none;
+  }
+  .daily-copy {
+    padding: clamp(22px, 4vw, 54px);
+  }
+  .daily-eyebrow,
+  .daily-id {
+    color: #846d60;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+  }
+  .daily-copy h2 {
+    margin: 8px 0;
+    font-family: var(--heading-font);
+    font-size: clamp(24px, 2.4vw, 34px);
+    font-weight: 500;
+  }
+  .daily-intro {
+    color: #75665e;
+    font-size: 14px;
+  }
+  .daily-id {
+    margin: 22px 0 4px;
+  }
+  .daily-copy h3 {
+    margin: 0;
+    font-family: var(--heading-font);
+    font-size: clamp(21px, 2vw, 28px);
+    font-weight: 500;
+    overflow-wrap: anywhere;
+  }
+  .daily-catchphrase {
+    margin: 8px 0 18px;
+    line-height: 1.8;
+    font-size: 14px;
+  }
+  .daily-link {
+    display: inline-block;
+    color: #705047;
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+    min-height: 44px;
+    padding-block: 10px;
+  }
+  .daily-noscript {
+    font-size: 12px;
+    color: #75665e;
+  }
+  @media (max-width: 640px) {
+    .daily-discovery {
+      margin-block: 20px 36px;
+    }
+    .daily-discovery-inner {
+      grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+      align-items: stretch;
+    }
+    .daily-image img {
+      height: 100%;
+      aspect-ratio: auto;
+    }
+    .daily-image .image-impression-label[hidden] {
+      display: none;
+    }
+    .daily-copy {
+      padding: 18px 14px;
+    }
+    .daily-copy h2 {
+      font-size: 21px;
+    }
+    .daily-copy h3 {
+      font-size: 19px;
+    }
+    .daily-intro,
+    .daily-catchphrase {
+      font-size: 13px;
+      line-height: 1.65;
+    }
+    .daily-id {
+      margin-top: 12px;
+    }
+  }
+}
