@@ -110,3 +110,30 @@
     line-height: 1.85;
   }
 }
+
+/* Quiet book-like rules frame the photographs and the manuscript. */
+.home-hero .hero-copy {
+  border-block: 1px solid #e7dcd2;
+  padding-block: clamp(24px, 4vw, 48px);
+}
+.home-search {
+  border-top: 1px solid #e7dcd2;
+}
+.detail-body .manuscript-section,
+.detail-body .manuscript-subsection {
+  scroll-margin-top: 24px;
+}
+.manuscript-pairings .manuscript-pairing-name {
+  transition:
+    color 160ms ease,
+    background-color 160ms ease;
+}
+.manuscript-pairings .manuscript-pairing-name:hover {
+  color: #65453f;
+  background-color: #f6eae6;
+}
+@media (prefers-reduced-motion: reduce) {
+  .manuscript-pairings .manuscript-pairing-name {
+    transition: none;
+  }
+}
