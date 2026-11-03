@@ -26,14 +26,15 @@ const paths = [
   ...categories.map((c: any) => `/wishes/${c.id}/`),
   ...articles.map((a: any) => `/articles/${a.slug}/`),
 ];
-test('all public pages keep text contrast, reader copy and responsive bounds', async ({
-  page,
-}, info) => {
-  test.setTimeout(360000);
-  const widths =
-    info.project.name === 'mobile' ? [375, 390, 430] : [768, 1280, 1440];
-  const reports = [];
-  for (const width of widths) {
+for (const index of [0, 1, 2]) {
+  test(`all public pages keep text contrast, reader copy and responsive bounds at ${[375, 390, 430][index]}px mobile / ${[768, 1280, 1440][index]}px desktop`, async ({
+    page,
+  }, info) => {
+    const width = (
+      info.project.name === 'mobile' ? [375, 390, 430] : [768, 1280, 1440]
+    )[index];
+    test.setTimeout(300000);
+    const reports = [];
     await page.setViewportSize({ width, height: 1000 });
     for (const path of paths) {
       const response = await page.goto(path);
@@ -75,10 +76,10 @@ test('all public pages keep text contrast, reader copy and responsive bounds', a
       }
       reports.push({ width, path, ...audit });
     }
-  }
-  await mkdir('test-results/readability', { recursive: true });
-  await writeFile(
-    `test-results/readability/contrast-${info.project.name}.json`,
-    JSON.stringify({ widths, pages: paths.length, reports }, null, 2),
-  );
-});
+    await mkdir('test-results/readability', { recursive: true });
+    await writeFile(
+      `test-results/readability/contrast-${info.project.name}-${width}.json`,
+      JSON.stringify({ width, pages: paths.length, reports }, null, 2),
+    );
+  });
+}
