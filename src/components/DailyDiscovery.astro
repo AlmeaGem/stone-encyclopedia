@@ -32,6 +32,11 @@ const fallback = catalog[0];
   data-daily-catalog={JSON.stringify(catalog)}
 >
   <div class="daily-discovery-inner">
+    <div class="daily-heading">
+      <p class="daily-eyebrow">DAILY DISCOVERY</p>
+      <h2 id="daily-title">今日ひらく石</h2>
+      <p class="daily-intro">210の石の物語から、今日の一頁を。</p>
+    </div>
     <div class="daily-image stone-figure">
       <img
         src={fallback.image}
@@ -52,9 +57,6 @@ const fallback = catalog[0];
       </span>
     </div>
     <div class="daily-copy">
-      <p class="daily-eyebrow">DAILY DISCOVERY</p>
-      <h2 id="daily-title">今日ひらく石</h2>
-      <p class="daily-intro">210の石の物語から、今日の一頁を。</p>
       <p class="daily-id" data-daily-id>
         {fallback.id.toUpperCase()}
       </p>

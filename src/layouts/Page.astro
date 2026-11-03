@@ -19,6 +19,7 @@ interface Props {
   path?: string;
   schema?: Record<string, unknown>;
   safeArea?: boolean;
+  home?: boolean;
 }
 const {
   title = siteName,
@@ -26,6 +27,7 @@ const {
   path = '',
   schema,
   safeArea = true,
+  home = false,
 } = Astro.props;
 const url = canonical(path);
 ---
@@ -90,7 +92,7 @@ const url = canonical(path);
       />
     )}
   </head>
-  <body>
+  <body data-home={home ? 'true' : undefined}>
     <a class="skip" href="#main">
       本文へ
     </a>
