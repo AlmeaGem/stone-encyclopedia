@@ -10,6 +10,12 @@ export type ManuscriptSection = {
   kind: 'prose' | 'wishes' | 'pairings';
   subordinate: boolean;
 };
+export type ManuscriptPairing = {
+  sourceText: string;
+  name: string;
+  description: string;
+  stoneId: string;
+};
 export type ApprovedManuscript = {
   id: string;
   catchphrase: string;
@@ -96,12 +102,56 @@ export function inlineManuscript(text: string) {
       strong: part.startsWith('**'),
     }));
 }
-export function manuscriptItems(section: ManuscriptSection) {
+/** Match only registered stone names/aliases, never punctuation inside a description. */
+const registeredStoneNames = new Map<string, string>();
+for (const stone of rawStones) registeredStoneNames.set(stone.name, stone.id);
+for (const stone of rawStones)
+  for (const alias of stone.aliases)
+    if (!registeredStoneNames.has(alias))
+      registeredStoneNames.set(alias, stone.id);
+const escapeRegExp = (value: string) =>
+  value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const nameAlternation = [...registeredStoneNames.keys()]
+  .sort((a, b) => b.length - a.length)
+  .map(escapeRegExp)
+  .join('|');
+const pairingBoundary = new RegExp(
+  '(?<=[。！？])\\s*(?=(?:\\*\\*)?(?:' + nameAlternation + ')(?:\\*\\*)?[：:])',
+  'gu',
+);
+const pairingLabel = new RegExp(
+  '^\\s*(?:\\*\\*)?(' + nameAlternation + ')(?:\\*\\*)?[：:]',
+  'u',
+);
+
+/** Keep the approved prose unchanged; split it only for display. */
+export function manuscriptPairings(
+  section: ManuscriptSection,
+): ManuscriptPairing[] {
+  if (section.kind !== 'pairings') return [];
   return section.paragraphs.flatMap((paragraph) =>
-    section.kind === 'wishes'
-      ? paragraph.split('／')
-      : section.kind === 'pairings'
-        ? paragraph.split(/(?=\*\*[^*]+\*\*[：:])/u).filter(Boolean)
-        : [paragraph],
+    paragraph
+      .split(pairingBoundary)
+      .filter((part) => part.trim())
+      .map((part) => {
+        const sourceText = part.trim();
+        const match = pairingLabel.exec(sourceText);
+        const stoneId = match && registeredStoneNames.get(match[1]);
+        if (!match || !stoneId)
+          throw new Error('Unresolved approved pairing: ' + sourceText);
+        return {
+          sourceText,
+          name: match[1],
+          description: sourceText.slice(match[0].length).trim(),
+          stoneId,
+        };
+      }),
+  );
+}
+export function manuscriptItems(section: ManuscriptSection) {
+  if (section.kind === 'pairings')
+    return manuscriptPairings(section).map((pairing) => pairing.sourceText);
+  return section.paragraphs.flatMap((paragraph) =>
+    section.kind === 'wishes' ? paragraph.split('／') : [paragraph],
   );
 }

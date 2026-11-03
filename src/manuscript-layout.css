@@ -69,6 +69,18 @@
 .manuscript-pairings strong {
   color: #705047;
 }
+.manuscript-pairings .manuscript-pairing-name {
+  display: inline;
+  font-family: var(--heading-font);
+  font-weight: 500;
+  color: #705047;
+  text-decoration-color: #cdaea7;
+  text-underline-offset: 0.2em;
+}
+.manuscript-pairings .manuscript-pairing-name:focus-visible {
+  outline: 2px solid #98665e;
+  outline-offset: 3px;
+}
 .approved-story {
   scroll-margin-top: 24px;
 }
