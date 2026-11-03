@@ -96,12 +96,66 @@ export function inlineManuscript(text: string) {
       strong: part.startsWith('**'),
     }));
 }
+export type PairingEntry = {
+  name: string;
+  separator: string;
+  description: string;
+  source: string;
+  stoneId: string | null;
+  slug: string | null;
+  resolution: 'canonical' | 'alias' | 'ambiguous' | 'unmatched';
+};
+
+/** Split only at an item boundary: start of paragraph or a completed sentence. */
+export function pairingEntries(section: ManuscriptSection): PairingEntry[] {
+  if (section.kind !== 'pairings')
+    throw new Error('Expected a pairing section');
+  return section.paragraphs.flatMap((paragraph) => {
+    const matches = [
+      ...paragraph.matchAll(
+        /(?:^|(?<=。)|(?<=\n))\s*(?:\*\*)?([^：:\n*]+?)(?:\*\*)?([：:])/gu,
+      ),
+    ];
+    if (
+      !matches.length ||
+      matches[0].index !== 0 ||
+      matches.length !== (paragraph.match(/[：:]/g) || []).length
+    )
+      throw new Error(`Unrecognized pairing format: ${section.heading}`);
+    return matches.map((match, index) => {
+      const source = paragraph.slice(match.index!, matches[index + 1]?.index);
+      const name = match[1].trim();
+      const description = source.slice(match[0].length);
+      const canonical = rawStones.filter((stone) => stone.name === name);
+      const aliases = rawStones.filter((stone) =>
+        (stone.aliases as string[]).includes(name),
+      );
+      const candidates = canonical.length ? canonical : aliases;
+      const stone = candidates.length === 1 ? candidates[0] : undefined;
+      return {
+        name,
+        separator: match[2],
+        description,
+        source,
+        stoneId: stone?.id ?? null,
+        slug: stone?.slug ?? null,
+        resolution:
+          candidates.length > 1
+            ? ('ambiguous' as const)
+            : !stone
+              ? ('unmatched' as const)
+              : canonical.length
+                ? ('canonical' as const)
+                : ('alias' as const),
+      };
+    });
+  });
+}
+
 export function manuscriptItems(section: ManuscriptSection) {
+  if (section.kind === 'pairings')
+    return pairingEntries(section).map((entry) => entry.source);
   return section.paragraphs.flatMap((paragraph) =>
-    section.kind === 'wishes'
-      ? paragraph.split('／')
-      : section.kind === 'pairings'
-        ? paragraph.split(/(?=\*\*[^*]+\*\*[：:])/u).filter(Boolean)
-        : [paragraph],
+    section.kind === 'wishes' ? paragraph.split('／') : [paragraph],
   );
 }

@@ -43,7 +43,6 @@ const careSections = manuscript.sections.filter((s) =>
 );
 const references = publicReferences(stone.sources);
 const related = stone.related.map(stoneById).filter(Boolean);
-const synergies = (stone.synergyStoneIds || []).map(stoneById).filter(Boolean);
 const cautions = (stone.cautionStoneIds || []).map(stoneById).filter(Boolean);
 const reads = articles.filter((a) => a.stoneIds.includes(stone.id));
 const sections = [
@@ -163,14 +162,6 @@ const schema = {
               <ManuscriptBody section={section} />
             </>
           ))}
-          {synergies.length > 0 && (
-            <div class="tag-list">
-              {synergies.map(
-                (s) =>
-                  s && <a href={pathTo(`stones/${s.slug}/`)}>{s.name} ↗</a>,
-              )}
-            </div>
-          )}
           {cautions.length > 0 && stone.cautionNote && (
             <>
               <h3>組み合わせを避けたい石</h3>

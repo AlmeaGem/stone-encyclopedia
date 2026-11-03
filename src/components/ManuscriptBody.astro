@@ -2,8 +2,10 @@
 import {
   inlineManuscript,
   manuscriptItems,
+  pairingEntries,
   type ManuscriptSection,
 } from '../lib/approved-manuscripts';
+import { pathTo } from '../lib/urls';
 interface Props {
   section: ManuscriptSection;
 }
@@ -23,11 +25,25 @@ const items = manuscriptItems(section);
   </ul>
 ) : section.kind === 'pairings' ? (
   <div class="manuscript-pairings">
-    {items.map((text) => (
-      <p class="manuscript-paragraph">
-        {inlineManuscript(text).map((part) =>
-          part.strong ? <strong>{part.text}</strong> : part.text,
-        )}
+    {pairingEntries(section).map((entry) => (
+      <p
+        class="manuscript-paragraph"
+        data-pairing-name={entry.name}
+        data-pairing-id={entry.stoneId ?? undefined}
+      >
+        <span class="pairing-name">
+          {entry.slug ? (
+            <a href={pathTo(`stones/${entry.slug}/`)}>{entry.name}</a>
+          ) : (
+            <strong>{entry.name}</strong>
+          )}
+          {entry.separator}
+        </span>
+        <span class="pairing-description">
+          {inlineManuscript(entry.description).map((part) =>
+            part.strong ? <strong>{part.text}</strong> : part.text,
+          )}
+        </span>
       </p>
     ))}
   </div>

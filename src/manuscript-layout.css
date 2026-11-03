@@ -66,6 +66,20 @@
   padding: 8px 0 8px 16px;
   margin: 0;
 }
+.pairing-name {
+  display: block;
+  color: #705047;
+  font-weight: 600;
+}
+.pairing-name a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.pairing-description {
+  display: block;
+  margin-top: 4px;
+}
 .manuscript-pairings strong {
   color: #705047;
 }

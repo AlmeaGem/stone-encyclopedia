@@ -1,0 +1,3577 @@
+{
+  "s001": [
+    {
+      "name": "モリオン",
+      "id": "s019",
+      "slug": "morion"
+    },
+    {
+      "name": "スモーキークォーツ",
+      "id": "s008",
+      "slug": "smoky-quartz"
+    },
+    {
+      "name": "ロードクロサイト",
+      "id": "s108",
+      "slug": "rhodochrosite"
+    }
+  ],
+  "s002": [
+    {
+      "name": "スタウロライト",
+      "id": "s006",
+      "slug": "staurolite"
+    },
+    {
+      "name": "ブラックオニキス",
+      "id": "s015",
+      "slug": "black-onyx"
+    },
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    }
+  ],
+  "s003": [
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    },
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "モリオン",
+      "id": "s019",
+      "slug": "morion"
+    }
+  ],
+  "s004": [
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    },
+    {
+      "name": "モリオン",
+      "id": "s019",
+      "slug": "morion"
+    },
+    {
+      "name": "セレナイト",
+      "id": "s169",
+      "slug": "selenite"
+    }
+  ],
+  "s005": [
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    },
+    {
+      "name": "スモーキークォーツ",
+      "id": "s008",
+      "slug": "smoky-quartz"
+    },
+    {
+      "name": "ブラックオニキス",
+      "id": "s015",
+      "slug": "black-onyx"
+    }
+  ],
+  "s006": [
+    {
+      "name": "キャストライト",
+      "id": "s002",
+      "slug": "chiastolite"
+    },
+    {
+      "name": "ガーネット",
+      "id": "s028",
+      "slug": "garnet"
+    },
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    }
+  ],
+  "s007": [
+    {
+      "name": "ゴールデンルチルクォーツ",
+      "id": "s209",
+      "slug": "golden-rutilated-quartz"
+    },
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    },
+    {
+      "name": "ブラックオニキス",
+      "id": "s015",
+      "slug": "black-onyx"
+    }
+  ],
+  "s008": [
+    {
+      "name": "モリオン",
+      "id": "s019",
+      "slug": "morion"
+    },
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    },
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    }
+  ],
+  "s009": [
+    {
+      "name": "ブラックオニキス",
+      "id": "s015",
+      "slug": "black-onyx"
+    },
+    {
+      "name": "モリオン",
+      "id": "s019",
+      "slug": "morion"
+    },
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    }
+  ],
+  "s010": [
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    },
+    {
+      "name": "モルダバイト",
+      "id": "s104",
+      "slug": "moldavite"
+    },
+    {
+      "name": "スモーキークォーツ",
+      "id": "s008",
+      "slug": "smoky-quartz"
+    }
+  ],
+  "s011": [
+    {
+      "name": "ロードクロサイト",
+      "id": "s108",
+      "slug": "rhodochrosite"
+    },
+    {
+      "name": "ブラックオニキス",
+      "id": "s015",
+      "slug": "black-onyx"
+    },
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    }
+  ],
+  "s012": [
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    },
+    {
+      "name": "モリオン",
+      "id": "s019",
+      "slug": "morion"
+    },
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    }
+  ],
+  "s013": [
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    },
+    {
+      "name": "サンストーン",
+      "id": "s047",
+      "slug": "sunstone"
+    },
+    {
+      "name": "ガーデンクォーツ",
+      "id": "s073",
+      "slug": "garden-quartz"
+    }
+  ],
+  "s014": [
+    {
+      "name": "ヘマタイト",
+      "id": "s017",
+      "slug": "hematite"
+    },
+    {
+      "name": "カーネリアン",
+      "id": "s046",
+      "slug": "carnelian"
+    },
+    {
+      "name": "ブラックオニキス",
+      "id": "s015",
+      "slug": "black-onyx"
+    }
+  ],
+  "s015": [
+    {
+      "name": "ゴールデンルチルクォーツ",
+      "id": "s209",
+      "slug": "golden-rutilated-quartz"
+    },
+    {
+      "name": "ヘマタイト",
+      "id": "s017",
+      "slug": "hematite"
+    },
+    {
+      "name": "オブシディアン",
+      "id": "s001",
+      "slug": "obsidian"
+    }
+  ],
+  "s016": [
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    },
+    {
+      "name": "カーネリアン",
+      "id": "s046",
+      "slug": "carnelian"
+    },
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    }
+  ],
+  "s017": [
+    {
+      "name": "タイガーアイ",
+      "id": "s057",
+      "slug": "tiger-eye"
+    },
+    {
+      "name": "ブラックオニキス",
+      "id": "s015",
+      "slug": "black-onyx"
+    },
+    {
+      "name": "ゴールデンルチルクォーツ",
+      "id": "s209",
+      "slug": "golden-rutilated-quartz"
+    }
+  ],
+  "s018": [
+    {
+      "name": "モルダバイト",
+      "id": "s104",
+      "slug": "moldavite"
+    },
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s019": [
+    {
+      "name": "オブシディアン",
+      "id": "s001",
+      "slug": "obsidian"
+    },
+    {
+      "name": "スモーキークォーツ",
+      "id": "s008",
+      "slug": "smoky-quartz"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s020": [
+    {
+      "name": "サンストーン",
+      "id": "s047",
+      "slug": "sunstone"
+    },
+    {
+      "name": "ヘマタイト",
+      "id": "s017",
+      "slug": "hematite"
+    },
+    {
+      "name": "ガーネット",
+      "id": "s028",
+      "slug": "garnet"
+    }
+  ],
+  "s021": [
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "ブラックオニキス",
+      "id": "s015",
+      "slug": "black-onyx"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s022": [
+    {
+      "name": "モスアゲート",
+      "id": "s024",
+      "slug": "moss-agate"
+    },
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "アベンチュリン",
+      "id": "s069",
+      "slug": "aventurine"
+    }
+  ],
+  "s023": [
+    {
+      "name": "オブシディアン",
+      "id": "s001",
+      "slug": "obsidian"
+    },
+    {
+      "name": "カーネリアン",
+      "id": "s046",
+      "slug": "carnelian"
+    },
+    {
+      "name": "タイガーアイ",
+      "id": "s057",
+      "slug": "tiger-eye"
+    }
+  ],
+  "s024": [
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    },
+    {
+      "name": "グリーンアベンチュリン",
+      "id": "s069",
+      "slug": "aventurine"
+    },
+    {
+      "name": "ロードクロサイト",
+      "id": "s108",
+      "slug": "rhodochrosite"
+    }
+  ],
+  "s025": [
+    {
+      "name": "ガーネット",
+      "id": "s028",
+      "slug": "garnet"
+    },
+    {
+      "name": "カーネリアン",
+      "id": "s046",
+      "slug": "carnelian"
+    },
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    }
+  ],
+  "s026": [
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    },
+    {
+      "name": "サンストーン",
+      "id": "s047",
+      "slug": "sunstone"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s027": [
+    {
+      "name": "ゴールデンルチルクォーツ",
+      "id": "s209",
+      "slug": "golden-rutilated-quartz"
+    },
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    },
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    }
+  ],
+  "s028": [
+    {
+      "name": "ルビー",
+      "id": "s106",
+      "slug": "ruby"
+    },
+    {
+      "name": "アルマンディン",
+      "id": "s029",
+      "slug": "almandine"
+    },
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    }
+  ],
+  "s029": [
+    {
+      "name": "ガーネット",
+      "id": "s028",
+      "slug": "garnet"
+    },
+    {
+      "name": "スモーキークォーツ",
+      "id": "s008",
+      "slug": "smoky-quartz"
+    },
+    {
+      "name": "ルビー",
+      "id": "s106",
+      "slug": "ruby"
+    }
+  ],
+  "s030": [
+    {
+      "name": "サンストーン",
+      "id": "s047",
+      "slug": "sunstone"
+    },
+    {
+      "name": "ブラックオニキス",
+      "id": "s015",
+      "slug": "black-onyx"
+    },
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    }
+  ],
+  "s031": [
+    {
+      "name": "スピネル",
+      "id": "s039",
+      "slug": "spinel"
+    },
+    {
+      "name": "グロッシュラー",
+      "id": "s032",
+      "slug": "grossular"
+    },
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    }
+  ],
+  "s032": [
+    {
+      "name": "ウバロバイト",
+      "id": "s031",
+      "slug": "uvarovite"
+    },
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    },
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    }
+  ],
+  "s033": [
+    {
+      "name": "サンストーン",
+      "id": "s047",
+      "slug": "sunstone"
+    },
+    {
+      "name": "カーネリアン",
+      "id": "s046",
+      "slug": "carnelian"
+    },
+    {
+      "name": "モルガナイト",
+      "id": "s206",
+      "slug": "morganite"
+    }
+  ],
+  "s034": [
+    {
+      "name": "ガーネット",
+      "id": "s028",
+      "slug": "garnet"
+    },
+    {
+      "name": "ルビー",
+      "id": "s106",
+      "slug": "ruby"
+    },
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    }
+  ],
+  "s035": [
+    {
+      "name": "カーネリアン",
+      "id": "s046",
+      "slug": "carnelian"
+    },
+    {
+      "name": "ガーネット",
+      "id": "s028",
+      "slug": "garnet"
+    },
+    {
+      "name": "ブラックオニキス",
+      "id": "s015",
+      "slug": "black-onyx"
+    }
+  ],
+  "s036": [
+    {
+      "name": "パール",
+      "id": "s173",
+      "slug": "pearl"
+    },
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "モリオン",
+      "id": "s019",
+      "slug": "morion"
+    }
+  ],
+  "s037": [
+    {
+      "name": "タイガーアイ",
+      "id": "s057",
+      "slug": "tiger-eye"
+    },
+    {
+      "name": "カーネリアン",
+      "id": "s046",
+      "slug": "carnelian"
+    },
+    {
+      "name": "スモーキークォーツ",
+      "id": "s008",
+      "slug": "smoky-quartz"
+    }
+  ],
+  "s038": [
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    },
+    {
+      "name": "ブラックオニキス",
+      "id": "s015",
+      "slug": "black-onyx"
+    }
+  ],
+  "s039": [
+    {
+      "name": "ルベライト",
+      "id": "s205",
+      "slug": "rubellite"
+    },
+    {
+      "name": "サンストーン",
+      "id": "s047",
+      "slug": "sunstone"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s040": [
+    {
+      "name": "モスアゲート",
+      "id": "s024",
+      "slug": "moss-agate"
+    },
+    {
+      "name": "ガーネット",
+      "id": "s028",
+      "slug": "garnet"
+    },
+    {
+      "name": "アベンチュリン",
+      "id": "s069",
+      "slug": "aventurine"
+    }
+  ],
+  "s041": [
+    {
+      "name": "ヘマタイト",
+      "id": "s017",
+      "slug": "hematite"
+    },
+    {
+      "name": "ブラックオニキス",
+      "id": "s015",
+      "slug": "black-onyx"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s042": [
+    {
+      "name": "ガーデンクォーツ",
+      "id": "s073",
+      "slug": "garden-quartz"
+    },
+    {
+      "name": "スモーキークォーツ",
+      "id": "s008",
+      "slug": "smoky-quartz"
+    },
+    {
+      "name": "ジャスパー",
+      "id": "s037",
+      "slug": "jasper"
+    }
+  ],
+  "s043": [
+    {
+      "name": "カーネリアン",
+      "id": "s046",
+      "slug": "carnelian"
+    },
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    },
+    {
+      "name": "スモーキークォーツ",
+      "id": "s008",
+      "slug": "smoky-quartz"
+    }
+  ],
+  "s044": [
+    {
+      "name": "ルベライト",
+      "id": "s205",
+      "slug": "rubellite"
+    },
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    },
+    {
+      "name": "ブラックオニキス",
+      "id": "s015",
+      "slug": "black-onyx"
+    }
+  ],
+  "s045": [
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    },
+    {
+      "name": "ペリドット",
+      "id": "s101",
+      "slug": "peridot"
+    }
+  ],
+  "s046": [
+    {
+      "name": "サンストーン",
+      "id": "s047",
+      "slug": "sunstone"
+    },
+    {
+      "name": "ルベライト",
+      "id": "s205",
+      "slug": "rubellite"
+    },
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    }
+  ],
+  "s047": [
+    {
+      "name": "カーネリアン",
+      "id": "s046",
+      "slug": "carnelian"
+    },
+    {
+      "name": "ルベライト",
+      "id": "s205",
+      "slug": "rubellite"
+    },
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    }
+  ],
+  "s048": [
+    {
+      "name": "ゴールデンルチルクォーツ",
+      "id": "s209",
+      "slug": "golden-rutilated-quartz"
+    },
+    {
+      "name": "タイガーアイ",
+      "id": "s057",
+      "slug": "tiger-eye"
+    },
+    {
+      "name": "サンストーン",
+      "id": "s047",
+      "slug": "sunstone"
+    }
+  ],
+  "s049": [
+    {
+      "name": "カーネリアン",
+      "id": "s046",
+      "slug": "carnelian"
+    },
+    {
+      "name": "サンストーン",
+      "id": "s047",
+      "slug": "sunstone"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s050": [
+    {
+      "name": "モルガナイト",
+      "id": "s206",
+      "slug": "morganite"
+    },
+    {
+      "name": "インペリアルトパーズ",
+      "id": "s051",
+      "slug": "imperial-topaz"
+    },
+    {
+      "name": "ブルートパーズ",
+      "id": "s052",
+      "slug": "blue-topaz"
+    }
+  ],
+  "s051": [
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    },
+    {
+      "name": "ルベライト",
+      "id": "s205",
+      "slug": "rubellite"
+    },
+    {
+      "name": "ゴールデンルチルクォーツ",
+      "id": "s209",
+      "slug": "golden-rutilated-quartz"
+    }
+  ],
+  "s052": [
+    {
+      "name": "アクアマリン",
+      "id": "s110",
+      "slug": "aquamarine"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    },
+    {
+      "name": "インペリアルトパーズ",
+      "id": "s051",
+      "slug": "imperial-topaz"
+    }
+  ],
+  "s053": [
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "カルサイト",
+      "id": "s154",
+      "slug": "calcite"
+    }
+  ],
+  "s054": [
+    {
+      "name": "テクタイト",
+      "id": "s010",
+      "slug": "tektite"
+    },
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s055": [
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    },
+    {
+      "name": "ペリドット",
+      "id": "s101",
+      "slug": "peridot"
+    },
+    {
+      "name": "スモーキークォーツ",
+      "id": "s008",
+      "slug": "smoky-quartz"
+    }
+  ],
+  "s056": [
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    },
+    {
+      "name": "パイライト",
+      "id": "s062",
+      "slug": "pyrite"
+    }
+  ],
+  "s057": [
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    },
+    {
+      "name": "ゴールデンルチルクォーツ",
+      "id": "s209",
+      "slug": "golden-rutilated-quartz"
+    },
+    {
+      "name": "ホークスアイ",
+      "id": "s060",
+      "slug": "hawks-eye"
+    }
+  ],
+  "s058": [
+    {
+      "name": "タイガーアイ",
+      "id": "s057",
+      "slug": "tiger-eye"
+    },
+    {
+      "name": "ホークスアイ",
+      "id": "s060",
+      "slug": "hawks-eye"
+    },
+    {
+      "name": "ブラックオニキス",
+      "id": "s015",
+      "slug": "black-onyx"
+    }
+  ],
+  "s059": [
+    {
+      "name": "タイガーアイ",
+      "id": "s057",
+      "slug": "tiger-eye"
+    },
+    {
+      "name": "カーネリアン",
+      "id": "s046",
+      "slug": "carnelian"
+    },
+    {
+      "name": "ヘマタイト",
+      "id": "s017",
+      "slug": "hematite"
+    }
+  ],
+  "s060": [
+    {
+      "name": "タイガーアイ",
+      "id": "s057",
+      "slug": "tiger-eye"
+    },
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    },
+    {
+      "name": "ピーターサイト",
+      "id": "s058",
+      "slug": "pietersite"
+    }
+  ],
+  "s061": [
+    {
+      "name": "パイライト",
+      "id": "s062",
+      "slug": "pyrite"
+    },
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    },
+    {
+      "name": "マラカイト",
+      "id": "s103",
+      "slug": "malachite"
+    }
+  ],
+  "s062": [
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    },
+    {
+      "name": "ゴールデンルチルクォーツ",
+      "id": "s209",
+      "slug": "golden-rutilated-quartz"
+    },
+    {
+      "name": "オブシディアン",
+      "id": "s001",
+      "slug": "obsidian"
+    }
+  ],
+  "s063": [
+    {
+      "name": "ピンクトルマリン",
+      "id": "s091",
+      "slug": "pink-tourmaline"
+    },
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s064": [
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    },
+    {
+      "name": "タイガーアイ",
+      "id": "s057",
+      "slug": "tiger-eye"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s065": [
+    {
+      "name": "ルチルクォーツ",
+      "id": "s064",
+      "slug": "rutilated-quartz"
+    },
+    {
+      "name": "カーネリアン",
+      "id": "s046",
+      "slug": "carnelian"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s066": [
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "ブラックオニキス",
+      "id": "s015",
+      "slug": "black-onyx"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s067": [
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    },
+    {
+      "name": "アベンチュリン",
+      "id": "s069",
+      "slug": "aventurine"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s068": [
+    {
+      "name": "プレナイト",
+      "id": "s096",
+      "slug": "prehnite"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s069": [
+    {
+      "name": "モスアゲート",
+      "id": "s024",
+      "slug": "moss-agate"
+    },
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    }
+  ],
+  "s070": [
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s071": [
+    {
+      "name": "プレナイト",
+      "id": "s096",
+      "slug": "prehnite"
+    },
+    {
+      "name": "アマゾナイト",
+      "id": "s070",
+      "slug": "amazonite"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s072": [
+    {
+      "name": "パール",
+      "id": "s173",
+      "slug": "pearl"
+    },
+    {
+      "name": "クリソプレーズ",
+      "id": "s075",
+      "slug": "chrysoprase"
+    },
+    {
+      "name": "ダイヤモンド",
+      "id": "s170",
+      "slug": "diamond"
+    }
+  ],
+  "s073": [
+    {
+      "name": "ルチルクォーツ",
+      "id": "s064",
+      "slug": "rutilated-quartz"
+    },
+    {
+      "name": "モスアゲート",
+      "id": "s024",
+      "slug": "moss-agate"
+    },
+    {
+      "name": "スモーキークォーツ",
+      "id": "s008",
+      "slug": "smoky-quartz"
+    }
+  ],
+  "s074": [
+    {
+      "name": "マラカイト",
+      "id": "s103",
+      "slug": "malachite"
+    },
+    {
+      "name": "ターコイズ",
+      "id": "s122",
+      "slug": "turquoise"
+    },
+    {
+      "name": "パール",
+      "id": "s173",
+      "slug": "pearl"
+    }
+  ],
+  "s075": [
+    {
+      "name": "エメラルド",
+      "id": "s072",
+      "slug": "emerald"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    }
+  ],
+  "s076": [
+    {
+      "name": "タイガーアイ",
+      "id": "s057",
+      "slug": "tiger-eye"
+    },
+    {
+      "name": "エメラルド",
+      "id": "s072",
+      "slug": "emerald"
+    },
+    {
+      "name": "ダイヤモンド",
+      "id": "s170",
+      "slug": "diamond"
+    }
+  ],
+  "s077": [
+    {
+      "name": "モルガナイト",
+      "id": "s206",
+      "slug": "morganite"
+    },
+    {
+      "name": "ピンクトルマリン",
+      "id": "s091",
+      "slug": "pink-tourmaline"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    }
+  ],
+  "s078": [
+    {
+      "name": "ジェダイト",
+      "id": "s080",
+      "slug": "jadeite"
+    },
+    {
+      "name": "ブラックオニキス",
+      "id": "s015",
+      "slug": "black-onyx"
+    }
+  ],
+  "s079": [
+    {
+      "name": "アベンチュリン",
+      "id": "s069",
+      "slug": "aventurine"
+    },
+    {
+      "name": "ジェダイト",
+      "id": "s080",
+      "slug": "jadeite"
+    }
+  ],
+  "s080": [
+    {
+      "name": "ネフライト",
+      "id": "s095",
+      "slug": "nephrite"
+    },
+    {
+      "name": "パール",
+      "id": "s173",
+      "slug": "pearl"
+    },
+    {
+      "name": "クリソプレーズ",
+      "id": "s075",
+      "slug": "chrysoprase"
+    }
+  ],
+  "s081": [
+    {
+      "name": "ピンクトルマリン",
+      "id": "s091",
+      "slug": "pink-tourmaline"
+    },
+    {
+      "name": "ルベライト",
+      "id": "s205",
+      "slug": "rubellite"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    }
+  ],
+  "s082": [
+    {
+      "name": "ペリドット",
+      "id": "s101",
+      "slug": "peridot"
+    },
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s083": [
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    }
+  ],
+  "s084": [
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    },
+    {
+      "name": "モリオン",
+      "id": "s019",
+      "slug": "morion"
+    }
+  ],
+  "s085": [
+    {
+      "name": "エメラルド",
+      "id": "s072",
+      "slug": "emerald"
+    },
+    {
+      "name": "タイガーアイ",
+      "id": "s057",
+      "slug": "tiger-eye"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s086": [
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "マラカイト",
+      "id": "s103",
+      "slug": "malachite"
+    },
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    }
+  ],
+  "s087": [
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    }
+  ],
+  "s088": [
+    {
+      "name": "ピンクトルマリン",
+      "id": "s091",
+      "slug": "pink-tourmaline"
+    },
+    {
+      "name": "グリーントルマリン",
+      "id": "s090",
+      "slug": "green-tourmaline"
+    },
+    {
+      "name": "ブラックトルマリン",
+      "id": "s093",
+      "slug": "black-tourmaline"
+    }
+  ],
+  "s089": [
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    },
+    {
+      "name": "サンストーン",
+      "id": "s047",
+      "slug": "sunstone"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s090": [
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    },
+    {
+      "name": "ピンクトルマリン",
+      "id": "s091",
+      "slug": "pink-tourmaline"
+    },
+    {
+      "name": "エメラルド",
+      "id": "s072",
+      "slug": "emerald"
+    }
+  ],
+  "s091": [
+    {
+      "name": "ルベライト",
+      "id": "s205",
+      "slug": "rubellite"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "モルガナイト",
+      "id": "s206",
+      "slug": "morganite"
+    }
+  ],
+  "s092": [
+    {
+      "name": "ピンクトルマリン",
+      "id": "s091",
+      "slug": "pink-tourmaline"
+    },
+    {
+      "name": "グリーントルマリン",
+      "id": "s090",
+      "slug": "green-tourmaline"
+    },
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    }
+  ],
+  "s093": [
+    {
+      "name": "モリオン",
+      "id": "s019",
+      "slug": "morion"
+    },
+    {
+      "name": "オブシディアン",
+      "id": "s001",
+      "slug": "obsidian"
+    },
+    {
+      "name": "スモーキークォーツ",
+      "id": "s008",
+      "slug": "smoky-quartz"
+    }
+  ],
+  "s094": [
+    {
+      "name": "アクアマリン",
+      "id": "s110",
+      "slug": "aquamarine"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "ピンクトルマリン",
+      "id": "s091",
+      "slug": "pink-tourmaline"
+    }
+  ],
+  "s095": [
+    {
+      "name": "ジェダイト",
+      "id": "s080",
+      "slug": "jadeite"
+    },
+    {
+      "name": "パール",
+      "id": "s173",
+      "slug": "pearl"
+    },
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    }
+  ],
+  "s096": [
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    },
+    {
+      "name": "アマゾナイト",
+      "id": "s070",
+      "slug": "amazonite"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s097": [
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    },
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    }
+  ],
+  "s098": [
+    {
+      "name": "アベンチュリン",
+      "id": "s069",
+      "slug": "aventurine"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s099": [
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    }
+  ],
+  "s100": [
+    {
+      "name": "アクアマリン",
+      "id": "s110",
+      "slug": "aquamarine"
+    },
+    {
+      "name": "ブルートルマリン",
+      "id": "s094",
+      "slug": "blue-tourmaline"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s101": [
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    }
+  ],
+  "s102": [
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    }
+  ],
+  "s103": [
+    {
+      "name": "オブシディアン",
+      "id": "s001",
+      "slug": "obsidian"
+    },
+    {
+      "name": "モリオン",
+      "id": "s019",
+      "slug": "morion"
+    },
+    {
+      "name": "クリソコラ",
+      "id": "s074",
+      "slug": "chrysocolla"
+    }
+  ],
+  "s104": [
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    },
+    {
+      "name": "フェナカイト",
+      "id": "s178",
+      "slug": "phenakite"
+    },
+    {
+      "name": "スモーキークォーツ",
+      "id": "s008",
+      "slug": "smoky-quartz"
+    }
+  ],
+  "s105": [
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "アベンチュリン",
+      "id": "s069",
+      "slug": "aventurine"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    }
+  ],
+  "s106": [
+    {
+      "name": "ルベライト",
+      "id": "s205",
+      "slug": "rubellite"
+    },
+    {
+      "name": "ガーネット",
+      "id": "s028",
+      "slug": "garnet"
+    },
+    {
+      "name": "ピンクサファイア",
+      "id": "s207",
+      "slug": "pink-sapphire"
+    }
+  ],
+  "s107": [
+    {
+      "name": "ピンクトルマリン",
+      "id": "s091",
+      "slug": "pink-tourmaline"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "ストロベリークォーツ",
+      "id": "s081",
+      "slug": "strawberry-quartz"
+    }
+  ],
+  "s108": [
+    {
+      "name": "ルベライト",
+      "id": "s205",
+      "slug": "rubellite"
+    },
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    }
+  ],
+  "s109": [
+    {
+      "name": "ロードクロサイト",
+      "id": "s108",
+      "slug": "rhodochrosite"
+    },
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    }
+  ],
+  "s110": [
+    {
+      "name": "モルガナイト",
+      "id": "s206",
+      "slug": "morganite"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "パール",
+      "id": "s173",
+      "slug": "pearl"
+    }
+  ],
+  "s111": [
+    {
+      "name": "アクアマリン",
+      "id": "s110",
+      "slug": "aquamarine"
+    },
+    {
+      "name": "ブルーカルセドニー",
+      "id": "s117",
+      "slug": "blue-chalcedony"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s112": [
+    {
+      "name": "セレスタイト",
+      "id": "s120",
+      "slug": "celestite"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    }
+  ],
+  "s113": [
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    },
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    },
+    {
+      "name": "ブラックオニキス",
+      "id": "s015",
+      "slug": "black-onyx"
+    }
+  ],
+  "s114": [
+    {
+      "name": "アパタイト",
+      "id": "s111",
+      "slug": "apatite"
+    },
+    {
+      "name": "セレスタイト",
+      "id": "s120",
+      "slug": "celestite"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s115": [
+    {
+      "name": "ブルーカルセドニー",
+      "id": "s117",
+      "slug": "blue-chalcedony"
+    },
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "アクアマリン",
+      "id": "s110",
+      "slug": "aquamarine"
+    }
+  ],
+  "s116": [
+    {
+      "name": "アクアマリン",
+      "id": "s110",
+      "slug": "aquamarine"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "ピンクトルマリン",
+      "id": "s091",
+      "slug": "pink-tourmaline"
+    }
+  ],
+  "s117": [
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "パール",
+      "id": "s173",
+      "slug": "pearl"
+    },
+    {
+      "name": "アクアマリン",
+      "id": "s110",
+      "slug": "aquamarine"
+    }
+  ],
+  "s118": [
+    {
+      "name": "ピンクトルマリン",
+      "id": "s091",
+      "slug": "pink-tourmaline"
+    },
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    }
+  ],
+  "s119": [
+    {
+      "name": "マラカイト",
+      "id": "s103",
+      "slug": "malachite"
+    },
+    {
+      "name": "クリソコラ",
+      "id": "s074",
+      "slug": "chrysocolla"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s120": [
+    {
+      "name": "アンハイドライト",
+      "id": "s112",
+      "slug": "anhydrite"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s121": [
+    {
+      "name": "ラピスラズリ",
+      "id": "s132",
+      "slug": "lapis-lazuli"
+    },
+    {
+      "name": "アマゾナイト",
+      "id": "s070",
+      "slug": "amazonite"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s122": [
+    {
+      "name": "ブラックオニキス",
+      "id": "s015",
+      "slug": "black-onyx"
+    },
+    {
+      "name": "ラピスラズリ",
+      "id": "s132",
+      "slug": "lapis-lazuli"
+    },
+    {
+      "name": "アクアマリン",
+      "id": "s110",
+      "slug": "aquamarine"
+    }
+  ],
+  "s123": [
+    {
+      "name": "フローライト",
+      "id": "s097",
+      "slug": "fluorite"
+    },
+    {
+      "name": "ガーネット",
+      "id": "s028",
+      "slug": "garnet"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s124": [
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "アクアマリン",
+      "id": "s110",
+      "slug": "aquamarine"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    }
+  ],
+  "s125": [
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "ピンクトルマリン",
+      "id": "s091",
+      "slug": "pink-tourmaline"
+    },
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    }
+  ],
+  "s126": [
+    {
+      "name": "アクアマリン",
+      "id": "s110",
+      "slug": "aquamarine"
+    },
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    }
+  ],
+  "s127": [
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    },
+    {
+      "name": "サファイア",
+      "id": "s129",
+      "slug": "sapphire"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s128": [
+    {
+      "name": "ラピスラズリ",
+      "id": "s132",
+      "slug": "lapis-lazuli"
+    },
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    },
+    {
+      "name": "マラカイト",
+      "id": "s103",
+      "slug": "malachite"
+    }
+  ],
+  "s129": [
+    {
+      "name": "ピンクサファイア",
+      "id": "s207",
+      "slug": "pink-sapphire"
+    },
+    {
+      "name": "ダイヤモンド",
+      "id": "s170",
+      "slug": "diamond"
+    },
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    }
+  ],
+  "s130": [
+    {
+      "name": "アクアマリン",
+      "id": "s110",
+      "slug": "aquamarine"
+    },
+    {
+      "name": "ソーダライト",
+      "id": "s121",
+      "slug": "sodalite"
+    },
+    {
+      "name": "ラピスラズリ",
+      "id": "s132",
+      "slug": "lapis-lazuli"
+    }
+  ],
+  "s131": [
+    {
+      "name": "スモーキークォーツ",
+      "id": "s008",
+      "slug": "smoky-quartz"
+    },
+    {
+      "name": "モリオン",
+      "id": "s019",
+      "slug": "morion"
+    },
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    }
+  ],
+  "s132": [
+    {
+      "name": "ゴールデンルチルクォーツ",
+      "id": "s209",
+      "slug": "golden-rutilated-quartz"
+    },
+    {
+      "name": "モリオン",
+      "id": "s019",
+      "slug": "morion"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s133": [
+    {
+      "name": "ルベライト",
+      "id": "s205",
+      "slug": "rubellite"
+    },
+    {
+      "name": "モルダバイト",
+      "id": "s104",
+      "slug": "moldavite"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    }
+  ],
+  "s134": [
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "モリオン",
+      "id": "s019",
+      "slug": "morion"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    }
+  ],
+  "s135": [
+    {
+      "name": "モルダバイト",
+      "id": "s104",
+      "slug": "moldavite"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    },
+    {
+      "name": "スギライト",
+      "id": "s139",
+      "slug": "sugilite"
+    }
+  ],
+  "s136": [
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    },
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s137": [
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "ピンクトルマリン",
+      "id": "s091",
+      "slug": "pink-tourmaline"
+    }
+  ],
+  "s138": [
+    {
+      "name": "ゴールデンルチルクォーツ",
+      "id": "s209",
+      "slug": "golden-rutilated-quartz"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s139": [
+    {
+      "name": "モリオン",
+      "id": "s019",
+      "slug": "morion"
+    },
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    },
+    {
+      "name": "チャロアイト",
+      "id": "s140",
+      "slug": "charoite"
+    }
+  ],
+  "s140": [
+    {
+      "name": "スギライト",
+      "id": "s139",
+      "slug": "sugilite"
+    },
+    {
+      "name": "モルダバイト",
+      "id": "s104",
+      "slug": "moldavite"
+    },
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    }
+  ],
+  "s141": [
+    {
+      "name": "タイガーアイ",
+      "id": "s057",
+      "slug": "tiger-eye"
+    },
+    {
+      "name": "ブラックオニキス",
+      "id": "s015",
+      "slug": "black-onyx"
+    },
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    }
+  ],
+  "s142": [
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "ラベンダーアメジスト",
+      "id": "s137",
+      "slug": "lavender-amethyst"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    }
+  ],
+  "s143": [
+    {
+      "name": "チャロアイト",
+      "id": "s140",
+      "slug": "charoite"
+    },
+    {
+      "name": "クンツァイト",
+      "id": "s077",
+      "slug": "kunzite"
+    },
+    {
+      "name": "スモーキークォーツ",
+      "id": "s008",
+      "slug": "smoky-quartz"
+    }
+  ],
+  "s144": [
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    },
+    {
+      "name": "ファントムクォーツ",
+      "id": "s177",
+      "slug": "phantom-quartz"
+    },
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    }
+  ],
+  "s145": [
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    },
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    },
+    {
+      "name": "フェナカイト",
+      "id": "s178",
+      "slug": "phenakite"
+    }
+  ],
+  "s146": [
+    {
+      "name": "セレスタイト",
+      "id": "s120",
+      "slug": "celestite"
+    },
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s147": [
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s148": [
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "サンストーン",
+      "id": "s047",
+      "slug": "sunstone"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s149": [
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    },
+    {
+      "name": "サンストーン",
+      "id": "s047",
+      "slug": "sunstone"
+    },
+    {
+      "name": "ペリドット",
+      "id": "s101",
+      "slug": "peridot"
+    }
+  ],
+  "s150": [
+    {
+      "name": "ピンクトルマリン",
+      "id": "s091",
+      "slug": "pink-tourmaline"
+    },
+    {
+      "name": "モルガナイト",
+      "id": "s206",
+      "slug": "morganite"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    }
+  ],
+  "s151": [
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    },
+    {
+      "name": "モリオン",
+      "id": "s019",
+      "slug": "morion"
+    },
+    {
+      "name": "サンストーン",
+      "id": "s047",
+      "slug": "sunstone"
+    }
+  ],
+  "s152": [
+    {
+      "name": "ルベライト",
+      "id": "s205",
+      "slug": "rubellite"
+    },
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s153": [
+    {
+      "name": "モリオン",
+      "id": "s019",
+      "slug": "morion"
+    },
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    },
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    }
+  ],
+  "s154": [
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    },
+    {
+      "name": "アマゾナイト",
+      "id": "s070",
+      "slug": "amazonite"
+    },
+    {
+      "name": "フローライト",
+      "id": "s097",
+      "slug": "fluorite"
+    }
+  ],
+  "s155": [
+    {
+      "name": "ラピスラズリ",
+      "id": "s132",
+      "slug": "lapis-lazuli"
+    },
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s156": [
+    {
+      "name": "カーネリアン",
+      "id": "s046",
+      "slug": "carnelian"
+    },
+    {
+      "name": "サンストーン",
+      "id": "s047",
+      "slug": "sunstone"
+    },
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    }
+  ],
+  "s157": [
+    {
+      "name": "モスアゲート",
+      "id": "s024",
+      "slug": "moss-agate"
+    },
+    {
+      "name": "プレナイト",
+      "id": "s096",
+      "slug": "prehnite"
+    },
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    }
+  ],
+  "s158": [
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "セレスタイト",
+      "id": "s120",
+      "slug": "celestite"
+    }
+  ],
+  "s159": [
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "モルガナイト",
+      "id": "s206",
+      "slug": "morganite"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    }
+  ],
+  "s160": [
+    {
+      "name": "ブルーレースアゲート",
+      "id": "s124",
+      "slug": "blue-lace-agate"
+    },
+    {
+      "name": "セレスタイト",
+      "id": "s120",
+      "slug": "celestite"
+    },
+    {
+      "name": "アクアマリン",
+      "id": "s110",
+      "slug": "aquamarine"
+    }
+  ],
+  "s161": [
+    {
+      "name": "ガーネット",
+      "id": "s028",
+      "slug": "garnet"
+    },
+    {
+      "name": "スモーキークォーツ",
+      "id": "s008",
+      "slug": "smoky-quartz"
+    },
+    {
+      "name": "タイガーアイ",
+      "id": "s057",
+      "slug": "tiger-eye"
+    }
+  ],
+  "s162": [
+    {
+      "name": "モスアゲート",
+      "id": "s024",
+      "slug": "moss-agate"
+    },
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    },
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    }
+  ],
+  "s163": [
+    {
+      "name": "ブルーレースアゲート",
+      "id": "s124",
+      "slug": "blue-lace-agate"
+    },
+    {
+      "name": "ソーダライト",
+      "id": "s121",
+      "slug": "sodalite"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s164": [
+    {
+      "name": "セレナイト",
+      "id": "s169",
+      "slug": "selenite"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    }
+  ],
+  "s165": [
+    {
+      "name": "アイオライト",
+      "id": "s127",
+      "slug": "iolite"
+    },
+    {
+      "name": "タイガーアイ",
+      "id": "s057",
+      "slug": "tiger-eye"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s166": [
+    {
+      "name": "モリオン",
+      "id": "s019",
+      "slug": "morion"
+    },
+    {
+      "name": "ブラックトルマリン",
+      "id": "s093",
+      "slug": "black-tourmaline"
+    },
+    {
+      "name": "スキャポライト",
+      "id": "s165",
+      "slug": "scapolite"
+    }
+  ],
+  "s167": [
+    {
+      "name": "フローライト",
+      "id": "s097",
+      "slug": "fluorite"
+    },
+    {
+      "name": "ソーダライト",
+      "id": "s121",
+      "slug": "sodalite"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s168": [
+    {
+      "name": "アポフィライト",
+      "id": "s146",
+      "slug": "apophyllite"
+    },
+    {
+      "name": "セレスタイト",
+      "id": "s120",
+      "slug": "celestite"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s169": [
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    },
+    {
+      "name": "モリオン",
+      "id": "s019",
+      "slug": "morion"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    }
+  ],
+  "s170": [
+    {
+      "name": "ルビー",
+      "id": "s106",
+      "slug": "ruby"
+    },
+    {
+      "name": "サファイア",
+      "id": "s129",
+      "slug": "sapphire"
+    },
+    {
+      "name": "パール",
+      "id": "s173",
+      "slug": "pearl"
+    }
+  ],
+  "s171": [
+    {
+      "name": "フェナカイト",
+      "id": "s178",
+      "slug": "phenakite"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s172": [
+    {
+      "name": "セレナイト",
+      "id": "s169",
+      "slug": "selenite"
+    },
+    {
+      "name": "モリオン",
+      "id": "s019",
+      "slug": "morion"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s173": [
+    {
+      "name": "アクアマリン",
+      "id": "s110",
+      "slug": "aquamarine"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    }
+  ],
+  "s174": [
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "モルガナイト",
+      "id": "s206",
+      "slug": "morganite"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    }
+  ],
+  "s175": [
+    {
+      "name": "パール",
+      "id": "s173",
+      "slug": "pearl"
+    },
+    {
+      "name": "アクアマリン",
+      "id": "s110",
+      "slug": "aquamarine"
+    },
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    }
+  ],
+  "s176": [
+    {
+      "name": "ブルーレースアゲート",
+      "id": "s124",
+      "slug": "blue-lace-agate"
+    },
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    },
+    {
+      "name": "ブラックオニキス",
+      "id": "s015",
+      "slug": "black-onyx"
+    }
+  ],
+  "s177": [
+    {
+      "name": "ガーネット",
+      "id": "s028",
+      "slug": "garnet"
+    },
+    {
+      "name": "ゴールデンルチルクォーツ",
+      "id": "s209",
+      "slug": "golden-rutilated-quartz"
+    },
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    }
+  ],
+  "s178": [
+    {
+      "name": "ダンビュライト",
+      "id": "s171",
+      "slug": "danburite"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    },
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    }
+  ],
+  "s179": [
+    {
+      "name": "ゴールデンルチルクォーツ",
+      "id": "s209",
+      "slug": "golden-rutilated-quartz"
+    },
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    },
+    {
+      "name": "ブラックオニキス",
+      "id": "s015",
+      "slug": "black-onyx"
+    }
+  ],
+  "s180": [
+    {
+      "name": "クンツァイト",
+      "id": "s077",
+      "slug": "kunzite"
+    },
+    {
+      "name": "ダンビュライト",
+      "id": "s171",
+      "slug": "danburite"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    }
+  ],
+  "s181": [
+    {
+      "name": "エメラルド",
+      "id": "s072",
+      "slug": "emerald"
+    },
+    {
+      "name": "アクアマリン",
+      "id": "s110",
+      "slug": "aquamarine"
+    },
+    {
+      "name": "モルガナイト",
+      "id": "s206",
+      "slug": "morganite"
+    }
+  ],
+  "s182": [
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "ブラックオニキス",
+      "id": "s015",
+      "slug": "black-onyx"
+    }
+  ],
+  "s183": [
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "アクアマリン",
+      "id": "s110",
+      "slug": "aquamarine"
+    }
+  ],
+  "s184": [
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    },
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s185": [
+    {
+      "name": "アイリスクォーツ",
+      "id": "s188",
+      "slug": "iris-rainbow-quartz"
+    },
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    }
+  ],
+  "s186": [
+    {
+      "name": "ガーネット",
+      "id": "s028",
+      "slug": "garnet"
+    },
+    {
+      "name": "サンストーン",
+      "id": "s047",
+      "slug": "sunstone"
+    },
+    {
+      "name": "ブラックオニキス",
+      "id": "s015",
+      "slug": "black-onyx"
+    }
+  ],
+  "s187": [
+    {
+      "name": "モリオン",
+      "id": "s019",
+      "slug": "morion"
+    },
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "ゴールデンルチルクォーツ",
+      "id": "s209",
+      "slug": "golden-rutilated-quartz"
+    }
+  ],
+  "s188": [
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    }
+  ],
+  "s189": [
+    {
+      "name": "アイオライト",
+      "id": "s127",
+      "slug": "iolite"
+    },
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s190": [
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    },
+    {
+      "name": "モルダバイト",
+      "id": "s104",
+      "slug": "moldavite"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s191": [
+    {
+      "name": "ガーネット",
+      "id": "s028",
+      "slug": "garnet"
+    },
+    {
+      "name": "アマゾナイト",
+      "id": "s070",
+      "slug": "amazonite"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s192": [
+    {
+      "name": "ローズクォーツ",
+      "id": "s107",
+      "slug": "rose-quartz"
+    },
+    {
+      "name": "パール",
+      "id": "s173",
+      "slug": "pearl"
+    },
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    }
+  ],
+  "s193": [
+    {
+      "name": "セレナイト",
+      "id": "s169",
+      "slug": "selenite"
+    },
+    {
+      "name": "モリオン",
+      "id": "s019",
+      "slug": "morion"
+    },
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    }
+  ],
+  "s194": [
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "ピンクトルマリン",
+      "id": "s091",
+      "slug": "pink-tourmaline"
+    },
+    {
+      "name": "ガーネット",
+      "id": "s028",
+      "slug": "garnet"
+    }
+  ],
+  "s195": [
+    {
+      "name": "タイガーアイ",
+      "id": "s057",
+      "slug": "tiger-eye"
+    },
+    {
+      "name": "ゴールデンルチルクォーツ",
+      "id": "s209",
+      "slug": "golden-rutilated-quartz"
+    },
+    {
+      "name": "サファイア",
+      "id": "s129",
+      "slug": "sapphire"
+    }
+  ],
+  "s196": [
+    {
+      "name": "ロードクロサイト",
+      "id": "s108",
+      "slug": "rhodochrosite"
+    },
+    {
+      "name": "ガーネット",
+      "id": "s028",
+      "slug": "garnet"
+    },
+    {
+      "name": "レインボークォーツ",
+      "id": "s185",
+      "slug": "rainbow-quartz"
+    }
+  ],
+  "s197": [
+    {
+      "name": "アイオライト",
+      "id": "s127",
+      "slug": "iolite"
+    },
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    },
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    }
+  ],
+  "s198": [
+    {
+      "name": "ピンクトルマリン",
+      "id": "s091",
+      "slug": "pink-tourmaline"
+    },
+    {
+      "name": "ブルーレースアゲート",
+      "id": "s124",
+      "slug": "blue-lace-agate"
+    },
+    {
+      "name": "ジャパニーズローツイン",
+      "id": "s194",
+      "slug": "japan-law-twin-quartz"
+    }
+  ],
+  "s199": [
+    {
+      "name": "ヌーマイト",
+      "id": "s012",
+      "slug": "nuummite"
+    },
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    },
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    }
+  ],
+  "s200": [
+    {
+      "name": "ロードクロサイト",
+      "id": "s108",
+      "slug": "rhodochrosite"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "ガーネット",
+      "id": "s028",
+      "slug": "garnet"
+    }
+  ],
+  "s201": [
+    {
+      "name": "サンストーン",
+      "id": "s047",
+      "slug": "sunstone"
+    },
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s202": [
+    {
+      "name": "ゴールデンルチルクォーツ",
+      "id": "s209",
+      "slug": "golden-rutilated-quartz"
+    },
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s203": [
+    {
+      "name": "アメジスト",
+      "id": "s134",
+      "slug": "amethyst"
+    },
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    },
+    {
+      "name": "レムリアンシード",
+      "id": "s204",
+      "slug": "lemurian-seed-quartz"
+    }
+  ],
+  "s204": [
+    {
+      "name": "フェナカイト",
+      "id": "s178",
+      "slug": "phenakite"
+    },
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    },
+    {
+      "name": "ロッククリスタル",
+      "id": "s187",
+      "slug": "rock-crystal"
+    }
+  ],
+  "s205": [
+    {
+      "name": "ピンクトルマリン",
+      "id": "s091",
+      "slug": "pink-tourmaline"
+    },
+    {
+      "name": "ピンクサファイア",
+      "id": "s207",
+      "slug": "pink-sapphire"
+    },
+    {
+      "name": "モルガナイト",
+      "id": "s206",
+      "slug": "morganite"
+    },
+    {
+      "name": "サンストーン",
+      "id": "s047",
+      "slug": "sunstone"
+    }
+  ],
+  "s206": [
+    {
+      "name": "ルベライト",
+      "id": "s205",
+      "slug": "rubellite"
+    },
+    {
+      "name": "ピンクサファイア",
+      "id": "s207",
+      "slug": "pink-sapphire"
+    },
+    {
+      "name": "アクアマリン",
+      "id": "s110",
+      "slug": "aquamarine"
+    },
+    {
+      "name": "スターローズクォーツ",
+      "id": "s210",
+      "slug": "star-rose-quartz"
+    }
+  ],
+  "s207": [
+    {
+      "name": "ルベライト",
+      "id": "s205",
+      "slug": "rubellite"
+    },
+    {
+      "name": "モルガナイト",
+      "id": "s206",
+      "slug": "morganite"
+    },
+    {
+      "name": "ムーンストーン",
+      "id": "s063",
+      "slug": "moonstone"
+    },
+    {
+      "name": "ダイヤモンド",
+      "id": "s170",
+      "slug": "diamond"
+    }
+  ],
+  "s208": [
+    {
+      "name": "ピンクトルマリン",
+      "id": "s091",
+      "slug": "pink-tourmaline"
+    },
+    {
+      "name": "ルベライト",
+      "id": "s205",
+      "slug": "rubellite"
+    },
+    {
+      "name": "モルガナイト",
+      "id": "s206",
+      "slug": "morganite"
+    },
+    {
+      "name": "ラブラドライト",
+      "id": "s133",
+      "slug": "labradorite"
+    }
+  ],
+  "s209": [
+    {
+      "name": "シトリン",
+      "id": "s048",
+      "slug": "citrine"
+    },
+    {
+      "name": "タイガーアイ",
+      "id": "s057",
+      "slug": "tiger-eye"
+    },
+    {
+      "name": "サンストーン",
+      "id": "s047",
+      "slug": "sunstone"
+    },
+    {
+      "name": "ルベライト",
+      "id": "s205",
+      "slug": "rubellite"
+    }
+  ],
+  "s210": [
+    {
+      "name": "ピンクトルマリン",
+      "id": "s091",
+      "slug": "pink-tourmaline"
+    },
+    {
+      "name": "ルベライト",
+      "id": "s205",
+      "slug": "rubellite"
+    },
+    {
+      "name": "モルガナイト",
+      "id": "s206",
+      "slug": "morganite"
+    },
+    {
+      "name": "ピンクサファイア",
+      "id": "s207",
+      "slug": "pink-sapphire"
+    }
+  ]
+}
