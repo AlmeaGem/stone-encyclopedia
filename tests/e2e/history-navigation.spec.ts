@@ -10,8 +10,8 @@ for (const fallback of [false, true]) {
       );
     await page.goto('/');
     const nav = page.locator('.history-navigation');
-    const back = nav.getByRole('button', { name: '← 戻る', exact: true });
-    const forward = nav.getByRole('button', { name: '進む →', exact: true });
+    const back = nav.locator('button[data-history-direction="-1"]');
+    const forward = nav.locator('button[data-history-direction="1"]');
     await expect(back).toBeDisabled();
     await expect(forward).toBeDisabled();
     await page
