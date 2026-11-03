@@ -110,7 +110,7 @@ for (const stone of rawStones)
     if (!registeredStoneNames.has(alias))
       registeredStoneNames.set(alias, stone.id);
 const escapeRegExp = (value: string) =>
-  value.replace(/[.*+?^\${}()|[\]\\]/g, '\\$&');
+  value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const nameAlternation = [...registeredStoneNames.keys()]
   .sort((a, b) => b.length - a.length)
   .map(escapeRegExp)
