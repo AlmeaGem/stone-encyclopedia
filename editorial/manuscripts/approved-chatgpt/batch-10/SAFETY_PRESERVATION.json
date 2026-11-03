@@ -1,0 +1,14 @@
+{
+  "id": "s187",
+  "name": "ロッククリスタル",
+  "sourceFile": "src/content/stones.json",
+  "sourceSha256": "51e9203c2323382f190b7dbcb2955f40d5a3881fde9534050fb07ccda6542519",
+  "catalogUnchanged": true,
+  "preservedFields": {
+    "mineral": "透明な石英結晶。天然・合成・ガラスとの違いを確認",
+    "characteristics": "ロッククリスタルは透明な石英の呼称で、六方晶系の形状や柱状の成長線を持ちます。ガラス・合成水晶と写真だけで同定できないため、透明さが際立つほど鑑別や出所が重要になります。",
+    "handling": "水晶球は直射日光を集めて可燃物を過熱する可能性があるため、球体は窓際や直射光の下に置かないでください。強い衝撃や急熱も避けます。"
+  },
+  "handlingSha256": "c65eb103baacc268fd886500a3ece1ba3e1160a8193814eed503ae50db54e3dd",
+  "publicationStatus": "not-published; existing safety information retained without edits"
+}
