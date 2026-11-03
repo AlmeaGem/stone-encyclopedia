@@ -66,12 +66,10 @@
     --rose: #80565e;
     --beige: #f3eee6;
     --heading-font:
-      'Zen Kaku Gothic New', 'Noto Sans CJK JP', 'Hiragino Kaku Gothic ProN',
-      'Yu Gothic', sans-serif;
+      'Shippori Mincho', 'Yu Mincho', 'Hiragino Mincho ProN', serif;
+    --body-font: 'Noto Serif JP', 'Yu Mincho', 'Hiragino Mincho ProN', serif;
     --serif: var(--heading-font);
-    --sans:
-      'Zen Maru Gothic', Arial, 'Noto Sans CJK JP', 'Hiragino Kaku Gothic ProN',
-      'Yu Gothic', sans-serif;
+    --sans: var(--body-font);
   }
   body {
     background: var(--paper);

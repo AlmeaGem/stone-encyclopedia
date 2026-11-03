@@ -8,7 +8,7 @@
   font-family: var(--heading-font);
   color: #705047;
   font-size: clamp(17px, 1.7vw, 21px);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.8;
   margin: 16px 0 22px;
   max-width: 36em;

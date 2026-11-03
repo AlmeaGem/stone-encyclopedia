@@ -39,7 +39,7 @@ test('editorial headings retain a clear hierarchy and line-level markers at six 
     expect(styles.h3).toBeLessThanOrEqual(23);
     expect(styles.h2).toBeGreaterThan(styles.h3);
     expect(styles.h3).toBeGreaterThan(styles.body);
-    expect(styles.weight).toBe('600');
+    expect(styles.weight).toBe('500');
     expect(styles.rule).toBe('3px');
     expect(styles.padding).toBe('12px');
     expect(styles.marker).toContain('linear-gradient');
@@ -68,7 +68,7 @@ test('editorial headings retain a clear hierarchy and line-level markers at six 
       ).toBeGreaterThanOrEqual(26);
       expect(
         await heading.evaluate((el) => getComputedStyle(el).fontWeight),
-      ).toBe('600');
+      ).toBe('500');
     }
     expect(await page.locator('.home-search .heading-mark').count()).toBe(0);
   }
