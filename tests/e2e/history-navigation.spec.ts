@@ -110,24 +110,24 @@ test('global controls clear the footer, respect safe areas and support touch', a
           await expect(
             page.getByRole('searchbox', { name: '石名・英語名・別名' }),
           ).toBeVisible();
-          continue;
-        }
-        expect(await nav.evaluate((el) => getComputedStyle(el).position)).toBe(
-          width < 768 ? 'fixed' : 'static',
-        );
-        for (const button of await nav.getByRole('button').all()) {
-          const box = (await button.boundingBox())!;
-          expect(box.height).toBeGreaterThanOrEqual(44);
-          expect(box.x).toBeGreaterThanOrEqual(0);
-          expect(box.x + box.width).toBeLessThanOrEqual(width);
-        }
-        await page.evaluate(() =>
-          window.scrollTo(0, document.body.scrollHeight),
-        );
-        if (width < 768) {
-          const footer = (await page.locator('.site-footer').boundingBox())!;
-          const bar = (await nav.boundingBox())!;
-          expect(footer.y + footer.height).toBeLessThanOrEqual(bar.y);
+        } else {
+          expect(
+            await nav.evaluate((el) => getComputedStyle(el).position),
+          ).toBe(width < 768 ? 'fixed' : 'static');
+          for (const button of await nav.getByRole('button').all()) {
+            const box = (await button.boundingBox())!;
+            expect(box.height).toBeGreaterThanOrEqual(44);
+            expect(box.x).toBeGreaterThanOrEqual(0);
+            expect(box.x + box.width).toBeLessThanOrEqual(width);
+          }
+          await page.evaluate(() =>
+            window.scrollTo(0, document.body.scrollHeight),
+          );
+          if (width < 768) {
+            const footer = (await page.locator('.site-footer').boundingBox())!;
+            const bar = (await nav.boundingBox())!;
+            expect(footer.y + footer.height).toBeLessThanOrEqual(bar.y);
+          }
         }
         expect(
           await page.evaluate(
