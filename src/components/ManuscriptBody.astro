@@ -5,14 +5,14 @@ import {
   manuscriptPairings,
   type ManuscriptSection,
 } from '../lib/approved-manuscripts';
+import { pathTo } from '../lib/urls';
+import stones from '../content/stones.json';
 interface Props {
   section: ManuscriptSection;
 }
 const { section } = Astro.props;
 const items = manuscriptItems(section);
 const pairings = manuscriptPairings(section);
-import { pathTo } from '../lib/urls';
-import stones from '../content/stones.json';
 const stoneById = new Map(stones.map((stone) => [stone.id, stone]));
 ---
 
@@ -30,7 +30,12 @@ const stoneById = new Map(stones.map((stone) => [stone.id, stone]));
   <div class="manuscript-pairings">
     {pairings.map((pairing) => (
       <p class="manuscript-paragraph">
-        <a class="text-link manuscript-pairing-name" href={pathTo(`stones/${stoneById.get(pairing.stoneId)!.slug}/`)}>{pairing.name}</a>
+        <a
+          class="text-link manuscript-pairing-name"
+          href={pathTo(`stones/${stoneById.get(pairing.stoneId)!.slug}/`)}
+        >
+          {pairing.name}
+        </a>
         <span class="manuscript-pairing-separator">：</span>
         {inlineManuscript(pairing.description).map((part) =>
           part.strong ? <strong>{part.text}</strong> : part.text,
