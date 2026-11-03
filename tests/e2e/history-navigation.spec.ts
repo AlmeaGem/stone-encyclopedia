@@ -9,7 +9,7 @@ for (const fallback of [false, true]) {
         Object.defineProperty(window, 'navigation', { value: undefined }),
       );
     await page.goto('/');
-    const nav = page.getByRole('navigation', { name: '閲覧履歴の移動' });
+    const nav = page.locator('.history-navigation');
     const back = nav.getByRole('button', { name: '← 戻る', exact: true });
     const forward = nav.getByRole('button', { name: '進む →', exact: true });
     await expect(back).toBeDisabled();
@@ -24,7 +24,10 @@ for (const fallback of [false, true]) {
     await page.keyboard.press('Enter');
     await expect(page).toHaveURL('/');
     await expect(forward).toBeEnabled();
-    await forward.click();
+    if ((page.viewportSize()?.width ?? 0) < 768) {
+      await expect(nav).toBeHidden();
+      await page.goForward();
+    } else await forward.click();
     await expect(page).toHaveURL('/articles/');
     // A different origin, served locally by the isolated test editor.
     await page.evaluate(() => location.assign('http://127.0.0.1:4322/login'));
@@ -34,7 +37,10 @@ for (const fallback of [false, true]) {
     await expect(forward).toBeDisabled();
     await back.click();
     await expect(page).toHaveURL('/');
-    await forward.click();
+    if ((page.viewportSize()?.width ?? 0) < 768) {
+      await expect(nav).toBeHidden();
+      await page.goForward();
+    } else await forward.click();
     await expect(page).toHaveURL('/articles/');
     await back.click();
     await expect(page).toHaveURL('/');
@@ -98,7 +104,14 @@ test('global controls clear the footer, respect safe areas and support touch', a
         '/terms/',
       ]) {
         await page.goto(path);
-        const nav = page.getByRole('navigation', { name: '閲覧履歴の移動' });
+        const nav = page.locator('.history-navigation');
+        if (path === '/' && width < 768) {
+          await expect(nav).toBeHidden();
+          await expect(
+            page.getByRole('searchbox', { name: '石名・英語名・別名' }),
+          ).toBeVisible();
+          continue;
+        }
         expect(await nav.evaluate((el) => getComputedStyle(el).position)).toBe(
           width < 768 ? 'fixed' : 'static',
         );
@@ -134,7 +147,8 @@ test('global controls clear the footer, respect safe areas and support touch', a
       .tap();
     await page.getByRole('button', { name: '← 戻る', exact: true }).tap();
     await expect(page).toHaveURL('/');
-    await page.getByRole('button', { name: '進む →', exact: true }).tap();
+    await expect(page.locator('.history-navigation')).toBeHidden();
+    await page.goForward();
     await expect(page).toHaveURL('/articles/');
   } finally {
     await context.close();

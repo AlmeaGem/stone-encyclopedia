@@ -62,8 +62,17 @@ import { pathTo } from '../lib/urls';
       flex: 1;
       min-width: 0;
     }
+    :global(body[data-home='true']) .history-navigation {
+      display: none;
+    }
+    :global(body[data-home='true']) {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
     :global(body) {
       padding-bottom: calc(81px + env(safe-area-inset-bottom));
+    }
+    :global(html:has(body[data-home='true'])) {
+      scroll-padding-bottom: env(safe-area-inset-bottom);
     }
     :global(html) {
       scroll-padding-bottom: calc(81px + env(safe-area-inset-bottom));

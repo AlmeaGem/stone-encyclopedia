@@ -90,7 +90,7 @@ const url = canonical(path);
       />
     )}
   </head>
-  <body>
+  <body data-home={path === '' ? 'true' : undefined}>
     <a class="skip" href="#main">
       本文へ
     </a>
