@@ -1945,9 +1945,12 @@
       grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
       align-items: stretch;
     }
+    .daily-image {
+      align-self: center;
+    }
     .daily-image img {
-      height: 100%;
-      aspect-ratio: auto;
+      height: auto;
+      aspect-ratio: 1;
     }
     .daily-image .image-impression-label[hidden] {
       display: none;
@@ -1968,6 +1971,15 @@
     }
     .daily-id {
       margin-top: 12px;
+    }
+  }
+}
+
+@layer responsive {
+  @media (max-width: 640px) {
+    .daily-image img {
+      height: auto;
+      aspect-ratio: 1;
     }
   }
 }
