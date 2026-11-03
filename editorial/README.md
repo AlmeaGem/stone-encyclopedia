@@ -9,8 +9,9 @@
 - [第3組 s041〜s060](manuscripts/approved-chatgpt/batch-03/README.md)
 - [第4組 s061〜s080](manuscripts/approved-chatgpt/batch-04/README.md)
 - [第5組 s081〜s100](manuscripts/approved-chatgpt/batch-05/README.md)
+- [第6組 s101〜s120](manuscripts/approved-chatgpt/batch-06/README.md)
 
-添付Markdownを正本として全文を変更せず保存しています。第1組〜第5組の計100種類を照合済み。以降もChatGPT側から提供される完成原稿を待ちます。
+添付Markdownを正本として全文を変更せず保存しています。第1組〜第6組の計120種類を照合済み。以降もChatGPT側から提供される完成原稿を待ちます。
 
 [最終確定した採用・実装方針](EDITORIAL_POLICY.md)
 
