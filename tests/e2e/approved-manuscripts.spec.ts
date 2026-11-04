@@ -9,9 +9,7 @@ import {
 const plain = (text: string) => text.replace(/\*\*/g, '').replace(/\s/g, '');
 for (let start = 0; start < stones.length; start += 20) {
   const batch = stones.slice(start, start + 20);
-  test(
-    `approved manuscripts ${start + 1}-${start + batch.length} render every paragraph once and retain safety information`,
-    async ({ page }) => {
+  test(`manuscripts ${start + 1}-${start + batch.length}`, async ({ page }) => {
       test.setTimeout(300000);
       for (const stone of batch) {
         await page.goto(`/stones/${stone.slug}/`);
@@ -35,8 +33,7 @@ for (let start = 0; start < stones.length; start += 20) {
           /Codex|編集メモ|制作区分/,
         );
       }
-    },
-  );
+  });
 }
 
 test('approved long copy remains readable at phone and desktop widths', async ({
