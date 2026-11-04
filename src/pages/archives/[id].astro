@@ -1,0 +1,38 @@
+---
+import Page from '../../layouts/Page.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import ArchiveArticle from '../../components/ArchiveArticle.astro';
+import { archives } from '../../lib/archives';
+import { pathTo } from '../../lib/urls';
+export function getStaticPaths() {
+  return archives.map((article) => ({
+    params: { id: article.id },
+    props: { article },
+  }));
+}
+const { article } = Astro.props;
+---
+
+<Page
+  title={article.title}
+  path={`archives/${article.id}/`}
+  description={article.introduction}
+>
+  <div class="wrap story-page">
+    <Breadcrumbs
+      items={[
+        { name: '石の伝承図書館', path: 'archives/' },
+        { name: article.title },
+      ]}
+    />
+    <ArchiveArticle article={article} />
+    <nav class="story-page-links" aria-label="伝承図書館の他の記事">
+      {archives
+        .filter((other) => other.id !== article.id)
+        .map((other) => (
+          <a href={pathTo(`archives/${other.id}/`)}>{other.title} ↗</a>
+        ))}
+      <a href={pathTo('archives/')}>記事一覧へ ↗</a>
+    </nav>
+  </div>
+</Page>

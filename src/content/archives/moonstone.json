@@ -1,0 +1,60 @@
+{
+  "id": "moonstone-moonlight",
+  "number": 1,
+  "title": "月の光に重ねられた宝石の伝承",
+  "introduction": "石の奥に、月明かりのような光が浮かぶ。ムーンストーンに寄せられた物語と、その美しさをたどります。",
+  "coverStoneId": "s063",
+  "stoneIds": ["s063"],
+  "sections": [
+    {
+      "heading": "月の光を思わせる石",
+      "classification": "tradition",
+      "paragraphs": [
+        "ヒンドゥー教の伝承には、ムーンストーンと月光を結びつける物語があります。石に見える柔らかな光を、夜空の月と重ねて想像する。そのような結びつきが、石にまつわる伝承として紹介されています。",
+        "この結びつきは、伝承として受け止めたいものです。石が実際に月の光から生まれたという鉱物学上の説明ではありません。"
+      ],
+      "sourceIds": ["gia-lore"]
+    },
+    {
+      "heading": "未来に寄せた願い",
+      "classification": "tradition",
+      "paragraphs": [
+        "ムーンストーンには、幸運や未来を見ることにまつわる伝説も語られてきました。先の見えない時間に、光を宿すような石へ思いを寄せる。幸運や未来にまつわる話も、石について語られる物語の一つです。",
+        "幸運や未来に関する話は伝説であり、その結果を保証するものではありません。"
+      ],
+      "sourceIds": ["gia-lore"]
+    },
+    {
+      "heading": "宝飾に映る月のような光",
+      "classification": "history",
+      "paragraphs": [
+        "ムーンストーンは、アールヌーボー期の宝飾文化とも関わりを持ちます。石が身につけられるとき、その光は石そのものの性質であると同時に、時代の装いの中で味わわれる表情にもなります。",
+        "月の物語を思い浮かべながら眺めることと、当時の宝飾文化の中で石が用いられたことは、別々の視点です。二つを行き来すると、同じ石に異なる奥行きが見えてきます。"
+      ],
+      "sourceIds": ["gia-lore"]
+    },
+    {
+      "heading": "光の名はアデュラレッセンス",
+      "classification": "mineralogy",
+      "paragraphs": [
+        "ムーンストーンは長石の仲間です。その内部構造に関わる光学現象は、アデュラレッセンスと呼ばれます。月明かりを思わせる表情には、石の内部と光との関係があります。",
+        "伝承が光に物語を与える一方、鉱物学は光が見える現象を調べます。どちらの視点から見ても、石をゆっくり観察する時間は尽きません。"
+      ],
+      "sourceIds": ["gia-moonstone"]
+    }
+  ],
+  "sources": [
+    {
+      "id": "gia-lore",
+      "title": "ムーンストーンの歴史と伝承",
+      "institution": "GIA",
+      "url": "https://www.gia.edu/jp/moonstone-history-lore"
+    },
+    {
+      "id": "gia-moonstone",
+      "title": "Moonstone",
+      "institution": "GIA",
+      "url": "https://www.gia.edu/moonstone"
+    }
+  ]
+}

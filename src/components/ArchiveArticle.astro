@@ -1,0 +1,107 @@
+---
+import Visual from './Visual.astro';
+import { stoneById } from '../lib/content';
+import { pathTo } from '../lib/urls';
+import type { z } from 'zod';
+import type { archiveArticleSchema } from '../lib/archive-schema';
+
+type Article = z.infer<typeof archiveArticleSchema>;
+const { article } = Astro.props as { article: Article };
+const related = article.stoneIds.map((id) => {
+  const stone = stoneById(id);
+  if (!stone) throw new Error(`Unknown archive stone: ${id}`);
+  return stone;
+});
+---
+
+<article class="archive-article">
+  <header class="page-intro">
+    <p class="eyebrow">ARCHIVE {String(article.number).padStart(2, '0')}</p>
+    <h1>{article.title}</h1>
+    <p>{article.introduction}</p>
+  </header>
+  <div class="archive-reading">
+    {article.sections.map((section) => (
+      <section class="archive-chapter">
+        <h2>{section.heading}</h2>
+        {section.paragraphs.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))}
+        <p class="archive-citations">
+          参考：
+          {section.sourceIds.map((id, index) => (
+            <>
+              <a href={`#archive-source-${id}`}>
+                {article.sources.find((source) => source.id === id)?.title}
+              </a>
+              {index < section.sourceIds.length - 1 && '、'}
+            </>
+          ))}
+        </p>
+      </section>
+    ))}
+    <section class="archive-chapter" aria-labelledby="archive-stones">
+      <h2 id="archive-stones">この物語に登場した石</h2>
+      <div class="story-stone-grid">
+        {related.map((stone) => (
+          <article class="story-stone-card">
+            <a href={pathTo(`stones/${stone.slug}/`)}>
+              <Visual stone={stone} />
+              <div class="story-stone-copy">
+                <span class="eyebrow">{stone.id.toUpperCase()}</span>
+                <h3>{stone.name}</h3>
+                <span class="text-link">石の図鑑を見る ↗</span>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+    <section class="archive-chapter" aria-labelledby="archive-references">
+      <h2 id="archive-references">参考資料</h2>
+      <ul>
+        {article.sources.map((source) => (
+          <li id={`archive-source-${source.id}`}>
+            <a href={source.url} target="_blank" rel="noopener noreferrer">
+              {source.title} ↗
+            </a>{' '}
+            — {source.institution}
+          </li>
+        ))}
+      </ul>
+    </section>
+  </div>
+</article>
+
+<style>
+  .archive-article h1 {
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+  }
+  .archive-reading {
+    max-width: 760px;
+    margin-inline: auto;
+  }
+  .archive-chapter {
+    padding-block: 2rem;
+    border-top: 1px solid #e6dad1;
+  }
+  .archive-chapter h2 {
+    font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+    margin-bottom: 1.3rem;
+  }
+  .archive-chapter p,
+  .archive-chapter li {
+    line-height: 2.1;
+    overflow-wrap: anywhere;
+  }
+  .archive-chapter p + p {
+    margin-top: 1em;
+  }
+  .archive-citations {
+    font-size: 0.85em;
+  }
+  .archive-chapter li + li {
+    margin-top: 0.8rem;
+  }
+</style>

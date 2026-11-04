@@ -1,10 +1,13 @@
 import { stones, articles, categories } from '../lib/content';
 import { canonical } from '../lib/urls';
 import themes from '../content/story-themes.json';
+import { archives } from '../lib/archives';
 export function GET() {
   const paths = [
     '',
     'stones/',
+    'archives/',
+    ...archives.map((article) => `archives/${article.id}/`),
     'library/',
     'articles/',
     'wishes/',
