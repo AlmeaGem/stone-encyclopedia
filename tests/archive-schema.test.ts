@@ -1,5 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { archiveArticleSchema } from '../src/lib/archive-schema';
+import {
+  archiveArticleSchema,
+  validateArchiveCatalog,
+} from '../src/lib/archive-schema';
 
 const sample = {
   id: 'example-archive',
@@ -44,4 +47,26 @@ describe('free archive article metadata', () => {
       archiveArticleSchema.safeParse({ ...sample, stoneIds: ['s107'] }).success,
     ).toBe(false);
   });
+});
+
+it('rejects broken stone links, route collisions and duplicate archive numbers', () => {
+  expect(
+    validateArchiveCatalog([sample], ['s063'], ['moon-and-stars']),
+  ).toHaveLength(1);
+  expect(() => validateArchiveCatalog([sample], ['s107'], [])).toThrow(
+    'Unknown stone ID',
+  );
+  expect(() =>
+    validateArchiveCatalog([sample], ['s063'], ['example-archive']),
+  ).toThrow('reserved');
+  expect(() =>
+    validateArchiveCatalog(
+      [sample, { ...sample, id: 'another' }],
+      ['s063'],
+      [],
+    ),
+  ).toThrow('Duplicate archive number');
+  expect(() => validateArchiveCatalog([sample, sample], ['s063'], [])).toThrow(
+    'Duplicate or reserved archive ID',
+  );
 });

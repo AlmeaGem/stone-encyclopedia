@@ -59,3 +59,27 @@ export const archiveArticleSchema = z
         });
     });
   });
+
+/** Validate a free collection against the current catalog and reserved routes. */
+export function validateArchiveCatalog(
+  input: unknown,
+  stoneIds: readonly string[],
+  reservedIds: readonly string[],
+) {
+  const articles = z.array(archiveArticleSchema).parse(input);
+  const knownStones = new Set(stoneIds);
+  const reserved = new Set(reservedIds);
+  const ids = new Set<string>();
+  const numbers = new Set<number>();
+  for (const article of articles) {
+    if (ids.has(article.id) || reserved.has(article.id))
+      throw new Error(`Duplicate or reserved archive ID: ${article.id}`);
+    if (numbers.has(article.number))
+      throw new Error(`Duplicate archive number: ${article.number}`);
+    const missing = article.stoneIds.find((id) => !knownStones.has(id));
+    if (missing) throw new Error(`Unknown stone ID: ${missing}`);
+    ids.add(article.id);
+    numbers.add(article.number);
+  }
+  return articles;
+}
