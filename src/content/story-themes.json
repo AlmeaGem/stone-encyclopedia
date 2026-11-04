@@ -1,0 +1,42 @@
+[
+  {
+    "id": "love-and-fate",
+    "title": "愛と運命の物語",
+    "keywords": "恋愛・良縁・情熱",
+    "intro": "愛や絆をめぐる象徴と、それぞれの石の物語をたどります。",
+    "cover": "s205",
+    "stones": ["s205", "s091", "s107", "s109"]
+  },
+  {
+    "id": "fortune-and-wonders",
+    "title": "幸運と奇跡の物語",
+    "keywords": "幸運・繁栄・願い",
+    "intro": "幸運や繁栄の象徴として親しまれる石に出会います。",
+    "cover": "s209",
+    "stones": ["s209", "s048", "s057", "s138"]
+  },
+  {
+    "id": "moon-and-stars",
+    "title": "月と星の物語",
+    "keywords": "月光・直感・神秘",
+    "intro": "月や星を思わせる名前と光の表情を持つ石を集めました。",
+    "cover": "s063",
+    "stones": ["s063", "s208", "s210"]
+  },
+  {
+    "id": "protection-and-purification",
+    "title": "守護と魔除けの物語",
+    "keywords": "守護・浄化・厄除け",
+    "intro": "守護や浄化の象徴として語られる石の物語を紹介します。",
+    "cover": "s001",
+    "stones": ["s001", "s019", "s008"]
+  },
+  {
+    "id": "mysterious-light",
+    "title": "神秘的な輝きの物語",
+    "keywords": "シラー・虹色・光",
+    "intro": "石ごとに異なる光学現象と、その美しい表情を見つめます。",
+    "cover": "s133",
+    "stones": ["s133", "s188", "s063", "s210", "s047", "s057"]
+  }
+]

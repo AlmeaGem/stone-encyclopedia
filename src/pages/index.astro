@@ -8,6 +8,7 @@ import ArticleTitle from '../components/ArticleTitle.astro';
 import HeroGem from '../components/HeroGem.astro';
 import Card from '../components/Card.astro';
 import DailyDiscovery from '../components/DailyDiscovery.astro';
+import StoryCollection from '../components/StoryCollection.astro';
 import { stones, categories, articles } from '../lib/content';
 import { pathTo, canonical } from '../lib/urls';
 const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
@@ -60,6 +61,7 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
     </div>
   </section>
   <DailyDiscovery />
+  <StoryCollection />
   <section class="home-search wrap" aria-labelledby="find-title">
     <h2 id="find-title">今日、気になる石は？</h2>
     <p class="search-intro">石名・別名・願望・タグから探せます。</p>

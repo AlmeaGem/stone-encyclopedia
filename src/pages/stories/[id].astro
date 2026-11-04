@@ -1,0 +1,54 @@
+---
+import Page from '../../layouts/Page.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import Visual from '../../components/Visual.astro';
+import { stones } from '../../lib/content';
+import { approvedManuscript } from '../../lib/approved-manuscripts';
+import { pathTo } from '../../lib/urls';
+import themes from '../../content/story-themes.json';
+export function getStaticPaths() {
+  return themes.map((theme) => ({
+    params: { id: theme.id },
+    props: { theme },
+  }));
+}
+const { theme } = Astro.props;
+const selected = theme.stones.map((id: string) => {
+  const stone = stones.find((item) => item.id === id);
+  if (!stone) throw new Error(`Unknown story stone: ${id}`);
+  return stone;
+});
+---
+
+<Page title={theme.title} path={`stories/${theme.id}/`}>
+  <div class="wrap story-page">
+    <Breadcrumbs
+      items={[{ name: '石を探す', path: 'stones/' }, { name: theme.title }]}
+    />
+    <header class="page-intro">
+      <p class="eyebrow">THE STORY COLLECTION</p>
+      <h1>{theme.title}</h1>
+      <p>{theme.intro}</p>
+    </header>
+    <div class="story-stone-grid">
+      {selected.map((stone) => (
+        <article class="story-stone-card">
+          <a href={pathTo(`stones/${stone.slug}/`)}>
+            <Visual stone={stone} />
+            <div class="story-stone-copy">
+              <span class="eyebrow">{stone.id.toUpperCase()}</span>
+              <h2>{stone.name}</h2>
+              <p>{approvedManuscript(stone.id).catchphrase}</p>
+              <span class="text-link">石の物語を読む ↗</span>
+            </div>
+          </a>
+        </article>
+      ))}
+    </div>
+    <nav class="story-page-links" aria-label="図鑑を探す">
+      <a href={pathTo('stones/')}>すべての石を探す ↗</a>
+      <a href={pathTo('wishes/')}>願いから探す ↗</a>
+      <a href={pathTo('')}>トップへ戻る ↗</a>
+    </nav>
+  </div>
+</Page>

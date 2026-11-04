@@ -1,0 +1,42 @@
+---
+import themes from '../content/story-themes.json';
+import { stones, photoFor } from '../lib/content';
+import { pathTo } from '../lib/urls';
+---
+
+<section class="story-collection wrap" aria-labelledby="story-collection-title">
+  <div class="story-collection-heading">
+    <p class="eyebrow">THE STORY COLLECTION</p>
+    <h2 id="story-collection-title">石の物語を探す</h2>
+    <p>心惹かれる物語から、まだ知らない石との出会いへ。</p>
+  </div>
+  <div class="story-collection-grid">
+    {themes.map((theme) => {
+      const stone = stones.find((item) => item.id === theme.cover)!;
+      const image = photoFor(stone)!;
+      return (
+        <a class="story-collection-card" href={pathTo(`stories/${theme.id}/`)}>
+          <span class="story-collection-image">
+            <img
+              src={pathTo(image.localPath!)}
+              alt=""
+              width="88"
+              height="88"
+              loading="lazy"
+            />
+            {['ai-generated', 'illustrative-photo'].includes(
+              image.imageKind || '',
+            ) && <span class="story-image-label">※ イメージ画像</span>}
+          </span>
+          <span class="story-collection-copy">
+            <strong>{theme.title}</strong>
+            <span>{theme.keywords}</span>
+          </span>
+          <span aria-hidden="true" class="story-collection-arrow">
+            ›
+          </span>
+        </a>
+      );
+    })}
+  </div>
+</section>
