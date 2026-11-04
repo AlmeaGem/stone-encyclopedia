@@ -5,6 +5,7 @@ export function GET() {
   const paths = [
     '',
     'stones/',
+    'library/',
     'articles/',
     'wishes/',
     'diagnosis/',
