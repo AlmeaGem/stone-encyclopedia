@@ -19,6 +19,17 @@ test('archive articles and original themes remain reachable and readable', async
     ).toHaveAttribute('href', `/archives/${article.id}/`);
     await page.goto(`/archives/${article.id}/`);
     await expect(page.locator('h1')).toHaveText(article.title);
+    await expect(page.locator('.archive-motif')).toHaveAttribute(
+      'aria-hidden',
+      'true',
+    );
+    for (const [index, section] of article.sections.entries()) {
+      const paragraphs = page
+        .locator('.archive-chapter')
+        .nth(index)
+        .locator('p:not(.archive-citations)');
+      await expect(paragraphs).toHaveText(section.paragraphs);
+    }
     await expect(
       page.locator('.archive-chapter').first().locator('p').first(),
     ).toHaveText(article.sections[0].paragraphs[0]);
