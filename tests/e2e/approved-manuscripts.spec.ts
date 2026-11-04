@@ -7,11 +7,13 @@ import {
 } from '../../src/lib/approved-manuscripts';
 
 const plain = (text: string) => text.replace(/\*\*/g, '').replace(/\s/g, '');
-test('all 210 pages render every approved paragraph once and retain safety information', async ({
-  page,
-}) => {
-  test.setTimeout(300000);
-  for (const stone of stones) {
+for (let start = 0; start < stones.length; start += 20) {
+  const batch = stones.slice(start, start + 20);
+  test(`approved manuscripts ${start + 1}-${start + batch.length} render every paragraph once and retain safety information`, async ({
+    page,
+  }) => {
+    test.setTimeout(300000);
+    for (const stone of batch) {
     await page.goto(`/stones/${stone.slug}/`);
     const manuscript = approvedManuscript(stone.id);
     await expect(page.locator('h1')).toHaveText(stone.name);
@@ -33,7 +35,8 @@ test('all 210 pages render every approved paragraph once and retain safety infor
       /Codex|編集メモ|制作区分/,
     );
   }
-});
+  });
+}
 
 test('approved long copy remains readable at phone and desktop widths', async ({
   page,
