@@ -39,6 +39,29 @@ test('story shelf and five free collections lead to the approved stone pages', a
     await expect(page.locator('h1')).toHaveText(theme.title);
     const cards = page.locator('.story-stone-card');
     await expect(cards).toHaveCount(theme.stones.length);
+    for (const width of [375, 390, 430, 768, 1440]) {
+      await page.setViewportSize({ width, height: 900 });
+      expect(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth <= innerWidth,
+        ),
+        `${theme.id} ${width}`,
+      ).toBe(true);
+      for (const card of await cards.all()) {
+        const box = (await card.boundingBox())!;
+        expect(box.x).toBeGreaterThanOrEqual(0);
+        expect(box.x + box.width).toBeLessThanOrEqual(width + 1);
+      }
+      if (
+        theme.id === 'love-and-fate' &&
+        info.project.name === 'desktop' &&
+        [390, 1440].includes(width)
+      )
+        await page.screenshot({
+          path: test.info().outputPath(`theme-${width}.png`),
+          fullPage: true,
+        });
+    }
     for (const [index, id] of theme.stones.entries()) {
       const stone = stones.find((s) => s.id === id)!;
       const card = cards.nth(index);
