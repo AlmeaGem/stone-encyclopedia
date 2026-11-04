@@ -2248,6 +2248,9 @@
     background: #fbf7f2;
     border: 1px solid #e9ded5;
   }
+  .library-card > a {
+    height: auto;
+  }
   .library-card .library-controls {
     margin: 0;
     padding: 0 20px 20px;

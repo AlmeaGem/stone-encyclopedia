@@ -42,6 +42,11 @@ test('library saves, persists, removes and ignores unknown IDs at requested size
     await button.scrollIntoViewIfNeeded();
     const bounds = await button.boundingBox();
     expect(bounds).not.toBeNull();
+    const cardBounds = await card.boundingBox();
+    expect(cardBounds).not.toBeNull();
+    expect(bounds!.y + bounds!.height).toBeLessThanOrEqual(
+      cardBounds!.y + cardBounds!.height,
+    );
     expect(bounds!.x).toBeGreaterThanOrEqual(0);
     expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(width);
     if (
