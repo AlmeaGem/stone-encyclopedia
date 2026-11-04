@@ -2,12 +2,17 @@
 import { archives } from '../lib/archives';
 import { stones, photoFor } from '../lib/content';
 import { pathTo } from '../lib/urls';
+const { isPage = false } = Astro.props as { isPage?: boolean };
 ---
 
 <section class="story-collection wrap" aria-labelledby="archive-shelf-title">
   <div class="story-collection-heading">
     <p class="eyebrow">THE GEMSTONE ARCHIVES</p>
-    <h2 id="archive-shelf-title">石の伝承図書館</h2>
+    {isPage ? (
+      <h1 id="archive-shelf-title">石の伝承図書館</h1>
+    ) : (
+      <h2 id="archive-shelf-title">石の伝承図書館</h2>
+    )}
     <p>時を越えて語り継がれる、宝石と人々の物語。</p>
   </div>
   <div class="story-collection-grid">

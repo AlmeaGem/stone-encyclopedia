@@ -48,6 +48,9 @@ test('archive articles and original themes remain reachable and readable', async
     await page.goto('/');
   }
   await page.goto('/archives/');
+  await expect(
+    page.getByRole('heading', { level: 1, name: '石の伝承図書館' }),
+  ).toBeVisible();
   await expect(page.locator('.story-collection-card')).toHaveCount(
     archives.length,
   );
