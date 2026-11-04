@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
 import themes from '../../src/content/story-themes.json' with { type: 'json' };
-import { archives } from '../../src/lib/archives';
+import moonstone from '../../src/content/archives/moonstone.json' with { type: 'json' };
+import egyptianAmulets from '../../src/content/archives/egyptian-amulets.json' with { type: 'json' };
+const archives = [moonstone, egyptianAmulets];
 import stones from '../../src/content/stones.json' with { type: 'json' };
 import { approvedManuscript } from '../../src/lib/approved-manuscripts';
 

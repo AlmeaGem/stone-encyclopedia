@@ -1,6 +1,8 @@
 import { test, expect } from '@playwright/test';
-import { archives } from '../../src/lib/archives';
-import { stones } from '../../src/lib/content';
+import moonstone from '../../src/content/archives/moonstone.json' with { type: 'json' };
+import egyptianAmulets from '../../src/content/archives/egyptian-amulets.json' with { type: 'json' };
+import stones from '../../src/content/stones.json' with { type: 'json' };
+const archives = [moonstone, egyptianAmulets];
 
 test('archive articles and original themes remain reachable and readable', async ({
   page,
