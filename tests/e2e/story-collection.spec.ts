@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import themes from '../../src/content/story-themes.json' with { type: 'json' };
+import { archives } from '../../src/lib/archives';
 import stones from '../../src/content/stones.json' with { type: 'json' };
 import { approvedManuscript } from '../../src/lib/approved-manuscripts';
 
@@ -9,7 +10,9 @@ test('story shelf and five free collections lead to the approved stone pages', a
   test.setTimeout(180000);
   await page.goto('/');
   const shelf = page.locator('.story-collection');
-  await expect(shelf.locator('.story-collection-card')).toHaveCount(5);
+  await expect(shelf.locator('.story-collection-card')).toHaveCount(
+    archives.length,
+  );
   for (const width of [375, 390, 430, 768, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     expect(
@@ -33,9 +36,7 @@ test('story shelf and five free collections lead to the approved stone pages', a
       });
   }
   for (const theme of themes) {
-    const link = shelf.getByRole('link', { name: new RegExp(theme.title) });
-    await expect(link).toHaveAttribute('href', `/stories/${theme.id}/`);
-    await link.click();
+    await page.goto(`/stories/${theme.id}/`);
     await expect(page.locator('h1')).toHaveText(theme.title);
     const cards = page.locator('.story-stone-card');
     await expect(cards).toHaveCount(theme.stones.length);

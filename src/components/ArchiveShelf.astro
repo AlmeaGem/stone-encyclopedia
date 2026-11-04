@@ -1,0 +1,56 @@
+---
+import { archives } from '../lib/archives';
+import { stones, photoFor } from '../lib/content';
+import { pathTo } from '../lib/urls';
+---
+
+<section class="story-collection wrap" aria-labelledby="archive-shelf-title">
+  <div class="story-collection-heading">
+    <p class="eyebrow">THE GEMSTONE ARCHIVES</p>
+    <h2 id="archive-shelf-title">石の伝承図書館</h2>
+    <p>時を越えて語り継がれる、宝石と人々の物語。</p>
+  </div>
+  <div class="story-collection-grid">
+    {archives.map((article) => {
+      const stone = stones.find((item) => item.id === article.coverStoneId)!;
+      const image = photoFor(stone)!;
+      return (
+        <a
+          class="story-collection-card"
+          href={pathTo(`archives/${article.id}/`)}
+        >
+          <span class="story-collection-image">
+            <img
+              src={pathTo(image.localPath!)}
+              alt=""
+              width="88"
+              height="88"
+              loading="lazy"
+            />
+            {['ai-generated', 'illustrative-photo'].includes(
+              image.imageKind || '',
+            ) && <span class="story-image-label">※ イメージ画像</span>}
+          </span>
+          <span class="story-collection-copy">
+            <strong>{article.title}</strong>
+            <span>{article.introduction}</span>
+            <span>記事を読む ↗</span>
+          </span>
+          <span aria-hidden="true" class="story-collection-arrow">
+            ›
+          </span>
+        </a>
+      );
+    })}
+  </div>
+  <p class="archive-all">
+    <a class="text-link" href={pathTo('archives/')}>
+      すべての記事を見る ↗
+    </a>
+  </p>
+</section>
+<style>
+  .archive-all {
+    margin-top: 20px;
+  }
+</style>
