@@ -1,5 +1,6 @@
 import { stones, articles, categories } from '../lib/content';
 import { canonical } from '../lib/urls';
+import themes from '../content/story-themes.json';
 export function GET() {
   const paths = [
     '',
@@ -14,6 +15,7 @@ export function GET() {
     'commerce/',
     'refund/',
     'contact/',
+    ...themes.map((theme) => `stories/${theme.id}/`),
     ...stones.map((s) => `stones/${s.slug}/`),
     ...articles.map((a) => `articles/${a.slug}/`),
     ...categories.map((c) => `wishes/${c.id}/`),
