@@ -1,0 +1,78 @@
+<script>
+  import { readLibrary, writeLibrary, LIBRARY_KEY } from '../lib/stone-library';
+
+  const controls = [
+    ...document.querySelectorAll<HTMLElement>('[data-library-control]'),
+  ];
+  const shelf = document.querySelector<HTMLElement>('[data-library-shelf]');
+  const cards = [
+    ...document.querySelectorAll<HTMLElement>('[data-library-card]'),
+  ];
+  const notice = document.querySelector<HTMLElement>('[data-library-notice]');
+  const empty = document.querySelector<HTMLElement>('[data-library-empty]');
+  let storage: Storage | undefined;
+  try {
+    storage = window.localStorage;
+    storage.getItem(LIBRARY_KEY);
+  } catch {
+    storage = undefined;
+  }
+  const showUnavailable = () => {
+    if (notice) {
+      notice.hidden = false;
+      notice.textContent =
+        'このブラウザでは保存を利用できません。石の閲覧は引き続きお楽しみいただけます。';
+    }
+  };
+  if (!storage) showUnavailable();
+  const render = () => {
+    const ids = storage ? readLibrary(storage) : [];
+    for (const control of controls) {
+      const button = control.querySelector<HTMLButtonElement>(
+        '[data-library-toggle]',
+      )!;
+      const active = ids.includes(control.dataset.stoneId!);
+      button.hidden = !storage;
+      button.setAttribute('aria-pressed', String(active));
+      button.setAttribute(
+        'aria-label',
+        `${control.dataset.stoneName}を${active ? '書架から解除' : '書架に保存'}`,
+      );
+      button.querySelector<HTMLElement>('.library-heart')!.textContent = active
+        ? '♥'
+        : '♡';
+      button.querySelector<HTMLElement>('[data-library-label]')!.textContent =
+        active ? '書架から解除' : '書架に保存';
+    }
+    let count = 0;
+    for (const card of cards) {
+      const visible = ids.includes(card.dataset.libraryCard!);
+      card.hidden = !visible;
+      if (visible) count++;
+    }
+    if (empty) empty.hidden = !storage || count > 0;
+    if (shelf) shelf.hidden = false;
+  };
+  for (const control of controls) {
+    control
+      .querySelector<HTMLButtonElement>('[data-library-toggle]')
+      ?.addEventListener('click', () => {
+        if (!storage) return;
+        const id = control.dataset.stoneId!;
+        const ids = readLibrary(storage);
+        const updated = ids.includes(id)
+          ? ids.filter((item) => item !== id)
+          : [...ids, id];
+        if (!writeLibrary(storage, updated)) {
+          showUnavailable();
+          return;
+        }
+        render();
+      });
+  }
+  window.addEventListener('storage', (event) => {
+    if (event.key === LIBRARY_KEY || event.key === null) render();
+  });
+  window.addEventListener('pageshow', render);
+  render();
+</script>

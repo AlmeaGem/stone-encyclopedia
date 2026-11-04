@@ -1,0 +1,61 @@
+---
+import Page from '../layouts/Page.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Visual from '../components/Visual.astro';
+import LibraryControls from '../components/LibraryControls.astro';
+import LibraryScript from '../components/LibraryScript.astro';
+import { stones } from '../lib/content';
+import { approvedManuscript } from '../lib/approved-manuscripts';
+import { pathTo } from '../lib/urls';
+---
+
+<Page title="わたしの石の書架" path="library/">
+  <div class="wrap story-page library-page">
+    <Breadcrumbs items={[{ name: 'わたしの石の書架' }]} />
+    <header class="page-intro">
+      <p class="eyebrow">MY STONE LIBRARY</p>
+      <h1>わたしの石の書架</h1>
+      <p>気になった石を集めて、いつでもその物語を読み返せます。</p>
+      <p class="library-note">
+        保存した石は、このブラウザと端末だけに残ります。ブラウザのデータを削除すると消去され、別の端末には同期されません。
+      </p>
+    </header>
+    <p data-library-notice role="status" hidden></p>
+    <noscript>
+      <p>
+        書架の保存・表示にはJavaScriptが必要です。
+        <a href={pathTo('stones/')}>石の図鑑を見る ↗</a>
+      </p>
+    </noscript>
+    <div data-library-shelf hidden>
+      <p class="library-empty" data-library-empty hidden>
+        書架はまだ空です。気になる石のページから、好きな物語を集めてみませんか。
+      </p>
+      <div class="story-stone-grid">
+        {stones.map((stone) => (
+          <article
+            class="story-stone-card library-card"
+            data-library-card={stone.id}
+            hidden
+          >
+            <a href={pathTo(`stones/${stone.slug}/`)}>
+              <Visual stone={stone} />
+              <div class="story-stone-copy">
+                <span class="eyebrow">{stone.id.toUpperCase()}</span>
+                <h2>{stone.name}</h2>
+                <p>{approvedManuscript(stone.id).catchphrase}</p>
+                <span class="text-link">石の物語を読む ↗</span>
+              </div>
+            </a>
+            <LibraryControls id={stone.id} name={stone.name} />
+          </article>
+        ))}
+      </div>
+    </div>
+    <nav class="story-page-links" aria-label="図鑑を探す">
+      <a href={pathTo('stones/')}>すべての石を探す ↗</a>
+      <a href={pathTo('')}>トップへ戻る ↗</a>
+    </nav>
+  </div>
+  <LibraryScript />
+</Page>

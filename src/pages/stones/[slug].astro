@@ -1,5 +1,7 @@
 ---
 import ManuscriptBody from '../../components/ManuscriptBody.astro';
+import LibraryControls from '../../components/LibraryControls.astro';
+import LibraryScript from '../../components/LibraryScript.astro';
 import { approvedManuscript } from '../../lib/approved-manuscripts';
 import '../../manuscript-layout.css';
 import ManuscriptHeading from '../../components/ManuscriptHeading.astro';
@@ -81,6 +83,7 @@ const schema = {
   schema={schema}
   safeArea
 >
+  <LibraryScript />
   <div class="wrap">
     <Breadcrumbs
       items={[{ name: '石を探す', path: 'stones/' }, { name: stone.name }]}
@@ -93,6 +96,11 @@ const schema = {
         </span>
         <h1>{stone.name}</h1>
         <p class="manuscript-catchphrase">{manuscript.catchphrase}</p>
+        <LibraryControls id={stone.id} name={stone.name} />
+        <p class="library-status" data-library-notice role="status" hidden></p>
+        <a class="library-detail-link" href={pathTo('library/')}>
+          わたしの石の書架 ↗
+        </a>
         <p class="detail-english">{stone.english}</p>
         {stone.aliases.length > 0 && (
           <p class="aliases">

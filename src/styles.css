@@ -2197,3 +2197,71 @@
     }
   }
 }
+
+@layer components {
+  .library-controls {
+    margin: 16px 0 8px;
+  }
+  .library-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    padding: 8px 15px;
+    border: 1px solid #e3d2c9;
+    background: #fbf7f4;
+    color: #725952;
+    font: inherit;
+    cursor: pointer;
+  }
+  .library-toggle[hidden],
+  .library-card[hidden] {
+    display: none;
+  }
+  .library-heart {
+    color: #bd8b8b;
+    font-size: 22px;
+    line-height: 1;
+  }
+  .library-toggle:focus-visible {
+    outline: 2px solid #87665c;
+    outline-offset: 3px;
+  }
+  .library-detail-link {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: #725952;
+    font-size: 0.9em;
+  }
+  .library-note,
+  .library-empty,
+  .library-status {
+    line-height: 1.9;
+    color: #6f625c;
+  }
+  .library-note {
+    max-width: 58em;
+    font-size: 0.9em;
+  }
+  .library-empty {
+    padding: 28px;
+    background: #fbf7f2;
+    border: 1px solid #e9ded5;
+  }
+  .library-card > a {
+    height: auto;
+  }
+  .library-card .library-controls {
+    margin: 0;
+    padding: 0 20px 20px;
+  }
+  @media (max-width: 640px) {
+    .site-header nav {
+      flex-wrap: wrap;
+      column-gap: 12px;
+    }
+    .library-card .library-controls {
+      padding: 0 14px 14px;
+    }
+  }
+}

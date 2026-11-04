@@ -1,0 +1,23 @@
+---
+const { id, name } = Astro.props as { id: string; name: string };
+---
+
+<div
+  class="library-controls"
+  data-library-control
+  data-stone-id={id}
+  data-stone-name={name}
+>
+  <button
+    type="button"
+    class="library-toggle"
+    data-library-toggle
+    aria-pressed="false"
+    hidden
+  >
+    <span class="library-heart" aria-hidden="true">
+      ♡
+    </span>
+    <span data-library-label>書架に保存</span>
+  </button>
+</div>
