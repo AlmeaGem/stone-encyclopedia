@@ -12,7 +12,13 @@ const motif =
     ? 'moon'
     : article.id === 'egyptian-amulets'
       ? 'lotus'
-      : undefined;
+      : article.number === 3
+        ? 'heart'
+        : article.number === 4
+          ? 'prism'
+          : article.number === 5
+            ? 'traveler'
+            : undefined;
 const escapedTitle = article.title.replace(
   /[&<>"']/g,
   (character) =>
@@ -59,6 +65,47 @@ const related = article.stoneIds.map((id) => {
       >
         <path d="M32 48C19 44 13 34 13 23c8 2 14 7 19 15 5-8 11-13 19-15 0 11-6 21-19 25Z" />
         <path d="M32 38C26 29 26 20 32 12c6 8 6 17 0 26ZM20 45c-4 0-8-1-11-3m35 3c4 0 8-1 11-3M17 53h30M23 57h18" />
+      </svg>
+    )}
+    {motif === 'heart' && (
+      <svg
+        class="archive-motif archive-heart-mark"
+        viewBox="0 0 64 64"
+        fill="none"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M32 51C27 47 12 37 12 26c0-10 12-14 20-5 8-9 20-5 20 5 0 11-15 21-20 25Z" />
+        <path d="M51 9v8m-4-4h8M13 12v5m-2.5-2.5h5" />
+        <circle cx="53" cy="34" r=".8" fill="currentColor" stroke="none" />
+      </svg>
+    )}
+    {motif === 'prism' && (
+      <svg
+        class="archive-motif archive-prism-mark"
+        viewBox="0 0 64 64"
+        fill="none"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M13 25 21 14h22l8 11-19 27L13 25Z" />
+        <path d="m13 25 19 3 19-3M21 14l11 14 11-14M32 28v24" />
+        <path d="m22 34 13-13" stroke="#c6a4a6" />
+        <path d="m26 38 13-13" stroke="#c3b89f" />
+        <path d="m30 42 13-13" stroke="#aabeb9" />
+      </svg>
+    )}
+    {motif === 'traveler' && (
+      <svg
+        class="archive-motif archive-traveler-mark"
+        viewBox="0 0 64 64"
+        fill="none"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <circle cx="33" cy="17" r="4" />
+        <path d="M32 22c-3 4-4 8-3 13l-5 12m6-12 7 11m-6-21 8 5m-9-5-6 8m15-3 6 18M17 52c8-5 17-4 30-8M10 54c12-2 24 0 44-2" />
+        <path d="M26 25c-5-1-7 4-6 9l6 2" />
       </svg>
     )}
     <p class="eyebrow">ARCHIVE {String(article.number).padStart(2, '0')}</p>
@@ -142,6 +189,20 @@ const related = article.stoneIds.map((id) => {
     stroke-linejoin: round;
     pointer-events: none;
   }
+  .archive-heart .archive-intro h1,
+  .archive-prism .archive-intro h1,
+  .archive-traveler .archive-intro h1 {
+    margin-top: 32px;
+  }
+  .archive-heart-mark {
+    color: #b99394;
+  }
+  .archive-prism-mark {
+    color: #b7a89c;
+  }
+  .archive-traveler-mark {
+    color: #a58c76;
+  }
   .archive-article h1 {
     max-width: 25ch;
     text-wrap: balance;
@@ -223,6 +284,20 @@ const related = article.stoneIds.map((id) => {
       width: 40px;
       height: 40px;
       right: 0;
+    }
+    .archive-heart .archive-intro h1,
+    .archive-prism .archive-intro h1,
+    .archive-traveler .archive-intro h1 {
+      margin-top: 32px;
+    }
+    .archive-heart-mark {
+      color: #b99394;
+    }
+    .archive-prism-mark {
+      color: #b7a89c;
+    }
+    .archive-traveler-mark {
+      color: #a58c76;
     }
     .archive-article h1 {
       letter-spacing: 0.02em;

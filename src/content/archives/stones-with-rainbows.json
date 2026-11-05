@@ -1,0 +1,75 @@
+{
+  "id": "stones-with-rainbows",
+  "number": 4,
+  "title": "虹を宿す石の不思議",
+  "introduction": "石を少し傾けると、静かな面に光が現れる。その色の奥には、目には見えない小さな構造があります。",
+  "coverStoneId": "s133",
+  "stoneIds": ["s133", "s063", "s129"],
+  "sections": [
+    {
+      "heading": "光を待つ石",
+      "classification": "mineralogy",
+      "sourceIds": ["gia-review", "gia-guide"],
+      "paragraphs": [
+        "石を手の中でゆっくり動かすと、ある角度でだけ色が浮かぶことがあります。光が通る道と観察する位置が変わることで見えてくる、その一瞬の表情。宝石には、内部の構造と光の関係によって生まれるさまざまな光学現象があります。",
+        "似たように幻想的に見える輝きにも、それぞれ異なる名前と仕組みがあります。どの石でも同じ原因で虹が現れるわけではありません。名前を手がかりに見比べると、石の眺め方が少しずつ広がります。"
+      ]
+    },
+    {
+      "heading": "ラブラドライトの色のゆらめき",
+      "classification": "mineralogy",
+      "sourceIds": ["gia-guide", "gia-review"],
+      "paragraphs": [
+        "ラブラドライトに見られる色の輝きは、ラブラドレッセンスと呼ばれます。GIAは、青や緑、金色などに見える光と、石の内部にある微細な層との関係を説明しています。光がその構造に関わることで、角度によって色が現れます。",
+        "落ち着いた色の石の面から光が浮かび上がるさまは、見るたびに少し違う景色のようです。けれども、その美しさを説明するには、石の内部を通る光に目を向ける必要があります。"
+      ]
+    },
+    {
+      "heading": "月明かりのような光",
+      "classification": "mineralogy",
+      "sourceIds": ["gia-review"],
+      "paragraphs": [
+        "ムーンストーンには、アデュラレッセンスと呼ばれる柔らかな光が見られます。GIAの研究は、この光を長石内部の層状構造と関係づけて解説しています。月光を思わせるという表現は、観察した印象を言葉にしたものです。",
+        "同じ研究では、レインボームーンストーンという流通名の一部にラブラドライトが含まれる場合も説明されています。名前が似ていても、流通上の呼び名と鉱物の区分は同じとは限りません。個々の石については、その表示を確かめることが大切です。"
+      ]
+    },
+    {
+      "heading": "星のかたちを映す石",
+      "classification": "mineralogy",
+      "sourceIds": ["gia-sapphire"],
+      "paragraphs": [
+        "光が星のように見える現象は、アステリズム、またはスター効果と呼ばれます。GIAはスターサファイアについて、一定の方向に並んだ微細な針状の内包物によって光が反射し、星のような像が見えると説明しています。",
+        "これはラブラドライトの層による色の現れ方と区別したい現象です。石の中に本物の星が入っているわけではありません。それでも、光と内包物の織りなす像は、星空を思い浮かべる豊かな入り口になります。"
+      ]
+    },
+    {
+      "heading": "見えるものと、その先にある仕組み",
+      "classification": "modern-interpretation",
+      "sourceIds": ["gia-review", "gia-sapphire"],
+      "paragraphs": [
+        "光の名前を知っても、石に見入る時間の不思議さが消えるわけではありません。色が現れる角度を探し、星の線をたどる。その体験は、鉱物の性質を学ぶ時間にも、想像を楽しむ時間にもなります。",
+        "石をたとえる言葉は、見る人の感性に寄り添うものです。鉱物学的な説明と混ぜ合わせずに受け止めれば、一つの輝きを異なる視点から味わうことができます。"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "gia-review",
+      "title": "Structures Behind the Spectacle",
+      "institution": "GIA Gems & Gemology",
+      "url": "https://www.gia.edu/gems-gemology/summer-2025-phenomenal-gemstones"
+    },
+    {
+      "id": "gia-guide",
+      "title": "Guide to Phenomenal Gems",
+      "institution": "GIA",
+      "url": "https://www.gia.edu/gems-gemology-summary-guide-to-phenomenal-gems"
+    },
+    {
+      "id": "gia-sapphire",
+      "title": "Sapphire Quality Factors",
+      "institution": "GIA",
+      "url": "https://www.gia.edu/sapphire-quality-factor"
+    }
+  ]
+}
