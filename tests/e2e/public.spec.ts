@@ -355,12 +355,14 @@ test('home offers general wish search, real editorial destinations and an honest
   await expect(page.locator('.brand-symbol svg')).toBeVisible();
   await expect(page.locator('.home-hero img')).toHaveCount(0);
   await expect(page.locator('.wish-search-links a')).toHaveCount(12);
-  const links = page.locator('.three-views a');
-  await expect(links).toHaveCount(3);
-  for (const link of await links.all()) {
+  await expect(page.locator('.home-compact-links summary')).toContainText(
+    '12カテゴリー',
+  );
+  await expect(page.locator('.article-grid a')).toHaveCount(3);
+  await expect(page.locator('.wish-grid')).toHaveCount(0);
+  for (const link of await page.locator('.article-grid > a').all()) {
     const href = await link.getAttribute('href');
     expect((await request.get(href!)).status()).toBe(200);
-    await expect(link).toContainText('詳しく見る');
   }
   await expect(page.locator('.report-offer')).toContainText('販売準備中');
   await expect(page.locator('.report-price').first()).toContainText('790');
