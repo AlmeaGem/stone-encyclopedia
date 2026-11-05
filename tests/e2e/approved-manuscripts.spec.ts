@@ -7,33 +7,34 @@ import {
 } from '../../src/lib/approved-manuscripts';
 
 const plain = (text: string) => text.replace(/\*\*/g, '').replace(/\s/g, '');
-test('all 210 pages render every approved paragraph once and retain safety information', async ({
-  page,
-}) => {
-  test.setTimeout(300000);
-  for (const stone of stones) {
-    await page.goto(`/stones/${stone.slug}/`);
-    const manuscript = approvedManuscript(stone.id);
-    await expect(page.locator('h1')).toHaveText(stone.name);
-    await expect(page.locator('h1 + .manuscript-catchphrase')).toHaveText(
-      manuscript.catchphrase,
-    );
-    const rendered = await page
-      .locator('.manuscript-paragraph, .manuscript-wishes li')
-      .allTextContents();
-    const expected = manuscript.sections
-      .flatMap((s) => manuscriptItems(s))
-      .map(plain)
-      .sort();
-    expect(rendered.map(plain).sort(), stone.id).toEqual(expected);
-    await expect(page.locator('#care')).toContainText(
-      stone.handling.replace(/^移行資料の注意メモ[：:]/u, '取り扱いの注意：'),
-    );
-    await expect(page.locator('.detail-body')).not.toContainText(
-      /Codex|編集メモ|制作区分/,
-    );
-  }
-});
+for (let start = 0; start < stones.length; start += 20) {
+  const batch = stones.slice(start, start + 20);
+  test(`manuscripts ${start + 1}-${start + batch.length}`, async ({ page }) => {
+    test.setTimeout(300000);
+    for (const stone of batch) {
+      await page.goto(`/stones/${stone.slug}/`);
+      const manuscript = approvedManuscript(stone.id);
+      await expect(page.locator('h1')).toHaveText(stone.name);
+      await expect(page.locator('h1 + .manuscript-catchphrase')).toHaveText(
+        manuscript.catchphrase,
+      );
+      const rendered = await page
+        .locator('.manuscript-paragraph, .manuscript-wishes li')
+        .allTextContents();
+      const expected = manuscript.sections
+        .flatMap((s) => manuscriptItems(s))
+        .map(plain)
+        .sort();
+      expect(rendered.map(plain).sort(), stone.id).toEqual(expected);
+      await expect(page.locator('#care')).toContainText(
+        stone.handling.replace(/^移行資料の注意メモ[：:]/u, '取り扱いの注意：'),
+      );
+      await expect(page.locator('.detail-body')).not.toContainText(
+        /Codex|編集メモ|制作区分/,
+      );
+    }
+  });
+}
 
 test('approved long copy remains readable at phone and desktop widths', async ({
   page,

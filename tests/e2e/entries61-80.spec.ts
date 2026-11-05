@@ -6,11 +6,11 @@ const all = JSON.parse(await readFile('src/content/stones.json', 'utf8')).map(
   publicStone,
 );
 const batch = all.slice(60, 80);
-test('all details 61-80 support search, category and related navigation without overflow', async ({
-  page,
-}, info) => {
-  test.setTimeout(180000);
-  for (const width of [375, 390, 430, 768, 1280, 1440]) {
+for (const width of [375, 390, 430, 768, 1280, 1440]) {
+  test(`details 61-80 remain readable at ${width}px`, async ({
+    page,
+  }, info) => {
+    test.setTimeout(180000);
     await page.setViewportSize({ width, height: 1000 });
     for (const stone of batch) {
       await page.goto(`/stones/${stone.slug}/`);
@@ -45,7 +45,13 @@ test('all details 61-80 support search, category and related navigation without 
         });
       }
     }
-  }
+  });
+}
+
+test('all details 61-80 support search, category and related navigation', async ({
+  page,
+}) => {
+  test.setTimeout(180000);
   for (const stone of batch) {
     await page.goto('/stones/');
     await page

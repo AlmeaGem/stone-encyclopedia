@@ -7,6 +7,26 @@ import type { archiveArticleSchema } from '../lib/archive-schema';
 
 type Article = z.infer<typeof archiveArticleSchema>;
 const { article } = Astro.props as { article: Article };
+const motif =
+  article.id === 'moonstone-moonlight'
+    ? 'moon'
+    : article.id === 'egyptian-amulets'
+      ? 'lotus'
+      : undefined;
+const escapedTitle = article.title.replace(
+  /[&<>"']/g,
+  (character) =>
+    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[
+      character
+    ]!,
+);
+const titleHtml =
+  motif === 'moon'
+    ? escapedTitle.replace(
+        '重ねられた',
+        '<span class="archive-phrase">重ねられた</span>',
+      )
+    : escapedTitle;
 const related = article.stoneIds.map((id) => {
   const stone = stoneById(id);
   if (!stone) throw new Error(`Unknown archive stone: ${id}`);
@@ -14,10 +34,35 @@ const related = article.stoneIds.map((id) => {
 });
 ---
 
-<article class="archive-article">
-  <header class="page-intro">
+<article class:list={['archive-article', motif && `archive-${motif}`]}>
+  <header class="page-intro archive-intro">
+    {motif === 'moon' && (
+      <svg
+        class="archive-motif"
+        viewBox="0 0 64 64"
+        fill="none"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M40 10a22 22 0 1 0 13 35A20 20 0 0 1 40 10Z" />
+        <path d="M49 12v9m-4.5-4.5h9M55 27v5m-2.5-2.5h5M15 13v5m-2.5-2.5h5" />
+        <circle cx="13" cy="34" r=".9" fill="currentColor" stroke="none" />
+      </svg>
+    )}
+    {motif === 'lotus' && (
+      <svg
+        class="archive-motif"
+        viewBox="0 0 64 64"
+        fill="none"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M32 48C19 44 13 34 13 23c8 2 14 7 19 15 5-8 11-13 19-15 0 11-6 21-19 25Z" />
+        <path d="M32 38C26 29 26 20 32 12c6 8 6 17 0 26ZM20 45c-4 0-8-1-11-3m35 3c4 0 8-1 11-3M17 53h30M23 57h18" />
+      </svg>
+    )}
     <p class="eyebrow">ARCHIVE {String(article.number).padStart(2, '0')}</p>
-    <h1>{article.title}</h1>
+    <h1 set:html={titleHtml} />
     <p>{article.introduction}</p>
   </header>
   <div class="archive-reading">
@@ -28,7 +73,7 @@ const related = article.stoneIds.map((id) => {
           <p>{paragraph}</p>
         ))}
         <p class="archive-citations">
-          参考：
+          <span class="archive-citations-label">参考：</span>
           {section.sourceIds.map((id, index) => (
             <>
               <a href={`#archive-source-${id}`}>
@@ -74,9 +119,50 @@ const related = article.stoneIds.map((id) => {
 </article>
 
 <style>
+  .archive-intro {
+    position: relative;
+  }
+  .archive-intro .eyebrow {
+    padding-right: 76px;
+  }
+  :global(.archive-phrase) {
+    white-space: nowrap;
+  }
+  .archive-motif {
+    position: absolute;
+    right: 4px;
+    top: 0;
+    width: 58px;
+    height: 58px;
+    color: #b9a18b;
+    opacity: 0.8;
+    stroke: currentColor;
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+  }
   .archive-article h1 {
+    max-width: 25ch;
     text-wrap: balance;
-    overflow-wrap: anywhere;
+    overflow-wrap: break-word;
+    word-break: normal;
+    line-break: strict;
+  }
+  .archive-article h2,
+  .archive-intro > p,
+  .archive-chapter p,
+  .archive-chapter li {
+    word-break: normal;
+    overflow-wrap: break-word;
+    line-break: strict;
+  }
+  .archive-intro > p,
+  .archive-chapter p:not(.archive-citations) {
+    text-wrap: pretty;
+  }
+  .archive-article h2 {
+    text-wrap: balance;
   }
   .archive-reading {
     max-width: 760px;
@@ -93,13 +179,62 @@ const related = article.stoneIds.map((id) => {
   .archive-chapter p,
   .archive-chapter li {
     line-height: 2.1;
-    overflow-wrap: anywhere;
   }
   .archive-chapter p + p {
     margin-top: 1em;
   }
   .archive-citations {
     font-size: 0.85em;
+    color: #75655d;
+  }
+  .archive-citations-label {
+    white-space: nowrap;
+  }
+  .archive-moon .archive-chapter,
+  .archive-lotus .archive-chapter {
+    position: relative;
+  }
+  .archive-moon .archive-chapter::before {
+    content: '✧';
+    position: absolute;
+    top: -0.7em;
+    right: 0;
+    padding-left: 0.45em;
+    background: #faf7f2;
+    color: #b9a18b;
+    font-size: 0.85rem;
+  }
+  .archive-lotus .archive-chapter::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: 0;
+    width: 40px;
+    border-top: 3px double #cbb6a3;
+  }
+  @media (max-width: 430px) {
+    .archive-intro .eyebrow {
+      padding-right: 50px;
+    }
+    .archive-intro h1 {
+      margin-top: 12px;
+    }
+    .archive-motif {
+      width: 40px;
+      height: 40px;
+      right: 0;
+    }
+    .archive-article h1 {
+      letter-spacing: 0.02em;
+      line-height: 1.55;
+    }
+    .archive-chapter {
+      padding-block: 1.75rem;
+    }
+    .archive-chapter h2 {
+      line-height: 1.65;
+      letter-spacing: 0.02em;
+    }
   }
   .archive-chapter li + li {
     margin-top: 0.8rem;
