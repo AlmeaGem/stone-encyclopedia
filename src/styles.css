@@ -2026,7 +2026,7 @@
     }
     .daily-image {
       align-self: center;
-      width: min(100%, 330px);
+      width: min(100%, 260px);
       margin: 18px 0 0;
     }
     .daily-copy .daily-id {
