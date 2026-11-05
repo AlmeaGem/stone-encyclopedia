@@ -16,7 +16,7 @@ const { anchor = false } = Astro.props as { anchor?: boolean };
     <p class="report-price">{reportPrice}</p>
   </div>
   <p class="offer-state">
-    以下は販売開始後の提供予定内容です。現在は購入・個別選定結果の閲覧はできません。
+    質問への回答は無料です。おすすめ7石の個別選定レポートは790円で提供予定です。現在は購入・個別結果の閲覧はできません。
   </p>
   <ul class="report-features">
     {reportFeatures.map((feature) => (
@@ -28,7 +28,7 @@ const { anchor = false } = Astro.props as { anchor?: boolean };
   </ul>
   <div class="report-actions">
     <a class="button" href={anchor ? '#questionnaire' : pathTo('diagnosis/')}>
-      質問に無料で答える →
+      無料の質問を確認する →
     </a>
     <a class="text-link" href={pathTo('sample-report/')}>
       無料サンプルを見る ↗
