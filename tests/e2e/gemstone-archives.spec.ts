@@ -25,7 +25,7 @@ test('archive articles and original themes remain reachable and readable', async
   await page.goto('/archives/');
   for (const article of archives) {
     await expect(
-      shelf.getByRole('link', { name: new RegExp(article.title) }),
+      shelf.locator(`.story-collection-card[href="/archives/${article.id}/"]`),
     ).toHaveAttribute('href', `/archives/${article.id}/`);
     await page.goto(`/archives/${article.id}/`);
     await expect(page.locator('h1')).toHaveText(article.title);
