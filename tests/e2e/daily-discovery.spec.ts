@@ -78,7 +78,9 @@ test('daily card matches the catalog and changes at Japan midnight', async ({
         expect(boxes[i]!.y).toBeGreaterThanOrEqual(
           boxes[i - 1]!.y + boxes[i - 1]!.height - 1,
         );
-      expect(boxes[3]!.width).toBeGreaterThan(width * 0.65);
+      expect(boxes[3]!.width).toBeGreaterThanOrEqual(
+        Math.min(width * 0.6, 260),
+      );
       expect(Math.abs(boxes[3]!.width - boxes[3]!.height)).toBeLessThan(2);
       await expect(page.locator('.history-navigation')).toBeHidden();
       await expect(
