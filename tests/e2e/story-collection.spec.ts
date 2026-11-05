@@ -24,6 +24,24 @@ test('story shelf and five free collections lead to the approved stone pages', a
   await expect(shelf.locator('.story-collection-card')).toHaveCount(
     archives.length,
   );
+  // The archive shelf must not orphan the last character of the moonstone title.
+  const moonstoneTitle = shelf.locator(
+    '.story-collection-card[href="/archives/moonstone-moonlight/"] strong',
+  );
+  await expect(moonstoneTitle).toHaveText('月の光に重ねられた宝石の伝承');
+  for (const width of [375, 390, 430]) {
+    await page.setViewportSize({ width, height: 900 });
+    const lines = moonstoneTitle.locator('.archive-title-line');
+    await expect(lines).toHaveText(['月の光に重ねられた', '宝石の伝承']);
+    const bounds = await lines.evaluateAll((elements) =>
+      elements.map((element) => {
+        const rect = element.getBoundingClientRect();
+        return { y: rect.y, right: rect.right };
+      }),
+    );
+    expect(bounds[1].y).toBeGreaterThan(bounds[0].y);
+    expect(bounds.every((rect) => rect.right <= width + 1)).toBe(true);
+  }
   for (const width of [375, 390, 430, 768, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     expect(
