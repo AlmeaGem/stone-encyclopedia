@@ -13,156 +13,176 @@ const categories = JSON.parse(
 const paths = new Set(stones.map((s: any) => `/stones/${s.slug}/`));
 const output = 'test-results/final210';
 
-test('all 210 detail pages have responsive content, valid links, loaded images and distinct SEO', async ({
-  page,
-}, info) => {
-  test.setTimeout(300000);
-  const width = info.project.name === 'mobile' ? 375 : 1440;
-  await page.setViewportSize({ width, height: 1000 });
-  const titles = new Set(),
-    canonicals = new Set(),
-    imageUrls = new Set<string>();
-  const errors: string[] = [],
-    badResponses: string[] = [];
-  page.on('pageerror', (e) => errors.push(e.message));
-  page.on('response', (r) => {
-    if (r.url().startsWith('http://127.0.0.1:4321/') && r.status() >= 400)
-      badResponses.push(`${r.status()} ${r.url()}`);
-  });
-  for (const stone of stones) {
-    const response = await page.goto(`/stones/${stone.slug}/`);
-    expect(response?.status(), stone.id).toBe(200);
-    await expect(page.locator('h1')).toHaveText(stone.name);
-    await expect(page.locator('#nature')).toBeVisible();
-    await expect(page.locator('.stone-heading .kind-label')).toHaveText(
-      stone.classification,
+for (let start = 0; start < stones.length; start += 20) {
+  const batch = stones.slice(start, start + 20);
+  test(`details ${start + 1}-${start + batch.length} have responsive content, valid links, loaded images and distinct SEO`, async ({
+    page,
+  }, info) => {
+    test.setTimeout(300000);
+    const width = info.project.name === 'mobile' ? 375 : 1440;
+    await page.setViewportSize({ width, height: 1000 });
+    const titles = new Set(),
+      canonicals = new Set(),
+      imageUrls = new Set<string>();
+    const errors: string[] = [],
+      badResponses: string[] = [];
+    page.on('pageerror', (e) => errors.push(e.message));
+    page.on('response', (r) => {
+      if (r.url().startsWith('http://127.0.0.1:4321/') && r.status() >= 400)
+        badResponses.push(`${r.status()} ${r.url()}`);
+    });
+    const expectedTitles = stones.map(
+      (stone: any) =>
+        `${stone.name}（${stone.english}）の特徴・意味・選び方 | 天然石・パワーストーン大図鑑`,
     );
-    for (const field of ['mineral', 'compositionHardness', 'characteristics'])
-      await expect(page.locator('#nature')).toContainText(stone[field]);
-    await expect(page.locator('.stone-heading')).toContainText(
-      approvedManuscript(stone.id).catchphrase,
-    );
-    await expect(page.locator('#quality')).toContainText(
-      approvedText(stone.id, '見どころ・選び方'),
-    );
-    await expect(page.locator('#story')).toContainText(
-      approvedText(stone.id, '導入・神秘の物語'),
-    );
-    const firstPairing = await page
-      .locator('#pairing .manuscript-pairings > p')
-      .first()
-      .textContent();
-    expect(firstPairing?.replace(/\s/g, '')).toContain(
-      approvedText(stone.id, '相性のよい石').replace(/\s/g, ''),
-    );
-    await expect(
-      page.locator('#nature dt').filter({ hasText: /^モース硬度$/ }),
-    ).toHaveCount(0);
-    await expect(page.locator('#story')).toContainText(
-      approvedText(stone.id, 'スピリチュアルな意味'),
-    );
-    await expect(page.locator('#care')).toContainText(
-      stone.handling.replace(/^移行資料の注意メモ：/, ''),
-    );
-    const title = await page.title();
-    expect(title).toContain(stone.name);
-    titles.add(title);
-    const canonical = await page
-      .locator('link[rel="canonical"]')
-      .getAttribute('href');
-    expect(new URL(canonical!).pathname).toBe(`/stones/${stone.slug}/`);
-    canonicals.add(canonical);
-    expect(
-      (await page.locator('meta[name="description"]').getAttribute('content'))!
-        .length,
-    ).toBeGreaterThan(20);
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
-      'content',
-      'noindex,nofollow',
-    );
-    const schemas = (
-      await page.locator('script[type="application/ld+json"]').allTextContents()
-    ).map((text) => JSON.parse(text));
-    expect(schemas.length).toBeGreaterThan(0);
-    expect(JSON.stringify(schemas)).toContain(stone.name);
-    const localStoneLinks = await page
-      .locator('a[href^="/stones/"]')
-      .evaluateAll((nodes) =>
-        nodes
-          .map((n) => n.getAttribute('href')!)
-          .filter((h) => h !== '/stones/'),
+    expect(new Set(expectedTitles).size).toBe(210);
+    expect(paths.size).toBe(210);
+    for (const stone of batch) {
+      const response = await page.goto(`/stones/${stone.slug}/`);
+      expect(response?.status(), stone.id).toBe(200);
+      await expect(page.locator('h1')).toHaveText(stone.name);
+      await expect(page.locator('#nature')).toBeVisible();
+      await expect(page.locator('.stone-heading .kind-label')).toHaveText(
+        stone.classification,
       );
-    for (const href of localStoneLinks)
-      expect(paths.has(href), `${stone.id}: ${href}`).toBe(true);
-    for (const src of await page
-      .locator('img[src]')
-      .evaluateAll((nodes) => nodes.map((n) => n.getAttribute('src')!)))
-      imageUrls.add(src);
-    const mainPhoto = page.locator('.stone-figure.detail img');
-    if (await mainPhoto.count()) {
-      await mainPhoto.scrollIntoViewIfNeeded();
-      await expect
-        .poll(() =>
-          mainPhoto.evaluate(
-            (img: HTMLImageElement) => img.complete && img.naturalWidth > 0,
-          ),
+      for (const field of ['mineral', 'compositionHardness', 'characteristics'])
+        await expect(page.locator('#nature')).toContainText(stone[field]);
+      await expect(page.locator('.stone-heading')).toContainText(
+        approvedManuscript(stone.id).catchphrase,
+      );
+      await expect(page.locator('#quality')).toContainText(
+        approvedText(stone.id, '見どころ・選び方'),
+      );
+      await expect(page.locator('#story')).toContainText(
+        approvedText(stone.id, '導入・神秘の物語'),
+      );
+      const firstPairing = await page
+        .locator('#pairing .manuscript-pairings > p')
+        .first()
+        .textContent();
+      expect(firstPairing?.replace(/\s/g, '')).toContain(
+        approvedText(stone.id, '相性のよい石').replace(/\s/g, ''),
+      );
+      await expect(
+        page.locator('#nature dt').filter({ hasText: /^モース硬度$/ }),
+      ).toHaveCount(0);
+      await expect(page.locator('#story')).toContainText(
+        approvedText(stone.id, 'スピリチュアルな意味'),
+      );
+      await expect(page.locator('#care')).toContainText(
+        stone.handling.replace(/^移行資料の注意メモ：/, ''),
+      );
+      const title = await page.title();
+      expect(title).toContain(stone.name);
+      expect(title).toBe(
+        `${stone.name}（${stone.english}）の特徴・意味・選び方 | 天然石・パワーストーン大図鑑`,
+      );
+      titles.add(title);
+      const canonical = await page
+        .locator('link[rel="canonical"]')
+        .getAttribute('href');
+      expect(new URL(canonical!).pathname).toBe(`/stones/${stone.slug}/`);
+      canonicals.add(canonical);
+      expect(
+        (await page
+          .locator('meta[name="description"]')
+          .getAttribute('content'))!.length,
+      ).toBeGreaterThan(20);
+      await expect(page.locator('meta[name="robots"]')).toHaveAttribute(
+        'content',
+        'noindex,nofollow',
+      );
+      const schemas = (
+        await page
+          .locator('script[type="application/ld+json"]')
+          .allTextContents()
+      ).map((text) => JSON.parse(text));
+      expect(schemas.length).toBeGreaterThan(0);
+      expect(JSON.stringify(schemas)).toContain(stone.name);
+      const localStoneLinks = await page
+        .locator('a[href^="/stones/"]')
+        .evaluateAll((nodes) =>
+          nodes
+            .map((n) => n.getAttribute('href')!)
+            .filter((h) => h !== '/stones/'),
+        );
+      for (const href of localStoneLinks)
+        expect(paths.has(href), `${stone.id}: ${href}`).toBe(true);
+      for (const src of await page
+        .locator('img[src]')
+        .evaluateAll((nodes) => nodes.map((n) => n.getAttribute('src')!)))
+        imageUrls.add(src);
+      const mainPhoto = page.locator('.stone-figure.detail img');
+      await expect(mainPhoto, stone.id).toHaveCount(1);
+      if (await mainPhoto.count()) {
+        await mainPhoto.scrollIntoViewIfNeeded();
+        await expect
+          .poll(
+            () =>
+              mainPhoto.evaluate(
+                (img: HTMLImageElement) => img.complete && img.naturalWidth > 0,
+              ),
+            { message: `${stone.id}: main image did not finish loading` },
+          )
+          .toBe(true);
+      }
+      expect(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth <= innerWidth,
+        ),
+        stone.id,
+      ).toBe(true);
+      const clipped = await page
+        .locator(
+          'h1, .detail-section p, .detail-section h2, .aliases, .detail-english',
         )
-        .toBe(true);
+        .evaluateAll((nodes) =>
+          nodes
+            .filter(
+              (n) => n.clientWidth > 0 && n.scrollWidth > n.clientWidth + 2,
+            )
+            .map((n) => n.textContent?.slice(0, 100)),
+        );
+      expect(clipped, stone.id).toEqual([]);
+      if (stone.id === 's210') {
+        await mkdir(output, { recursive: true });
+        await page.screenshot({
+          path: `${output}/detail-${info.project.name}.png`,
+          fullPage: true,
+        });
+      }
     }
-    expect(
-      await page.evaluate(
-        () => document.documentElement.scrollWidth <= innerWidth,
+    for (const url of imageUrls) {
+      const r = await page.request.get(url);
+      expect(r.status(), url).toBe(200);
+      const image = await sharp(await r.body()).metadata();
+      expect(image.width).toBeGreaterThan(0);
+    }
+    expect(titles.size).toBe(batch.length);
+    expect(canonicals.size).toBe(batch.length);
+    expect(errors).toEqual([]);
+    expect(badResponses).toEqual([]);
+    await mkdir(output, { recursive: true });
+    await writeFile(
+      `${output}/details-${info.project.name}-${start + 1}-${start + batch.length}.json`,
+      JSON.stringify(
+        {
+          project: info.project.name,
+          width,
+          pages: batch.length,
+          uniqueTitles: titles.size,
+          uniqueCanonicals: canonicals.size,
+          imageUrls: [...imageUrls],
+          pageErrors: errors,
+          badResponses,
+          passed: true,
+        },
+        null,
+        2,
       ),
-      stone.id,
-    ).toBe(true);
-    const clipped = await page
-      .locator(
-        'h1, .detail-section p, .detail-section h2, .aliases, .detail-english',
-      )
-      .evaluateAll((nodes) =>
-        nodes
-          .filter((n) => n.clientWidth > 0 && n.scrollWidth > n.clientWidth + 2)
-          .map((n) => n.textContent?.slice(0, 100)),
-      );
-    expect(clipped, stone.id).toEqual([]);
-    if (stone.id === 's210') {
-      await mkdir(output, { recursive: true });
-      await page.screenshot({
-        path: `${output}/detail-${info.project.name}.png`,
-        fullPage: true,
-      });
-    }
-  }
-  for (const url of imageUrls) {
-    const r = await page.request.get(url);
-    expect(r.status(), url).toBe(200);
-    const image = await sharp(await r.body()).metadata();
-    expect(image.width).toBeGreaterThan(0);
-  }
-  expect(titles.size).toBe(210);
-  expect(canonicals.size).toBe(210);
-  expect(errors).toEqual([]);
-  expect(badResponses).toEqual([]);
-  await mkdir(output, { recursive: true });
-  await writeFile(
-    `${output}/details-${info.project.name}.json`,
-    JSON.stringify(
-      {
-        project: info.project.name,
-        width,
-        pages: 210,
-        uniqueTitles: titles.size,
-        uniqueCanonicals: canonicals.size,
-        imageUrls: [...imageUrls],
-        pageErrors: errors,
-        badResponses,
-        passed: true,
-      },
-      null,
-      2,
-    ),
-  );
-});
+    );
+  });
+}
 
 test('every name and alias is reachable through search and all twelve categories filter correctly', async ({
   page,
