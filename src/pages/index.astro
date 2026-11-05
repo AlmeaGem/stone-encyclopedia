@@ -2,6 +2,7 @@
 import SectionHeading from '../components/SectionHeading.astro';
 import Page from '../layouts/Page.astro';
 import ReportOffer from '../components/ReportOffer.astro';
+import ServiceComparison from '../components/ServiceComparison.astro';
 import ArticleCover from '../components/ArticleCover.astro';
 import ArticleTitle from '../components/ArticleTitle.astro';
 import HeroGem from '../components/HeroGem.astro';
@@ -141,5 +142,9 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
   </section>
   <div class="wrap section">
     <ReportOffer />
+    <details class="home-service-details">
+      <summary>無料図鑑と790円レポートの違いを詳しく見る</summary>
+      <ServiceComparison />
+    </details>
   </div>
 </Page>
