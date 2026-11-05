@@ -2265,3 +2265,26 @@
     }
   }
 }
+
+@layer components {
+  .home-search .home-compact-links {
+    grid-column: 1 / -1;
+    margin-top: 10px;
+    padding-top: 12px;
+    border-top: 1px solid #dfd1c3;
+  }
+  .home-compact-links summary {
+    cursor: pointer;
+    min-height: 44px;
+    padding: 10px 0;
+    color: #705047;
+    font-weight: 500;
+  }
+  .home-compact-links summary:focus-visible {
+    outline: 2px solid #80685c;
+    outline-offset: 3px;
+  }
+  .home-compact-links .wish-search-links {
+    margin-block: 12px;
+  }
+}
