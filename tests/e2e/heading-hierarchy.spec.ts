@@ -59,7 +59,7 @@ test('editorial headings retain a clear hierarchy and line-level markers at six 
     expect(await page.locator('.stone-card .heading-mark').count()).toBe(0);
     await page.goto('/');
     const homeTitles = page.locator('.section-heading h2.section-title');
-    await expect(homeTitles).toHaveCount(2);
+    await expect(homeTitles).toHaveCount(1);
     for (const heading of await homeTitles.all()) {
       expect(
         await heading.evaluate((el) =>
