@@ -355,12 +355,14 @@ test('home offers general wish search, real editorial destinations and an honest
   await expect(page.locator('.brand-symbol svg')).toBeVisible();
   await expect(page.locator('.home-hero img')).toHaveCount(0);
   await expect(page.locator('.wish-search-links a')).toHaveCount(12);
-  const links = page.locator('.three-views a');
-  await expect(links).toHaveCount(3);
-  for (const link of await links.all()) {
+  await expect(page.locator('.home-compact-links summary')).toContainText(
+    '12カテゴリー',
+  );
+  await expect(page.locator('.article-grid a')).toHaveCount(3);
+  await expect(page.locator('.wish-grid')).toHaveCount(0);
+  for (const link of await page.locator('.article-grid > a').all()) {
     const href = await link.getAttribute('href');
     expect((await request.get(href!)).status()).toBe(200);
-    await expect(link).toContainText('詳しく見る');
   }
   await expect(page.locator('.report-offer')).toContainText('販売準備中');
   await expect(page.locator('.report-price').first()).toContainText('790');
@@ -418,6 +420,7 @@ test('375, 390 and 430px keep Japanese title phrases intact and search targets s
         ).size;
       }),
     ).toBe(1);
+    await page.locator('.home-compact-links summary').click();
     for (const link of await page.locator('.wish-search-links a').all()) {
       const bounds = await link.boundingBox();
       expect(bounds!.height).toBeGreaterThanOrEqual(44);
@@ -603,6 +606,8 @@ test('free and planned paid services are explicit before answering, with no purc
   await expect(page.locator('.entry-actions a').nth(2)).toContainText(
     '結果790円',
   );
+  await expect(page.locator('.home-service-details summary')).toBeVisible();
+  await page.locator('.home-service-details summary').click();
   await expect(page.locator('.comparison-card')).toHaveCount(2);
   await expect(page.locator('.report-offer')).toContainText(
     '提供予定・販売準備中',
@@ -685,6 +690,7 @@ test('service comparison and sample stay readable at phone, tablet and desktop w
   for (const width of [375, 390, 430, 768, 1280, 1440]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto('/');
+    await page.locator('.home-service-details summary').click();
     const cards = page.locator('.comparison-card');
     const a = (await cards.nth(0).boundingBox())!,
       b = (await cards.nth(1).boundingBox())!;

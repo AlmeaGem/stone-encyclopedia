@@ -20,7 +20,7 @@ test('archive articles and original themes remain reachable and readable', async
   await page.goto('/');
   const shelf = page.locator('.story-collection');
   await expect(
-    shelf.getByRole('heading', { name: '石の伝承図書館' }),
+    shelf.getByRole('heading', { name: '宝石の歴史と物語' }),
   ).toBeVisible();
   await page.goto('/archives/');
   for (const article of archives) {
@@ -70,7 +70,7 @@ test('archive articles and original themes remain reachable and readable', async
   }
   await page.goto('/archives/');
   await expect(
-    page.getByRole('heading', { level: 1, name: '石の伝承図書館' }),
+    page.getByRole('heading', { level: 1, name: '宝石の歴史と物語' }),
   ).toBeVisible();
   await expect(page.locator('.story-collection-card')).toHaveCount(
     archives.length,

@@ -80,8 +80,8 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
       <a href={pathTo('stones/amethyst/')}>アメジスト</a>
       <a href={pathTo('stones/labradorite/')}>ラブラドライト</a>
     </div>
-    <div class="wish-search-shortcuts">
-      <p class="eyebrow">願いから探す · 無料の図鑑検索</p>
+    <details class="wish-search-shortcuts home-compact-links">
+      <summary>願いのテーマから探す（12カテゴリー）</summary>
       <nav class="wish-search-links" aria-label="願望から石を探す">
         {categories.map((c) => (
           <a href={pathTo(`wishes/${c.id}/`)}>
@@ -91,11 +91,9 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
         ))}
       </nav>
       <p class="fine-print">
-        石に伝えられる一般的な意味・象徴を探す検索です。
-        <br />
-        個別ランキングやオーダーメイドの組み合わせ選定ではありません。
+        石に伝えられる一般的な意味・象徴を探す無料検索です。個別選定結果とは異なります。
       </p>
-    </div>
+    </details>
   </section>
   <section class="wrap section">
     <div class="section-heading">
@@ -117,69 +115,6 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
     <p class="quiet-note">
       写真のない項目は、実物写真ではない抽象的な色のイメージで表示しています。
     </p>
-  </section>
-  <section class="wisdom-band">
-    <div class="wrap three-views">
-      <a class="view-card" href={pathTo('articles/names-and-varieties/')}>
-        <span>01 / NATURE</span>
-        <h2>鉱物情報を調べる</h2>
-        <p>
-          色、硬さ、内包物。
-          <br />
-          身につける石の個性を知る、最初の一歩に。
-        </p>
-        <span class="view-cta">
-          詳しく見る <span aria-hidden="true">↗</span>
-        </span>
-      </a>
-      <a class="view-card" href={pathTo('articles/first-stone/')}>
-        <span>02 / QUALITY</span>
-        <h2>品質の見方を知る</h2>
-        <p>
-          色合い、透明感、一粒ごとの表情。
-          <br />
-          大切にしたくなるブレスレット選びのために。
-        </p>
-        <span class="view-cta">
-          詳しく見る <span aria-hidden="true">↗</span>
-        </span>
-      </a>
-      <a class="view-card" href={pathTo('wishes/')}>
-        <span>03 / STORY</span>
-        <h2>意味・伝承を知る</h2>
-        <p>
-          願いに重ねて、石の意味や象徴を楽しむ。
-          <br />
-          毎日身につける、お守りのような存在へ。
-        </p>
-        <span class="view-cta">
-          詳しく見る <span aria-hidden="true">↗</span>
-        </span>
-      </a>
-    </div>
-  </section>
-  <section class="wrap section">
-    <div class="section-heading">
-      <div>
-        <p class="eyebrow">FIND YOUR THEME</p>
-        <SectionHeading>願いから、石を探す。</SectionHeading>
-      </div>
-      <a class="text-link" href={pathTo('wishes/')}>
-        12のテーマを見る ↗
-      </a>
-    </div>
-    <div class="wish-grid">
-      {categories.slice(0, 6).map((c, i) => (
-        <a class="wish-link" href={pathTo(`wishes/${c.id}/`)}>
-          <span class="wish-number">{i + 1}</span>
-          <div>
-            <h3>{c.name}</h3>
-            <p>{c.description}</p>
-          </div>
-          <span aria-hidden="true">↗</span>
-        </a>
-      ))}
-    </div>
   </section>
   <section class="wrap section">
     <div class="section-heading">
@@ -207,6 +142,9 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
   </section>
   <div class="wrap section">
     <ReportOffer />
-    <ServiceComparison />
+    <details class="home-service-details">
+      <summary>無料図鑑と790円レポートの違いを詳しく見る</summary>
+      <ServiceComparison />
+    </details>
   </div>
 </Page>
