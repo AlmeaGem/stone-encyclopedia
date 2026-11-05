@@ -22,6 +22,7 @@ test('archive articles and original themes remain reachable and readable', async
   await expect(
     shelf.getByRole('heading', { name: '石の伝承図書館' }),
   ).toBeVisible();
+  await page.goto('/archives/');
   for (const article of archives) {
     await expect(
       shelf.getByRole('link', { name: new RegExp(article.title) }),
@@ -65,7 +66,7 @@ test('archive articles and original themes remain reachable and readable', async
           fullPage: true,
         });
     }
-    await page.goto('/');
+    await page.goto('/archives/');
   }
   await page.goto('/archives/');
   await expect(
