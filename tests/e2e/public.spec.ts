@@ -365,7 +365,7 @@ test('home offers general wish search, real editorial destinations and an honest
   await expect(page.locator('.report-offer')).toContainText('販売準備中');
   await expect(page.locator('.report-price').first()).toContainText('790');
   await expect(page.locator('.report-offer .button')).toHaveText(
-    '質問に無料で答える →',
+    '無料の質問を確認する →',
   );
   await page
     .getByRole('searchbox', { name: '石名・英語名・別名' })
