@@ -1,8 +1,15 @@
 import { test, expect } from '@playwright/test';
 import moonstone from '../../src/content/archives/moonstone.json' with { type: 'json' };
 import egyptianAmulets from '../../src/content/archives/egyptian-amulets.json' with { type: 'json' };
+import loveAndGemstones from '../../src/content/archives/love-and-gemstones.json' with { type: 'json' };
+import stonesWithRainbows from '../../src/content/archives/stones-with-rainbows.json' with { type: 'json' };
 import stones from '../../src/content/stones.json' with { type: 'json' };
-const archives = [moonstone, egyptianAmulets];
+const archives = [
+  moonstone,
+  egyptianAmulets,
+  loveAndGemstones,
+  stonesWithRainbows,
+];
 
 test('archive articles and original themes remain reachable and readable', async ({
   page,

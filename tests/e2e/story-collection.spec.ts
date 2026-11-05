@@ -2,7 +2,14 @@ import { test, expect } from '@playwright/test';
 import themes from '../../src/content/story-themes.json' with { type: 'json' };
 import moonstone from '../../src/content/archives/moonstone.json' with { type: 'json' };
 import egyptianAmulets from '../../src/content/archives/egyptian-amulets.json' with { type: 'json' };
-const archives = [moonstone, egyptianAmulets];
+import loveAndGemstones from '../../src/content/archives/love-and-gemstones.json' with { type: 'json' };
+import stonesWithRainbows from '../../src/content/archives/stones-with-rainbows.json' with { type: 'json' };
+const archives = [
+  moonstone,
+  egyptianAmulets,
+  loveAndGemstones,
+  stonesWithRainbows,
+];
 import stones from '../../src/content/stones.json' with { type: 'json' };
 import { approvedManuscript } from '../../src/lib/approved-manuscripts';
 

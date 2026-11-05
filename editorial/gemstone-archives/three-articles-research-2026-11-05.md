@@ -64,3 +64,17 @@ ARCHIVE番号03・04・05をそれぞれハート、虹を宿す石、旅人の�
 - ARCHIVE 03と04は上記の公開本文に基づき構成案・初稿を作れる可能性が高い。
 - ARCHIVE 05は「旅行者向け石製護符」の確実な実物根拠がまだ足りないため、個別史料の追加探索または見出し構成の調整が必要。
 - **3記事すべて未公開・未完成**の扱いを維持し、校閲後にのみデータ登録すること。
+
+## 本文制作と今回の照合範囲
+
+今回の実行環境からGIA公式サイトへの接続は403で拒否され、資料本文を直接再確認できなかった。ARCHIVE 03・04は、上記の別経路で本文を取得した調査記録に記載の確認事項だけを使い、資料ごとに次の本文を対応づけた。調査記録を超える具体的な年代や由来は補っていない。刊行前には原資料本文と完成原稿の再照合が必要。
+
+- ARCHIVE 03「指輪に託された約束」「色石からダイヤモンドへ」：GIA _Engagement Rings through the Ages_。
+- ARCHIVE 03「結ばれる手と重なる輪」：GIA _The Origin of Wedding Rings_。
+- ARCHIVE 03「石と銘文が残すもの」：GIA _Garnet Engagement Ring: History, Meaning & Symbolism_。V&Aの原収蔵レコードは未確認。
+- ARCHIVE 04「光を待つ石」「ラブラドライトの色のゆらめき」：GIA _Structures Behind the Spectacle_、_Guide to Phenomenal Gems_。
+- ARCHIVE 04「月明かりのような光」：GIA _Structures Behind the Spectacle_。
+- ARCHIVE 04「星のかたちを映す石」：GIA _Sapphire Quality Factors_。
+- 各記事の現代的な解釈は歴史的事実や効果の実証と区別した。
+
+ARCHIVE 04のアイリスクォーツの虹の具体的な仕組みは、個別資料を確認できないため本文に含めていない。ARCHIVE 05は旅に用いられた石製護符の地域・時代・素材・用途を同時に特定できる資料が不足しているため、引き続き未完成とし公開データに登録しない。

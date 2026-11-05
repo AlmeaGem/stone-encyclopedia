@@ -1,0 +1,75 @@
+{
+  "id": "love-and-gemstones",
+  "number": 3,
+  "title": "愛と宝石の文化史",
+  "introduction": "大切な人へ贈られた小さな指輪。その輝きには、時代ごとに異なる約束のかたちが映っています。",
+  "coverStoneId": "s028",
+  "stoneIds": ["s028", "s129", "s106", "s170"],
+  "sections": [
+    {
+      "heading": "指輪に託された約束",
+      "classification": "history",
+      "sourceIds": ["gia-rings"],
+      "paragraphs": [
+        "指輪は、身につける人の近くにあり続ける装身具です。GIAは婚約指輪の歴史を紹介する中で、古代ローマの鉄の輪や、後の時代の金の指輪に触れています。現代の婚約指輪だけを思い浮かべると見落としがちですが、約束を表す装身具の素材や姿は一様ではありませんでした。",
+        "ひとつの円に普遍的な意味が最初から備わっていた、と考える必要はありません。残された記録や装身具に目を向けながら、それぞれの時代に人々がどのような形を選んだのかをたどることができます。"
+      ]
+    },
+    {
+      "heading": "色石からダイヤモンドへ",
+      "classification": "history",
+      "sourceIds": ["gia-rings"],
+      "paragraphs": [
+        "GIAの解説では、中世の指輪を飾った石としてサファイアやルビーが紹介され、15世紀にはダイヤモンドが登場します。1477年のマクシミリアンとマリー・ド・ブルゴーニュにまつわる記録も、その歴史の中で取り上げられています。",
+        "赤や青の色石と透明な輝きは、それぞれ異なる美しさを指輪にもたらします。時代の変化をたどるときも、ひとつの石が別の石にすべて置き換わったと考えるのではなく、多様な装いがあったことを心に留めておきたいものです。"
+      ]
+    },
+    {
+      "heading": "結ばれる手と重なる輪",
+      "classification": "history",
+      "sourceIds": ["gia-wedding"],
+      "paragraphs": [
+        "結婚にまつわる指輪には、宝石だけでなく、形そのものに目を引かれるものがあります。GIAが紹介するフェデリングは、握り合う手を表した指輪です。また、複数の輪を組み合わせたギメルリングも、婚姻をめぐる指輪の歴史の中に登場します。",
+        "小さな輪の上に手のかたちを見つけたり、重なった輪の仕組みを眺めたりすることは、石とは別の角度から装身具を読む楽しみです。形や使われ方には時代や地域による違いがあり、すべての指輪が同じ意味を持ったわけではありません。"
+      ]
+    },
+    {
+      "heading": "石と銘文が残すもの",
+      "classification": "history",
+      "sourceIds": ["gia-garnet"],
+      "paragraphs": [
+        "GIAは、15世紀のガーネットとサファイアを組み合わせた指輪を、愛情を表す銘文とともに紹介しています。そこでは石の色だけでなく、言葉もまた、装身具に寄せられた思いを伝える手がかりになります。",
+        "年月を経た指輪の前では、石の名前を知ることに加え、どのような言葉が添えられているかを読むこともできます。ただし、個々の品からわかることと、当時の人すべてに共通する習慣とは分けて考える必要があります。"
+      ]
+    },
+    {
+      "heading": "いま、石に重ねる思い",
+      "classification": "modern-interpretation",
+      "sourceIds": ["gia-rings", "gia-garnet"],
+      "paragraphs": [
+        "宝石を贈る人、受け取る人が石に見いだす意味は、それぞれです。歴史上の指輪が示すのは、ある時代に人が選んだ品や言葉であり、現代の石に託される恋愛の願いを実証するものではありません。",
+        "好きな色を選ぶこと、指輪に刻まれた言葉を読むこと、誰かとの時間を思い出すこと。宝石をめぐる文化史は、そうした今の楽しみと、過去に残された事実を区別しながら開くことのできる、一冊の小さなアルバムのようです。"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "id": "gia-rings",
+      "title": "Engagement Rings through the Ages",
+      "institution": "GIA",
+      "url": "https://www.gia.edu/gia-news-research-engagement-rings-through-ages"
+    },
+    {
+      "id": "gia-wedding",
+      "title": "The Origin of Wedding Rings",
+      "institution": "GIA",
+      "url": "https://4cs.gia.edu/en-us/blog/origin-of-wedding-rings/"
+    },
+    {
+      "id": "gia-garnet",
+      "title": "Garnet Engagement Ring: History, Meaning & Symbolism",
+      "institution": "GIA",
+      "url": "https://4cs.gia.edu/en-us/blog/garnet-engagement-ring-history-meaning-symbolism/"
+    }
+  ]
+}
