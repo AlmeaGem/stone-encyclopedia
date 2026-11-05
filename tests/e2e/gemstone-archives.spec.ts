@@ -3,12 +3,14 @@ import moonstone from '../../src/content/archives/moonstone.json' with { type: '
 import egyptianAmulets from '../../src/content/archives/egyptian-amulets.json' with { type: 'json' };
 import loveAndGemstones from '../../src/content/archives/love-and-gemstones.json' with { type: 'json' };
 import stonesWithRainbows from '../../src/content/archives/stones-with-rainbows.json' with { type: 'json' };
+import travelers from '../../src/content/archives/travelers-and-protective-stones.json' with { type: 'json' };
 import stones from '../../src/content/stones.json' with { type: 'json' };
 const archives = [
   moonstone,
   egyptianAmulets,
   loveAndGemstones,
   stonesWithRainbows,
+  travelers,
 ];
 
 test('archive articles and original themes remain reachable and readable', async ({
