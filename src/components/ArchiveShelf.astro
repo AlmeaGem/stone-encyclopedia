@@ -3,6 +3,7 @@ import { archives } from '../lib/archives';
 import { stones, photoFor } from '../lib/content';
 import { pathTo } from '../lib/urls';
 const { isPage = false } = Astro.props as { isPage?: boolean };
+const visibleArchives = isPage ? archives : archives.slice(0, 3);
 ---
 
 <section class="story-collection wrap" aria-labelledby="archive-shelf-title">
@@ -16,7 +17,7 @@ const { isPage = false } = Astro.props as { isPage?: boolean };
     <p>時を越えて語り継がれる、宝石と人々の物語。</p>
   </div>
   <div class="story-collection-grid">
-    {archives.map((article) => {
+    {visibleArchives.map((article) => {
       const stone = stones.find((item) => item.id === article.coverStoneId)!;
       const image = photoFor(stone)!;
       return (
@@ -37,7 +38,16 @@ const { isPage = false } = Astro.props as { isPage?: boolean };
             ) && <span class="story-image-label">※ イメージ画像</span>}
           </span>
           <span class="story-collection-copy">
-            <strong>{article.title}</strong>
+            <strong>
+              {article.id === 'moonstone-moonlight' ? (
+                <>
+                  <span class="archive-title-line">月の光に重ねられた</span>
+                  <span class="archive-title-line">宝石の伝承</span>
+                </>
+              ) : (
+                article.title
+              )}
+            </strong>
             <span>{article.introduction}</span>
             <span>記事を読む ↗</span>
           </span>
@@ -57,5 +67,11 @@ const { isPage = false } = Astro.props as { isPage?: boolean };
 <style>
   .archive-all {
     margin-top: 20px;
+  }
+  @media (max-width: 640px) {
+    .archive-title-line {
+      display: block;
+      white-space: nowrap;
+    }
   }
 </style>
