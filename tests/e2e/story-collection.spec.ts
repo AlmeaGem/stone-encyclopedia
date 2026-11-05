@@ -30,7 +30,9 @@ test('story shelf and five free collections lead to the approved stone pages', a
   const moonstoneTitle = shelf.locator(
     '.story-collection-card[href="/archives/moonstone-moonlight/"] strong',
   );
-  await expect(moonstoneTitle).toHaveText('月の光に重ねられた宝石の伝承');
+  expect((await moonstoneTitle.textContent())?.replace(/\s/g, '')).toBe(
+    '月の光に重ねられた宝石の伝承',
+  );
   for (const width of [375, 390, 430]) {
     await page.setViewportSize({ width, height: 900 });
     const lines = moonstoneTitle.locator('.archive-title-line');
