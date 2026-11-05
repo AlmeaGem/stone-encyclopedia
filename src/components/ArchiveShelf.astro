@@ -37,7 +37,16 @@ const { isPage = false } = Astro.props as { isPage?: boolean };
             ) && <span class="story-image-label">※ イメージ画像</span>}
           </span>
           <span class="story-collection-copy">
-            <strong>{article.title}</strong>
+            <strong>
+              {article.id === 'moonstone-moonlight' ? (
+                <>
+                  <span class="archive-title-line">月の光に重ねられた</span>
+                  <span class="archive-title-line">宝石の伝承</span>
+                </>
+              ) : (
+                article.title
+              )}
+            </strong>
             <span>{article.introduction}</span>
             <span>記事を読む ↗</span>
           </span>
@@ -57,5 +66,11 @@ const { isPage = false } = Astro.props as { isPage?: boolean };
 <style>
   .archive-all {
     margin-top: 20px;
+  }
+  @media (max-width: 640px) {
+    .archive-title-line {
+      display: block;
+      white-space: nowrap;
+    }
   }
 </style>
