@@ -21,8 +21,10 @@ test('story shelf and five free collections lead to the approved stone pages', a
   test.setTimeout(180000);
   await page.goto('/');
   const shelf = page.locator('.story-collection');
-  await expect(shelf.locator('.story-collection-card')).toHaveCount(
-    archives.length,
+  await expect(shelf.locator('.story-collection-card')).toHaveCount(3);
+  await expect(page.locator('.archive-all a')).toHaveAttribute(
+    'href',
+    '/archives/',
   );
   // The archive shelf must not orphan the last character of the moonstone title.
   const moonstoneTitle = shelf.locator(
