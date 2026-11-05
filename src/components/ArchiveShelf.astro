@@ -3,6 +3,7 @@ import { archives } from '../lib/archives';
 import { stones, photoFor } from '../lib/content';
 import { pathTo } from '../lib/urls';
 const { isPage = false } = Astro.props as { isPage?: boolean };
+const visibleArchives = isPage ? archives : archives.slice(0, 3);
 ---
 
 <section class="story-collection wrap" aria-labelledby="archive-shelf-title">
@@ -16,7 +17,7 @@ const { isPage = false } = Astro.props as { isPage?: boolean };
     <p>時を越えて語り継がれる、宝石と人々の物語。</p>
   </div>
   <div class="story-collection-grid">
-    {archives.map((article) => {
+    {visibleArchives.map((article) => {
       const stone = stones.find((item) => item.id === article.coverStoneId)!;
       const image = photoFor(stone)!;
       return (
