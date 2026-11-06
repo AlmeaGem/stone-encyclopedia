@@ -29,6 +29,9 @@ test('archive articles and original themes remain reachable and readable', async
     ).toHaveAttribute('href', `/archives/${article.id}/`);
     await page.goto(`/archives/${article.id}/`);
     await expect(page.locator('h1')).toHaveText(article.title);
+    await expect(page.locator('.breadcrumbs')).toContainText(
+      '宝石の歴史と物語',
+    );
     await expect(page.locator('.archive-motif')).toHaveAttribute(
       'aria-hidden',
       'true',
