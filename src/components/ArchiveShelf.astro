@@ -6,7 +6,10 @@ const { isPage = false } = Astro.props as { isPage?: boolean };
 const visibleArchives = isPage ? archives : archives.slice(0, 3);
 ---
 
-<section class="story-collection wrap" aria-labelledby="archive-shelf-title">
+<section
+  class:list={['story-collection', 'wrap', isPage && 'archive-shelf-page']}
+  aria-labelledby="archive-shelf-title"
+>
   <div class="story-collection-heading">
     <p class="eyebrow">THE GEMSTONE ARCHIVES</p>
     {isPage ? (

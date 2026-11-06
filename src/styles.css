@@ -2288,3 +2288,51 @@
     margin-block: 12px;
   }
 }
+@layer responsive {
+  /* Keep the full archive readable in two columns; make the shorter
+     homepage preview a balanced row on larger desktop displays. */
+  @media (min-width: 960px) {
+    .story-collection:not(.archive-shelf-page) .story-collection-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .story-collection:not(.archive-shelf-page) .story-collection-card {
+      grid-template-columns: 64px minmax(0, 1fr) 14px;
+      gap: 10px;
+    }
+    .story-collection:not(.archive-shelf-page) .story-collection-image {
+      width: 64px;
+      height: 64px;
+    }
+    .story-collection:not(.archive-shelf-page) .story-collection-arrow {
+      padding-inline: 0;
+    }
+  }
+  @media (min-width: 768px) {
+    .home-hero {
+      padding-block: 20px;
+    }
+    .home-hero .hero-copy {
+      padding-block: 28px;
+    }
+    .daily-discovery {
+      margin-block: 20px 32px;
+    }
+    .story-collection {
+      margin-block: 28px 36px;
+    }
+  }
+  @media (max-width: 640px) {
+    .home-hero {
+      padding-block: 10px 12px;
+    }
+    .home-hero .hero-copy {
+      padding-block: 18px;
+    }
+    .daily-discovery {
+      margin-block: 12px 20px;
+    }
+    .story-collection {
+      margin-block: 24px 28px;
+    }
+  }
+}

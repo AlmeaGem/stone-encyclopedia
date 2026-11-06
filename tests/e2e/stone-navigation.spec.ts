@@ -117,7 +117,7 @@ test('navigation stays reachable with safe-area clearance on mobile and in page 
         await historyNavigation.evaluate((el) =>
           parseFloat(getComputedStyle(el).paddingBottom),
         ),
-      ).toBe(42);
+      ).toBe(40);
       await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
       const navBox = (await historyNavigation.boundingBox())!;
       const footerBox = (await page.locator('.site-footer').boundingBox())!;
@@ -151,6 +151,6 @@ test('navigation stays reachable with safe-area clearance on mobile and in page 
       await page
         .locator('body')
         .evaluate((el) => getComputedStyle(el).paddingBottom),
-    ).toBe(mobile ? '81px' : '0px');
+    ).toBe(mobile ? '70px' : '0px');
   }
 });

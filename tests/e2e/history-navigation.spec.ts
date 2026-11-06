@@ -117,6 +117,7 @@ test('global controls clear the footer, respect safe areas and support touch', a
           for (const button of await nav.getByRole('button').all()) {
             const box = (await button.boundingBox())!;
             expect(box.height).toBeGreaterThanOrEqual(44);
+            if (width < 768) expect(box.width).toBeLessThanOrEqual(180);
             expect(box.x).toBeGreaterThanOrEqual(0);
             expect(box.x + box.width).toBeLessThanOrEqual(width);
           }
