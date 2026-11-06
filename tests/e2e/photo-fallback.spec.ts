@@ -118,7 +118,9 @@ test('unregistered or unpublished records keep the static photo; a valid image r
 test('distinguishes no registered image from a temporary cloud failure when no static image exists', async ({
   page,
 }) => {
-  let registered = false;
+  test.setTimeout(45000);
+  let state: 'missing' | 'published' | 'list-error' | 'list-timeout' =
+    'missing';
   await page.route('**/stones/rose-quartz/', async (route) => {
     const response = await route.fetch();
     const html = await response.text();
@@ -129,12 +131,18 @@ test('distinguishes no registered image from a temporary cloud failure when no s
     expect(changed).not.toBe(html);
     await route.fulfill({ response, body: changed });
   });
-  await page.route(`${api}/public/photos`, (route) =>
-    route.fulfill({
-      json: { photos: registered ? [photo] : [] },
+  await page.route(`${api}/public/photos`, async (route) => {
+    if (state === 'list-error')
+      return route.fulfill({ status: 503, headers: cors });
+    if (state === 'list-timeout') {
+      await new Promise((resolve) => setTimeout(resolve, 12000));
+      return route.abort().catch(() => {});
+    }
+    return route.fulfill({
+      json: { photos: state === 'published' ? [photo] : [] },
       headers: cors,
-    }),
-  );
+    });
+  });
   await page.route(`${api}/public/image/**`, (route) =>
     route.fulfill({ status: 503, headers: cors }),
   );
@@ -143,10 +151,17 @@ test('distinguishes no registered image from a temporary cloud failure when no s
     .locator('.cloud-photo-slot[data-cloud-photo="s107"]')
     .first();
   await expect(slot.locator('.stone-placeholder')).toHaveText('写真準備中');
-  registered = true;
+  state = 'published';
   await page.reload();
   await slot.locator('.stone-placeholder').scrollIntoViewIfNeeded();
   await expect(slot.locator('[role="status"]')).toHaveText(
     '画像を一時的に読み込めません',
   );
+  for (state of ['list-error', 'list-timeout'] as const) {
+    await page.reload();
+    await expect(slot.locator('[role="status"]')).toHaveText(
+      '画像を一時的に読み込めません',
+      { timeout: 15000 },
+    );
+  }
 });

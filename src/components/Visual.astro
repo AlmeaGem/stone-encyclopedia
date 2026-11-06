@@ -98,6 +98,14 @@ const cloudOrigin = cloudPhotoOrigin(import.meta.env.PUBLIC_PHOTO_API_ORIGIN);
   ];
   const origin = slots[0]?.dataset.photoOrigin;
   if (origin) {
+    const showUnavailableWhenNoStaticImage = (slot: HTMLElement) => {
+      if (slot.querySelector('.stone-figure img')) return;
+      const placeholder = slot.querySelector<HTMLElement>('.stone-placeholder');
+      if (!placeholder) return;
+      placeholder.textContent = '画像を一時的に読み込めません';
+      placeholder.removeAttribute('aria-label');
+      placeholder.setAttribute('role', 'status');
+    };
     // Load replacements only when the existing image is close to the viewport.
     const pending = new Map<Element, () => void>();
     const observer =
@@ -116,7 +124,13 @@ const cloudOrigin = cloudPhotoOrigin(import.meta.env.PUBLIC_PHOTO_API_ORIGIN);
           )
         : null;
     // One manifest request per page. No private endpoints or shared user cache.
-    fetch(origin + '/public/photos', { credentials: 'omit', cache: 'no-store' })
+    const controller = new AbortController();
+    const manifestTimeout = window.setTimeout(() => controller.abort(), 10000);
+    fetch(origin + '/public/photos', {
+      credentials: 'omit',
+      cache: 'no-store',
+      signal: controller.signal,
+    })
       .then((r) => {
         if (!r.ok) throw Error('photos unavailable');
         return r.json();
@@ -190,20 +204,11 @@ const cloudOrigin = cloudPhotoOrigin(import.meta.env.PUBLIC_PHOTO_API_ORIGIN);
             if (photo.credit) caption.append(' · ' + photo.credit);
             caption.append(' · 掲載用に縮小・変換');
             figure.append(caption);
-            const showUnavailableWhenNoStaticImage = () => {
-              if (slot.querySelector('.stone-figure img')) return;
-              const placeholder =
-                slot.querySelector<HTMLElement>('.stone-placeholder');
-              if (!placeholder) return;
-              placeholder.textContent = '画像を一時的に読み込めません';
-              placeholder.removeAttribute('aria-label');
-              placeholder.setAttribute('role', 'status');
-            };
             let settled = false;
             const timeout = window.setTimeout(() => {
               settled = true;
               img.removeAttribute('src');
-              showUnavailableWhenNoStaticImage();
+              showUnavailableWhenNoStaticImage(slot);
             }, 10000);
             img.addEventListener(
               'load',
@@ -221,7 +226,7 @@ const cloudOrigin = cloudPhotoOrigin(import.meta.env.PUBLIC_PHOTO_API_ORIGIN);
                 settled = true;
                 clearTimeout(timeout);
                 // Keep an approved static image; otherwise identify the temporary outage.
-                showUnavailableWhenNoStaticImage();
+                showUnavailableWhenNoStaticImage(slot);
               },
               { once: true },
             );
@@ -235,8 +240,10 @@ const cloudOrigin = cloudPhotoOrigin(import.meta.env.PUBLIC_PHOTO_API_ORIGIN);
         }
       })
       .catch(() => {
-        /* Network outage: retain existing catalog content. */
-      });
+        // Retain approved photos and distinguish an outage when none exists.
+        slots.forEach(showUnavailableWhenNoStaticImage);
+      })
+      .finally(() => clearTimeout(manifestTimeout));
   }
 </script>
 <style>
