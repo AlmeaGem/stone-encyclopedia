@@ -145,7 +145,9 @@ test('global controls clear the footer, respect safe areas and support touch', a
       .getByRole('navigation', { name: 'メインメニュー' })
       .getByRole('link', { name: '読みもの', exact: true })
       .tap();
-    await page.getByRole('button', { name: '← 戻る', exact: true }).tap();
+    await page
+      .getByRole('button', { name: '← 前のページへ戻る', exact: true })
+      .tap();
     await expect(page).toHaveURL('/');
     await expect(page.locator('.history-navigation')).toBeHidden();
     await page.goForward();

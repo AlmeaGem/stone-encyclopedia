@@ -242,7 +242,15 @@ test('questions enforce required choices and two sub-wishes but never reveal or 
     fullPage: true,
   });
   await page.reload();
+  await expect(page.locator('#step-label')).toHaveText('STEP 6 / 6');
+  await expect(page.locator('#answers')).toContainText('ピンク・やわらかい');
+  await page
+    .getByRole('button', { name: '回答を消して最初からやり直す' })
+    .click();
   await expect(page.locator('#step-label')).toHaveText('STEP 1 / 6');
+  await page.reload();
+  await expect(page.locator('#step-label')).toHaveText('STEP 1 / 6');
+  expect(sends).toBe(0);
 });
 test('public output has no private editor, paid APIs or report access bypass', async ({
   request,

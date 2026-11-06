@@ -30,7 +30,7 @@ import { pathTo } from '../lib/urls';
         現在は販売準備中のため、料金の請求・個別の選定結果の提供はありません。
       </p>
       <p class="fine-print">
-        回答はこの画面内だけに保持し、サーバーへ送信・保存しません。
+        回答はこのタブに一時保存し、ページを再訪したときに再開できます。タブを閉じると消え、サーバーには送信・保存されません。
       </p>
       <a class="sample-text-link" href={pathTo('sample-report/')}>
         固定の無料サンプルを見る ↗
@@ -42,6 +42,7 @@ import { pathTo } from '../lib/urls';
       </p>
     </noscript>
     <form id="questionnaire" class="questionnaire">
+      <p id="questionnaire-storage-notice" class="quiet-note" role="status"></p>
       <p id="step-label" class="eyebrow" aria-live="polite">
         STEP 1 / 6
       </p>
@@ -178,14 +179,14 @@ import { pathTo } from '../lib/urls';
       <p id="question-error" class="form-error" role="alert"></p>
       <div class="wizard-actions">
         <button id="back" class="button outline" type="button" disabled>
-          ← 戻る
+          ← 前の質問へ
         </button>
         <button id="next" class="button" type="button">
           次へ →
         </button>
       </div>
       <button id="clear-answers" class="text-link" type="reset">
-        回答をすべて消す
+        回答を消して最初からやり直す
       </button>
     </form>
     <div id="diagnosis-offer">

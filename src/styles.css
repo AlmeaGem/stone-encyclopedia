@@ -473,7 +473,7 @@
     font-size: 9px;
     color: var(--muted);
   }
-  .card-copy h3 {
+  .card-copy :is(h2, h3) {
     font-size: 17px;
     margin-top: 2px;
   }
@@ -771,7 +771,7 @@
   .catalog-grid .stone-placeholder {
     min-height: 155px;
   }
-  .catalog-grid h3 {
+  .catalog-grid :is(h2, h3) {
     font-size: 16px;
   }
   .pagination {
@@ -1274,8 +1274,8 @@
     .home-hero + .home-search + .section .card-copy {
       padding: 12px 11px 16px;
     }
-    .card-copy h3,
-    .catalog-grid h3 {
+    .card-copy :is(h2, h3),
+    .catalog-grid :is(h2, h3) {
       font-size: 14px;
       line-height: 1.6;
     }

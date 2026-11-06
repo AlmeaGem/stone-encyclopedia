@@ -41,3 +41,15 @@ const breadcrumb = {
   type="application/ld+json"
   set:html={JSON.stringify(breadcrumb).replace(/</g, '\\u003c')}
 />
+<style>
+  .breadcrumbs {
+    align-items: center;
+  }
+  .breadcrumbs a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+  }
+</style>

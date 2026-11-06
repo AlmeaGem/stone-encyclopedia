@@ -4,7 +4,11 @@ import { pathTo } from '../lib/urls';
 import { kindLabels, categories } from '../lib/content';
 import { stoneSearchTerms } from '../lib/search';
 import type { Stone } from '../lib/schema';
-const { stone } = Astro.props as { stone: Stone };
+const { stone, headingLevel = 3 } = Astro.props as {
+  stone: Stone;
+  headingLevel?: 2 | 3;
+};
+const Heading = headingLevel === 2 ? 'h2' : 'h3';
 ---
 
 <article
@@ -19,7 +23,7 @@ const { stone } = Astro.props as { stone: Stone };
     <Visual stone={stone} />
     <div class="card-copy">
       <span class="card-eyebrow">{kindLabels[stone.kind]}</span>
-      <h3>{stone.name}</h3>
+      <Heading>{stone.name}</Heading>
       <p class="english">{stone.english}</p>
       <p class="card-theme">{stone.themes.slice(0, 2).join(' / ')}</p>
       <span class="card-arrow" aria-hidden="true">
