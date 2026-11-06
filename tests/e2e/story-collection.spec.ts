@@ -62,7 +62,11 @@ test('story shelf and five free collections lead to the approved stone pages', a
     const a = (await cards[0].boundingBox())!,
       b = (await cards[1].boundingBox())!;
     if (width <= 430) expect(b.y).toBeGreaterThanOrEqual(a.y + a.height);
-    if (width === 1440) expect(b.x).toBeGreaterThan(a.x);
+    if (width === 1440) {
+      expect(b.x).toBeGreaterThan(a.x);
+      const c = (await cards[2].boundingBox())!;
+      expect(Math.abs(c.y - a.y)).toBeLessThan(2);
+    }
     if (info.project.name === 'desktop' && [390, 1440].includes(width))
       await shelf.screenshot({
         path: test.info().outputPath(`shelf-${width}.png`),
