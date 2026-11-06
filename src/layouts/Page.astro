@@ -14,6 +14,7 @@ import '../report-experience.css';
 import '../heading-hierarchy.css';
 import '../mincho-typography.css';
 import { pathTo, canonical, siteName, launched } from '../lib/urls';
+import { robotsForPath } from '../lib/seo-policy';
 interface Props {
   title?: string;
   description?: string;
@@ -21,6 +22,7 @@ interface Props {
   schema?: Record<string, unknown>;
   safeArea?: boolean;
   home?: boolean;
+  canonicalEnabled?: boolean;
 }
 const {
   title = siteName,
@@ -29,6 +31,7 @@ const {
   schema,
   safeArea = true,
   home = false,
+  canonicalEnabled = true,
 } = Astro.props;
 const url = canonical(path);
 ---
@@ -43,11 +46,8 @@ const url = canonical(path);
     />
     <title>{title===siteName?`${title} | by ALMÉA GEM`:`${title} | ${siteName}`}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={url} />
-    <meta
-      name="robots"
-      content={launched ? 'index,follow' : 'noindex,nofollow'}
-    />
+    {canonicalEnabled && <link rel="canonical" href={url} />}
+    <meta name="robots" content={robotsForPath(path, launched)} />
     <meta name="theme-color" content="#faf7f2" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -55,7 +55,7 @@ const url = canonical(path);
       property="og:type"
       content={schema?.['@type'] === 'Article' ? 'article' : 'website'}
     />
-    <meta property="og:url" content={url} />
+    {canonicalEnabled && <meta property="og:url" content={url} />}
     <meta property="og:site_name" content={siteName} />
     <meta property="og:locale" content="ja_JP" />
     <meta property="og:image" content={canonical('og.png')} />
