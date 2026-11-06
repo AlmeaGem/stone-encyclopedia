@@ -58,11 +58,18 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
           <span>質問無料・個別結果790円（準備中） ↗</span>
         </a>
       </nav>
+      <p class="home-search-shortcut">
+        <a href="#home-search">このページで石を検索 ↓</a>
+      </p>
     </div>
   </section>
   <DailyDiscovery />
   <ArchiveShelf />
-  <section class="home-search wrap" aria-labelledby="find-title">
+  <section
+    id="home-search"
+    class="home-search wrap"
+    aria-labelledby="find-title"
+  >
     <h2 id="find-title">今日、気になる石は？</h2>
     <p class="search-intro">石名・別名・願望・タグから探せます。</p>
     <form action={pathTo('stones/')} role="search">
@@ -148,3 +155,17 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
     </details>
   </div>
 </Page>
+
+<style>
+  .home-search-shortcut {
+    margin-top: 12px;
+    font-size: 0.85rem;
+  }
+  .home-search-shortcut a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+</style>

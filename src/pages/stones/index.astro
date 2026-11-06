@@ -82,7 +82,7 @@ const colors = [...new Set(stones.flatMap((s) => s.colors))];
     </div>
     <div class="stone-grid catalog-grid" id="catalog-grid">
       {stones.map((stone) => (
-        <Card stone={stone} />
+        <Card stone={stone} headingLevel={2} />
       ))}
     </div>
     <p id="no-results" class="empty" hidden>
