@@ -21,12 +21,12 @@ const { article } = Astro.props;
   <div class="wrap story-page">
     <Breadcrumbs
       items={[
-        { name: '石の伝承図書館', path: 'archives/' },
+        { name: '宝石の歴史と物語', path: 'archives/' },
         { name: article.title },
       ]}
     />
     <ArchiveArticle article={article} />
-    <nav class="story-page-links" aria-label="伝承図書館の他の記事">
+    <nav class="story-page-links" aria-label="宝石の歴史と物語の他の記事">
       {archives
         .filter((other) => other.id !== article.id)
         .map((other) => (
