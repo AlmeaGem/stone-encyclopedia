@@ -2288,7 +2288,7 @@
     margin-block: 12px;
   }
 }
-@layer components {
+@layer responsive {
   /* Keep the full archive readable in two columns; make the shorter
      homepage preview a balanced row on larger desktop displays. */
   @media (min-width: 960px) {
