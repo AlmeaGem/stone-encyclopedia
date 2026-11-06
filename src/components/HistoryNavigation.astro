@@ -25,11 +25,11 @@ import { pathTo } from '../lib/urls';
     display: flex;
     justify-content: flex-end;
     gap: 8px;
-    padding: 12px max(20px, calc((100% - 1180px) / 2));
+    padding: 8px max(20px, calc((100% - 1180px) / 2));
     color: var(--ink);
   }
   button {
-    min-height: 48px;
+    min-height: 44px;
     min-width: 112px;
     border: 1px solid var(--line);
     border-radius: 6px;
@@ -51,16 +51,23 @@ import { pathTo } from '../lib/urls';
       position: fixed;
       inset: auto 0 0;
       z-index: 9;
-      padding: 8px max(8px, env(safe-area-inset-right))
-        calc(8px + env(safe-area-inset-bottom))
-        max(8px, env(safe-area-inset-left));
-      background: var(--beige);
-      border-top: 1px solid var(--line);
-      box-shadow: 0 -3px 16px rgb(51 44 41 / 6%);
+      padding: 6px max(12px, env(safe-area-inset-right))
+        calc(6px + env(safe-area-inset-bottom))
+        max(12px, env(safe-area-inset-left));
+      background: transparent;
+      border-top: 0;
+      box-shadow: none;
+      pointer-events: none;
     }
     button {
-      flex: 1;
+      flex: 0 1 180px;
       min-width: 0;
+      min-height: 44px;
+      padding-inline: 5px;
+      background: var(--beige);
+      box-shadow: 0 2px 10px rgb(51 44 41 / 9%);
+      pointer-events: auto;
+      font-size: 12px;
     }
     :global(body[data-home='true']) .history-navigation {
       display: none;
@@ -69,13 +76,13 @@ import { pathTo } from '../lib/urls';
       padding-bottom: env(safe-area-inset-bottom);
     }
     :global(body) {
-      padding-bottom: calc(81px + env(safe-area-inset-bottom));
+      padding-bottom: calc(70px + env(safe-area-inset-bottom));
     }
     :global(html:has(body[data-home='true'])) {
       scroll-padding-bottom: env(safe-area-inset-bottom);
     }
     :global(html) {
-      scroll-padding-bottom: calc(81px + env(safe-area-inset-bottom));
+      scroll-padding-bottom: calc(70px + env(safe-area-inset-bottom));
     }
   }
 </style>
