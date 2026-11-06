@@ -114,3 +114,39 @@ test('unregistered or unpublished records keep the static photo; a valid image r
     /public\/image\/s107/,
   );
 });
+
+test('distinguishes no registered image from a temporary cloud failure when no static image exists', async ({
+  page,
+}) => {
+  let registered = false;
+  await page.route('**/stones/rose-quartz/', async (route) => {
+    const response = await route.fetch();
+    const html = await response.text();
+    const changed = html.replace(
+      /(<div class="cloud-photo-slot"[^>]*data-cloud-photo="s107"[^>]*>)\s*<figure\b[^>]*>[\s\S]*?<\/figure>/,
+      '$1<div class="stone-placeholder">写真準備中</div>',
+    );
+    expect(changed).not.toBe(html);
+    await route.fulfill({ response, body: changed });
+  });
+  await page.route(`${api}/public/photos`, (route) =>
+    route.fulfill({
+      json: { photos: registered ? [photo] : [] },
+      headers: cors,
+    }),
+  );
+  await page.route(`${api}/public/image/**`, (route) =>
+    route.fulfill({ status: 503, headers: cors }),
+  );
+  await page.goto('/stones/rose-quartz/');
+  const slot = page
+    .locator('.cloud-photo-slot[data-cloud-photo="s107"]')
+    .first();
+  await expect(slot.locator('.stone-placeholder')).toHaveText('写真準備中');
+  registered = true;
+  await page.reload();
+  await slot.locator('.stone-placeholder').scrollIntoViewIfNeeded();
+  await expect(slot.locator('[role="status"]')).toHaveText(
+    '画像を一時的に読み込めません',
+  );
+});

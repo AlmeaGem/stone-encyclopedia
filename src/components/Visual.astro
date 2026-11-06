@@ -190,10 +190,20 @@ const cloudOrigin = cloudPhotoOrigin(import.meta.env.PUBLIC_PHOTO_API_ORIGIN);
             if (photo.credit) caption.append(' · ' + photo.credit);
             caption.append(' · 掲載用に縮小・変換');
             figure.append(caption);
+            const showUnavailableWhenNoStaticImage = () => {
+              if (slot.querySelector('.stone-figure img')) return;
+              const placeholder =
+                slot.querySelector<HTMLElement>('.stone-placeholder');
+              if (!placeholder) return;
+              placeholder.textContent = '画像を一時的に読み込めません';
+              placeholder.removeAttribute('aria-label');
+              placeholder.setAttribute('role', 'status');
+            };
             let settled = false;
             const timeout = window.setTimeout(() => {
               settled = true;
               img.removeAttribute('src');
+              showUnavailableWhenNoStaticImage();
             }, 10000);
             img.addEventListener(
               'load',
@@ -210,7 +220,8 @@ const cloudOrigin = cloudPhotoOrigin(import.meta.env.PUBLIC_PHOTO_API_ORIGIN);
               () => {
                 settled = true;
                 clearTimeout(timeout);
-                // Keep the approved static image (or its genuine empty-state placeholder).
+                // Keep an approved static image; otherwise identify the temporary outage.
+                showUnavailableWhenNoStaticImage();
               },
               { once: true },
             );
