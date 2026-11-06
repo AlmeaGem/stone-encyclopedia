@@ -11,11 +11,12 @@ test('archive labels and responsive homepage cards remain consistent', async ({ 
     await expect(cards).toHaveCount(3);
     const first = (await cards.nth(0).boundingBox())!;
     const third = (await cards.nth(2).boundingBox())!;
-    if (width >= 960)
-      expect(Math.abs(first.y - third.y)).toBeLessThan(2);
+    if (width >= 960) expect(Math.abs(first.y - third.y)).toBeLessThan(2);
     if (width <= 640) expect(third.y).toBeGreaterThan(first.y);
     expect(
-      await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
+      await page.evaluate(
+        () => document.documentElement.scrollWidth <= innerWidth,
+      ),
     ).toBe(true);
   }
 
@@ -50,7 +51,9 @@ test('mobile history buttons remain compact, tappable and clear of the footer', 
     }
     if (width < 768) {
       expect(style.background).toBe('rgba(0, 0, 0, 0)');
-      await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+      await page.evaluate(() =>
+        window.scrollTo(0, document.body.scrollHeight),
+      );
       const footer = (await page.locator('.site-footer').boundingBox())!;
       const bar = (await nav.boundingBox())!;
       expect(footer.y + footer.height).toBeLessThanOrEqual(bar.y);
