@@ -98,8 +98,39 @@ const cloudOrigin = cloudPhotoOrigin(import.meta.env.PUBLIC_PHOTO_API_ORIGIN);
   ];
   const origin = slots[0]?.dataset.photoOrigin;
   if (origin) {
+    const showUnavailableWhenNoStaticImage = (slot: HTMLElement) => {
+      if (slot.querySelector('.stone-figure img')) return;
+      const placeholder = slot.querySelector<HTMLElement>('.stone-placeholder');
+      if (!placeholder) return;
+      placeholder.textContent = '画像を一時的に読み込めません';
+      placeholder.removeAttribute('aria-label');
+      placeholder.setAttribute('role', 'status');
+    };
+    // Load replacements only when the existing image is close to the viewport.
+    const pending = new Map<Element, () => void>();
+    const observer =
+      'IntersectionObserver' in window
+        ? new IntersectionObserver(
+            (entries) => {
+              for (const entry of entries) {
+                if (!entry.isIntersecting) continue;
+                const activate = pending.get(entry.target);
+                pending.delete(entry.target);
+                observer?.unobserve(entry.target);
+                activate?.();
+              }
+            },
+            { rootMargin: '600px' },
+          )
+        : null;
     // One manifest request per page. No private endpoints or shared user cache.
-    fetch(origin + '/public/photos', { credentials: 'omit', cache: 'no-store' })
+    const controller = new AbortController();
+    const manifestTimeout = window.setTimeout(() => controller.abort(), 10000);
+    fetch(origin + '/public/photos', {
+      credentials: 'omit',
+      cache: 'no-store',
+      signal: controller.signal,
+    })
       .then((r) => {
         if (!r.ok) throw Error('photos unavailable');
         return r.json();
@@ -109,91 +140,110 @@ const cloudOrigin = cloudPhotoOrigin(import.meta.env.PUBLIC_PHOTO_API_ORIGIN);
           const photo = photos.find(
             (p: { stoneId: string }) => p.stoneId === slot.dataset.cloudPhoto,
           );
-          if (!photo) continue; // Preserve every existing static photo by default.
-          if (photo.state !== 'published') {
-            const placeholder = document.createElement('div');
-            placeholder.className = 'stone-placeholder';
-            placeholder.textContent = '写真準備中';
-            slot.replaceChildren(placeholder);
-            continue;
-          }
-          const figure = document.createElement('figure');
-          figure.className =
-            'stone-figure' +
-            (slot.dataset.photoDetail === 'true' ? ' detail' : '');
-          const img = document.createElement('img');
-          img.src =
-            origin +
-            '/public/image/' +
-            encodeURIComponent(photo.stoneId) +
-            '?v=' +
-            encodeURIComponent(photo.revision);
-          img.alt = photo.alt;
-          img.loading = 'lazy';
-          img.decoding = 'async';
-          img.draggable = false;
-          img.width = 1440;
-          img.height = 1440;
-          const frame = document.createElement('div');
-          frame.className = 'stone-image-frame';
-          frame.append(img);
-          figure.append(frame);
-          if (photo.kind === 'illustrative') {
-            const label = document.createElement('span');
-            label.className = 'image-impression-label';
-            label.textContent = '※ イメージ画像';
-            frame.append(label);
-          }
-          const caption = document.createElement('figcaption');
-          caption.append(
-            document.createTextNode('写真：' + photo.photographer + ' · '),
-          );
-          function link(url: string, text: string) {
-            if (slot.dataset.photoDetail !== 'true') {
-              caption.append(text);
-              return;
+          // A missing or unpublished cloud record does not invalidate an approved static photo.
+          if (!photo || photo.state !== 'published') continue;
+          const activate = () => {
+            const figure = document.createElement('figure');
+            figure.className =
+              'stone-figure' +
+              (slot.dataset.photoDetail === 'true' ? ' detail' : '');
+            const img = document.createElement('img');
+            const imageSrc =
+              origin +
+              '/public/image/' +
+              encodeURIComponent(photo.stoneId) +
+              '?v=' +
+              encodeURIComponent(photo.revision);
+            img.alt = photo.alt;
+            img.loading = 'eager';
+            img.decoding = 'async';
+            img.draggable = false;
+            img.width = 1440;
+            img.height = 1440;
+            const frame = document.createElement('div');
+            frame.className = 'stone-image-frame';
+            frame.append(img);
+            figure.append(frame);
+            if (photo.kind === 'illustrative') {
+              const label = document.createElement('span');
+              label.className = 'image-impression-label';
+              label.textContent = '※ イメージ画像';
+              frame.append(label);
             }
-            try {
-              const u = new URL(url);
-              if (u.protocol !== 'https:' || u.username || u.password) return;
-              const a = document.createElement('a');
-              a.href = u.href;
-              a.textContent = text;
-              a.target = '_blank';
-              a.rel = 'noopener noreferrer';
-              caption.append(a);
-            } catch {
-              /* optional metadata */
-            }
-          }
-          link(photo.sourceUrl, '出典');
-          caption.append(' · ');
-          if (photo.licenseUrl) link(photo.licenseUrl, photo.license);
-          else
+            const caption = document.createElement('figcaption');
             caption.append(
-              photo.license === 'Own photo'
-                ? '自社撮影・無断転載不可'
-                : '商用利用許諾済み・権利留保',
+              document.createTextNode('写真：' + photo.photographer + ' · '),
             );
-          if (photo.credit) caption.append(' · ' + photo.credit);
-          caption.append(' · 掲載用に縮小・変換');
-          figure.append(caption);
-          img.addEventListener(
-            'error',
-            () => {
-              const placeholder = document.createElement('div');
-              placeholder.className = 'stone-placeholder';
-              placeholder.textContent = '写真準備中';
-              slot.replaceChildren(placeholder);
-            },
-            { once: true },
-          );
-          slot.replaceChildren(figure);
+            function link(url: string, text: string) {
+              if (slot.dataset.photoDetail !== 'true') {
+                caption.append(text);
+                return;
+              }
+              try {
+                const u = new URL(url);
+                if (u.protocol !== 'https:' || u.username || u.password) return;
+                const a = document.createElement('a');
+                a.href = u.href;
+                a.textContent = text;
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+                caption.append(a);
+              } catch {
+                /* optional metadata */
+              }
+            }
+            link(photo.sourceUrl, '出典');
+            caption.append(' · ');
+            if (photo.licenseUrl) link(photo.licenseUrl, photo.license);
+            else
+              caption.append(
+                photo.license === 'Own photo'
+                  ? '自社撮影・無断転載不可'
+                  : '商用利用許諾済み・権利留保',
+              );
+            if (photo.credit) caption.append(' · ' + photo.credit);
+            caption.append(' · 掲載用に縮小・変換');
+            figure.append(caption);
+            let settled = false;
+            const timeout = window.setTimeout(() => {
+              settled = true;
+              img.removeAttribute('src');
+              showUnavailableWhenNoStaticImage(slot);
+            }, 10000);
+            img.addEventListener(
+              'load',
+              () => {
+                if (settled) return;
+                settled = true;
+                clearTimeout(timeout);
+                slot.replaceChildren(figure);
+              },
+              { once: true },
+            );
+            img.addEventListener(
+              'error',
+              () => {
+                settled = true;
+                clearTimeout(timeout);
+                // Keep an approved static image; otherwise identify the temporary outage.
+                showUnavailableWhenNoStaticImage(slot);
+              },
+              { once: true },
+            );
+            img.src = imageSrc;
+          };
+          const target = slot.firstElementChild;
+          if (observer && target) {
+            pending.set(target, activate);
+            observer.observe(target);
+          } else activate();
         }
       })
       .catch(() => {
-        /* Network outage: retain existing catalog content. */
-      });
+        // Retain approved photos and distinguish an outage when none exists.
+        slots.forEach(showUnavailableWhenNoStaticImage);
+      })
+      .finally(() => clearTimeout(manifestTimeout));
   }
 </script>
 <style>
