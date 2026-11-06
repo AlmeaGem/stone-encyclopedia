@@ -136,12 +136,13 @@ test('detail separates facts, quality and symbolism, with sources, internal link
     await expect(page.locator('.stone-figure.detail img')).toHaveCount(0);
   }
 });
-test('all 210 pages exist and have distinct canonical URLs, titles and sitemap entries', async ({
+test('all 210 pages exist with distinct canonical URLs, titles and safe sitemap policy', async ({
   request,
 }) => {
   const canonicals = new Set<string>(),
     titles = new Set<string>();
   const sitemap = await (await request.get('/sitemap.xml')).text();
+  expect(sitemap).not.toContain('<loc>');
   for (let offset = 0; offset < stones.length; offset += 15) {
     await Promise.all(
       stones.slice(offset, offset + 15).map(async (stone) => {
@@ -157,7 +158,7 @@ test('all 210 pages exist and have distinct canonical URLs, titles and sitemap e
         expect(html).not.toContain('移行資料');
         canonicals.add(canonical!);
         titles.add(title!);
-        expect(sitemap).toContain(`/stones/${stone.slug}/`);
+        expect(sitemap).not.toContain(`/stones/${stone.slug}/`);
       }),
     );
   }

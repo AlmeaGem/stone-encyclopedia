@@ -3,7 +3,7 @@ import Page from '../../layouts/Page.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import ArchiveArticle from '../../components/ArchiveArticle.astro';
 import { archives } from '../../lib/archives';
-import { pathTo } from '../../lib/urls';
+import { canonical, pathTo } from '../../lib/urls';
 export function getStaticPaths() {
   return archives.map((article) => ({
     params: { id: article.id },
@@ -11,12 +11,22 @@ export function getStaticPaths() {
   }));
 }
 const { article } = Astro.props;
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: article.title,
+  description: article.introduction,
+  inLanguage: 'ja-JP',
+  mainEntityOfPage: canonical(`archives/${article.id}/`),
+  isAccessibleForFree: true,
+};
 ---
 
 <Page
   title={article.title}
   path={`archives/${article.id}/`}
   description={article.introduction}
+  schema={schema}
 >
   <div class="wrap story-page">
     <Breadcrumbs
