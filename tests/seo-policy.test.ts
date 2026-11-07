@@ -15,7 +15,7 @@ import { archives } from '../src/lib/archives';
 import themes from '../src/content/story-themes.json';
 
 describe('search publication policy', () => {
-  it('classifies 244 explicitly approved routes and excludes all other pages', () => {
+  it('checks 244 approved routes and excluded pages', () => {
     expect(stones).toHaveLength(210);
     expect(archives).toHaveLength(5);
     expect(categories).toHaveLength(12);
@@ -37,9 +37,8 @@ describe('search publication policy', () => {
     expect(approvedSearchPaths).toHaveLength(244);
     expect(sitemapPaths).toHaveLength(244);
     expect(new Set(approvedSearchPaths).size).toBe(244);
-    expect(new Set(approvedSearchPaths)).toEqual(
-      new Set(searchCandidatePaths),
-    );
+    const approved = new Set(approvedSearchPaths);
+    expect(approved).toEqual(new Set(searchCandidatePaths));
     expect(
       new Set([...searchCandidatePaths, ...noindexPaths, ...reviewPaths]).size,
     ).toBe(253);
@@ -55,11 +54,11 @@ describe('search publication policy', () => {
       'unknown/',
     ]) {
       expect(robotsForPath(path, false)).toBe('noindex,nofollow');
-      expect(robotsForPath(path, true)).toBe(
-        searchPolicy(path) === 'candidate'
-          ? 'index,follow'
-          : 'noindex,nofollow',
-      );
+      if (searchPolicy(path) === 'candidate') {
+        expect(robotsForPath(path, true)).toBe('index,follow');
+      } else {
+        expect(robotsForPath(path, true)).toBe('noindex,nofollow');
+      }
     }
   });
 
