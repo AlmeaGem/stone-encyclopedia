@@ -35,8 +35,8 @@ robots.txtでクロールを拒否すると、検索エンジンがページ内�
 
 ## 公開用ワークフローと影響
 
-`preview.yml` の通常のmain pushと手動実行は従来どおり両フラグがfalseです。最終承認後に限り、手動実行で `ref=main` と `search_launch=true` を選ぶと、両フラグをtrueにして244 URLの検証を通過した成果物をGitHub Pagesにデプロイします。この操作は実際の公開です。main以外のrefで `search_launch=true` を選んだ場合は失敗し、デプロイしません。今回の準備では実行しません。
+`preview.yml` はリポジトリ変数 `SEARCH_PUBLICATION_ENABLED` が未設定または `true` 以外の間、通常のmain pushと手動プレビューの両フラグをfalseに保ちます。最終承認後に限り、同変数を `true` に設定してから、手動実行で `ref=main` と `search_launch=true` を選ぶと、両フラグをtrueにして244 URLの検証を通過した成果物をGitHub Pagesにデプロイします。同変数がtrueの間、以後のmain pushでも公開設定を維持します。設定変更やワークフロー実行は今回行いません。
 
-注意：このワークフローはその後もmainへのpush時に通常プレビューをデプロイするため、検索公開後のmain pushは検索設定をfalseに戻します。恒常公開を行う前に、通常運用のデプロイ設定とロールバック方針を別途決定してください。Search Consoleへの送信は公開後の確認を経て別途実施します。
+main以外のrefでの検索公開、変数がfalseの検索公開、変数がtrueの通常手動プレビューは失敗し、意図しない公開やnoindexへの上書きを防ぎます。変数の設定後は次のmain pushでも公開されるため、最終承認前に設定しないでください。ロールバックは変数をfalseに戻してmainの通常ワークフローを実行します。Search Consoleへの送信は公開後の確認を経て別途実施します。
 
 `PUBLIC_LAUNCH=true` はSEO以外にも、共通ヘッダー上の「図鑑は無料で閲覧できます。個別選定レポートは販売準備中です。」というプレビュー帯を非表示にします。診断メニューの準備中表示や価格を変更するものではありません。また、本番HTTPSの `SITE_URL` が必要です。 `PUBLIC_SEARCH_INDEXING=true` と両方が有効な場合、サブパスのrobots.txtも `Allow: /` になりますが、検索エンジンが参照するホスト直下のrobots.txtは変更されません。
