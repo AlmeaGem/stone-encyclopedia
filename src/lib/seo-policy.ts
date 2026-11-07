@@ -79,7 +79,10 @@ if (
   sitemapPaths.length !== 244 ||
   searchCandidatePaths.some((path) => !sitemapPaths.includes(path))
 )
-  throw new Error('Approved search inventory drift: review candidate routes before publishing');
+  throw new Error(
+    'Approved search inventory drift: review candidate routes before publishing',
+  );
+
 /** The release switch alone cannot authorize unapproved routes. */
 export function robotsForPath(
   path: string,
