@@ -3,7 +3,8 @@
  * This static allowlist must not grow when new catalog entries are added.
  * Changes to it require a separate editorial approval.
  */
-export const approvedSearchPaths: readonly string[] = [\n  '',
+export const approvedSearchPaths: readonly string[] = [
+  '',
   'stones/',
   'stones/obsidian/',
   'stones/chiastolite/',
