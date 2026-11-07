@@ -11,7 +11,9 @@
 - `review`: 利用規約、プライバシー、問い合わせ、販売・返金の案内。公開閲覧を維持し、検索対象とするか個別に決めます。
 - `unknown`: 明示されていないルート。安全側でnoindexです。
 
-2026-11-07に一般向けの244 URLが検索公開候補として明示的に承認されました。承認リストは `src/lib/approved-search-paths.ts` に固定保存し、候補の増減や新しい石・記事の追加時は自動で検索対象を増やさず、承認リストとの不一致でビルドを失敗させます。\n\n**検索公開そのものは未開始です。** 現行のGitHub Pagesプレビューは `PUBLIC_LAUNCH=false`、`PUBLIC_SEARCH_INDEXING=false` のまま全ページ`noindex,nofollow`で、サイトマップは空です。将来の切り替え時は **`PUBLIC_LAUNCH=true` かつ `PUBLIC_SEARCH_INDEXING=true`** の両方を本番ビルドで指定して初めて、承認済み244件だけが`index,follow`になりサイトマップへ入ります。診断・サンプル・書架・404はnoindexのまま、法令関係等5ページは個別判断までnoindexのままです。単にPRをマージしても検索公開は始まりません。公開可否を`noindex`で代用してはいけません。
+2026-11-07に一般向けの244 URLが検索公開候補として明示的に承認されました。承認リストは `src/lib/approved-search-paths.ts` に固定保存し、候補の増減や新しい石・記事の追加時は自動で検索対象を増やさず、承認リストとの不一致でビルドを失敗させます。
+
+**検索公開そのものは未開始です。** 現行のGitHub Pagesプレビューは `PUBLIC_LAUNCH=false`、`PUBLIC_SEARCH_INDEXING=false` のまま全ページ`noindex,nofollow`で、サイトマップは空です。将来の切り替え時は **`PUBLIC_LAUNCH=true` かつ `PUBLIC_SEARCH_INDEXING=true`** の両方を本番ビルドで指定して初めて、承認済み244件だけが`index,follow`になりサイトマップへ入ります。診断・サンプル・書架・404はnoindexのまま、法令関係等5ページは個別判断までnoindexのままです。単にPRをマージしても検索公開は始まりません。公開可否を`noindex`で代用してはいけません。
 
 ## robots.txtとGitHub Pages
 
@@ -30,3 +32,11 @@ robots.txtでクロールを拒否すると、検索エンジンがページ内�
 - CIでは本番相当の検索公開ビルドを**成果物の検査だけに使用**し、GitHub Pagesへはデプロイしません。
 - 今後、明示的な最終公開指示の後にのみ、GitHub Pagesのビルド環境、サイトマップ、noindex実レスポンス、Search Console URL検査を確認して切り替えてください。
 - Search Consoleでの所有権確認は、Google検索のインデックス登録や順位を保証しません。
+
+## 公開用ワークフローと影響
+
+`preview.yml` の通常のmain pushと手動実行は従来どおり両フラグがfalseです。最終承認後に限り、手動実行で `ref=main` と `search_launch=true` を選ぶと、両フラグをtrueにして244 URLの検証を通過した成果物をGitHub Pagesにデプロイします。この操作は実際の公開です。main以外のrefで `search_launch=true` を選んだ場合は失敗し、デプロイしません。今回の準備では実行しません。
+
+注意：このワークフローはその後もmainへのpush時に通常プレビューをデプロイするため、検索公開後のmain pushは検索設定をfalseに戻します。恒常公開を行う前に、通常運用のデプロイ設定とロールバック方針を別途決定してください。Search Consoleへの送信は公開後の確認を経て別途実施します。
+
+`PUBLIC_LAUNCH=true` はSEO以外にも、共通ヘッダー上の「図鑑は無料で閲覧できます。個別選定レポートは販売準備中です。」というプレビュー帯を非表示にします。診断メニューの準備中表示や価格を変更するものではありません。また、本番HTTPSの `SITE_URL` が必要です。 `PUBLIC_SEARCH_INDEXING=true` と両方が有効な場合、サブパスのrobots.txtも `Allow: /` になりますが、検索エンジンが参照するホスト直下のrobots.txtは変更されません。
