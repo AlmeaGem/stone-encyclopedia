@@ -8,6 +8,11 @@ on:
         description: Branch or commit to preview (main recommended; not production release)
         required: true
         default: main
+      search_launch:
+        description: 'Publish approved search settings (main only; deploys to Pages)'
+        type: boolean
+        required: true
+        default: false
 permissions:
   contents: read
 concurrency:
@@ -20,10 +25,20 @@ jobs:
       ASTRO_TELEMETRY_DISABLED: '1'
       SITE_URL: https://${{ github.repository_owner }}.github.io
       BASE_PATH: /${{ github.event.repository.name }}
-      PUBLIC_LAUNCH: 'false'
-      PUBLIC_SEARCH_INDEXING: 'false'
+      PUBLIC_LAUNCH: ${{ vars.SEARCH_PUBLICATION_ENABLED == 'true' && (github.event_name == 'push' || (inputs.search_launch && inputs.ref == 'main')) && 'true' || 'false' }}
+      PUBLIC_SEARCH_INDEXING: ${{ vars.SEARCH_PUBLICATION_ENABLED == 'true' && (github.event_name == 'push' || (inputs.search_launch && inputs.ref == 'main')) && 'true' || 'false' }}
       PUBLIC_PHOTO_API_ORIGIN: ${{ vars.PUBLIC_PHOTO_API_ORIGIN }}
     steps:
+      - name: Reject search publication from a non-main ref
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.search_launch && inputs.ref != 'main' }}
+        run: |
+          echo 'Search publication is allowed only for main.' >&2
+          exit 1
+      - name: Require explicit publication gate and prevent preview rollback
+        if: ${{ github.event_name == 'workflow_dispatch' && ((inputs.search_launch && vars.SEARCH_PUBLICATION_ENABLED != 'true') || (!inputs.search_launch && vars.SEARCH_PUBLICATION_ENABLED == 'true')) }}
+        run: |
+          echo 'The search publication gate and selected mode must agree.' >&2
+          exit 1
       - uses: actions/checkout@v4
         with:
           ref: ${{ inputs.ref || github.sha }}
@@ -42,6 +57,9 @@ jobs:
       - run: npm run validate
       - run: npm test
       - run: npm run build
+      - name: Verify search publication before uploading
+        if: ${{ env.PUBLIC_SEARCH_INDEXING == 'true' }}
+        run: node scripts/verify-seo-release.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

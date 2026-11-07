@@ -11,7 +11,9 @@
 - `review`: 利用規約、プライバシー、問い合わせ、販売・返金の案内。公開閲覧を維持し、検索対象とするか個別に決めます。
 - `unknown`: 明示されていないルート。安全側でnoindexです。
 
-2026-11-07に一般向けの244 URLが検索公開候補として明示的に承認されました。承認リストは `src/lib/approved-search-paths.ts` に固定保存し、候補の増減や新しい石・記事の追加時は自動で検索対象を増やさず、承認リストとの不一致でビルドを失敗させます。\n\n**検索公開そのものは未開始です。** 現行のGitHub Pagesプレビューは `PUBLIC_LAUNCH=false`、`PUBLIC_SEARCH_INDEXING=false` のまま全ページ`noindex,nofollow`で、サイトマップは空です。将来の切り替え時は **`PUBLIC_LAUNCH=true` かつ `PUBLIC_SEARCH_INDEXING=true`** の両方を本番ビルドで指定して初めて、承認済み244件だけが`index,follow`になりサイトマップへ入ります。診断・サンプル・書架・404はnoindexのまま、法令関係等5ページは個別判断までnoindexのままです。単にPRをマージしても検索公開は始まりません。公開可否を`noindex`で代用してはいけません。
+2026-11-07に一般向けの244 URLが検索公開候補として明示的に承認されました。承認リストは `src/lib/approved-search-paths.ts` に固定保存し、候補の増減や新しい石・記事の追加時は自動で検索対象を増やさず、承認リストとの不一致でビルドを失敗させます。
+
+**検索公開そのものは未開始です。** 現行のGitHub Pagesプレビューは `PUBLIC_LAUNCH=false`、`PUBLIC_SEARCH_INDEXING=false` のまま全ページ`noindex,nofollow`で、サイトマップは空です。将来の切り替え時は **`PUBLIC_LAUNCH=true` かつ `PUBLIC_SEARCH_INDEXING=true`** の両方を本番ビルドで指定して初めて、承認済み244件だけが`index,follow`になりサイトマップへ入ります。診断・サンプル・書架・404はnoindexのまま、法令関係等5ページは個別判断までnoindexのままです。単にPRをマージしても検索公開は始まりません。公開可否を`noindex`で代用してはいけません。
 
 ## robots.txtとGitHub Pages
 
@@ -30,3 +32,11 @@ robots.txtでクロールを拒否すると、検索エンジンがページ内�
 - CIでは本番相当の検索公開ビルドを**成果物の検査だけに使用**し、GitHub Pagesへはデプロイしません。
 - 今後、明示的な最終公開指示の後にのみ、GitHub Pagesのビルド環境、サイトマップ、noindex実レスポンス、Search Console URL検査を確認して切り替えてください。
 - Search Consoleでの所有権確認は、Google検索のインデックス登録や順位を保証しません。
+
+## 公開用ワークフローと影響
+
+`preview.yml` はリポジトリ変数 `SEARCH_PUBLICATION_ENABLED` が未設定または `true` 以外の間、通常のmain pushと手動プレビューの両フラグをfalseに保ちます。最終承認後に限り、同変数を `true` に設定してから、手動実行で `ref=main` と `search_launch=true` を選ぶと、両フラグをtrueにして244 URLの検証を通過した成果物をGitHub Pagesにデプロイします。同変数がtrueの間、以後のmain pushでも公開設定を維持します。設定変更やワークフロー実行は今回行いません。
+
+main以外のrefでの検索公開、変数がfalseの検索公開、変数がtrueの通常手動プレビューは失敗し、意図しない公開やnoindexへの上書きを防ぎます。変数の設定後は次のmain pushでも公開されるため、最終承認前に設定しないでください。ロールバックは変数をfalseに戻してmainの通常ワークフローを実行します。Search Consoleへの送信は公開後の確認を経て別途実施します。
+
+`PUBLIC_LAUNCH=true` はSEO以外にも、共通ヘッダー上の「図鑑は無料で閲覧できます。個別選定レポートは販売準備中です。」というプレビュー帯を非表示にします。診断メニューの準備中表示や価格を変更するものではありません。また、本番HTTPSの `SITE_URL` が必要です。 `PUBLIC_SEARCH_INDEXING=true` と両方が有効な場合、サブパスのrobots.txtも `Allow: /` になりますが、検索エンジンが参照するホスト直下のrobots.txtは変更されません。
