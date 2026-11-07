@@ -1,3 +1,4 @@
+import { approvedSearchPaths } from './approved-search-paths';
 import { stones, articles, categories } from './content';
 import themes from '../content/story-themes.json';
 import { archives } from './archives';
@@ -37,8 +38,8 @@ export const reviewPaths: readonly string[] = [
   'refund/',
 ];
 
-/** No URL has yet been approved for search publication. */
-export const approvedSearchPaths: readonly string[] = [];
+/** An explicit, fixed approval list; never inferred from future catalog additions. */
+export { approvedSearchPaths } from './approved-search-paths';
 
 const candidates = new Set(searchCandidatePaths);
 const excluded = new Set(noindexPaths);
@@ -73,6 +74,12 @@ export function validateApprovedSearchPaths(
 }
 
 export const sitemapPaths = validateApprovedSearchPaths(approvedSearchPaths);
+if (
+  searchCandidatePaths.length !== 244 ||
+  sitemapPaths.length !== 244 ||
+  searchCandidatePaths.some((path) => !sitemapPaths.includes(path))
+)
+  throw new Error('Approved search inventory drift: review candidate routes before publishing');
 /** The release switch alone cannot authorize unapproved routes. */
 export function robotsForPath(
   path: string,
