@@ -11,14 +11,22 @@
 - `review`: 利用規約、プライバシー、問い合わせ、販売・返金の案内。公開閲覧を維持し、検索対象とするか個別に決めます。
 - `unknown`: 明示されていないルート。安全側でnoindexです。
 
-検索公開の承認済みリストは現在空です。現行のプレビューでは全ページ`noindex,nofollow`、サイトマップにURLはありません。候補を承認する際はルートごとの明示的な承認、公開設定とサイトマップの検証を別途実施してください。公開可否を`noindex`で代用してはいけません。
+2026-11-07に一般向けの244 URLが検索公開候補として明示的に承認されました。承認リストは `src/lib/approved-search-paths.ts` に固定保存し、候補の増減や新しい石・記事の追加時は自動で検索対象を増やさず、承認リストとの不一致でビルドを失敗させます。\n\n**検索公開そのものは未開始です。** 現行のGitHub Pagesプレビューは `PUBLIC_LAUNCH=false`、`PUBLIC_SEARCH_INDEXING=false` のまま全ページ`noindex,nofollow`で、サイトマップは空です。将来の切り替え時は **`PUBLIC_LAUNCH=true` かつ `PUBLIC_SEARCH_INDEXING=true`** の両方を本番ビルドで指定して初めて、承認済み244件だけが`index,follow`になりサイトマップへ入ります。診断・サンプル・書架・404はnoindexのまま、法令関係等5ページは個別判断までnoindexのままです。単にPRをマージしても検索公開は始まりません。公開可否を`noindex`で代用してはいけません。
 
 ## robots.txtとGitHub Pages
 
-プレビューの`robots.txt`はこれまでどおり`Disallow: /`です。プロジェクトのサブパスに生成される`/stone-encyclopedia/robots.txt`と、検索エンジンが参照するホスト直下`/robots.txt`は別物です。ホスト直下の管理者と設定・実際のレスポンスは今回の環境では確認できません。所有者は、GitHub Pagesのユーザー／組織サイトまたはカスタムドメインの管理者に確認してください。GitHub上の候補リポジトリへの未認証アクセスは404でしたが、非公開の可能性もあるため不存在は断定できません。
+プレビューの`robots.txt`はこれまでどおり`Disallow: /`です。プロジェクトのサブパスに生成される`/stone-encyclopedia/robots.txt`と、検索エンジンが参照するホスト直下`/robots.txt`は別物です。2026-11-07にブラウザからホスト直下の `https://almeagem.github.io/robots.txt` がGitHub Pagesの404を返すことを確認しました。GitHub Pagesプロジェクトの `https://almeagem.github.io/stone-encyclopedia/robots.txt` はホスト直下の制御には使えません。ホスト直下404の場合はGoogleは一般にrobotsによるクロール制限なしとして扱い、検索除外は各ページのmeta robotsで制御します。
 
 robots.txtでクロールを拒否すると、検索エンジンがページ内のnoindexを取得できない場合があります。検索公開時には、ルートrobots.txtの実設定と個別のmeta robotsを合わせて検証してください。robots.txtもnoindexも秘密情報のアクセス制限には使えません。
 
 404生成物からトップページのcanonicalとog:urlを除きます。公開環境で未知URLが実際にHTTP 404を返すかは未検証です。
 
 5記事のArticle構造化データは、本文に既にあるタイトル・導入・正規URL・言語・無料閲覧情報のみを使用します。未確認の著者、公開日、更新日、記事固有画像は追加しません。検索結果の表示やリッチリザルトを保証するものではありません。
+
+## Google Search Consoleと切り替え前の確認
+
+- URLプレフィックス `https://almeagem.github.io/stone-encyclopedia/` の所有権はHTMLタグ方式で確認済みです。
+- 244 URLの固定リストが承認され、プレビューの公開モードはまだ無効です。
+- CIでは本番相当の検索公開ビルドを**成果物の検査だけに使用**し、GitHub Pagesへはデプロイしません。
+- 今後、明示的な最終公開指示の後にのみ、GitHub Pagesのビルド環境、サイトマップ、noindex実レスポンス、Search Console URL検査を確認して切り替えてください。
+- Search Consoleでの所有権確認は、Google検索のインデックス登録や順位を保証しません。
