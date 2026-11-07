@@ -1,4 +1,9 @@
-/** Explicitly approved for Google Search on 2026-11-07.\n * This static allowlist must not grow when new catalog entries are added.\n * Changes to it require a separate editorial approval.\n */\nexport const approvedSearchPaths: readonly string[] = [\n  '',
+/**
+ * Explicitly approved for Google Search on 2026-11-07.
+ * This static allowlist must not grow when new catalog entries are added.
+ * Changes to it require a separate editorial approval.
+ */
+export const approvedSearchPaths: readonly string[] = [\n  '',
   'stones/',
   'stones/obsidian/',
   'stones/chiastolite/',
