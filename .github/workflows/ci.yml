@@ -11,6 +11,7 @@ jobs:
     env:
       ASTRO_TELEMETRY_DISABLED: '1'
       PUBLIC_LAUNCH: 'false'
+      PUBLIC_SEARCH_INDEXING: 'false'
       # Browser tests intercept this fixture origin; this job never deploys.
       PUBLIC_PHOTO_API_ORIGIN: https://photos.example.test
     steps:
