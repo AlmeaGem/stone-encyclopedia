@@ -11,6 +11,7 @@ jobs:
     env:
       ASTRO_TELEMETRY_DISABLED: '1'
       PUBLIC_LAUNCH: 'false'
+      PUBLIC_SEARCH_INDEXING: 'false'
       # Browser tests intercept this fixture origin; this job never deploys.
       PUBLIC_PHOTO_API_ORIGIN: https://photos.example.test
     steps:
@@ -31,6 +32,15 @@ jobs:
           SITE_URL: https://almeagem.github.io
           BASE_PATH: /stone-encyclopedia
         run: npm run build
+      - name: Dry-run approved SEO publication (never deploy)
+        env:
+          SITE_URL: https://almeagem.github.io
+          BASE_PATH: /stone-encyclopedia
+          PUBLIC_LAUNCH: 'true'
+          PUBLIC_SEARCH_INDEXING: 'true'
+        run: |
+          npm run build
+          node scripts/verify-seo-release.mjs
       - uses: actions/upload-artifact@v4
         if: failure()
         with:

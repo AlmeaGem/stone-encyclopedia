@@ -1,8 +1,8 @@
-import { canonical, launched } from '../lib/urls';
+import { canonical, searchIndexingEnabled } from '../lib/urls';
 import { searchSitemapXml, sitemapPaths } from '../lib/seo-policy';
 export function GET() {
   return new Response(
-    searchSitemapXml(launched ? sitemapPaths : [], canonical),
+    searchSitemapXml(searchIndexingEnabled ? sitemapPaths : [], canonical),
     { headers: { 'Content-Type': 'application/xml; charset=utf-8' } },
   );
 }

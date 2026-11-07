@@ -21,6 +21,7 @@ jobs:
       SITE_URL: https://${{ github.repository_owner }}.github.io
       BASE_PATH: /${{ github.event.repository.name }}
       PUBLIC_LAUNCH: 'false'
+      PUBLIC_SEARCH_INDEXING: 'false'
       PUBLIC_PHOTO_API_ORIGIN: ${{ vars.PUBLIC_PHOTO_API_ORIGIN }}
     steps:
       - uses: actions/checkout@v4

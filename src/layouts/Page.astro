@@ -13,7 +13,13 @@ import '../tactile.css';
 import '../report-experience.css';
 import '../heading-hierarchy.css';
 import '../mincho-typography.css';
-import { pathTo, canonical, siteName, launched } from '../lib/urls';
+import {
+  pathTo,
+  canonical,
+  siteName,
+  launched,
+  searchIndexingEnabled,
+} from '../lib/urls';
 import { robotsForPath } from '../lib/seo-policy';
 interface Props {
   title?: string;
@@ -51,7 +57,7 @@ const url = canonical(path);
     <title>{title===siteName?`${title} | by ALMÉA GEM`:`${title} | ${siteName}`}</title>
     <meta name="description" content={description} />
     {canonicalEnabled && <link rel="canonical" href={url} />}
-    <meta name="robots" content={robotsForPath(path, launched)} />
+    <meta name="robots" content={robotsForPath(path, searchIndexingEnabled)} />
     <meta name="theme-color" content="#faf7f2" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
