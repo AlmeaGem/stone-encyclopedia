@@ -15,7 +15,7 @@ import { archives } from '../src/lib/archives';
 import themes from '../src/content/story-themes.json';
 
 describe('search publication policy', () => {
-  it('classifies every supported route and keeps approval empty', () => {
+  it('classifies 244 explicitly approved routes and excludes all other pages', () => {
     expect(stones).toHaveLength(210);
     expect(archives).toHaveLength(5);
     expect(categories).toHaveLength(12);
@@ -34,8 +34,10 @@ describe('search publication policy', () => {
       expect(searchPolicy(`stories/${theme.id}/`)).toBe('candidate');
     expect(noindexPaths).toHaveLength(4);
     expect(reviewPaths).toHaveLength(5);
-    expect(approvedSearchPaths).toEqual([]);
-    expect(sitemapPaths).toEqual([]);
+    expect(approvedSearchPaths).toHaveLength(244);
+    expect(sitemapPaths).toHaveLength(244);
+    expect(new Set(approvedSearchPaths).size).toBe(244);
+    expect(new Set(approvedSearchPaths)).toEqual(new Set(searchCandidatePaths));
     expect(
       new Set([...searchCandidatePaths, ...noindexPaths, ...reviewPaths]).size,
     ).toBe(253);
@@ -51,7 +53,9 @@ describe('search publication policy', () => {
       'unknown/',
     ]) {
       expect(robotsForPath(path, false)).toBe('noindex,nofollow');
-      expect(robotsForPath(path, true)).toBe('noindex,nofollow');
+      expect(robotsForPath(path, true)).toBe(
+        searchPolicy(path) === 'candidate' ? 'index,follow' : 'noindex,nofollow',
+      );
     }
   });
 
@@ -63,6 +67,8 @@ describe('search publication policy', () => {
     expect(robotsForPath('diagnosis/', true, ['stones/'])).toBe(
       'noindex,nofollow',
     );
+    expect(robotsForPath('terms/', true)).toBe('noindex,nofollow');
+    expect(robotsForPath('unknown/', true)).toBe('noindex,nofollow');
     for (const path of [
       ...noindexPaths,
       ...reviewPaths,
