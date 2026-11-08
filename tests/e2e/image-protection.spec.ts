@@ -112,9 +112,9 @@ test('only image saving gestures are suppressed while links and text remain nati
   await expect(page).toHaveURL(href!);
   await expect(page.locator('.stone-figure.detail figcaption')).toHaveCount(0);
   await page.goto('/terms/');
-  await expect(page.locator('main')).toContainText('法令上認められる引用');
+  await expect(page.locator('main')).toContainText('法令で認められる引用');
   await expect(page.locator('main')).toContainText(
-    '一律に主張するものではなく',
+    '第三者に権利が帰属する素材',
   );
   await expect(page.locator('.footer-note')).toContainText(
     '© 2026 ALMÉA GEM. All Rights Reserved.',
