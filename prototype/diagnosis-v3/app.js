@@ -318,8 +318,12 @@ app.addEventListener('click', (event) => {
     wish.label = item.label;
     state.changeBackup = null;
   } else if (action === 'unknown') {
-    wish.detail = 'unknown';
-    wish.label = 'まだ決めていない';
+    if (state.step === 2) {
+      state.edit = null;
+    } else {
+      wish.detail = 'unknown';
+      wish.label = 'まだ決めていない';
+    }
     state.changeBackup = null;
   } else if (
     action.startsWith('edit-') &&

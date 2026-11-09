@@ -166,6 +166,11 @@ test('副願いの重複禁止、変更・解除、未定で完了', async ({ pa
   await expect(page.getByText('新たな収入の機会を探したい')).toBeVisible();
   await page.getByRole('button', { name: '解除' }).click();
   await expect(page.getByText('新たな収入の機会を探したい')).toHaveCount(0);
+  await page.getByRole('button', { name: '願いを追加する' }).click();
+  await page.getByRole('button', { name: 'わからない・その他' }).click();
+  await expect(
+    page.getByRole('button', { name: '今は選ばない' }),
+  ).toBeVisible();
   await page.getByRole('button', { name: '今は選ばない' }).click();
   await page.getByRole('button', { name: '次へ' }).click();
   await page.getByRole('button', { name: '診断内容を確認しました' }).click();
