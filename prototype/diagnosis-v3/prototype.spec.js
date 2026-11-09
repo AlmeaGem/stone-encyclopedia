@@ -63,8 +63,7 @@ async function start(page) {
 }
 async function clickValue(page, action, value) {
   await page
-    .locator(`button[data-action="${action}"]`)
-    .filter({ hasText: value })
+    .locator(`button[data-action="${action}"][data-value="${value}"]`)
     .click();
 }
 async function choose(page, id) {
@@ -81,10 +80,12 @@ async function choose(page, id) {
   );
   if (await page.locator('button[data-action="subgroup"]').count())
     await clickValue(page, 'subgroup', b.subgroup);
-  await page
-    .locator(`button[data-action="detail"][data-value="${id}"]`)
-    .click();
-  await expect(page.getByText(`選んだ願い：${b.item.label}`)).toBeVisible();
+  const detail = page.locator(
+    `button[data-action="detail"][data-value="${id}"]`,
+  );
+  const label = await detail.innerText();
+  await detail.click();
+  await expect(page.getByText(`選んだ願い：${label}`)).toBeVisible();
 }
 for (let offset = 0; offset < all.length; offset += 20) {
   test(`全99分類に到達: ${offset + 1}〜${Math.min(offset + 20, all.length)}`, async ({
@@ -108,7 +109,7 @@ for (let offset = 0; offset < data.cases.length; offset += 8) {
         page.getByRole('heading', { name: 'ほかにも大切にしたいこと' }),
       ).toBeVisible();
       await page.getByRole('button', { name: '今は選ばない' }).click();
-      await expect(page.getByLabel('好きな色')).toBeVisible();
+      await expect(page.getByRole('group', { name: /好きな色/ })).toBeVisible();
       await page.getByRole('button', { name: '次へ' }).click();
       await expect(
         page.getByRole('heading', { name: '回答内容をご確認ください' }),
@@ -129,13 +130,17 @@ test('主願いの変更・キャンセルとブラウザ履歴で不要な回�
   await choose(page, 'love.meet.ideal');
   await page.locator('[data-action="edit-category"]').click();
   await page.getByRole('button', { name: '変更をやめる' }).click();
-  await expect(page.getByText(/選んだ願い：理想の相手/)).toBeVisible();
+  await expect(
+    page.getByText(/選んだ願い：理想の相手に出会いたい/),
+  ).toBeVisible();
   await page.locator('[data-action="edit-category"]').click();
   await clickValue(page, 'category', '人間関係');
   await expect(page.getByText(/選んだ願い：/)).toHaveCount(0);
   await page.goBack();
   await page.goBack();
-  await expect(page.getByText(/選んだ願い：理想の相手/)).toBeVisible();
+  await expect(
+    page.getByText(/選んだ願い：理想の相手に出会いたい/),
+  ).toBeVisible();
   await page.goForward();
   await expect(
     page.getByRole('button', { name: '変更をやめる' }),
@@ -149,7 +154,7 @@ test('副願いの重複禁止、変更・解除、未定で完了', async ({ pa
   await choose(page, 'love.meet.ideal');
   await page.getByRole('button', { name: 'この願いを保存' }).click();
   await expect(page.getByRole('alert')).toContainText('同じ願い');
-  await page.getByRole('button', { name: '追加をやめる' }).click();
+  await page.getByRole('button', { name: '願いの追加を取り消す' }).click();
   await page.getByRole('button', { name: '願いを追加する' }).click();
   await choose(page, 'finance.income');
   await page.getByRole('button', { name: 'この願いを保存' }).click();
@@ -162,7 +167,7 @@ test('副願いの重複禁止、変更・解除、未定で完了', async ({ pa
   await page.getByRole('button', { name: 'この願いを保存' }).click();
   await expect(page.getByText('新たな収入の機会を探したい')).toBeVisible();
   await page.getByRole('button', { name: '追加した願いを変更' }).click();
-  await page.getByRole('button', { name: '追加をやめる' }).click();
+  await page.getByRole('button', { name: '願いの変更を取り消す' }).click();
   await expect(page.getByText('新たな収入の機会を探したい')).toBeVisible();
   await page.getByRole('button', { name: '解除' }).click();
   await expect(page.getByText('新たな収入の機会を探したい')).toHaveCount(0);
@@ -242,14 +247,19 @@ test('第2・第3の願いと好みを保持し、主願いの重複を確認時
   await expect(page.getByText('収入を増やしたい')).toBeVisible();
   await expect(page.getByText('思いがけない収入を願う')).toBeVisible();
   await page.getByRole('button', { name: '次へ' }).click();
-  await page.getByLabel('好きな色').selectOption('緑');
+  await page.getByLabel('緑', { exact: true }).check();
+  await page.getByRole('button', { name: '次へ' }).click();
+  await page.getByRole('button', { name: '第2の願いを変更' }).click();
+  await expect(page.getByText('選んだ願い：収入を増やしたい')).toBeVisible();
+  await page.getByRole('button', { name: '願いの変更を取り消す' }).click();
+  await page.getByRole('button', { name: '次へ' }).click();
   await page.getByRole('button', { name: '次へ' }).click();
   await page.getByRole('button', { name: '主願いを変更' }).click();
   await page.getByRole('button', { name: 'テーマを変更' }).click();
   await choose(page, 'finance.income');
   await page.getByRole('button', { name: '次へ' }).click();
   await page.getByRole('button', { name: '次へ' }).click();
-  await expect(page.getByLabel('好きな色')).toHaveValue('緑');
+  await expect(page.getByLabel('緑', { exact: true })).toBeChecked();
   await page.getByRole('button', { name: '次へ' }).click();
   await expect(page.getByRole('alert')).toContainText('重複');
   await expect(
@@ -292,4 +302,135 @@ test('sessionStorageが使えなくても回答し外部へ送らない', async 
     page.getByRole('heading', { name: 'ほかにも大切にしたいこと' }),
   ).toBeVisible();
   expect(external).toEqual([]);
+});
+
+test('色の複数選択とこだわらないの排他、確認画面からの編集', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await start(page);
+  await choose(page, 'love.meet.ideal');
+  await page.screenshot({
+    path: 'test-results/diagnosis-prototype/v2-step-1.png',
+    fullPage: true,
+  });
+  await page.getByRole('button', { name: '次へ' }).click();
+  await page.screenshot({
+    path: 'test-results/diagnosis-prototype/v2-step-2.png',
+    fullPage: true,
+  });
+  await page.getByRole('button', { name: '今は選ばない' }).click();
+  await page.getByLabel('ピンク', { exact: true }).check();
+  await page.getByLabel('青', { exact: true }).check();
+  await expect(page.getByLabel('ピンク', { exact: true })).toBeChecked();
+  await expect(page.getByLabel('青', { exact: true })).toBeChecked();
+  await page.getByLabel('こだわらない', { exact: true }).check();
+  await expect(page.getByLabel('ピンク', { exact: true })).not.toBeChecked();
+  await expect(page.getByLabel('青', { exact: true })).not.toBeChecked();
+  await page.getByLabel('緑', { exact: true }).check();
+  await expect(
+    page.getByLabel('こだわらない', { exact: true }),
+  ).not.toBeChecked();
+  await page.getByLabel('ピンク', { exact: true }).check();
+  await page.getByLabel('スフィア', { exact: true }).check();
+  await page.getByLabel('濃い色', { exact: true }).check();
+  await page
+    .locator('select[data-preference="budget"]')
+    .selectOption('3,000円未満');
+  await page.screenshot({
+    path: 'test-results/diagnosis-prototype/v2-step-3.png',
+    fullPage: true,
+  });
+  await page.getByRole('button', { name: '次へ' }).click();
+  await page.screenshot({
+    path: 'test-results/diagnosis-prototype/v2-step-4.png',
+    fullPage: true,
+  });
+  for (const name of [
+    '主願いを変更',
+    '願いの詳細を変更',
+    '第2の願いを変更',
+    '第3の願いを変更',
+    '好きな色を変更',
+    '石の雰囲気を変更',
+    '石の用途を変更',
+    '石を選ぶ予算を変更',
+    '避けたい特徴を変更',
+  ]) {
+    await expect(page.getByRole('button', { name, exact: true })).toBeVisible();
+  }
+  await expect(page.getByText('ピンク、緑')).toBeVisible();
+  await expect(page.getByText('スフィア', { exact: true })).toBeVisible();
+  await expect(page.getByText('濃い色', { exact: true })).toBeVisible();
+  await expect(page.getByText('3,000円未満', { exact: true })).toBeVisible();
+  await page.getByRole('button', { name: '好きな色を変更' }).click();
+  await expect(page.getByLabel('緑', { exact: true })).toBeChecked();
+  await page.getByLabel('緑', { exact: true }).uncheck();
+  await page.getByRole('button', { name: '次へ' }).click();
+  await expect(page.getByText('ピンク', { exact: true })).toBeVisible();
+  await expect(page.getByText('スフィア', { exact: true })).toBeVisible();
+  await page.getByRole('button', { name: '診断内容を確認しました' }).click();
+  await expect(
+    page.getByRole('heading', { name: '診断内容を確認しました' }),
+  ).toBeVisible();
+  await expect(page.getByText('ピンク', { exact: true })).toBeVisible();
+  await expect(
+    page.getByRole('button', { name: '好きな色を変更' }),
+  ).toBeVisible();
+});
+
+test('恋愛の八つの願いが自然な文言で区別される', async ({ page }) => {
+  const labels = [
+    ['love.meet.new_love', '新しい恋を始めたい'],
+    ['love.person.closer', '気になる相手との距離を縮めたい'],
+    ['love.person.progress', '片思いを進展させたい'],
+    ['love.reunion.ex', '元恋人との復縁を考えたい'],
+    ['love.reunion.meet', '以前好きだった相手と再会したい'],
+    ['love.couple.affection', '交際中の相手と愛情を深めたい'],
+    ['love.couple.marriage_progress', '交際中の相手と結婚へ進みたい'],
+    ['love.attraction.charm', '自分の魅力を高めたい'],
+  ];
+  for (const [id, label] of labels) {
+    await start(page);
+    await choose(page, id);
+    await expect(page.getByText(`選んだ願い：${label}`)).toBeVisible();
+  }
+});
+
+test('以前のまとめた色を勝手に個別色に変換せず表示する', async ({ page }) => {
+  await start(page);
+  await choose(page, 'love.meet.ideal');
+  await page.getByRole('button', { name: '次へ' }).click();
+  await page.getByRole('button', { name: '今は選ばない' }).click();
+  await page.evaluate(() => {
+    const key = 'almea-private-ux-prototype-v1';
+    const state = JSON.parse(sessionStorage.getItem(key));
+    state.preferences.color = '赤・ピンク';
+    sessionStorage.setItem(key, JSON.stringify(state));
+  });
+  await page.reload();
+  await expect(
+    page.getByText('以前の選択：赤・ピンク。色を選び直せます。'),
+  ).toBeVisible();
+  await expect(page.getByLabel('赤', { exact: true })).not.toBeChecked();
+  await expect(page.getByLabel('ピンク', { exact: true })).not.toBeChecked();
+});
+
+test('色の選択でスクロール位置とキーボードのフォーカスを保つ', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 480 });
+  await start(page);
+  await choose(page, 'love.meet.ideal');
+  await page.getByRole('button', { name: '次へ' }).click();
+  await page.getByRole('button', { name: '今は選ばない' }).click();
+  const choice = page.getByLabel('黒', { exact: true });
+  await choice.scrollIntoViewIfNeeded();
+  await choice.focus();
+  const before = await page.evaluate(() => scrollY);
+  await page.keyboard.press('Space');
+  await expect(choice).toBeChecked();
+  await expect(choice).toBeFocused();
+  const after = await page.evaluate(() => scrollY);
+  expect(Math.abs(after - before)).toBeLessThan(10);
 });

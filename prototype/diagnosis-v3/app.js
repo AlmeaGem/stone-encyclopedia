@@ -22,7 +22,22 @@ const categories = {
   ],
 };
 const fields = {
-  color: ['赤・ピンク', '青・紫', '緑', '黄・金', '白・黒・透明'],
+  color: [
+    'ピンク',
+    '赤',
+    'オレンジ',
+    '黄色',
+    'ゴールド',
+    '緑',
+    '水色',
+    '青',
+    '紫',
+    '白',
+    '透明',
+    '黒',
+    'その他',
+    'こだわらない',
+  ],
   mood: ['透明感', '模様', 'やわらかい', '鮮やか', '落ち着いた'],
   use: ['スフィア', 'ブレスレット', 'ペンダント', '鑑賞'],
   budget: [
@@ -33,6 +48,45 @@ const fields = {
   ],
   avoid: ['濃い色', '淡い色', '模様が多い', '透明感が少ない', '大きな形'],
 };
+const displayLabels = {
+  situation: {
+    出会い: '新しい出会いを求めている',
+    気になる相手: 'すでに気になる相手がいる',
+    過去の相手: '以前の相手との関係を考えている',
+    交際中: 'お付き合いしている',
+    '魅力・大切にしたいこと': '自分の魅力や大切にしたい関係を考えたい',
+  },
+  subgroup: {
+    '恋の始まり・良縁': '新しい恋や理想の相手に出会いたい',
+    '機会・きっかけ・結婚': '出会いの機会や結婚につながるご縁を望む',
+    恋愛の魅力: '自分の魅力や自信を大切にしたい',
+    大切にしたい関係: 'どんな関係を築きたいか考えたい',
+  },
+  detail: {
+    'love.meet.new_love': '新しい恋を始めたい',
+    'love.meet.good_match': '新しい良縁に出会いたい',
+    'love.meet.ideal': '理想の相手に出会いたい',
+    'love.meet.opportunities': '出会いの機会を増やしたい',
+    'love.meet.marriage': '結婚につながる新しい出会いを望む',
+    'love.person.closer': '気になる相手との距離を縮めたい',
+    'love.person.contact': '気になる相手と連絡するきっかけがほしい',
+    'love.person.progress': '片思いを進展させたい',
+    'love.person.partnership': '気になる相手と恋人になりたい',
+    'love.reunion.ex': '元恋人との復縁を考えたい',
+    'love.reunion.meet': '以前好きだった相手と再会したい',
+    'love.reunion.contact': '途絶えた連絡を再開したい',
+    'love.reunion.repair': '過去の恋愛関係を修復したい',
+    'love.couple.affection': '交際中の相手と愛情を深めたい',
+    'love.couple.respect': 'お互いを大切にする関係を築きたい',
+    'love.couple.marriage_progress': '交際中の相手と結婚へ進みたい',
+    'love.couple.communication': '交際中のすれ違いを見直したい',
+    'love.attraction.charm': '自分の魅力を高めたい',
+    'love.attraction.confidence': '恋愛に向き合う自信を持ちたい',
+  },
+};
+function displayValue(type, value) {
+  return displayLabels[type]?.[value] || value;
+}
 const fieldNames = {
   color: '好きな色',
   mood: '石の雰囲気',
@@ -88,6 +142,8 @@ function save() {
   }
 }
 function commit(message = '') {
+  const previousScroll = window.scrollY;
+  const previousStep = history.state?.privatePrototype?.step;
   history.pushState({ privatePrototype: clone(state) }, '', location.pathname);
   save();
   render();
@@ -96,7 +152,13 @@ function commit(message = '') {
     ?.closest('section')
     ?.querySelector('h2');
   announcement.textContent = nextHeading ? nextHeading.textContent : message;
-  (nextHeading || document.querySelector('#screen-title'))?.focus();
+  (nextHeading || document.querySelector('#screen-title'))?.focus({
+    preventScroll: true,
+  });
+  window.scrollTo({
+    top: previousStep === state.step ? previousScroll : 0,
+    behavior: 'instant',
+  });
 }
 history.replaceState({ privatePrototype: clone(state) }, '', location.pathname);
 addEventListener('popstate', (event) => {
@@ -119,9 +181,16 @@ function button(text, action, value = '', extra = '') {
     'edit-preferences': '色や使い方を変更',
     'edit-secondary': '追加した願いを変更',
   };
-  const accessible = editLabels[action]
-    ? ` aria-label="${editLabels[action]}"`
-    : '';
+  const editLabel =
+    action === 'edit-preferences' && fieldNames[value]
+      ? `${fieldNames[value]}を変更`
+      : action === 'edit-primary' && value === 'detail'
+        ? '願いの詳細を変更'
+        : ['edit-secondary-item', 'edit-secondary-step'].includes(action) &&
+            value !== ''
+          ? `第${Number(value) + 2}の願いを変更`
+          : editLabels[action];
+  const accessible = editLabel ? ` aria-label="${escapeHtml(editLabel)}"` : '';
   return `<button type="button" class="${extra}" data-action="${action}" data-value="${escapeHtml(value)}"${accessible}>${escapeHtml(text)}</button>`;
 }
 function choices(title, action, values, escapeLabel = 'わからない・その他') {
@@ -144,7 +213,7 @@ function wishPanel(wish) {
     ['詳細グループ', wish.subgroup, 'edit-subgroup'],
   ]) {
     if (value)
-      out += `<div class="summary"><span>${escapeHtml(label)}：${escapeHtml(value)}</span>${button('変更', action)}</div>`;
+      out += `<div class="summary"><span>${escapeHtml(label)}：${escapeHtml(displayValue(action.slice(5), value))}</span>${button('変更', action)}</div>`;
   }
   if (wish.detail)
     return (
@@ -172,7 +241,17 @@ function wishPanel(wish) {
             '気持ちを整理したい',
             'まだ決めていない',
           ];
-    return out + choices('今の状況に近いものは？', 'situation', values);
+    return (
+      out +
+      choices(
+        '今の状況に近いものは？',
+        'situation',
+        values.map((value) => ({
+          value,
+          label: displayValue('situation', value),
+        })),
+      )
+    );
   }
   const applicable =
     wish.category === '恋愛・結婚'
@@ -180,7 +259,17 @@ function wishPanel(wish) {
       : branches;
   const subgroups = unique(applicable.map((x) => x.subgroup));
   if (!wish.subgroup && subgroups.length > 1)
-    return out + choices('どの方向の願いに近いですか？', 'subgroup', subgroups);
+    return (
+      out +
+      choices(
+        'どんなことを望んでいますか？',
+        'subgroup',
+        subgroups.map((value) => ({
+          value,
+          label: displayValue('subgroup', value),
+        })),
+      )
+    );
   const current = wish.subgroup || subgroups[0];
   const branch = applicable.find((x) => x.subgroup === current);
   if (!branch)
@@ -188,14 +277,25 @@ function wishPanel(wish) {
       out +
       '<p class="error" role="alert">選択肢を確認できませんでした。状況を選び直してください。</p>'
     );
-  return out + choices('いちばん近い願いは？', 'detail', branch.items);
+  return (
+    out +
+    choices(
+      'いちばん近い願いは？',
+      'detail',
+      branch.items.map((item) => ({
+        ...item,
+        label:
+          displayValue('detail', item.id) === item.id
+            ? item.label
+            : displayValue('detail', item.id),
+      })),
+    )
+  );
 }
 function head(title, intro) {
   return `<p class="eyebrow">PERSONAL DISCOVERY / ${state.step} OF 4</p><h1 id="screen-title" tabindex="-1">${escapeHtml(title)}</h1><p class="intro">${escapeHtml(intro)}</p><progress class="progress" aria-label="回答の進み具合" max="4" value="${state.step}"></progress>`;
 }
 function screen() {
-  if (state.confirmed)
-    return `${head('診断内容を確認しました', '回答の確認はここまでです。')}<div class="panel"><p>ご協力ありがとうございました。</p><p class="hint">この試作は質問体験の確認用です。石の推薦・採点・購入は行いません。</p>${button('回答を見直す', 'review')}</div>`;
   if (state.step === 1)
     return (
       head(
@@ -222,8 +322,8 @@ function screen() {
       out +=
         wishPanel(state.edit.wish) +
         (state.edit.wish.detail
-          ? `<div class="nav">${button('追加をやめる', 'cancel-secondary')}${button('この願いを保存', 'save-secondary', '', 'primary')}</div>`
-          : `<div class="nav">${button('追加をやめる', 'cancel-secondary')}</div>`);
+          ? `<div class="nav">${button(state.edit.index === null ? '願いの追加を取り消す' : '願いの変更を取り消す', 'cancel-secondary')}${button('この願いを保存', 'save-secondary', '', 'primary')}</div>`
+          : `<div class="nav">${button(state.edit.index === null ? '願いの追加を取り消す' : '願いの変更を取り消す', 'cancel-secondary')}</div>`);
     else if (state.secondaries.length < 2)
       out += `<div class="panel">${button('願いを追加する', 'add-secondary')}</div>`;
     if (!state.edit)
@@ -235,30 +335,46 @@ function screen() {
       '色や石の使い方について',
       'すべて任意です。決まっていない項目はそのまま進めます。',
     );
-    out +=
-      '<div class="panel">' +
-      Object.entries(fields)
-        .map(
-          ([name, values]) =>
-            `<label class="field">${escapeHtml(fieldNames[name])}<select data-preference="${name}"><option value="">まだ決めていない</option>${values.map((v) => `<option value="${escapeHtml(v)}" ${state.preferences[name] === v ? 'selected' : ''}>${escapeHtml(v)}</option>`).join('')}</select></label>`,
-        )
-        .join('') +
-      '<p class="hint">予算は石を選ぶ際の目安です。</p></div>';
+    const selectedColors = Array.isArray(state.preferences.color)
+      ? state.preferences.color
+      : [];
+    const oldColor =
+      typeof state.preferences.color === 'string'
+        ? state.preferences.color
+        : '';
+    out += `<fieldset class="panel" id="preference-color" tabindex="-1"><legend>好きな色 <span class="hint">複数選択可</span></legend>${oldColor ? `<p class="hint">以前の選択：${escapeHtml(oldColor)}。色を選び直せます。</p>` : ''}<div class="color-grid">${fields.color.map((v, i) => `<label class="option-card"><input type="checkbox" data-preference="color" value="${escapeHtml(v)}" ${selectedColors.includes(v) ? 'checked' : ''}><span><i class="swatch swatch-${i}" aria-hidden="true"></i>${escapeHtml(v)}</span></label>`).join('')}</div></fieldset>`;
+    for (const name of ['mood', 'use']) {
+      out += `<fieldset class="panel" id="preference-${name}" tabindex="-1"><legend>${escapeHtml(fieldNames[name])}</legend><div class="option-grid single">${['', ...fields[name]].map((v) => `<label class="option-card"><input type="radio" name="${name}" data-preference="${name}" value="${escapeHtml(v)}" ${(state.preferences[name] || '') === v ? 'checked' : ''}><span>${escapeHtml(v || 'まだ決めていない')}</span></label>`).join('')}</div></fieldset>`;
+    }
+    out += `<label class="field panel" id="preference-budget" tabindex="-1">石を選ぶ予算<select data-preference="budget"><option value="">まだ決めていない</option>${fields.budget.map((v) => `<option value="${escapeHtml(v)}" ${state.preferences.budget === v ? 'selected' : ''}>${escapeHtml(v)}</option>`).join('')}</select><span class="hint">天然石を選ぶ際の参考であり、月額料金やレポート料金ではありません。</span></label>`;
+    const avoided = Array.isArray(state.preferences.avoid)
+      ? state.preferences.avoid
+      : state.preferences.avoid
+        ? [state.preferences.avoid]
+        : [];
+    out += `<fieldset class="panel" id="preference-avoid" tabindex="-1"><legend>避けたい特徴 <span class="hint">複数選択可</span></legend><div class="option-grid">${fields.avoid.map((v) => `<label class="option-card"><input type="checkbox" data-preference="avoid" value="${escapeHtml(v)}" ${avoided.includes(v) ? 'checked' : ''}><span>${escapeHtml(v)}</span></label>`).join('')}</div></fieldset>`;
     return (
       out +
       `<div class="nav">${button('戻る', 'back')}${button('次へ', 'next', '', 'primary')}</div>`
     );
   }
   let out = head(
-    '回答内容をご確認ください',
-    '変更したい項目があれば、それぞれの「変更」から戻れます。',
+    state.confirmed ? '診断内容を確認しました' : '回答内容をご確認ください',
+    '試作品です。石の推薦・採点・購入は行いません。',
   );
-  out += `<div class="panel"><div class="summary"><span>いちばん大切な願い<br><strong>${escapeHtml(state.primary.label)}</strong></span>${button('変更', 'edit-primary')}</div><div class="summary"><span>ほかの願い<br>${escapeHtml(state.secondaries.map((x) => x.label).join('、') || '未選択')}</span>${button('変更', 'edit-secondary-step')}</div><div class="summary"><span>色・使い方など<br>${escapeHtml(
-    Object.entries(state.preferences)
-      .filter(([, v]) => v)
-      .map(([k, v]) => fieldNames[k] + '：' + v)
-      .join('、') || '未選択',
-  )}</span>${button('変更', 'edit-preferences')}</div></div>`;
+  const preferenceText = (name) => {
+    const v = state.preferences[name];
+    return Array.isArray(v) ? v.join('、') || '未選択' : v || '未選択';
+  };
+  const row = (label, value, action, key = '') =>
+    `<div class="summary"><span>${escapeHtml(label)}<br><strong>${escapeHtml(value)}</strong></span>${button('変更', action, key)}</div>`;
+  out += `<div class="panel">${row('最も大切な願い', state.primary.category || state.primary.group || '未選択', 'edit-primary')}${row('願いの詳細', state.primary.label || '未選択', 'edit-primary', 'detail')}${[0, 1].map((i) => row(`第${i + 2}の願い`, state.secondaries[i]?.label || '未選択', state.secondaries[i] ? 'edit-secondary-item' : 'edit-secondary-step', i)).join('')}${Object.keys(
+    fieldNames,
+  )
+    .map((name) =>
+      row(fieldNames[name], preferenceText(name), 'edit-preferences', name),
+    )
+    .join('')}</div>`;
   const conflict = state.secondaries.some(
     (x) => x.detail === state.primary.detail && x.detail !== 'unknown',
   );
@@ -267,7 +383,7 @@ function screen() {
       '<p class="error" role="alert">主願いとほかの願いが重複しています。変更または解除してください。</p>';
   return (
     out +
-    `<div class="nav">${button('戻る', 'back')}${conflict ? '' : button('診断内容を確認しました', 'finish', '', 'primary')}</div>`
+    `<div class="nav review-nav">${button('戻る', 'back')}${conflict ? '' : button('診断内容を確認しました', 'finish', '', 'primary')}</div>`
   );
 }
 function render() {
@@ -315,7 +431,10 @@ app.addEventListener('click', (event) => {
       .find((x) => x.id === value);
     if (!item) return;
     wish.detail = item.id;
-    wish.label = item.label;
+    wish.label =
+      displayValue('detail', item.id) === item.id
+        ? item.label
+        : displayValue('detail', item.id);
     state.changeBackup = null;
   } else if (action === 'unknown') {
     if (state.step === 2) {
@@ -346,10 +465,13 @@ app.addEventListener('click', (event) => {
   } else if (action === 'back') {
     state.step = Math.max(1, state.step - 1);
   } else if (action === 'add-secondary') {
+    state.changeBackup = null;
     state.edit = { index: null, wish: emptyWish() };
   } else if (action === 'cancel-secondary') {
+    state.changeBackup = null;
     state.edit = null;
   } else if (action === 'edit-secondary') {
+    state.changeBackup = null;
     const index = Number(value);
     state.edit = { index, wish: clone(state.secondaries[index]) };
   } else if (action === 'remove-secondary') {
@@ -376,12 +498,23 @@ app.addEventListener('click', (event) => {
     if (state.edit.index === null) state.secondaries.push(clone(w));
     else state.secondaries[state.edit.index] = clone(w);
     state.edit = null;
-  } else if (action === 'edit-primary') state.step = 1;
-  else if (action === 'edit-secondary-step') {
+  } else if (action === 'edit-primary') {
+    state.step = 1;
+    state.confirmed = false;
+  } else if (action === 'edit-secondary-item') {
+    state.step = 2;
+    const index = Number(value);
+    state.edit = { index, wish: clone(state.secondaries[index]) };
+    state.confirmed = false;
+  } else if (action === 'edit-secondary-step') {
     state.step = 2;
     state.edit = null;
-  } else if (action === 'edit-preferences') state.step = 3;
-  else if (action === 'finish') {
+    state.confirmed = false;
+  } else if (action === 'edit-preferences') {
+    state.step = 3;
+    state.focusPreference = value;
+    state.confirmed = false;
+  } else if (action === 'finish') {
     if (
       state.secondaries.some(
         (x) => x.detail === state.primary.detail && x.detail !== 'unknown',
@@ -393,12 +526,36 @@ app.addEventListener('click', (event) => {
     state.confirmed = false;
     state.step = 4;
   } else return;
+  const focusPreference = state.focusPreference;
+  state.focusPreference = '';
   commit('回答を更新しました。');
+  if (focusPreference)
+    document.getElementById('preference-' + focusPreference)?.focus();
 });
 app.addEventListener('change', (event) => {
   const name = event.target.dataset.preference;
   if (!name || !(name in fields)) return;
-  state.preferences[name] = event.target.value;
+  if (name === 'color' || name === 'avoid') {
+    const selected = [
+      ...app.querySelectorAll(`input[data-preference="${name}"]:checked`),
+    ].map((input) => input.value);
+    if (name === 'color') {
+      if (event.target.value === 'こだわらない' && event.target.checked) {
+        for (const input of app.querySelectorAll(
+          'input[data-preference="color"]',
+        ))
+          input.checked = input.value === 'こだわらない';
+      } else if (event.target.checked) {
+        const none = app.querySelector(
+          'input[data-preference="color"][value="こだわらない"]',
+        );
+        if (none) none.checked = false;
+      }
+      state.preferences[name] = [
+        ...app.querySelectorAll('input[data-preference="color"]:checked'),
+      ].map((input) => input.value);
+    } else state.preferences[name] = selected;
+  } else state.preferences[name] = event.target.value;
   save();
   history.replaceState(
     { privatePrototype: clone(state) },
