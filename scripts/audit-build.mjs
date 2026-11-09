@@ -42,6 +42,26 @@ async function files(dir) {
   ).flat();
 }
 const output = await files('dist');
+const draftPrototype = JSON.parse(
+  await readFile('prototype/diagnosis-v3/draft-data.json', 'utf8'),
+);
+const privateWishIds = draftPrototype.branches.flatMap((branch) =>
+  branch.items.map((item) => item.id),
+);
+if (privateWishIds.length !== 99 || new Set(privateWishIds).size !== 99)
+  throw new Error('Private prototype must have exactly 99 distinct draft IDs');
+for (const file of output) {
+  if (/prototype|draft-data/i.test(file))
+    throw new Error(`${file} exposes private prototype assets`);
+  if (/\.(html|js|json|xml|txt)$/.test(file)) {
+    const text = await readFile(file, 'utf8');
+    if (
+      text.includes('PRIVATE PROTOTYPE') ||
+      privateWishIds.some((id) => text.includes(id))
+    )
+      throw new Error(`${file} exposes private prototype data`);
+  }
+}
 const restrictedReferenceUrls = new Set(
   stones.flatMap((s) =>
     s.sources
