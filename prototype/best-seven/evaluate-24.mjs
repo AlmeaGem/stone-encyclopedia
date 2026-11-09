@@ -12,6 +12,7 @@ const rows = [
   [
     'ケース',
     '願いID',
+    '試算した色の希望',
     '候補数',
     '順位・石ID（非公開試作）',
     '採点（検証用）',
@@ -23,8 +24,21 @@ const rows = [
 ];
 const top = new Map();
 let empty = 0;
+// Existing scenario conditions are inputs to the experiment, not stone attributes.
+// The earlier scenario's unspecified "淡色" cannot be mapped to a specific colour.
+const scenarioConditions = {
+  'love.meet.ideal': { colors: ['ピンク'] },
+  'love.person.progress': { colors: ['紫'] },
+  'love.reunion.ex': { colors: ['ピンク'] },
+  'love.couple.communication': { colors: ['緑'] },
+  'love.attraction.charm': { colors: ['ピンク'] },
+  'finance.income': { colors: ['ゴールド'] },
+  'work.business_grow': { colors: ['黒'] },
+  'work.recognition': { colors: ['青'] },
+  'intuition.reflect': { colors: ['紫'] },
+};
 for (const entry of wishes.cases) {
-  const input = { primary: entry.id };
+  const input = { primary: entry.id, ...scenarioConditions[entry.id] };
   const result = recommend(input, data);
   if (JSON.stringify(result) !== JSON.stringify(recommend(input, data)))
     throw new Error('Non-deterministic result');
@@ -37,6 +51,7 @@ for (const entry of wishes.cases) {
   rows.push([
     entry.name,
     entry.id,
+    input.colors?.join('・') || '未指定（淡色など未確定の条件は変換しない）',
     result.count,
     result.results
       .map((r, i) => `${i + 1}:${r.stoneId} ${r.stoneName}`)
