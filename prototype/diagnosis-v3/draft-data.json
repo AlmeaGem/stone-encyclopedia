@@ -1,0 +1,695 @@
+{
+  "notice": "未承認の診断UX試作データ。本番での利用は禁止。",
+  "branches": [
+    {
+      "category": "恋愛・結婚",
+      "situation": "出会い",
+      "subgroup": "恋の始まり・良縁",
+      "items": [
+        {
+          "id": "love.meet.new_love",
+          "label": "新しい恋"
+        },
+        {
+          "id": "love.meet.good_match",
+          "label": "良縁との出会い"
+        },
+        {
+          "id": "love.meet.ideal",
+          "label": "理想の相手との出会い"
+        }
+      ]
+    },
+    {
+      "category": "恋愛・結婚",
+      "situation": "出会い",
+      "subgroup": "機会・きっかけ・結婚",
+      "items": [
+        {
+          "id": "love.meet.opportunities",
+          "label": "出会いの機会"
+        },
+        {
+          "id": "love.meet.approach",
+          "label": "相手からも声をかけてもらいたい"
+        },
+        {
+          "id": "love.meet.marriage",
+          "label": "結婚を見据えた新しい良縁"
+        }
+      ]
+    },
+    {
+      "category": "恋愛・結婚",
+      "situation": "気になる相手",
+      "subgroup": "気になる相手",
+      "items": [
+        {
+          "id": "love.person.closer",
+          "label": "特定の人との距離"
+        },
+        {
+          "id": "love.person.contact",
+          "label": "特定の人との連絡"
+        },
+        {
+          "id": "love.person.progress",
+          "label": "片思いの進展"
+        },
+        {
+          "id": "love.person.partnership",
+          "label": "特定の人との交際"
+        }
+      ]
+    },
+    {
+      "category": "恋愛・結婚",
+      "situation": "過去の相手",
+      "subgroup": "過去の相手",
+      "items": [
+        {
+          "id": "love.reunion.ex",
+          "label": "元恋人との復縁"
+        },
+        {
+          "id": "love.reunion.meet",
+          "label": "過去の相手との再会"
+        },
+        {
+          "id": "love.reunion.contact",
+          "label": "過去の関係の連絡再開"
+        },
+        {
+          "id": "love.reunion.repair",
+          "label": "恋愛の過去の関係修復"
+        }
+      ]
+    },
+    {
+      "category": "恋愛・結婚",
+      "situation": "交際中",
+      "subgroup": "交際中",
+      "items": [
+        {
+          "id": "love.couple.affection",
+          "label": "交際中の愛情"
+        },
+        {
+          "id": "love.couple.respect",
+          "label": "交際中の尊重"
+        },
+        {
+          "id": "love.couple.marriage_progress",
+          "label": "既存の恋愛関係から結婚への進展"
+        },
+        {
+          "id": "love.couple.communication",
+          "label": "交際中の対話"
+        }
+      ]
+    },
+    {
+      "category": "恋愛・結婚",
+      "situation": "魅力・大切にしたいこと",
+      "subgroup": "恋愛の魅力",
+      "items": [
+        {
+          "id": "love.attraction.attention",
+          "label": "恋愛における注目"
+        },
+        {
+          "id": "love.attraction.charm",
+          "label": "恋愛における魅力"
+        },
+        {
+          "id": "love.attraction.confidence",
+          "label": "恋愛に向き合う自信"
+        },
+        {
+          "id": "love.attraction.natural",
+          "label": "自然体の恋愛"
+        }
+      ]
+    },
+    {
+      "category": "恋愛・結婚",
+      "situation": "魅力・大切にしたいこと",
+      "subgroup": "大切にしたい関係",
+      "items": [
+        {
+          "id": "love.values.enduring_love",
+          "label": "長く続く愛"
+        },
+        {
+          "id": "love.values.deep_love",
+          "label": "深い愛情"
+        },
+        {
+          "id": "love.values.equality",
+          "label": "対等な恋愛"
+        },
+        {
+          "id": "love.values.mutual_care",
+          "label": "大切にし合う恋"
+        },
+        {
+          "id": "love.values.sincerity",
+          "label": "誠実な恋愛"
+        }
+      ]
+    },
+    {
+      "category": "人間関係",
+      "situation": "関係を見つめる",
+      "subgroup": "関係を見つめる",
+      "items": [
+        {
+          "id": "relationships.repair",
+          "label": "関係を修復"
+        },
+        {
+          "id": "relationships.bonds",
+          "label": "大切な人との絆"
+        },
+        {
+          "id": "relationships.boundary",
+          "label": "人との距離を見直したい"
+        }
+      ]
+    },
+    {
+      "category": "人間関係",
+      "situation": "対話・つながり",
+      "subgroup": "対話・つながり",
+      "items": [
+        {
+          "id": "relationships.family_dialogue",
+          "label": "家族と話す時間を大切にしたい"
+        },
+        {
+          "id": "relationships.dialogue",
+          "label": "人と気持ちを伝え合いたい"
+        },
+        {
+          "id": "relationships.workplace",
+          "label": "職場の関係を見直したい"
+        },
+        {
+          "id": "relationships.new",
+          "label": "新しいつながりを作りたい"
+        }
+      ]
+    },
+    {
+      "category": "金運・財運",
+      "situation": "収入・商売",
+      "subgroup": "収入・商売",
+      "items": [
+        {
+          "id": "finance.income",
+          "label": "収入を増やしたい"
+        },
+        {
+          "id": "finance.windfall",
+          "label": "思いがけない収入を願う"
+        },
+        {
+          "id": "finance.opportunity",
+          "label": "新たな収入の機会を探したい"
+        },
+        {
+          "id": "finance.business_sales",
+          "label": "商売繁盛・売上を願いたい"
+        }
+      ]
+    },
+    {
+      "category": "金運・財運",
+      "situation": "暮らし・将来",
+      "subgroup": "暮らし・将来",
+      "items": [
+        {
+          "id": "finance.stability",
+          "label": "家計を安定させたい"
+        },
+        {
+          "id": "finance.saving",
+          "label": "貯蓄を続けたい"
+        },
+        {
+          "id": "finance.assets",
+          "label": "将来の資産形成を考えたい"
+        }
+      ]
+    },
+    {
+      "category": "仕事・成功",
+      "situation": "新しい仕事",
+      "subgroup": "新しい仕事",
+      "items": [
+        {
+          "id": "work.business_start",
+          "label": "起業に踏み出したい"
+        },
+        {
+          "id": "work.career_change",
+          "label": "転職・仕事探しを考えたい"
+        },
+        {
+          "id": "work.challenge",
+          "label": "新しい仕事に挑戦したい"
+        },
+        {
+          "id": "work.side_business",
+          "label": "副業に挑戦したい"
+        }
+      ]
+    },
+    {
+      "category": "仕事・成功",
+      "situation": "いまの仕事",
+      "subgroup": "いまの仕事",
+      "items": [
+        {
+          "id": "work.business_grow",
+          "label": "事業を育てたい"
+        },
+        {
+          "id": "work.recognition",
+          "label": "仕事で認められたい"
+        },
+        {
+          "id": "work.goal",
+          "label": "今の仕事の目標を達成したい"
+        },
+        {
+          "id": "work.skills",
+          "label": "仕事に必要な技能を磨きたい"
+        },
+        {
+          "id": "work.balance",
+          "label": "安定した働き方を考えたい"
+        }
+      ]
+    },
+    {
+      "category": "願望成就・幸運",
+      "situation": "目標・変化",
+      "subgroup": "目標・変化",
+      "items": [
+        {
+          "id": "fortune.goal",
+          "label": "今の願いや目標を見つめたい"
+        },
+        {
+          "id": "fortune.turning_point",
+          "label": "人生の転機を大切にしたい"
+        },
+        {
+          "id": "fortune.fresh_start",
+          "label": "停滞から一歩踏み出したい"
+        }
+      ]
+    },
+    {
+      "category": "願望成就・幸運",
+      "situation": "日々・幸運",
+      "subgroup": "日々・幸運",
+      "items": [
+        {
+          "id": "fortune.opportunity",
+          "label": "新しい機会に気づきたい"
+        },
+        {
+          "id": "fortune.everyday",
+          "label": "日々の幸せを大切にしたい"
+        },
+        {
+          "id": "fortune.luck",
+          "label": "幸運を願いたい"
+        }
+      ]
+    },
+    {
+      "category": "魔除け・浄化",
+      "situation": "お守り・場所",
+      "subgroup": "お守り・場所",
+      "items": [
+        {
+          "id": "protection.amulet",
+          "label": "お守りとして守護を願いたい"
+        },
+        {
+          "id": "protection.travel",
+          "label": "旅のお守りを選びたい"
+        },
+        {
+          "id": "protection.environment",
+          "label": "空間を守る象徴を置きたい"
+        }
+      ]
+    },
+    {
+      "category": "魔除け・浄化",
+      "situation": "心の区切り・習慣",
+      "subgroup": "心の区切り・習慣",
+      "items": [
+        {
+          "id": "protection.boundary",
+          "label": "周囲との境界を大切にしたい"
+        },
+        {
+          "id": "protection.release",
+          "label": "過去を手放す象徴がほしい"
+        },
+        {
+          "id": "protection.purification",
+          "label": "浄化の習慣を大切にしたい"
+        }
+      ]
+    },
+    {
+      "category": "心の安定・癒やし",
+      "situation": "安心・休息",
+      "subgroup": "安心・休息",
+      "items": [
+        {
+          "id": "calm.reassurance",
+          "label": "安心感を大切にしたい"
+        },
+        {
+          "id": "calm.rest",
+          "label": "休息を大切にしたい"
+        },
+        {
+          "id": "calm.selfcare",
+          "label": "自分をいたわりたい"
+        }
+      ]
+    },
+    {
+      "category": "心の安定・癒やし",
+      "situation": "整理・変化",
+      "subgroup": "整理・変化",
+      "items": [
+        {
+          "id": "calm.reset",
+          "label": "気持ちを切り替えたい"
+        },
+        {
+          "id": "calm.emotion",
+          "label": "気持ちを整理したい"
+        },
+        {
+          "id": "calm.change",
+          "label": "変化の中で落ち着きたい"
+        }
+      ]
+    },
+    {
+      "category": "直感・精神性",
+      "situation": "自分を見つめる",
+      "subgroup": "自分を見つめる",
+      "items": [
+        {
+          "id": "intuition.reflect",
+          "label": "内省する時間を持ちたい"
+        },
+        {
+          "id": "intuition.self",
+          "label": "自分自身を知りたい"
+        },
+        {
+          "id": "intuition.decisions",
+          "label": "自分の選択を見つめたい"
+        }
+      ]
+    },
+    {
+      "category": "直感・精神性",
+      "situation": "感性・習慣",
+      "subgroup": "感性・習慣",
+      "items": [
+        {
+          "id": "intuition.sensitivity",
+          "label": "自分の感性を楽しみたい"
+        },
+        {
+          "id": "intuition.creativity",
+          "label": "発想を広げたい"
+        },
+        {
+          "id": "intuition.ritual",
+          "label": "自分なりの静かな習慣を持ちたい"
+        }
+      ]
+    },
+    {
+      "category": "美しさ・魅力・人気",
+      "situation": "自分らしさ",
+      "subgroup": "自分らしさ",
+      "items": [
+        {
+          "id": "presence.expression",
+          "label": "自分らしさを表現したい"
+        },
+        {
+          "id": "presence.charm",
+          "label": "自分の魅力を大切にしたい"
+        },
+        {
+          "id": "presence.confidence",
+          "label": "自分に自信を持ちたい"
+        },
+        {
+          "id": "presence.style",
+          "label": "好みの装いを楽しみたい"
+        }
+      ]
+    },
+    {
+      "category": "美しさ・魅力・人気",
+      "situation": "周囲・人生",
+      "subgroup": "周囲・人生",
+      "items": [
+        {
+          "id": "presence.popularity",
+          "label": "周囲から親しまれたい"
+        },
+        {
+          "id": "presence.public",
+          "label": "人前での存在感を大切にしたい"
+        },
+        {
+          "id": "presence.aging",
+          "label": "年齢を重ねる楽しさを大切にしたい"
+        }
+      ]
+    },
+    {
+      "category": "家庭・住まい",
+      "situation": "家庭・住まい",
+      "subgroup": "家庭・住まい",
+      "items": [
+        {
+          "id": "home.family_time",
+          "label": "家族との時間を大切にしたい"
+        },
+        {
+          "id": "home.space",
+          "label": "住まいを整えたい"
+        },
+        {
+          "id": "home.transition",
+          "label": "暮らしの変化を迎えたい"
+        },
+        {
+          "id": "home.family_harmony",
+          "label": "家族との調和を願いたい"
+        }
+      ]
+    },
+    {
+      "category": "学び・才能",
+      "situation": "学び・才能",
+      "subgroup": "学び・才能",
+      "items": [
+        {
+          "id": "learning.study",
+          "label": "学びに取り組みたい"
+        },
+        {
+          "id": "learning.skills",
+          "label": "得意を育てたい"
+        },
+        {
+          "id": "learning.creativity",
+          "label": "創作を楽しみたい"
+        }
+      ]
+    },
+    {
+      "category": "挑戦・試験",
+      "situation": "挑戦・試験",
+      "subgroup": "挑戦・試験",
+      "items": [
+        {
+          "id": "challenge.new",
+          "label": "新しい挑戦を始めたい"
+        },
+        {
+          "id": "challenge.exam",
+          "label": "試験に向けて取り組みたい"
+        },
+        {
+          "id": "challenge.competition",
+          "label": "競技に向けて取り組みたい"
+        },
+        {
+          "id": "challenge.contest",
+          "label": "抽選での幸運を願う"
+        }
+      ]
+    },
+    {
+      "category": "旅・新しい環境",
+      "situation": "旅・新しい環境",
+      "subgroup": "旅・新しい環境",
+      "items": [
+        {
+          "id": "journey.travel",
+          "label": "旅行を楽しみたい"
+        },
+        {
+          "id": "journey.move",
+          "label": "引っ越しに向き合いたい"
+        },
+        {
+          "id": "journey.environment",
+          "label": "新しい環境に向き合いたい"
+        }
+      ]
+    },
+    {
+      "category": "健康・生活",
+      "situation": "健康・生活",
+      "subgroup": "健康・生活",
+      "items": [
+        {
+          "id": "wellbeing.health_support",
+          "label": "健康を大切にする気持ち"
+        },
+        {
+          "id": "wellbeing.routine",
+          "label": "生活習慣を整えたい"
+        },
+        {
+          "id": "wellbeing.rest",
+          "label": "休む時間を確保したい"
+        },
+        {
+          "id": "wellbeing.beauty",
+          "label": "自分らしい美しさを楽しみたい"
+        }
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "name": "恋愛・出会い",
+      "id": "love.meet.ideal"
+    },
+    {
+      "name": "恋愛・機会",
+      "id": "love.meet.opportunities"
+    },
+    {
+      "name": "相手からのきっかけ",
+      "id": "love.meet.approach"
+    },
+    {
+      "name": "結婚を見据えた出会い",
+      "id": "love.meet.marriage"
+    },
+    {
+      "name": "片思い",
+      "id": "love.person.progress"
+    },
+    {
+      "name": "好きな人への連絡",
+      "id": "love.person.contact"
+    },
+    {
+      "name": "元恋人と復縁",
+      "id": "love.reunion.ex"
+    },
+    {
+      "name": "過去の恋愛の修復",
+      "id": "love.reunion.repair"
+    },
+    {
+      "name": "交際から結婚",
+      "id": "love.couple.marriage_progress"
+    },
+    {
+      "name": "恋人との対話",
+      "id": "love.couple.communication"
+    },
+    {
+      "name": "恋愛での魅力",
+      "id": "love.attraction.charm"
+    },
+    {
+      "name": "一般的な魅力",
+      "id": "presence.charm"
+    },
+    {
+      "name": "継続収入",
+      "id": "finance.income"
+    },
+    {
+      "name": "臨時収入",
+      "id": "finance.windfall"
+    },
+    {
+      "name": "商売繁盛",
+      "id": "finance.business_sales"
+    },
+    {
+      "name": "資産形成",
+      "id": "finance.assets"
+    },
+    {
+      "name": "事業成長",
+      "id": "work.business_grow"
+    },
+    {
+      "name": "仕事での評価",
+      "id": "work.recognition"
+    },
+    {
+      "name": "新規の挑戦",
+      "id": "challenge.new"
+    },
+    {
+      "name": "進行中の目標",
+      "id": "fortune.goal"
+    },
+    {
+      "name": "お守りの守護",
+      "id": "protection.amulet"
+    },
+    {
+      "name": "気持ちの切り替え",
+      "id": "calm.reset"
+    },
+    {
+      "name": "直感と内省",
+      "id": "intuition.reflect"
+    },
+    {
+      "name": "家族の時間",
+      "id": "home.family_time"
+    }
+  ]
+}
