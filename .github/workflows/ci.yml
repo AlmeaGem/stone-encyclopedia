@@ -27,6 +27,7 @@ jobs:
       - run: npm run build
       - run: npx playwright install --with-deps chromium
       - run: npm run prototype:diagnosis:test -- --reporter=list,github
+      - run: npm run prototype:best-seven:test -- --reporter=list,github
       - run: npm run test:e2e -- --reporter=list,github
       - name: Verify subpath deployment
         env:

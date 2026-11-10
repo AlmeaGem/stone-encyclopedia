@@ -24,7 +24,9 @@
     "photos:dev": "wrangler dev --config cloud/photos/wrangler.jsonc",
     "photos:check": "wrangler deploy --dry-run --outdir /tmp/almea-photos-bundle --config cloud/photos/wrangler.jsonc",
     "prototype:diagnosis": "node prototype/diagnosis-v3/server.mjs",
-    "prototype:diagnosis:test": "playwright test --config prototype/diagnosis-v3/playwright.config.js"
+    "prototype:diagnosis:test": "playwright test --config prototype/diagnosis-v3/playwright.config.js",
+    "prototype:best-seven": "node prototype/best-seven/server.mjs",
+    "prototype:best-seven:test": "playwright test --config prototype/best-seven/playwright.config.js"
   },
   "dependencies": {
     "@fontsource/noto-serif-jp": "^5.3.1",

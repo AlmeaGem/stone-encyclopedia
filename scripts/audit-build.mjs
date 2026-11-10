@@ -57,6 +57,7 @@ for (const file of output) {
     const text = await readFile(file, 'utf8');
     if (
       text.includes('PRIVATE PROTOTYPE') ||
+      text.includes('BEST7_TRIAL_NOT_APPROVED') ||
       privateWishIds.some((id) => text.includes(id))
     )
       throw new Error(`${file} exposes private prototype data`);
