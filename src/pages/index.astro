@@ -37,29 +37,31 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
           あなたのパワーになる。
         </span>
         <span class="hero-line">まだ知らない石の世界へ。</span>
-        <HeroGem />
       </h1>
       <p>
         パワーストーンアイテムを手がけるALMÉA GEMから。
         <br />
         石の個性と意味を知り、あなたの願いに寄り添う一粒を。
       </p>
+      <div class="hero-visual">
+        <HeroGem />
+      </div>
       <nav class="entry-actions" aria-label="利用するサービスを選ぶ">
         <a href={pathTo('stones/')}>
           <strong>石を調べる</strong>
           <span>無料図鑑 ↗</span>
         </a>
-        <a href={pathTo('wishes/')}>
-          <strong>願いから探す</strong>
-          <span>無料検索 ↗</span>
+        <a href={pathTo('bracelet-designer/')}>
+          <strong>ブレスレットをデザインする</strong>
+          <span>210種類の石から自由にデザイン ↗</span>
         </a>
         <a href={pathTo('diagnosis/')}>
           <strong>パーソナル診断</strong>
           <span>質問無料・個別結果790円（準備中） ↗</span>
         </a>
-        <a href={pathTo('bracelet-designer/')}>
-          <strong>ブレスレットをデザインする</strong>
-          <span>210種類の石から自由にデザイン ↗</span>
+        <a href={pathTo('wishes/')}>
+          <strong>願いから探す</strong>
+          <span>無料検索 ↗</span>
         </a>
       </nav>
       <p class="home-search-shortcut">

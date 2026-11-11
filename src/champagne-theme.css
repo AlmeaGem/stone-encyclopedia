@@ -1,0 +1,130 @@
+/* Shared champagne palette; content and interaction remain unchanged. */
+:root {
+  --paper: #f9f3ec;
+  --ink: #32231e;
+  --text: #4b3931;
+  --link: #64463a;
+  --muted: #705d51;
+  --line: #e4d3c3;
+  --rose: #80543e;
+  --beige: #f0e4d8;
+}
+body {
+  background: #f9f3ec;
+  color: #4b3931;
+}
+.site-header {
+  background: #f3e6db;
+  border-color: #dcc6b6;
+}
+.site-header nav a {
+  background: linear-gradient(145deg, #fbf5ee, #f0e2d7);
+  border-color: #dac2b2;
+  box-shadow: 0 3px 10px #68402c10;
+}
+.site-header nav a.nav-design {
+  background: #754732;
+  color: #fff;
+  border-color: #754732;
+}
+.stone-card,
+.article-card,
+.wish-link,
+.story-stone-card,
+.story-collection-card {
+  border: 1px solid #e1cfc0;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px #68402c0d;
+}
+.home-hero {
+  position: relative;
+  display: block;
+  padding-block: 40px 26px;
+}
+.home-hero .hero-copy {
+  border: 0;
+  padding: 30px 0 0;
+  position: relative;
+  z-index: 1;
+}
+.home-hero .hero-copy h1,
+.home-hero .hero-copy > p {
+  max-width: 58%;
+}
+.hero-visual {
+  position: absolute;
+  right: 1%;
+  top: 10px;
+  width: min(38%, 410px);
+  aspect-ratio: 480/520;
+  pointer-events: none;
+  background: radial-gradient(ellipse, #f6d6b5aa, transparent 72%);
+}
+.hero-gem-accent {
+  position: static;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+}
+.entry-actions {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 75px;
+}
+.entry-actions a {
+  min-height: 100px;
+  background: #f9f0e8;
+  border-color: #dcc4b4;
+  box-shadow:
+    0 6px 18px #68402c16,
+    inset 0 1px 0 #fff;
+}
+.entry-actions a:first-child {
+  color: #513e33;
+  background: #f9f0e8;
+  border-color: #dcc4b4;
+}
+.entry-actions a:nth-child(2) {
+  background: linear-gradient(135deg, #9a6c55, #744834);
+  border-color: #805540;
+  color: #fff;
+}
+.entry-actions strong {
+  font-size: 15px;
+}
+@media (max-width: 800px) {
+  .home-hero .hero-copy h1,
+  .home-hero .hero-copy > p {
+    max-width: 65%;
+  }
+  .hero-visual {
+    width: 32%;
+    top: 25px;
+  }
+}
+@media (max-width: 640px) {
+  .home-hero {
+    padding-block: 20px;
+  }
+  .home-hero .hero-copy {
+    padding: 8px 0 0;
+  }
+  .home-hero .hero-copy h1,
+  .home-hero .hero-copy > p {
+    max-width: 100%;
+  }
+  .hero-visual {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: min(48%, 180px);
+    margin: 12px auto 0;
+  }
+  .entry-actions {
+    grid-template-columns: 1fr;
+    margin-top: 24px;
+  }
+  .entry-actions a {
+    min-height: 76px;
+  }
+}

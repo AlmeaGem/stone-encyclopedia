@@ -479,3 +479,24 @@ label[for='filter-size'] {
   overscroll-behavior: contain;
   padding: 2px;
 }
+/* Match the encyclopedia's champagne and brown palette. */
+:root {
+  color: #4b3931;
+  background: #f9f3ec;
+}
+.header {
+  background: #f3e6db;
+  border-color: #dcc6b6;
+  color: #64463a;
+}
+.workspace,
+.controls section,
+.consult {
+  background: #fffaf5;
+  border-color: #e1cfc0;
+  box-shadow: 0 6px 20px #68402c0d;
+}
+.primary {
+  background: #754732;
+  border-color: #754732;
+}

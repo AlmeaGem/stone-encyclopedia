@@ -1,6 +1,6 @@
 <svg
   class="hero-gem-accent"
-  viewBox="0 0 160 170"
+  viewBox="0 0 480 520"
   fill="none"
   aria-hidden="true"
   focusable="false"
@@ -8,41 +8,63 @@
 >
   <defs>
     <linearGradient
-      id="hero-facet-tint"
-      x1="45"
-      y1="38"
-      x2="123"
-      y2="144"
+      id="gem-body"
+      x1="110"
+      y1="60"
+      x2="390"
+      y2="480"
       gradientUnits="userSpaceOnUse"
     >
-      <stop stop-color="#fffaf2" />
-      <stop offset=".5" stop-color="#edd3d2" stop-opacity=".5" />
-      <stop offset="1" stop-color="#d6b9c2" stop-opacity=".25" />
+      <stop stop-color="#e3c2a4" />
+      <stop offset=".35" stop-color="#82503c" />
+      <stop offset=".68" stop-color="#b87750" />
+      <stop offset="1" stop-color="#f8dfb6" />
+    </linearGradient>
+    <radialGradient id="gem-light">
+      <stop stop-color="#fff8dc" stop-opacity=".85" />
+      <stop offset="1" stop-color="#f2bf86" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="gem-bright" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#fff9e9" stop-opacity=".8" />
+      <stop offset="1" stop-color="#a46a4b" stop-opacity=".12" />
     </linearGradient>
   </defs>
-  <g
-    transform="rotate(12 80 88)"
-    stroke="#b09579"
-    stroke-width=".85"
-    stroke-linejoin="round"
-  >
-    <path
-      d="m80 27 37 31 11 53-48 38-43-38 8-53 35-31Z"
-      fill="url(#hero-facet-tint)"
-    />
-    <path
-      d="m80 27 20 43-20 57-21-57 21-43Zm-35 31 14 12-22 41 43 16 48-16-28-41 17-12M59 70h41M80 127v22"
-      opacity=".8"
-    />
-    <path d="m45 58 35-10 37 10M80 48v-21M37 111l43 38 48-38" opacity=".4" />
-  </g>
-  <g stroke="#b79a75" stroke-linecap="round">
-    <path d="M128 21v16m-8-8h16M29 118v10m-5-5h10" stroke-width=".9" />
-    <path d="M26 38v7m-3.5-3.5h7" stroke-width=".7" />
-  </g>
-  <g fill="#c4aa8f">
-    <circle cx="140" cy="55" r="1.2" />
-    <circle cx="27" cy="83" r="1" />
-    <circle cx="126" cy="142" r=".9" />
-  </g>
+  <ellipse cx="240" cy="455" rx="210" ry="35" fill="url(#gem-light)" />
+  <path
+    d="M240 30 357 116 426 267 240 451 54 267 123 116Z"
+    fill="url(#gem-body)"
+    stroke="#93694f"
+    stroke-width="2"
+  />
+  <path
+    d="M240 30 195 125 123 116Z M240 30 286 125 357 116Z M54 267 123 116 142 252Z M426 267 357 116 338 252Z M54 267 142 252 240 451Z M426 267 338 252 240 451Z"
+    fill="url(#gem-bright)"
+  />
+  <path
+    d="M240 30 195 125 142 252 240 451 338 252 286 125 240 30Zm-117 86 72 9h91l71-9M54 267l88-15h196l88 15M195 125l45 57 46-57M142 252l98-70 98 70M142 252l98 86 98-86M240 338v113"
+    stroke="#ffead1"
+    stroke-opacity=".55"
+    stroke-width="2"
+  />
+  <ellipse
+    cx="239"
+    cy="253"
+    rx="170"
+    ry="55"
+    transform="rotate(-23 239 253)"
+    stroke="#fff9ee"
+    stroke-width="3"
+  />
+  <circle cx="92" cy="314" r="6" fill="#fffaf0" />
+  <circle cx="348" cy="190" r="4" fill="#fffaf0" />
+  <path
+    d="M240 158c3 74 9 80 80 84-71 4-77 10-80 84-3-74-9-80-80-84 71-4 77-10 80-84Z"
+    fill="#fffdf4"
+  />
+  <path
+    d="M409 91v22m-11-11h22M65 143v16m-8-8h16"
+    stroke="#b99267"
+    stroke-width="2"
+    stroke-linecap="round"
+  />
 </svg>
