@@ -1,0 +1,326 @@
+---
+import { appIconPath } from '../lib/app-icons';
+import { pathTo } from '../lib/urls';
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <title>ブレスレットデザイナー | ALMÉA GEM</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <link rel="icon" href={appIconPath('favicon.ico')} />
+    <link rel="apple-touch-icon" href={appIconPath('apple-touch-icon.png')} />
+    <link rel="manifest" href={appIconPath('site.webmanifest')} />
+    <link rel="stylesheet" href={pathTo('bracelet-designer/style.css')} />
+  </head>
+  <body>
+    <header class="header">
+      <span>ALMÉA GEM</span>
+      <a href={pathTo()}>図鑑トップへ戻る</a>
+    </header>
+    <main>
+      <div class="intro">
+        <p class="eyebrow">CREATE YOUR OWN STORY</p>
+        <h1>ブレスレットデザイナー</h1>
+        <p>ひと粒ずつ、あなたらしい組み合わせを。</p>
+        <p class="notice">
+          ※
+          石の色・形状・サイズはデザイン用イメージです。実際の丸玉の流通・在庫・着用安全性を示すものではありません。
+        </p>
+      </div>
+      <div class="layout">
+        <section class="workspace" aria-labelledby="design-title">
+          <div class="title-row">
+            <div>
+              <p class="eyebrow">YOUR DESIGN</p>
+              <h2 id="design-title">わたしのブレスレット</h2>
+            </div>
+            <div class="history">
+              <button type="button" id="undo">
+                ↶ 戻す
+              </button>
+              <button type="button" id="redo">
+                ↷ やり直す
+              </button>
+            </div>
+          </div>
+          <p class="hint">
+            玉を押したまま動かして並べ替え。玉を選ぶと、下で編集できます。
+          </p>
+          <div id="stage" class="stage" aria-label="ブレスレットの玉">
+            <div class="thread"></div>
+            <div id="beads"></div>
+          </div>
+          <div class="measure">
+            <label for="wrist">
+              手首周り <small>（mm）</small>
+            </label>
+            <input
+              id="wrist"
+              type="number"
+              min="80"
+              max="300"
+              step="1"
+              value="150"
+              inputmode="numeric"
+            />
+            <div id="estimate" aria-live="polite"></div>
+          </div>
+          <details>
+            <summary>サイズ計算の前提</summary>
+            <p>
+              玉の大きさと数から、ブレスレットの内側の長さを計算した目安です。手首周りとの差がプラスなら余裕があり、マイナスなら手首より小さい計算です。実物の着け心地や仕上がりを保証するものではありません。
+            </p>
+            <p>
+              隣り合う球が同じ中心円上で接する理想モデルです。各玉の半径から中心円の半径
+              R を求め、最も大きい玉の半径 r を差し引き、内周を 2π(R − r)
+              と概算します。糸・穴の位置・玉の誤差・結び目は含みません。実際の着用感は異なります。サイズ評価の基準は未確認のため表示しません。
+            </p>
+          </details>
+        </section>
+        <aside class="controls">
+          <section>
+            <p class="eyebrow">SELECT A BEAD</p>
+            <h2>玉を選ぶ</h2>
+            <label for="search">石名・ID・色を検索</label>
+            <input
+              id="search"
+              type="search"
+              placeholder="石名、ID、ピンクなど"
+            />
+            <label for="filter-size">玉のサイズで絞り込む</label>
+            <select id="filter-size">
+              <option value="">すべてのサイズ</option>
+              <option value="6">6 mm</option>
+              <option value="8">8 mm</option>
+              <option value="10">10 mm</option>
+              <option value="12">12 mm</option>
+              <option value="13">13 mm</option>
+              <option value="14">14 mm</option>
+              <option value="15">15 mm</option>
+            </select>
+            <div id="palette" class="palette"></div>
+            <p class="hint">石を選ぶと、選択中の玉が変わります。</p>
+          </section>
+          <section>
+            <h2>選択中の玉</h2>
+            <p id="selected-label" aria-live="polite"></p>
+            <label for="size">
+              玉の直径 <small>（イメージ上のmm）</small>
+            </label>
+            <select id="size"></select>
+            <div class="actions">
+              <button id="add" type="button" class="primary">
+                玉を追加
+              </button>
+              <button id="remove" type="button">
+                削除
+              </button>
+              <button id="previous" type="button">
+                前へ移動
+              </button>
+              <button id="next" type="button">
+                後ろへ移動
+              </button>
+            </div>
+          </section>
+          <section>
+            <h2>デザインを保存</h2>
+            <div class="actions">
+              <button id="save-image" type="button">
+                画像を保存 PNG
+              </button>
+              <button id="save-data" type="button">
+                編集データを保存
+              </button>
+              <label class="button" for="load-data">
+                編集データを開く
+              </label>
+              <input
+                id="load-data"
+                type="file"
+                accept="application/json,.json"
+                hidden
+              />
+            </div>
+            <p class="hint">
+              編集データを保存すると、後から同じデザインを開けます。ブラウザ内にも一時保存します。
+            </p>
+            <p id="status" role="status"></p>
+            <button id="consult-open" class="primary wide" type="button">
+              このデザインについて相談する
+            </button>
+            <p class="hint">完成品ブレスレットを見る：販売ページ準備中</p>
+          </section>
+        </aside>
+      </div>
+      <section
+        id="consult"
+        class="consult"
+        hidden
+        aria-labelledby="consult-title"
+      >
+        <p class="eyebrow">PERSONAL CONSULTATION</p>
+        <h2 id="consult-title" tabindex="-1">
+          このデザインについて相談する
+        </h2>
+        <p>
+          ご相談の内容をご確認いただけます。受付先は準備中のため、ここから送信はされません。個人情報は入力しないでください。
+        </p>
+        <img id="consult-image" alt="作成したブレスレットのイメージ" />
+        <div class="consult-summary">
+          <h3>使用した玉と個数</h3>
+          <ul id="consult-counts"></ul>
+          <h3>配置順</h3>
+          <ol id="consult-order"></ol>
+          <p id="consult-measure"></p>
+        </div>
+        <fieldset class="preference-group">
+          <legend>どんな雰囲気のブレスレットがお好みですか？</legend>
+          <p class="hint">複数選べます。「おまかせ」は単独で選択します。</p>
+          <div class="choice-grid">
+            <label class="choice">
+              <input type="checkbox" name="style" value="simple" />
+              <span>天然石だけのシンプルなデザイン</span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="style" value="y2k" />
+              <span>Y2K・平成ギャル</span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="style" value="cool" />
+              <span>クール・かっこいい</span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="style" value="elegant" />
+              <span>上品・高級感</span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="style" value="girly" />
+              <span>可愛い・ガーリー</span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="style" value="korean" />
+              <span>韓国風・ミニマル</span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="style" value="mode" />
+              <span>個性的・モード</span>
+            </label>
+            <label class="choice">
+              <input type="checkbox" name="style" value="any" />
+              <span>おまかせ</span>
+            </label>
+          </div>
+        </fieldset>
+        <section class="reference-section" aria-labelledby="reference-title">
+          <h3 id="reference-title">
+            参考画像を添付する <small>（任意）</small>
+          </h3>
+          <p>
+            お好みのブレスレットやパーツの写真がございましたら、参考画像として最大5枚まで添付できます。
+          </p>
+          <p class="hint">
+            JPG・PNG・WebP、1枚8MBまで。縦横12000px・4000万画素以内。保存時は長辺1600px以内のWebP（非対応時はJPEG）に変換し、各1MB以下にします。位置情報などのメタデータは除去します。
+          </p>
+          <label class="button reference-add" for="reference-input">
+            写真を選ぶ・追加する
+          </label>
+          <input
+            id="reference-input"
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
+            multiple
+            hidden
+          />
+          <p id="reference-count" aria-live="polite">
+            0 / 5枚
+          </p>
+          <div id="reference-list" class="reference-list"></div>
+          <p id="reference-status" role="status"></p>
+          <p class="hint">
+            画像は端末内で処理され、自動送信されません。テキストのコピーには含まれないため、「画像入り相談データを保存」をご利用ください。添付だけで相談や注文は確定しません。
+          </p>
+        </section>
+        <fieldset class="preference-group">
+          <legend>装飾パーツの希望</legend>
+          <div class="choice-grid">
+            <label class="choice">
+              <input type="radio" name="parts" value="stone" />
+              <span>天然石のみ</span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="parts" value="metal" />
+              <span>チャーム・メタルパーツなども使いたい</span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="parts" value="discuss" />
+              <span>相談して決めたい</span>
+            </label>
+          </div>
+        </fieldset>
+        <div id="parts-detail-wrap" hidden>
+          <label for="parts-detail">ご希望のパーツや色</label>
+          <textarea
+            id="parts-detail"
+            maxlength="1000"
+            rows="3"
+            placeholder="例：シルバーのハートパーツ"
+          ></textarea>
+        </div>
+        <label for="consult-other">その他の希望</label>
+        <textarea
+          id="consult-other"
+          maxlength="2000"
+          rows="3"
+          placeholder="例：ピンク系だけど甘すぎない雰囲気"
+        ></textarea>
+        <p class="hint">
+          ご希望を伺ったうえでご提案します。パーツのご用意や制作をお約束するものではありません。
+        </p>
+        <label for="consult-budget">希望予算</label>
+        <input
+          id="consult-budget"
+          maxlength="300"
+          placeholder="例：10,000円程度"
+        />
+        <label for="consult-message">ご希望・ご要望</label>
+        <textarea id="consult-message" maxlength="4000" rows="5"></textarea>
+        <div class="consult-notice">
+          <p>オーダーメイドブレスレットのご相談を承っております。</p>
+          <p>
+            天然石の種類や在庫状況によっては、海外からの輸入・仕入れが必要となるため、制作までにお時間をいただく場合がございます。
+          </p>
+          <p>
+            天然石は自然由来の素材のため、色合いや模様、透明度には個体差がございます。ご希望の石をご用意できない場合もございますので、あらかじめご了承ください。
+          </p>
+          <p>
+            制作の可否・価格・納期は個別にご案内いたします。ご相談のみでご注文が確定することはございません。
+          </p>
+        </div>
+        <div class="actions">
+          <button type="button" id="consult-copy">
+            相談内容をコピー
+          </button>
+          <button type="button" id="consult-save">
+            画像入り相談データを保存
+          </button>
+          <button type="button" id="consult-close">
+            デザインを編集する
+          </button>
+        </div>
+        <p id="consult-status" role="status"></p>
+      </section>
+    </main>
+    <script
+      is:inline
+      type="module"
+      src={pathTo('bracelet-designer/app.mjs')}
+    ></script>
+  </body>
+</html>
