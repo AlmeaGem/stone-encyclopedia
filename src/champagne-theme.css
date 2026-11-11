@@ -500,3 +500,166 @@ body {
   opacity: 1;
   mask-image: none;
 }
+
+/* Shared, restrained finishing details. */
+.site-header nav a,
+.button,
+button,
+.stone-card,
+.article-card,
+.wish-link,
+.story-stone-card,
+.story-collection-card,
+.entry-actions a {
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+:where(a, button, input, select, textarea, summary):focus-visible {
+  outline: 2px solid #80543e;
+  outline-offset: 3px;
+}
+.eyebrow,
+.card-eyebrow,
+.english {
+  letter-spacing: 0.15em;
+}
+.stone-card,
+.article-card,
+.wish-link,
+.story-stone-card,
+.story-collection-card {
+  box-shadow: 0 8px 24px #68402c0d;
+}
+.home-hero {
+  background:
+    radial-gradient(
+      ellipse at 69% 48%,
+      #fffaf2 0%,
+      #f9eae0 30%,
+      transparent 68%
+    ),
+    linear-gradient(115deg, #f0e1d7 0%, #f9eee5 50%, #ead7ca 100%);
+}
+.entry-actions .entry-art {
+  transform: scale(1.35);
+  transform-origin: center;
+}
+.entry-actions .entry-copy {
+  position: relative;
+  z-index: 1;
+}
+.hero-visual img {
+  animation: almea-gem-float 8s ease-in-out infinite;
+}
+.hero-star-glow {
+  position: absolute;
+  top: 49%;
+  left: 50%;
+  width: 18%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, #fffaf499, transparent 70%);
+  animation: almea-gem-glow 6s ease-in-out infinite;
+  pointer-events: none;
+}
+.hero-visual::before {
+  animation: almea-light-glow 8s ease-in-out infinite;
+}
+@keyframes almea-gem-float {
+  0%,
+  100% {
+    transform: translateY(0) scale(0.9, 0.72);
+  }
+  50% {
+    transform: translateY(-5px) scale(0.9, 0.72);
+  }
+}
+@keyframes almea-gem-glow {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.75;
+  }
+}
+@keyframes almea-light-glow {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .site-header nav a:hover {
+    border-color: #a98570;
+  }
+  .stone-card:hover,
+  .article-card:hover,
+  .wish-link:hover,
+  .story-stone-card:hover,
+  .story-collection-card:hover,
+  .entry-actions a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px #68402c1a;
+  }
+}
+:where(button, .button):active {
+  transform: translateY(1px);
+}
+@media (max-width: 640px) {
+  .hero-visual::before {
+    animation: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Readable mobile type without changing the established layout or palette. */
+@media (max-width: 640px) {
+  .site-header nav a {
+    font-size: 13px;
+  }
+  .entry-actions .entry-copy span,
+  .home-search-shortcut,
+  .search-intro,
+  .article-card p,
+  .stone-card .card-theme,
+  .wish-link,
+  .site-footer p {
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+  }
+  .entry-actions .entry-copy {
+    min-width: 0;
+  }
+  .entry-actions .entry-copy strong {
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+  .home-search-shortcut a,
+  .site-header nav a,
+  .button {
+    min-height: 44px;
+  }
+  main :where(p, li) {
+    line-height: 1.8;
+  }
+  main :where(button, .button) {
+    font-size: 14px;
+  }
+}

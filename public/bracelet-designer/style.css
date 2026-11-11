@@ -500,3 +500,51 @@ label[for='filter-size'] {
   background: #754732;
   border-color: #754732;
 }
+
+/* Match the encyclopedia's restrained card and control treatment. */
+.workspace,
+.controls section {
+  border-radius: 14px;
+  box-shadow: 0 8px 24px #68402c0d;
+}
+button,
+.button {
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+:where(a, button, input, select, textarea, summary):focus-visible {
+  outline: 2px solid #80543e;
+  outline-offset: 3px;
+}
+button:active,
+.button:active {
+  transform: translateY(1px);
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .intro > p:not(.eyebrow),
+  .notice,
+  .hint,
+  .controls label,
+  .workspace label {
+    font-size: 14px !important;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+  }
+  button,
+  .button {
+    font-size: 14px;
+    min-height: 44px;
+  }
+}
