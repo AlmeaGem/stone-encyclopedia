@@ -5,7 +5,6 @@ import ReportOffer from '../components/ReportOffer.astro';
 import ServiceComparison from '../components/ServiceComparison.astro';
 import ArticleCover from '../components/ArticleCover.astro';
 import ArticleTitle from '../components/ArticleTitle.astro';
-import HeroGem from '../components/HeroGem.astro';
 import Card from '../components/Card.astro';
 import DailyDiscovery from '../components/DailyDiscovery.astro';
 import ArchiveShelf from '../components/ArchiveShelf.astro';
@@ -44,28 +43,51 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
         石の個性と意味を知り、あなたの願いに寄り添う一粒を。
       </p>
       <div class="hero-visual">
-        <HeroGem />
+        <img
+          src={pathTo('decorative/home-gem.webp')}
+          alt=""
+          width="750"
+          height="1125"
+        />
       </div>
       <nav class="entry-actions" aria-label="利用するサービスを選ぶ">
         <a href={pathTo('stones/')}>
-          <strong>石を調べる</strong>
-          <span>無料図鑑 ↗</span>
+          <img
+            class="entry-art"
+            src={pathTo('decorative/card-opal.webp')}
+            alt=""
+          />
+          <span class="entry-copy">
+            <strong>天然石図鑑</strong>
+            <span>210種類の石を詳しく見る ↗</span>
+          </span>
         </a>
         <a href={pathTo('bracelet-designer/')}>
-          <strong>ブレスレットをデザインする</strong>
-          <span>210種類の石から自由にデザイン ↗</span>
+          <img
+            class="entry-art"
+            src={pathTo('decorative/card-star-rose-quartz.webp')}
+            alt=""
+          />
+          <span class="entry-copy">
+            <strong>ブレスレットをデザインする</strong>
+            <span>210種類の石から自由にデザイン ↗</span>
+          </span>
         </a>
         <a href={pathTo('diagnosis/')}>
-          <strong>パーソナル診断</strong>
-          <span>質問無料・個別結果790円（準備中） ↗</span>
-        </a>
-        <a href={pathTo('wishes/')}>
-          <strong>願いから探す</strong>
-          <span>無料検索 ↗</span>
+          <img
+            class="entry-art"
+            src={pathTo('decorative/card-ametrine.webp')}
+            alt=""
+          />
+          <span class="entry-copy">
+            <strong>パーソナル診断</strong>
+            <span>質問無料・個別結果790円（準備中） ↗</span>
+          </span>
         </a>
       </nav>
       <p class="home-search-shortcut">
         <a href="#home-search">このページで石を検索 ↓</a>
+        <a href={pathTo('wishes/')}>願いから探す ↗</a>
       </p>
     </div>
   </section>

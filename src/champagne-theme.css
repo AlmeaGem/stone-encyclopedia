@@ -128,3 +128,375 @@ body {
     min-height: 76px;
   }
 }
+
+/* Home: champagne light, with decorative imagery kept separate from links. */
+.home-hero {
+  width: min(1600px, calc(100% - 100px));
+  padding-block: 54px 30px;
+}
+.home-hero::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  inset: -1px calc((100vw - 100%) / -2) 0;
+  background:
+    radial-gradient(
+      ellipse at 76% 38%,
+      #fffaf1 0,
+      #fae9dd 26%,
+      transparent 57%
+    ),
+    linear-gradient(120deg, #f1e3d9, #f9eee6 57%, #e8d3c4);
+  pointer-events: none;
+}
+.typography-hero .hero-copy {
+  max-width: none;
+  padding-top: 25px;
+}
+.home-hero .hero-copy h1 {
+  max-width: 69%;
+  font-size: clamp(25px, 2.65vw, 44px);
+  line-height: 1.65;
+  letter-spacing: 0.045em;
+}
+.home-hero .hero-copy > p {
+  max-width: 61%;
+}
+.home-hero .hero-copy .hero-line + .hero-line {
+  margin-top: 14px;
+}
+.hero-visual {
+  width: min(34%, 460px);
+  aspect-ratio: auto;
+  top: -25px;
+  right: 12%;
+  background: none;
+}
+.hero-visual::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: -55%;
+  right: -55%;
+  bottom: 2%;
+  height: 24%;
+  background: radial-gradient(
+    ellipse,
+    #fffce9 0%,
+    #f6ca8aab 12%,
+    #ecc39450 35%,
+    transparent 69%
+  );
+  filter: blur(8px);
+}
+.hero-visual::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: -70%;
+  right: -70%;
+  bottom: 6%;
+  height: 16%;
+  background:
+    linear-gradient(166deg, transparent 45%, #fff9dc 49%, transparent 52%),
+    linear-gradient(194deg, transparent 45%, #fff6dd 49%, transparent 52%);
+  opacity: 0.8;
+}
+.hero-visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.entry-actions {
+  margin-top: clamp(70px, 8vw, 125px);
+  gap: 16px;
+}
+.entry-actions a {
+  position: relative;
+  overflow: hidden;
+  min-height: 160px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  border-radius: 20px;
+}
+.entry-actions .entry-art {
+  align-self: stretch;
+  width: 37%;
+  min-width: 0;
+  object-fit: cover;
+  mask-image: linear-gradient(to right, #000 60%, transparent);
+}
+.entry-actions .entry-copy {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 12px;
+  padding: 20px 18px 20px 5px;
+}
+.entry-actions .entry-copy strong {
+  font-size: clamp(16px, 1.6vw, 25px);
+  line-height: 1.5;
+}
+.entry-actions .entry-copy span {
+  font-size: clamp(12px, 0.95vw, 15px);
+  line-height: 1.6;
+}
+.home-search-shortcut {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+@media (min-width: 1000px) {
+  .home-hero .hero-copy .hero-line:first-child {
+    white-space: nowrap;
+  }
+}
+@media (max-width: 800px) {
+  .home-hero {
+    width: min(100% - 40px, 700px);
+  }
+  .home-hero .hero-copy h1 {
+    max-width: 68%;
+    font-size: clamp(21px, 3.7vw, 30px);
+  }
+  .hero-visual {
+    width: 32%;
+    right: 2%;
+    top: 0;
+  }
+  .entry-actions {
+    gap: 10px;
+  }
+  .entry-actions a {
+    min-height: 135px;
+  }
+  .entry-actions .entry-art {
+    width: 30%;
+  }
+  .entry-actions .entry-copy {
+    padding-right: 9px;
+  }
+}
+@media (max-width: 640px) {
+  .home-hero {
+    width: calc(100% - 36px);
+    padding-block: 24px;
+  }
+  .home-hero .hero-copy {
+    padding-top: 0;
+  }
+  .home-hero .hero-copy h1,
+  .home-hero .hero-copy > p {
+    max-width: 100%;
+  }
+  .home-hero .hero-copy h1 {
+    font-size: clamp(20px, 5.3vw, 26px);
+  }
+  .hero-visual {
+    position: relative;
+    width: min(55%, 225px);
+    top: auto;
+    right: auto;
+    margin: 0 auto;
+  }
+  .entry-actions {
+    grid-template-columns: 1fr;
+    margin-top: 20px;
+  }
+  .entry-actions a {
+    min-height: 112px;
+  }
+  .entry-actions .entry-art {
+    width: 32%;
+  }
+  .entry-actions .entry-copy strong {
+    font-size: 18px;
+  }
+  .entry-actions .entry-copy span {
+    font-size: 13px;
+  }
+}
+@media (min-width: 801px) {
+  .entry-actions {
+    margin-top: clamp(155px, 14vw, 210px);
+  }
+}
+.home-hero {
+  overflow: clip;
+}
+/* Keep the decorative gemstone compact and closer to the reference proportions. */
+.hero-visual img {
+  transform: scale(0.9, 0.72);
+  transform-origin: center center;
+}
+@media (min-width: 801px) {
+  .entry-actions {
+    margin-top: clamp(130px, 12vw, 180px);
+  }
+}
+
+/* Full-width home hero, with its content aligned to the reference composition. */
+.home-hero {
+  width: 100%;
+  padding: 0;
+  background:
+    radial-gradient(
+      ellipse at 69% 48%,
+      #fffaf2 0%,
+      #f9eae0 30%,
+      transparent 62%
+    ),
+    linear-gradient(115deg, #f0e1d7 0%, #f9eee5 50%, #ead7ca 100%);
+}
+.home-hero::before {
+  display: none;
+}
+.typography-hero .hero-copy {
+  width: min(1600px, calc(100% - 10%));
+  margin-inline: auto;
+  padding: clamp(65px, 6vw, 100px) 0 28px;
+}
+.home-hero .hero-copy h1 {
+  max-width: 69%;
+  margin-top: 30px;
+  font-size: clamp(27px, 2.7vw, 46px);
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: 0.045em;
+}
+.home-hero .hero-copy .hero-line + .hero-line {
+  margin-top: 22px;
+}
+.home-hero .hero-copy > p:not(.eyebrow):not(.home-search-shortcut) {
+  margin-top: 25px;
+  font-size: clamp(13px, 1.05vw, 17px);
+  line-height: 1.85;
+}
+.hero-visual {
+  top: -28px;
+  right: 14%;
+  width: min(34%, 445px);
+}
+.hero-visual::before {
+  left: -75%;
+  right: -75%;
+  bottom: 13%;
+  height: 25%;
+  background: radial-gradient(
+    ellipse,
+    #fffef1 0%,
+    #f6d5a7c9 16%,
+    #efd0ad66 38%,
+    transparent 72%
+  );
+  filter: blur(10px);
+}
+.hero-visual::after {
+  left: -105%;
+  right: -105%;
+  bottom: 16%;
+  height: 20%;
+  background:
+    linear-gradient(172deg, transparent 47%, #fff9e9dc 49%, transparent 51%),
+    linear-gradient(188deg, transparent 47%, #fff9e9dc 49%, transparent 51%),
+    radial-gradient(ellipse, #fffdf0dc, #ecc79965 35%, transparent 69%);
+  filter: blur(2px);
+}
+.entry-actions {
+  margin-top: clamp(135px, 12vw, 190px);
+  gap: 16px;
+}
+.entry-actions a {
+  min-height: clamp(150px, 11.5vw, 200px);
+  border: 1px solid #d9c3b4;
+  box-shadow:
+    0 8px 24px #68402c12,
+    inset 0 0 0 3px #fffaf477;
+  background: #f7ebe1;
+}
+.entry-actions a:first-child {
+  background: #f7ebe1;
+}
+.entry-actions a:nth-child(2) {
+  background: #8d604b;
+}
+.entry-actions .entry-art {
+  width: 37%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+  opacity: 0.76;
+  mask-image: linear-gradient(to right, #000 5%, #000 55%, transparent 100%);
+}
+.entry-actions .entry-copy {
+  padding-left: 12px;
+  border-left: 1px solid #bca08d80;
+}
+.entry-actions .entry-copy strong {
+  font-weight: 500;
+}
+.home-search-shortcut {
+  margin-bottom: 0;
+}
+@media (max-width: 800px) {
+  .typography-hero .hero-copy {
+    width: calc(100% - 48px);
+    padding-top: 45px;
+  }
+  .hero-visual {
+    right: 0;
+    width: 32%;
+    top: 0;
+  }
+  .entry-actions {
+    margin-top: 95px;
+  }
+  .entry-actions a {
+    min-height: 135px;
+  }
+}
+@media (max-width: 640px) {
+  .typography-hero .hero-copy {
+    width: calc(100% - 36px);
+    padding: 28px 0;
+  }
+  .home-hero .hero-copy h1 {
+    margin-top: 20px;
+  }
+  .home-hero .hero-copy > p:not(.eyebrow):not(.home-search-shortcut) {
+    margin-top: 16px;
+  }
+  .hero-visual {
+    position: relative;
+    width: min(58%, 235px);
+    top: auto;
+    right: auto;
+    margin: -20px auto -24px;
+  }
+  .entry-actions {
+    margin-top: 12px;
+  }
+  .entry-actions a {
+    min-height: 112px;
+  }
+  .entry-actions .entry-art {
+    width: 32%;
+  }
+}
+.home-hero {
+  max-width: none;
+}
+@media (min-width: 801px) {
+  .hero-visual {
+    right: 10%;
+  }
+}
+/* Isolated gemstone artwork keeps the cards' existing layout and background. */
+.entry-actions .entry-art {
+  object-fit: contain;
+  mix-blend-mode: normal;
+  opacity: 1;
+  mask-image: none;
+}
