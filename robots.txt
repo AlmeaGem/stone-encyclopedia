@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://almeagem.github.io/stone-encyclopedia/sitemap.xml

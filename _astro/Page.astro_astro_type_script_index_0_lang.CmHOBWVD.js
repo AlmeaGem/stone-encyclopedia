@@ -1,0 +1,1 @@
+var e=document.querySelector(`.mobile-menu`);e?.querySelectorAll(`a`).forEach(t=>{t.addEventListener(`click`,()=>{e.open=!1})}),window.addEventListener(`pageshow`,()=>{e&&(e.open=!1)});
