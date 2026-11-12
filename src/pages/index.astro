@@ -28,6 +28,11 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
 >
   <section class="home-hero wrap typography-hero">
     <div class="hero-copy">
+      <div
+        class="mobile-hero-scene"
+        style={`background-image: url("${pathTo('decorative/mobile-rose-scene.webp')}")`}
+        aria-hidden="true"
+      ></div>
       <p class="eyebrow">POWER STONES · BY ALMÉA GEM</p>
       <h1>
         <span class="hero-line">
@@ -38,9 +43,12 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
         <span class="hero-line">まだ知らない石の世界へ。</span>
       </h1>
       <p>
-        パワーストーンアイテムを手がけるALMÉA GEMから。
+        パワーストーンアイテムを手がける
+        <span style="white-space: nowrap">ALMÉA GEM</span>から。
         <br />
-        石の個性と意味を知り、あなたの願いに寄り添う一粒を。
+        <span class="hero-intro-line" style="white-space: nowrap">
+          石の個性と意味を知り、あなたの願いに寄り添う一粒を。
+        </span>
       </p>
       <div class="hero-visual">
         <img
@@ -51,11 +59,83 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
         />
         <span class="hero-star-glow" aria-hidden="true"></span>
       </div>
+      <div class="mobile-reference-art" aria-hidden="true">
+        <img src={pathTo('decorative/star-rose-cutout.webp')} alt="" />
+      </div>
+      <nav class="mobile-luxury-menu" aria-label="サービスを探す">
+        <a href={pathTo('stones/')}>
+          <span class="luxury-icon" aria-hidden="true">
+            ◇
+          </span>
+          <span>
+            <strong>天然石図鑑</strong>
+            <small>STONE ARCHIVE</small>
+          </span>
+        </a>
+        <a href={pathTo('archives/')}>
+          <span class="luxury-icon" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <path
+                d="M16 8c-3-3-7-3-12-2v18c5-1 9-1 12 2m0-18c3-3 7-3 12-2v18c-5-1-9-1-12 2m0-18v18"
+                stroke="currentColor"
+                stroke-width="1.4"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          <span>
+            <strong>石の伝承図書館</strong>
+            <small>STONE STORIES</small>
+          </span>
+        </a>
+        <a href={pathTo('wishes/')}>
+          <span class="luxury-icon" aria-hidden="true">
+            ☾
+          </span>
+          <span>
+            <strong>願いから探す</strong>
+            <small>FIND BY INTENTION</small>
+          </span>
+        </a>
+        <a href={pathTo('library/')}>
+          <span class="luxury-icon" aria-hidden="true">
+            ♡
+          </span>
+          <span>
+            <strong>My書架</strong>
+            <small>MY COLLECTION</small>
+          </span>
+        </a>
+        <a class="luxury-designer" href={pathTo('bracelet-designer/')}>
+          <span class="luxury-icon" aria-hidden="true">
+            ◌
+          </span>
+          <span>
+            <strong>デザインする</strong>
+            <small>BRACELET DESIGNER</small>
+          </span>
+        </a>
+        <a class="luxury-diagnosis" href={pathTo('diagnosis/')}>
+          <span class="luxury-icon" aria-hidden="true">
+            ✧
+          </span>
+          <span>
+            <strong>パーソナル診断</strong>
+            <small>COMING SOON</small>
+          </span>
+        </a>
+      </nav>
+      <nav class="mobile-primary-actions" aria-label="主なサービス">
+        <a href={pathTo('stones/')}>
+          <span aria-hidden="true">⌕</span> 石を探す
+        </a>
+        <a href={pathTo('bracelet-designer/')}>ブレスレットをデザインする</a>
+      </nav>
       <nav class="entry-actions" aria-label="利用するサービスを選ぶ">
         <a href={pathTo('stones/')}>
           <img
             class="entry-art"
-            src={pathTo('decorative/card-opal.webp')}
+            src={pathTo('decorative/opal-cutout.webp')}
             alt=""
           />
           <span class="entry-copy">
@@ -66,18 +146,22 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
         <a href={pathTo('bracelet-designer/')}>
           <img
             class="entry-art"
-            src={pathTo('decorative/card-star-rose-quartz.webp')}
+            src={pathTo('decorative/star-rose-cutout.webp')}
             alt=""
           />
           <span class="entry-copy">
-            <strong style="white-space: nowrap">ブレスレットを<br />デザインする</strong>
+            <strong style="white-space: nowrap">
+              ブレスレットを
+              <br />
+              デザインする
+            </strong>
             <span>210種類の石から自由にデザイン ↗</span>
           </span>
         </a>
         <a href={pathTo('diagnosis/')}>
           <img
             class="entry-art"
-            src={pathTo('decorative/card-ametrine.webp')}
+            src={pathTo('decorative/ametrine-cutout.webp')}
             alt=""
           />
           <span class="entry-copy">
@@ -186,6 +270,13 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
 </Page>
 
 <style>
+  @media (max-width: 640px) {
+    .hero-intro-line {
+      text-shadow:
+        0 1px 2px #211b17,
+        0 0 5px #211b17;
+    }
+  }
   .home-search-shortcut {
     margin-top: 12px;
     font-size: 0.85rem;

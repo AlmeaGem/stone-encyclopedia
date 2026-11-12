@@ -548,3 +548,31 @@ button:active,
     min-height: 44px;
   }
 }
+
+/* Matte milk-tea theme, preserving all editing controls. */
+:root {
+  color: #4b3833;
+  background: #faf6f1;
+}
+.header {
+  color: #4b3833;
+  background: #f3eae2;
+  border-color: #d8c5b9;
+}
+.workspace,
+.controls section {
+  background: #faf6f1;
+  border-color: #d8c5b9;
+}
+button,
+.button {
+  color: #4b3833;
+  border-color: #d8c5b9;
+  background: #faf6f1;
+  border-radius: 8px;
+}
+.primary {
+  color: #fff;
+  background: #a98279;
+  border-color: #a98279;
+}

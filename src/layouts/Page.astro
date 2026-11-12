@@ -114,6 +114,22 @@ const url = canonical(path);
       </div>
     )}
     <header class="site-header">
+      <details class="mobile-menu">
+        <summary aria-label="メニューを開く">
+          <span aria-hidden="true">☰</span>
+        </summary>
+        <nav aria-label="スマートフォンメニュー">
+          <a href={pathTo('stones/')}>石を探す</a>
+          <a href={pathTo('wishes/')}>願いから</a>
+          <a href={pathTo('articles/')}>読みもの</a>
+          <a href={pathTo('library/')}>My書架</a>
+          <a href={pathTo('bracelet-designer/')}>デザインする</a>
+          <a href={pathTo('diagnosis/')}>パーソナル診断（準備中）</a>
+        </nav>
+      </details>
+      <a class="mobile-brand" href={pathTo()} aria-label="ALMÉA GEM ホーム">
+        ALMÉA GEM <span>POWER STONES</span>
+      </a>
       <a
         class="brand"
         href={pathTo()}
@@ -127,11 +143,11 @@ const url = canonical(path);
           <span class="brand-by">by ALMÉA GEM</span>
         </span>
       </a>
-      <nav aria-label="メインメニュー">
+      <nav class="desktop-navigation" aria-label="メインメニュー">
         <a href={pathTo('stones/')}>石を探す</a>
         <a href={pathTo('wishes/')}>願いから</a>
         <a href={pathTo('articles/')}>読みもの</a>
-        <a href={pathTo('library/')}>わたしの書架</a>
+        <a href={pathTo('library/')}>My書架</a>
         <a class="nav-design" href={pathTo('bracelet-designer/')}>
           デザインする
         </a>
@@ -170,3 +186,15 @@ const url = canonical(path);
     </footer>
   </body>
 </html>
+
+<script>
+  const menu = document.querySelector<HTMLDetailsElement>('.mobile-menu');
+  menu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu.open = false;
+    });
+  });
+  window.addEventListener('pageshow', () => {
+    if (menu) menu.open = false;
+  });
+</script>
