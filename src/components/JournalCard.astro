@@ -1,0 +1,46 @@
+---
+import JournalIcon from './JournalIcon.astro';
+import { pathTo } from '../lib/urls';
+interface Props {
+  article: {
+    slug: string;
+    title: string;
+    description: string;
+    category: string;
+  };
+  headingLevel?: 'h2' | 'h3';
+}
+const { article, headingLevel = 'h3' } = Astro.props;
+const Heading = headingLevel;
+const labels: Record<string, { english: string; japanese: string }> = {
+  'first-stone': { english: 'STONE GUIDE', japanese: 'はじめての天然石' },
+  'names-and-varieties': {
+    english: 'GEM KNOWLEDGE',
+    japanese: '鉱物名・流通名・形状名',
+  },
+  inclusions: { english: 'GEM QUALITY', japanese: '内包物と模様の見方' },
+  care: { english: 'STONE CARE', japanese: '浄化とお手入れ' },
+  'compare-pink-stones': {
+    english: 'PINK GEMSTONES',
+    japanese: 'ピンクの石を選ぶ',
+  },
+  'editorial-policy': {
+    english: 'STONE STORIES',
+    japanese: 'この図鑑の読み方',
+  },
+};
+const label = labels[article.slug];
+---
+
+<a class="journal-card" href={pathTo(`articles/${article.slug}/`)}>
+  <div class="journal-card-art">
+    <JournalIcon slug={article.slug} />
+  </div>
+  <div class="journal-card-copy">
+    <p class="journal-card-label">{label.english}</p>
+    <Heading>{label.japanese}</Heading>
+  </div>
+  <span class="journal-card-arrow" aria-hidden="true">
+    →
+  </span>
+</a>
