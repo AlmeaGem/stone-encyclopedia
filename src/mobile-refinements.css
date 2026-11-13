@@ -1,0 +1,85 @@
+/* The additional status is only used in the compact mobile presentation. */
+.diagnosis-mobile-status { display: none; }
+
+@media (max-width: 640px) {
+  body[data-home='true'] .daily-discovery .daily-heading h2 {
+    font-size: 19px;
+    line-height: 1.45;
+  }
+  body[data-home='true'] .daily-discovery .daily-copy h3 {
+    font-size: 22px;
+    line-height: 1.4;
+  }
+  body[data-home='true'] .daily-discovery .daily-intro { margin-bottom: 8px; }
+  body[data-home='true'] .daily-discovery .daily-catchphrase { margin-top: 5px; }
+
+  body:has(#catalog-filter) .filter-panel {
+    padding: 14px;
+    gap: 10px;
+  }
+  body:has(#catalog-filter) .filter-panel input,
+  body:has(#catalog-filter) .filter-panel select,
+  body:has(#catalog-filter) .filter-panel button {
+    min-height: 44px;
+    height: 44px;
+  }
+  body:has(#catalog-filter) .filter-panel input,
+  body:has(#catalog-filter) .filter-panel select { padding-block: 7px; }
+  body:has(#catalog-filter) .list-status { padding-block: 15px 12px; }
+
+  body:is(:has(#catalog-filter), :has(.archive-shelf-page), :has(.wish-grid), :has(.library-page), :has(.diagnosis-pricing)) .breadcrumbs {
+    padding-block: 12px;
+  }
+  body:is(:has(#catalog-filter), :has(.wish-grid), :has(.library-page), :has(.diagnosis-pricing)) .page-intro {
+    padding: 6px 0 18px;
+    margin: 0;
+  }
+  body:is(:has(#catalog-filter), :has(.wish-grid), :has(.library-page), :has(.diagnosis-pricing)) .page-intro > .eyebrow,
+  body:has(.archive-shelf-page) .story-collection-heading > .eyebrow { margin: 0 0 8px; }
+  body:is(:has(#catalog-filter), :has(.wish-grid), :has(.library-page), :has(.diagnosis-pricing)) .page-intro h1,
+  body:has(.archive-shelf-page) .story-collection-heading h1 { margin: 0 0 10px; }
+  body:is(:has(#catalog-filter), :has(.wish-grid), :has(.library-page), :has(.diagnosis-pricing)) .page-intro > p:not(.eyebrow),
+  body:has(.archive-shelf-page) .story-collection-heading > p:last-child { margin-top: 0; }
+  body:has(.archive-shelf-page) .archive-shelf-page { margin-top: 6px; padding-top: 0; }
+  body:has(.archive-shelf-page) .story-collection-heading { margin-bottom: 18px; }
+  body:has(.library-page) .library-page .library-note { margin-top: 10px; }
+  body:has(.library-page) .library-page .story-page-links { margin-top: 18px; }
+
+  body:has(.diagnosis-pricing) .diagnosis-pricing {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 0 0 18px;
+    padding: 0;
+    background: transparent;
+    border: 0;
+  }
+  body:has(.diagnosis-pricing) .diagnosis-pricing p { margin: 0; font-size: 13px; line-height: 1.6; }
+  body:has(.diagnosis-pricing) .diagnosis-pricing .diagnosis-mobile-status {
+    display: block;
+    color: #51473f;
+    font-weight: 600;
+  }
+  body:has(.diagnosis-pricing) .diagnosis-pricing > p:not(.fine-print) {
+    padding: 0 14px 7px;
+    background: #faf8f4;
+    border-inline: 1px solid #e8e4df;
+  }
+  body:has(.diagnosis-pricing) .diagnosis-pricing > p.diagnosis-mobile-status {
+    padding-top: 14px;
+    border-top: 1px solid #e8e4df;
+    border-radius: 12px 12px 0 0;
+  }
+  body:has(.diagnosis-pricing) .diagnosis-pricing > p:nth-child(3) {
+    padding-bottom: 14px;
+    border-bottom: 1px solid #e8e4df;
+    border-radius: 0 0 12px 12px;
+  }
+  body:has(.diagnosis-pricing) .diagnosis-pricing .fine-print {
+    margin: 10px 0 0;
+    padding: 0;
+    color: #736e68;
+    font-size: 12px;
+  }
+  body:has(.diagnosis-pricing) .diagnosis-pricing .sample-text-link { margin-top: 10px; }
+}
