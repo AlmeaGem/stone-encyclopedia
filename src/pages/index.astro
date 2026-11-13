@@ -2,6 +2,7 @@
 import SectionHeading from '../components/SectionHeading.astro';
 import JournalCard from '../components/JournalCard.astro';
 import '../journal.css';
+import '../home-polish.css';
 import Page from '../layouts/Page.astro';
 import ReportOffer from '../components/ReportOffer.astro';
 import ServiceComparison from '../components/ServiceComparison.astro';
@@ -30,7 +31,7 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
     <div class="hero-copy">
       <div
         class="mobile-hero-scene"
-        style={`background-image: url("${pathTo('decorative/mobile-rose-scene.webp')}")`}
+        style={`background-image: url("${pathTo('decorative/home-ivory-gems.webp')}")`}
         aria-hidden="true"
       ></div>
       <p class="eyebrow">POWER STONES · BY ALMÉA GEM</p>
@@ -46,7 +47,7 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
         パワーストーンアイテムを手がける
         <span style="white-space: nowrap">ALMÉA GEM</span>から。
         <br />
-        <span class="hero-intro-line" style="white-space: nowrap">
+        <span class="hero-intro-line">
           石の個性と意味を知り、あなたの願いに寄り添う一粒を。
         </span>
       </p>
