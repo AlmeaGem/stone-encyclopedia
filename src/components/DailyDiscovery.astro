@@ -57,9 +57,6 @@ const fallback = catalog[0];
       </span>
     </div>
     <div class="daily-copy">
-      <p class="daily-id" data-daily-id hidden>
-        {fallback.id.toUpperCase()}
-      </p>
       <h3 data-daily-name>{fallback.name}</h3>
       <p class="daily-catchphrase" data-daily-catchphrase>
         {fallback.catchphrase}
@@ -92,7 +89,6 @@ const fallback = catalog[0];
     const catalog: Entry[] = JSON.parse(root.dataset.dailyCatalog);
     const img = root.querySelector<HTMLImageElement>('[data-daily-image]')!;
     const label = root.querySelector<HTMLElement>('[data-daily-impression]')!;
-    const id = root.querySelector<HTMLElement>('[data-daily-id]')!;
     const name = root.querySelector<HTMLElement>('[data-daily-name]')!;
     const catchphrase = root.querySelector<HTMLElement>(
       '[data-daily-catchphrase]',
@@ -109,7 +105,6 @@ const fallback = catalog[0];
         img.src = entry.image;
         img.alt = entry.alt;
         label.hidden = !entry.impression;
-        id.textContent = entry.id.toUpperCase();
         name.textContent = entry.name;
         catchphrase.textContent = entry.catchphrase;
         link.href = entry.href;

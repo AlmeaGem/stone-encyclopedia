@@ -41,7 +41,6 @@ import { pathTo } from '../lib/urls';
             <a href={pathTo(`stones/${stone.slug}/`)}>
               <Visual stone={stone} />
               <div class="story-stone-copy">
-                <span class="eyebrow">{stone.id.toUpperCase()}</span>
                 <h2>{stone.name}</h2>
                 <p>{approvedManuscript(stone.id).catchphrase}</p>
                 <span class="text-link">石の物語を読む ↗</span>
