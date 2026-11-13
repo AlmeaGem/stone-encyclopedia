@@ -4,12 +4,14 @@ interface Props {
   level?: 'h1' | 'h2' | 'h3';
   protectWords?: boolean;
   sectionHeading?: boolean;
+  mobileLines?: string[];
 }
 const {
   title,
   level = 'h3',
   protectWords = false,
   sectionHeading = false,
+  mobileLines,
 } = Astro.props;
 const Tag = level;
 const phrases = title.match(/[^。、！？]+[。、！？]?/gu) || [title];
@@ -32,7 +34,7 @@ const protectedPattern = new RegExp(`(${protectedPhrases.join('|')})`, 'u');
 <Tag class:list={['article-title', { 'section-title': sectionHeading }]}>
   {phrases.map((phrase) =>
     protectWords ? (
-      <span>
+      <span class:list={[mobileLines && 'article-heading-standard']}>
         {phrase
           .split(protectedPattern)
           .map((part) =>
@@ -47,4 +49,5 @@ const protectedPattern = new RegExp(`(${protectedPhrases.join('|')})`, 'u');
       phrase.split(/(?<=・)/u).map((part) => <span>{part}</span>)
     ),
   )}
+  {mobileLines?.map((line) => <span class="article-heading-mobile-line">{line}</span>)}
 </Tag>
