@@ -9,6 +9,7 @@ import SectionHeading from '../../components/SectionHeading.astro';
 import Prose from '../../components/Prose.astro';
 import ReportNudge from '../../components/ReportNudge.astro';
 import { publicReferences, publicHandling } from '../../lib/references';
+import { guidesForStone } from '../../lib/wish-guide';
 import Page from '../../layouts/Page.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Card from '../../components/Card.astro';
@@ -30,6 +31,7 @@ export function getStaticPaths() {
   }));
 }
 const { stone } = Astro.props;
+const wishGuideNotes = guidesForStone(stone.id);
 const manuscript = approvedManuscript(stone.id);
 const storySections = manuscript.sections.filter(
   (s) =>
@@ -130,6 +132,15 @@ const schema = {
       </aside>
       <div class="detail-body">
         <div id="story" class="approved-story" data-manuscript-id={stone.id}>
+          {wishGuideNotes.length > 0 && (
+            <section class="detail-section manuscript-section">
+              <SectionHeading>願いにまつわる象徴</SectionHeading>
+              {wishGuideNotes.map((note) => (
+                <p><a href={pathTo(`wishes/${note.category}/`)}>{note.title}</a>：{note.meaning}</p>
+              ))}
+              <p>石の意味は伝承や象徴として紹介しています。</p>
+            </section>
+          )}
           {storySections.map((section) =>
             section.subordinate ? (
               <section class="manuscript-subsection">

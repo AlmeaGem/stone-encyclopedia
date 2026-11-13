@@ -3,6 +3,8 @@ import Page from '../../layouts/Page.astro';
 import ReportNudge from '../../components/ReportNudge.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Card from '../../components/Card.astro';
+import Visual from '../../components/Visual.astro';
+import { guidesForCategory } from '../../lib/wish-guide';
 import { categories, stones } from '../../lib/content';
 import { pathTo } from '../../lib/urls';
 import { availableWishTags } from '../../lib/wish-filter';
@@ -15,6 +17,7 @@ export function getStaticPaths() {
 const { category } = Astro.props;
 const selected = stones.filter((s) => s.wishes.includes(category.id));
 const tags = availableWishTags(selected);
+const guides = guidesForCategory(category.id);
 ---
 
 <Page
@@ -37,6 +40,31 @@ const tags = availableWishTags(selected);
       <p class="health-note">
         健康・美容にまつわる伝承を紹介します。医療や治療の代わりになるものではありません。
       </p>
+    )}
+    {guides.length > 0 && (
+      <section class="wish-guide" aria-labelledby="wish-guide-title">
+        <h2 id="wish-guide-title">目的から石を選ぶ</h2>
+        <p>石の意味は伝承や象徴として紹介しています。</p>
+        {guides.map((guide) => (
+          <details class="wish-guide-topic">
+            <summary>{guide.title}</summary>
+            <p>{guide.introduction}</p>
+            {['妊娠・出産', '健康運', 'ヒーリング', 'トラウマの解消'].includes(guide.title) && (
+              <p class="wish-guide-note">石の意味はお守りとしての象徴です。医療・治療や専門的な支援の代わりにはなりません。</p>
+            )}
+            <div class="wish-guide-grid">
+              {guide.stones.map((item) => {
+                const stone = item.id ? stones.find((entry) => entry.id === item.id) : undefined;
+                return <article class="wish-guide-stone">
+                  {stone && <a href={pathTo(`stones/${stone.slug}/`)} aria-label={`${item.name}の詳細を見る`}><Visual stone={stone} /></a>}
+                  <div><h3>{item.name}</h3><p>{item.meaning}</p>
+                  {stone ? <a class="text-link" href={pathTo(`stones/${stone.slug}/`)}>石の詳細を見る ↗</a> : <p class="wish-guide-note">図鑑への掲載準備中</p>}</div>
+                </article>;
+              })}
+            </div>
+          </details>
+        ))}
+      </section>
     )}
     <section class="wish-filter" aria-labelledby="wish-filter-title" hidden>
       <h2 id="wish-filter-title">願いのテーマで絞り込む</h2>
@@ -83,6 +111,23 @@ const tags = availableWishTags(selected);
     <ReportNudge kind="category" />
   </div>
 </Page>
+
+<style>
+  .wish-guide { margin: 0 0 30px; }
+  .wish-guide > h2 { font-family: var(--heading-font); font-size: 22px; font-weight: 500; margin-bottom: 8px; }
+  .wish-guide > p, .wish-guide-topic > p { font-size: 14px; line-height: 1.8; }
+  .wish-guide-topic { margin-top: 12px; padding: 0 18px; border: 1px solid #dfd3c9; border-radius: 12px; background: #faf7f2; }
+  .wish-guide-topic summary { padding: 15px 0; cursor: pointer; font-family: var(--heading-font); font-size: 18px; }
+  .wish-guide-topic[open] { padding-bottom: 18px; }
+  .wish-guide-note { color: #756b64; font-size: 12px !important; margin-top: 8px; }
+  .wish-guide-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 16px; }
+  .wish-guide-stone { min-width: 0; padding: 14px; background: #fffdfa; border: 1px solid #eee5dc; border-radius: 10px; }
+  .wish-guide-stone :global(.stone-figure) { margin: 0; }
+  .wish-guide-stone h3 { font-size: 16px; margin: 10px 0 6px; font-weight: 500; }
+  .wish-guide-stone p { font-size: 13px; line-height: 1.75; }
+  .wish-guide-stone .text-link { display: inline-flex; align-items: center; width: max-content; min-width: 0; min-height: 32px; height: 32px; padding: 0 7px; margin-top: 8px; font-size: 12px; line-height: 1; white-space: nowrap; }
+  @media (max-width: 640px) { .wish-guide-grid { grid-template-columns: 1fr; } .wish-guide-stone { display: grid; grid-template-columns: 94px minmax(0, 1fr); gap: 12px; } .wish-guide-stone:not(:has(> a)) { display: block; } .wish-guide-stone h3 { margin-top: 0; font-size: 15px; } .wish-guide-stone p { font-size: 12px; } .wish-guide-stone .text-link { font-size: 11px; } }
+</style>
 
 <script>
   import { matchesWishTags } from '../../lib/wish-filter';
