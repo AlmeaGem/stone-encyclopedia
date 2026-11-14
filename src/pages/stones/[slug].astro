@@ -1,5 +1,7 @@
 ---
 import ManuscriptBody from '../../components/ManuscriptBody.astro';
+import EditorialArticle from '../../components/EditorialArticle.astro';
+import { editorialManuscript } from '../../lib/editorial-13';
 import LibraryControls from '../../components/LibraryControls.astro';
 import LibraryScript from '../../components/LibraryScript.astro';
 import { approvedManuscript } from '../../lib/approved-manuscripts';
@@ -31,6 +33,7 @@ export function getStaticPaths() {
 }
 const { stone } = Astro.props;
 const manuscript = approvedManuscript(stone.id);
+const editorial = editorialManuscript(stone.id);
 const storySections = manuscript.sections.filter(
   (s) =>
     s.kind !== 'pairings' &&
@@ -94,7 +97,13 @@ const schema = {
         <span class="kind-label">
           {stone.classification || kindLabels[stone.kind]}
         </span>
-        <h1>{stone.name}</h1>
+        <h1
+          class:list={{
+            'editorial-long-name': !!editorial && stone.name.length >= 10,
+          }}
+        >
+          {stone.name}
+        </h1>
         <p class="manuscript-catchphrase">{manuscript.catchphrase}</p>
         <LibraryControls id={stone.id} name={stone.name} />
         <p class="library-status" data-library-notice role="status" hidden></p>
@@ -130,23 +139,34 @@ const schema = {
       </aside>
       <div class="detail-body">
         <div id="story" class="approved-story" data-manuscript-id={stone.id}>
-          {storySections.map((section) =>
-            section.subordinate ? (
-              <section class="manuscript-subsection">
-                <h3>
-                  <ManuscriptHeading text={section.heading} />
-                </h3>
-                <ManuscriptBody section={section} />
-              </section>
-            ) : (
+          {editorial &&
+            (['story', 'spirit', 'fortunes', 'wishes'] as const).map((part) => (
               <section class="detail-section manuscript-section">
-                <SectionHeading>
-                  <ManuscriptHeading text={section.heading} />
-                </SectionHeading>
-                <ManuscriptBody section={section} />
+                <EditorialArticle
+                  stone={stone}
+                  part={part}
+                  legacy={manuscript.sections}
+                />
               </section>
-            ),
-          )}
+            ))}
+          {!editorial &&
+            storySections.map((section) =>
+              section.subordinate ? (
+                <section class="manuscript-subsection">
+                  <h3>
+                    <ManuscriptHeading text={section.heading} />
+                  </h3>
+                  <ManuscriptBody section={section} />
+                </section>
+              ) : (
+                <section class="detail-section manuscript-section">
+                  <SectionHeading>
+                    <ManuscriptHeading text={section.heading} />
+                  </SectionHeading>
+                  <ManuscriptBody section={section} />
+                </section>
+              ),
+            )}
           {stone.legendSourceUrl && (
             <p class="quiet-note">
               <a
@@ -169,14 +189,22 @@ const schema = {
           </div>
         </div>
         <section id="pairing" class="detail-section manuscript-section">
-          {pairSections.map((section) => (
-            <>
-              <SectionHeading>
-                <ManuscriptHeading text={section.heading} />
-              </SectionHeading>
-              <ManuscriptBody section={section} />
-            </>
-          ))}
+          {editorial && (
+            <EditorialArticle
+              stone={stone}
+              part="pairings"
+              legacy={manuscript.sections}
+            />
+          )}
+          {!editorial &&
+            pairSections.map((section) => (
+              <>
+                <SectionHeading>
+                  <ManuscriptHeading text={section.heading} />
+                </SectionHeading>
+                <ManuscriptBody section={section} />
+              </>
+            ))}
           {cautions.length > 0 && stone.cautionNote && (
             <>
               <h3>組み合わせを避けたい石</h3>
@@ -191,14 +219,22 @@ const schema = {
           )}
         </section>
         <section id="quality" class="detail-section manuscript-section">
-          {qualitySections.map((section) => (
-            <>
-              <SectionHeading>
-                <ManuscriptHeading text={section.heading} />
-              </SectionHeading>
-              <ManuscriptBody section={section} />
-            </>
-          ))}
+          {editorial && (
+            <EditorialArticle
+              stone={stone}
+              part="choice"
+              legacy={manuscript.sections}
+            />
+          )}
+          {!editorial &&
+            qualitySections.map((section) => (
+              <>
+                <SectionHeading>
+                  <ManuscriptHeading text={section.heading} />
+                </SectionHeading>
+                <ManuscriptBody section={section} />
+              </>
+            ))}
           <h3>模造品・処理石を確認する</h3>
           <p>
             {stone.treatments ||
@@ -210,49 +246,89 @@ const schema = {
         <section id="nature" class="detail-section">
           <p class="eyebrow">01 / NATURE</p>
           <SectionHeading>鉱物・物理的な情報</SectionHeading>
-          <dl class="fact-list">
-            {sections.map(([label, value]) => (
+          {editorial && (
+            <EditorialArticle
+              stone={stone}
+              part="nature"
+              legacy={manuscript.sections}
+            />
+          )}
+          {!editorial && (
+            <dl class="fact-list">
+              {sections.map(([label, value]) => (
+                <div>
+                  <dt>{label}</dt>
+                  <dd class:list={{ unconfirmed: !value }}>
+                    {value || unknown}
+                  </dd>
+                </div>
+              ))}
+              {stone.colors.length > 0 && (
+                <div>
+                  <dt>代表色</dt>
+                  <dd>{stone.colors.join('・')}（個体により異なります）</dd>
+                </div>
+              )}
               <div>
-                <dt>{label}</dt>
-                <dd class:list={{ unconfirmed: !value }}>{value || unknown}</dd>
+                <dt>個体の産地・処理</dt>
+                <dd>
+                  個々の商品の産地や処理は、販売表示や鑑別情報でご確認ください。
+                </dd>
               </div>
-            ))}
-            {stone.colors.length > 0 && (
-              <div>
-                <dt>代表色</dt>
-                <dd>{stone.colors.join('・')}（個体により異なります）</dd>
-              </div>
-            )}
-            <div>
-              <dt>個体の産地・処理</dt>
-              <dd>
-                個々の商品の産地や処理は、販売表示や鑑別情報でご確認ください。
-              </dd>
-            </div>
-          </dl>
+            </dl>
+          )}
           {stone.kind === 'form' && (
             <p class="notice">
               これは結晶の形状に着目した項目です。独立した鉱物種としては扱っていません。
             </p>
           )}
         </section>
+        {editorial &&
+          (['history', 'use'] as const).map((part) => (
+            <section class="detail-section manuscript-section">
+              <EditorialArticle
+                stone={stone}
+                part={part}
+                legacy={manuscript.sections}
+              />
+            </section>
+          ))}
         <section id="care" class="detail-section">
           <p class="eyebrow">05 / CARE</p>
-          <SectionHeading>浄化と、取り扱いの注意</SectionHeading>
-          {careSections.map((section) => (
-            <div class="manuscript-care">
-              <h3>
-                <ManuscriptHeading text={section.heading} />
-              </h3>
-              <ManuscriptBody section={section} />
-            </div>
-          ))}
+          <SectionHeading>
+            {editorial ? '浄化・お手入れ' : '浄化と、取り扱いの注意'}
+          </SectionHeading>
+          {editorial && (
+            <EditorialArticle
+              stone={stone}
+              part="care"
+              legacy={manuscript.sections}
+            />
+          )}
+          {!editorial &&
+            careSections.map((section) => (
+              <div class="manuscript-care">
+                <h3>
+                  <ManuscriptHeading text={section.heading} />
+                </h3>
+                <ManuscriptBody section={section} />
+              </div>
+            ))}
           <Prose text={stone.cleansing} />
           <div class="notice">{publicHandling(stone.handling)}</div>
           <a class="text-link" href={pathTo('articles/care/')}>
             お手入れの基本を読む ↗
           </a>
         </section>
+        {editorial && (
+          <section class="detail-section manuscript-section">
+            <EditorialArticle
+              stone={stone}
+              part="message"
+              legacy={manuscript.sections}
+            />
+          </section>
+        )}
         {references.length > 0 && (
           <section id="references" class="detail-section">
             <p class="eyebrow">06 / REFERENCES</p>
@@ -302,3 +378,12 @@ const schema = {
     <StoneNavigation stoneId={stone.id} />
   </div>
 </Page>
+
+<style>
+  @media (max-width: 900px) {
+    .stone-heading h1.editorial-long-name {
+      font-size: clamp(20px, 6.4vw, 24px);
+      white-space: nowrap;
+    }
+  }
+</style>
