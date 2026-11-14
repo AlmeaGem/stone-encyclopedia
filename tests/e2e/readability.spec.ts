@@ -67,9 +67,11 @@ for (const index of [0, 1, 2]) {
         await expect(body).not.toContainText(
           /という表現が適切|編集提案|編集上の提案|書籍では|今回の調査|Codex|編集メモ|制作区分|掲載テーマ|既存の象徴/,
         );
-        await expect(page.locator('#quality')).toContainText(
-          '形だけで運勢や効果の強さは決まりません。波動も大切です。',
+        const stone = raw.find(
+          (item: { slug: string }) => path === `/stones/${item.slug}/`,
         );
+        expect(stone, path).toBeDefined();
+        await expect(page.locator('#quality')).toContainText(stone.shapes);
         await expect(
           page.locator('#nature dd').filter({ hasText: /^未確認$/ }),
         ).toHaveCount(0);

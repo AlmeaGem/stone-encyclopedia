@@ -1,0 +1,7 @@
+/* Top-page guardian entry and mobile daily heading. */
+body[data-home="true"] .mobile-luxury-menu .mobile-guardian-entry{display:none}
+.guardian-shield{display:block;width:34px;height:34px;color:#a58668}
+.guardian-entry-content{display:flex;align-items:center;gap:14px;min-width:0}
+.guardian-entry-icon{flex:none}
+.guardian-description{display:block;margin-top:4px;color:#75665c;font-size:12px;line-height:1.5}
+@media(max-width:640px){body[data-home="true"] .mobile-luxury-menu .mobile-guardian-entry{display:flex;grid-column:1/-1}body[data-home="true"] .mobile-luxury-menu .mobile-guardian-entry .guardian-description{font-size:11px;line-height:1.5;margin-top:1px}.manual-find-stone-entry{display:none}body[data-home="true"] .daily-discovery .daily-heading h2{display:none}}

@@ -8,10 +8,20 @@ import { pathTo } from '../lib/urls';
   data-history-base={pathTo()}
 >
   <button type="button" data-history-direction="-1" disabled>
-    ← 前のページへ戻る
+    <span class="arrow" aria-hidden="true">
+      ←
+    </span>{' '}
+    <span>
+      前のページ<span class="desktop-label">へ戻る</span>
+    </span>
   </button>
   <button type="button" data-history-direction="1" disabled>
-    次のページへ進む →
+    <span>
+      次のページ<span class="desktop-label">へ進む</span>
+    </span>{' '}
+    <span class="arrow" aria-hidden="true">
+      →
+    </span>
   </button>
 </nav>
 
@@ -36,6 +46,10 @@ import { pathTo } from '../lib/urls';
     background: var(--beige);
     color: inherit;
     font: 14px/1.5 var(--sans);
+    white-space: nowrap;
+  }
+  .arrow {
+    font-size: 0.9em;
   }
   button:disabled {
     opacity: 1;
@@ -48,41 +62,26 @@ import { pathTo } from '../lib/urls';
   }
   @media (max-width: 767px) {
     .history-navigation {
-      position: fixed;
-      inset: auto 0 0;
-      z-index: 9;
-      padding: 6px max(12px, env(safe-area-inset-right))
-        calc(6px + env(safe-area-inset-bottom))
-        max(12px, env(safe-area-inset-left));
-      background: transparent;
-      border-top: 0;
-      box-shadow: none;
-      pointer-events: none;
+      position: static;
+      gap: 10px;
+      margin-top: 24px;
+      padding: 0 max(16px, env(safe-area-inset-right))
+        calc(20px + env(safe-area-inset-bottom))
+        max(16px, env(safe-area-inset-left));
     }
     button {
-      flex: 0 1 180px;
+      flex: 0 0 auto;
       min-width: 0;
       min-height: 44px;
-      padding-inline: 5px;
+      padding: 0 13px;
       background: var(--beige);
-      box-shadow: 0 2px 10px rgb(51 44 41 / 9%);
-      pointer-events: auto;
       font-size: 12px;
+    }
+    .desktop-label {
+      display: none;
     }
     :global(body[data-home='true']) .history-navigation {
       display: none;
-    }
-    :global(body[data-home='true']) {
-      padding-bottom: env(safe-area-inset-bottom);
-    }
-    :global(body) {
-      padding-bottom: calc(70px + env(safe-area-inset-bottom));
-    }
-    :global(html:has(body[data-home='true'])) {
-      scroll-padding-bottom: env(safe-area-inset-bottom);
-    }
-    :global(html) {
-      scroll-padding-bottom: calc(70px + env(safe-area-inset-bottom));
     }
   }
 </style>

@@ -14,10 +14,13 @@ for (const fallback of [false, true]) {
     const forward = nav.locator('button[data-history-direction="1"]');
     await expect(back).toBeDisabled();
     await expect(forward).toBeDisabled();
-    await page
-      .getByRole('navigation', { name: 'メインメニュー' })
-      .getByRole('link', { name: '読みもの', exact: true })
-      .click();
+    if ((page.viewportSize()?.width ?? 0) < 768)
+      await page.locator('.journal-home-all').click();
+    else
+      await page
+        .getByRole('navigation', { name: 'メインメニュー' })
+        .getByRole('link', { name: '読みもの', exact: true })
+        .click();
     await expect(page).toHaveURL('/articles/');
     await expect(back).toBeEnabled();
     await back.focus();
@@ -44,19 +47,25 @@ for (const fallback of [false, true]) {
     await expect(page).toHaveURL('/articles/');
     await back.click();
     await expect(page).toHaveURL('/');
-    await page
-      .getByRole('navigation', { name: 'メインメニュー' })
-      .getByRole('link', { name: '石を探す', exact: true })
-      .click();
+    if ((page.viewportSize()?.width ?? 0) < 768)
+      await page.locator('.mobile-luxury-menu a[href="/stones/"]').click();
+    else
+      await page
+        .getByRole('navigation', { name: 'メインメニュー' })
+        .getByRole('link', { name: '石を探す', exact: true })
+        .click();
     await expect(page).toHaveURL('/stones/');
     await expect(forward).toBeDisabled();
     await page.goto('http://127.0.0.1:4322/login');
     await page.goto('/');
     await expect(back).toBeDisabled();
-    await page
-      .getByRole('navigation', { name: 'メインメニュー' })
-      .getByRole('link', { name: '読みもの', exact: true })
-      .click();
+    if ((page.viewportSize()?.width ?? 0) < 768)
+      await page.locator('.journal-home-all').click();
+    else
+      await page
+        .getByRole('navigation', { name: 'メインメニュー' })
+        .getByRole('link', { name: '読みもの', exact: true })
+        .click();
     await expect(back).toBeEnabled();
     // Count dispatches without navigating inside evaluate: a real navigation
     // would destroy this execution context before the assertion can complete.
@@ -113,7 +122,7 @@ test('global controls clear the footer, respect safe areas and support touch', a
         } else {
           expect(
             await nav.evaluate((el) => getComputedStyle(el).position),
-          ).toBe(width < 768 ? 'fixed' : 'static');
+          ).toBe('static');
           for (const button of await nav.getByRole('button').all()) {
             const box = (await button.boundingBox())!;
             expect(box.height).toBeGreaterThanOrEqual(44);
@@ -124,11 +133,11 @@ test('global controls clear the footer, respect safe areas and support touch', a
           await page.evaluate(() =>
             window.scrollTo(0, document.body.scrollHeight),
           );
-          if (width < 768) {
-            const footer = (await page.locator('.site-footer').boundingBox())!;
-            const bar = (await nav.boundingBox())!;
-            expect(footer.y + footer.height).toBeLessThanOrEqual(bar.y);
-          }
+          const footer = (await page.locator('.site-footer').boundingBox())!;
+          const bar = (await nav.boundingBox())!;
+          const main = (await page.locator('main').boundingBox())!;
+          expect(main.y + main.height).toBeLessThanOrEqual(bar.y);
+          expect(bar.y + bar.height).toBeLessThanOrEqual(footer.y);
         }
         expect(
           await page.evaluate(
@@ -142,13 +151,8 @@ test('global controls clear the footer, respect safe areas and support touch', a
     }
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/');
-    await page
-      .getByRole('navigation', { name: 'メインメニュー' })
-      .getByRole('link', { name: '読みもの', exact: true })
-      .tap();
-    await page
-      .getByRole('button', { name: '← 前のページへ戻る', exact: true })
-      .tap();
+    await page.locator('.journal-home-all').tap();
+    await page.getByRole('button', { name: '前のページ', exact: true }).tap();
     await expect(page).toHaveURL('/');
     await expect(page.locator('.history-navigation')).toBeHidden();
     await page.goForward();

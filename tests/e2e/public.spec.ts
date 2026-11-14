@@ -136,7 +136,7 @@ test('detail separates facts, quality and symbolism, with sources, internal link
     await expect(page.locator('.stone-figure.detail img')).toHaveCount(0);
   }
 });
-test('all 210 pages exist with distinct canonical URLs, titles and safe sitemap policy', async ({
+test('all 211 pages exist with distinct canonical URLs, titles and safe sitemap policy', async ({
   request,
 }) => {
   const canonicals = new Set<string>(),
@@ -162,8 +162,8 @@ test('all 210 pages exist with distinct canonical URLs, titles and safe sitemap 
       }),
     );
   }
-  expect(canonicals.size).toBe(210);
-  expect(titles.size).toBe(210);
+  expect(canonicals.size).toBe(211);
+  expect(titles.size).toBe(211);
   expect(await (await request.get('/robots.txt')).text()).toContain(
     'Disallow: /',
   );
@@ -272,7 +272,7 @@ test('public output has no private editor, paid APIs or report access bypass', a
   await page.goto('/wishes/');
   await expect(page.locator('.wish-link')).toHaveCount(12);
   await page.goto('/articles/');
-  await expect(page.locator('.article-card')).toHaveCount(6);
+  await expect(page.locator('.journal-card')).toHaveCount(6);
 });
 test('private editor authenticates, edits a draft and keeps public source unchanged until review', async ({
   page,
@@ -316,7 +316,7 @@ test('private editor authenticates, edits a draft and keeps public source unchan
     .getByRole('button', { name: '写真候補・ライセンス', exact: true })
     .click();
   await expect(
-    page.getByRole('heading', { name: '210種類の写真を選ぶ' }),
+    page.getByRole('heading', { name: '211種類の写真を選ぶ' }),
   ).toBeVisible();
   await page.screenshot({
     path: test.info().outputPath('editor.png'),
@@ -361,15 +361,17 @@ test('home offers general wish search, real editorial destinations and an honest
   request,
 }) => {
   await page.goto('/');
-  await expect(page.locator('.brand-symbol svg')).toBeVisible();
-  await expect(page.locator('.home-hero img')).toHaveCount(0);
+  if ((page.viewportSize()?.width ?? 0) < 768)
+    await expect(page.locator('.mobile-brand')).toBeVisible();
+  else await expect(page.locator('.brand-symbol svg')).toBeVisible();
+  await expect(page.locator('.home-hero img[alt=""]')).toHaveCount(5);
   await expect(page.locator('.wish-search-links a')).toHaveCount(12);
   await expect(page.locator('.home-compact-links summary')).toContainText(
     '12カテゴリー',
   );
-  await expect(page.locator('.article-grid a')).toHaveCount(3);
+  await expect(page.locator('.journal-home-grid a')).toHaveCount(6);
   await expect(page.locator('.wish-grid')).toHaveCount(0);
-  for (const link of await page.locator('.article-grid > a').all()) {
+  for (const link of await page.locator('.journal-home-grid > a').all()) {
     const href = await link.getAttribute('href');
     expect((await request.get(href!)).status()).toBe(200);
   }
@@ -417,8 +419,8 @@ test('375, 390 and 430px keep Japanese title phrases intact and search targets s
       b = await page.locator('.home-search button').boundingBox();
     expect(b!.x - a!.x - a!.width).toBeGreaterThanOrEqual(11);
     const phrase = page
-      .locator('.article-title span')
-      .filter({ hasText: '名前より先に、' });
+      .locator('.journal-card h3')
+      .filter({ hasText: 'はじめての天然石' });
     await expect(phrase).toHaveCount(1);
     expect(
       await phrase.evaluate((el) => {
@@ -435,8 +437,8 @@ test('375, 390 and 430px keep Japanese title phrases intact and search targets s
       expect(bounds!.height).toBeGreaterThanOrEqual(44);
     }
     await page.goto('/articles/');
-    await expect(page.locator('.article-title').first()).toHaveText(
-      'はじめての天然石。名前より先に、見たいこと。',
+    await expect(page.locator('.journal-card h2').first()).toHaveText(
+      'はじめての天然石',
     );
     expect(
       await page.evaluate(() => document.body.scrollWidth <= innerWidth),

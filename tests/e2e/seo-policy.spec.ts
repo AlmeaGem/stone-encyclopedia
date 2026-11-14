@@ -38,7 +38,7 @@ test('all classified pages remain noindex with correct canonicals and an empty u
     ...noindexPaths.filter((path) => path !== '404/'),
     ...reviewPaths,
   ];
-  expect(paths).toHaveLength(252);
+  expect(paths).toHaveLength(253);
   const sitemap = await request.get('/sitemap.xml');
   expect(sitemap.status()).toBe(200);
   const xml = await sitemap.text();

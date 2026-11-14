@@ -14,7 +14,7 @@ test('daily card matches the catalog and changes at Japan midnight', async ({
   await page.goto('/');
   const card = page.locator('.daily-discovery');
   const catalog = JSON.parse((await card.getAttribute('data-daily-catalog'))!);
-  expect(catalog).toHaveLength(210);
+  expect(catalog).toHaveLength(211);
   for (const entry of catalog) {
     const stone = stones.find((item) => item.id === entry.id)!;
     const image = images.find((item) => item.stoneId === entry.id)!;
@@ -24,11 +24,9 @@ test('daily card matches the catalog and changes at Japan midnight', async ({
     expect(entry.catchphrase).toBe(approvedManuscript(entry.id).catchphrase);
   }
   const check = async (time: number) => {
-    const stone = stones.find((s) => s.id === order[dailyIndex(time, 210)])!;
+    const stone = stones.find((s) => s.id === order[dailyIndex(time, 211)])!;
     await expect(card.locator('[data-daily-name]')).toHaveText(stone.name);
-    await expect(card.locator('[data-daily-id]')).toHaveText(
-      stone.id.toUpperCase(),
-    );
+    await expect(card.locator('[data-daily-id]')).toHaveCount(0);
     await expect(card.locator('[data-daily-catchphrase]')).toHaveText(
       approvedManuscript(stone.id).catchphrase,
     );
@@ -63,10 +61,8 @@ test('daily card matches the catalog and changes at Japan midnight', async ({
     if (width <= 430) {
       const selectors = [
         '.daily-eyebrow',
-        '#daily-title',
         '.daily-intro',
         '.daily-image',
-        '[data-daily-id]',
         '[data-daily-name]',
         '[data-daily-catchphrase]',
         '[data-daily-link]',
@@ -74,14 +70,22 @@ test('daily card matches the catalog and changes at Japan midnight', async ({
       const boxes = await Promise.all(
         selectors.map((selector) => card.locator(selector).boundingBox()),
       );
-      for (let i = 1; i < boxes.length; i++)
-        expect(boxes[i]!.y).toBeGreaterThanOrEqual(
-          boxes[i - 1]!.y + boxes[i - 1]!.height - 1,
-        );
-      expect(boxes[3]!.width).toBeGreaterThanOrEqual(
-        Math.min(width * 0.6, 260),
-      );
-      expect(Math.abs(boxes[3]!.width - boxes[3]!.height)).toBeLessThan(2);
+      for (let i = 0; i < boxes.length; i++)
+        for (let j = i + 1; j < boxes.length; j++) {
+          const a = boxes[i]!,
+            b = boxes[j]!;
+          const overlap =
+            a.x < b.x + b.width - 1 &&
+            b.x < a.x + a.width - 1 &&
+            a.y < b.y + b.height - 1 &&
+            b.y < a.y + a.height - 1;
+          expect(overlap, `${selectors[i]} / ${selectors[j]}`).toBe(false);
+        }
+      await expect(card.locator('#daily-title')).toBeHidden();
+      expect(boxes[2]!.width).toBeGreaterThanOrEqual(width * 0.32);
+      expect(boxes[2]!.width).toBeLessThan(width * 0.5);
+      const image = (await card.locator('.daily-image img').boundingBox())!;
+      expect(Math.abs(image.width - image.height)).toBeLessThan(2);
       await expect(page.locator('.history-navigation')).toBeHidden();
       await expect(
         page.getByRole('searchbox', { name: '石名・英語名・別名' }),
@@ -95,7 +99,7 @@ test('daily card matches the catalog and changes at Japan midnight', async ({
   await card.locator('[data-daily-link]').click();
   await expect(page.locator('h1')).toHaveText(
     stones.find(
-      (s) => s.id === order[dailyIndex(before.getTime() + 1200, 210)],
+      (s) => s.id === order[dailyIndex(before.getTime() + 1200, 211)],
     )!.name,
   );
 });

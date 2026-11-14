@@ -2,6 +2,24 @@
 import ManuscriptBody from '../../components/ManuscriptBody.astro';
 import EditorialArticle from '../../components/EditorialArticle.astro';
 import { editorialManuscript } from '../../lib/editorial-13';
+import StoneNameText from '../../components/StoneNameText.astro';
+import AquamarineSupplement from '../../components/AquamarineSupplement.astro';
+import AventurineSupplement from '../../components/AventurineSupplement.astro';
+import AmazoniteSupplement from '../../components/AmazoniteSupplement.astro';
+import AmethystSupplement from '../../components/AmethystSupplement.astro';
+import AragoniteSupplement from '../../components/AragoniteSupplement.astro';
+import AmberSupplement from '../../components/AmberSupplement.astro';
+import AngeliteSupplement from '../../components/AngeliteSupplement.astro';
+import OnyxSupplement from '../../components/OnyxSupplement.astro';
+import OrangeMoonstoneSupplement from '../../components/OrangeMoonstoneSupplement.astro';
+import GardenQuartzSupplement from '../../components/GardenQuartzSupplement.astro';
+import GarnetSupplement from '../../components/GarnetSupplement.astro';
+import CarnelianSupplement from '../../components/CarnelianSupplement.astro';
+import ChalcedonySupplement from '../../components/ChalcedonySupplement.astro';
+import CrystalQuartzSupplement from '../../components/CrystalQuartzSupplement.astro';
+import ChrysocollaSupplement from '../../components/ChrysocollaSupplement.astro';
+import SardonyxSupplement from '../../components/SardonyxSupplement.astro';
+import KunziteSupplement from '../../components/KunziteSupplement.astro';
 import LibraryControls from '../../components/LibraryControls.astro';
 import LibraryScript from '../../components/LibraryScript.astro';
 import { approvedManuscript } from '../../lib/approved-manuscripts';
@@ -11,6 +29,8 @@ import SectionHeading from '../../components/SectionHeading.astro';
 import Prose from '../../components/Prose.astro';
 import ReportNudge from '../../components/ReportNudge.astro';
 import { publicReferences, publicHandling } from '../../lib/references';
+import { guidesForStone } from '../../lib/wish-guide';
+import { guardianForStone } from '../../lib/guardian-stones';
 import Page from '../../layouts/Page.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import Card from '../../components/Card.astro';
@@ -32,8 +52,11 @@ export function getStaticPaths() {
   }));
 }
 const { stone } = Astro.props;
+const protectStoneNames = ['amber', 'anhydrite', 'black-onyx', 'moonstone', 'garden-quartz', 'garnet', 'carnelian', 'chalcedony', 'rock-crystal', 'chrysocolla', 'kunzite'].includes(stone.slug) || ['s110', 's069', 's070', 's134', 's053'].includes(stone.id);
+const wishGuideNotes = guidesForStone(stone.id);
+const guardian = guardianForStone(stone.id);
 const manuscript = approvedManuscript(stone.id);
-const editorial = editorialManuscript(stone.id);
+const editorial = ['s047', 's116', 's080', 's048', 's037', 's139', 's008', 's084', 's121', 's122', 's057', 's140'].includes(stone.id) ? editorialManuscript(stone.id) : undefined;
 const storySections = manuscript.sections.filter(
   (s) =>
     s.kind !== 'pairings' &&
@@ -93,22 +116,16 @@ const schema = {
     />
     <section class="stone-heading">
       <div>
-        <p class="eyebrow">STONE LIBRARY · {stone.id.toUpperCase()}</p>
+        <p class="eyebrow">STONE LIBRARY</p>
         <span class="kind-label">
           {stone.classification || kindLabels[stone.kind]}
         </span>
-        <h1
-          class:list={{
-            'editorial-long-name': !!editorial && stone.name.length >= 10,
-          }}
-        >
-          {stone.name}
-        </h1>
+        <h1 class:list={{ 'editorial-long-name': !!editorial && stone.name.length >= 10 }}>{stone.name}</h1>
         <p class="manuscript-catchphrase">{manuscript.catchphrase}</p>
         <LibraryControls id={stone.id} name={stone.name} />
         <p class="library-status" data-library-notice role="status" hidden></p>
         <a class="library-detail-link" href={pathTo('library/')}>
-          わたしの石の書架 ↗
+          My書架 ↗
         </a>
         <p class="detail-english">{stone.english}</p>
         {stone.aliases.length > 0 && (
@@ -139,34 +156,61 @@ const schema = {
       </aside>
       <div class="detail-body">
         <div id="story" class="approved-story" data-manuscript-id={stone.id}>
-          {editorial &&
-            (['story', 'spirit', 'fortunes', 'wishes'] as const).map((part) => (
-              <section class="detail-section manuscript-section">
-                <EditorialArticle
-                  stone={stone}
-                  part={part}
-                  legacy={manuscript.sections}
-                />
+          {guardian && (
+            <section class="detail-section manuscript-section guardian-reference">
+              <SectionHeading>数秘術・守護石としての意味</SectionHeading>
+              <p>数秘術の象徴として、<span style="white-space:nowrap">{stone.name}</span>は軌道数{guardian.number}の守護石として紹介されることがあります。{guardian.reason.split(stone.name).map((part, i) => <>{i > 0 && <span style="white-space:nowrap">{stone.name}</span>}{part}</>)}</p>
+              <p>数と石の結びつきは象徴的な解釈であり、科学的な性格診断や効果を示すものではありません。</p>
+              <a class="guardian-reference-link" href={pathTo('find-your-stone/#birth')}>
+                <svg viewBox="0 0 24 24" aria-hidden="true" fill="none"><path d="M12 3.8 19 6v5.4c0 4.1-2.6 6.9-7 8.8-4.4-1.9-7-4.7-7-8.8V6l7-2.2Z" stroke="currentColor" stroke-width="1.25" stroke-linejoin="round"/><path d="M12 8.2v5.2m-2.6-2.6h5.2M18.7 2.8v2.4m-1.2-1.2h2.4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                <span>自分に合う石の見つけ方</span><span aria-hidden="true">↗</span>
+              </a>
+            </section>
+          )}
+          {wishGuideNotes.length > 0 && (
+            <section class="detail-section manuscript-section">
+              <SectionHeading>願いにまつわる象徴</SectionHeading>
+              {wishGuideNotes.map((note) => (
+                <p><a href={pathTo(`wishes/${note.category}/`)}>{note.title}</a>：{note.meaning}</p>
+              ))}
+              <p>石の意味は伝承や象徴として紹介しています。</p>
+            </section>
+          )}
+          {editorial && (['story', 'spirit', 'fortunes', 'wishes'] as const).map(part => <section class="detail-section manuscript-section"><EditorialArticle stone={stone} part={part} legacy={manuscript.sections} /></section>)}
+          {!editorial && storySections.map((section) =>
+            section.subordinate ? (
+              <section class="manuscript-subsection">
+                <h3>
+                  <ManuscriptHeading text={section.heading} />
+                </h3>
+                <ManuscriptBody section={section} protectStoneNames={protectStoneNames} />
               </section>
-            ))}
-          {!editorial &&
-            storySections.map((section) =>
-              section.subordinate ? (
-                <section class="manuscript-subsection">
-                  <h3>
-                    <ManuscriptHeading text={section.heading} />
-                  </h3>
-                  <ManuscriptBody section={section} />
-                </section>
-              ) : (
-                <section class="detail-section manuscript-section">
-                  <SectionHeading>
-                    <ManuscriptHeading text={section.heading} />
-                  </SectionHeading>
-                  <ManuscriptBody section={section} />
-                </section>
-              ),
-            )}
+            ) : (
+              <section class="detail-section manuscript-section">
+                <SectionHeading>
+                  <ManuscriptHeading text={section.heading} />
+                </SectionHeading>
+                <ManuscriptBody section={section} protectStoneNames={protectStoneNames} />
+              </section>
+            ),
+          )}
+          {stone.id === 's110' && <AquamarineSupplement part="meaning" />}
+          {stone.id === 's069' && <AventurineSupplement part="meaning" />}
+          {stone.id === 's070' && <AmazoniteSupplement part="meaning" />}
+          {stone.id === 's134' && <AmethystSupplement part="meaning" />}
+          {stone.id === 's053' && <AragoniteSupplement part="meaning" />}
+          {stone.slug === 'amber' && <AmberSupplement part="meaning" />}
+          {stone.slug === 'anhydrite' && <AngeliteSupplement part="meaning" />}
+          {stone.slug === 'black-onyx' && <OnyxSupplement part="meaning" />}
+          {stone.slug === 'moonstone' && <OrangeMoonstoneSupplement part="meaning" />}
+          {stone.slug === 'garden-quartz' && <GardenQuartzSupplement part="meaning" />}
+          {stone.slug === 'garnet' && <GarnetSupplement part="meaning" />}
+          {stone.slug === 'carnelian' && <CarnelianSupplement part="meaning" />}
+          {stone.slug === 'chalcedony' && <ChalcedonySupplement part="meaning" />}
+          {stone.slug === 'rock-crystal' && <CrystalQuartzSupplement part="meaning" />}
+          {stone.slug === 'chrysocolla' && <ChrysocollaSupplement part="meaning" />}
+          {stone.slug === 'kunzite' && <KunziteSupplement part="meaning" />}
+          {stone.slug === 'sardonyx' && <SardonyxSupplement part="meaning" />}
           {stone.legendSourceUrl && (
             <p class="quiet-note">
               <a
@@ -189,22 +233,32 @@ const schema = {
           </div>
         </div>
         <section id="pairing" class="detail-section manuscript-section">
-          {editorial && (
-            <EditorialArticle
-              stone={stone}
-              part="pairings"
-              legacy={manuscript.sections}
-            />
-          )}
-          {!editorial &&
-            pairSections.map((section) => (
-              <>
-                <SectionHeading>
-                  <ManuscriptHeading text={section.heading} />
-                </SectionHeading>
-                <ManuscriptBody section={section} />
-              </>
-            ))}
+          {editorial && <EditorialArticle stone={stone} part="pairings" legacy={manuscript.sections} />}
+          {!editorial && pairSections.map((section) => (
+            <>
+              <SectionHeading>
+                <ManuscriptHeading text={section.heading} />
+              </SectionHeading>
+              <ManuscriptBody section={section} protectStoneNames={protectStoneNames} />
+            </>
+          ))}
+          {stone.id === 's110' && <AquamarineSupplement part="pairings" />}
+          {stone.id === 's069' && <AventurineSupplement part="pairings" />}
+          {stone.id === 's070' && <AmazoniteSupplement part="pairings" />}
+          {stone.id === 's134' && <AmethystSupplement part="pairings" />}
+          {stone.id === 's053' && <AragoniteSupplement part="pairings" />}
+          {stone.slug === 'amber' && <AmberSupplement part="pairings" />}
+          {stone.slug === 'anhydrite' && <AngeliteSupplement part="pairings" />}
+          {stone.slug === 'black-onyx' && <OnyxSupplement part="pairings" />}
+          {stone.slug === 'moonstone' && <OrangeMoonstoneSupplement part="pairings" />}
+          {stone.slug === 'garden-quartz' && <GardenQuartzSupplement part="pairings" />}
+          {stone.slug === 'garnet' && <GarnetSupplement part="pairings" />}
+          {stone.slug === 'carnelian' && <CarnelianSupplement part="pairings" />}
+          {stone.slug === 'chalcedony' && <ChalcedonySupplement part="pairings" />}
+          {stone.slug === 'rock-crystal' && <CrystalQuartzSupplement part="pairings" />}
+          {stone.slug === 'chrysocolla' && <ChrysocollaSupplement part="pairings" />}
+          {stone.slug === 'kunzite' && <KunziteSupplement part="pairings" />}
+          {stone.slug === 'sardonyx' && <SardonyxSupplement part="pairings" />}
           {cautions.length > 0 && stone.cautionNote && (
             <>
               <h3>組み合わせを避けたい石</h3>
@@ -219,116 +273,108 @@ const schema = {
           )}
         </section>
         <section id="quality" class="detail-section manuscript-section">
-          {editorial && (
-            <EditorialArticle
-              stone={stone}
-              part="choice"
-              legacy={manuscript.sections}
-            />
-          )}
-          {!editorial &&
-            qualitySections.map((section) => (
-              <>
-                <SectionHeading>
-                  <ManuscriptHeading text={section.heading} />
-                </SectionHeading>
-                <ManuscriptBody section={section} />
-              </>
-            ))}
-          <h3>模造品・処理石を確認する</h3>
+          {editorial && <EditorialArticle stone={stone} part="choice" legacy={manuscript.sections} />}
+          {!editorial && qualitySections.map((section) => (
+            <>
+              <SectionHeading>
+                <ManuscriptHeading text={section.heading} />
+              </SectionHeading>
+              <ManuscriptBody section={section} protectStoneNames={protectStoneNames} />
+            </>
+          ))}
+          {stone.id === 's110' && <AquamarineSupplement part="choosing" />}
+          {stone.id === 's069' && <AventurineSupplement part="choosing" />}
+          {stone.slug === 'sardonyx' ? <SardonyxSupplement part="choice" /> : <><h3>模造品・処理石を確認する</h3>
           <p>
             {stone.treatments ||
               '色や写真だけで天然・合成・模造・処理の有無を断定できません。購入時には素材、処理表示、鑑別情報を確認してください。'}
           </p>
           <h3>形状の違い</h3>
-          <Prose text={stone.shapes} />
+          <Prose text={stone.shapes} /></>}
         </section>
         <section id="nature" class="detail-section">
           <p class="eyebrow">01 / NATURE</p>
           <SectionHeading>鉱物・物理的な情報</SectionHeading>
-          {editorial && (
-            <EditorialArticle
-              stone={stone}
-              part="nature"
-              legacy={manuscript.sections}
-            />
-          )}
-          {!editorial && (
-            <dl class="fact-list">
-              {sections.map(([label, value]) => (
-                <div>
-                  <dt>{label}</dt>
-                  <dd class:list={{ unconfirmed: !value }}>
-                    {value || unknown}
-                  </dd>
-                </div>
-              ))}
-              {stone.colors.length > 0 && (
-                <div>
-                  <dt>代表色</dt>
-                  <dd>{stone.colors.join('・')}（個体により異なります）</dd>
-                </div>
-              )}
+          {editorial && <EditorialArticle stone={stone} part="nature" legacy={manuscript.sections} />}
+          {stone.id === 's110' && <AquamarineSupplement part="mineral" />}
+          {stone.id === 's069' && <AventurineSupplement part="mineral" />}
+          {stone.id === 's070' && <AmazoniteSupplement part="mineral" />}
+          {stone.id === 's134' && <AmethystSupplement part="mineral" />}
+          {stone.id === 's053' && <AragoniteSupplement part="mineral" />}
+          {stone.slug === 'amber' && <AmberSupplement part="mineral" />}
+          {stone.slug === 'anhydrite' && <AngeliteSupplement part="mineral" />}
+          {stone.slug === 'black-onyx' && <OnyxSupplement part="mineral" />}
+          {stone.slug === 'moonstone' && <OrangeMoonstoneSupplement part="mineral" />}
+          {stone.slug === 'garden-quartz' && <GardenQuartzSupplement part="mineral" />}
+          {stone.slug === 'garnet' && <GarnetSupplement part="mineral" />}
+          {stone.slug === 'carnelian' && <CarnelianSupplement part="mineral" />}
+          {stone.slug === 'chalcedony' && <ChalcedonySupplement part="mineral" />}
+          {stone.slug === 'rock-crystal' && <CrystalQuartzSupplement part="mineral" />}
+          {stone.slug === 'chrysocolla' && <ChrysocollaSupplement part="mineral" />}
+          {stone.slug === 'kunzite' && <KunziteSupplement part="mineral" />}
+          {stone.slug === 'sardonyx' && <SardonyxSupplement part="mineral" />}
+          {stone.slug !== 'sardonyx' && !editorial && <dl class="fact-list">
+            {sections.map(([label, value]) => (
               <div>
-                <dt>個体の産地・処理</dt>
-                <dd>
-                  個々の商品の産地や処理は、販売表示や鑑別情報でご確認ください。
-                </dd>
+                <dt>{label}</dt>
+                <dd class:list={{ unconfirmed: !value }}><StoneNameText text={value || unknown} enabled={protectStoneNames} /></dd>
               </div>
-            </dl>
-          )}
+            ))}
+            {stone.colors.length > 0 && (
+              <div>
+                <dt>代表色</dt>
+                <dd>{stone.colors.join('・')}（個体により異なります）</dd>
+              </div>
+            )}
+            <div>
+              <dt>個体の産地・処理</dt>
+              <dd>
+                個々の商品の産地や処理は、販売表示や鑑別情報でご確認ください。
+              </dd>
+            </div>
+          </dl>}
           {stone.kind === 'form' && (
             <p class="notice">
               これは結晶の形状に着目した項目です。独立した鉱物種としては扱っていません。
             </p>
           )}
         </section>
-        {editorial &&
-          (['history', 'use'] as const).map((part) => (
-            <section class="detail-section manuscript-section">
-              <EditorialArticle
-                stone={stone}
-                part={part}
-                legacy={manuscript.sections}
-              />
-            </section>
-          ))}
+        {editorial && (['history', 'use'] as const).map(part => <section class="detail-section manuscript-section"><EditorialArticle stone={stone} part={part} legacy={manuscript.sections} /></section>)}
+        {stone.id === 's070' && <AmazoniteSupplement part="care" />}
+          {stone.id === 's134' && <AmethystSupplement part="care" />}
+          {stone.id === 's053' && <AragoniteSupplement part="care" />}
+          {stone.slug === 'amber' && <AmberSupplement part="care" />}
+          {stone.slug === 'anhydrite' && <AngeliteSupplement part="care" />}
+          {stone.slug === 'black-onyx' && <OnyxSupplement part="care" />}
+          {stone.slug === 'moonstone' && <OrangeMoonstoneSupplement part="care" />}
+          {stone.slug === 'garden-quartz' && <GardenQuartzSupplement part="care" />}
+          {stone.slug === 'garnet' && <GarnetSupplement part="care" />}
+          {stone.slug === 'carnelian' && <CarnelianSupplement part="care" />}
+          {stone.slug === 'chalcedony' && <ChalcedonySupplement part="care" />}
+          {stone.slug === 'rock-crystal' && <CrystalQuartzSupplement part="care" />}
+          {stone.slug === 'chrysocolla' && <ChrysocollaSupplement part="care" />}
+          {stone.slug === 'kunzite' && <KunziteSupplement part="care" />}
+          {stone.slug === 'sardonyx' && <SardonyxSupplement part="use" />}
         <section id="care" class="detail-section">
           <p class="eyebrow">05 / CARE</p>
-          <SectionHeading>
-            {editorial ? '浄化・お手入れ' : '浄化と、取り扱いの注意'}
-          </SectionHeading>
-          {editorial && (
-            <EditorialArticle
-              stone={stone}
-              part="care"
-              legacy={manuscript.sections}
-            />
-          )}
-          {!editorial &&
-            careSections.map((section) => (
-              <div class="manuscript-care">
-                <h3>
-                  <ManuscriptHeading text={section.heading} />
-                </h3>
-                <ManuscriptBody section={section} />
-              </div>
-            ))}
+          {stone.slug === 'sardonyx' ? <SardonyxSupplement part="care" /> : <><SectionHeading>{editorial ? '浄化・お手入れ' : '浄化と、取り扱いの注意'}</SectionHeading>
+          {editorial && <EditorialArticle stone={stone} part="care" legacy={manuscript.sections} />}
+          {!editorial && careSections.map((section) => (
+            <div class="manuscript-care">
+              <h3>
+                <ManuscriptHeading text={section.heading} />
+              </h3>
+              <ManuscriptBody section={section} protectStoneNames={protectStoneNames} />
+            </div>
+          ))}
           <Prose text={stone.cleansing} />
-          <div class="notice">{publicHandling(stone.handling)}</div>
+          <div class="notice">{publicHandling(stone.handling)}</div></>}
           <a class="text-link" href={pathTo('articles/care/')}>
             お手入れの基本を読む ↗
           </a>
         </section>
-        {editorial && (
-          <section class="detail-section manuscript-section">
-            <EditorialArticle
-              stone={stone}
-              part="message"
-              legacy={manuscript.sections}
-            />
-          </section>
-        )}
+        {editorial && <section class="detail-section manuscript-section"><EditorialArticle stone={stone} part="message" legacy={manuscript.sections} /></section>}
+        {stone.slug === 'sardonyx' && <SardonyxSupplement part="message" />}
         {references.length > 0 && (
           <section id="references" class="detail-section">
             <p class="eyebrow">06 / REFERENCES</p>
@@ -381,9 +427,27 @@ const schema = {
 
 <style>
   @media (max-width: 900px) {
-    .stone-heading h1.editorial-long-name {
-      font-size: clamp(20px, 6.4vw, 24px);
-      white-space: nowrap;
-    }
+    .stone-heading h1.editorial-long-name { font-size: clamp(20px, 6.4vw, 24px); white-space: nowrap; }
   }
+  .guardian-reference { padding-bottom: 12px; }
+  .guardian-reference-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    width: fit-content;
+    max-width: 100%;
+    min-height: 44px;
+    margin-top: 16px;
+    padding: 8px 15px;
+    border: 1px solid #d8cbb8;
+    border-radius: 7px;
+    background: #faf7f0;
+    color: #705c45;
+    font-size: 13px;
+    line-height: 1.5;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .guardian-reference-link:hover { background: #f3ecdf; }
+  .guardian-reference-link svg { width: 20px; height: 20px; flex: none; color: #aa8c60; }
 </style>

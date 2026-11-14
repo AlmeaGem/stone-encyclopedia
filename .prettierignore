@@ -8,3 +8,23 @@ package-lock.json
 
 # Byte-exact approved originals and their immutable identity records.
 editorial/manuscripts/approved-chatgpt/
+
+# Preserve the approved Sardonyx manuscript originals byte-for-byte.
+editorial/manuscripts/s211/
+
+# Byte-exact styles from the current published homepage.
+public/_astro/guardian-entry-manual.css
+public/_astro/home-guardian-adjustments.css
+
+# Inline Astro markup is whitespace-sensitive; retain the approved published prose.
+src/components/*Supplement.astro
+src/components/ManuscriptBody.astro
+src/components/StoneNameText.astro
+src/components/EditorialArticle.astro
+
+# Published Japanese inline markup is whitespace-sensitive.
+src/components/DailyDiscovery.astro
+src/components/Guardian*.astro
+src/pages/index.astro
+src/pages/find-your-stone.astro
+src/pages/stones/\[slug\].astro

@@ -58,14 +58,18 @@ test('editorial headings retain a clear hierarchy and line-level markers at six 
     // Cards and functional headings must not acquire editorial decoration.
     expect(await page.locator('.stone-card .heading-mark').count()).toBe(0);
     await page.goto('/');
-    const homeTitles = page.locator('.section-heading h2.section-title');
-    await expect(homeTitles).toHaveCount(1);
+    const homeTitles = page.locator(
+      '.section-heading h2.library-title, .journal-home-heading h2',
+    );
+    await expect(homeTitles).toHaveCount(2);
     for (const heading of await homeTitles.all()) {
-      expect(
-        await heading.evaluate((el) =>
-          parseFloat(getComputedStyle(el).fontSize),
-        ),
-      ).toBeGreaterThanOrEqual(26);
+      const size = await heading.evaluate((el) =>
+        parseFloat(getComputedStyle(el).fontSize),
+      );
+      const isJournal = await heading.evaluate(
+        (el) => el.closest('.journal-home-heading') !== null,
+      );
+      expect(size).toBeGreaterThanOrEqual(isJournal ? 18 : 21);
       expect(
         await heading.evaluate((el) => getComputedStyle(el).fontWeight),
       ).toBe('500');

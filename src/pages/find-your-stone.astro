@@ -1,0 +1,87 @@
+---
+import Page from '../layouts/Page.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import '../guardian-reading.css';
+import GuardianVisual from '../components/GuardianVisual.astro';
+import GuardianOne from '../components/GuardianOne.astro';
+import GuardianTwo from '../components/GuardianTwo.astro';
+import GuardianThree from '../components/GuardianThree.astro';
+import GuardianFour from '../components/GuardianFour.astro';
+import GuardianFive from '../components/GuardianFive.astro';
+import GuardianSix from '../components/GuardianSix.astro';
+import GuardianSeven from '../components/GuardianSeven.astro';
+import GuardianEight from '../components/GuardianEight.astro';
+import GuardianEleven from '../components/GuardianEleven.astro';
+import GuardianTwentyTwo from '../components/GuardianTwentyTwo.astro';
+import GuardianNine from '../components/GuardianNine.astro';
+import { guardians } from '../lib/guardian-stones';
+import { stoneById } from '../lib/content';
+import { pathTo } from '../lib/urls';
+---
+<Page title="自分に合う石の見つけ方" path="find-your-stone/" description="生年月日の数字、願い、直感から天然石と出会うためのガイド。">
+  <div class="wrap find-stone-page">
+    <Breadcrumbs items={[{name:'自分に合う石の見つけ方'}]} />
+    <header class="find-heading">
+      <p class="find-eyebrow">FIND YOUR STONE</p>
+      <h1>自分に合う石の見つけ方</h1>
+      <p>誕生日、願い、直感から。<br />あなたに寄り添う天然石を見つける。</p>
+    </header>
+    <div class="find-methods" aria-label="石の選び方">
+      <a href="#birth"><span>BIRTH NUMBER</span><strong>生年月日から守護石を見つける</strong><small>生まれた日の数字から、守護石に出会う</small></a>
+      <a href={pathTo('wishes/')}><span>FIND BY INTENTION</span><strong>願いから探す</strong><small>大切にしたい願いから石を選ぶ ↗</small></a>
+      <a href={pathTo('stones/')}><span>CHOOSE BY INTUITION</span><strong>直感から探す</strong><small>色や模様など、惹かれる特徴から探す ↗</small></a>
+    </div>
+    <section id="birth" class="birth-section">
+      <p class="find-eyebrow">BIRTH NUMBER</p><h2>生年月日から守護石を見つける</h2>
+      <p>生年月日の数字を足して導く「軌道数」から、この図鑑が紹介する守護石をご案内します。数字や石の意味は数秘術の象徴的な解釈であり、性格や効果を科学的に示すものではありません。</p>
+      <form id="birth-form" class="birth-form">
+        <label for="birth-date">生年月日</label><div class="birth-input"><input id="birth-date" type="date" required /><button type="submit">守護石を見る <span aria-hidden="true">→</span></button></div>
+        <p class="birth-privacy">生年月日はブラウザ内で計算し、送信・保存しません。</p><p id="birth-error" role="alert" hidden></p>
+      </form>
+      <details class="birth-method"><summary>軌道数の計算方法</summary><p>生年月日の数字をすべて足し、合計が一桁になるまで各桁を足します。各段階の合計が11または22になった場合は、その数のままにします。途中の足し算の部分和は判定しません。</p><p>1991年6月5日：1＋9＋9＋1＋6＋5＝31、3＋1＝4<br />1968年11月28日：1＋9＋6＋8＋1＋1＋2＋8＝36、3＋6＝9</p></details>
+      <noscript><p>計算機能にはJavaScriptが必要です。数字から選ぶ場合は下の一覧をご覧ください。</p></noscript>
+      <div id="birth-results" aria-live="polite">
+        {guardians.map((entry) => {
+          const stone = stoneById(entry.id)!;
+          return <article class="guardian-result" data-guardian-number={entry.number} style={`--guardian-accent:${entry.color}`} hidden>
+            <div class="guardian-top"><div><p class="find-eyebrow">NUMEROLOGY · GUARDIAN STONE</p><p class="guardian-number">軌道数 <strong>{entry.number}</strong></p><h2>守護石｜<span class="guardian-name">{entry.number === 7 ? 'オニキス' : entry.number === 22 ? 'ジェダイト（翡翠）' : stone.name}</span></h2><p class="guardian-catch">{entry.number === 1 ? '自分の可能性を信じ、新しい道を切り拓くあなたへ。' : entry.number === 2 ? '優しさと調和を大切にするあなたへ。穏やかな心と、しなやかな強さを象徴する守護石。' : entry.number === 3 ? '明るさと自由な発想で、周囲に彩りをもたらすあなたへ。創造性と情熱を象徴する、夕陽色の守護石。' : entry.number === 4 ? '揺るがない信念と誠実さで、未来を築いていくあなたへ。安定と大地の力を象徴する、深いブラウンの守護石。' : entry.number === 5 ? '好奇心のままに、新しい世界へ踏み出すあなたへ。自由と可能性を象徴する、黄金の輝きを宿した守護石。' : entry.number === 6 ? '温かな愛情で、人と人の心をつなぐあなたへ。優しさと調和を象徴する、空色の守護石。' : entry.number === 7 ? '静かな強さと深い洞察力で、真実を探し続けるあなたへ。揺るがない意志と守護を象徴する、漆黒の守護石。' : entry.number === 8 ? '揺るがない意志と情熱で、理想を現実に変えていくあなたへ。努力の実りと繁栄を象徴する、深紅の守護石。' : entry.number === 9 ? '深い愛情と包容力で、人と人の心に寄り添うあなたへ。調和と穏やかな対話を象徴する、海のような守護石。' : entry.number === 11 ? '人とは違う感性で、まだ見ぬ可能性を見つけるあなたへ。直感と変化を象徴する、神秘的な光を宿した守護石。' : entry.number === 22 ? '大きな理想を、確かな未来へと築き上げるあなたへ。繁栄と成長を象徴する、深い緑の守護石。' : entry.title}</p><p class="guardian-reason">{entry.number === 1 ? "TIGER'S EYE — THE STONE OF COURAGE" : entry.number === 2 ? 'AMETHYST — THE STONE OF HARMONY' : entry.number === 3 ? 'CARNELIAN — THE STONE OF CREATIVITY' : entry.number === 4 ? 'SMOKY QUARTZ — THE STONE OF STABILITY' : entry.number === 5 ? 'RUTILATED QUARTZ — THE STONE OF OPPORTUNITY' : entry.number === 6 ? 'BLUE LACE AGATE — THE STONE OF GENTLE CONNECTION' : entry.number === 7 ? 'ONYX — THE STONE OF INNER STRENGTH' : entry.number === 8 ? 'GARNET — THE STONE OF ACHIEVEMENT' : entry.number === 9 ? 'AQUAMARINE — THE STONE OF HARMONY' : entry.number === 11 ? 'LABRADORITE — THE STONE OF INTUITION' : entry.number === 22 ? 'JADEITE — THE STONE OF PROSPERITY' : entry.reason.split(stone.name).map((part, i) => <>{i > 0 && <span class="guardian-name">{stone.name}</span>}{part}</>)}</p>{entry.number === 9 && <p class="guardian-keywords">調和 ／ 博愛 ／ 心の平穏</p>}<a class="guardian-link" href={pathTo(`stones/${stone.slug}/`)}>石の図鑑を見る ↗</a></div><GuardianVisual number={entry.number} stone={stone} /></div>
+            {entry.number === 1 ? <GuardianOne /> : entry.number === 2 ? <GuardianTwo /> : entry.number === 3 ? <GuardianThree /> : entry.number === 4 ? <GuardianFour /> : entry.number === 5 ? <GuardianFive /> : entry.number === 6 ? <GuardianSix /> : entry.number === 7 ? <GuardianSeven /> : entry.number === 8 ? <GuardianEight /> : entry.number === 9 ? <GuardianNine /> : entry.number === 11 ? <GuardianEleven /> : entry.number === 22 ? <GuardianTwentyTwo /> : <>
+            <details class="guardian-section"><summary>軌道数の特徴と長所</summary><p>{entry.character}</p><p>{entry.strength}</p><p>{entry.caution}</p></details>
+            <details class="guardian-section guardian-meaning"><summary>守護石が象徴する5つの意味</summary><dl>{entry.meanings.map(([term,meaning],i)=><div class="guardian-item guardian-meaning-item"><dt><span class="guardian-index">{String(i+1).padStart(2,'0')}</span>{term}</dt><dd>{meaning}</dd></div>)}</dl></details>
+            <details class="guardian-section guardian-life"><summary>恋愛・仕事・金運・人間関係</summary><dl><div class="guardian-item guardian-life-item"><dt class="guardian-label">恋愛</dt><dd>{entry.love}</dd></div><div class="guardian-item guardian-life-item"><dt class="guardian-label">仕事</dt><dd>{entry.work}</dd></div><div class="guardian-item guardian-life-item"><dt class="guardian-label">金運</dt><dd>{entry.money}</dd></div><div class="guardian-item guardian-life-item"><dt class="guardian-label">人間関係</dt><dd>{entry.relationships}</dd></div></dl></details>
+            <details class="guardian-section guardian-pairs"><summary>おすすめの組み合わせ 4選</summary><div>{entry.pairings.map(([id,reason])=>{const partner=stoneById(id)!;return <div class="guardian-item guardian-pairs-item"><h3><span class="guardian-name">{stone.name}</span> × <a class="guardian-name" href={pathTo(`stones/${partner.slug}/`)}>{partner.name}</a></h3><p>{reason}</p></div>})}</div></details>
+            <details class="guardian-section guardian-minerals"><summary>鉱物としての特徴とお手入れ</summary><dl><div><dt>鉱物・素材</dt><dd>{stone.mineral}</dd></div><div><dt>取り扱い</dt><dd>{stone.handling}</dd></div></dl><p>{entry.daily}</p><p>加工・処理や個体によって扱いが異なります。お手入れは購入先の案内もご確認ください。</p></details>
+            <p class="guardian-message">✦ {entry.message}</p>
+            </>}
+            {[3, 4].includes(entry.number) && <p class="guardian-disclaimer">※軌道数と守護石の対応は、数秘術やスピリチュアルな解釈の一例です。天然石による運勢の変化や特定の効果を保証するものではありません。</p>}
+          </article>
+        })}
+      </div>
+      <details class="number-list"><summary>数字から守護石を見る</summary><div>{guardians.map((entry)=><button type="button" data-show-guardian={entry.number}>{entry.number}</button>)}</div></details>
+    </section>
+  </div>
+</Page>
+<script>
+  import { birthNumber } from '../lib/birth-number';
+  const form = document.querySelector<HTMLFormElement>('#birth-form')!;
+  const input = document.querySelector<HTMLInputElement>('#birth-date')!;
+  const error = document.querySelector<HTMLElement>('#birth-error')!;
+  function show(number: number) {
+    const entries = [...document.querySelectorAll<HTMLElement>('[data-guardian-number]')];
+    for (const entry of entries) entry.hidden = Number(entry.dataset.guardianNumber) !== number;
+    error.hidden = true;
+    document.querySelector<HTMLElement>(`[data-guardian-number="${number}"]`)?.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    try { show(birthNumber(input.value).number); } catch (cause) { error.textContent = cause instanceof Error ? cause.message : '生年月日をご確認ください。'; error.hidden = false; }
+  });
+  document.querySelectorAll<HTMLButtonElement>('[data-show-guardian]').forEach((button) => button.addEventListener('click', () => show(Number(button.dataset.showGuardian))));
+</script>
+<style>
+ .find-stone-page{max-width:1120px;padding-bottom:80px}.find-heading{text-align:center;padding:45px 0 42px}.find-eyebrow{color:#9b7b57;font-family:Georgia,serif;font-size:12px;letter-spacing:.2em}.find-heading h1,.birth-section h2{font-family:var(--heading-font);font-weight:500}.find-heading h1{font-size:clamp(27px,3vw,40px);margin:14px 0}.find-heading>p:last-child{font-size:14px;line-height:2}.find-methods{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.find-methods a{display:flex;flex-direction:column;gap:9px;padding:24px;border:1px solid #e6dace;border-radius:12px;background:#fcfaf6;color:#514741;text-decoration:none}.find-methods span{font:11px Georgia,serif;letter-spacing:.15em;color:#9b7b57}.find-methods strong{font-size:18px;font-weight:500}.find-methods small{font-size:12px;line-height:1.7}.birth-section{margin:64px auto 0;max-width:920px}.birth-section>h2{font-size:26px;margin:10px 0}.birth-section>p:not(.find-eyebrow){font-size:14px;line-height:1.9}.birth-form{padding:24px;margin:22px 0 14px;border:1px solid #e6dace;border-radius:12px;background:#faf8f4}.birth-form label{display:block;font-size:14px;margin-bottom:8px}.birth-input{display:flex;gap:10px}.birth-input input{min-width:0;min-height:46px;padding:8px 12px;border:1px solid #d7ccc1;border-radius:8px;background:#fff;font-size:16px}.birth-input button{min-height:46px;padding:0 22px;border:0;border-radius:8px;background:#8e7663;color:white;cursor:pointer}.birth-privacy,#birth-error{font-size:12px;margin-top:9px}.birth-method,.number-list{border-bottom:1px solid #e6dace;padding:12px 0}.birth-method summary,.number-list summary{cursor:pointer;font-size:14px}.birth-method p{font-size:13px;line-height:1.8;margin-top:10px}.guardian-result{margin-top:32px;padding:30px;border:1px solid #e4d9cb;border-radius:16px;background:#faf8f4;scroll-margin-top:20px}.guardian-result[hidden]{display:none}.guardian-top{display:grid;grid-template-columns:1fr minmax(220px,.72fr);gap:30px;align-items:center}.guardian-top h2{font-size:26px;margin:5px 0 12px}.guardian-number{font-size:14px}.guardian-number strong{font:48px Georgia,serif;color:#514741}.guardian-catch{font-size:18px;margin:8px 0}.guardian-top p:not(.find-eyebrow):not(.guardian-number){line-height:1.8}.guardian-keywords{display:inline-block;background:var(--guardian-accent);padding:5px 10px;border-radius:4px;font-size:13px}.guardian-link{display:inline-block;margin-top:15px;min-height:44px;padding:10px 0}.guardian-top :global(.cloud-photo-slot){max-width:320px}.guardian-result details{border-top:1px solid #dfd6cb;padding:15px 0}.guardian-result summary{font-size:16px;cursor:pointer}.guardian-result details p,.guardian-result li,.guardian-result dd{font-size:14px;line-height:1.85;margin-top:8px}.guardian-result dl>div{margin:12px 0}.guardian-result dt{font-weight:600}.guardian-result dd{margin-left:0}.guardian-result ul{padding-left:1.3em}.guardian-message{margin-top:10px;padding:16px;background:var(--guardian-accent);font-size:14px}.number-list{margin-top:20px}.number-list>div{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.number-list button{width:48px;height:44px;border:1px solid #ddd0c1;border-radius:8px;background:#fffdfa;cursor:pointer}
+ @media(max-width:640px){.find-heading{padding:28px 0}.find-heading h1{font-size:25px}.find-methods{grid-template-columns:1fr;gap:10px}.find-methods a{padding:16px}.birth-section{margin-top:36px}.birth-section>h2{font-size:22px}.birth-form{padding:16px}.birth-input input{width:52%}.birth-input button{flex:1;padding:0 10px}.guardian-result{padding:18px}.guardian-top{grid-template-columns:minmax(0,1fr) minmax(100px,.7fr);gap:12px}.guardian-top h2{font-size:20px}.guardian-number strong{font-size:38px}.guardian-catch{font-size:15px}.guardian-top p:not(.find-eyebrow):not(.guardian-number){font-size:13px}.guardian-result summary{font-size:15px}.guardian-result details p,.guardian-result li,.guardian-result dd{font-size:13px}}
+ @media(max-width:640px){.guardian-top{grid-template-columns:minmax(0,1fr) 110px;gap:8px 12px}.guardian-top>div:first-child{display:contents}.guardian-top .find-eyebrow{grid-column:1/-1;grid-row:1}.guardian-top h2{grid-column:1/-1;grid-row:2;margin:0}.guardian-number{grid-column:1;grid-row:3}.guardian-catch{grid-column:1/-1;grid-row:4;margin:0}.guardian-top :global(.cloud-photo-slot){grid-column:2;grid-row:3}.guardian-reason{grid-column:1/-1;grid-row:5;text-wrap:pretty}.guardian-keywords{grid-column:1/-1;grid-row:6;justify-self:start}.guardian-link{grid-column:1/-1;grid-row:7;margin-top:0}}
+ .guardian-name{white-space:nowrap;overflow-wrap:normal}.guardian-top h2{line-height:1.45}.guardian-top p:not(.find-eyebrow):not(.guardian-number){line-height:1.9}.guardian-result details p,.guardian-result li,.guardian-result dd{line-height:1.9;margin-top:10px}.guardian-result summary{line-height:1.5}.guardian-link{line-height:1.4}
+ @media(max-width:640px){.guardian-top{grid-template-columns:minmax(0,1fr);gap:10px}.guardian-top .find-eyebrow{grid-column:1;grid-row:1}.guardian-number{grid-column:1;grid-row:2}.guardian-top h2{grid-column:1;grid-row:3;font-size:clamp(17px,5vw,20px)}.guardian-catch{grid-column:1;grid-row:4}.guardian-top :global(.cloud-photo-slot){grid-column:1;grid-row:5;width:min(180px,65%);justify-self:center}.guardian-reason{grid-column:1;grid-row:6}.guardian-keywords{grid-column:1;grid-row:7}.guardian-link{grid-column:1;grid-row:8}}
+</style>

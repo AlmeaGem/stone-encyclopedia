@@ -6,6 +6,7 @@
 export const approvedSearchPaths: readonly string[] = [
   '',
   'stones/',
+  'find-your-stone/',
   'stones/obsidian/',
   'stones/chiastolite/',
   'stones/jet/',
@@ -21,6 +22,7 @@ export const approvedSearchPaths: readonly string[] = [
   'stones/picture-sandstone/',
   'stones/red-sandstone/',
   'stones/black-onyx/',
+  'stones/sardonyx/',
   'stones/flint/',
   'stones/hematite/',
   'stones/meteorite/',

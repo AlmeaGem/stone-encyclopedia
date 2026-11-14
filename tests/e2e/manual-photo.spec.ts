@@ -35,7 +35,7 @@ test('Mac-style file selection, provenance preview and one-click adoption work w
   await page.locator('button').click();
   await page.locator('[data-tab=images]').click();
   await expect(page.locator('#auto-search')).not.toHaveAttribute('open');
-  await expect(page.locator('#photo-overview .photo-row')).toHaveCount(210);
+  await expect(page.locator('#photo-overview .photo-row')).toHaveCount(211);
   await page.locator('#image-stone').selectOption('s107');
   const bytes = await sharp({
     create: { width: 420, height: 280, channels: 3, background: '#c6a4b2' },

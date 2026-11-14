@@ -52,9 +52,22 @@ for (let start = 0; start < stones.length; start += 20) {
           .sort();
         expect(rendered.map(plain).sort(), stone.id).toEqual(expected);
       }
-      await expect(page.locator('#care')).toContainText(
-        stone.handling.replace(/^移行資料の注意メモ[：:]/u, '取り扱いの注意：'),
-      );
+      if (stone.id === 's211') {
+        // The approved Sardonyx revision consolidates the original handling text here.
+        await expect(page.locator('#care')).toContainText(
+          '染色などの処理が施された石は、長時間水に浸したり、薬品に触れさせたりしないようにしましょう。',
+        );
+        await expect(page.locator('#care')).toContainText(
+          '柔らかい布を使って優しく汚れを拭き取ってください。',
+        );
+      } else {
+        await expect(page.locator('#care')).toContainText(
+          stone.handling.replace(
+            /^移行資料の注意メモ[：:]/u,
+            '取り扱いの注意：',
+          ),
+        );
+      }
       await expect(page.locator('.detail-body')).not.toContainText(
         /Codex|編集メモ|制作区分/,
       );

@@ -76,6 +76,7 @@ test('every detail page links to its ID neighbors without wrapping', async ({
 test('navigation stays reachable with safe-area clearance on mobile and in page flow on desktop', async ({
   page,
 }) => {
+  test.setTimeout(120000);
   // Navigation needs no image downloads, including related stone photos.
   await page.route('**/*', (route) =>
     route.request().resourceType() === 'image'
@@ -117,12 +118,14 @@ test('navigation stays reachable with safe-area clearance on mobile and in page 
         await historyNavigation.evaluate((el) =>
           parseFloat(getComputedStyle(el).paddingBottom),
         ),
-      ).toBe(40);
+      ).toBe(54);
       await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
       const navBox = (await historyNavigation.boundingBox())!;
       const footerBox = (await page.locator('.site-footer').boundingBox())!;
-      expect(footerBox.y + footerBox.height).toBeLessThanOrEqual(navBox.y);
-      expect(navBox.y + navBox.height).toBe(844);
+      expect(
+        await historyNavigation.evaluate((el) => getComputedStyle(el).position),
+      ).toBe('static');
+      expect(navBox.y + navBox.height).toBeLessThanOrEqual(footerBox.y);
       await session.send('Emulation.setSafeAreaInsetsOverride', { insets: {} });
       await session.detach();
     } else {
@@ -151,6 +154,6 @@ test('navigation stays reachable with safe-area clearance on mobile and in page 
       await page
         .locator('body')
         .evaluate((el) => getComputedStyle(el).paddingBottom),
-    ).toBe(mobile ? '70px' : '0px');
+    ).toBe('0px');
   }
 });

@@ -31,7 +31,7 @@ it('keeps drafts private and rejects stale or fixed-ID-changing edits before ato
   await store.publish('stones', 's107', saved.revision);
   const after = await store.read('stones');
   expect(after.find((s: any) => s.id === 's107').name).toBe('確認済みの名前');
-  expect(after).toHaveLength(210);
+  expect(after).toHaveLength(211);
   expect(after.filter((s: any) => s.id !== 's107')).toEqual(
     original.filter((s: any) => s.id !== 's107'),
   );
@@ -172,7 +172,7 @@ it('requires local Host, password, session, same-origin and CSRF, without exposi
     const state = await (
       await fetch(base + '/api/state', { headers: { Cookie: cookie } })
     ).json();
-    expect(state.stones).toHaveLength(210);
+    expect(state.stones).toHaveLength(211);
     expect(
       (
         await fetch(base + '/api/remove-photo', {

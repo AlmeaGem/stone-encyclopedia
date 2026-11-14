@@ -1,0 +1,56 @@
+---
+import { readFileSync } from 'node:fs';
+import { pathTo } from '../lib/urls';
+import ManuscriptHeading from './ManuscriptHeading.astro';
+const { part } = Astro.props as { part: 'meaning' | 'pairings' | 'mineral' | 'use' | 'care' | 'choice' | 'message' };
+const source = readFileSync('editorial/manuscripts/s211/SARDONYX.md', 'utf8');
+const sectionText = source.split(/^## /m).slice(1);
+const additional = readFileSync('editorial/manuscripts/s211/SARDONYX-ADDITIONAL.md', 'utf8').split(/^## /m).slice(1);
+const wanted = part === 'meaning' ? additional.slice(0, 4) : part === 'pairings' ? additional.slice(4, 5) : part === 'mineral' ? additional.slice(5, 7) : part === 'use' ? additional.slice(7, 8) : part === 'care' ? additional.slice(8, 9) : part === 'choice' ? additional.slice(9, 10) : additional.slice(10, 11);
+const originalGroups = sectionText.flatMap((section) => section.split(/^### /m).slice(1).map((chunk) => {
+  const [heading, ...body] = chunk.trim().split('\n');
+  return { heading, paragraphs: body.join('\n').trim().split(/\n\s*\n/).filter(Boolean) };
+}));
+const extraByHeading: Record<string, string[]> = {};
+for (const group of originalGroups) {
+  if (group.heading === '女性の幸せと、人生の節目を守る') extraByHeading['01｜家族愛・夫婦円満'] = group.paragraphs;
+  if (group.heading.startsWith('サードオニキス × ')) extraByHeading[group.heading] = group.paragraphs.slice(-1);
+}
+extraByHeading['サードオニキスを選ぶあなたへ'] = ['何気ない会話や、そばにいてくれる安心感。'];
+const names = /(オレンジムーンストーン|サードオニキス|ブラックオニキス|ローズクォーツ|ガーネット|カーネリアン|カルセドニー)/g;
+const nameSet = new Set(['オレンジムーンストーン','サードオニキス','ブラックオニキス','ローズクォーツ','ガーネット','カーネリアン','カルセドニー']);
+const links: Record<string, string> = { 'オレンジムーンストーン': 'stones/moonstone/#orange-moonstone', 'ガーネット': 'stones/garnet/', 'カーネリアン': 'stones/carnelian/', 'ローズクォーツ': 'stones/rose-quartz/' };
+const parts = wanted.map((section) => {
+  const [heading, ...rest] = section.trim().split('\n');
+  const blocks = rest.join('\n').trim().split(/\n\s*\n/).filter(Boolean).filter((x) => x !== '---');
+  const groups: { heading?: string; blocks: string[] }[] = [{ blocks: [] }];
+  for (const block of blocks) {
+    if (block.startsWith('### ')) groups.push({ heading: block.slice(4), blocks: [] });
+    else groups.at(-1)!.blocks.push(block);
+  }
+  for (const group of groups) if (group.heading && extraByHeading[group.heading]) group.blocks.push(...extraByHeading[group.heading]);
+  if (extraByHeading[heading]) groups[0].blocks.splice(1, 0, ...extraByHeading[heading]);
+  if (heading === 'おすすめの取り入れ方') groups[0].blocks.unshift('古くから装飾品や印章、カメオなどにも利用され、現在はスフィアやビーズなど、さまざまな形で楽しめます。');
+  if (heading === 'サードオニキスを選ぶあなたへ') groups[0].blocks = groups[0].blocks.map((block) => block === 'ともに笑った時間も、困難を乗り越えた日々も、そのすべてが大切なつながりを育てていきます。' ? 'ともに笑った時間も、意見がすれ違った日も、困難を乗り越えた日々も、そのすべてが大切なつながりを育てていきます。' : block);
+  return { heading, groups: groups.filter((group) => group.heading || group.blocks.length) };
+});
+---
+<div class="supplement">
+{part === 'meaning' && <div class="intro-card"><p class="english-title">SARDONYX — THE STONE OF ETERNAL BONDS &amp; PROTECTION</p><p><strong>象徴するキーワード</strong></p><p>家族愛・夫婦円満・家庭運・魔除け・厄除け・良縁・信頼・勇気・繁栄</p></div>}
+{parts.map(({heading, groups}) => <section>
+{!(part === 'mineral' && heading === '鉱物・物理的な情報') && <h2><ManuscriptHeading text={heading} /></h2>}
+{groups.map((group) => <div class:list={{card: !!group.heading}}>
+{group.heading && <h3 class="subheading">{group.heading.split(names).filter(Boolean).map((piece) => nameSet.has(piece) ? (part === 'pairings' && links[piece] ? <a class="stone-name" href={pathTo(links[piece])}>{piece}</a> : <span class="stone-name">{piece}</span>) : piece)}</h3>}
+{group.blocks.map((block) => block.startsWith('|') ? <table><tbody>{block.split('\n').slice(2).map((row) => { const columns = row.split('|').slice(1, -1).map((v) => v.trim()); return <tr><th>{columns[0]}</th><td>{columns[1]}</td></tr>})}</tbody></table> : block.startsWith('- ') ? <ul>{block.split('\n').map((line) => <li>{line.replace(/^- /, '')}</li>)}</ul> : <p>{block.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g).filter(Boolean).map((fragment) => {
+const strong = fragment.startsWith('**') && fragment.endsWith('**');
+const emphasis = !strong && fragment.startsWith('*') && fragment.endsWith('*');
+const text = strong ? fragment.slice(2,-2) : emphasis ? fragment.slice(1,-1) : fragment;
+const content = text.split(names).filter(Boolean).map((piece) => nameSet.has(piece) ? <span class="stone-name">{piece}</span> : piece);
+return strong ? <strong>{content}</strong> : emphasis ? <em>{content}</em> : content;
+})}</p>)}
+</div>)}
+</section>)}
+</div>
+<style>
+.supplement{color:#514741}.supplement section{margin:32px 0}.supplement h2{font-size:clamp(20px,2vw,26px);line-height:1.5;margin:0 0 20px;border-left:3px solid #c6927d;padding-left:13px}.supplement h3{font-size:16px;line-height:1.55;color:#825b4d;margin:0 0 12px}.supplement .card,.intro-card{margin:0 0 14px;padding:19px 21px;border:1px solid #efdfd5;border-radius:12px;background:#fff9f5}.supplement .card p:last-child,.intro-card p:last-child{margin-bottom:0}.supplement p,.supplement li{font-size:15px;line-height:1.9;margin:0 0 16px;overflow-wrap:break-word;word-break:normal}.stone-name{display:inline-block;white-space:nowrap}.supplement table{width:100%;border-collapse:collapse;margin:0 0 18px;table-layout:fixed}.supplement th,.supplement td{text-align:left;vertical-align:top;padding:10px 6px;border-bottom:1px solid #e9dfca;overflow-wrap:anywhere}.supplement th{width:32%}@media(max-width:640px){.supplement p,.supplement li{font-size:14px}.supplement .card,.intro-card{padding:16px}}
+</style>

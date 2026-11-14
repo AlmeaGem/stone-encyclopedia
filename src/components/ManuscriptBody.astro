@@ -13,11 +13,7 @@ interface Props {
   protectStoneNames?: boolean;
   extendedStoneNames?: boolean;
 }
-const {
-  section,
-  protectStoneNames = false,
-  extendedStoneNames = false,
-} = Astro.props;
+const { section, protectStoneNames = false, extendedStoneNames = false } = Astro.props;
 const items = manuscriptItems(section);
 const pairings = manuscriptPairings(section);
 const stoneById = new Map(stones.map((stone) => [stone.id, stone]));
@@ -28,21 +24,7 @@ const stoneById = new Map(stones.map((stone) => [stone.id, stone]));
     {items.map((text) => (
       <li>
         {inlineManuscript(text).map((part) =>
-          part.strong ? (
-            <strong>
-              <StoneNameText
-                text={part.text}
-                enabled={protectStoneNames}
-                extended={extendedStoneNames}
-              />
-            </strong>
-          ) : (
-            <StoneNameText
-              text={part.text}
-              enabled={protectStoneNames}
-              extended={extendedStoneNames}
-            />
-          ),
+          part.strong ? <strong><StoneNameText text={part.text} enabled={protectStoneNames} extended={extendedStoneNames} /></strong> : <StoneNameText text={part.text} enabled={protectStoneNames} extended={extendedStoneNames} />,
         )}
       </li>
     ))}
@@ -55,30 +37,12 @@ const stoneById = new Map(stones.map((stone) => [stone.id, stone]));
           class="text-link manuscript-pairing-name"
           href={pathTo(`stones/${stoneById.get(pairing.stoneId)!.slug}/`)}
         >
-          <StoneNameText
-            text={pairing.name}
-            enabled={protectStoneNames}
-            extended={extendedStoneNames}
-          />
+          <StoneNameText text={pairing.name} enabled={protectStoneNames} extended={extendedStoneNames} />
         </a>
         <span class="manuscript-pairing-separator">：</span>
         <span class="manuscript-pairing-description">
           {inlineManuscript(pairing.description).map((part) =>
-            part.strong ? (
-              <strong>
-                <StoneNameText
-                  text={part.text}
-                  enabled={protectStoneNames}
-                  extended={extendedStoneNames}
-                />
-              </strong>
-            ) : (
-              <StoneNameText
-                text={part.text}
-                enabled={protectStoneNames}
-                extended={extendedStoneNames}
-              />
-            ),
+            part.strong ? <strong><StoneNameText text={part.text} enabled={protectStoneNames} extended={extendedStoneNames} /></strong> : <StoneNameText text={part.text} enabled={protectStoneNames} extended={extendedStoneNames} />,
           )}
         </span>
       </p>
@@ -88,21 +52,7 @@ const stoneById = new Map(stones.map((stone) => [stone.id, stone]));
   items.map((text) => (
     <p class="prose-lines manuscript-paragraph">
       {inlineManuscript(text).map((part) =>
-        part.strong ? (
-          <strong>
-            <StoneNameText
-              text={part.text}
-              enabled={protectStoneNames}
-              extended={extendedStoneNames}
-            />
-          </strong>
-        ) : (
-          <StoneNameText
-            text={part.text}
-            enabled={protectStoneNames}
-            extended={extendedStoneNames}
-          />
-        ),
+        part.strong ? <strong><StoneNameText text={part.text} enabled={protectStoneNames} extended={extendedStoneNames} /></strong> : <StoneNameText text={part.text} enabled={protectStoneNames} extended={extendedStoneNames} />,
       )}
     </p>
   ))

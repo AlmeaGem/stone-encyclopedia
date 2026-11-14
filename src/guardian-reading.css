@@ -1,0 +1,258 @@
+/* Scoped to guardian results; existing article and catalogue designs are untouched. */
+.find-stone-page .guardian-result .guardian-section,
+.find-stone-page .guardian-result > details {
+  border: 0;
+  border-top: 1px solid #e8dfd5;
+  padding: 0;
+  margin-top: 20px;
+}
+.find-stone-page .guardian-result details > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  position: relative;
+  padding: 18px 0 18px 14px;
+  color: #463b35;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
+  list-style: none;
+}
+.find-stone-page .guardian-result details > summary::-webkit-details-marker {
+  display: none;
+}
+.find-stone-page .guardian-result details > summary::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 21px;
+  bottom: 21px;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--guardian-accent);
+}
+.find-stone-page .guardian-result details > summary::after {
+  content: '+';
+  flex: none;
+  color: #91765d;
+  font-size: 22px;
+  font-weight: 400;
+}
+.find-stone-page .guardian-result details[open] > summary::after {
+  content: '−';
+}
+.find-stone-page .guardian-result details[open] > summary {
+  margin-bottom: 6px;
+}
+.find-stone-page .guardian-result details p,
+.find-stone-page .guardian-result details dd,
+.find-stone-page .guardian-result .guardian-one-closing p {
+  color: #514741;
+  font-size: 15px;
+  line-height: 1.9;
+  margin: 0 0 14px;
+}
+.find-stone-page .guardian-result details h3,
+.find-stone-page .guardian-result .guardian-one-closing h3 {
+  color: #463b35;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+.find-stone-page .guardian-result .guardian-item {
+  margin: 0 0 14px;
+  padding: 18px;
+  border: 1px solid #ebe3da;
+  border-radius: 10px;
+  background: #fffdfa;
+}
+.find-stone-page .guardian-result .guardian-item > :last-child {
+  margin-bottom: 0;
+}
+.find-stone-page .guardian-result .guardian-meaning-item h3,
+.find-stone-page .guardian-result .guardian-meaning-item dt {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+.find-stone-page .guardian-result .guardian-index,
+.find-stone-page .guardian-result .guardian-label {
+  display: inline-block;
+  flex: none;
+  padding: 3px 8px;
+  border-radius: 5px;
+  background: var(--guardian-accent);
+  color: #514741;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.find-stone-page .guardian-result .guardian-life-item h3 span {
+  display: block;
+}
+.find-stone-page .guardian-result .guardian-life-item h3 .guardian-label {
+  display: table;
+  margin-bottom: 8px;
+}
+.find-stone-page .guardian-result .guardian-life-item dt {
+  display: table;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.find-stone-page .guardian-result .guardian-pairs-item h3 {
+  font-weight: 600;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+.find-stone-page .guardian-result .guardian-pairs-item h3 a,
+.find-stone-page .guardian-result .guardian-name {
+  white-space: nowrap;
+}
+.find-stone-page .guardian-result .guardian-pairs-item p > strong {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 5px;
+  background: var(--guardian-accent);
+  font-size: 12px;
+  font-weight: 500;
+}
+.find-stone-page .guardian-result .guardian-practice-item {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ebe3da;
+  border-radius: 0;
+  padding: 12px 0 16px;
+}
+.find-stone-page .guardian-result .guardian-minerals dl {
+  margin: 0 0 18px;
+  border-top: 1px solid #e8dfd5;
+}
+.find-stone-page .guardian-result .guardian-minerals dl > div {
+  display: grid;
+  grid-template-columns: minmax(95px, 0.35fr) minmax(0, 1fr);
+  gap: 12px;
+  margin: 0;
+  padding: 11px 0;
+  border-bottom: 1px solid #e8dfd5;
+}
+.find-stone-page .guardian-result .guardian-minerals dt {
+  font-size: 13px;
+  color: #756b62;
+  line-height: 1.7;
+}
+.find-stone-page .guardian-result .guardian-minerals dd {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.find-stone-page .guardian-result .guardian-one-closing,
+.find-stone-page .guardian-result .guardian-message {
+  margin-top: 24px;
+  padding: 22px;
+  border-top: 1px solid #c8a979;
+  border-radius: 8px;
+  background: var(--guardian-accent);
+}
+@media (max-width: 767px) {
+  body:has(.find-stone-page) .history-navigation {
+    position: static;
+    inset: auto;
+    pointer-events: auto;
+  }
+}
+@media (max-width: 640px) {
+  .find-stone-page .guardian-result details > summary {
+    font-size: 17px;
+  }
+  .find-stone-page .guardian-result details p,
+  .find-stone-page .guardian-result details dd,
+  .find-stone-page .guardian-result .guardian-one-closing p {
+    font-size: 14px;
+  }
+  .find-stone-page .guardian-result .guardian-item {
+    padding: 15px;
+  }
+  .find-stone-page .guardian-result .guardian-practice-item {
+    padding: 12px 0 16px;
+  }
+  .find-stone-page .guardian-result .guardian-meaning-item h3,
+  .find-stone-page .guardian-result .guardian-meaning-item dt {
+    font-size: 15px;
+  }
+  .find-stone-page .guardian-result .guardian-one-closing,
+  .find-stone-page .guardian-result .guardian-message {
+    padding: 18px;
+  }
+}
+
+/* Onyx: charcoal and a restrained smoky purple, scoped to number 7. */
+.find-stone-page .guardian-result[data-guardian-number='7'] {
+  --guardian-accent: #d8d1d9 !important;
+}
+.find-stone-page
+  .guardian-result[data-guardian-number='7']
+  details
+  > summary::before {
+  background: #77727b;
+}
+.find-stone-page
+  .guardian-result[data-guardian-number='7']
+  .guardian-one-closing {
+  background: #ece6e9;
+}
+
+/* Garnet: muted wine red and rose greige, scoped to number 8. */
+.find-stone-page
+  .guardian-result[data-guardian-number='8']
+  details
+  > summary::before {
+  background: #8f5b64;
+}
+.find-stone-page
+  .guardian-result[data-guardian-number='8']
+  .guardian-one-closing {
+  background: #eee3e1;
+}
+
+/* Labradorite: muted blue accents and a soft blue-greige closing. */
+.find-stone-page
+  .guardian-result[data-guardian-number='11']
+  details
+  > summary::before {
+  background: #718b9b;
+}
+.find-stone-page
+  .guardian-result[data-guardian-number='11']
+  .guardian-one-closing {
+  background: #e3eaeb;
+}
+
+/* Jadeite: restrained jade green and a pale sage closing. */
+.find-stone-page
+  .guardian-result[data-guardian-number='22']
+  details
+  > summary::before {
+  background: #6d8b75;
+}
+.find-stone-page
+  .guardian-result[data-guardian-number='22']
+  .guardian-one-closing {
+  background: #e7eee5;
+}
+
+/* Provided transparent artwork is used only in guardian results. */
+.find-stone-page .guardian-result .guardian-provided-visual,
+.find-stone-page .guardian-result .guardian-provided-visual .stone-figure,
+.find-stone-page .guardian-result .guardian-provided-visual .stone-image-frame {
+  background: transparent;
+}
+.find-stone-page .guardian-result .guardian-provided-visual img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+}

@@ -1,0 +1,88 @@
+---
+import { pathTo } from '../lib/urls';
+const { part } = Astro.props as { part: 'meaning' | 'pairings' | 'mineral' | 'choosing' };
+---
+{part === 'meaning' && <div class="aqua-supplement">
+  <section class="aqua-section">
+    <h2>スピリチュアルな意味・象徴</h2>
+    <article class="aqua-card"><h3>穏やかな愛情と、時間をかけて育む信頼</h3>
+      <p><span class="stone-name">アクアマリン</span>は、穏やかな愛情や心の調和、誠実なコミュニケーションを象徴する天然石です。</p>
+      <p>恋愛においては、一時的な情熱だけでなく、相手を深く理解しながら信頼関係を育んでいくことを大切にする石として親しまれています。</p>
+      <p>お互いの気持ちを丁寧に伝え合い、自然体でいられる関係を築くこと。そのような、落ち着いた愛情を象徴しています。</p>
+    </article>
+    <article class="aqua-card"><h3>焦らず、自分のペースを大切にする</h3>
+      <p><span class="stone-name">アクアマリン</span>には、物事を急ぎすぎず、穏やかな気持ちで変化を受け入れるという象徴的な意味もあります。</p>
+      <p>恋愛や人間関係で気持ちが先走りそうなとき、自分自身の感情を見つめ直し、相手との距離を少しずつ縮めていくことを意識するお守りとして選ばれています。</p>
+      <p>大切なのは、結果を急ぐことよりも、その過程で生まれる信頼や安心感を育てることです。</p>
+    </article>
+  </section>
+  <section class="aqua-section"><h2>恋愛・結婚における意味</h2>
+    <article class="aqua-card"><h3>パートナーとの絆を深めたいとき</h3>
+      <p><span class="stone-name">アクアマリン</span>は、恋人や夫婦の間にある愛情、理解、信頼を象徴する石として知られています。</p>
+      <p>相手の気持ちを尊重しながら、自分の思いも素直に伝えること。お互いに安心できる関係を育んでいきたい方におすすめされる天然石です。</p>
+      <p>結婚や長期的なパートナーシップを意識するときにも、穏やかな愛情を大切にする象徴として親しまれています。</p>
+    </article>
+  </section>
+  <section class="aqua-section"><h2>仕事運・金運における意味</h2>
+    <article class="aqua-card"><h3>仕事運｜澄んだ言葉が信頼を生み、可能性を広げる</h3>
+      <p><span class="stone-name">アクアマリン</span>は、円滑なコミュニケーションや冷静な判断力、調和を象徴する天然石です。</p>
+      <p>仕事運においては、自分の考えを相手に伝える力を支え、人との信頼関係を育む石として親しまれています。</p>
+      <p>大切な商談や面接、プレゼンテーションなど、自分の言葉で未来を切り開きたい場面にふさわしいお守りです。</p>
+      <p>また、穏やかな海のように心を落ち着かせ、周囲の意見に流されず、自分らしい判断を大切にするという意味もあります。</p>
+      <p>人間関係を円滑にしながら、仕事の可能性を広げたい方におすすめです。</p>
+    </article>
+    <article class="aqua-card"><h3>金運｜豊かさにつながる良縁と、安定した繁栄</h3>
+      <p><span class="stone-name">アクアマリン</span>の金運は、一攫千金よりも、人との信頼や良縁を通じて豊かさを育むことを象徴しています。</p>
+      <p>仕事上のつながりや協力関係を大切にし、長期的な成功へとつなげたい方にふさわしい石です。</p>
+      <p>また、冷静さや明晰な判断を象徴することから、お金に関する大切な選択を落ち着いて行いたいときのお守りとしても親しまれています。</p>
+      <p>焦らず、自分にとって本当に価値のあるものを見極め、安定した豊かさを築いていく。</p>
+      <p><span class="stone-name">アクアマリン</span>は、そんな穏やかで持続的な繁栄を願う石です。</p>
+    </article>
+  </section>
+</div>}
+{part === 'pairings' && <div class="aqua-supplement aqua-pairings"><h3>おすすめの天然石の組み合わせ</h3>
+  <article class="aqua-card"><h4><span class="stone-name">アクアマリン</span> × <a class="stone-name" href={pathTo('stones/sea-blue-chalcedony/')}>シーブルーカルセドニー</a></h4><p class="aqua-keywords">穏やかな気持ち・安心感・心の調和</p>
+    <p><span class="stone-name">シーブルーカルセドニー</span>は、優しさや心の落ち着きを象徴する石として紹介されています。</p>
+    <p><span class="stone-name">アクアマリン</span>と組み合わせることで、焦りを手放し、穏やかな気持ちで人と向き合うことをテーマにしたお守りになります。</p>
+  </article>
+  <article class="aqua-card"><h4><span class="stone-name">アクアマリン</span> × <a class="stone-name" href={pathTo('stones/blue-lace-agate/')}>ブルーレースアゲート</a></h4><p class="aqua-keywords">出会い・対話・相互理解</p>
+    <p><span class="stone-name">ブルーレースアゲート</span>は、穏やかなコミュニケーションや人間関係の調和を象徴する天然石です。</p>
+    <p><span class="stone-name">アクアマリン</span>と組み合わせることで、新しい出会いを大切にしながら、相手との理解や信頼を深めていくことをテーマにしたお守りになります。</p>
+  </article>
+  <article class="aqua-card"><h4><span class="stone-name">アクアマリン</span> × <a class="stone-name" href={pathTo('stones/moonstone/')}>ムーンストーン</a></h4><p class="aqua-keywords">愛情・思いやり・深まる絆</p>
+    <p><span class="stone-name">ムーンストーン</span>は、感受性や優しさ、変化を象徴する天然石です。</p>
+    <p><span class="stone-name">アクアマリン</span>と組み合わせることで、お互いの気持ちに寄り添いながら、温かな愛情を育てていくことをテーマにしたお守りになります。</p>
+  </article>
+  <article class="aqua-card"><h4><span class="stone-name">アクアマリン</span> × <a class="stone-name" href={pathTo('stones/morganite/')}>モルガナイト</a></h4><p class="aqua-keywords">誠実な愛情・信頼・未来への一歩</p>
+    <p><span class="stone-name">モルガナイト</span>は、優しさや愛情、思いやりを象徴する天然石です。</p>
+    <p>同じベリルグループに属する<span class="stone-name">アクアマリン</span>と組み合わせることで、穏やかな愛情を大切にしながら、二人の関係を次の段階へ進めることをテーマにしたお守りになります。</p>
+  </article>
+</div>}
+{part === 'mineral' && <div class="aqua-supplement aqua-text"><h3><span class="stone-name">アクアマリン</span>の鉱物としての特徴</h3>
+  <p><span class="stone-name">アクアマリン</span>は、ベリル（緑柱石）グループに属する宝石です。</p>
+  <p>淡い水色から青色、青緑色まで幅広い色合いがあり、透明感のある美しい外観が特徴です。</p>
+  <p>同じベリルグループには、<span class="stone-name">エメラルド</span>や<span class="stone-name">モルガナイト</span>などがあります。</p>
+  <p>日本では3月の誕生石としても親しまれています。</p>
+</div>}
+{part === 'choosing' && <div class="aqua-supplement aqua-text"><h3><span class="stone-name">アクアマリン</span>を選ぶときに</h3>
+  <p><span class="stone-name">アクアマリン</span>は、落ち着いた青色や透明感を楽しめる天然石です。</p>
+  <p>色の濃さや透明度には個体差があり、淡い水色のものから深い青色のものまで、それぞれに異なる魅力があります。</p>
+  <p>自分が心地よいと感じる色合いや、身につけたい場面に合わせて選ぶことをおすすめします。</p>
+  <p class="aqua-note">※天然石のスピリチュアルな意味や効果は、伝統的な信仰・文化・解釈に基づくものであり、科学的に実証されたものではありません。</p>
+</div>}
+<style>
+  .aqua-supplement { color: #514741; }
+  .aqua-section { margin: 32px 0; }
+  .aqua-section h2 { font-size: clamp(20px, 2vw, 26px); line-height: 1.5; margin: 0 0 20px; border-left: 3px solid #91b9c3; padding-left: 13px; }
+  .aqua-card { margin: 0 0 14px; padding: 19px 21px; border: 1px solid #d9e7e6; border-radius: 12px; background: #f6faf9; }
+  .aqua-card h3, .aqua-card h4, .aqua-text h3 { margin: 0 0 12px; font-size: 16px; line-height: 1.55; color: #4d6265; }
+  .aqua-supplement p { font-size: 15px; line-height: 1.9; margin: 0 0 12px; overflow-wrap: break-word; word-break: normal; }
+  .aqua-card p:last-child, .aqua-text p:last-child { margin-bottom: 0; }
+  .aqua-pairings { margin-top: 28px; }
+  .aqua-pairings > h3 { margin: 0 0 15px; font-size: 18px; line-height: 1.5; }
+  .aqua-keywords { display: inline-block; padding: 4px 9px; border-radius: 5px; background: #dcebed; color: #496568; font-size: 13px !important; }
+  .stone-name { display: inline-block; white-space: nowrap; }
+  .aqua-text { margin: 28px 0 8px; }
+  .aqua-note { color: #796d64; font-size: 13px !important; }
+  @media (max-width: 640px) { .aqua-card { padding: 16px; } .aqua-supplement p { font-size: 14px; } .aqua-card h4 { display: flex; flex-wrap: wrap; gap: 0 4px; } }
+</style>

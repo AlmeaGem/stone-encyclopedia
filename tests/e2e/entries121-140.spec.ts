@@ -68,7 +68,7 @@ test('all details 121-140 support search, category and related navigation', asyn
     await expect(page.locator('h1')).toHaveText(related.name);
     await page.goto(`/wishes/${stone.wishes[0]}/`);
     await expect(
-      page.locator(`a[href="/stones/${stone.slug}/"]`).first(),
+      page.locator(`[data-stone] a[href="/stones/${stone.slug}/"]`).first(),
     ).toBeVisible();
   }
 });

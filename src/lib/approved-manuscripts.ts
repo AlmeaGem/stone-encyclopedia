@@ -85,8 +85,17 @@ for (let batch = 1; batch <= 11; batch++) {
     manuscripts.set(id, { id, catchphrase, sections });
   }
 }
-if (manuscripts.size !== 210 || rawStones.some((s) => !manuscripts.has(s.id)))
+if (
+  manuscripts.size !== 210 ||
+  rawStones.filter((s) => s.id !== 's211').some((s) => !manuscripts.has(s.id))
+)
   throw new Error('All 210 approved manuscripts are required');
+manuscripts.set('s211', {
+  id: 's211',
+  catchphrase:
+    '幾重にも重なる赤い縞模様に、愛と守護の力を宿す。大切な人との絆を深め、幸せな未来を守り抜く石。',
+  sections: [],
+});
 export function approvedManuscript(id: string): ApprovedManuscript {
   const result = manuscripts.get(id);
   if (!result) throw new Error(`Missing approved manuscript: ${id}`);
