@@ -56,7 +56,7 @@ const protectStoneNames = ['amber', 'anhydrite', 'black-onyx', 'moonstone', 'gar
 const wishGuideNotes = guidesForStone(stone.id);
 const guardian = guardianForStone(stone.id);
 const manuscript = approvedManuscript(stone.id);
-const editorial = ['s047', 's116', 's080', 's048', 's037', 's139', 's008', 's084', 's121', 's122', 's057', 's140'].includes(stone.id) ? editorialManuscript(stone.id) : undefined;
+const editorial = ['s047', 's116', 's080', 's048', 's037', 's139', 's008', 's084', 's121', 's122', 's057', 's140', 's173', 's062', 's176', 's150'].includes(stone.id) ? editorialManuscript(stone.id) : undefined;
 const storySections = manuscript.sections.filter(
   (s) =>
     s.kind !== 'pairings' &&

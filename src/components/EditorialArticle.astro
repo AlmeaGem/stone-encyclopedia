@@ -31,7 +31,7 @@ const recommended: { name: string; title: string; words: string; paragraphs: str
 if (part === 'pairings') for (const line of lines) {
  if (line.includes(' × ')) {
    const name = line.split(' × ').slice(1).join(' × ').trim();
-   const target = editorialPairTarget(name);
+   const target = editorialPairTarget(name, stone.id);
    recommended.push({name,title:line,words:'',paragraphs:[],stoneId:target?.id,slug:target?.slug});
  } else if (recommended.length && !recommended[recommended.length-1].words) recommended[recommended.length-1].words=line;
  else if (recommended.length) recommended[recommended.length-1].paragraphs.push(line);
@@ -52,7 +52,7 @@ const showHeading = !['pairings','nature','care'].includes(part);
     </div>)}
     {extraPairs.map(pair=><div class="editorial-pair"><h3><StoneNameText text={stone.name} enabled={true} extended={true} /> × <a href={pathTo(`stones/${stoneById(pair.stoneId)?.slug || ''}/`)}><span class="pair-name">{pair.name}</span></a></h3><p><StoneNameText text={pair.description} enabled={true} extended={true} /></p></div>)}
   </div>
-  <h3>{['s047', 's084'].includes(stone.id) ? '組み合わせで気をつけたい石' : titles.caution}</h3>
+  <h3>{['s047', 's084', 's150'].includes(stone.id) ? '組み合わせで気をつけたい石' : titles.caution}</h3>
   {editorial.parts.caution.map(line => <p><StoneNameText text={line} enabled={true} extended={true} /></p>)}
 </> : <>
   {showHeading && <SectionHeading>{titles[part].includes('｜') ? <ManuscriptHeading text={titles[part]} /> : <StoneNameText text={titles[part]} enabled={true} extended={true} />}</SectionHeading>}
