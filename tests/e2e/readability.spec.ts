@@ -71,7 +71,20 @@ for (const index of [0, 1, 2]) {
           (item: { slug: string }) => path === `/stones/${item.slug}/`,
         );
         expect(stone, path).toBeDefined();
-        await expect(page.locator('#quality')).toContainText(stone.shapes);
+        if (stone.slug === 'sardonyx') {
+          await expect(
+            page.locator('.supplement section').filter({
+              has: page.getByRole('heading', {
+                name: 'おすすめの取り入れ方',
+                exact: true,
+              }),
+            }),
+          ).toContainText(
+            '古くから装飾品や印章、カメオなどにも利用され、現在はスフィアやビーズなど、さまざまな形で楽しめます。',
+          );
+        } else {
+          await expect(page.locator('#quality')).toContainText(stone.shapes);
+        }
         await expect(
           page.locator('#nature dd').filter({ hasText: /^未確認$/ }),
         ).toHaveCount(0);

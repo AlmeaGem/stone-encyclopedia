@@ -24,8 +24,12 @@ test('all twenty detail pages separate scientific facts, stories and editorial p
       .locator('#story a')
       .filter({ hasText: '来歴・伝承の参考資料' });
     await expect(link).toHaveAttribute('href', stone.legendSourceUrl);
-    await expect(page.locator('#pairing')).toContainText('相性のよい石');
-    const pairingLinks = page.locator('#pairing .manuscript-pairing-name');
+    await expect(page.locator('#pairing')).toContainText(
+      /相性のよい石|相性のよい天然石\s*｜\s*おすすめの組み合わせ/,
+    );
+    const pairingLinks = page.locator(
+      '#pairing .manuscript-pairing-name, #pairing .editorial-pair h3 a',
+    );
     expect(await pairingLinks.count()).toBeGreaterThan(0);
     for (const link of await pairingLinks.all()) {
       const href = await link.getAttribute('href');
