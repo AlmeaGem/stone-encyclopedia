@@ -28,3 +28,6 @@ src/components/Guardian*.astro
 src/pages/index.astro
 src/pages/find-your-stone.astro
 src/pages/stones/\[slug\].astro
+
+# Retain the published hashed stylesheet for cached detail pages.
+public/_astro/_slug_.DWW8LeBS.css
