@@ -1,10 +1,14 @@
 import { test, expect } from '@playwright/test';
 import { mkdir } from 'node:fs/promises';
-import stones from '../../src/content/stones.json' with { type: 'json' };
+import rawStones from '../../src/content/stones.json' with { type: 'json' };
+const stones = rawStones.filter((stone) => stone.status === 'published');
 import {
   approvedManuscript,
   manuscriptItems,
+  manuscriptPairings,
 } from '../../src/lib/approved-manuscripts';
+
+import editorialData from '../../src/content/editorial-13.json' with { type: 'json' };
 
 const plain = (text: string) => text.replace(/\*\*/g, '').replace(/\s/g, '');
 for (let start = 0; start < stones.length; start += 20) {
@@ -18,14 +22,36 @@ for (let start = 0; start < stones.length; start += 20) {
       await expect(page.locator('h1 + .manuscript-catchphrase')).toHaveText(
         manuscript.catchphrase,
       );
-      const rendered = await page
-        .locator('.manuscript-paragraph, .manuscript-wishes li')
-        .allTextContents();
-      const expected = manuscript.sections
-        .flatMap((s) => manuscriptItems(s))
-        .map(plain)
-        .sort();
-      expect(rendered.map(plain).sort(), stone.id).toEqual(expected);
+      if (stone.slug in editorialData) {
+        const rendered = plain(await page.locator('.detail-body').innerText());
+        for (const section of manuscript.sections) {
+          if (section.kind === 'pairings') {
+            for (const pair of manuscriptPairings(section)) {
+              const card = page.locator('.editorial-pair').filter({
+                has: page.getByRole('link', { name: pair.name, exact: true }),
+              });
+              await expect(card).toHaveCount(1);
+              await expect(card).toContainText(
+                pair.description.replace(/\*\*/g, ''),
+              );
+            }
+          } else {
+            for (const item of manuscriptItems(section))
+              expect(rendered, `${stone.id}: ${section.heading}`).toContain(
+                plain(item),
+              );
+          }
+        }
+      } else {
+        const rendered = await page
+          .locator('.manuscript-paragraph, .manuscript-wishes li')
+          .allTextContents();
+        const expected = manuscript.sections
+          .flatMap((s) => manuscriptItems(s))
+          .map(plain)
+          .sort();
+        expect(rendered.map(plain).sort(), stone.id).toEqual(expected);
+      }
       await expect(page.locator('#care')).toContainText(
         stone.handling.replace(/^移行資料の注意メモ[：:]/u, '取り扱いの注意：'),
       );

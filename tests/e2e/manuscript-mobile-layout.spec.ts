@@ -1,9 +1,12 @@
 import { test, expect } from '@playwright/test';
-import stones from '../../src/content/stones.json' with { type: 'json' };
+import rawStones from '../../src/content/stones.json' with { type: 'json' };
+const stones = rawStones.filter((stone) => stone.status === 'published');
 import {
   approvedManuscript,
   manuscriptPairings,
 } from '../../src/lib/approved-manuscripts';
+
+import editorialData from '../../src/content/editorial-13.json' with { type: 'json' };
 
 const byId = new Map(stones.map((stone) => [stone.id, stone]));
 const normalized = (s: string) => s.replace(/\s/g, '');
@@ -23,20 +26,56 @@ test('all approved headings and pairing links retain their content and responsiv
     await page.goto(`/stones/${stone.slug}/`, {
       waitUntil: 'domcontentloaded',
     });
-    const entries = page.locator('.manuscript-pairings > p');
-    expect(await entries.count(), stone.id).toBe(expectedPairs.length);
-    for (const [index, pair] of expectedPairs.entries()) {
-      const entry = entries.nth(index);
-      await expect(entry.locator('a.manuscript-pairing-name')).toHaveAttribute(
-        'href',
-        `/stones/${byId.get(pair.stoneId)!.slug}/`,
-      );
-      expect(
-        normalized((await entry.textContent())!),
-        `${stone.id}: ${pair.name}`,
-      ).toBe(
-        normalized(`${pair.name}：${pair.description.replace(/\*\*/g, '')}`),
-      );
+    const editorial = editorialData[stone.slug as keyof typeof editorialData];
+    if (editorial) {
+      for (const pair of expectedPairs) {
+        const target = byId.get(pair.stoneId)!;
+        const card = page
+          .locator('.editorial-pair')
+          .filter({ has: page.locator(`a[href="/stones/${target.slug}/"]`) });
+        await expect(card, `${stone.id}: ${pair.name}`).toHaveCount(1);
+        await expect(card).toContainText(pair.description.replace(/\*\*/g, ''));
+      }
+      for (const line of editorial
+        .split('\n')
+        .slice(
+          editorial
+            .split('\n')
+            .indexOf('相性のよい天然石｜おすすめの組み合わせ') + 1,
+          editorial
+            .split('\n')
+            .findIndex((line) => line.startsWith('組み合わせ')),
+        )
+        .filter((line) => line.includes(' × '))) {
+        const name = line.split(' × ')[1].trim();
+        const card = page.locator('.editorial-pair').filter({ hasText: line });
+        await expect(card).toHaveCount(1);
+        const target = stones.find(
+          (item) =>
+            item.name === name || (item.aliases as string[]).includes(name),
+        );
+        if (target)
+          await expect(card.locator('a')).toHaveAttribute(
+            'href',
+            `/stones/${target.slug}/`,
+          );
+        else await expect(card.locator('a')).toHaveCount(0);
+      }
+    } else {
+      const entries = page.locator('.manuscript-pairings > p');
+      expect(await entries.count(), stone.id).toBe(expectedPairs.length);
+      for (const [index, pair] of expectedPairs.entries()) {
+        const entry = entries.nth(index);
+        await expect(
+          entry.locator('a.manuscript-pairing-name'),
+        ).toHaveAttribute('href', `/stones/${byId.get(pair.stoneId)!.slug}/`);
+        expect(
+          normalized((await entry.textContent())!),
+          `${stone.id}: ${pair.name}`,
+        ).toBe(
+          normalized(`${pair.name}：${pair.description.replace(/\*\*/g, '')}`),
+        );
+      }
     }
     for (const width of widths) {
       await page.setViewportSize({ width, height: 1000 });

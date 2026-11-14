@@ -1,0 +1,321 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import ManuscriptBody from './ManuscriptBody.astro';
+import ManuscriptHeading from './ManuscriptHeading.astro';
+import StoneNameText from './StoneNameText.astro';
+import {
+  editorialManuscript,
+  editorialPairTarget,
+  type EditorialPart,
+} from '../lib/editorial-13';
+import {
+  manuscriptPairings,
+  manuscriptItems,
+  type ManuscriptSection,
+} from '../lib/approved-manuscripts';
+import { pathTo } from '../lib/urls';
+import { stoneById } from '../lib/content';
+
+interface Props {
+  stone: any;
+  part: EditorialPart;
+  legacy: ManuscriptSection[];
+}
+const { stone, part, legacy } = Astro.props;
+const editorial = editorialManuscript(stone.id)!;
+const titles: Record<EditorialPart, string> = {
+  story: `${stone.name}の物語`,
+  spirit: 'スピリチュアルな意味・象徴｜5つの力',
+  fortunes: '恋愛・仕事・金運・人間関係との関係',
+  wishes: '願い別｜こんな方におすすめ',
+  pairings: '相性のよい天然石｜おすすめの組み合わせ',
+  caution: '組み合わせについて',
+  nature: '鉱物・物理的な情報',
+  history: `${stone.name}の歴史と伝承`,
+  use: 'おすすめの取り入れ方',
+  care: '浄化・お手入れ',
+  choice: `${stone.name}の選び方`,
+  message: `${stone.name}を選ぶあなたへ`,
+};
+const lines = editorial.parts[part];
+const isSubheading = (line: string) =>
+  /^0[1-5]｜/.test(line) ||
+  /^(恋愛運|仕事運|金運|人間関係)｜/.test(line) ||
+  (!/[。！？]$/.test(line) &&
+    line.length <= 38 &&
+    !line.startsWith('* ') &&
+    !line.includes('\t'));
+const sections = legacy.filter((s) => {
+  if (part === 'story')
+    return s.kind === 'prose' && s.heading.startsWith('導入');
+  if (part === 'spirit')
+    return s.kind === 'prose' && s.heading.startsWith('スピリチュアル');
+  if (part === 'history')
+    return s.kind === 'prose' && /^(伝承|来歴)/.test(s.heading);
+  if (part === 'choice') return s.heading.startsWith('見どころ');
+  if (part === 'care') return s.heading.startsWith('取り扱い');
+  return false;
+});
+const legacyWishes = legacy
+  .filter((s) => s.kind === 'wishes')
+  .flatMap(manuscriptItems);
+const pairSections = legacy.filter((s) => s.kind === 'pairings');
+const legacyPairs = pairSections.flatMap(manuscriptPairings);
+const recommended: {
+  name: string;
+  title: string;
+  words: string;
+  paragraphs: string[];
+  stoneId?: string;
+  slug?: string;
+}[] = [];
+if (part === 'pairings')
+  for (const line of lines) {
+    if (line.includes(' × ')) {
+      const name = line.split(' × ').slice(1).join(' × ').trim();
+      const target = editorialPairTarget(name);
+      recommended.push({
+        name,
+        title: line,
+        words: '',
+        paragraphs: [],
+        stoneId: target?.id,
+        slug: target?.slug,
+      });
+    } else if (recommended.length && !recommended[recommended.length - 1].words)
+      recommended[recommended.length - 1].words = line;
+    else if (recommended.length)
+      recommended[recommended.length - 1].paragraphs.push(line);
+  }
+const extraPairs = legacyPairs.filter(
+  (p) => !recommended.some((n) => n.stoneId === p.stoneId || n.name === p.name),
+);
+const tableLines =
+  part === 'nature'
+    ? lines
+        .filter((l) => l.includes('\t'))
+        .slice(1)
+        .map((l) => l.split('\t'))
+    : [];
+const body = part === 'nature' ? lines.filter((l) => !l.includes('\t')) : lines;
+const showHeading = !['pairings', 'nature', 'care'].includes(part);
+---
+
+{part === 'pairings' ? (
+  <>
+    <SectionHeading>
+      <ManuscriptHeading text={titles.pairings} />
+    </SectionHeading>
+    <div class="editorial-pairings">
+      {recommended.map((pair) => (
+        <div class="editorial-pair">
+          <h3>
+            <span class="pair-name">
+              <StoneNameText text={stone.name} enabled={true} extended={true} />
+            </span>{' '}
+            ×{' '}
+            {pair.slug ? (
+              <a href={pathTo(`stones/${pair.slug}/`)}>
+                <span class="pair-name">{pair.name}</span>
+              </a>
+            ) : (
+              <span class="pair-name">{pair.name}</span>
+            )}
+          </h3>
+          <p>
+            <strong>
+              <StoneNameText text={pair.words} enabled={true} extended={true} />
+            </strong>
+          </p>
+          {pair.paragraphs.map((p) => (
+            <p>
+              <StoneNameText text={p} enabled={true} extended={true} />
+            </p>
+          ))}
+          {legacyPairs
+            .filter((p) => p.stoneId === pair.stoneId && pair.stoneId)
+            .map((p) => (
+              <p>
+                <StoneNameText
+                  text={p.description}
+                  enabled={true}
+                  extended={true}
+                />
+              </p>
+            ))}
+        </div>
+      ))}
+      {extraPairs.map((pair) => (
+        <div class="editorial-pair">
+          <h3>
+            <StoneNameText text={stone.name} enabled={true} extended={true} /> ×{' '}
+            <a href={pathTo(`stones/${stoneById(pair.stoneId)?.slug || ''}/`)}>
+              <span class="pair-name">{pair.name}</span>
+            </a>
+          </h3>
+          <p>
+            <StoneNameText
+              text={pair.description}
+              enabled={true}
+              extended={true}
+            />
+          </p>
+        </div>
+      ))}
+    </div>
+    <h3>
+      {['s047', 's084'].includes(stone.id)
+        ? '組み合わせで気をつけたい石'
+        : titles.caution}
+    </h3>
+    {editorial.parts.caution.map((line) => (
+      <p>
+        <StoneNameText text={line} enabled={true} extended={true} />
+      </p>
+    ))}
+  </>
+) : (
+  <>
+    {showHeading && (
+      <SectionHeading>
+        {titles[part].includes('｜') ? (
+          <ManuscriptHeading text={titles[part]} />
+        ) : (
+          <StoneNameText text={titles[part]} enabled={true} extended={true} />
+        )}
+      </SectionHeading>
+    )}
+    {part === 'story' && (
+      <>
+        <p class="editorial-title">
+          <StoneNameText
+            text={editorial.title}
+            enabled={true}
+            extended={true}
+          />
+        </p>
+        <p class="editorial-english">{editorial.english}</p>
+        <p class="editorial-catchphrase">{editorial.catchphrase}</p>
+        <p>
+          <strong>象徴するキーワード：</strong>
+          <StoneNameText
+            text={editorial.keywords}
+            enabled={true}
+            extended={true}
+          />
+        </p>
+      </>
+    )}
+    {['story', 'spirit'].includes(part) &&
+      sections.map((section) => (
+        <ManuscriptBody
+          section={section}
+          protectStoneNames={true}
+          extendedStoneNames={true}
+        />
+      ))}
+    {part === 'nature' && tableLines.length > 0 && (
+      <dl class="fact-list">
+        {tableLines.map(([key, value]) => (
+          <div>
+            <dt>{key}</dt>
+            <dd>
+              <StoneNameText text={value} enabled={true} extended={true} />
+            </dd>
+          </div>
+        ))}
+        {[
+          ['素材の補足', stone.mineral],
+          ['組成・硬度の補足', stone.compositionHardness || stone.hardness],
+          ['特徴・色や模様', stone.characteristics],
+          ['内包物・模様', stone.inclusions],
+        ]
+          .filter(([, value]) => value?.trim())
+          .map(([key, value]) => (
+            <div>
+              <dt>{key}</dt>
+              <dd>
+                <StoneNameText text={value} enabled={true} extended={true} />
+              </dd>
+            </div>
+          ))}
+        {stone.colors.length > 0 && (
+          <div>
+            <dt>代表色</dt>
+            <dd>{stone.colors.join('・')}（個体により異なります）</dd>
+          </div>
+        )}
+        <div>
+          <dt>個体の産地・処理</dt>
+          <dd>
+            個々の商品の産地や処理は、販売表示や鑑別情報でご確認ください。
+          </dd>
+        </div>
+      </dl>
+    )}
+    {part === 'wishes' ? (
+      <ul class="manuscript-wishes">
+        {lines.map((line) => (
+          <li>
+            <StoneNameText
+              text={line.replace(/^\*\s*/, '')}
+              enabled={true}
+              extended={true}
+            />
+          </li>
+        ))}
+        {legacyWishes
+          .filter((text) => !lines.some((l) => l.includes(text)))
+          .map((text) => (
+            <li>
+              <StoneNameText text={text} enabled={true} extended={true} />
+            </li>
+          ))}
+      </ul>
+    ) : (
+      body.map((line) =>
+        isSubheading(line) && part !== 'message' && part !== 'care' ? (
+          <h3>
+            <StoneNameText text={line} enabled={true} extended={true} />
+          </h3>
+        ) : (
+          <p>
+            <StoneNameText text={line} enabled={true} extended={true} />
+          </p>
+        ),
+      )
+    )}
+    {!['story', 'spirit'].includes(part) &&
+      sections.map((section) => (
+        <ManuscriptBody
+          section={section}
+          protectStoneNames={true}
+          extendedStoneNames={true}
+        />
+      ))}
+    {part === 'message' && (
+      <p class="editorial-signature">ALMÉA GEM｜天然石の意味と物語</p>
+    )}
+  </>
+)}
+<style>
+  .editorial-pairings {
+    display: grid;
+    gap: 24px;
+  }
+  .editorial-pair {
+    border-left: 2px solid #e5d4c7;
+    padding-left: 16px;
+    min-width: 0;
+  }
+  .editorial-pair h3 {
+    line-height: 1.65;
+  }
+  .pair-name {
+    display: inline-block;
+    white-space: nowrap;
+  }
+  .editorial-catchphrase {
+    font-family: var(--heading-font);
+  }
+</style>

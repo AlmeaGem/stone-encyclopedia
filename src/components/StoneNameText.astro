@@ -1,0 +1,67 @@
+---
+import rawStones from '../content/stones.json';
+const {
+  text,
+  enabled = false,
+  extended = false,
+} = Astro.props as { text: string; enabled?: boolean; extended?: boolean };
+const baseNames = [
+  'アクアマリン',
+  'アベンチュリン',
+  'アマゾナイト',
+  'アメジスト',
+  'アラゴナイト',
+  'ブルーレースアゲート',
+  'シーブルーカルセドニー',
+  'スモーキークォーツ',
+  'ラブラドライト',
+  'マザーオブパール',
+];
+const extraNames = [
+  'レッドルチルクォーツ',
+  'クリスタルクォーツ',
+  'ローズクォーツ',
+  'ルチルクォーツ',
+  'タイガーアイ',
+  'サンストーン',
+  'チャロアイト',
+  'スギライト',
+  'ジェダイト',
+  'シトリン',
+  'ジャスパー',
+  'セラフィナイト',
+  'ソーダライト',
+  'ターコイズ',
+];
+const catalogNames = rawStones
+  .filter((stone) => stone.status === 'published')
+  .map((stone) => stone.name)
+  .filter((name) => name.length >= 4 && name.length <= 15);
+const names = new Set(
+  extended ? [...baseNames, ...extraNames, ...catalogNames] : baseNames,
+);
+const escapeRegex = (name: string) =>
+  name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const pattern = new RegExp(
+  `(${[...names]
+    .sort((a, b) => b.length - a.length)
+    .map(escapeRegex)
+    .join('|')})`,
+  'g',
+);
+const pieces = enabled ? text.split(pattern).filter(Boolean) : [text];
+---
+
+{pieces.map((piece) =>
+  enabled && names.has(piece) ? (
+    <span class="protected-stone-name">{piece}</span>
+  ) : (
+    piece
+  ),
+)}
+<style>
+  .protected-stone-name {
+    display: inline-block;
+    white-space: nowrap;
+  }
+</style>
