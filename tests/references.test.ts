@@ -7,7 +7,7 @@ it('keeps migration notes internally while excluding them from all 210 public re
   const stones = validateCatalog(
     JSON.parse(readFileSync('src/content/stones.json', 'utf8')),
   );
-  expect(stones).toHaveLength(210);
+  expect(stones).toHaveLength(211);
   for (const stone of stones) {
     const before = JSON.stringify(stone);
     expect(

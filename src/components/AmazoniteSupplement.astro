@@ -1,0 +1,125 @@
+---
+import { pathTo } from '../lib/urls';
+const { part } = Astro.props as { part: 'meaning' | 'pairings' | 'mineral' | 'care' };
+---
+{part === 'meaning' && <div class="supplement">
+  <header class="supplement-intro"><p class="eyebrow">AMAZONITE — THE STONE OF HOPE</p><p><em>自分の可能性を信じ、希望に満ちた未来を切り開く。</em></p></header>
+  <section class="section"><h2>スピリチュアルな意味・象徴</h2>
+    <article class="card"><h3>希望を呼び覚ます「ホープストーン」</h3>
+      <p><span class="stone-name">アマゾナイト</span>は、古くから希望や可能性を象徴する石として親しまれ、「ホープストーン」という愛称でも知られています。</p>
+      <p>澄んだ青緑色は、広い空や穏やかな水辺を思わせ、閉ざされていた心に新しい風を運ぶような神秘的な魅力を持っています。</p>
+      <p>思うように物事が進まないときや、自分の可能性を信じられなくなったとき。</p>
+      <p><span class="stone-name">アマゾナイト</span>は、まだ見ぬ未来への希望を思い出させ、自分らしい一歩を踏み出す勇気を象徴する石です。</p>
+    </article>
+    <article class="card"><h3>本来の自信を取り戻す</h3>
+      <p><span class="stone-name">アマゾナイト</span>は、自信の回復や自己表現を象徴する天然石です。</p>
+      <p>周囲と自分を比べてしまったり、誰かの言葉によって自信を失ってしまったりしたときに、本来の自分の魅力を思い出すためのお守りとして選ばれています。</p>
+      <p>自分にはできないと思い込んでいたことも、見方を変えれば新しい可能性につながるかもしれません。</p>
+      <p><span class="stone-name">アマゾナイト</span>は、自分自身の価値を認め、内側に眠る力を信じることをテーマにした石です。</p>
+    </article>
+    <article class="card"><h3>願望実現と新しい可能性</h3>
+      <p><span class="stone-name">アマゾナイト</span>には、希望を現実へとつなげるという象徴的な意味があります。</p>
+      <p>願いを心に描くだけでなく、その願いに向かって行動を起こすこと。</p>
+      <p>自分の未来を自分自身の手で選び取り、理想へと近づいていくこと。</p>
+      <p><span class="stone-name">アマゾナイト</span>は、そんな願望実現への前向きなエネルギーを象徴する石として親しまれています。</p>
+      <p>特に、新しい仕事への挑戦、夢の実現、人生の方向転換など、これまでとは違う未来を望むときのお守りとしておすすめです。</p>
+    </article>
+    <article class="card"><h3>心の声に耳を傾ける</h3>
+      <p><span class="stone-name">アマゾナイト</span>は、自分の本当の気持ちに気づき、それを素直に表現することを象徴する石でもあります。</p>
+      <p>周囲の期待に応えようとするあまり、自分が何を望んでいるのか分からなくなることもあるかもしれません。</p>
+      <p>そんなときに大切なのは、他人の評価ではなく、自分自身の心の声に耳を傾けることです。</p>
+      <p><span class="stone-name">アマゾナイト</span>は、自分の願いや価値観を大切にし、自然体で生きることを思い出させてくれる石です。</p>
+    </article>
+  </section>
+  <section class="section"><h2>恋愛・仕事・金運・人間関係との関係</h2>
+    <article class="card"><h3><span class="label">恋愛運</span>自分らしい魅力と素直な愛情</h3>
+      <p><span class="stone-name">アマゾナイト</span>は、恋愛において自信や素直な自己表現を象徴する石です。</p>
+      <p>相手にどう思われるかを気にしすぎるのではなく、自分らしい魅力を大切にすること。</p>
+      <p>自分の気持ちを正直に伝え、無理のない関係を築いていくことをテーマにしています。</p>
+      <p>新しい恋愛に踏み出したいときや、過去の経験から自信を失ってしまったときにも、希望を象徴するお守りとして選ばれています。</p>
+    </article>
+    <article class="card"><h3><span class="label">仕事運</span>挑戦する勇気と可能性の開花</h3>
+      <p><span class="stone-name">アマゾナイト</span>は、新しい挑戦や目標達成を象徴する天然石です。</p>
+      <p>これまで経験したことのない仕事に挑戦するときや、自分の能力を発揮したいときに、前向きな行動を後押しする石として親しまれています。</p>
+      <p>失敗を恐れるよりも、自分の可能性を信じること。</p>
+      <p><span class="stone-name">アマゾナイト</span>は、未来を切り開く勇気と、自分らしい才能を表現することをテーマにした石です。</p>
+    </article>
+    <article class="card"><h3><span class="label">金運</span>豊かさを受け取る可能性</h3>
+      <p><span class="stone-name">アマゾナイト</span>は、希望やチャンス、新しい可能性を象徴する石です。</p>
+      <p>金運においては、これまで気づかなかった機会に目を向け、自分の才能や行動を豊かさにつなげることをテーマにしています。</p>
+      <p>新しい仕事や事業、収入の可能性を広げたいときにも、未来への希望を象徴するお守りとして取り入れられています。</p>
+    </article>
+    <article class="card"><h3><span class="label">人間関係</span>自信を持って自分を表現する</h3>
+      <p><span class="stone-name">アマゾナイト</span>は、自分の気持ちを素直に伝え、周囲との調和を大切にする石としても知られています。</p>
+      <p>相手を尊重しながら、自分の意見も大切にすること。</p>
+      <p>無理に周囲へ合わせるのではなく、自然体で人と向き合うこと。</p>
+      <p>そんな、自信と優しさのバランスを象徴する天然石です。</p>
+    </article>
+  </section>
+</div>}
+{part === 'pairings' && <div class="supplement pairings"><h3>おすすめの天然石の組み合わせ4選</h3>
+  <article class="card"><h4><span class="stone-name">アマゾナイト</span> × <a class="stone-name" href={pathTo('stones/smoky-quartz/')}>スモーキークォーツ</a></h4><p class="keywords">願望実現・不安の解放・行動力</p>
+    <p><span class="stone-name">スモーキークォーツ</span>は、心の安定や地に足のついた行動を象徴する石です。</p>
+    <p><span class="stone-name">アマゾナイト</span>が持つ希望の象徴と組み合わせることで、不安にとらわれず、理想の未来へ向かって一歩を踏み出すことをテーマにしたお守りになります。</p>
+    <p>夢を現実へ近づけたいときや、新しい挑戦に勇気が欲しいときにおすすめの組み合わせです。</p>
+  </article>
+  <article class="card"><h4><span class="stone-name">アマゾナイト</span> × <a class="stone-name" href={pathTo('stones/turquoise/')}>ターコイズ</a></h4><p class="keywords">幸運・チャンス・新しい可能性</p>
+    <p><span class="stone-name">ターコイズ</span>は、旅のお守りや幸運を象徴する石として古くから親しまれています。</p>
+    <p><span class="stone-name">アマゾナイト</span>と組み合わせることで、新しいチャンスを受け入れ、自分の可能性を広げることをテーマにしたお守りになります。</p>
+    <p>新しい環境へ進むときや、人生の転機を迎えるときにおすすめです。</p>
+  </article>
+  <article class="card"><h4><span class="stone-name">アマゾナイト</span> × <a class="stone-name" href={pathTo('stones/labradorite/')}>ラブラドライト</a></h4><p class="keywords">潜在能力・才能の開花・未来への扉</p>
+    <p><span class="stone-name">ラブラドライト</span>は、直感や潜在能力、変化を象徴する天然石です。</p>
+    <p><span class="stone-name">アマゾナイト</span>が象徴する希望と組み合わせることで、まだ気づいていない自分の才能を見つけ、可能性を広げることをテーマにしたお守りになります。</p>
+    <p>新しい才能を発揮したいときや、自分の強みを見つけたいときにおすすめです。</p>
+  </article>
+  <article class="card"><h4><span class="stone-name">アマゾナイト</span> × <a class="stone-name" href={pathTo('stones/larimar/')}>ラリマー</a></h4><p class="keywords">心の平穏・希望・未来への期待</p>
+    <p><span class="stone-name">ラリマー</span>は、穏やかな愛情や心の平穏を象徴する天然石です。</p>
+    <p><span class="stone-name">アマゾナイト</span>と組み合わせることで、焦らず自分のペースを大切にしながら、未来への希望を育むことをテーマにしたお守りになります。</p>
+    <p>心を穏やかに保ちながら、新しい可能性を受け入れたい方におすすめです。</p>
+  </article>
+</div>}
+{part === 'mineral' && <div class="supplement text"><h3><span class="stone-name">アマゾナイト</span>の鉱物としての特徴</h3>
+  <dl class="facts"><div><dt>鉱物名</dt><dd>微斜長石（マイクロクリン）の一種</dd></div><div><dt>鉱物グループ</dt><dd>長石グループ</dd></div><div><dt>化学組成</dt><dd>KAlSi₃O₈</dd></div><div><dt>主な色</dt><dd>青緑色・緑色・淡いブルーグリーン</dd></div><div><dt>モース硬度</dt><dd>6〜6.5</dd></div><div><dt>結晶系</dt><dd>三斜晶系</dd></div><div><dt>主な産地</dt><dd>ロシア、ブラジル、マダガスカル、アメリカなど</dd></div><div><dt>特徴</dt><dd>青緑色の発色、白い縞模様、個体によって異なる色合い</dd></div></dl>
+  <p><span class="stone-name">アマゾナイト</span>は、長石グループに属する微斜長石の一種です。</p>
+  <p>鮮やかな青緑色から淡いグリーンまで幅広い色合いを持ち、白い縞模様や斑状の模様が見られるものもあります。</p>
+  <p>産地によって色や模様が異なり、ロシア産のものには独特の白い模様が見られることがあります。</p>
+  <p>また、<span class="stone-name">アマゾナイト</span>は<span class="stone-name">ターコイズ</span>と色合いが似ている場合がありますが、鉱物としては異なる天然石です。</p>
+</div>}
+{part === 'care' && <div class="supplement">
+  <section class="section"><h2><span class="stone-name">アマゾナイト</span>のおすすめの取り入れ方</h2>
+    <article class="card"><h3>新しい挑戦のお守りに</h3><p>新しい仕事や目標に向かって進むときに、<span class="stone-name">アマゾナイト</span>を身につける方法があります。</p><p>希望や可能性を象徴する石として、自分の目標を思い出すきっかけになります。</p></article>
+    <article class="card"><h3>デスクや仕事場に飾る</h3><p><span class="stone-name">アマゾナイト</span>の爽やかな青緑色は、空間に明るく清々しい印象を与えてくれます。</p><p>仕事や勉強の場所に飾り、前向きな気持ちで目標に向き合う象徴として楽しめます。</p></article>
+    <article class="card"><h3>お手入れ</h3><p><span class="stone-name">アマゾナイト</span>は衝撃や急激な温度変化に注意が必要な天然石です。</p><p>柔らかい布で優しく拭き取り、硬い宝石とぶつからないように保管してください。</p></article>
+  </section>
+  <section class="closing"><h2><span class="stone-name">アマゾナイト</span>を選ぶあなたへ</h2>
+    <p><strong>あなたの未来には、まだ気づいていない可能性が眠っています。</strong></p>
+    <p>思うように進まない日があっても、今の自分だけで未来のすべてが決まるわけではありません。</p>
+    <p>自信を失ってしまったときこそ、自分自身の魅力や才能を思い出してください。</p>
+    <p>希望とは、すべてが順調なときだけに生まれるものではありません。</p>
+    <p>迷いや不安の中でも、もう一度前へ進もうとする心の中に生まれるものです。</p>
+    <p><span class="stone-name">アマゾナイト</span>の美しい青緑色が、あなたの心に眠る希望を呼び覚まし、新しい未来へ進む勇気を照らしてくれますように。</p>
+    <p><em>ALMÉA GEM｜天然石の意味と物語</em></p>
+  </section>
+</div>}
+<style>
+  .supplement { color: #514741; }
+  .supplement-intro { margin: 32px 0; padding: 18px 20px; border-left: 3px solid #81b8b0; background: #f1f8f6; }
+  .section { margin: 32px 0; }
+  .section h2, .closing h2 { font-size: clamp(20px, 2vw, 26px); line-height: 1.5; margin: 0 0 20px; border-left: 3px solid #81b8b0; padding-left: 13px; }
+  .card { margin: 0 0 14px; padding: 19px 21px; border: 1px solid #d2e7e2; border-radius: 12px; background: #f5faf8; }
+  .card h3, .card h4, .text h3 { margin: 0 0 12px; font-size: 16px; line-height: 1.55; color: #4c6d69; }
+  .supplement p { font-size: 15px; line-height: 1.9; margin: 0 0 12px; overflow-wrap: break-word; word-break: normal; }
+  .card p:last-child, .text p:last-child, .closing p:last-child { margin-bottom: 0; }
+  .pairings { margin-top: 28px; }
+  .pairings > h3 { margin: 0 0 15px; font-size: 18px; line-height: 1.5; }
+  .keywords, .label { display: inline-block; padding: 4px 9px; border-radius: 5px; background: #dcefeb; color: #426762; font-size: 13px !important; }
+  .label { display: table; margin-bottom: 8px; }
+  .stone-name { display: inline-block; white-space: nowrap; }
+  .text { margin: 28px 0 8px; }
+  .facts { margin: 0 0 18px; border-top: 1px solid #d9e6e2; }
+  .facts > div { display: grid; grid-template-columns: minmax(95px, .35fr) minmax(0, 1fr); gap: 12px; padding: 10px 0; border-bottom: 1px solid #d9e6e2; }
+  .facts dt { font-weight: 600; } .facts dd { min-width: 0; margin: 0; overflow-wrap: anywhere; }
+  .closing { margin: 28px 0; padding: 22px; border-top: 1px solid #c8a979; border-radius: 10px; background: #eaf5f1; }
+  @media (max-width: 640px) { .card, .closing { padding: 16px; } .supplement p { font-size: 14px; } .card h4 { display: flex; flex-wrap: wrap; gap: 0 4px; } }
+</style>

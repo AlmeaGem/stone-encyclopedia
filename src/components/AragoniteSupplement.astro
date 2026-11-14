@@ -1,0 +1,122 @@
+---
+import { pathTo } from '../lib/urls';
+const { part } = Astro.props as { part: 'meaning' | 'pairings' | 'mineral' | 'care' };
+---
+{part === 'meaning' && <div class="supplement">
+  <header class="intro"><p class="eyebrow">ARAGONITE — THE STONE OF CHARM &amp; CONNECTION</p><p><em>あなた本来の魅力を輝かせ、幸運なご縁を呼び込む。</em></p></header>
+  <section class="section"><h2>スピリチュアルな意味・象徴</h2>
+    <article class="card"><h3>自然体の魅力で、人を惹きつける</h3>
+      <p><span class="stone-name">アラゴナイト</span>は、人気運や人間関係の調和、温かなつながりを象徴する天然石です。</p>
+      <p>優しいイエローやクリーム色の<span class="stone-name">アラゴナイト</span>は、柔らかな太陽の光を思わせる、明るく穏やかな雰囲気を持っています。</p>
+      <p>スピリチュアルな世界では、持ち主の魅力を自然に引き出し、人との出会いや交流を豊かにする石として親しまれています。</p>
+      <p>無理に自分を大きく見せたり、周囲の期待に合わせたりする必要はありません。</p>
+      <p><span class="stone-name">アラゴナイト</span>が象徴するのは、飾らない自分自身の魅力が輝くことで生まれる、人との温かなつながりです。</p>
+    </article>
+    <article class="card"><h3>人気運を高め、幸運なご縁を広げる</h3>
+      <p><span class="stone-name">アラゴナイト</span>は、人気運を象徴する石として紹介されることがあります。</p>
+      <p>新しい友人や仲間との出会い、仕事での人脈、周囲との信頼関係など、人とのつながりを豊かにしたいときのお守りとして選ばれています。</p>
+      <p>特に、初対面の人と接する機会が多い方や、周囲との交流を広げたい方におすすめです。</p>
+      <p><span class="stone-name">アラゴナイト</span>は、親しみやすさや温かな雰囲気を大切にしながら、自然と人が集まるような魅力を象徴しています。</p>
+    </article>
+    <article class="card"><h3>プレッシャーを手放し、心を軽やかにする</h3>
+      <p><span class="stone-name">アラゴナイト</span>は、緊張やプレッシャーから心を解放し、穏やかな気持ちを取り戻すことを象徴する石です。</p>
+      <p>思いどおりに物事を進めようと頑張りすぎてしまうときや、周囲からの期待に応えようとして心が疲れてしまうとき。</p>
+      <p><span class="stone-name">アラゴナイト</span>は、すべてを自分で抱え込まず、自然な流れに身を任せることの大切さを思い出させてくれる石です。</p>
+      <p>肩の力を抜くことで、これまで気づかなかった出会いや可能性が見えてくるかもしれません。</p>
+    </article>
+    <article class="card"><h3>思いやりと優しさを育む</h3>
+      <p><span class="stone-name">アラゴナイト</span>は、優しさや思いやり、人との調和を象徴する天然石でもあります。</p>
+      <p>相手の気持ちに寄り添いながら、自分自身も穏やかでいること。</p>
+      <p>人との関係を無理に変えようとするのではなく、温かな気持ちで向き合うこと。</p>
+      <p>そんな、心地よい人間関係を育む石として親しまれています。</p>
+    </article>
+  </section>
+  <section class="section"><h2>恋愛・仕事・金運・人間関係との関係</h2>
+    <article class="card"><h3><span class="label">恋愛運</span>親しみやすさと自然な魅力</h3>
+      <p><span class="stone-name">アラゴナイト</span>は、恋愛において自然体の魅力や親しみやすさを象徴する石です。</p>
+      <p>好きな人の前で緊張してしまうときや、自分らしく振る舞えなくなるときに、穏やかな気持ちで向き合うためのお守りとして選ばれています。</p>
+      <p>無理に相手の理想に合わせるのではなく、自分らしい魅力を大切にすること。</p>
+      <p><span class="stone-name">アラゴナイト</span>は、自然な笑顔や温かな雰囲気から生まれる恋愛のご縁を象徴しています。</p>
+    </article>
+    <article class="card"><h3><span class="label">仕事運</span>人脈と信頼を広げる</h3>
+      <p><span class="stone-name">アラゴナイト</span>は、人との交流や人気運を象徴する石として、仕事のお守りにもおすすめです。</p>
+      <p>接客、営業、販売、広報など、人とのつながりが大切な場面で、親しみやすさや信頼関係を育むことをテーマにしています。</p>
+      <p>新しい人脈を広げたいときや、周囲との協力関係を大切にしたいときにも選ばれています。</p>
+    </article>
+    <article class="card"><h3><span class="label">金運</span>人との縁から広がる豊かさ</h3>
+      <p><span class="stone-name">アラゴナイト</span>は、人とのつながりや新しい機会を象徴する天然石です。</p>
+      <p>金運においては、人脈や信頼関係を通じて、仕事や豊かさの可能性を広げていくことをテーマにしています。</p>
+      <p>自分の魅力や才能を自然に表現することで、新しいチャンスに出会うことを願うお守りとして親しまれています。</p>
+    </article>
+    <article class="card"><h3><span class="label">人間関係</span>自然と人が集まる温かな魅力</h3>
+      <p><span class="stone-name">アラゴナイト</span>が特に象徴するのは、人間関係と人気運です。</p>
+      <p>友人や仲間とのつながりを広げたいとき、周囲との関係を穏やかにしたいときに選ばれています。</p>
+      <p>相手を思いやる気持ちと、自分自身を大切にする心。</p>
+      <p>その両方を持ちながら、人とのご縁を温かく育むことを象徴する石です。</p>
+    </article>
+  </section>
+</div>}
+{part === 'pairings' && <div class="supplement pairings"><h3>おすすめの天然石の組み合わせ4選</h3>
+  <article class="card"><h4><span class="stone-name">アラゴナイト</span> × <a class="stone-name" href={pathTo('stones/aventurine/')}>アベンチュリン</a></h4><p class="keywords">心の癒やし・自然体の魅力・穏やかな人間関係</p>
+    <p><span class="stone-name">アベンチュリン</span>は、心の安定や休息、穏やかな癒やしを象徴する天然石です。</p>
+    <p><span class="stone-name">アラゴナイト</span>と組み合わせることで、無理をせず自然体で人と向き合い、心地よい関係を育むことをテーマにしたお守りになります。</p>
+  </article>
+  <article class="card"><h4><span class="stone-name">アラゴナイト</span> × <a class="stone-name" href={pathTo('stones/chalcedony/')}>カルセドニー</a></h4><p class="keywords">人との絆・信頼・コミュニケーション</p>
+    <p><span class="stone-name">カルセドニー</span>は、穏やかな対話や人とのつながりを象徴する天然石です。</p>
+    <p><span class="stone-name">アラゴナイト</span>と組み合わせることで、人と人をつなぐ架け橋のような意味を持つ組み合わせとして親しまれています。</p>
+    <p>新しい出会いや信頼関係を大切にしたい方におすすめです。</p>
+  </article>
+  <article class="card"><h4><span class="stone-name">アラゴナイト</span> × <a class="stone-name" href={pathTo('stones/mother-of-pearl/')}>マザーオブパール</a></h4><p class="keywords">温かな愛情・包容力・人とのご縁</p>
+    <p><span class="stone-name">マザーオブパール</span>は、優しさや包容力、温かな愛情を象徴する素材です。</p>
+    <p><span class="stone-name">アラゴナイト</span>と組み合わせることで、周囲との関係を穏やかに育み、人とのつながりを大切にするお守りになります。</p>
+    <p>家族や友人との絆を深めたい方にもおすすめです。</p>
+  </article>
+  <article class="card"><h4><span class="stone-name">アラゴナイト</span> × <a class="stone-name" href={pathTo('stones/rose-quartz/')}>ローズクォーツ</a></h4><p class="keywords">人気運・愛情・魅力の開花</p>
+    <p><span class="stone-name">ローズクォーツ</span>は、愛情や美しさ、魅力を象徴する天然石です。</p>
+    <p><span class="stone-name">アラゴナイト</span>と組み合わせることで、自然体の魅力を引き出し、人との温かなご縁を育むことをテーマにしたお守りになります。</p>
+    <p>恋愛運や人気運を大切にしたい方におすすめです。</p>
+  </article>
+</div>}
+{part === 'mineral' && <div class="supplement text"><h3><span class="stone-name">アラゴナイト</span>の鉱物としての特徴</h3>
+  <dl class="facts"><div><dt>鉱物名</dt><dd>霰石（アラゴナイト）</dd></div><div><dt>化学組成</dt><dd>CaCO₃</dd></div><div><dt>鉱物グループ</dt><dd>炭酸塩鉱物</dd></div><div><dt>主な色</dt><dd>白色・黄色・褐色・青色など</dd></div><div><dt>モース硬度</dt><dd>3.5〜4</dd></div><div><dt>結晶系</dt><dd>斜方晶系</dd></div><div><dt>主な産地</dt><dd>スペイン、モロッコ、メキシコなど</dd></div><div><dt>特徴</dt><dd>多彩な色合い、放射状・柱状などの結晶形態</dd></div></dl>
+  <p><span class="stone-name">アラゴナイト</span>は、炭酸カルシウムを主成分とする天然石です。</p>
+  <p><span class="stone-name">カルサイト</span>と同じ化学組成を持ちますが、結晶構造が異なる鉱物として知られています。</p>
+  <p>黄色やクリーム色のものがよく流通していますが、白色、褐色、青色など、さまざまな色合いがあります。</p>
+  <p>結晶の形状にも個性があり、柱状や放射状の結晶、丸い集合体など、さまざまな姿で産出します。</p>
+</div>}
+{part === 'care' && <div class="supplement">
+  <section class="section"><h2><span class="stone-name">アラゴナイト</span>のおすすめの取り入れ方</h2>
+    <article class="card"><h3>人との交流が多い日のお守りに</h3><p>初対面の人と会う日や、新しい環境へ進むときに、<span class="stone-name">アラゴナイト</span>を身につける方法があります。</p><p>人気運や人とのご縁を象徴する石として、自分らしい魅力を大切にするお守りになります。</p></article>
+    <article class="card"><h3>デスクや玄関に飾る</h3><p><span class="stone-name">アラゴナイト</span>の柔らかな色合いは、空間に温かな印象を与えてくれます。</p><p>人とのつながりを大切にしたい場所や、明るい雰囲気を楽しみたい空間に飾るのもおすすめです。</p></article>
+    <article class="card"><h3>お手入れ</h3><p><span class="stone-name">アラゴナイト</span>は比較的柔らかく、衝撃や傷に注意が必要な天然石です。</p><p>長時間の水への浸漬や、酸性の洗剤などとの接触を避けてください。</p><p>柔らかい布で優しく拭き取り、直射日光や高温多湿を避けて保管することをおすすめします。</p></article>
+  </section>
+  <section class="closing"><h2><span class="stone-name">アラゴナイト</span>を選ぶあなたへ</h2>
+    <p><strong>あなたが自然体で輝くとき、その魅力は周囲の人にも伝わっていきます。</strong></p>
+    <p>誰かに好かれようと無理をしたり、すべてを自分の思いどおりに進めようとしたりする必要はありません。</p>
+    <p>あなたらしい優しさや温かさこそが、人とのご縁を育む大切な魅力です。</p>
+    <p>肩の力を抜き、自分自身の心に余裕を持つことで、新しい出会いや可能性が広がっていくかもしれません。</p>
+    <p><span class="stone-name">アラゴナイト</span>の柔らかな輝きが、あなたの魅力を照らし、温かなご縁と幸運を運んでくれますように。</p>
+    <p><em>ALMÉA GEM｜天然石の意味と物語</em></p>
+  </section>
+</div>}
+<style>
+  .supplement { color: #514741; }
+  .intro { margin: 32px 0; padding: 18px 20px; border-left: 3px solid #ccb77c; background: #fbf8ed; }
+  .section { margin: 32px 0; }
+  .section h2, .closing h2 { font-size: clamp(20px, 2vw, 26px); line-height: 1.5; margin: 0 0 20px; border-left: 3px solid #ccb77c; padding-left: 13px; }
+  .card { margin: 0 0 14px; padding: 19px 21px; border: 1px solid #eee4ce; border-radius: 12px; background: #fdfaf2; }
+  .card h3, .card h4, .text h3 { margin: 0 0 12px; font-size: 16px; line-height: 1.55; color: #76694d; }
+  .supplement p { font-size: 15px; line-height: 1.9; margin: 0 0 12px; overflow-wrap: break-word; word-break: normal; }
+  .card p:last-child, .text p:last-child, .closing p:last-child { margin-bottom: 0; }
+  .pairings { margin-top: 28px; }
+  .pairings > h3 { margin: 0 0 15px; font-size: 18px; line-height: 1.5; }
+  .keywords, .label { display: inline-block; padding: 4px 9px; border-radius: 5px; background: #f5ecd4; color: #6f6043; font-size: 13px !important; }
+  .label { display: table; margin-bottom: 8px; }
+  .stone-name { display: inline-block; white-space: nowrap; }
+  .text { margin: 28px 0 8px; }
+  .facts { margin: 0 0 18px; border-top: 1px solid #e9dfca; }
+  .facts > div { display: grid; grid-template-columns: minmax(95px, .35fr) minmax(0, 1fr); gap: 12px; padding: 10px 0; border-bottom: 1px solid #e9dfca; }
+  .facts dt { font-weight: 600; } .facts dd { min-width: 0; margin: 0; overflow-wrap: anywhere; }
+  .closing { margin: 28px 0; padding: 22px; border-top: 1px solid #c8a979; border-radius: 10px; background: #f8f3e5; }
+  @media (max-width: 640px) { .card, .closing { padding: 16px; } .supplement p { font-size: 14px; } .card h4 { display: flex; flex-wrap: wrap; gap: 0 4px; } }
+</style>

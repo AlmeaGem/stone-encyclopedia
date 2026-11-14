@@ -1,16 +1,21 @@
-import { approvedManuscript } from '../../src/lib/approved-manuscripts';
+import {
+  approvedManuscript,
+  manuscriptPairings,
+} from '../../src/lib/approved-manuscripts';
+import editorialData from '../../src/content/editorial-13.json' with { type: 'json' };
 import { approvedText } from '../helpers/approved-text';
 import { publicStone } from '../../src/lib/public-stone';
 import { test, expect } from '@playwright/test';
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import sharp from 'sharp';
-const stones = JSON.parse(
+const allStones = JSON.parse(
   await readFile('src/content/stones.json', 'utf8'),
 ).map(publicStone);
+const stones = allStones.slice(0, 210);
 const categories = JSON.parse(
   await readFile('src/content/categories.json', 'utf8'),
 );
-const paths = new Set(stones.map((s: any) => `/stones/${s.slug}/`));
+const paths = new Set(allStones.map((s: any) => `/stones/${s.slug}/`));
 const output = 'test-results/final210';
 
 for (let start = 0; start < stones.length; start += 20) {
@@ -36,7 +41,7 @@ for (let start = 0; start < stones.length; start += 20) {
         `${stone.name}（${stone.english}）の特徴・意味・選び方 | 天然石・パワーストーン大図鑑`,
     );
     expect(new Set(expectedTitles).size).toBe(210);
-    expect(paths.size).toBe(210);
+    expect(paths.size).toBe(211);
     for (const stone of batch) {
       const response = await page.goto(`/stones/${stone.slug}/`);
       expect(response?.status(), stone.id).toBe(200);
@@ -56,16 +61,41 @@ for (let start = 0; start < stones.length; start += 20) {
       await expect(page.locator('#story')).toContainText(
         approvedText(stone.id, '導入・神秘の物語'),
       );
-      const firstPairing = await page
-        .locator('#pairing .manuscript-pairings > p')
-        .first()
-        .textContent();
-      expect(firstPairing?.replace(/\s/g, '')).toContain(
-        approvedText(stone.id, '相性のよい石').replace(/\s/g, ''),
-      );
-      await expect(
-        page.locator('#nature dt').filter({ hasText: /^モース硬度$/ }),
-      ).toHaveCount(0);
+      if (stone.slug in editorialData) {
+        const existingPairs = approvedManuscript(stone.id)
+          .sections.filter((s) => s.kind === 'pairings')
+          .flatMap(manuscriptPairings);
+        for (const pair of existingPairs) {
+          const target = allStones.find(
+            (item: any) => item.id === pair.stoneId,
+          );
+          const card = page
+            .locator('#pairing .editorial-pair')
+            .filter({ has: page.locator(`a[href="/stones/${target.slug}/"]`) });
+          await expect(card, `${stone.id}: ${pair.name}`).toHaveCount(1);
+          await expect(card).toContainText(
+            pair.description.replace(/\*\*/g, ''),
+          );
+        }
+        await expect(
+          page
+            .locator('#nature .fact-list dt')
+            .filter({ hasText: /^モース硬度$/ }),
+        ).toHaveCount(1);
+      } else {
+        const firstPairing = await page
+          .locator('#pairing .manuscript-pairings > p')
+          .first()
+          .textContent();
+        expect(firstPairing?.replace(/\s/g, '')).toContain(
+          approvedText(stone.id, '相性のよい石').replace(/\s/g, ''),
+        );
+        await expect(
+          page
+            .locator('#nature .fact-list dt')
+            .filter({ hasText: /^モース硬度$/ }),
+        ).toHaveCount(0);
+      }
       await expect(page.locator('#story')).toContainText(
         approvedText(stone.id, 'スピリチュアルな意味'),
       );
@@ -107,7 +137,10 @@ for (let start = 0; start < stones.length; start += 20) {
             .filter((h) => h !== '/stones/'),
         );
       for (const href of localStoneLinks)
-        expect(paths.has(href), `${stone.id}: ${href}`).toBe(true);
+        expect(
+          paths.has(href.split('#')[0].split('?')[0]),
+          `${stone.id}: ${href}`,
+        ).toBe(true);
       for (const src of await page
         .locator('img[src]')
         .evaluateAll((nodes) => nodes.map((n) => n.getAttribute('src')!)))
@@ -191,7 +224,7 @@ test('every name and alias is reachable through search and all twelve categories
   await page.goto('/stones/');
   const input = page.getByRole('searchbox', { name: '石名・英語名・別名' });
   let queries = 0;
-  for (const stone of stones) {
+  for (const stone of allStones) {
     for (const query of [stone.name, stone.english, ...stone.aliases]) {
       await input.fill('');
       await input.fill(query);
@@ -216,7 +249,9 @@ test('every name and alias is reachable through search and all twelve categories
   await page.goto('/wishes/');
   await expect(page.locator('.wish-number')).toHaveCount(12);
   for (const category of categories) {
-    const selected = stones.filter((s: any) => s.wishes.includes(category.id));
+    const selected = allStones.filter((s: any) =>
+      s.wishes.includes(category.id),
+    );
     await page.goto('/stones/');
     await page
       .getByRole('combobox', { name: '願いのテーマ', exact: true })

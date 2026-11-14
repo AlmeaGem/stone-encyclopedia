@@ -13,9 +13,9 @@ const stones = validateCatalog(
 );
 it('migrates exactly the 210 stable IDs, with unique English paths and no inventory fields', () => {
   expect(stones.map((s) => s.id)).toEqual(
-    Array.from({ length: 210 }, (_, i) => `s${String(i + 1).padStart(3, '0')}`),
+    Array.from({ length: 211 }, (_, i) => `s${String(i + 1).padStart(3, '0')}`),
   );
-  expect(new Set(stones.map((s) => s.slug)).size).toBe(210);
+  expect(new Set(stones.map((s) => s.slug)).size).toBe(211);
   expect(stones.find((s) => s.id === 's205')?.slug).toBe('rubellite');
   expect(stones.find((s) => s.id === 's206')?.slug).toBe('morganite');
   const text = JSON.stringify(stones);

@@ -10,6 +10,7 @@ export type SearchPolicy = 'candidate' | 'noindex' | 'review' | 'unknown';
 export const searchCandidatePaths: readonly string[] = [
   '',
   'stones/',
+  'find-your-stone/',
   ...stones.map((stone) => `stones/${stone.slug}/`),
   'wishes/',
   ...categories.map((category) => `wishes/${category.id}/`),
@@ -75,8 +76,8 @@ export function validateApprovedSearchPaths(
 
 export const sitemapPaths = validateApprovedSearchPaths(approvedSearchPaths);
 if (
-  searchCandidatePaths.length !== 244 ||
-  sitemapPaths.length !== 244 ||
+  searchCandidatePaths.length !== 246 ||
+  sitemapPaths.length !== 246 ||
   searchCandidatePaths.some((path) => !sitemapPaths.includes(path))
 )
   throw new Error(
@@ -90,7 +91,9 @@ export function robotsForPath(
   approvals: readonly string[] = sitemapPaths,
 ): string {
   const approved = validateApprovedSearchPaths(approvals);
-  return released && approved.includes(path)
+  // Preserve the already published diagnostic page's noindex status, even
+  // though the current published sitemap includes its URL.
+  return released && path !== 'find-your-stone/' && approved.includes(path)
     ? 'index,follow'
     : 'noindex,nofollow';
 }

@@ -62,7 +62,7 @@ test('cloud management: upload, preview, publish, replacement, pause and delete 
   await page.route(admin + '/**', adapter);
   await page.route(api + '/**', adapter);
   await page.goto(admin + '/');
-  await expect(page.locator('#list button')).toHaveCount(210);
+  await expect(page.locator('#list button')).toHaveCount(211);
   await page.getByRole('button', { name: /s001 オブシディアン/ }).click();
   const image = await sharp({
     create: { width: 600, height: 450, channels: 3, background: '#e5bfc5' },

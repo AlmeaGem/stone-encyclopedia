@@ -15,7 +15,7 @@ export const sourceSchema = z
   .strict();
 export const stoneSchema = z
   .object({
-    id: z.string().regex(/^s(00[1-9]|0[1-9][0-9]|1\d\d|20\d|210)$/),
+    id: z.string().regex(/^s(00[1-9]|0[1-9][0-9]|1\d\d|20\d|21[01])$/),
     slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
     name: z.string().trim().min(1).max(150),
     english: z.string().trim().min(1).max(150),
@@ -148,10 +148,10 @@ export const candidateSchema = z
   .strict();
 export type Candidate = z.infer<typeof candidateSchema>;
 export function validateCatalog(input: unknown) {
-  const stones = z.array(stoneSchema).length(210).parse(input);
+  const stones = z.array(stoneSchema).length(211).parse(input);
   if (
-    new Set(stones.map((s) => s.id)).size !== 210 ||
-    new Set(stones.map((s) => s.slug)).size !== 210
+    new Set(stones.map((s) => s.id)).size !== 211 ||
+    new Set(stones.map((s) => s.slug)).size !== 211
   )
     throw new Error('図鑑ID・URLが重複しています');
   for (const s of stones)

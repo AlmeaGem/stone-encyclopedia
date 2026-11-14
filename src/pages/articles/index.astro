@@ -1,32 +1,25 @@
 ---
 import Page from '../../layouts/Page.astro';
-import ArticleCover from '../../components/ArticleCover.astro';
-import ArticleTitle from '../../components/ArticleTitle.astro';
+import JournalCard from '../../components/JournalCard.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import { articles } from '../../lib/content';
-import { pathTo } from '../../lib/urls';
+import '../../journal.css';
 ---
 
 <Page title="天然石の選び方・品質・お手入れの読みもの" path="articles/">
-  <div class="wrap">
+  <div class="journal-page wrap">
     <Breadcrumbs items={[{ name: '読みもの' }]} />
-    <div class="page-intro">
-      <p class="eyebrow">FIELD NOTES</p>
+    <header class="journal-intro">
+      <p class="journal-english">THE GEMSTONE JOURNAL</p>
       <h1>天然石の選び方・基礎知識</h1>
-      <p>ブレスレットの石選びから、長く大切にするお手入れまで。</p>
-    </div>
-    <div class="article-grid">
-      {articles.map((a, i) => (
-        <a class="article-card" href={pathTo(`articles/${a.slug}/`)}>
-          <ArticleCover slug={a.slug} number={i + 1} />
-          <p class="eyebrow">{a.category}</p>
-          <ArticleTitle title={a.title} level="h2" />
-          <p>{a.description}</p>
-          <span class="open-label">
-            記事を読む <span aria-hidden="true">↗</span>
-          </span>
-        </a>
-      ))}
-    </div>
+      <p class="journal-subtitle">石を知るほど、選ぶ楽しさが深まる。</p>
+    </header>
+    <section class="journal-collection" aria-label="読みもの一覧">
+      <div class="journal-grid">
+        {articles.map((article) => (
+          <JournalCard article={article} headingLevel="h2" />
+        ))}
+      </div>
+    </section>
   </div>
 </Page>

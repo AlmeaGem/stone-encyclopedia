@@ -1,0 +1,19 @@
+---
+import { pathTo } from '../lib/urls';
+import type { Stone } from '../lib/schema';
+const { number, stone } = Astro.props as { number: number; stone: Stone };
+const names: Record<number, string> = {
+  1: 'tiger-eye', 2: 'amethyst', 3: 'carnelian', 4: 'smoky-quartz',
+  5: 'rutilated-quartz', 6: 'blue-lace-agate', 7: 'onyx', 8: 'garnet',
+  9: 'aquamarine', 11: 'labradorite', 22: 'jadeite',
+};
+const filename = `guardian-${String(number).padStart(2, '0')}-${names[number]}.png`;
+---
+<div class="cloud-photo-slot guardian-provided-visual">
+  <figure class="stone-figure">
+    <div class="stone-image-frame">
+      <img src={pathTo(`guardian-images/${filename}`)} width="1536" height="1024" loading="lazy" decoding="async" draggable="false" alt={`${stone.name}のイメージ画像`} />
+      <span class="image-impression-label">※ イメージ画像</span>
+    </div>
+  </figure>
+</div>

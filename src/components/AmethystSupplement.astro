@@ -1,0 +1,125 @@
+---
+import { pathTo } from '../lib/urls';
+const { part } = Astro.props as { part: 'meaning' | 'pairings' | 'mineral' | 'care' };
+---
+{part === 'meaning' && <div class="supplement">
+  <header class="intro"><p class="eyebrow">AMETHYST — THE STONE OF SERENITY &amp; HARMONY</p><p><em>心の静けさを取り戻し、あなたを取り巻く縁を美しく整える紫の守護石。</em></p></header>
+  <section class="section"><h2>スピリチュアルな意味・象徴</h2>
+    <article class="card"><h3>心を静め、冷静な判断へ導く</h3>
+      <p><span class="stone-name">アメジスト</span>は、心の平穏や精神的な安定、冷静な判断力を象徴する天然石です。</p>
+      <p>深く澄んだ紫色には、神秘的な静けさと気品が宿るとされ、古くから心を落ち着かせるお守りとして大切にされてきました。</p>
+      <p>感情が揺れ動くときや、周囲の言葉に心を乱されてしまうとき。<span class="stone-name">アメジスト</span>は、目の前の出来事に振り回されず、自分自身の心と向き合うための石として親しまれています。</p>
+      <p>不安や迷いの中でも、本当に大切なものを見失わないこと。</p>
+      <p><span class="stone-name">アメジスト</span>は、そんな内なる静けさと心の強さを象徴する石です。</p>
+    </article>
+    <article class="card"><h3>人間関係を円滑にし、相互理解を深める</h3>
+      <p><span class="stone-name">アメジスト</span>は、人と人との間に生まれる誤解やすれ違いを穏やかに整える石として知られています。</p>
+      <p>相手の言葉や態度に敏感になりすぎてしまうとき、感情的な衝突を避けたいときに、冷静さと理解を象徴するお守りとして選ばれています。</p>
+      <p>相手の気持ちを決めつけるのではなく、言葉の奥にある思いに目を向けること。</p>
+      <p><span class="stone-name">アメジスト</span>は、相手を尊重しながら、自分自身の心も大切にする関係を育む石です。</p>
+    </article>
+    <article class="card"><h3>ネガティブな感情や悪縁から身を守る</h3>
+      <p><span class="stone-name">アメジスト</span>には、浄化や守護、精神的な強さを象徴する意味もあります。</p>
+      <p>人間関係の中で生まれる嫉妬や不安、怒り、疑念など、心を重くする感情から距離を置きたいときのお守りとして親しまれています。</p>
+      <p>また、スピリチュアルな世界では、不要な縁やネガティブな影響を遠ざけ、自分にとって心地よい人間関係を築くための石ともいわれています。</p>
+      <p>大切なのは、周囲の感情に飲み込まれることなく、自分自身の心の軸を保つこと。</p>
+      <p><span class="stone-name">アメジスト</span>は、穏やかさの中にある強さを思い出させてくれる守護石です。</p>
+    </article>
+    <article class="card"><h3>夜の静けさと安らぎを象徴する</h3>
+      <p><span class="stone-name">アメジスト</span>は、夜の時間や休息とも結びつけられる天然石です。</p>
+      <p>一日の終わりに考え事が増えてしまうときや、気持ちを落ち着かせて過ごしたいときに、安らぎを願うお守りとして選ばれています。</p>
+      <p>静かな紫色を眺めながら、自分自身のための時間を大切にすること。</p>
+      <p><span class="stone-name">アメジスト</span>は、心を休ませ、穏やかな明日を迎えるための象徴としても親しまれています。</p>
+    </article>
+  </section>
+  <section class="section"><h2>恋愛・仕事・金運・人間関係との関係</h2>
+    <article class="card"><h3><span class="label">恋愛運</span>信頼と理解で育む愛情</h3>
+      <p><span class="stone-name">アメジスト</span>は、恋愛において誠実な愛情や信頼、相互理解を象徴する石です。</p>
+      <p>相手への不安や疑いが強くなってしまうときに、落ち着いた気持ちで関係を見つめ直すことをテーマにしています。</p>
+      <p>一時的な感情に流されるのではなく、お互いの気持ちを理解し、安心できる関係を育んでいくこと。</p>
+      <p><span class="stone-name">アメジスト</span>は、深い信頼に支えられた愛情を象徴する天然石です。</p>
+    </article>
+    <article class="card"><h3><span class="label">仕事運</span>冷静な判断と集中力</h3>
+      <p><span class="stone-name">アメジスト</span>は、冷静さや思考の整理を象徴する石として親しまれています。</p>
+      <p>重要な判断を求められる場面や、人との調整が必要な仕事において、感情に左右されず落ち着いて向き合うことをテーマにしています。</p>
+      <p>自分の考えを整理し、周囲の意見にも耳を傾けながら、よりよい選択を重ねていくことを象徴する石です。</p>
+    </article>
+    <article class="card"><h3><span class="label">金運</span>誘惑に流されない賢明な選択</h3>
+      <p><span class="stone-name">アメジスト</span>は、冷静な判断や節度を象徴する天然石です。</p>
+      <p>金運においては、目先の誘惑に流されず、自分にとって本当に価値のあるものを見極めることをテーマにしています。</p>
+      <p>衝動的な買い物や焦りからの判断を避け、将来の豊かさにつながる選択を大切にしたいときのお守りとして取り入れられています。</p>
+    </article>
+    <article class="card"><h3><span class="label">人間関係</span>誤解をほどき、穏やかな縁を育む</h3>
+      <p><span class="stone-name">アメジスト</span>が特に象徴するテーマのひとつが、人間関係の調和です。</p>
+      <p>相手の言葉を悪い方向に受け取ってしまったり、すれ違いによって気持ちが離れてしまったりしたときに、冷静さと相互理解を大切にする石として選ばれています。</p>
+      <p>また、自分にとって負担の大きい関係から距離を置き、安心して過ごせる人との縁を育むことも、<span class="stone-name">アメジスト</span>の象徴的な意味です。</p>
+    </article>
+  </section>
+</div>}
+{part === 'pairings' && <div class="supplement pairings"><h3>おすすめの天然石の組み合わせ4選</h3>
+  <article class="card"><h4><span class="stone-name">アメジスト</span> × <a class="stone-name" href={pathTo('stones/ametrine/')}>アメトリン</a></h4><p class="keywords">心の統合・感情の調和・新しい可能性</p>
+    <p><span class="stone-name">アメトリン</span>は、<span class="stone-name">アメジスト</span>の紫色と<span class="stone-name">シトリン</span>の黄色がひとつの結晶に現れる天然石です。</p>
+    <p>異なる色が美しく共存する姿から、相反する感情や価値観の調和を象徴するとされています。</p>
+    <p><span class="stone-name">アメジスト</span>と組み合わせることで、心のバランスを整えながら、新しい可能性を受け入れることをテーマにしたお守りになります。</p>
+  </article>
+  <article class="card"><h4><span class="stone-name">アメジスト</span> × <a class="stone-name" href={pathTo('stones/black-onyx/')}>オニキス</a></h4><p class="keywords">魔除け・悪縁の解放・精神的な守護</p>
+    <p><span class="stone-name">オニキス</span>は、強い守護や邪気払い、意志の強さを象徴する天然石です。</p>
+    <p><span class="stone-name">アメジスト</span>の冷静さと組み合わせることで、周囲のネガティブな影響に振り回されず、自分自身の心を守ることをテーマにしたお守りになります。</p>
+    <p>人間関係を見直したいときや、新しい環境へ進むときにおすすめの組み合わせです。</p>
+    <p class="link-note">図鑑ではブラックオニキスのページをご案内します。</p>
+  </article>
+  <article class="card"><h4><span class="stone-name">アメジスト</span> × <a class="stone-name" href={pathTo('stones/blue-lace-agate/')}>ブルーレースアゲート</a></h4><p class="keywords">対人運・相互理解・穏やかなコミュニケーション</p>
+    <p><span class="stone-name">ブルーレースアゲート</span>は、優しい対話や人間関係の調和を象徴する天然石です。</p>
+    <p><span class="stone-name">アメジスト</span>と組み合わせることで、相手への理解を深め、誤解やすれ違いを穏やかにほどいていくことをテーマにしたお守りになります。</p>
+    <p>人との関係に悩んだときや、信頼を育みたいときにおすすめです。</p>
+  </article>
+  <article class="card"><h4><span class="stone-name">アメジスト</span> × <a class="stone-name" href={pathTo('stones/rose-quartz/')}>ローズクォーツ</a></h4><p class="keywords">愛情・信頼・優しい心</p>
+    <p><span class="stone-name">ローズクォーツ</span>は、愛情や思いやり、優しさを象徴する天然石です。</p>
+    <p><span class="stone-name">アメジスト</span>と組み合わせることで、心を落ち着かせながら、相手を信じる気持ちや温かな愛情を育むことをテーマにしたお守りになります。</p>
+    <p>恋愛において安心感や信頼を大切にしたい方におすすめの組み合わせです。</p>
+  </article>
+</div>}
+{part === 'mineral' && <div class="supplement text"><h3><span class="stone-name">アメジスト</span>の鉱物としての特徴</h3>
+  <dl class="facts"><div><dt>鉱物名</dt><dd>紫水晶（アメジスト）</dd></div><div><dt>鉱物グループ</dt><dd>石英（クォーツ）</dd></div><div><dt>化学組成</dt><dd>SiO₂</dd></div><div><dt>主な色</dt><dd>淡紫色・紫色・濃紫色</dd></div><div><dt>モース硬度</dt><dd>7</dd></div><div><dt>結晶系</dt><dd>三方晶系</dd></div><div><dt>主な産地</dt><dd>ブラジル、ウルグアイ、ザンビアなど</dd></div><div><dt>誕生石</dt><dd>2月</dd></div><div><dt>特徴</dt><dd>紫色の発色、透明感、色帯、内包物</dd></div></dl>
+  <p><span class="stone-name">アメジスト</span>は、石英グループに属する紫色の天然石です。</p>
+  <p>淡いラベンダーカラーから深い紫色まで、幅広い色合いを持ちます。</p>
+  <p>内部に色の濃淡や内包物が見られるものもあり、それぞれ異なる表情を楽しめます。</p>
+  <p>また、紫色と黄色が同じ結晶内に現れる<span class="stone-name">アメトリン</span>も、石英の仲間として知られています。</p>
+</div>}
+{part === 'care' && <div class="supplement">
+  <section class="section"><h2><span class="stone-name">アメジスト</span>のおすすめの取り入れ方</h2>
+    <article class="card"><h3>人間関係のお守りとして</h3><p>人との交流が多い日や、大切な話し合いを控えている日に、<span class="stone-name">アメジスト</span>を身につける方法があります。</p><p>冷静さと相互理解を象徴する石として、落ち着いた気持ちで人と向き合うためのお守りになります。</p></article>
+    <article class="card"><h3>寝室や静かな空間に飾る</h3><p><span class="stone-name">アメジスト</span>の結晶やスフィアを、寝室やリラックスできる場所に飾るのもおすすめです。</p><p>神秘的な紫色は、静かな時間を大切にしたいときの象徴として楽しめます。</p></article>
+    <article class="card"><h3>お手入れ</h3><p><span class="stone-name">アメジスト</span>は、長時間の強い日光によって退色する場合があります。</p><p>直射日光の当たる場所を避け、柔らかい布で優しく拭き取ってください。</p><p>また、強い衝撃や急激な温度変化にも注意して保管することをおすすめします。</p></article>
+  </section>
+  <section class="closing"><h2><span class="stone-name">アメジスト</span>を選ぶあなたへ</h2>
+    <p><strong>あなたの心には、静けさの中で輝く強さがあります。</strong></p>
+    <p>誰かの言葉に傷ついたときも、思うように気持ちが伝わらなかったときも、自分自身の価値を見失う必要はありません。</p>
+    <p>本当に大切な縁は、お互いを理解し、尊重する気持ちの中で育まれていくものです。</p>
+    <p><span class="stone-name">アメジスト</span>の深い紫色は、心を穏やかに保ちながら、自分らしく生きることの美しさを思い出させてくれます。</p>
+    <p>不要な不安を手放し、あなたにふさわしい温かな縁を迎えられますように。</p>
+    <p><em>ALMÉA GEM｜天然石の意味と物語</em></p>
+  </section>
+</div>}
+<style>
+  .supplement { color: #514741; }
+  .intro { margin: 32px 0; padding: 18px 20px; border-left: 3px solid #ac96bd; background: #f8f5fa; }
+  .section { margin: 32px 0; }
+  .section h2, .closing h2 { font-size: clamp(20px, 2vw, 26px); line-height: 1.5; margin: 0 0 20px; border-left: 3px solid #ac96bd; padding-left: 13px; }
+  .card { margin: 0 0 14px; padding: 19px 21px; border: 1px solid #e4dbe9; border-radius: 12px; background: #faf7fb; }
+  .card h3, .card h4, .text h3 { margin: 0 0 12px; font-size: 16px; line-height: 1.55; color: #65566d; }
+  .supplement p { font-size: 15px; line-height: 1.9; margin: 0 0 12px; overflow-wrap: break-word; word-break: normal; }
+  .card p:last-child, .text p:last-child, .closing p:last-child { margin-bottom: 0; }
+  .pairings { margin-top: 28px; }
+  .pairings > h3 { margin: 0 0 15px; font-size: 18px; line-height: 1.5; }
+  .keywords, .label { display: inline-block; padding: 4px 9px; border-radius: 5px; background: #eee6f2; color: #695a70; font-size: 13px !important; }
+  .label { display: table; margin-bottom: 8px; }
+  .stone-name { display: inline-block; white-space: nowrap; }
+  .text { margin: 28px 0 8px; }
+  .facts { margin: 0 0 18px; border-top: 1px solid #e4dbe9; }
+  .facts > div { display: grid; grid-template-columns: minmax(95px, .35fr) minmax(0, 1fr); gap: 12px; padding: 10px 0; border-bottom: 1px solid #e4dbe9; }
+  .facts dt { font-weight: 600; } .facts dd { min-width: 0; margin: 0; overflow-wrap: anywhere; }
+  .closing { margin: 28px 0; padding: 22px; border-top: 1px solid #c8a979; border-radius: 10px; background: #f3edf6; }
+  .link-note { font-size: 12px !important; color: #766b7a; }
+  @media (max-width: 640px) { .card, .closing { padding: 16px; } .supplement p { font-size: 14px; } .card h4 { display: flex; flex-wrap: wrap; gap: 0 4px; } }
+</style>

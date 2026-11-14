@@ -14,9 +14,9 @@ const register = JSON.parse(
 );
 it('preserves all 210 identities, searchable names and aliases, valid wishes and related/pairing routes', () => {
   expect(stones.map((s) => s.id)).toEqual(
-    Array.from({ length: 210 }, (_, i) => `s${String(i + 1).padStart(3, '0')}`),
+    Array.from({ length: 211 }, (_, i) => `s${String(i + 1).padStart(3, '0')}`),
   );
-  expect(new Set(stones.map((s) => s.slug)).size).toBe(210);
+  expect(new Set(stones.map((s) => s.slug)).size).toBe(211);
   expect(categories).toHaveLength(12);
   for (const s of stones) {
     expect(s.aliases.some((alias) => /注意|要確認|未確認/.test(alias))).toBe(
@@ -34,7 +34,7 @@ it('preserves all 210 identities, searchable names and aliases, valid wishes and
 });
 it('covers every stone in the external follow-up register without overwriting legacy source dates', () => {
   expect(register.map((r: { id: string }) => r.id)).toEqual(
-    stones.map((s) => s.id),
+    stones.slice(0, 210).map((s) => s.id),
   );
   for (const r of register) {
     expect(r.externalStatus).toBe('unverified');
@@ -46,7 +46,7 @@ it('covers every stone in the external follow-up register without overwriting le
   }
 });
 it('keeps last thirty shape/trade names distinct from guaranteed effects and links to the named pairing stones', () => {
-  const last = stones.slice(180);
+  const last = stones.slice(180, 210);
   expect(new Set(last.map((s) => s.introduction)).size).toBe(30);
   expect(new Set(last.map((s) => s.quality)).size).toBe(30);
   expect(stones[203].quality).toContain('産地');
