@@ -76,8 +76,8 @@ export function validateApprovedSearchPaths(
 
 export const sitemapPaths = validateApprovedSearchPaths(approvedSearchPaths);
 if (
-  searchCandidatePaths.length !== 246 ||
-  sitemapPaths.length !== 246 ||
+  searchCandidatePaths.length !== 247 ||
+  sitemapPaths.length !== 247 ||
   searchCandidatePaths.some((path) => !sitemapPaths.includes(path))
 )
   throw new Error(

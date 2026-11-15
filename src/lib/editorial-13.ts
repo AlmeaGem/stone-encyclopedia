@@ -18,6 +18,7 @@ const ids: Record<string, keyof typeof manuscripts> = {
   s062: 'pyrite',
   s176: 'howlite',
   s150: 'pink-opal',
+  s213: 'new-jade',
 };
 export type EditorialPart =
   | 'story'

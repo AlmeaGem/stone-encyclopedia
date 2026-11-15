@@ -8,9 +8,9 @@ const colors = [...new Set(stones.flatMap((s) => s.colors))];
 ---
 
 <Page
-  title="211項目の天然石図鑑・検索"
+  title="212項目の天然石図鑑・検索"
   path="stones/"
-  description="天然石・流通名・結晶の形状など211項目を検索。日本語名、英語名、別名、願いのテーマ、色から見つける公開図鑑です。"
+  description="天然石・流通名・結晶の形状など212項目を検索。日本語名、英語名、別名、願いのテーマ、色から見つける公開図鑑です。"
 >
   <div class="wrap">
     <Breadcrumbs items={[{ name: '石を探す' }]} />
@@ -20,7 +20,7 @@ const colors = [...new Set(stones.flatMap((s) => s.colors))];
       <p>
         名前から、色から、あなたの願いから。
         <br />
-        ブレスレットに迎えたい一粒を、211項目の図鑑から。
+        ブレスレットに迎えたい一粒を、212項目の図鑑から。
       </p>
     </div>
     <p class="search-scope">
@@ -70,13 +70,13 @@ const colors = [...new Set(stones.flatMap((s) => s.colors))];
     </form>
     <noscript>
       <p class="notice">
-        検索の絞り込みにはJavaScriptを使用します。以下の211項目はすべて閲覧でき、
+        検索の絞り込みにはJavaScriptを使用します。以下の212項目はすべて閲覧でき、
         <a href={pathTo('wishes/')}>テーマ別の一覧</a>も利用できます。
       </p>
     </noscript>
     <div class="list-status">
       <p id="result-status" role="status" aria-live="polite">
-        211項目
+        212項目
       </p>
       <span>英語見出し・分類は鑑別を保証するものではありません</span>
     </div>

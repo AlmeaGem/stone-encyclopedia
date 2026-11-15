@@ -12,14 +12,14 @@ describe('daily discovery', () => {
     const order = dailyOrder(ids);
     expect(order).toEqual(dailyOrder([...ids].reverse()));
     expect(order).not.toEqual([...ids].sort());
-    expect(new Set(order).size).toBe(211);
+    expect(new Set(order).size).toBe(212);
     const start = Date.UTC(2026, 0, 1) - 9 * 3600000;
     const days = Array.from(
-      { length: 211 },
+      { length: 212 },
       (_, day) => order[dailyIndex(start + day * 86400000, order.length)],
     );
-    expect(new Set(days).size).toBe(211);
-    expect(order[dailyIndex(start + 211 * 86400000, 211)]).toBe(days[0]);
+    expect(new Set(days).size).toBe(212);
+    expect(order[dailyIndex(start + 212 * 86400000, 212)]).toBe(days[0]);
   });
   it('switches exactly at midnight in Japan regardless of visitor timezone', () => {
     const boundary = Date.parse('2026-11-04T15:00:00Z');

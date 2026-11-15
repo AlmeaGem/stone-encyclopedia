@@ -39,7 +39,7 @@ const cloudOrigin = cloudPhotoOrigin(import.meta.env.PUBLIC_PHOTO_API_ORIGIN);
           photo.imageKind || '',
         ) && <span class="image-impression-label">※ イメージ画像</span>}
       </div>
-      {detail && photo.imageKind !== 'ai-generated' && stone.id !== 's211' && (
+      {detail && photo.imageKind !== 'ai-generated' && !['s211', 's213'].includes(stone.id) && (
         <figcaption>
           写真：{photo.photographer} ·{' '}
           {photo.uploadSha256 &&

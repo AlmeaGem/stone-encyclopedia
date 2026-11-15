@@ -6,7 +6,7 @@ const stones = JSON.parse(
   await readFile('src/content/stones.json', 'utf8'),
 ).filter((s) => s.status === 'published');
 const index = await readFile('dist/stones/index.html', 'utf8');
-if (stones.length !== 211) throw new Error('211項目すべてを公開してください');
+if (stones.length !== 212) throw new Error('212項目すべてを公開してください');
 const slugs = new Set();
 for (const s of stones) {
   if (slugs.has(s.slug)) throw new Error('URLが重複しています');

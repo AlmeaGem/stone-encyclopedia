@@ -87,13 +87,21 @@ for (let batch = 1; batch <= 11; batch++) {
 }
 if (
   manuscripts.size !== 210 ||
-  rawStones.filter((s) => s.id !== 's211').some((s) => !manuscripts.has(s.id))
+  rawStones
+    .filter((s) => !['s211', 's213'].includes(s.id))
+    .some((s) => !manuscripts.has(s.id))
 )
   throw new Error('All 210 approved manuscripts are required');
 manuscripts.set('s211', {
   id: 's211',
   catchphrase:
     '幾重にも重なる赤い縞模様に、愛と守護の力を宿す。大切な人との絆を深め、幸せな未来を守り抜く石。',
+  sections: [],
+});
+manuscripts.set('s213', {
+  id: 's213',
+  catchphrase:
+    '柔らかな若草色の輝きが、過去の痛みを優しく包み込む。心に新しい希望を灯し、幸せな未来へ歩み始めることを象徴する石。',
   sections: [],
 });
 export function approvedManuscript(id: string): ApprovedManuscript {

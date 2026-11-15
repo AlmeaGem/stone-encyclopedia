@@ -11,7 +11,7 @@ it('adds s211 without changing the 210 historic identities and keeps it searchab
   const stones = validateCatalog(
     JSON.parse(readFileSync('src/content/stones.json', 'utf8')),
   );
-  expect(stones).toHaveLength(211);
+  expect(stones).toHaveLength(212);
   expect(stones[210]).toMatchObject({
     id: 's211',
     slug: 'sardonyx',

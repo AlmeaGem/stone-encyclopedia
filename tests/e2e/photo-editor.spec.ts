@@ -11,7 +11,7 @@ test('private photo editor offers thumbnails, source review and staged adoption 
   await page
     .locator('#auto-search')
     .evaluate((el: HTMLDetailsElement) => (el.open = true));
-  await expect(page.locator('#photo-overview .photo-row')).toHaveCount(211);
+  await expect(page.locator('#photo-overview .photo-row')).toHaveCount(212);
   await page.locator('#select-ten').click();
   await expect(page.locator('#collection-plan')).toContainText('対象 10種類');
   const image = page.locator('#candidates .photo-preview img').first();

@@ -13,10 +13,14 @@ const register = JSON.parse(
   readFileSync('docs/research/final210-external-review-register.json', 'utf8'),
 );
 it('preserves all 210 identities, searchable names and aliases, valid wishes and related/pairing routes', () => {
-  expect(stones.map((s) => s.id)).toEqual(
-    Array.from({ length: 211 }, (_, i) => `s${String(i + 1).padStart(3, '0')}`),
-  );
-  expect(new Set(stones.map((s) => s.slug)).size).toBe(211);
+  expect(stones.map((s) => s.id)).toEqual([
+    ...Array.from(
+      { length: 211 },
+      (_, i) => `s${String(i + 1).padStart(3, '0')}`,
+    ),
+    's213',
+  ]);
+  expect(new Set(stones.map((s) => s.slug)).size).toBe(212);
   expect(categories).toHaveLength(12);
   for (const s of stones) {
     expect(s.aliases.some((alias) => /注意|要確認|未確認/.test(alias))).toBe(

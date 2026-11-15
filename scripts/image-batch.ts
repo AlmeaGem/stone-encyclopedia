@@ -91,7 +91,7 @@ export class ImageBatch {
     if (
       !Array.isArray(ids) ||
       !ids.length ||
-      ids.length > 210 ||
+      ids.length > stones.length ||
       new Set(ids).size !== ids.length ||
       ids.some((id) => !stones.some((s: any) => s.id === id))
     )

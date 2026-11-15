@@ -14,7 +14,7 @@ test('daily card matches the catalog and changes at Japan midnight', async ({
   await page.goto('/');
   const card = page.locator('.daily-discovery');
   const catalog = JSON.parse((await card.getAttribute('data-daily-catalog'))!);
-  expect(catalog).toHaveLength(211);
+  expect(catalog).toHaveLength(212);
   for (const entry of catalog) {
     const stone = stones.find((item) => item.id === entry.id)!;
     const image = images.find((item) => item.stoneId === entry.id)!;
@@ -24,7 +24,7 @@ test('daily card matches the catalog and changes at Japan midnight', async ({
     expect(entry.catchphrase).toBe(approvedManuscript(entry.id).catchphrase);
   }
   const check = async (time: number) => {
-    const stone = stones.find((s) => s.id === order[dailyIndex(time, 211)])!;
+    const stone = stones.find((s) => s.id === order[dailyIndex(time, 212)])!;
     await expect(card.locator('[data-daily-name]')).toHaveText(stone.name);
     await expect(card.locator('[data-daily-id]')).toHaveCount(0);
     await expect(card.locator('[data-daily-catchphrase]')).toHaveText(
@@ -99,7 +99,7 @@ test('daily card matches the catalog and changes at Japan midnight', async ({
   await card.locator('[data-daily-link]').click();
   await expect(page.locator('h1')).toHaveText(
     stones.find(
-      (s) => s.id === order[dailyIndex(before.getTime() + 1200, 211)],
+      (s) => s.id === order[dailyIndex(before.getTime() + 1200, 212)],
     )!.name,
   );
 });

@@ -51,7 +51,7 @@ describe('approved gemstone additions', () => {
   );
   it('does not invent links for unregistered trade names or the private draft', () => {
     expect(editorialPairTarget('レッドルチルクォーツ')).toBeUndefined();
-    expect(editorialPairTarget('ニュージェイド')).toBeUndefined();
+    expect(editorialPairTarget('ニュージェイド')?.id).toBe('s213');
     expect(editorialPairTarget('チベットアゲート')).toBeUndefined();
     expect(editorialManuscript('s212')).toBeUndefined();
   });
