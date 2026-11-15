@@ -14,6 +14,10 @@ const ids: Record<string, keyof typeof manuscripts> = {
   s122: 'turquoise',
   s057: 'tiger-eye',
   s140: 'charoite',
+  s173: 'pearl',
+  s062: 'pyrite',
+  s176: 'howlite',
+  s150: 'pink-opal',
 };
 export type EditorialPart =
   | 'story'
@@ -105,6 +109,16 @@ export function editorialManuscript(
   };
 }
 
-export function editorialPairTarget(name: string) {
-  return stones.find((s) => s.name === name || s.aliases.includes(name));
+export function editorialPairTarget(name: string, stoneId?: string) {
+  const aliases: Record<string, string> = {
+    クリスタルクォーツ: 'rock-crystal',
+    オニキス: 'black-onyx',
+  };
+  return stones.find(
+    (s) =>
+      s.name === name ||
+      s.aliases.includes(name) ||
+      (['s173', 's062', 's176', 's150'].includes(stoneId || '') &&
+        s.slug === aliases[name]),
+  );
 }

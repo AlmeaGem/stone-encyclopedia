@@ -27,8 +27,10 @@ for (let start = 0; start < stones.length; start += 20) {
         for (const section of manuscript.sections) {
           if (section.kind === 'pairings') {
             for (const pair of manuscriptPairings(section)) {
+              const target = stones.find((item) => item.id === pair.stoneId);
+              expect(target, `${stone.id}: ${pair.name}`).toBeDefined();
               const card = page.locator('.editorial-pair').filter({
-                has: page.getByRole('link', { name: pair.name, exact: true }),
+                has: page.locator(`a[href$="/stones/${target!.slug}/"]`),
               });
               await expect(card).toHaveCount(1);
               await expect(card).toContainText(

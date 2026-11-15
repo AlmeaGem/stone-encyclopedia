@@ -10,6 +10,13 @@ import editorialData from '../../src/content/editorial-13.json' with { type: 'js
 
 const byId = new Map(stones.map((stone) => [stone.id, stone]));
 const normalized = (s: string) => s.replace(/\s/g, '');
+const editorialAliases: Record<string, Record<string, string>> = {
+  pearl: { クリスタルクォーツ: 'rock-crystal' },
+  howlite: {
+    クリスタルクォーツ: 'rock-crystal',
+    オニキス: 'black-onyx',
+  },
+};
 
 test('all approved headings and pairing links retain their content and responsive layout', async ({
   page,
@@ -52,7 +59,9 @@ test('all approved headings and pairing links retain their content and responsiv
         await expect(card).toHaveCount(1);
         const target = stones.find(
           (item) =>
-            item.name === name || (item.aliases as string[]).includes(name),
+            item.name === name ||
+            (item.aliases as string[]).includes(name) ||
+            item.slug === editorialAliases[stone.slug]?.[name],
         );
         if (target)
           await expect(card.locator('a')).toHaveAttribute(
