@@ -8,7 +8,9 @@ import {
 import stones from '../src/content/stones.json' with { type: 'json' };
 
 describe('approved manuscripts', () => {
-  for (const stone of stones.filter((stone) => stone.id !== 's211')) {
+  for (const stone of stones.filter(
+    (stone) => !['s211', 's213'].includes(stone.id),
+  )) {
     it(`${stone.id}: all source paragraphs and extended sections survive presentation`, () => {
       const manuscript = approvedManuscript(stone.id);
       const batch = Math.ceil(Number(stone.id.slice(1)) / 20);
@@ -58,7 +60,9 @@ describe('approved manuscripts', () => {
     const byId = new Map(stones.map((stone) => [stone.id, stone]));
     let total = 0;
     let unbolded = 0;
-    for (const stone of stones.filter((stone) => stone.id !== 's211')) {
+    for (const stone of stones.filter(
+      (stone) => !['s211', 's213'].includes(stone.id),
+    )) {
       const sections = approvedManuscript(stone.id).sections.filter(
         (section) => section.kind === 'pairings',
       );

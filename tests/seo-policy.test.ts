@@ -15,13 +15,13 @@ import { archives } from '../src/lib/archives';
 import themes from '../src/content/story-themes.json';
 
 describe('search publication policy', () => {
-  it('checks 246 approved routes and excluded pages', () => {
-    expect(stones).toHaveLength(211);
+  it('checks 247 approved routes and excluded pages', () => {
+    expect(stones).toHaveLength(212);
     expect(archives).toHaveLength(5);
     expect(categories).toHaveLength(12);
     expect(articles).toHaveLength(6);
     expect(themes).toHaveLength(5);
-    expect(searchCandidatePaths).toHaveLength(246);
+    expect(searchCandidatePaths).toHaveLength(247);
     for (const stone of stones)
       expect(searchPolicy(`stones/${stone.slug}/`)).toBe('candidate');
     for (const article of archives)
@@ -34,14 +34,14 @@ describe('search publication policy', () => {
       expect(searchPolicy(`stories/${theme.id}/`)).toBe('candidate');
     expect(noindexPaths).toHaveLength(4);
     expect(reviewPaths).toHaveLength(5);
-    expect(approvedSearchPaths).toHaveLength(246);
-    expect(sitemapPaths).toHaveLength(246);
-    expect(new Set(approvedSearchPaths).size).toBe(246);
+    expect(approvedSearchPaths).toHaveLength(247);
+    expect(sitemapPaths).toHaveLength(247);
+    expect(new Set(approvedSearchPaths).size).toBe(247);
     const approved = new Set(approvedSearchPaths);
     expect(approved).toEqual(new Set(searchCandidatePaths));
     expect(
       new Set([...searchCandidatePaths, ...noindexPaths, ...reviewPaths]).size,
-    ).toBe(255);
+    ).toBe(256);
     for (const path of searchCandidatePaths)
       expect(searchPolicy(path)).toBe('candidate');
     for (const path of noindexPaths) expect(searchPolicy(path)).toBe('noindex');
@@ -90,7 +90,7 @@ describe('search publication policy', () => {
       new URL(`/stone-encyclopedia/${path}`, 'https://almeagem.github.io').href;
     expect(searchSitemapXml([], canonical)).not.toContain('<loc>');
     const xml = searchSitemapXml(searchCandidatePaths, canonical);
-    expect(xml.match(/<loc>/g) || []).toHaveLength(246);
+    expect(xml.match(/<loc>/g) || []).toHaveLength(247);
     for (const path of searchCandidatePaths)
       expect(xml).toContain(`<loc>${canonical(path)}</loc>`);
     for (const path of [...noindexPaths, ...reviewPaths])

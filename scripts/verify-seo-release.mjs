@@ -7,8 +7,8 @@ const dist = resolve('dist');
 const site = 'https://almeagem.github.io/stone-encyclopedia/';
 const xml = readFileSync(resolve(dist, 'sitemap.xml'), 'utf8');
 const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
-assert.equal(urls.length, 246, 'exactly 246 explicitly approved URLs');
-assert.equal(new Set(urls).size, 246, 'sitemap URLs must be unique');
+assert.equal(urls.length, 247, 'exactly 247 explicitly approved URLs');
+assert.equal(new Set(urls).size, 247, 'sitemap URLs must be unique');
 const indexed = new Set(urls);
 assert.deepEqual(
   [...indexed].sort(),
@@ -90,5 +90,5 @@ assert.match(missing, /<meta name="robots" content="noindex,nofollow"/);
 assert.ok(!missing.includes('rel="canonical"'), '404 must have no canonical');
 assert.ok(!missing.includes('property="og:url"'), '404 must have no og:url');
 console.log(
-  'SEO release dry-run: 246 approved URLs, 9 excluded/error routes, canonical and robots verified.',
+  'SEO release dry-run: 247 approved URLs, 9 excluded/error routes, canonical and robots verified.',
 );

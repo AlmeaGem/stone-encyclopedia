@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 const pages = [
-  ['about', 'この図鑑について', '211種類の天然石や宝石'],
+  ['about', 'この図鑑について', '212種類の天然石や宝石'],
   ['terms', '利用規約', '法令で認められる引用'],
   ['privacy', 'プライバシーポリシー', '同じブラウザ・端末内'],
   ['commerce', '特定商取引法に基づく表記', '鈴木セイラ'],

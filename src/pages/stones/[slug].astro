@@ -56,7 +56,7 @@ const protectStoneNames = ['amber', 'anhydrite', 'black-onyx', 'moonstone', 'gar
 const wishGuideNotes = guidesForStone(stone.id);
 const guardian = guardianForStone(stone.id);
 const manuscript = approvedManuscript(stone.id);
-const editorial = ['s047', 's116', 's080', 's048', 's037', 's139', 's008', 's084', 's121', 's122', 's057', 's140', 's173', 's062', 's176', 's150'].includes(stone.id) ? editorialManuscript(stone.id) : undefined;
+const editorial = ['s047', 's116', 's080', 's048', 's037', 's139', 's008', 's084', 's121', 's122', 's057', 's140', 's173', 's062', 's176', 's150', 's213'].includes(stone.id) ? editorialManuscript(stone.id) : undefined;
 const storySections = manuscript.sections.filter(
   (s) =>
     s.kind !== 'pairings' &&
@@ -293,6 +293,7 @@ const schema = {
           <Prose text={stone.shapes} /></>}
         </section>
         <section id="nature" class="detail-section">
+          {stone.id === 's213' && <p>ニュージェイドは正式な鉱物名ではなく、主にサーペンティン系素材、特にボーウェナイトなどに用いられる流通名です。ジェダイトやネフライトとは異なる場合があり、鑑別なしに個体の鉱物種は断定できません。石綿状繊維など素材の安全性が未確認の場合は、研磨・穴あけ・粉砕を行わず、着用品への使用を保留してください。</p>}
           <p class="eyebrow">01 / NATURE</p>
           <SectionHeading>鉱物・物理的な情報</SectionHeading>
           {editorial && <EditorialArticle stone={stone} part="nature" legacy={manuscript.sections} />}
@@ -408,6 +409,7 @@ const schema = {
         </div>
       </div>
       <p class="quiet-note">関連する伝承テーマの石をご紹介します。</p>
+      {stone.id === 's079' && <p><a href={pathTo('stones/new-jade/')}>ニュージェイドの詳細を見る ↗</a></p>}
       <div class="stone-grid related-grid">
         {related.map((s) => s && <Card stone={s} />)}
       </div>

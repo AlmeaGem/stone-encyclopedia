@@ -12,14 +12,14 @@ const raw = validateCatalog(
 it('renders reviewed reader copy without changing any source record, safety, identity, search or reference fields', () => {
   const snapshot = JSON.stringify(raw);
   const rendered = validateCatalog(raw.map(publicStone));
-  expect(rendered).toHaveLength(211);
+  expect(rendered).toHaveLength(212);
   for (let i = 0; i < raw.length; i++) {
     for (const field of Object.keys(raw[i]))
       if (!publicCopyFields.includes(field as any))
         expect(rendered[i][field as keyof (typeof raw)[number]]).toEqual(
           raw[i][field as keyof (typeof raw)[number]],
         );
-    if (rendered[i].id !== 's211')
+    if (!['s211', 's213'].includes(rendered[i].id))
       expect(rendered[i].shapes).toBe(
         '形だけで運勢や効果の強さは決まりません。波動も大切です。',
       );

@@ -136,7 +136,7 @@ test('detail separates facts, quality and symbolism, with sources, internal link
     await expect(page.locator('.stone-figure.detail img')).toHaveCount(0);
   }
 });
-test('all 211 pages exist with distinct canonical URLs, titles and safe sitemap policy', async ({
+test('all 212 pages exist with distinct canonical URLs, titles and safe sitemap policy', async ({
   request,
 }) => {
   const canonicals = new Set<string>(),
@@ -162,8 +162,8 @@ test('all 211 pages exist with distinct canonical URLs, titles and safe sitemap 
       }),
     );
   }
-  expect(canonicals.size).toBe(211);
-  expect(titles.size).toBe(211);
+  expect(canonicals.size).toBe(212);
+  expect(titles.size).toBe(212);
   expect(await (await request.get('/robots.txt')).text()).toContain(
     'Disallow: /',
   );
@@ -316,7 +316,7 @@ test('private editor authenticates, edits a draft and keeps public source unchan
     .getByRole('button', { name: '写真候補・ライセンス', exact: true })
     .click();
   await expect(
-    page.getByRole('heading', { name: '211種類の写真を選ぶ' }),
+    page.getByRole('heading', { name: '212種類の写真を選ぶ' }),
   ).toBeVisible();
   await page.screenshot({
     path: test.info().outputPath('editor.png'),

@@ -41,7 +41,7 @@ for (let start = 0; start < stones.length; start += 20) {
         `${stone.name}（${stone.english}）の特徴・意味・選び方 | 天然石・パワーストーン大図鑑`,
     );
     expect(new Set(expectedTitles).size).toBe(210);
-    expect(paths.size).toBe(211);
+    expect(paths.size).toBe(212);
     for (const stone of batch) {
       const response = await page.goto(`/stones/${stone.slug}/`);
       expect(response?.status(), stone.id).toBe(200);
