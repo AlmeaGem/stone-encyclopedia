@@ -8,6 +8,7 @@ import egypt from '../../src/content/archives/egyptian-amulets.json' with { type
 import love from '../../src/content/archives/love-and-gemstones.json' with { type: 'json' };
 import rainbow from '../../src/content/archives/stones-with-rainbows.json' with { type: 'json' };
 import travelers from '../../src/content/archives/travelers-and-protective-stones.json' with { type: 'json' };
+import { approvedSearchPaths } from '../../src/lib/approved-search-paths';
 const archives = [moonstone, egypt, love, rainbow, travelers];
 const searchCandidatePaths = [
   '',
@@ -38,7 +39,17 @@ test('all classified pages remain noindex with correct canonicals and an empty u
     ...noindexPaths.filter((path) => path !== '404/'),
     ...reviewPaths,
   ];
-  expect(paths).toHaveLength(253);
+  expect(new Set(paths).size).toBe(paths.length);
+  expect(new Set(searchCandidatePaths)).toEqual(
+    new Set(approvedSearchPaths.filter((path) => path !== 'find-your-stone/')),
+  );
+  expect(new Set(paths)).toEqual(
+    new Set([
+      ...approvedSearchPaths.filter((path) => path !== 'find-your-stone/'),
+      ...noindexPaths.filter((path) => path !== '404/'),
+      ...reviewPaths,
+    ]),
+  );
   const sitemap = await request.get('/sitemap.xml');
   expect(sitemap.status()).toBe(200);
   const xml = await sitemap.text();
