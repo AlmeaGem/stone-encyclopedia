@@ -1,5 +1,7 @@
 ---
-import content from '../content/editorial-first-five.json';
+import first from '../content/editorial-first-five.json';
+import second from '../content/editorial-second-five.json';
+const content = { ...first, ...second };
 import stones from '../content/stones.json';
 import { manuscriptPairings, type ManuscriptSection } from '../lib/approved-manuscripts';
 import { pathTo } from '../lib/urls';
@@ -8,7 +10,7 @@ interface Props { id: string; part: 'story' | 'meaning' | 'wishes' | 'pairings' 
 const { id, part, legacy = [] } = Astro.props;
 const item = content[id as keyof typeof content];
 const oldPairs = legacy.flatMap(manuscriptPairings);
-const alias: Record<string, string> = { 'オニキス': 's015', 'クリスタルクォーツ': 's187' };
+const alias: Record<string, string> = { 'オニキス': 's015', 'クリスタルクォーツ': 's187', 'クリスタルクォーツ（ロッククリスタル）': 's187', 'オレンジムーンストーン': 's063' };
 const lookup = (name: string) => stones.find(s => s.id === alias[name] || s.name === name || (s.aliases as string[]).includes(name));
 const additions = item?.pairings.map(pair => ({...pair, stone: lookup(pair.name)})) || [];
 const extras = oldPairs.filter(pair => !additions.some(add => add.stone?.id === pair.stoneId));
@@ -18,7 +20,7 @@ const extras = oldPairs.filter(pair => !additions.some(add => add.stone?.id === 
 {item && part === 'wishes' && <ul class="manuscript-wishes">{item.wishes.map(w => <li><StoneNameText text={w} enabled={true} extended={true}/></li>)}</ul>}
 {item && part === 'pairings' && <div class="manuscript-pairings">
   {additions.map(pair => <p class="manuscript-paragraph">
-    {pair.stone ? <a class="text-link manuscript-pairing-name" href={pathTo(`stones/${pair.stone.slug}/`)}><StoneNameText text={pair.name} enabled={true} extended={true}/></a> : <span class="manuscript-pairing-name"><StoneNameText text={pair.name} enabled={true} extended={true}/></span>}
+    {pair.stone ? <a class="text-link manuscript-pairing-name" href={pathTo(`stones/${pair.stone.slug}/${pair.name === 'オレンジムーンストーン' ? '#orange-moonstone' : ''}`)}><StoneNameText text={pair.name} enabled={true} extended={true}/></a> : <span class="manuscript-pairing-name"><StoneNameText text={pair.name} enabled={true} extended={true}/></span>}
     <span>：</span><StoneNameText text={pair.description} enabled={true} extended={true}/>
     {oldPairs.filter(old => old.stoneId === pair.stone?.id).map(old => <span> {old.description}</span>)}
   </p>)}
