@@ -3,6 +3,7 @@ import first from '../content/editorial-first-five.json';
 import second from '../content/editorial-second-five.json';
 import third from '../content/editorial-third-five.json';
 import fourth from '../content/editorial-fourth-five.json';
+import insights from '../content/editorial-pairing-insights.json';
 const content = { ...first, ...second, ...third, ...fourth };
 import stones from '../content/stones.json';
 import { manuscriptPairings, type ManuscriptSection } from '../lib/approved-manuscripts';
@@ -15,17 +16,37 @@ const oldPairs = legacy.flatMap(manuscriptPairings);
 const alias: Record<string, string> = { 'オニキス': 's015', 'クリスタルクォーツ': 's187', 'クリスタルクォーツ（ロッククリスタル）': 's187', 'オレンジムーンストーン': 's063', 'ロードクロサイト（インカローズ）': 's108' };
 const lookup = (name: string) => stones.find(s => s.id === alias[name] || s.name === name || (s.aliases as string[]).includes(name));
 const additions = item?.pairings.map(pair => ({...pair, stone: lookup(pair.name)})) || [];
+const detailedPairings = ['s059', 's052', 's060', 's109', 's101', 's041', 's124', 's096', 's097', 's017', 's175', 's103', 's206', 's132', 's133'].includes(id);
+const extraPairNotes: Record<string, Record<string, string>> = {
+  s175: { s173: '貝殻の真珠層と真珠、それぞれの柔らかな光に愛情を重ねます。大切な人の幸せを祝う贈り物にも。', s110: 'マザーオブパールの家族への思いやりと、アクアマリンの対話と信頼を重ねます。穏やかな絆を願うときに。' },
+  s103: { s001: 'マラカイトの変化への願いに、オブシディアンの見極めと守護の象徴を重ねます。手放したい関係を見直すときに。', s019: 'マラカイトとモリオン、それぞれの守護の象徴を重ね、自分の心を大切にする境界を意識したいときに。', s074: 'マラカイトの変化とクリソコラの穏やかな調和を重ねます。心の安定を大切にしながら、暮らしを整えたいときに。' },
+  s206: { s205: '強い思いを急いで形にするより、相手のペースを尊重しながら関係を育みたいときに。', s207: '将来について話し合う中で、自分と相手の希望を丁寧に確かめたいときに。', s210: '自分の気持ちを大切にしながら、相手からの思いも穏やかに受け止めたいときに。' },
+  s132: { s209: 'ラピスラズリの知恵と、金色の針を持つ水晶の豊かさの象徴を重ね、目標への判断と行動を願います。', s019: 'ラピスラズリの洞察にモリオンの守護を重ね、周囲に流されず自分の価値観を大切にしたいときに。', s187: 'ラピスラズリの知恵に水晶の明晰さを添え、進む道と自分の願いを落ち着いて見つめたいときに。' },
+  s133: { s205: 'ラブラドライトの新しい可能性に、ルベライトの情熱を添え、自分らしい出会いを願うときに。', s104: 'ラブラドライトとモルダバイトに託された変化の象徴を重ね、転機に新しい可能性を探すお守りに。', s063: 'ラブラドライトの変化と、ムーンストーンの感受性を重ね、新しい出会いにも自分の心を大切にしたいときに。' },
+  s041: { s017: 'ブラッドストーンの粘り強さに、ヘマタイトが象徴する集中と勝負への意志を重ねます。準備を重ねた大切な場面に向かうときに。', s015: 'ブラッドストーンの守護の願いと、オニキスが象徴する揺るがない意志を重ねます。周囲に流されず、大切にしたいことを守りたいときに。', s187: 'ブラッドストーンの守護に、水晶が象徴する明晰さを添えます。守りたい人や願いを見つめ直し、今できる行動を考えたいときに。' },
+  s096: { s070: 'プレナイトの心を整える象徴に、アマゾナイトの希望と前向きな選択を重ねます。焦らず、自分が望む未来を考えたいときに。', s187: 'プレナイトの内面を整える願いに、水晶の明晰さや浄化の象徴を添えます。迷いを整理し、気持ちを新たにしたいときに。' },
+  s097: { s134: 'フローライトの柔軟な発想に、アメジストの落ち着きと内省を添えます。学びの前に心を整えたいときの組み合わせです。', s187: 'フローライトの思考を整理する象徴に、水晶の明晰さを重ねます。複雑な課題を一つずつ見つめ直したいときに。', s048: 'フローライトの学びやひらめきに、シトリンの希望と豊かさの象徴を添えます。学んだことを仕事や日々の行動につなげたいときに。' },
+  s017: { s209: 'ヘマタイトの集中と粘り強さに、金色の針を持つ水晶に託された豊かさの象徴を添えます。仕事の目標に向けて準備を重ねたいときに。' },
+  s059: { s017: 'ブルズアイの決断と、ヘマタイトの最後まで力を尽くす意志を重ねます。大切な挑戦に向けて、積み重ねた準備を信じたいときのお守りです。' },
+  s052: { s187: 'ブルートパーズの誠実な言葉に、水晶の明晰さの象徴を添えます。自分が本当に伝えたいことを整理したいときに。', s051: '同じトパーズの仲間を合わせ、ブルートパーズの誠実さに、インペリアルトパーズに託される自信と魅力を重ねます。' },
+  s060: { s133: 'ホークスアイの落ち着いた観察に、ラブラドライトの新しい可能性という象徴を添えます。状況を見極めながら、別の道も考えたいときに。', s058: 'ホークスアイの冷静さと、ピーターサイトに託される変化の中での判断を重ねます。環境が動くときも、自分の進む方向を確かめたい場面に。' },
+  s109: { s108: 'ロードナイトの思いを伝える勇気に、ロードクロサイトの情熱を添えます。過去を責め続けるのではなく、これからの関係を考えたいときに。' },
+  s101: { s063: 'ペリドットの希望と、ムーンストーンの感受性や変化の象徴を重ねます。自分と相手の気持ちに耳を傾け、穏やかな愛を育みたいときに。' },
+};
 const extras = oldPairs.filter(pair => !additions.some(add => add.stone?.id === pair.stoneId));
 ---
 {item && part === 'story' && item.story.split(/\n\s*\n/).map(p => <p><StoneNameText text={p} enabled={true} extended={true}/></p>)}
-{item && part === 'meaning' && item.meaning.split(/\n\s*\n/).map(p => <p><StoneNameText text={p} enabled={true} extended={true}/></p>)}
+{item && item.meaning && part === 'meaning' && item.meaning.split(/\n\s*\n/).map(p => <p><StoneNameText text={p} enabled={true} extended={true}/></p>)}
 {item && part === 'wishes' && <ul class="manuscript-wishes">{item.wishes.map(w => <li><StoneNameText text={w} enabled={true} extended={true}/></li>)}</ul>}
 {item && part === 'pairings' && <div class="manuscript-pairings">
-  {additions.map(pair => <p class="manuscript-paragraph">
+  {additions.map((pair, index) => detailedPairings ? <article class="manuscript-paragraph pairing-article">
+    <h3>{pair.stone ? <a class="text-link manuscript-pairing-name" href={pathTo(`stones/${pair.stone.slug}/${pair.name === 'オレンジムーンストーン' ? '#orange-moonstone' : ''}`)}><StoneNameText text={pair.name} enabled={true} extended={true}/></a> : <span class="manuscript-pairing-name"><StoneNameText text={pair.name} enabled={true} extended={true}/></span>}</h3>
+    <p class="manuscript-pairing-description"><StoneNameText text={pair.description} enabled={true} extended={true}/>{oldPairs.filter(old => old.stoneId === pair.stone?.id).map(old => <span> {old.description}</span>)}{insights[id as keyof typeof insights][index] && <span> <StoneNameText text={insights[id as keyof typeof insights][index]} enabled={true} extended={true}/></span>}</p>
+  </article> : <p class="manuscript-paragraph">
     {pair.stone ? <a class="text-link manuscript-pairing-name" href={pathTo(`stones/${pair.stone.slug}/${pair.name === 'オレンジムーンストーン' ? '#orange-moonstone' : ''}`)}><StoneNameText text={pair.name} enabled={true} extended={true}/></a> : <span class="manuscript-pairing-name"><StoneNameText text={pair.name} enabled={true} extended={true}/></span>}
     <span class="manuscript-pairing-separator">：</span><span class="manuscript-pairing-description"><StoneNameText text={pair.description} enabled={true} extended={true}/>
-    {oldPairs.filter(old => old.stoneId === pair.stone?.id).map(old => <span> {old.description}</span>)}</span>
+    {oldPairs.filter(old => old.stoneId === pair.stone?.id).map(old => <span> {old.description}</span>)} <StoneNameText text={insights[id as keyof typeof insights][index]} enabled={true} extended={true} /></span>
   </p>)}
-  {extras.map(pair => <p class="manuscript-paragraph"><a class="text-link manuscript-pairing-name" href={pathTo(`stones/${stones.find(s => s.id === pair.stoneId)!.slug}/`)}><StoneNameText text={pair.name} enabled={true} extended={true}/></a><span class="manuscript-pairing-separator">：</span><span class="manuscript-pairing-description">{pair.description}</span></p>)}
+  {extras.map(pair => detailedPairings ? <article class="manuscript-paragraph pairing-article"><h3><a class="text-link manuscript-pairing-name" href={pathTo(`stones/${stones.find(s => s.id === pair.stoneId)!.slug}/`)}><StoneNameText text={pair.name} enabled={true} extended={true}/></a></h3><p class="manuscript-pairing-description">{pair.description}{extraPairNotes[id]?.[pair.stoneId] && <span> {extraPairNotes[id][pair.stoneId]}</span>}</p></article> : <p class="manuscript-paragraph"><a class="text-link manuscript-pairing-name" href={pathTo(`stones/${stones.find(s => s.id === pair.stoneId)!.slug}/`)}><StoneNameText text={pair.name} enabled={true} extended={true}/></a><span class="manuscript-pairing-separator">：</span><span class="manuscript-pairing-description">{pair.description}</span></p>)}
 </div>}
 {item && part === 'care' && <div><h3>選び方・お手入れ</h3>{item.care.split(/\n\s*\n/).map(p => <p><StoneNameText text={p} enabled={true} extended={true}/></p>)}</div>}

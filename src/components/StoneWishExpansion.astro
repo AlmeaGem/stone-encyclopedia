@@ -1,0 +1,52 @@
+---
+import prose from '../content/editorial-wish-expansion.json';
+import StoneNameText from './StoneNameText.astro';
+interface Props {
+  id: string;
+  part: 'story' | 'wishes';
+}
+const { id, part } = Astro.props;
+const paragraphs = prose[id as keyof typeof prose];
+---
+
+{paragraphs && paragraphs[0] && part === 'story' && (
+  <p>
+    <StoneNameText text={paragraphs[0]} enabled={true} extended={true} />
+  </p>
+)}
+{paragraphs && part === 'wishes' && (
+  <div class="wish-expansion">
+    {[
+      '愛情・人間関係',
+      '仕事・挑戦',
+      '豊かさ・暮らし',
+      ...(paragraphs.length > 4 ? ['守護・心のよりどころ'] : []),
+    ].map((heading, index) => (
+      <article>
+        <h3>{heading}</h3>
+        <p>
+          <StoneNameText
+            text={paragraphs[index + 1]}
+            enabled={true}
+            extended={true}
+          />
+        </p>
+      </article>
+    ))}
+  </div>
+)}
+<style>
+  .wish-expansion {
+    margin-top: 20px;
+    display: grid;
+    gap: 14px;
+  }
+  .wish-expansion h3 {
+    font-size: 1rem;
+    margin: 0 0 6px;
+  }
+  .wish-expansion p {
+    margin: 0;
+    line-height: 1.9;
+  }
+</style>

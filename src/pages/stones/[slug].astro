@@ -2,6 +2,7 @@
 import ManuscriptBody from '../../components/ManuscriptBody.astro';
 import EditorialArticle from '../../components/EditorialArticle.astro';
 import FirstFiveSupplement from '../../components/FirstFiveSupplement.astro';
+import StoneWishExpansion from '../../components/StoneWishExpansion.astro';
 import firstFive from '../../content/editorial-first-five.json';
 import secondFive from '../../content/editorial-second-five.json';
 import thirdFive from '../../content/editorial-third-five.json';
@@ -197,9 +198,9 @@ const schema = {
                   <ManuscriptHeading text={section.heading} />
                 </SectionHeading>
                 <ManuscriptBody section={section} protectStoneNames={protectStoneNames} />
-                {stoneHasSupplement && section.heading.startsWith('導入') && <FirstFiveSupplement id={stone.id} part="story" />}
+                {stoneHasSupplement && section.heading.startsWith('導入') && <><FirstFiveSupplement id={stone.id} part="story" /><StoneWishExpansion id={stone.id} part="story" /></>}
                 {stoneHasSupplement && section.heading.startsWith('スピリチュアル') && <FirstFiveSupplement id={stone.id} part="meaning" />}
-                {stoneHasSupplement && section.kind === 'wishes' && <FirstFiveSupplement id={stone.id} part="wishes" />}
+                {stoneHasSupplement && section.kind === 'wishes' && <><FirstFiveSupplement id={stone.id} part="wishes" /><StoneWishExpansion id={stone.id} part="wishes" /></>}
               </section>
             ),
           )}
@@ -243,7 +244,8 @@ const schema = {
         </div>
         <section id="pairing" class="detail-section manuscript-section">
           {editorial && <EditorialArticle stone={stone} part="pairings" legacy={manuscript.sections} />}
-          {!editorial && pairSections.map((section) => (
+          {stone.id === 's110' && <SectionHeading>相性のよい石</SectionHeading>}
+          {!editorial && stone.id !== 's110' && pairSections.map((section) => (
             <>
               <SectionHeading>
                 <ManuscriptHeading text={section.heading} />
