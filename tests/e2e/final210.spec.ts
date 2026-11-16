@@ -3,6 +3,11 @@ import {
   manuscriptPairings,
 } from '../../src/lib/approved-manuscripts';
 import editorialData from '../../src/content/editorial-13.json' with { type: 'json' };
+import first from '../../src/content/editorial-first-five.json' with { type: 'json' };
+import second from '../../src/content/editorial-second-five.json' with { type: 'json' };
+import third from '../../src/content/editorial-third-five.json' with { type: 'json' };
+import fourth from '../../src/content/editorial-fourth-five.json' with { type: 'json' };
+const supplemented = { ...first, ...second, ...third, ...fourth };
 import { approvedText } from '../helpers/approved-text';
 import { publicStone } from '../../src/lib/public-stone';
 import { test, expect } from '@playwright/test';
@@ -82,6 +87,29 @@ for (let start = 0; start < stones.length; start += 20) {
             .locator('#nature .fact-list dt')
             .filter({ hasText: /^モース硬度$/ }),
         ).toHaveCount(1);
+      } else if (stone.id in supplemented) {
+        const pairs = approvedManuscript(stone.id)
+          .sections.filter((section) => section.kind === 'pairings')
+          .flatMap(manuscriptPairings);
+        for (const pair of pairs) {
+          const target = allStones.find(
+            (item: any) => item.id === pair.stoneId,
+          );
+          const entry = page
+            .locator('#pairing .manuscript-pairings > p')
+            .filter({
+              has: page.locator(`a[href="/stones/${target.slug}/"]`),
+            });
+          await expect(entry, `${stone.id}: ${pair.name}`).toHaveCount(1);
+          await expect(entry).toContainText(
+            pair.description.replace(/\*\*/g, ''),
+          );
+        }
+        await expect(
+          page
+            .locator('#nature .fact-list dt')
+            .filter({ hasText: /^モース硬度$/ }),
+        ).toHaveCount(0);
       } else {
         const firstPairing = await page
           .locator('#pairing .manuscript-pairings > p')

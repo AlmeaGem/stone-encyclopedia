@@ -23,9 +23,9 @@ const extras = oldPairs.filter(pair => !additions.some(add => add.stone?.id === 
 {item && part === 'pairings' && <div class="manuscript-pairings">
   {additions.map(pair => <p class="manuscript-paragraph">
     {pair.stone ? <a class="text-link manuscript-pairing-name" href={pathTo(`stones/${pair.stone.slug}/${pair.name === 'オレンジムーンストーン' ? '#orange-moonstone' : ''}`)}><StoneNameText text={pair.name} enabled={true} extended={true}/></a> : <span class="manuscript-pairing-name"><StoneNameText text={pair.name} enabled={true} extended={true}/></span>}
-    <span>：</span><StoneNameText text={pair.description} enabled={true} extended={true}/>
-    {oldPairs.filter(old => old.stoneId === pair.stone?.id).map(old => <span> {old.description}</span>)}
+    <span class="manuscript-pairing-separator">：</span><span class="manuscript-pairing-description"><StoneNameText text={pair.description} enabled={true} extended={true}/>
+    {oldPairs.filter(old => old.stoneId === pair.stone?.id).map(old => <span> {old.description}</span>)}</span>
   </p>)}
-  {extras.map(pair => <p class="manuscript-paragraph"><a class="text-link manuscript-pairing-name" href={pathTo(`stones/${stones.find(s => s.id === pair.stoneId)!.slug}/`)}><StoneNameText text={pair.name} enabled={true} extended={true}/></a>：{pair.description}</p>)}
+  {extras.map(pair => <p class="manuscript-paragraph"><a class="text-link manuscript-pairing-name" href={pathTo(`stones/${stones.find(s => s.id === pair.stoneId)!.slug}/`)}><StoneNameText text={pair.name} enabled={true} extended={true}/></a><span class="manuscript-pairing-separator">：</span><span class="manuscript-pairing-description">{pair.description}</span></p>)}
 </div>}
 {item && part === 'care' && <div><h3>選び方・お手入れ</h3>{item.care.split(/\n\s*\n/).map(p => <p><StoneNameText text={p} enabled={true} extended={true}/></p>)}</div>}
