@@ -2,6 +2,11 @@ import { test, expect } from '@playwright/test';
 
 const targets = [
   ['aquamarine', '.aqua-pairings > article', 5],
+  ['moonstone', '.manuscript-pairings > article', 6],
+  ['larimar', '.manuscript-pairings > article', 7],
+  ['rutilated-quartz', '.manuscript-pairings > article', 5],
+  ['rose-quartz', '.manuscript-pairings > article', 6],
+  ['rhodochrosite', '.manuscript-pairings > article', 7],
   ['bulls-eye', '.manuscript-pairings > article', 5],
   ['blue-topaz', '.manuscript-pairings > article', 6],
   ['hawks-eye', '.manuscript-pairings > article', 6],
