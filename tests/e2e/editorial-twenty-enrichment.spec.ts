@@ -8,13 +8,13 @@ import third from '../../src/content/editorial-third-five.json' with { type: 'js
 import fourth from '../../src/content/editorial-fourth-five.json' with { type: 'json' };
 const supplements = { ...first, ...second, ...third, ...fourth };
 
-test('fifteen approved pages retain their additions and compact readable pairings', async ({
+test('twenty approved pages retain their additions and compact readable pairings', async ({
   page,
 }, info) => {
   test.setTimeout(120000);
-  expect(Object.keys(additions)).toHaveLength(15);
+  expect(Object.keys(additions)).toHaveLength(20);
   for (const id of ['s063', 's126', 's064', 's107', 's108'])
-    expect(additions).not.toHaveProperty(id);
+    expect(additions).toHaveProperty(id);
   for (const [id, paragraphs] of Object.entries(additions)) {
     const stone = stones.find((item) => item.id === id)!;
     await page.goto(`/stones/${stone.slug}/`);
