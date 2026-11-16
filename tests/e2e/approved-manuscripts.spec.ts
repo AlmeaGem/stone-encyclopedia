@@ -9,6 +9,16 @@ import {
 } from '../../src/lib/approved-manuscripts';
 
 import editorialData from '../../src/content/editorial-13.json' with { type: 'json' };
+import first from '../../src/content/editorial-first-five.json' with { type: 'json' };
+import second from '../../src/content/editorial-second-five.json' with { type: 'json' };
+import third from '../../src/content/editorial-third-five.json' with { type: 'json' };
+import fourth from '../../src/content/editorial-fourth-five.json' with { type: 'json' };
+const supplemented = new Set([
+  ...Object.keys(first),
+  ...Object.keys(second),
+  ...Object.keys(third),
+  ...Object.keys(fourth),
+]);
 
 const plain = (text: string) => text.replace(/\*\*/g, '').replace(/\s/g, '');
 for (let start = 0; start < stones.length; start += 20) {
@@ -34,6 +44,30 @@ for (let start = 0; start < stones.length; start += 20) {
               });
               await expect(card).toHaveCount(1);
               await expect(card).toContainText(
+                pair.description.replace(/\*\*/g, ''),
+              );
+            }
+          } else {
+            for (const item of manuscriptItems(section))
+              expect(rendered, `${stone.id}: ${section.heading}`).toContain(
+                plain(item),
+              );
+          }
+        }
+      } else if (supplemented.has(stone.id)) {
+        const rendered = plain(await page.locator('.detail-body').innerText());
+        for (const section of manuscript.sections) {
+          if (section.kind === 'pairings') {
+            for (const pair of manuscriptPairings(section)) {
+              const target = stones.find((item) => item.id === pair.stoneId);
+              expect(target, `${stone.id}: ${pair.name}`).toBeDefined();
+              const entry = page
+                .locator('#pairing .manuscript-paragraph')
+                .filter({
+                  has: page.locator(`a[href$="/stones/${target!.slug}/"]`),
+                });
+              await expect(entry).toHaveCount(1);
+              await expect(entry).toContainText(
                 pair.description.replace(/\*\*/g, ''),
               );
             }
