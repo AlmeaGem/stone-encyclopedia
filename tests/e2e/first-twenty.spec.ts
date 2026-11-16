@@ -28,13 +28,20 @@ test('all twenty detail pages separate scientific facts, stories and editorial p
       /相性のよい石|相性のよい天然石\s*｜\s*おすすめの組み合わせ/,
     );
     const pairingLinks = page.locator(
-      '#pairing .manuscript-pairing-name, #pairing .editorial-pair h3 a',
+      '#pairing a.manuscript-pairing-name, #pairing .editorial-pair h3 a',
     );
     expect(await pairingLinks.count()).toBeGreaterThan(0);
     for (const link of await pairingLinks.all()) {
       const href = await link.getAttribute('href');
       expect(href).toMatch(/\/stones\/[^/]+\/$/);
     }
+    const unlinkedNames = await page
+      .locator('#pairing span.manuscript-pairing-name')
+      .allTextContents();
+    for (const name of unlinkedNames)
+      expect(['ブラックスピネル', 'レッドルチルクォーツ']).toContain(
+        name.trim(),
+      );
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= innerWidth,
