@@ -110,6 +110,14 @@ for (let start = 0; start < stones.length; start += 20) {
             .locator('#nature .fact-list dt')
             .filter({ hasText: /^モース硬度$/ }),
         ).toHaveCount(0);
+      } else if (stone.id === 's110') {
+        // Aquamarine uses its own approved, consolidated pairing cards.
+        const entries = page.locator('#pairing .aqua-pairings > article');
+        await expect(entries).toHaveCount(5);
+        for (const entry of await entries.all()) {
+          await expect(entry.locator('h4 a[href^="/stones/"]')).toHaveCount(1);
+          await expect(entry.locator('p').last()).not.toBeEmpty();
+        }
       } else {
         const firstPairing = await page
           .locator('#pairing .manuscript-pairings > p')
