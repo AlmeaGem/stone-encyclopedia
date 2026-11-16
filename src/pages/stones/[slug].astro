@@ -5,6 +5,7 @@ import FirstFiveSupplement from '../../components/FirstFiveSupplement.astro';
 import firstFive from '../../content/editorial-first-five.json';
 import secondFive from '../../content/editorial-second-five.json';
 import thirdFive from '../../content/editorial-third-five.json';
+import fourthFive from '../../content/editorial-fourth-five.json';
 import { editorialManuscript } from '../../lib/editorial-13';
 import StoneNameText from '../../components/StoneNameText.astro';
 import AquamarineSupplement from '../../components/AquamarineSupplement.astro';
@@ -56,7 +57,7 @@ export function getStaticPaths() {
   }));
 }
 const { stone } = Astro.props;
-const stoneHasSupplement = stone.id in firstFive || stone.id in secondFive || stone.id in thirdFive;
+const stoneHasSupplement = stone.id in firstFive || stone.id in secondFive || stone.id in thirdFive || stone.id in fourthFive;
 const protectStoneNames = ['amber', 'anhydrite', 'black-onyx', 'moonstone', 'garden-quartz', 'garnet', 'carnelian', 'chalcedony', 'rock-crystal', 'chrysocolla', 'kunzite'].includes(stone.slug) || ['s110', 's069', 's070', 's134', 's053'].includes(stone.id);
 const wishGuideNotes = guidesForStone(stone.id);
 const guardian = guardianForStone(stone.id);
