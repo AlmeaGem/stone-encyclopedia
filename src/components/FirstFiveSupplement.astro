@@ -1,7 +1,8 @@
 ---
 import first from '../content/editorial-first-five.json';
 import second from '../content/editorial-second-five.json';
-const content = { ...first, ...second };
+import third from '../content/editorial-third-five.json';
+const content = { ...first, ...second, ...third };
 import stones from '../content/stones.json';
 import { manuscriptPairings, type ManuscriptSection } from '../lib/approved-manuscripts';
 import { pathTo } from '../lib/urls';
@@ -10,7 +11,7 @@ interface Props { id: string; part: 'story' | 'meaning' | 'wishes' | 'pairings' 
 const { id, part, legacy = [] } = Astro.props;
 const item = content[id as keyof typeof content];
 const oldPairs = legacy.flatMap(manuscriptPairings);
-const alias: Record<string, string> = { 'オニキス': 's015', 'クリスタルクォーツ': 's187', 'クリスタルクォーツ（ロッククリスタル）': 's187', 'オレンジムーンストーン': 's063' };
+const alias: Record<string, string> = { 'オニキス': 's015', 'クリスタルクォーツ': 's187', 'クリスタルクォーツ（ロッククリスタル）': 's187', 'オレンジムーンストーン': 's063', 'ロードクロサイト（インカローズ）': 's108' };
 const lookup = (name: string) => stones.find(s => s.id === alias[name] || s.name === name || (s.aliases as string[]).includes(name));
 const additions = item?.pairings.map(pair => ({...pair, stone: lookup(pair.name)})) || [];
 const extras = oldPairs.filter(pair => !additions.some(add => add.stone?.id === pair.stoneId));
