@@ -32,7 +32,29 @@ for (let start = 0; start < stones.length; start += 20) {
       await expect(page.locator('h1 + .manuscript-catchphrase')).toHaveText(
         manuscript.catchphrase,
       );
-      if (stone.slug in editorialData) {
+      if (stone.id === 's110') {
+        const rendered = plain(await page.locator('.detail-body').innerText());
+        for (const section of manuscript.sections) {
+          if (section.kind === 'pairings') {
+            for (const pair of manuscriptPairings(section)) {
+              const target = stones.find((item) => item.id === pair.stoneId)!;
+              const entry = page.locator('#pairing .aqua-card').filter({
+                has: page.locator(`a[href$="/stones/${target.slug}/"]`),
+              });
+              await expect(entry).toHaveCount(1);
+              await expect(entry).toContainText(
+                pair.description.replace(/\*\*/g, ''),
+              );
+            }
+          } else {
+            for (const item of manuscriptItems(section))
+              expect(rendered, `${stone.id}: ${section.heading}`).toContain(
+                plain(item),
+              );
+          }
+        }
+        await expect(page.locator('#pairing .aqua-card')).toHaveCount(5);
+      } else if (stone.slug in editorialData) {
         const rendered = plain(await page.locator('.detail-body').innerText());
         for (const section of manuscript.sections) {
           if (section.kind === 'pairings') {

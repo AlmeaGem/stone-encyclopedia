@@ -75,8 +75,23 @@ test('all approved headings and pairing links retain their content and responsiv
           );
         else await expect(card.locator('a')).toHaveCount(0);
       }
+    } else if (stone.id === 's110') {
+      const entries = page.locator('#pairing .aqua-card');
+      await expect(entries).toHaveCount(5);
+      for (const pair of expectedPairs) {
+        const target = byId.get(pair.stoneId)!;
+        const entry = entries.filter({
+          has: page.locator(`a[href="/stones/${target.slug}/"]`),
+        });
+        await expect(entry, `${stone.id}: ${pair.name}`).toHaveCount(1);
+        await expect(entry).toContainText(
+          pair.description.replace(/\*\*/g, ''),
+        );
+      }
     } else if (stone.id in supplemented) {
-      const entries = page.locator('#pairing .manuscript-pairings > p');
+      const entries = page.locator(
+        '#pairing .manuscript-pairings > :is(p, article)',
+      );
       const draft = supplemented[stone.id as keyof typeof supplemented];
       for (const pair of expectedPairs) {
         const target = byId.get(pair.stoneId)!;
@@ -100,7 +115,7 @@ test('all approved headings and pairing links retain their content and responsiv
         await expect(entry).toContainText(pair.description);
       }
     } else {
-      const entries = page.locator('.manuscript-pairings > p');
+      const entries = page.locator('.manuscript-pairings > :is(p, article)');
       expect(await entries.count(), stone.id).toBe(expectedPairs.length);
       for (const [index, pair] of expectedPairs.entries()) {
         const entry = entries.nth(index);
@@ -157,7 +172,7 @@ test('all approved headings and pairing links retain their content and responsiv
           }
         }
         for (const entry of document.querySelectorAll(
-          '.manuscript-pairings > p',
+          '.manuscript-pairings > :is(p, article)',
         )) {
           const name = entry.querySelector('.manuscript-pairing-name')!,
             desc = entry.querySelector('.manuscript-pairing-description')!;

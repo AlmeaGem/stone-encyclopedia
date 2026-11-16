@@ -129,3 +129,60 @@
     transition: none;
   }
 }
+
+/* Pairing names share the existing palette while leaving room for explanations. */
+.manuscript-pairings .manuscript-pairing-name {
+  min-height: 0;
+  padding: 3px 8px;
+  font-size: 0.9em;
+  line-height: 1.45;
+  border-radius: 4px;
+}
+.manuscript-pairing-description {
+  line-height: 1.9;
+}
+@media (max-width: 640px) {
+  .manuscript-pairing-separator {
+    display: none;
+  }
+  .manuscript-pairing-description {
+    display: block;
+    margin-top: 0.65em;
+  }
+}
+
+/* Shared stone-pair links, including extended article cards. */
+#pairing a[href*='/stones/'] {
+  display: inline-block;
+  min-height: 0;
+  padding: 3px 8px;
+  font-size: 0.9em;
+  line-height: 1.45;
+  border-radius: 4px;
+  background-color: #f8efeb;
+  text-decoration-color: #cdaea7;
+}
+#pairing p {
+  line-height: 1.9;
+}
+#pairing h3,
+#pairing h4 {
+  margin-bottom: 0.65em;
+}
+
+/* Pairing headings for the five revised articles. */
+.manuscript-pairings > .pairing-article {
+  border-left: 2px solid #e5d4c7;
+  padding: 8px 0 8px 16px;
+  margin: 0;
+}
+.manuscript-pairings > .pairing-article h3 {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0 0 10px;
+}
+.manuscript-pairings > .pairing-article p {
+  margin: 0;
+  line-height: 1.9;
+}
