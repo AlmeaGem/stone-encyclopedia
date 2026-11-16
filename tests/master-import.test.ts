@@ -50,13 +50,19 @@ it('protects historic IDs, paths, names, aliases and existing source records fro
       'slug',
       'name',
       'english',
-      'aliases',
       'colors',
       'wishes',
       'themes',
       'related',
     ] as const)
       expect(stone[field]).toEqual(old[field]);
+    expect(stone.aliases).toEqual(
+      old.id === 's060'
+        ? [...old.aliases, 'ブルータイガーアイ']
+        : old.id === 's059'
+          ? [...old.aliases, 'レッドタイガーアイ']
+          : old.aliases,
+    );
     for (const source of old.sources)
       expect(
         stone.sources.some((s) =>

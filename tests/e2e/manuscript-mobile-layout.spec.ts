@@ -7,6 +7,11 @@ import {
 } from '../../src/lib/approved-manuscripts';
 
 import editorialData from '../../src/content/editorial-13.json' with { type: 'json' };
+import first from '../../src/content/editorial-first-five.json' with { type: 'json' };
+import second from '../../src/content/editorial-second-five.json' with { type: 'json' };
+import third from '../../src/content/editorial-third-five.json' with { type: 'json' };
+import fourth from '../../src/content/editorial-fourth-five.json' with { type: 'json' };
+const supplemented = { ...first, ...second, ...third, ...fourth };
 
 const byId = new Map(stones.map((stone) => [stone.id, stone]));
 const normalized = (s: string) => s.replace(/\s/g, '');
@@ -70,6 +75,30 @@ test('all approved headings and pairing links retain their content and responsiv
           );
         else await expect(card.locator('a')).toHaveCount(0);
       }
+    } else if (stone.id in supplemented) {
+      const entries = page.locator('#pairing .manuscript-pairings > p');
+      const draft = supplemented[stone.id as keyof typeof supplemented];
+      for (const pair of expectedPairs) {
+        const target = byId.get(pair.stoneId)!;
+        const entry = entries.filter({
+          has: page.locator(`a[href="/stones/${target.slug}/"]`),
+        });
+        await expect(entry, `${stone.id}: ${pair.name}`).toHaveCount(1);
+        await expect(entry).toContainText(
+          pair.description.replace(/\*\*/g, ''),
+        );
+      }
+      for (const pair of draft.pairings) {
+        const entry = entries.filter({
+          has: page.locator('.manuscript-pairing-name').filter({
+            hasText: new RegExp(
+              `^${pair.name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}$`,
+            ),
+          }),
+        });
+        await expect(entry, `${stone.id}: ${pair.name}`).toHaveCount(1);
+        await expect(entry).toContainText(pair.description);
+      }
     } else {
       const entries = page.locator('.manuscript-pairings > p');
       expect(await entries.count(), stone.id).toBe(expectedPairs.length);
@@ -130,7 +159,7 @@ test('all approved headings and pairing links retain their content and responsiv
         for (const entry of document.querySelectorAll(
           '.manuscript-pairings > p',
         )) {
-          const name = entry.querySelector('a')!,
+          const name = entry.querySelector('.manuscript-pairing-name')!,
             desc = entry.querySelector('.manuscript-pairing-description')!;
           const a = name.getBoundingClientRect(),
             b = desc.getBoundingClientRect();

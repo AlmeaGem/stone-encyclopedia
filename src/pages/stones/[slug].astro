@@ -1,6 +1,11 @@
 ---
 import ManuscriptBody from '../../components/ManuscriptBody.astro';
 import EditorialArticle from '../../components/EditorialArticle.astro';
+import FirstFiveSupplement from '../../components/FirstFiveSupplement.astro';
+import firstFive from '../../content/editorial-first-five.json';
+import secondFive from '../../content/editorial-second-five.json';
+import thirdFive from '../../content/editorial-third-five.json';
+import fourthFive from '../../content/editorial-fourth-five.json';
 import { editorialManuscript } from '../../lib/editorial-13';
 import StoneNameText from '../../components/StoneNameText.astro';
 import AquamarineSupplement from '../../components/AquamarineSupplement.astro';
@@ -52,6 +57,7 @@ export function getStaticPaths() {
   }));
 }
 const { stone } = Astro.props;
+const stoneHasSupplement = stone.id in firstFive || stone.id in secondFive || stone.id in thirdFive || stone.id in fourthFive;
 const protectStoneNames = ['amber', 'anhydrite', 'black-onyx', 'moonstone', 'garden-quartz', 'garnet', 'carnelian', 'chalcedony', 'rock-crystal', 'chrysocolla', 'kunzite'].includes(stone.slug) || ['s110', 's069', 's070', 's134', 's053'].includes(stone.id);
 const wishGuideNotes = guidesForStone(stone.id);
 const guardian = guardianForStone(stone.id);
@@ -191,6 +197,9 @@ const schema = {
                   <ManuscriptHeading text={section.heading} />
                 </SectionHeading>
                 <ManuscriptBody section={section} protectStoneNames={protectStoneNames} />
+                {stoneHasSupplement && section.heading.startsWith('導入') && <FirstFiveSupplement id={stone.id} part="story" />}
+                {stoneHasSupplement && section.heading.startsWith('スピリチュアル') && <FirstFiveSupplement id={stone.id} part="meaning" />}
+                {stoneHasSupplement && section.kind === 'wishes' && <FirstFiveSupplement id={stone.id} part="wishes" />}
               </section>
             ),
           )}
@@ -239,7 +248,7 @@ const schema = {
               <SectionHeading>
                 <ManuscriptHeading text={section.heading} />
               </SectionHeading>
-              <ManuscriptBody section={section} protectStoneNames={protectStoneNames} />
+              {stoneHasSupplement ? <FirstFiveSupplement id={stone.id} part="pairings" legacy={[section]} /> : <ManuscriptBody section={section} protectStoneNames={protectStoneNames} />}
             </>
           ))}
           {stone.id === 's110' && <AquamarineSupplement part="pairings" />}
@@ -368,6 +377,7 @@ const schema = {
               <ManuscriptBody section={section} protectStoneNames={protectStoneNames} />
             </div>
           ))}
+          {stoneHasSupplement && <FirstFiveSupplement id={stone.id} part="care" />}
           <Prose text={stone.cleansing} />
           <div class="notice">{publicHandling(stone.handling)}</div></>}
           <a class="text-link" href={pathTo('articles/care/')}>
