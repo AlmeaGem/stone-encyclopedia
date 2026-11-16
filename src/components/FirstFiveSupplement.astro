@@ -1,0 +1,27 @@
+---
+import content from '../content/editorial-first-five.json';
+import stones from '../content/stones.json';
+import { manuscriptPairings, type ManuscriptSection } from '../lib/approved-manuscripts';
+import { pathTo } from '../lib/urls';
+import StoneNameText from './StoneNameText.astro';
+interface Props { id: string; part: 'story' | 'meaning' | 'wishes' | 'pairings' | 'care'; legacy?: ManuscriptSection[] }
+const { id, part, legacy = [] } = Astro.props;
+const item = content[id as keyof typeof content];
+const oldPairs = legacy.flatMap(manuscriptPairings);
+const alias: Record<string, string> = { 'オニキス': 's015', 'クリスタルクォーツ': 's187' };
+const lookup = (name: string) => stones.find(s => s.id === alias[name] || s.name === name || (s.aliases as string[]).includes(name));
+const additions = item?.pairings.map(pair => ({...pair, stone: lookup(pair.name)})) || [];
+const extras = oldPairs.filter(pair => !additions.some(add => add.stone?.id === pair.stoneId));
+---
+{item && part === 'story' && item.story.split(/\n\s*\n/).map(p => <p><StoneNameText text={p} enabled={true} extended={true}/></p>)}
+{item && part === 'meaning' && item.meaning.split(/\n\s*\n/).map(p => <p><StoneNameText text={p} enabled={true} extended={true}/></p>)}
+{item && part === 'wishes' && <ul class="manuscript-wishes">{item.wishes.map(w => <li><StoneNameText text={w} enabled={true} extended={true}/></li>)}</ul>}
+{item && part === 'pairings' && <div class="manuscript-pairings">
+  {additions.map(pair => <p class="manuscript-paragraph">
+    {pair.stone ? <a class="text-link manuscript-pairing-name" href={pathTo(`stones/${pair.stone.slug}/`)}><StoneNameText text={pair.name} enabled={true} extended={true}/></a> : <span class="manuscript-pairing-name"><StoneNameText text={pair.name} enabled={true} extended={true}/></span>}
+    <span>：</span><StoneNameText text={pair.description} enabled={true} extended={true}/>
+    {oldPairs.filter(old => old.stoneId === pair.stone?.id).map(old => <span> {old.description}</span>)}
+  </p>)}
+  {extras.map(pair => <p class="manuscript-paragraph"><a class="text-link manuscript-pairing-name" href={pathTo(`stones/${stones.find(s => s.id === pair.stoneId)!.slug}/`)}><StoneNameText text={pair.name} enabled={true} extended={true}/></a>：{pair.description}</p>)}
+</div>}
+{item && part === 'care' && <div><h3>選び方・お手入れ</h3>{item.care.split(/\n\s*\n/).map(p => <p><StoneNameText text={p} enabled={true} extended={true}/></p>)}</div>}
