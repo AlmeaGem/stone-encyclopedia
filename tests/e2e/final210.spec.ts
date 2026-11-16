@@ -96,7 +96,7 @@ for (let start = 0; start < stones.length; start += 20) {
             (item: any) => item.id === pair.stoneId,
           );
           const entry = page
-            .locator('#pairing .manuscript-pairings > p')
+            .locator('#pairing .manuscript-pairings > article')
             .filter({
               has: page.locator(`a[href="/stones/${target.slug}/"]`),
             });
