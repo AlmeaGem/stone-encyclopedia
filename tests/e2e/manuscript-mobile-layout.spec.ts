@@ -7,6 +7,7 @@ import {
 } from '../../src/lib/approved-manuscripts';
 
 import editorialData from '../../src/content/editorial-13.json' with { type: 'json' };
+import priority from '../../src/content/editorial-priority-a.json' with { type: 'json' };
 import first from '../../src/content/editorial-first-five.json' with { type: 'json' };
 import second from '../../src/content/editorial-second-five.json' with { type: 'json' };
 import third from '../../src/content/editorial-third-five.json' with { type: 'json' };
@@ -122,11 +123,17 @@ test('all approved headings and pairing links retain their content and responsiv
         await expect(
           entry.locator('a.manuscript-pairing-name'),
         ).toHaveAttribute('href', `/stones/${byId.get(pair.stoneId)!.slug}/`);
+        const addition = priority[stone.id as keyof typeof priority];
+        const notes = addition?.pairings as Record<string, string> | undefined;
+        if (addition)
+          expect(notes?.[pair.name], `${stone.id}: ${pair.name}`).toBeTruthy();
         expect(
           normalized((await entry.textContent())!),
           `${stone.id}: ${pair.name}`,
         ).toBe(
-          normalized(`${pair.name}：${pair.description.replace(/\*\*/g, '')}`),
+          normalized(
+            `${pair.name}：${pair.description.replace(/\*\*/g, '')}${notes?.[pair.name] ?? ''}`,
+          ),
         );
       }
     }
