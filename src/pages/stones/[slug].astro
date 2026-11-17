@@ -1,5 +1,6 @@
 ---
 import ManuscriptBody from '../../components/ManuscriptBody.astro';
+import priorityCopy from '../../content/editorial-priority-a.json';
 import EditorialArticle from '../../components/EditorialArticle.astro';
 import FirstFiveSupplement from '../../components/FirstFiveSupplement.astro';
 import StoneWishExpansion from '../../components/StoneWishExpansion.astro';
@@ -58,6 +59,7 @@ export function getStaticPaths() {
   }));
 }
 const { stone } = Astro.props;
+const priority = priorityCopy[stone.id as keyof typeof priorityCopy];
 const stoneHasSupplement = stone.id in firstFive || stone.id in secondFive || stone.id in thirdFive || stone.id in fourthFive;
 const protectStoneNames = ['amber', 'anhydrite', 'black-onyx', 'moonstone', 'garden-quartz', 'garnet', 'carnelian', 'chalcedony', 'rock-crystal', 'chrysocolla', 'kunzite'].includes(stone.slug) || ['s110', 's069', 's070', 's134', 's053'].includes(stone.id);
 const wishGuideNotes = guidesForStone(stone.id);
@@ -197,7 +199,7 @@ const schema = {
                 <SectionHeading>
                   <ManuscriptHeading text={section.heading} />
                 </SectionHeading>
-                <ManuscriptBody section={section} protectStoneNames={protectStoneNames} />
+                <ManuscriptBody section={section} protectStoneNames={protectStoneNames} />{priority && section.heading.startsWith('導入') && <p class="manuscript-paragraph"><StoneNameText text={priority.story} enabled={true} extended={true} /></p>}{priority && section.heading.startsWith('スピリチュアル') && <p class="manuscript-paragraph"><StoneNameText text={priority.meaning} enabled={true} extended={true} /></p>}{priority && section.kind === 'wishes' && <p class="manuscript-paragraph"><StoneNameText text={priority.wishes} enabled={true} extended={true} /></p>}
                 {stoneHasSupplement && section.heading.startsWith('導入') && <><FirstFiveSupplement id={stone.id} part="story" /><StoneWishExpansion id={stone.id} part="story" /></>}
                 {stoneHasSupplement && section.heading.startsWith('スピリチュアル') && <FirstFiveSupplement id={stone.id} part="meaning" />}
                 {stoneHasSupplement && section.kind === 'wishes' && <><FirstFiveSupplement id={stone.id} part="wishes" /><StoneWishExpansion id={stone.id} part="wishes" /></>}
@@ -250,7 +252,7 @@ const schema = {
               <SectionHeading>
                 <ManuscriptHeading text={section.heading} />
               </SectionHeading>
-              {stoneHasSupplement ? <FirstFiveSupplement id={stone.id} part="pairings" legacy={[section]} /> : <ManuscriptBody section={section} protectStoneNames={protectStoneNames} />}
+              {stoneHasSupplement ? <FirstFiveSupplement id={stone.id} part="pairings" legacy={[section]} /> : <ManuscriptBody section={section} protectStoneNames={protectStoneNames} stoneId={stone.id} />}
             </>
           ))}
           {stone.id === 's110' && <AquamarineSupplement part="pairings" />}

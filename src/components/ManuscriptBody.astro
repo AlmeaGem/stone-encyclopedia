@@ -8,14 +8,17 @@ import {
 import { pathTo } from '../lib/urls';
 import StoneNameText from './StoneNameText.astro';
 import stones from '../content/stones.json';
+import priorityCopy from '../content/editorial-priority-a.json';
 interface Props {
   section: ManuscriptSection;
   protectStoneNames?: boolean;
   extendedStoneNames?: boolean;
+  stoneId?: string;
 }
-const { section, protectStoneNames = false, extendedStoneNames = false } = Astro.props;
+const { section, protectStoneNames = false, extendedStoneNames = false, stoneId = '' } = Astro.props;
 const items = manuscriptItems(section);
 const pairings = manuscriptPairings(section);
+const priority = priorityCopy[stoneId as keyof typeof priorityCopy];
 const stoneById = new Map(stones.map((stone) => [stone.id, stone]));
 ---
 
@@ -43,7 +46,7 @@ const stoneById = new Map(stones.map((stone) => [stone.id, stone]));
         <span class="manuscript-pairing-description">
           {inlineManuscript(pairing.description).map((part) =>
             part.strong ? <strong><StoneNameText text={part.text} enabled={protectStoneNames} extended={extendedStoneNames} /></strong> : <StoneNameText text={part.text} enabled={protectStoneNames} extended={extendedStoneNames} />,
-          )}
+          )}{priority && priority.pairings[pairing.name as keyof typeof priority.pairings] && <span> <StoneNameText text={priority.pairings[pairing.name as keyof typeof priority.pairings]} enabled={true} extended={true} /></span>}
         </span>
       </p>
     ))}

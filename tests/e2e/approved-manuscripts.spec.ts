@@ -9,6 +9,7 @@ import {
 } from '../../src/lib/approved-manuscripts';
 
 import editorialData from '../../src/content/editorial-13.json' with { type: 'json' };
+import priority from '../../src/content/editorial-priority-a.json' with { type: 'json' };
 import first from '../../src/content/editorial-first-five.json' with { type: 'json' };
 import second from '../../src/content/editorial-second-five.json' with { type: 'json' };
 import third from '../../src/content/editorial-third-five.json' with { type: 'json' };
@@ -100,6 +101,27 @@ for (let start = 0; start < stones.length; start += 20) {
               );
           }
         }
+      } else if (stone.id in priority) {
+        const addition = priority[stone.id as keyof typeof priority];
+        const descriptions = addition.pairings as Record<string, string>;
+        const rendered = await page
+          .locator('.manuscript-paragraph, .manuscript-wishes li')
+          .allTextContents();
+        const expected = manuscript.sections.flatMap((section) =>
+          section.kind === 'pairings'
+            ? manuscriptPairings(section).map((pair) => {
+                expect(
+                  descriptions[pair.name],
+                  `${stone.id}: ${pair.name}`,
+                ).toBeTruthy();
+                return `${pair.name}：${pair.description}${descriptions[pair.name]}`;
+              })
+            : manuscriptItems(section),
+        );
+        expected.push(addition.story, addition.meaning, addition.wishes);
+        expect(rendered.map(plain).sort(), stone.id).toEqual(
+          expected.map(plain).sort(),
+        );
       } else {
         const rendered = await page
           .locator('.manuscript-paragraph, .manuscript-wishes li')
