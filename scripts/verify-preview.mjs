@@ -23,6 +23,6 @@ try {
   }
   await page.close();
  }
- const counts=results.filter(x=>x.addition).length;if(counts!==0&&counts!==20)throw Error('partial additions: '+counts+'/20');
+ const counts=results.filter(x=>x.addition).length;if(counts!==20)throw Error('expected all published additions: '+counts+'/20');
  await writeFile('test-results/live-preview/results.json',JSON.stringify(results,null,2));console.log('LIVE_RESULTS '+JSON.stringify({additionChecks:counts,total:results.length,results}));
 } finally {await b.close()}
