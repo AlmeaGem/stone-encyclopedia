@@ -7,7 +7,9 @@ import {
 } from '../../src/lib/approved-manuscripts';
 
 import editorialData from '../../src/content/editorial-13.json' with { type: 'json' };
-import priority from '../../src/content/editorial-priority-a.json' with { type: 'json' };
+import priorityA from '../../src/content/editorial-priority-a.json' with { type: 'json' };
+import priorityB from '../../src/content/editorial-priority-b.json' with { type: 'json' };
+const priority = { ...priorityA, ...priorityB };
 import first from '../../src/content/editorial-first-five.json' with { type: 'json' };
 import second from '../../src/content/editorial-second-five.json' with { type: 'json' };
 import third from '../../src/content/editorial-third-five.json' with { type: 'json' };
