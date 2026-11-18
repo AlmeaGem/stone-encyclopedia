@@ -9,6 +9,7 @@ import { pathTo } from '../lib/urls';
 import StoneNameText from './StoneNameText.astro';
 import stones from '../content/stones.json';
 import priorityCopy from '../content/editorial-priority-a.json';
+import priorityB from '../content/editorial-priority-b.json';
 interface Props {
   section: ManuscriptSection;
   protectStoneNames?: boolean;
@@ -18,7 +19,7 @@ interface Props {
 const { section, protectStoneNames = false, extendedStoneNames = false, stoneId = '' } = Astro.props;
 const items = manuscriptItems(section);
 const pairings = manuscriptPairings(section);
-const priority = priorityCopy[stoneId as keyof typeof priorityCopy];
+const priority = priorityCopy[stoneId as keyof typeof priorityCopy] ?? priorityB[stoneId as keyof typeof priorityB];
 const stoneById = new Map(stones.map((stone) => [stone.id, stone]));
 ---
 
