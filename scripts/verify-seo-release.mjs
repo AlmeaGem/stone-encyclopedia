@@ -8,7 +8,7 @@ const origin = process.env.SITE_URL;
 const base = process.env.BASE_PATH;
 assert.ok(origin?.startsWith('https://'), 'SITE_URL must be HTTPS');
 assert.ok(base?.startsWith('/'), 'BASE_PATH must begin with /');
-const site = new URL(base.replace(/\/?$/, '/') , origin.replace(/\/$/, '') + '/').href;
+const site = new URL(base.replace(/\/?$/, '/'), origin.replace(/\/$/, '') + '/').href;
 const xml = readFileSync(resolve(dist, 'sitemap.xml'), 'utf8');
 const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
 assert.equal(urls.length, 247, 'exactly 247 explicitly approved URLs');
