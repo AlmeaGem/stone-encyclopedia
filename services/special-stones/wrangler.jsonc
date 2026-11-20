@@ -1,0 +1,15 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "almea-special-stones-test",
+  "main": "src/worker.mjs",
+  "compatibility_date": "2026-08-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "preview_urls": false,
+  "vars": {
+    "SPECIAL_STONES_TEST_ONLY": "true",
+    "SPECIAL_STONES_PUBLIC_ORIGIN": "https://almeagem.github.io",
+    "SUPABASE_TEST_PRIVATE_BUCKET": "special-stones-test-private",
+  },
+  "observability": { "enabled": false },
+}
