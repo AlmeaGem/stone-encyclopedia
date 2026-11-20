@@ -9,7 +9,7 @@
 3. `supabase/migrations/001_special_stones.sql` を確認し、対象プロジェクトを再確認してから適用する。`special_stones` スキーマの各テーブルにRLSを有効化し、権限判定・注文・Webhook処理のRPCは `service_role` 専用。匿名・通常会員からDBテーブルや特権RPCにアクセスできないことを、実トークンで検証する。SQLの実PostgreSQL適用は未実施。
 4. Storageの `special-stones-test-private` を**非公開**で作成し、`anon` や `authenticated` に対象オブジェクトを直接読むポリシーを作らない。認可APIはサービス側だけが保持するservice roleで取得する。APIは各読込前にバケットが非公開か確認するが、公開設定されたバケットへの直接アクセスを事後的に防ぐものではない。空バケットとダミーデータで、公開URL・Storage API両方の拒否を確認してから進める。
 5. ダミーの `chapter-one` 記事を `special_stones.articles` に作成し、テストでのみ `published` を設定する。公開記事は全て会員対象であり、記事ごとの会員権設定は不要。ダミー本文は `chapter-one/article.md`、ダミー画像は `chapter-one/02_sapphire.png`、`03_ruby.png`、`04_emerald.png` に配置する。正式素材のアップロードは、隔離と直接URL拒否の確認が済むまで行わない。
-6. `.env.example` を参照し、`SUPABASE_TEST_URL`、`SUPABASE_TEST_PROJECT_REF`、`SUPABASE_TEST_ANON_KEY`、`SUPABASE_TEST_SERVICE_ROLE_KEY`、`SUPABASE_TEST_PRIVATE_BUCKET` を安全なテスト環境の秘密管理に設定する。サービスキーはサーバー専用。
+6. `.env.example` を参照し、`SUPABASE_TEST_URL`、`SUPABASE_TEST_PROJECT_REF`、`SUPABASE_APPROVED_TEST_PROJECT_REF`、`SUPABASE_TEST_ANON_KEY`、`SUPABASE_TEST_SERVICE_ROLE_KEY`、`SUPABASE_TEST_PRIVATE_BUCKET` を安全なテスト環境の秘密管理に設定する。サービスキーはサーバー専用。
 
 ## 2. Stripeテスト環境
 
@@ -21,7 +21,7 @@
 
 専用Worker向けのエントリとローカル実行設定を用意済みです。デプロイと実サービスへの接続は未実施です。導入時は独立Workerを作り、Workerの環境変数・SecretsでStripe/Supabaseの秘密値を渡します。SupabaseへHTTPSで接続し、ユーザーのアクセストークン検証、DBでの購読・購入権確認、非公開Storageの読み出しを順に行います。認可の失敗やサービス障害時は読み出さずに拒否します。既存Workerの設定・認証情報を共有しません。
 
-既存コードの `node:http` サーバーはWorkerへそのまま配備しません。WorkerのFetch形式、Stripe SDKの非同期署名検証をローカルで確認済みです。実環境での互換性、タイムアウト・サイズ上限、CORSの許可元、ログの秘密情報除去、`Cache-Control: private, no-store`、CDNキャッシュ無効化をテスト環境で個別に検証します。既存コードの許可元は `https://almeagem.github.io` に固定されているため、ローカルや専用テスト画面での安全な許可元の切り替えは別途設計が必要です。Workerや外部APIへの実接続は未実施です。
+既存コードの `node:http` サーバーはWorkerへそのまま配備しません。WorkerのFetch形式、Stripe SDKの非同期署名検証をローカルで確認済みです。実環境での互換性、タイムアウト・サイズ上限、CORSの許可元、ログの秘密情報除去、`Cache-Control: private, no-store`、CDNキャッシュ無効化をテスト環境で個別に検証します。許可元と戻り先は実在する専用テスト画面のHTTPS URLを設定し、両者のオリジンを一致させます。本番の `https://almeagem.github.io` は拒否し、未設定の場合は停止します。Workerや外部APIへの実接続は未実施です。
 
 ## 4. 実環境で必要な受け入れ試験
 
@@ -41,3 +41,5 @@
 単品権は記事単位、有効な月額期間は公開済みのスペシャルストーン全記事に適用する。新規記事は公開用のカタログ登録と非公開素材の準備が必要だが、各会員への権限再登録や記事単位の会員対象フラグは不要。未公開記事は月額会員にも返さない。単品権は月額の期間終了や解約とは独立している。
 
 管理画面の準備手順は [WORKER-SETUP.md](./WORKER-SETUP.md) を参照。月3回の診断利用枠は設計段階であり未実装。
+
+テスト用Supabaseのプロジェクト参照IDは、管理画面で専用テスト環境と確認したうえで `SUPABASE_TEST_PROJECT_REF` と `SUPABASE_APPROVED_TEST_PROJECT_REF` の両方に設定する。未設定・不一致では拒否する。ただし2つの設定値の一致だけでプロジェクトが本番でないことを自動証明できないため、操作担当者による環境確認が必須。実在する専用テスト画面のHTTPS URLを設定するまでWorkerは503を返す。

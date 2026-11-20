@@ -232,8 +232,8 @@ export function createHandler(
           mode: kind === 'single' ? 'payment' : 'subscription',
           client_reference_id: orderId,
           line_items: [{ price: priceId, quantity: 1 }],
-          success_url: `${config.publicOrigin}/stone-encyclopedia/special-stones/?checkout=return`,
-          cancel_url: `${config.publicOrigin}/stone-encyclopedia/special-stones/?checkout=cancel`,
+          success_url: `${config.testReturnUrl}?checkout=return`,
+          cancel_url: `${config.testReturnUrl}?checkout=cancel`,
           allow_promotion_codes: false,
           automatic_tax: { enabled: false },
         };

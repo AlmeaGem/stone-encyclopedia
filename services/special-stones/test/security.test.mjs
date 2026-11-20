@@ -5,7 +5,8 @@ import { createHandler } from '../src/handler.mjs';
 import { readConfig } from '../src/config.mjs';
 
 const config = {
-  publicOrigin: 'https://almeagem.github.io',
+  publicOrigin: 'https://test.example',
+  testReturnUrl: 'https://test.example/special-stones/',
   singlePrice: 'price_Single',
   monthlyPrice: 'price_Month',
   stripeWebhook: 'whsec_test_fixture',
@@ -767,5 +768,110 @@ test('a single purchase only grants its own published article', async () => {
   assert.equal(checkout.status, 200);
   assert.ok(
     [...f.state.orders.values()].some((o) => o.article_id === 'chapter-two'),
+  );
+});
+
+test('test configuration rejects the live origin, unsafe or missing return URLs', () => {
+  const env = {
+    SPECIAL_STONES_TEST_ONLY: 'true',
+    STRIPE_TEST_SECRET_KEY: 'sk_test_dummy',
+    STRIPE_TEST_WEBHOOK_SECRET: 'whsec_dummy',
+    SUPABASE_TEST_URL: 'https://testproject.supabase.co',
+    SUPABASE_TEST_PROJECT_REF: 'testproject',
+    SUPABASE_APPROVED_TEST_PROJECT_REF: 'testproject',
+    SUPABASE_TEST_ANON_KEY: 'dummy_anon',
+    SUPABASE_TEST_SERVICE_ROLE_KEY: 'dummy_service',
+    SUPABASE_TEST_PRIVATE_BUCKET: 'special-stones-test-private',
+    STRIPE_TEST_SINGLE_PRICE_ID: 'price_Single',
+    STRIPE_TEST_MONTHLY_PRICE_ID: 'price_Monthly',
+    SPECIAL_STONES_PUBLIC_ORIGIN: 'https://test.example',
+    SPECIAL_STONES_TEST_RETURN_URL: 'https://test.example/special-stones/',
+  };
+  assert.equal(
+    readConfig(env).testReturnUrl,
+    env.SPECIAL_STONES_TEST_RETURN_URL,
+  );
+  assert.throws(
+    () =>
+      readConfig({
+        ...env,
+        SUPABASE_APPROVED_TEST_PROJECT_REF: 'otherproject',
+      }),
+    /project/i,
+  );
+  assert.throws(
+    () => readConfig({ ...env, SUPABASE_APPROVED_TEST_PROJECT_REF: '' }),
+    /SUPABASE_APPROVED_TEST_PROJECT_REF/,
+  );
+  assert.throws(
+    () => readConfig({ ...env, SPECIAL_STONES_PUBLIC_ORIGIN: '' }),
+    /SPECIAL_STONES_PUBLIC_ORIGIN/,
+  );
+  assert.throws(
+    () =>
+      readConfig({
+        ...env,
+        SPECIAL_STONES_PUBLIC_ORIGIN: 'https://almeagem.github.io',
+      }),
+    /origin/i,
+  );
+  assert.throws(
+    () =>
+      readConfig({
+        ...env,
+        SPECIAL_STONES_PUBLIC_ORIGIN: 'http://test.example',
+      }),
+    /origin/i,
+  );
+  assert.throws(
+    () =>
+      readConfig({
+        ...env,
+        SPECIAL_STONES_TEST_RETURN_URL: 'https://almeagem.github.io/',
+      }),
+    /return/i,
+  );
+  assert.throws(
+    () =>
+      readConfig({
+        ...env,
+        SPECIAL_STONES_TEST_RETURN_URL:
+          'https://test.example/path?redirect=other',
+      }),
+    /return/i,
+  );
+  assert.throws(
+    () => readConfig({ ...env, SPECIAL_STONES_TEST_RETURN_URL: '' }),
+    /SPECIAL_STONES_TEST_RETURN_URL/,
+  );
+});
+
+test('checkout uses only the server-configured test return URL', async () => {
+  const f = fixtures();
+  const response = await f.request('/api/checkout', {
+    method: 'POST',
+    token: 'alice',
+    body: { kind: 'single', article_id: 'chapter-one' },
+  });
+  assert.equal(response.status, 200);
+  const opts = f.records.sessions.get('cs_test_Example').opts;
+  assert.equal(
+    opts.success_url,
+    'https://test.example/special-stones/?checkout=return',
+  );
+  assert.equal(
+    opts.cancel_url,
+    'https://test.example/special-stones/?checkout=cancel',
+  );
+  assert.equal(
+    (
+      await f.request('/api/checkout', {
+        method: 'POST',
+        token: 'alice',
+        origin: 'https://almeagem.github.io',
+        body: { kind: 'subscription' },
+      })
+    ).status,
+    403,
   );
 });

@@ -8,10 +8,12 @@ const scriptPath = process.argv[2];
 if (!scriptPath) throw new Error('Specify the local dry-run bundle path');
 const bindings = {
   SPECIAL_STONES_TEST_ONLY: 'true',
-  SPECIAL_STONES_PUBLIC_ORIGIN: 'https://almeagem.github.io',
+  SPECIAL_STONES_PUBLIC_ORIGIN: 'https://test.example',
+  SPECIAL_STONES_TEST_RETURN_URL: 'https://test.example/special-stones/',
   SUPABASE_TEST_PRIVATE_BUCKET: 'special-stones-test-private',
   SUPABASE_TEST_URL: 'https://testproject.supabase.co',
   SUPABASE_TEST_PROJECT_REF: 'testproject',
+  SUPABASE_APPROVED_TEST_PROJECT_REF: 'testproject',
   SUPABASE_TEST_ANON_KEY: 'dummy_anon',
   SUPABASE_TEST_SERVICE_ROLE_KEY: 'dummy_service',
   STRIPE_TEST_SECRET_KEY: 'sk_test_dummy',
@@ -30,6 +32,19 @@ const mf = new Miniflare({
   bindings,
 });
 try {
+  const page = await mf.dispatchFetch('https://test.example/special-stones/');
+  assert.equal(page.status, 200);
+  assert.match(await page.text(), /テスト環境/);
+  assert.match(
+    page.headers.get('content-security-policy'),
+    /frame-ancestors 'none'/,
+  );
+  assert.match(page.headers.get('cache-control'), /no-store/);
+  assert.equal(
+    (await mf.dispatchFetch('https://test.example/__special-test__/app.js'))
+      .status,
+    200,
+  );
   for (const path of [
     '/api/articles/chapter-one',
     '/api/articles/chapter-one/assets/sapphire',
