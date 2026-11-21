@@ -23,8 +23,9 @@ jobs:
     runs-on: ubuntu-latest
     env:
       ASTRO_TELEMETRY_DISABLED: '1'
-      SITE_URL: https://${{ github.repository_owner }}.github.io
-      BASE_PATH: /${{ github.event.repository.name }}
+      # Keep the existing GitHub Pages subpath until the domain launch is explicitly enabled.
+      SITE_URL: ${{ vars.ALMEAGEM_DOMAIN_LAUNCH == 'true' && 'https://almeagem.com' || format('https://{0}.github.io', github.repository_owner) }}
+      BASE_PATH: ${{ vars.ALMEAGEM_DOMAIN_LAUNCH == 'true' && '/' || format('/{0}', github.event.repository.name) }}
       PUBLIC_LAUNCH: ${{ vars.SEARCH_PUBLICATION_ENABLED == 'true' && (github.event_name == 'push' || (inputs.search_launch && inputs.ref == 'main')) && 'true' || 'false' }}
       PUBLIC_SEARCH_INDEXING: ${{ vars.SEARCH_PUBLICATION_ENABLED == 'true' && (github.event_name == 'push' || (inputs.search_launch && inputs.ref == 'main')) && 'true' || 'false' }}
       PUBLIC_PHOTO_API_ORIGIN: ${{ vars.PUBLIC_PHOTO_API_ORIGIN }}
