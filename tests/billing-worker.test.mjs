@@ -17,8 +17,31 @@ test('health responds without exposing configuration', async () => {
   });
 });
 
-test('checkout is disabled until secure implementation is ready', async () => {
+test('checkout rejects requests from other origins', async () => {
   const response = await call('/checkout', 'POST');
+  assert.equal(response.status, 403);
+});
+
+test('checkout rejects unauthenticated requests', async () => {
+  const response = await worker.fetch(
+    new Request('https://billing.example.test/checkout', {
+      method: 'POST',
+      headers: { origin: 'https://almeagem.com' },
+    }),
+  );
+  assert.equal(response.status, 401);
+});
+
+test('checkout fails closed when secrets are absent', async () => {
+  const response = await worker.fetch(
+    new Request('https://billing.example.test/checkout', {
+      method: 'POST',
+      headers: {
+        origin: 'https://almeagem.com',
+        authorization: 'Bearer placeholder',
+      },
+    }),
+  );
   assert.equal(response.status, 503);
 });
 
