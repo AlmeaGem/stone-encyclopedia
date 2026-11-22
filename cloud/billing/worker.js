@@ -40,15 +40,12 @@ const checkout = async (request, env) => {
     return json({ error: 'Checkout unavailable' }, 503);
   }
 
-  const identity = await fetch(
-    new URL('/auth/v1/user', env.SUPABASE_URL),
-    {
-      headers: {
-        authorization: auth,
-        apikey: env.SUPABASE_PUBLISHABLE_KEY,
-      },
+  const identity = await fetch(new URL('/auth/v1/user', env.SUPABASE_URL), {
+    headers: {
+      authorization: auth,
+      apikey: env.SUPABASE_PUBLISHABLE_KEY,
     },
-  ).catch(() => null);
+  }).catch(() => null);
   if (!identity?.ok) return json({ error: 'Invalid session' }, 401);
 
   const user = await identity.json().catch(() => null);
@@ -75,7 +72,8 @@ const checkout = async (request, env) => {
     client_reference_id: user.id,
     'metadata[user_id]': user.id,
     'metadata[product_key]': body.product,
-    success_url: allowedOrigin + '/payment/success/?session_id={CHECKOUT_SESSION_ID}',
+    success_url:
+      allowedOrigin + '/payment/success/?session_id={CHECKOUT_SESSION_ID}',
     cancel_url: allowedOrigin + '/payment/cancel/',
   });
 
