@@ -21,6 +21,80 @@ const products = {
   report: { priceEnv: 'STRIPE_PRICE_REPORT', mode: 'payment' },
 };
 
+const uuidPattern =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+
+const persistPaidCheckout = async (event, env) => {
+  if (
+    !env.SUPABASE_SERVICE_ROLE_KEY ||
+    !env.SUPABASE_URL ||
+    !env.STRIPE_SECRET_KEY?.startsWith('sk_test_')
+  ) {
+    return json({ error: 'Persistence unavailable' }, 503);
+  }
+
+  const session = event.data?.object;
+  if (
+    !event.id?.startsWith('evt_') ||
+    !session?.id?.startsWith('cs_test_') ||
+    session.mode !== 'payment' ||
+    session.payment_status !== 'paid' ||
+    !uuidPattern.test(session.client_reference_id || '') ||
+    session.metadata?.user_id !== session.client_reference_id ||
+    !['stone', 'report'].includes(session.metadata?.product_key) ||
+    !session.payment_intent?.startsWith('pi_')
+  ) {
+    return json({ error: 'Unsupported Checkout event' }, 503);
+  }
+
+  const product = products[session.metadata.product_key];
+  const expectedPrice = env[product.priceEnv];
+  if (!expectedPrice?.startsWith('price_')) {
+    return json({ error: 'Price unavailable' }, 503);
+  }
+
+  // Never trust the price or amount in client-provided metadata.
+  const stripeResponse = await fetch(
+    'https://api.stripe.com/v1/checkout/sessions/' +
+      encodeURIComponent(session.id) +
+      '/line_items?limit=2',
+    { headers: { authorization: 'Bearer ' + env.STRIPE_SECRET_KEY } },
+  ).catch(() => null);
+  if (!stripeResponse?.ok) return json({ error: 'Stripe verification failed' }, 503);
+  const items = await stripeResponse.json().catch(() => null);
+  if (
+    items?.data?.length !== 1 ||
+    items.has_more !== false ||
+    items.data[0].price?.id !== expectedPrice ||
+    items.data[0].quantity !== 1
+  ) {
+    return json({ error: 'Price mismatch' }, 503);
+  }
+
+  const endpoint = new URL(
+    '/rest/v1/rpc/billing_record_paid_checkout',
+    env.SUPABASE_URL,
+  );
+  const saved = await fetch(endpoint, {
+    method: 'POST',
+    headers: {
+      apikey: env.SUPABASE_SERVICE_ROLE_KEY,
+      authorization: 'Bearer ' + env.SUPABASE_SERVICE_ROLE_KEY,
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      p_event_id: event.id,
+      p_session_id: session.id,
+      p_user_id: session.client_reference_id,
+      p_product_key: session.metadata.product_key,
+      p_payment_intent_id: session.payment_intent,
+    }),
+  }).catch(() => null);
+
+  if (!saved?.ok) return json({ error: 'Persistence failed' }, 503);
+  return json({ received: true });
+};
+
 const allowedOrigin = 'https://almeagem.com';
 
 const checkout = async (request, env) => {
@@ -126,9 +200,12 @@ export default {
       );
       if (!verified) return json({ error: 'Invalid signature' }, 400);
 
-      // Do not acknowledge verified events until they have been durably
-      // processed and deduplicated in Supabase.
-      return json({ error: 'Event persistence not configured' }, 503);
+      const event = await Promise.resolve().then(() => JSON.parse(rawBody)).catch(() => null);
+      if (!event) return json({ error: 'Invalid event' }, 400);
+      if (event.type !== 'checkout.session.completed') {
+        return json({ error: 'Event handler unavailable' }, 503);
+      }
+      return persistPaidCheckout(event, env);
     }
 
     return json({ error: 'Not found' }, 404);
