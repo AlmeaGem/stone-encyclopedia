@@ -1,3 +1,5 @@
+import { verifyStripeSignature } from './stripe-signature.js';
+
 /**
  * ALMÉA GEM billing Worker.
  * Test-mode Checkout only. Webhook and paid entitlements remain disabled.
@@ -112,8 +114,21 @@ export default {
       return checkout(request, env);
     }
 
-    if (pathname === '/webhook/stripe') {
-      return json({ error: 'Billing is not enabled' }, 503);
+    if (pathname === '/webhook/stripe' && request.method === 'POST') {
+      if (!env.STRIPE_WEBHOOK_SECRET?.startsWith('whsec_')) {
+        return json({ error: 'Webhook unavailable' }, 503);
+      }
+      const rawBody = await request.text();
+      const verified = await verifyStripeSignature(
+        rawBody,
+        request.headers.get('stripe-signature'),
+        env.STRIPE_WEBHOOK_SECRET,
+      );
+      if (!verified) return json({ error: 'Invalid signature' }, 400);
+
+      // Do not acknowledge verified events until they have been durably
+      // processed and deduplicated in Supabase.
+      return json({ error: 'Event persistence not configured' }, 503);
     }
 
     return json({ error: 'Not found' }, 404);
