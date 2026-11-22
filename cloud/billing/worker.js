@@ -60,7 +60,9 @@ const persistPaidCheckout = async (event, env) => {
       '/line_items?limit=2',
     { headers: { authorization: 'Bearer ' + env.STRIPE_SECRET_KEY } },
   ).catch(() => null);
-  if (!stripeResponse?.ok) return json({ error: 'Stripe verification failed' }, 503);
+  if (!stripeResponse?.ok) {
+    return json({ error: 'Stripe verification failed' }, 503);
+  }
   const items = await stripeResponse.json().catch(() => null);
   if (
     items?.data?.length !== 1 ||
@@ -200,7 +202,9 @@ export default {
       );
       if (!verified) return json({ error: 'Invalid signature' }, 400);
 
-      const event = await Promise.resolve().then(() => JSON.parse(rawBody)).catch(() => null);
+      const event = await Promise.resolve()
+        .then(() => JSON.parse(rawBody))
+        .catch(() => null);
       if (!event) return json({ error: 'Invalid event' }, 400);
       if (event.type !== 'checkout.session.completed') {
         return json({ error: 'Event handler unavailable' }, 503);
