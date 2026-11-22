@@ -27,7 +27,12 @@ test('accepts a valid signed raw payload', async () => {
   const now = 1800000000;
   const signature = await sign(payload, now);
   assert.equal(
-    await verifyStripeSignature(payload, 't=' + now + ',v1=' + signature, secret, now),
+    await verifyStripeSignature(
+      payload,
+      't=' + now + ',v1=' + signature,
+      secret,
+      now,
+    ),
     true,
   );
 });
@@ -36,7 +41,12 @@ test('rejects modified payloads', async () => {
   const now = 1800000000;
   const signature = await sign(payload, now);
   assert.equal(
-    await verifyStripeSignature(payload + ' ', 't=' + now + ',v1=' + signature, secret, now),
+    await verifyStripeSignature(
+      payload + ' ',
+      't=' + now + ',v1=' + signature,
+      secret,
+      now,
+    ),
     false,
   );
 });
@@ -46,12 +56,20 @@ test('rejects stale and future timestamps', async () => {
   const stale = now - 301;
   const signature = await sign(payload, stale);
   assert.equal(
-    await verifyStripeSignature(payload, 't=' + stale + ',v1=' + signature, secret, now),
+    await verifyStripeSignature(
+      payload,
+      't=' + stale + ',v1=' + signature,
+      secret,
+      now,
+    ),
     false,
   );
 });
 
 test('rejects missing or malformed signatures', async () => {
   assert.equal(await verifyStripeSignature(payload, '', secret), false);
-  assert.equal(await verifyStripeSignature(payload, 't=123,v1=bad', secret), false);
+  assert.equal(
+    await verifyStripeSignature(payload, 't=123,v1=bad', secret),
+    false,
+  );
 });
