@@ -36,7 +36,10 @@ export async function verifyStripeSignature(
   const timestampField = parts.find((part) => /^t=\d+$/.test(part));
   if (!timestampField) return false;
   const timestamp = Number(timestampField.slice(2));
-  if (!Number.isSafeInteger(timestamp) || Math.abs(nowSeconds - timestamp) > 300) {
+  if (
+    !Number.isSafeInteger(timestamp) ||
+    Math.abs(nowSeconds - timestamp) > 300
+  ) {
     return false;
   }
 
