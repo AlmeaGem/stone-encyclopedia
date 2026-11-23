@@ -175,7 +175,7 @@ const entitlements = async (request, env) => {
   }
   const authorization = request.headers.get('authorization') || '';
   if (
-    !/^Bearer\\s+\\S+$/.test(authorization) ||
+    !/^Bearer\s+\S+$/.test(authorization) ||
     !env.SUPABASE_URL ||
     !env.SUPABASE_PUBLISHABLE_KEY
   ) {
