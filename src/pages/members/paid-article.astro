@@ -2,6 +2,7 @@
 const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL ?? '';
 const publishableKey = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? '';
 ---
+
 <!doctype html>
 <html lang="ja">
   <head>
@@ -10,15 +11,54 @@ const publishableKey = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? '';
     <meta name="robots" content="noindex,nofollow" />
     <title>購入者限定コンテンツ | ALMÉA GEM</title>
     <style>
-      body { font-family: system-ui, sans-serif; color: #493a37; background: #faf7f5; margin: 0; }
-      main { max-width: 660px; padding: 32px 20px; margin: 32px auto; }
-      section { background: white; border: 1px solid #eadfda; border-radius: 16px; padding: 24px; }
-      input,button { font: inherit; padding: 12px; margin: 6px 0; box-sizing: border-box; }
-      input { width: 100%; border: 1px solid #cdbbb4; border-radius: 8px; }
-      button { border: 0; border-radius: 8px; background: #795d64; color: white; cursor: pointer; }
-      button:disabled { opacity: .55; cursor: wait; }
-      #article { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.9; }
-      #message { min-height: 2em; }
+      body {
+        font-family: system-ui, sans-serif;
+        color: #493a37;
+        background: #faf7f5;
+        margin: 0;
+      }
+      main {
+        max-width: 660px;
+        padding: 32px 20px;
+        margin: 32px auto;
+      }
+      section {
+        background: white;
+        border: 1px solid #eadfda;
+        border-radius: 16px;
+        padding: 24px;
+      }
+      input,
+      button {
+        font: inherit;
+        padding: 12px;
+        margin: 6px 0;
+        box-sizing: border-box;
+      }
+      input {
+        width: 100%;
+        border: 1px solid #cdbbb4;
+        border-radius: 8px;
+      }
+      button {
+        border: 0;
+        border-radius: 8px;
+        background: #795d64;
+        color: white;
+        cursor: pointer;
+      }
+      button:disabled {
+        opacity: 0.55;
+        cursor: wait;
+      }
+      #article {
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+        line-height: 1.9;
+      }
+      #message {
+        min-height: 2em;
+      }
     </style>
   </head>
   <body>
@@ -30,17 +70,28 @@ const publishableKey = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? '';
           <label for="email">メールアドレス</label>
           <input id="email" type="email" autocomplete="username" required />
           <label for="password">パスワード</label>
-          <input id="password" type="password" autocomplete="current-password" required />
-          <button id="submit" type="submit">ログインして記事を確認</button>
+          <input
+            id="password"
+            type="password"
+            autocomplete="current-password"
+            required
+          />
+          <button id="submit" type="submit">
+            ログインして記事を確認
+          </button>
         </form>
-        <button id="logout" type="button" hidden>ログアウト</button>
+        <button id="logout" type="button" hidden>
+          ログアウト
+        </button>
         <p id="message" role="status" aria-live="polite"></p>
         <article id="article" hidden>
           <h2 id="article-title"></h2>
           <div id="article-body"></div>
         </article>
       </section>
-      <p><a href="/">無料の天然石図鑑へ戻る</a></p>
+      <p>
+        <a href="/">無料の天然石図鑑へ戻る</a>
+      </p>
     </main>
     <script define:vars={{ supabaseUrl, publishableKey }}>
       const login = document.getElementById('login');
@@ -79,39 +130,59 @@ const publishableKey = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? '';
         submit.disabled = true;
         message.textContent = 'ログイン情報を確認しています…';
         try {
-          const response = await fetch(supabaseUrl + '/auth/v1/token?grant_type=password', {
-            method: 'POST',
-            headers: { apikey: publishableKey, 'content-type': 'application/json' },
-            body: JSON.stringify({
-              email: document.getElementById('email').value,
-              password: document.getElementById('password').value,
-            }),
-            cache: 'no-store',
-          });
+          const response = await fetch(
+            supabaseUrl + '/auth/v1/token?grant_type=password',
+            {
+              method: 'POST',
+              headers: {
+                apikey: publishableKey,
+                'content-type': 'application/json',
+              },
+              body: JSON.stringify({
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value,
+              }),
+              cache: 'no-store',
+            },
+          );
           const session = await response.json();
           if (!response.ok || typeof session.access_token !== 'string') {
-            throw new Error('ログインできませんでした。メールアドレスとパスワードをご確認ください。');
+            throw new Error(
+              'ログインできませんでした。メールアドレスとパスワードをご確認ください。',
+            );
           }
           token = session.access_token;
           document.getElementById('password').value = '';
           login.hidden = true;
           logout.hidden = false;
           message.textContent = '閲覧権限を確認しています…';
-          const result = await fetch(supabaseUrl + '/rest/v1/rpc/billing_read_paid_article', {
-            method: 'POST',
-            headers: {
-              apikey: publishableKey,
-              authorization: 'Bearer ' + token,
-              'content-type': 'application/json',
+          const result = await fetch(
+            supabaseUrl + '/rest/v1/rpc/billing_read_paid_article',
+            {
+              method: 'POST',
+              headers: {
+                apikey: publishableKey,
+                authorization: 'Bearer ' + token,
+                'content-type': 'application/json',
+              },
+              body: JSON.stringify({ p_article_key: key }),
+              cache: 'no-store',
             },
-            body: JSON.stringify({ p_article_key: key }),
-            cache: 'no-store',
-          });
-          if (!result.ok) throw new Error('記事を取得できませんでした。時間をおいてお試しください。');
+          );
+          if (!result.ok)
+            throw new Error(
+              '記事を取得できませんでした。時間をおいてお試しください。',
+            );
           const rows = await result.json();
-          if (!Array.isArray(rows) || rows.length !== 1 || rows[0].article_key !== key ||
-              typeof rows[0].title !== 'string' || typeof rows[0].body !== 'string') {
-            message.textContent = 'この記事の閲覧権限がないか、まだ公開されていません。';
+          if (
+            !Array.isArray(rows) ||
+            rows.length !== 1 ||
+            rows[0].article_key !== key ||
+            typeof rows[0].title !== 'string' ||
+            typeof rows[0].body !== 'string'
+          ) {
+            message.textContent =
+              'この記事の閲覧権限がないか、まだ公開されていません。';
             return;
           }
           articleTitle.textContent = rows[0].title;
@@ -119,7 +190,10 @@ const publishableKey = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? '';
           article.hidden = false;
           message.textContent = '';
         } catch (error) {
-          message.textContent = error instanceof Error ? error.message : '通信エラーが発生しました。';
+          message.textContent =
+            error instanceof Error
+              ? error.message
+              : '通信エラーが発生しました。';
         } finally {
           submit.disabled = false;
         }
