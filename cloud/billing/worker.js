@@ -97,6 +97,70 @@ const persistPaidCheckout = async (event, env) => {
   return json({ received: true });
 };
 
+const persistSubscription = async (event, env) => {
+  if (
+    !env.STRIPE_SECRET_KEY?.startsWith('sk_test_') ||
+    !env.SUPABASE_SERVICE_ROLE_KEY ||
+    !env.SUPABASE_URL
+  ) {
+    return json({ error: 'Subscription unavailable' }, 503);
+  }
+
+  const subscriptionId = event.data?.object?.id;
+  if (typeof subscriptionId !== 'string' || !/^sub_[A-Za-z0-9]+$/.test(subscriptionId)) {
+    return json({ error: 'Invalid subscription' }, 503);
+  }
+
+  // Fetch current state from Stripe instead of trusting potentially
+  // out-of-order webhook snapshots.
+  const response = await fetch(
+    'https://api.stripe.com/v1/subscriptions/' + encodeURIComponent(subscriptionId),
+    { headers: { authorization: 'Bearer ' + env.STRIPE_SECRET_KEY } },
+  ).catch(() => null);
+  if (!response?.ok) return json({ error: 'Stripe unavailable' }, 503);
+  const subscription = await response.json().catch(() => null);
+  const userId = subscription?.metadata?.user_id;
+  const items = subscription?.items;
+  if (
+    !uuidPattern.test(userId || '') ||
+    subscription.metadata.product_key !== 'membership' ||
+    subscription.id !== subscriptionId ||
+    !Array.isArray(items?.data) ||
+    items.data.length !== 1 ||
+    items.has_more !== false ||
+    items.data[0].price?.id !== env.STRIPE_PRICE_MEMBERSHIP
+  ) {
+    return json({ error: 'Subscription validation failed' }, 503);
+  }
+
+  const periodEnd = items.data[0].current_period_end;
+  if (!Number.isSafeInteger(periodEnd) || periodEnd <= 0) {
+    return json({ error: 'Invalid billing period' }, 503);
+  }
+
+  const saved = await fetch(
+    new URL('/rest/v1/rpc/billing_record_subscription', env.SUPABASE_URL),
+    {
+      method: 'POST',
+      headers: {
+        apikey: env.SUPABASE_SERVICE_ROLE_KEY,
+        authorization: 'Bearer ' + env.SUPABASE_SERVICE_ROLE_KEY,
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        p_subscription_id: subscription.id,
+        p_user_id: userId,
+        p_price_id: items.data[0].price.id,
+        p_status: subscription.status,
+        p_period_end: new Date(periodEnd * 1000).toISOString(),
+        p_cancel_at_period_end: subscription.cancel_at_period_end === true,
+      }),
+    },
+  ).catch(() => null);
+  if (!saved?.ok) return json({ error: 'Subscription persistence failed' }, 503);
+  return json({ received: true });
+};
+
 const allowedOrigin = 'https://almeagem.com';
 
 const checkout = async (request, env) => {
@@ -155,6 +219,11 @@ const checkout = async (request, env) => {
     cancel_url: allowedOrigin + '/payment/cancel/',
   });
 
+  if (product.mode === 'subscription') {
+    params.set('subscription_data[metadata][user_id]', user.id);
+    params.set('subscription_data[metadata][product_key]', body.product);
+  }
+
   const stripe = await fetch('https://api.stripe.com/v1/checkout/sessions', {
     method: 'POST',
     headers: {
@@ -206,6 +275,11 @@ export default {
         .then(() => JSON.parse(rawBody))
         .catch(() => null);
       if (!event) return json({ error: 'Invalid event' }, 400);
+      if (
+        ['customer.subscription.created', 'customer.subscription.updated', 'customer.subscription.deleted'].includes(event.type)
+      ) {
+        return persistSubscription(event, env);
+      }
       if (event.type !== 'checkout.session.completed') {
         return json({ error: 'Event handler unavailable' }, 503);
       }
