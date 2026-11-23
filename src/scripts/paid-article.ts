@@ -1,12 +1,20 @@
 const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL ?? '';
 const publishableKey = import.meta.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? '';
-const login = document.getElementById('login');
-      const logout = document.getElementById('logout');
-      const message = document.getElementById('message');
-      const article = document.getElementById('article');
-      const articleTitle = document.getElementById('article-title');
-      const articleBody = document.getElementById('article-body');
-      const submit = document.getElementById('submit');
+function requiredElement<T extends HTMLElement>(id: string): T {
+  const element = document.getElementById(id);
+  if (!element) throw new Error(`Required page element missing: ${id}`);
+  return element as T;
+}
+
+const login = requiredElement<HTMLFormElement>('login');
+const logout = requiredElement<HTMLButtonElement>('logout');
+const message = requiredElement<HTMLElement>('message');
+const article = requiredElement<HTMLElement>('article');
+const articleTitle = requiredElement<HTMLElement>('article-title');
+const articleBody = requiredElement<HTMLElement>('article-body');
+const submit = requiredElement<HTMLButtonElement>('submit');
+const email = requiredElement<HTMLInputElement>('email');
+const password = requiredElement<HTMLInputElement>('password');
       let token = null;
       const params = new URLSearchParams(location.search);
       const key = params.get('article');
@@ -45,8 +53,8 @@ const login = document.getElementById('login');
                 'content-type': 'application/json',
               },
               body: JSON.stringify({
-                email: document.getElementById('email').value,
-                password: document.getElementById('password').value,
+                email: email.value,
+                password: password.value,
               }),
               cache: 'no-store',
             },
@@ -58,7 +66,7 @@ const login = document.getElementById('login');
             );
           }
           token = session.access_token;
-          document.getElementById('password').value = '';
+          password.value = '';
           login.hidden = true;
           logout.hidden = false;
           message.textContent = '閲覧権限を確認しています…';
