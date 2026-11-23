@@ -163,6 +163,62 @@ const persistSubscription = async (event, env) => {
 
 const allowedOrigin = 'https://almeagem.com';
 
+const entitlements = async (request, env) => {
+  if (request.headers.get('origin') !== allowedOrigin) {
+    return json({ error: 'Origin not allowed' }, 403);
+  }
+  const authorization = request.headers.get('authorization') || '';
+  if (
+    !/^Bearer\\s+\\S+$/.test(authorization) ||
+    !env.SUPABASE_URL ||
+    !env.SUPABASE_PUBLISHABLE_KEY
+  ) {
+    return json({ error: 'Authentication required' }, 401);
+  }
+  const identity = await fetch(new URL('/auth/v1/user', env.SUPABASE_URL), {
+    headers: {
+      authorization,
+      apikey: env.SUPABASE_PUBLISHABLE_KEY,
+    },
+  }).catch(() => null);
+  if (!identity?.ok) return json({ error: 'Invalid session' }, 401);
+  const user = await identity.json().catch(() => null);
+  if (!uuidPattern.test(user?.id || '')) {
+    return json({ error: 'Invalid session' }, 401);
+  }
+  const response = await fetch(
+    new URL('/rest/v1/rpc/billing_my_entitlements', env.SUPABASE_URL),
+    {
+      method: 'POST',
+      headers: {
+        authorization,
+        apikey: env.SUPABASE_PUBLISHABLE_KEY,
+        'content-type': 'application/json',
+      },
+      body: '{}',
+    },
+  ).catch(() => null);
+  if (!response?.ok) return json({ error: 'Entitlements unavailable' }, 503);
+  const rows = await response.json().catch(() => null);
+  if (
+    !Array.isArray(rows) ||
+    rows.some(
+      (row) =>
+        typeof row.product_key !== 'string' ||
+        typeof row.access_granted !== 'boolean',
+    )
+  ) {
+    return json({ error: 'Invalid entitlements' }, 503);
+  }
+  return json({
+    entitlements: rows.map((row) => ({
+      product: row.product_key,
+      granted: row.access_granted,
+      until: row.access_until || null,
+    })),
+  });
+};
+
 const checkout = async (request, env) => {
   if (request.headers.get('origin') !== allowedOrigin) {
     return json({ error: 'Origin not allowed' }, 403);
@@ -253,6 +309,10 @@ export default {
 
     if (pathname === '/health' && request.method === 'GET') {
       return json({ service: 'almeagem-billing-api', status: 'ok' });
+    }
+
+    if (pathname === '/entitlements' && request.method === 'GET') {
+      return entitlements(request, env);
     }
 
     if (pathname === '/checkout' && request.method === 'POST') {
