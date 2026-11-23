@@ -227,6 +227,67 @@ const entitlements = async (request, env) => {
   });
 };
 
+const readPaidArticle = async (request, env) => {
+  if (request.headers.get('origin') !== allowedOrigin) {
+    return json({ error: 'Origin not allowed' }, 403);
+  }
+
+  const authorization = request.headers.get('authorization') || '';
+  if (!/^Bearer\s+\S+$/.test(authorization)) {
+    return json({ error: 'Authentication required' }, 401);
+  }
+  if (!env.SUPABASE_URL || !env.SUPABASE_PUBLISHABLE_KEY) {
+    return json({ error: 'Article service unavailable' }, 503);
+  }
+
+  const url = new URL(request.url);
+  const articleKey = url.searchParams.get('article');
+  if (!articleKey || !/^[a-z0-9][a-z0-9_-]{0,99}$/.test(articleKey)) {
+    return json({ error: 'Invalid article' }, 400);
+  }
+
+  const response = await fetch(
+    new URL('/rest/v1/rpc/billing_read_paid_article', env.SUPABASE_URL),
+    {
+      method: 'POST',
+      headers: {
+        authorization,
+        apikey: env.SUPABASE_PUBLISHABLE_KEY,
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({ p_article_key: articleKey }),
+    },
+  ).catch(() => null);
+
+  if (!response?.ok) {
+    return json({ error: 'Article unavailable' }, 503);
+  }
+  const rows = await response.json().catch(() => null);
+  if (
+    !Array.isArray(rows) ||
+    rows.length > 1 ||
+    rows.some(
+      (row) =>
+        row.article_key !== articleKey ||
+        typeof row.title !== 'string' ||
+        typeof row.body !== 'string',
+    )
+  ) {
+    return json({ error: 'Invalid article response' }, 503);
+  }
+  if (rows.length === 0) {
+    return json({ error: 'Article not available' }, 404);
+  }
+
+  return json({
+    article: {
+      key: rows[0].article_key,
+      title: rows[0].title,
+      body: rows[0].body,
+    },
+  });
+};
+
 const checkout = async (request, env) => {
   if (request.headers.get('origin') !== allowedOrigin) {
     return json({ error: 'Origin not allowed' }, 403);
@@ -321,6 +382,10 @@ export default {
 
     if (pathname === '/entitlements' && request.method === 'GET') {
       return entitlements(request, env);
+    }
+
+    if (pathname === '/paid-article' && request.method === 'GET') {
+      return readPaidArticle(request, env);
     }
 
     if (pathname === '/checkout' && request.method === 'POST') {
