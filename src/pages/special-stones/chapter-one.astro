@@ -1,0 +1,55 @@
+---
+import Page from '../../layouts/Page.astro';
+import { pathTo } from '../../lib/urls';
+---
+
+<Page
+  title="三つの宝石が教えてくれる、願いの叶え方"
+  description="サファイア、ルビー、エメラルド。三つの宝石が持つ象徴と、願望に合わせた組み合わせを紹介するスペシャルストーン第一章。"
+  path="special-stones/chapter-one/"
+>
+  <article class="special-chapter wrap">
+    <nav aria-label="現在地" class="special-breadcrumb"><a href={pathTo()}>ホーム</a> / スペシャルストーン / 第一章</nav>
+    <p class="special-eyebrow">ALMÉA GEM · SPECIAL STONES · CHAPTER I</p>
+    <h1>三つの宝石が教えてくれる、願いの叶え方</h1>
+    <div class="special-copy">
+      <p>成功を手にしたいとき。</p>
+      <p>誰かの心に、忘れられない印象を残したいとき。</p>
+      <p>そして、手にした愛や豊かさを、いつまでも大切に育てたいとき。</p>
+      <p>もし、それぞれの願いに寄り添う宝石があるとしたら……。</p>
+      <p><strong>サファイア、ルビー、エメラルド。</strong></p>
+      <p>古くから王族や権力者たちを魅了してきた三つの宝石には、美しさの奥に、それぞれ異なる神秘的な意味が伝えられています。</p>
+      <p>そして、パワーストーンの世界では、石を単独で選ぶだけでなく、<strong>異なる意味を持つ石を組み合わせること</strong>も大切にされてきました。</p>
+      <p>成功を象徴する青い宝石に、情熱を象徴する赤い宝石を添えたら？</p>
+      <p>愛を育てる緑の宝石と、月の神秘を象徴する石を合わせたら？</p>
+      <p>その組み合わせには、どんな物語が生まれるのでしょうか。</p>
+      <p>この特別な章では、三つの宝石が秘める象徴と、願望に合わせた組み合わせを紐解いていきます。</p>
+    </div>
+    <section class="special-offer" aria-labelledby="offer-title">
+      <p class="special-eyebrow">CONTINUE THE STORY</p>
+      <h2 id="offer-title">物語の続きを開く</h2>
+      <p>第一章の有料本文と宝石画像は、購入者限定でご覧いただけます。</p>
+      <div class="special-plans">
+        <div><strong>単品購入</strong><span>税込150円／記事</span><small>買い切り・期限なし</small></div>
+        <div><strong>月額会員</strong><span>税込580円／月</span><small>スペシャルストーン全記事が対象</small></div>
+      </div>
+      <p class="special-pending" role="status">現在、決済・会員機能の接続準備中です。販売開始まで購入操作はできません。</p>
+    </section>
+  </article>
+</Page>
+<style>
+.special-chapter{max-width:800px;padding-top:3rem;padding-bottom:6rem;color:#4c3934}
+.special-breadcrumb{font-size:.8rem;color:#776761;margin-bottom:3rem}
+.special-breadcrumb a{color:inherit}
+.special-eyebrow{text-align:center;letter-spacing:.2em;font-size:.75rem;color:#977c69}
+h1{font-family:'Shippori Mincho',serif;font-size:clamp(1.75rem,4vw,2.65rem);font-weight:500;text-align:center;line-height:1.65;margin:1rem 0 3rem}
+.special-copy{max-width:620px;margin:auto;font-family:'Noto Serif JP',serif;line-height:2.35;font-size:1rem}
+.special-copy p{margin:0 0 1.5rem}
+.special-offer{margin:4rem auto 0;padding:2.5rem 1.5rem;background:#faf5ef;border-top:1px solid #c7ae96;text-align:center}
+.special-offer h2{font-family:'Shippori Mincho',serif;font-weight:500;font-size:1.65rem;margin:1rem 0}
+.special-plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin:2rem 0}
+.special-plans>div{display:flex;flex-direction:column;gap:.5rem;padding:1.5rem .7rem;background:white}
+.special-plans span{font-size:1.25rem;font-weight:600}
+.special-plans small,.special-pending{color:#786a65;font-size:.85rem}
+@media(max-width:520px){.special-chapter{padding-top:1.5rem}.special-plans{grid-template-columns:1fr}.special-copy{line-height:2.1}}
+</style>
