@@ -107,7 +107,10 @@ const persistSubscription = async (event, env) => {
   }
 
   const subscriptionId = event.data?.object?.id;
-  if (typeof subscriptionId !== 'string' || !/^sub_[A-Za-z0-9]+$/.test(subscriptionId)) {
+  if (
+    typeof subscriptionId !== 'string' ||
+    !/^sub_[A-Za-z0-9]+$/.test(subscriptionId)
+  ) {
     return json({ error: 'Invalid subscription' }, 503);
   }
 
@@ -157,7 +160,9 @@ const persistSubscription = async (event, env) => {
       }),
     },
   ).catch(() => null);
-  if (!saved?.ok) return json({ error: 'Subscription persistence failed' }, 503);
+  if (!saved?.ok) {
+    return json({ error: 'Subscription persistence failed' }, 503);
+  }
   return json({ received: true });
 };
 
@@ -198,7 +203,9 @@ const entitlements = async (request, env) => {
       body: '{}',
     },
   ).catch(() => null);
-  if (!response?.ok) return json({ error: 'Entitlements unavailable' }, 503);
+  if (!response?.ok) {
+    return json({ error: 'Entitlements unavailable' }, 503);
+  }
   const rows = await response.json().catch(() => null);
   if (
     !Array.isArray(rows) ||
@@ -336,7 +343,11 @@ export default {
         .catch(() => null);
       if (!event) return json({ error: 'Invalid event' }, 400);
       if (
-        ['customer.subscription.created', 'customer.subscription.updated', 'customer.subscription.deleted'].includes(event.type)
+        [
+          'customer.subscription.created',
+          'customer.subscription.updated',
+          'customer.subscription.deleted',
+        ].includes(event.type)
       ) {
         return persistSubscription(event, env);
       }
