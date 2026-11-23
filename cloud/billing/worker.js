@@ -117,7 +117,8 @@ const persistSubscription = async (event, env) => {
   // Fetch current state from Stripe instead of trusting potentially
   // out-of-order webhook snapshots.
   const response = await fetch(
-    'https://api.stripe.com/v1/subscriptions/' + encodeURIComponent(subscriptionId),
+    'https://api.stripe.com/v1/subscriptions/' +
+      encodeURIComponent(subscriptionId),
     { headers: { authorization: 'Bearer ' + env.STRIPE_SECRET_KEY } },
   ).catch(() => null);
   if (!response?.ok) return json({ error: 'Stripe unavailable' }, 503);
