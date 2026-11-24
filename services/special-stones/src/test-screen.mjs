@@ -33,15 +33,24 @@ output,pre{display:block;white-space:pre-wrap;overflow-wrap:anywhere}pre{font-fa
 </style></head><body>
 <header><p class="brand">ALMÉA GEM</p><p class="eyebrow">SPECIAL STONES · MEMBER ACCOUNT</p><h1>スペシャルストーン</h1><p class="notice">テスト環境｜実際の課金は行われません。テスト用アカウント・カード・ダミー素材のみ使用してください。</p></header>
 <main>
-<section aria-labelledby="auth-heading"><h2 id="auth-heading">ログイン・会員登録</h2><div id="auth-form"><p class="help">会員登録済みの方はログインしてください。</p><label>メールアドレス<input id="email" type="email" autocomplete="username"></label><label>パスワード（8文字以上）<input id="password" type="password" minlength="8" maxlength="128" autocomplete="current-password"></label><div class="actions"><button id="login" class="primary" type="button">ログイン</button><button id="signup" type="button">テスト会員を登録</button></div></div><div id="signed-in" class="signed-in" hidden><span class="avatar" aria-hidden="true">◇</span><div class="identity"><p class="status">✓ ログイン済み</p><p id="member-email"></p></div><button id="logout" type="button">ログアウト</button></div><p id="login-status" role="status">ログインしていません</p></section>
-<section><p class="eyebrow">MEMBERSHIP &amp; PURCHASE</p><h2>記事を購入する</h2><p class="help" id="purchase-help">購入するにはログインしてください。</p><div class="plans"><div class="plan"><h3>単品購入</h3><div class="price">¥150 <small>税込／記事</small></div><p>購入した記事を期限なく閲覧できます。</p><button id="single" class="primary" type="button" disabled>単品テスト決済</button></div><div class="plan"><h3>月額会員</h3><div class="price">¥580 <small>税込／月</small></div><p>会員期間中、すべての有料記事を閲覧できます。</p><button id="monthly" class="primary" type="button" disabled>月額テスト決済</button></div></div><button id="account" type="button" disabled>購入状況を確認</button><div class="account-panel" id="account-panel" hidden><strong>あなたの購入状況</strong><output id="account-result"></output></div><p class="help">決済画面から戻った後は、再度ログインしてください。</p></section>
-<section><p class="eyebrow">CHAPTER I · ACCESS TEST</p><h2>第一章の閲覧確認</h2><p class="help">ログインだけでは有料記事は読めません。購入前の閲覧拒否は正常です。</p><label>記事ID<input id="article" value="chapter-one" maxlength="64" autocomplete="off"></label><div class="actions"><button id="view" class="primary" type="button" disabled>ログイン状態で記事を確認</button><button id="anonymous" type="button">未ログインで拒否を確認</button></div><pre id="article-result"></pre><div id="images"></div></section>
+<section id="return-status" hidden role="status"><h2 id="return-title">購入状況を確認しています</h2><p id="return-detail" class="help"></p><div class="actions"><button id="retry-return" class="primary" type="button" hidden>閲覧権限を再確認</button><button id="back-to-account" type="button">マイアカウントへ</button></div></section>
+<section id="auth-section" aria-labelledby="auth-heading"><h2 id="auth-heading">ログイン・会員登録</h2><div id="auth-form"><p class="help">会員登録済みの方はログインしてください。</p><label>メールアドレス<input id="email" type="email" autocomplete="username"></label><label>パスワード（8文字以上）<input id="password" type="password" minlength="8" maxlength="128" autocomplete="current-password"></label><div class="actions"><button id="login" class="primary" type="button">ログイン</button><button id="signup" type="button">テスト会員を登録</button></div></div><div id="signed-in" class="signed-in" hidden><span class="avatar" aria-hidden="true">◇</span><div class="identity"><p class="status">✓ ログイン済み</p><p id="member-email"></p></div><button id="logout" type="button">ログアウト</button></div><p id="login-status" role="status">ログインしていません</p></section>
+<section id="purchase-section"><p class="eyebrow">MEMBERSHIP &amp; PURCHASE</p><h2>記事を購入する</h2><p class="help" id="purchase-help">購入するにはログインしてください。</p><div class="plans"><div class="plan"><h3>単品購入</h3><div class="price">¥150 <small>税込／記事</small></div><p>購入した記事を期限なく閲覧できます。</p><button id="single" class="primary" type="button" disabled>単品テスト決済</button></div><div class="plan"><h3>月額会員</h3><div class="price">¥580 <small>税込／月</small></div><p>会員期間中、すべての有料記事を閲覧できます。</p><button id="monthly" class="primary" type="button" disabled>月額テスト決済</button></div></div><button id="account" type="button" disabled>購入状況を確認</button><div class="account-panel" id="account-panel" hidden><strong>あなたの購入状況</strong><output id="account-result"></output></div><p class="help">決済後は購入権限を確認し、そのまま記事を表示します。</p></section>
+<section id="reader-section" tabindex="-1"><p class="eyebrow">CHAPTER I · ACCESS TEST</p><h2 id="reader-heading">第一章の閲覧確認</h2><div id="reader-controls"><p class="help">ログインだけでは有料記事は読めません。購入前の閲覧拒否は正常です。</p><label>記事ID<input id="article" value="chapter-one" maxlength="64" autocomplete="off"></label><div class="actions"><button id="view" class="primary" type="button" disabled>ログイン状態で記事を確認</button><button id="anonymous" type="button">未ログインで拒否を確認</button></div></div><pre id="article-result"></pre><div id="images"></div></section>
 <section aria-live="polite"><h2>操作結果</h2><output id="message"></output></section>
 </main><script src="/__special-test__/app.js" defer></script></body></html>`;
 
 export const testScript = String.raw`'use strict';
 (() => {
   let accessToken = null;
+  let memberEmail = '';
+  let returnRun = 0;
+  let checkoutBusy = false;
+  const params = new URLSearchParams(location.search);
+  const returnKind = params.get('checkout');
+  const targetArticle = params.get('article') || 'chapter-one';
+  const validId = (id) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id) && id.length <= 64;
+  let returnMode = returnKind === 'return' && validId(targetArticle);
   let objectUrls = [];
   const $ = (id) => document.getElementById(id);
   const message = (text) => { $('message').textContent = text; };
@@ -50,7 +59,7 @@ export const testScript = String.raw`'use strict';
     $('auth-form').hidden = signedIn;
     $('signed-in').hidden = !signedIn;
     $('auth-heading').textContent = signedIn ? 'マイアカウント' : 'ログイン・会員登録';
-    $('member-email').textContent = signedIn ? $('email').value.trim() : '';
+    $('member-email').textContent = signedIn ? memberEmail : '';
     $('login-status').textContent = signedIn ? 'テスト環境にログイン中' : 'ログインしていません';
     $('purchase-help').textContent = signedIn ? '購入するプランをお選びください。テスト用カードのみ使用してください。' : '購入するにはログインしてください。';
     for (const id of ['single','monthly','account','view']) $(id).disabled = !signedIn;
@@ -60,30 +69,49 @@ export const testScript = String.raw`'use strict';
   const call = async (path, options = {}) => {
     const headers = new Headers(options.headers || {});
     if (options.auth !== false && accessToken) headers.set('Authorization', 'Bearer ' + accessToken);
-    const response = await fetch(path, { method: options.method || 'GET', headers, body: options.body, credentials: 'omit', cache: 'no-store', redirect: 'error' });
+    const response = await fetch(path, { method: options.method || 'GET', headers, body: options.body, credentials: options.cookies ? 'same-origin' : 'omit', cache: 'no-store', redirect: 'error' });
     return response;
   };
-  const jsonPost = (path, body, auth = false) => call(path, {method:'POST', auth, headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)});
+  const jsonPost = (path, body, auth = false, cookies = false) => call(path, {method:'POST', auth, cookies, headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)});
+  const setSession = (data) => { accessToken = data.access_token; memberEmail = data.email || $('email').value.trim(); renderAuth(); };
+  function showReturn(title, detail, retry = false) {
+    $('return-status').hidden = false;
+    $('return-title').textContent = title;
+    $('return-detail').textContent = detail;
+    $('retry-return').hidden = !retry;
+  }
+  function accountMode() {
+    returnMode = false; returnRun++;
+    $('return-status').hidden = true; $('purchase-section').hidden = false;
+    $('auth-section').hidden = false; $('reader-controls').hidden = false;
+    $('reader-heading').textContent = '第一章の閲覧確認';
+    history.replaceState(null, '', location.pathname);
+    $('auth-section').scrollIntoView({block:'start'});
+  }
+  $('back-to-account').addEventListener('click', accountMode);
+  $('retry-return').addEventListener('click', () => completeReturn());
   async function auth(mode) {
     clearContent(); accessToken = null; renderAuth(); $('password').setAttribute('aria-invalid','false');
     try {
-      const response = await jsonPost('/api/auth/' + mode, {email:$('email').value.trim(), password:$('password').value});
+      const response = await jsonPost('/api/auth/' + mode, {email:$('email').value.trim(), password:$('password').value, browser_session:true},false,true);
       $('password').value = '';
       if (!response.ok) throw new Error('認証できませんでした。テスト用アカウントと設定を確認してください。');
       const data = await response.json();
-      if (data.access_token) { accessToken = data.access_token; renderAuth(); message('ログインしました。'); void refreshAccount(false); }
+      if (data.access_token) { setSession(data); message('ログインしました。'); void refreshAccount(false); if(returnMode) void completeReturn(); }
       else { $('login-status').textContent = 'ログインしていません'; message('登録確認が必要です。テスト用メールを確認してください。'); }
     } catch (error) { $('password').value = ''; $('login-status').textContent = 'ログインしていません'; message(error.message); }
   }
   $('login').addEventListener('click', () => auth('login'));
   $('signup').addEventListener('click', () => auth('signup'));
   $('logout').addEventListener('click', async () => {
-    try { if (accessToken) { const r = await call('/api/auth/logout',{method:'POST'}); if (!r.ok) throw new Error('サーバー側のログアウトを確認できませんでした。'); } message('ログアウトしました。'); }
+    try { if (accessToken) { const r = await call('/api/auth/logout',{method:'POST',cookies:true}); if (!r.ok) throw new Error('サーバー側のログアウトを確認できませんでした。'); } message('ログアウトしました。'); }
     catch (error) { message(error.message); }
-    finally { accessToken = null; clearContent(); renderAuth(); }
+    finally { accessToken = null; memberEmail = ''; clearContent(); renderAuth(); accountMode(); }
   });
   async function checkout(kind) {
     if (!accessToken) { message('先にログインしてください。'); return; }
+    if (checkoutBusy) return;
+    checkoutBusy = true; $('single').disabled = true; $('monthly').disabled = true;
     const body = kind === 'single' ? {kind, article_id:$('article').value.trim()} : {kind};
     try {
       const response = await jsonPost('/api/checkout',body,true);
@@ -91,7 +119,7 @@ export const testScript = String.raw`'use strict';
       const data = await response.json(); const target = new URL(data.checkout_url);
       if (target.protocol !== 'https:' || target.hostname !== 'checkout.stripe.com' || target.username || target.password || target.port) throw new Error('決済先を確認できませんでした。');
       accessToken = null; clearContent(); renderAuth(); location.assign(target.href);
-    } catch (error) { message(error.message); }
+    } catch (error) { message(error.message); checkoutBusy = false; renderAuth(); }
   }
   $('single').addEventListener('click', () => checkout('single'));
   $('monthly').addEventListener('click', () => checkout('subscription'));
@@ -134,6 +162,79 @@ export const testScript = String.raw`'use strict';
       message('記事を取得しました。'); void refreshAccount(false);
     } catch { message('通信に失敗しました。'); }
   }
+  async function completeReturn() {
+    const run = ++returnRun;
+    if (!returnMode || !accessToken) return;
+    const token = accessToken;
+    const current = () => returnMode && run === returnRun && token === accessToken;
+    $('purchase-section').hidden = true;
+    $('reader-controls').hidden = true;
+    $('reader-heading').textContent = '購入した記事';
+    $('article').value = targetArticle;
+    clearContent();
+    showReturn('購入状況を確認しています', '決済通知と閲覧権限をサーバーで照合しています。');
+    $('return-status').scrollIntoView({block:'start'});
+    try {
+      for (let attempt = 0; attempt < 12; attempt++) {
+        if (!current()) return;
+        const r = await call('/api/articles/' + targetArticle);
+        if (!current()) return;
+        if (r.ok) {
+          const body = await r.text();
+          if (!current()) return;
+          $('article-result').textContent = body;
+          let missingImages = false;
+          if (targetArticle === 'chapter-one') for (const gem of ['sapphire','ruby','emerald']) {
+            const img = await call('/api/articles/' + targetArticle + '/assets/' + gem);
+            if (!current()) return;
+            if (!img.ok) { missingImages = true; continue; }
+            const blob = await img.blob();
+            if (!current()) return;
+            const url = URL.createObjectURL(blob); objectUrls.push(url);
+            const el = document.createElement('img'); el.src = url; el.alt = gem + '（テスト素材）'; $('images').append(el);
+          }
+          showReturn('記事を閲覧できます', missingImages ? '本文を取得しました。一部画像は再確認してください。' : '閲覧権限を確認しました。そのまま記事をお楽しみください。', missingImages);
+          $('auth-section').hidden = true;
+          $('reader-section').focus({preventScroll:true});
+          $('reader-section').scrollIntoView({block:'start'});
+          message('記事を取得しました。'); return;
+        }
+        if (r.status === 401) {
+          accessToken = null; renderAuth(); $('auth-section').hidden = false;
+          showReturn('ログインの有効期限が切れました', '再度ログインすると購入記事を確認できます。'); return;
+        }
+        if (r.status !== 403) throw new Error('記事の取得に失敗しました。');
+        if (attempt < 11) await new Promise((resolve) => setTimeout(resolve, 1500));
+      }
+      if (current()) showReturn('購入権限の反映待ち', '決済をやり直さず、閲覧権限を再確認してください。', true);
+    } catch {
+      if (current()) showReturn('閲覧権限を確認できませんでした', '再購入せずに、もう一度確認してください。', true);
+    }
+  }
+  async function restoreSession() {
+    $('login').disabled = true; $('signup').disabled = true;
+    if (returnMode) {
+      $('purchase-section').hidden = true;
+      $('reader-controls').hidden = true;
+      showReturn('購入状況を確認しています', 'ログイン状態を復元しています。');
+    }
+    try {
+      const r = await jsonPost('/api/auth/restore',{},false,true);
+      if (r.ok) {
+        const d = await r.json();
+        if (d.access_token) {
+          setSession(d);
+          if (returnMode) { await completeReturn(); return; }
+          if (returnKind === 'cancel') message('決済をキャンセルしました。');
+          void refreshAccount(false); return;
+        }
+      }
+      if (returnMode) showReturn('ログインが必要です', 'ログインすると購入済みの記事を確認できます。再購入は不要です。');
+    } catch {
+      if (returnMode) showReturn('ログイン状態を確認できませんでした', 'ログイン後に購入状況を確認できます。');
+    } finally { $('login').disabled = false; $('signup').disabled = false; }
+  }
   $('view').addEventListener('click', () => view(false));
   $('anonymous').addEventListener('click', () => view(true));
+  void restoreSession();
 })();`;

@@ -209,7 +209,7 @@ function fixtures() {
   const handler = createHandler({ auth, db, storage, stripe }, config);
   const request = (
     path,
-    { token, method = 'GET', body, signature, origin } = {},
+    { token, method = 'GET', body, signature, origin, cookie } = {},
   ) =>
     handler(
       new Request('https://backend.example' + path, {
@@ -219,6 +219,7 @@ function fixtures() {
           ...(body !== undefined ? { 'Content-Type': 'application/json' } : {}),
           ...(signature ? { 'Stripe-Signature': signature } : {}),
           ...(origin ? { Origin: origin } : {}),
+          ...(cookie ? { Cookie: cookie } : {}),
         },
         ...(body !== undefined
           ? { body: typeof body === 'string' ? body : JSON.stringify(body) }
@@ -366,6 +367,39 @@ test('signup, login, refresh, logout use auth adapter and no-store responses', a
   );
   assert.deepEqual(f.state.accountActions, ['signup', 'login', 'logout']);
 });
+test('browser refresh cookie restores login without exposing refresh credentials', async () => {
+  const f = fixtures();
+  const login = await f.request('/api/auth/login', {
+    method: 'POST', origin: config.publicOrigin,
+    body: { email: 'person@example.test', password: 'Test1234', browser_session: true },
+  });
+  assert.equal(login.status, 200);
+  const data = await login.json();
+  assert.equal(data.access_token, 'alice');
+  assert.equal(Object.hasOwn(data, 'refresh_token'), false);
+  const cookie = login.headers.get('set-cookie');
+  assert.match(cookie, /HttpOnly/);
+  assert.match(cookie, /Secure/);
+  assert.match(cookie, /SameSite=Lax/);
+  assert.match(cookie, /Path=\/api\/auth/);
+  const restore = await f.request('/api/auth/restore', {
+    method: 'POST', origin: config.publicOrigin, cookie: cookie.split(';')[0], body: {},
+  });
+  assert.equal(restore.status, 200);
+  assert.match(restore.headers.get('set-cookie'), /rotated/);
+  assert.equal(Object.hasOwn(await restore.json(), 'refresh_token'), false);
+  assert.equal((await f.request('/api/auth/restore', {
+    method: 'POST', cookie: cookie.split(';')[0], body: {},
+  })).status, 403);
+  assert.equal((await f.request('/api/articles/chapter-one', {
+    cookie: cookie.split(';')[0],
+  })).status, 401);
+  const logout = await f.request('/api/auth/logout', {
+    method: 'POST', origin: config.publicOrigin, token: 'alice',
+  });
+  assert.match(logout.headers.get('set-cookie'), /Max-Age=0/);
+});
+
 test('direct article and all image URLs deny unauthenticated, unpurchased and other users', async () => {
   const f = fixtures();
   for (const p of [
@@ -886,7 +920,7 @@ test('checkout uses only the server-configured test return URL', async () => {
   const opts = f.records.sessions.get('cs_test_Example').opts;
   assert.equal(
     opts.success_url,
-    'https://test.example/special-stones/?checkout=return',
+    'https://test.example/special-stones/?checkout=return&article=chapter-one',
   );
   assert.equal(
     opts.cancel_url,

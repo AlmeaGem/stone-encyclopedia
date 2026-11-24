@@ -50,6 +50,29 @@ const sessionResponse = (data) =>
         expires_at: data.session.expires_at,
       }
     : { confirmation_required: true };
+// A short-lived refresh cookie is scoped to auth endpoints, never exposed to JS.
+const REFRESH_COOKIE = '__Secure-almea-test-refresh';
+const cookieOptions = '; Path=/api/auth; HttpOnly; Secure; SameSite=Lax';
+const clearRefreshCookie = REFRESH_COOKIE + '=' + cookieOptions + '; Max-Age=0';
+const refreshFromCookie = (request) => {
+  const values = (request.headers.get('cookie') || '').split(';');
+  const matches = values.map((v) => v.trim()).filter((v) => v.startsWith(REFRESH_COOKIE + '='));
+  if (matches.length !== 1) return null;
+  const token = matches[0].slice(REFRESH_COOKIE.length + 1);
+  return /^[A-Za-z0-9._~-]{1,3500}$/.test(token) ? token : null;
+};
+const browserSession = (data, headers) => {
+  if (!data.session)
+    return json(200, { confirmation_required: true }, { ...headers, 'Set-Cookie': clearRefreshCookie });
+  const { access_token, refresh_token, expires_at } = data.session;
+  if (typeof refresh_token !== 'string' || !/^[A-Za-z0-9._~-]{1,3500}$/.test(refresh_token))
+    throw Error('Invalid refresh token');
+  return json(
+    200,
+    { access_token, expires_at, email: data.user?.email || data.session.user?.email || '' },
+    { ...headers, 'Set-Cookie': REFRESH_COOKIE + '=' + refresh_token + cookieOptions + '; Max-Age=7200' },
+  );
+};
 export function createHandler(
   { auth, db, storage, stripe, cryptoProvider },
   config,
@@ -107,12 +130,31 @@ export function createHandler(
         const body = await getJson(request);
         if (!validCredentials(body.email, body.password))
           return response(400, { error: 'Invalid input' });
+        if (body.browser_session === true && origin !== config.publicOrigin)
+          return response(403, { error: 'Forbidden origin' });
         const data = url.pathname.endsWith('signup')
           ? await auth.signUp(body.email, body.password)
           : await auth.signIn(body.email, body.password);
+        if (body.browser_session === true) {
+          if (origin !== config.publicOrigin)
+            return response(403, { error: 'Forbidden origin' });
+          return browserSession(data, cors);
+        }
         return response(200, sessionResponse(data));
       } catch {
         return response(400, { error: 'Unable to authenticate' });
+      }
+    }
+    if (url.pathname === '/api/auth/restore' && request.method === 'POST') {
+      if (origin !== config.publicOrigin)
+        return response(403, { error: 'Forbidden origin' });
+      const refresh = refreshFromCookie(request);
+      if (!refresh)
+        return response(401, { error: 'Authentication required' });
+      try {
+        return browserSession(await auth.refresh(refresh), cors);
+      } catch {
+        return json(401, { error: 'Authentication required' }, { ...cors, 'Set-Cookie': clearRefreshCookie });
       }
     }
     if (url.pathname === '/api/auth/refresh' && request.method === 'POST') {
@@ -132,20 +174,25 @@ export function createHandler(
       }
     }
     const token = bearer(request);
-    if (!token) return response(401, { error: 'Authentication required' });
+    const isLogout = url.pathname === '/api/auth/logout' && request.method === 'POST';
+    const authFailure = () =>
+      isLogout && origin === config.publicOrigin
+        ? json(401, { error: 'Authentication required' }, { ...cors, 'Set-Cookie': clearRefreshCookie })
+        : response(401, { error: 'Authentication required' });
+    if (!token) return authFailure();
     let user;
     try {
       user = await auth.getUser(token);
       if (!user?.id) throw Error('No user');
     } catch {
-      return response(401, { error: 'Authentication required' });
+      return authFailure();
     }
-    if (url.pathname === '/api/auth/logout' && request.method === 'POST') {
+    if (isLogout) {
       try {
         await auth.signOut(token);
-        return response(200, { signed_out: true });
+        return json(200, { signed_out: true }, { ...cors, 'Set-Cookie': clearRefreshCookie });
       } catch {
-        return response(503, { error: 'Unable to sign out' });
+        return json(503, { error: 'Unable to sign out' }, { ...cors, 'Set-Cookie': clearRefreshCookie });
       }
     }
     if (url.pathname === '/api/account' && request.method === 'GET') {
@@ -232,7 +279,7 @@ export function createHandler(
           mode: kind === 'single' ? 'payment' : 'subscription',
           client_reference_id: orderId,
           line_items: [{ price: priceId, quantity: 1 }],
-          success_url: `${config.testReturnUrl}?checkout=return`,
+          success_url: `${config.testReturnUrl}?checkout=return&article=${encodeURIComponent(kind === 'single' ? body.article_id : 'chapter-one')}`,
           cancel_url: `${config.testReturnUrl}?checkout=cancel`,
           allow_promotion_codes: false,
           managed_payments: { enabled: false },
