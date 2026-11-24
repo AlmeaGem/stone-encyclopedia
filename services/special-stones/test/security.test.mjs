@@ -851,6 +851,30 @@ test('test configuration rejects the live origin, unsafe or missing return URLs'
   );
 });
 
+test('checkout opts out of default Managed Payments for both fixed-price test plans', async () => {
+  for (const kind of ['single', 'subscription']) {
+    const f = fixtures();
+    const body =
+      kind === 'single' ? { kind, article_id: 'chapter-one' } : { kind };
+    const result = await f.request('/api/checkout', {
+      method: 'POST',
+      token: 'alice',
+      body,
+    });
+    assert.equal(result.status, 200);
+    const opts = f.records.sessions.get('cs_test_Example').opts;
+    assert.deepEqual(opts.managed_payments, { enabled: false });
+    assert.deepEqual(opts.automatic_tax, { enabled: false });
+    assert.equal(Object.hasOwn(opts, 'payment_method_types'), false);
+    assert.deepEqual(opts.line_items, [
+      {
+        price: kind === 'single' ? config.singlePrice : config.monthlyPrice,
+        quantity: 1,
+      },
+    ]);
+  }
+});
+
 test('checkout uses only the server-configured test return URL', async () => {
   const f = fixtures();
   const response = await f.request('/api/checkout', {

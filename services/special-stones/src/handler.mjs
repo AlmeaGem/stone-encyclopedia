@@ -235,6 +235,7 @@ export function createHandler(
           success_url: `${config.testReturnUrl}?checkout=return`,
           cancel_url: `${config.testReturnUrl}?checkout=cancel`,
           allow_promotion_codes: false,
+          managed_payments: { enabled: false },
           automatic_tax: { enabled: false },
         };
         if (kind === 'subscription')
