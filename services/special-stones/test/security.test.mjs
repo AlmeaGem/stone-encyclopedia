@@ -340,10 +340,15 @@ test('signup, login, refresh, logout use auth adapter and no-store responses', a
   for (const path of ['signup', 'login']) {
     const r = await f.request('/api/auth/' + path, {
       method: 'POST',
-      body: { email: 'person@example.test', password: 'test-password-123' },
+      body: { email: 'person@example.test', password: 'Test1234' },
     });
     assert.equal(r.status, 200);
     assert.match(r.headers.get('cache-control'), /no-store/);
+    const short = await f.request('/api/auth/' + path, {
+      method: 'POST',
+      body: { email: 'person@example.test', password: 'Test123' },
+    });
+    assert.equal(short.status, 400);
   }
   assert.equal(
     (

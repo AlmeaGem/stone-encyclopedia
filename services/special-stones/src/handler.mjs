@@ -40,7 +40,7 @@ const validCredentials = (email, password) =>
   email.length <= 254 &&
   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) &&
   typeof password === 'string' &&
-  password.length >= 12 &&
+  password.length >= 8 &&
   password.length <= 128;
 const sessionResponse = (data) =>
   data.session
