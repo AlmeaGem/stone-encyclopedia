@@ -43,6 +43,11 @@ try {
       });
     if (url.pathname === '/api/auth/login')
       return json(200, { access_token: 'fake-login-token' });
+    if (url.pathname === '/api/account')
+      return json(200, {
+        purchased_articles: purchased ? ['chapter-one'] : [],
+        membership_until: null,
+      });
     if (url.pathname === '/api/auth/logout')
       return json(200, { signed_out: true });
     if (url.pathname === '/api/checkout') {
@@ -78,6 +83,9 @@ try {
   await page.locator('#login').click();
   await page.getByText('テスト環境にログイン中').waitFor();
   assert.equal(await page.locator('#password').inputValue(), '');
+  assert.equal(await page.locator('#auth-form').isVisible(), false);
+  assert.equal(await page.locator('#signed-in').isVisible(), true);
+  await page.getByText('第一章：未購入').waitFor();
   await page.locator('#view').click();
   await page.getByText('閲覧権限がありません（HTTP 403）。').waitFor();
   purchased = true;
@@ -116,6 +124,8 @@ try {
   await page.getByText('テスト環境にログイン中').waitFor();
   await page.locator('#logout').click();
   await page.getByText('ログアウトしました。').waitFor();
+  assert.equal(await page.locator('#auth-form').isVisible(), true);
+  assert.equal(await page.locator('#signed-in').isVisible(), false);
   await page.locator('#password').fill('password-for-test');
   await page.locator('#login').click();
   await page.getByText('テスト環境にログイン中').waitFor();
