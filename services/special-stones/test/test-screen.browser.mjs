@@ -142,8 +142,9 @@ try {
   assert.equal(calls.filter(c => c.path === '/api/auth/login').length, loginCount);
   await page.locator('#back-to-account').click();
   await page.locator('#logout').click();
+  await page.getByText('ログアウトしました。', { exact: true }).waitFor();
+  await page.locator('#member-nav').waitFor({ state: 'hidden' });
   assert.equal(await page.locator('#member-nav').isVisible(), false);
-  await page.getByText('ログアウトしました。').waitFor();
   assert.equal(await page.locator('#auth-form').isVisible(), true);
   assert.equal(await page.locator('#signed-in').isVisible(), false);
   await page.locator('#email').fill('user@example.test');
