@@ -1,0 +1,14 @@
+{
+  "name": "almea-special-stones-live",
+  "main": "src/production-worker.mjs",
+  "compatibility_date": "2026-08-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "preview_urls": false,
+  "vars": {
+    "SPECIAL_STONES_LIVE_SALES_ENABLED": "false",
+    "SPECIAL_STONES_FIXED_PRICE_TAX_APPROVED": "false",
+    "SUPABASE_LIVE_PRIVATE_BUCKET": "special-stones-live-private"
+  },
+  "observability": { "enabled": false }
+}

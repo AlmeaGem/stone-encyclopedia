@@ -10,7 +10,7 @@ const check = (condition) => {
 // All amounts and ownership are checked from Stripe's API and the server-created order.
 export async function processStripeEvent(event, { stripe, db }, config) {
   check(
-    event && event.livemode === false && /^evt_[A-Za-z0-9]+$/.test(event.id),
+    event && event.livemode === (config.livemode === true) && /^evt_[A-Za-z0-9]+$/.test(event.id),
   );
   if (
     event.type === 'checkout.session.completed' ||
@@ -20,7 +20,7 @@ export async function processStripeEvent(event, { stripe, db }, config) {
       event.data.object.id,
       { expand: ['line_items'] },
     );
-    check(session.livemode === false);
+    check(session.livemode === (config.livemode === true));
     if (session.mode === 'subscription') return 'ignored';
     check(
       session.mode === 'payment' &&
@@ -59,7 +59,7 @@ export async function processStripeEvent(event, { stripe, db }, config) {
         invoice.subscription,
     );
     check(
-      invoice.livemode === false &&
+      invoice.livemode === (config.livemode === true) &&
         invoice.status === 'paid' &&
         invoice.currency === 'jpy' &&
         invoice.amount_paid === 580 &&
@@ -67,7 +67,7 @@ export async function processStripeEvent(event, { stripe, db }, config) {
     );
     const subscription = await stripe.subscriptions.retrieve(subId);
     const orderId = subscription.metadata?.order_id;
-    check(subscription.livemode === false && uuid(orderId));
+    check(subscription.livemode === (config.livemode === true) && uuid(orderId));
     const order = await db.getOrder(orderId);
     check(
       order &&
@@ -82,7 +82,7 @@ export async function processStripeEvent(event, { stripe, db }, config) {
       { expand: ['line_items'] },
     );
     check(
-      session.livemode === false &&
+      session.livemode === (config.livemode === true) &&
         session.mode === 'subscription' &&
         session.status === 'complete' &&
         session.client_reference_id === orderId &&
@@ -101,7 +101,7 @@ export async function processStripeEvent(event, { stripe, db }, config) {
     check(
       !payments.has_more &&
         payments.data?.length === 1 &&
-        payments.data[0].livemode === false &&
+        payments.data[0].livemode === (config.livemode === true) &&
         payments.data[0].status === 'paid' &&
         payments.data[0].amount_paid === 580 &&
         payments.data[0].currency === 'jpy' &&
@@ -134,7 +134,7 @@ export async function processStripeEvent(event, { stripe, db }, config) {
     const charge = await stripe.charges.retrieve(event.data.object.id);
     const pi = id(charge.payment_intent);
     check(
-      charge.livemode === false &&
+      charge.livemode === (config.livemode === true) &&
         charge.amount_refunded > 0 &&
         /^pi_[A-Za-z0-9]+$/.test(pi || ''),
     );

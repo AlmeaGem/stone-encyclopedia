@@ -51,32 +51,34 @@ const sessionResponse = (data) =>
       }
     : { confirmation_required: true };
 // A short-lived refresh cookie is scoped to auth endpoints, never exposed to JS.
-const REFRESH_COOKIE = '__Secure-almea-test-refresh';
+const TEST_REFRESH_COOKIE = '__Secure-almea-test-refresh';
+const LIVE_REFRESH_COOKIE = '__Secure-almea-member-refresh';
 const cookieOptions = '; Path=/api/auth; HttpOnly; Secure; SameSite=Lax';
-const clearRefreshCookie = REFRESH_COOKIE + '=' + cookieOptions + '; Max-Age=0';
-const refreshFromCookie = (request) => {
+const clearRefreshCookie = (name) => name + '=' + cookieOptions + '; Max-Age=0';
+const refreshFromCookie = (request, name) => {
   const values = (request.headers.get('cookie') || '').split(';');
-  const matches = values.map((v) => v.trim()).filter((v) => v.startsWith(REFRESH_COOKIE + '='));
+  const matches = values.map((v) => v.trim()).filter((v) => v.startsWith(name + '='));
   if (matches.length !== 1) return null;
-  const token = matches[0].slice(REFRESH_COOKIE.length + 1);
+  const token = matches[0].slice(name.length + 1);
   return /^[A-Za-z0-9._~-]{1,3500}$/.test(token) ? token : null;
 };
-const browserSession = (data, headers) => {
+const browserSession = (data, headers, name) => {
   if (!data.session)
-    return json(200, { confirmation_required: true }, { ...headers, 'Set-Cookie': clearRefreshCookie });
+    return json(200, { confirmation_required: true }, { ...headers, 'Set-Cookie': clearRefreshCookie(name) });
   const { access_token, refresh_token, expires_at } = data.session;
   if (typeof refresh_token !== 'string' || !/^[A-Za-z0-9._~-]{1,3500}$/.test(refresh_token))
     throw Error('Invalid refresh token');
   return json(
     200,
     { access_token, expires_at, email: data.user?.email || data.session.user?.email || '' },
-    { ...headers, 'Set-Cookie': REFRESH_COOKIE + '=' + refresh_token + cookieOptions + '; Max-Age=7200' },
+    { ...headers, 'Set-Cookie': name + '=' + refresh_token + cookieOptions + '; Max-Age=7200' },
   );
 };
 export function createHandler(
   { auth, db, storage, stripe, cryptoProvider },
   config,
 ) {
+  const cookieName = config.livemode === true ? LIVE_REFRESH_COOKIE : TEST_REFRESH_COOKIE;
   return async function handle(request) {
     const url = new URL(request.url);
     const origin = request.headers.get('origin');
@@ -111,7 +113,7 @@ export function createHandler(
           300,
           cryptoProvider,
         );
-        if (event.livemode !== false) throw Error('Live events forbidden');
+        if (event.livemode !== (config.livemode === true)) throw Error('Live events forbidden');
       } catch {
         return response(400, { error: 'Invalid webhook' });
       }
@@ -138,7 +140,7 @@ export function createHandler(
         if (body.browser_session === true) {
           if (origin !== config.publicOrigin)
             return response(403, { error: 'Forbidden origin' });
-          return browserSession(data, cors);
+          return browserSession(data, cors, cookieName);
         }
         return response(200, sessionResponse(data));
       } catch {
@@ -148,13 +150,13 @@ export function createHandler(
     if (url.pathname === '/api/auth/restore' && request.method === 'POST') {
       if (origin !== config.publicOrigin)
         return response(403, { error: 'Forbidden origin' });
-      const refresh = refreshFromCookie(request);
+      const refresh = refreshFromCookie(request, cookieName);
       if (!refresh)
         return response(401, { error: 'Authentication required' });
       try {
-        return browserSession(await auth.refresh(refresh), cors);
+        return browserSession(await auth.refresh(refresh), cors, cookieName);
       } catch {
-        return json(401, { error: 'Authentication required' }, { ...cors, 'Set-Cookie': clearRefreshCookie });
+        return json(401, { error: 'Authentication required' }, { ...cors, 'Set-Cookie': clearRefreshCookie(cookieName) });
       }
     }
     if (url.pathname === '/api/auth/refresh' && request.method === 'POST') {
@@ -177,7 +179,7 @@ export function createHandler(
     const isLogout = url.pathname === '/api/auth/logout' && request.method === 'POST';
     const authFailure = () =>
       isLogout && origin === config.publicOrigin
-        ? json(401, { error: 'Authentication required' }, { ...cors, 'Set-Cookie': clearRefreshCookie })
+        ? json(401, { error: 'Authentication required' }, { ...cors, 'Set-Cookie': clearRefreshCookie(cookieName) })
         : response(401, { error: 'Authentication required' });
     if (!token) return authFailure();
     let user;
@@ -190,9 +192,9 @@ export function createHandler(
     if (isLogout) {
       try {
         await auth.signOut(token);
-        return json(200, { signed_out: true }, { ...cors, 'Set-Cookie': clearRefreshCookie });
+        return json(200, { signed_out: true }, { ...cors, 'Set-Cookie': clearRefreshCookie(cookieName) });
       } catch {
-        return json(503, { error: 'Unable to sign out' }, { ...cors, 'Set-Cookie': clearRefreshCookie });
+        return json(503, { error: 'Unable to sign out' }, { ...cors, 'Set-Cookie': clearRefreshCookie(cookieName) });
       }
     }
     if (url.pathname === '/api/account' && request.method === 'GET') {
@@ -214,7 +216,7 @@ export function createHandler(
           current.subscription_id,
         );
         if (
-          sub.livemode !== false ||
+          sub.livemode !== (config.livemode === true) ||
           sub.metadata?.order_id !== current.order_id
         )
           throw Error('Subscription verification failed');
@@ -222,7 +224,7 @@ export function createHandler(
           current.session_id,
         );
         if (
-          session.livemode !== false ||
+          session.livemode !== (config.livemode === true) ||
           session.mode !== 'subscription' ||
           session.client_reference_id !== current.order_id ||
           (typeof session.subscription === 'string'
@@ -254,7 +256,7 @@ export function createHandler(
         const amount = kind === 'single' ? 150 : 580;
         const price = await stripe.prices.retrieve(priceId);
         if (
-          price.livemode !== false ||
+          price.livemode !== (config.livemode === true) ||
           price.active !== true ||
           price.currency !== 'jpy' ||
           price.unit_amount !== amount ||
@@ -291,9 +293,9 @@ export function createHandler(
           idempotencyKey: orderId,
         });
         if (
-          session.livemode !== false ||
+          session.livemode !== (config.livemode === true) ||
           !session.url ||
-          !/^cs_test_[A-Za-z0-9]+$/.test(session.id)
+          !(config.livemode === true ? /^cs_live_[A-Za-z0-9]+$/ : /^cs_test_[A-Za-z0-9]+$/).test(session.id)
         )
           throw Error('Invalid test session');
         await db.bindSession(orderId, session.id);
