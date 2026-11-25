@@ -70,3 +70,17 @@ test('production member shell is separate from dummy and diagnostic UI', async (
  assert.doesNotMatch(source,/innerHTML|localStorage|sessionStorage/);
  assert.doesNotThrow(()=>new Function(source));
 });
+
+test('live duplicate checks preserve independent single purchases and monthly rights', async () => {
+ const config=readProductionConfig(env);
+ let summary={purchased_articles:[],membership_until:new Date(Date.now()+3600000).toISOString()};
+ const auth={getUser:async()=>({id:'fixture'})};
+ const db={accountSummary:async()=>summary,createOrder:async()=>{},bindSession:async()=>{}};
+ const stripe={prices:{retrieve:async()=>({livemode:true,active:true,currency:'jpy',unit_amount:150,tax_behavior:'inclusive',recurring:null})},checkout:{sessions:{create:async()=>({livemode:true,id:'cs_live_Fixture',url:'https://checkout.stripe.com/fixture'})}}};
+ const handle=createHandler({auth,db,stripe},config);
+ const call=body=>handle(new Request('https://members.example.com/api/checkout',{method:'POST',headers:{Authorization:'Bearer fixture','Content-Type':'application/json'},body:JSON.stringify(body)}));
+ assert.equal((await call({kind:'subscription'})).status,409);
+ assert.equal((await call({kind:'single',article_id:'chapter-one'})).status,200);
+ summary={...summary,purchased_articles:['chapter-one']};
+ assert.equal((await call({kind:'single',article_id:'chapter-one'})).status,409);
+});

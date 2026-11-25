@@ -254,7 +254,7 @@ export function createHandler(
         if (config.livemode === true) {
           const account = await db.accountSummary(user.id);
           const active = account?.membership_until && Date.parse(account.membership_until) > Date.now();
-          if ((kind === 'single' && (active || account?.purchased_articles?.includes(body.article_id))) || (kind === 'subscription' && active))
+          if ((kind === 'single' && account?.purchased_articles?.includes(body.article_id)) || (kind === 'subscription' && active))
             return response(409, { error: 'Already entitled' });
         }
         const priceId =
