@@ -1,0 +1,26 @@
+name: Special Stones test
+on:
+  push:
+    branches: [codex/special-stones-test-foundation]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Install isolated service dependencies
+        run: npm ci --prefix services/special-stones
+      - name: Verify authentication, billing and entitlements
+        run: npm test --prefix services/special-stones
+      - name: Install pinned browser test runner
+        run: npm install --prefix services/special-stones --no-save --package-lock=false @playwright/test@1.64.1
+      - name: Install Chromium
+        run: services/special-stones/node_modules/.bin/playwright install --with-deps chromium
+      - name: Verify member navigation, checkout return and reader
+        run: node services/special-stones/test/test-screen.browser.mjs
