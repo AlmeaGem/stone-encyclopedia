@@ -29,13 +29,17 @@ button:focus-visible,input:focus-visible{outline:3px solid #80543e;outline-offse
 output,pre{display:block;white-space:pre-wrap;overflow-wrap:anywhere}pre{font-family:inherit;line-height:1.9;margin:1rem 0 0}pre:empty{display:none}
 #images{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.6rem}img{display:block;max-width:100%;height:auto;border-radius:8px}
 #message{font-weight:600;color:#64463a}#message:empty::before{content:"操作結果がここに表示されます。";font-weight:400;color:#705d51}
+.member-nav{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.2rem}.member-nav a{display:flex;align-items:center;justify-content:center;flex:1 1 9rem;min-height:46px;padding:.7rem .65rem;text-align:center;text-decoration:none;border:1px solid #cbb5a4;border-radius:8px;background:#fffaf5;color:#64463a;font-size:.88rem;font-weight:600}.member-nav a[aria-current="page"]{background:#754732;color:white;border-color:#754732}.member-nav a:focus-visible,.library-card a:focus-visible{outline:3px solid #80543e;outline-offset:3px}
+.library-list{display:grid;gap:.9rem;margin-top:1rem}.library-card{padding:1.1rem;border:1px solid #e1cfc0;border-radius:10px;background:#faf3eb}.library-card p{margin:.5rem 0;color:#365b46;font-size:.88rem}.library-card a{display:block;text-align:center;border-radius:8px;padding:.7rem;background:#754732;color:#fff;text-decoration:none;font-weight:600;margin-top:.8rem}.library-card h3{overflow-wrap:anywhere}
 @media(max-width:540px){.plans{grid-template-columns:1fr}.actions{flex-direction:column}.actions button{flex:auto;width:100%}header{padding-top:1.8rem}#images{grid-template-columns:1fr}}
 </style></head><body>
 <header><p class="brand">ALMÉA GEM</p><p class="eyebrow">SPECIAL STONES · MEMBER ACCOUNT</p><h1>スペシャルストーン</h1><p class="notice">テスト環境｜実際の課金は行われません。テスト用アカウント・カード・ダミー素材のみ使用してください。</p></header>
 <main>
+<nav id="member-nav" class="member-nav" aria-label="会員メニュー" hidden><a id="nav-store" href="?view=store">スペシャルストーン</a><a id="nav-library" href="?view=library">購入記事一覧</a><a id="nav-account" href="?view=account">マイアカウント</a></nav>
+<section id="library-section" hidden aria-labelledby="library-heading"><p class="eyebrow">MY LIBRARY</p><h2 id="library-heading">購入記事一覧</h2><p class="help">購入した記事は期限なく、月額会員対象の記事は会員期間中に閲覧できます。</p><p id="library-status" class="help" role="status"></p><div id="library-list" class="library-list"></div><div class="actions"><button id="library-refresh" type="button">購入記事一覧を更新</button></div></section>
 <section id="return-status" hidden role="status"><h2 id="return-title">購入状況を確認しています</h2><p id="return-detail" class="help"></p><div class="actions"><button id="retry-return" class="primary" type="button" hidden>閲覧権限を再確認</button><button id="back-to-account" type="button">マイアカウントへ</button></div></section>
-<section id="auth-section" aria-labelledby="auth-heading"><h2 id="auth-heading">ログイン・会員登録</h2><div id="auth-form"><p class="help">会員登録済みの方はログインしてください。</p><label>メールアドレス<input id="email" type="email" autocomplete="username"></label><label>パスワード（8文字以上）<input id="password" type="password" minlength="8" maxlength="128" autocomplete="current-password"></label><div class="actions"><button id="login" class="primary" type="button">ログイン</button><button id="signup" type="button">テスト会員を登録</button></div></div><div id="signed-in" class="signed-in" hidden><span class="avatar" aria-hidden="true">◇</span><div class="identity"><p class="status">✓ ログイン済み</p><p id="member-email"></p></div><button id="logout" type="button">ログアウト</button></div><p id="login-status" role="status">ログインしていません</p></section>
-<section id="purchase-section"><p class="eyebrow">MEMBERSHIP &amp; PURCHASE</p><h2>記事を購入する</h2><p class="help" id="purchase-help">購入するにはログインしてください。</p><div class="plans"><div class="plan"><h3>単品購入</h3><div class="price">¥150 <small>税込／記事</small></div><p>購入した記事を期限なく閲覧できます。</p><button id="single" class="primary" type="button" disabled>単品テスト決済</button></div><div class="plan"><h3>月額会員</h3><div class="price">¥580 <small>税込／月</small></div><p>会員期間中、すべての有料記事を閲覧できます。</p><button id="monthly" class="primary" type="button" disabled>月額テスト決済</button></div></div><button id="account" type="button" disabled>購入状況を確認</button><div class="account-panel" id="account-panel" hidden><strong>あなたの購入状況</strong><output id="account-result"></output></div><p class="help">決済後は購入権限を確認し、そのまま記事を表示します。</p></section>
+<section id="auth-section" aria-labelledby="auth-heading"><h2 id="auth-heading">ログイン・会員登録</h2><div id="auth-form"><p class="help">会員登録済みの方はログインしてください。</p><label>メールアドレス<input id="email" type="email" autocomplete="username"></label><label>パスワード（8文字以上）<input id="password" type="password" minlength="8" maxlength="128" autocomplete="current-password"></label><div class="actions"><button id="login" class="primary" type="button">ログイン</button><button id="signup" type="button">テスト会員を登録</button></div></div><div id="signed-in" class="signed-in" hidden><span class="avatar" aria-hidden="true">◇</span><div class="identity"><p class="status">✓ ログイン済み</p><p id="member-email"></p></div><button id="logout" type="button">ログアウト</button></div><p id="login-status" role="status">ログインしていません</p><div id="account-actions" hidden><button id="account" type="button" disabled>購入状況を確認</button><div class="account-panel" id="account-panel" hidden><strong>あなたの購入状況</strong><output id="account-result"></output></div></div></section>
+<section id="purchase-section"><p class="eyebrow">MEMBERSHIP &amp; PURCHASE</p><h2>記事を購入する</h2><p class="help" id="purchase-help">購入するにはログインしてください。</p><div class="plans"><div class="plan"><h3>単品購入</h3><div class="price">¥150 <small>税込／記事</small></div><p>購入した記事を期限なく閲覧できます。</p><button id="single" class="primary" type="button" disabled>単品テスト決済</button></div><div class="plan"><h3>月額会員</h3><div class="price">¥580 <small>税込／月</small></div><p>会員期間中、すべての有料記事を閲覧できます。</p><button id="monthly" class="primary" type="button" disabled>月額テスト決済</button></div></div><p class="help">決済後は購入権限を確認し、そのまま記事を表示します。</p></section>
 <section id="reader-section" tabindex="-1"><p class="eyebrow">CHAPTER I · ACCESS TEST</p><h2 id="reader-heading">第一章の閲覧確認</h2><div id="reader-controls"><p class="help">ログインだけでは有料記事は読めません。購入前の閲覧拒否は正常です。</p><label>記事ID<input id="article" value="chapter-one" maxlength="64" autocomplete="off"></label><div class="actions"><button id="view" class="primary" type="button" disabled>ログイン状態で記事を確認</button><button id="anonymous" type="button">未ログインで拒否を確認</button></div></div><pre id="article-result"></pre><div id="images"></div></section>
 <section aria-live="polite"><h2>操作結果</h2><output id="message"></output></section>
 </main><script src="/__special-test__/app.js" defer></script></body></html>`;
@@ -50,7 +54,10 @@ export const testScript = String.raw`'use strict';
   const returnKind = params.get('checkout');
   const targetArticle = params.get('article') || 'chapter-one';
   const validId = (id) => /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id) && id.length <= 64;
-  let returnMode = returnKind === 'return' && validId(targetArticle);
+  const fromCheckout = returnKind === 'return';
+  const requestedView = params.get('view');
+  let pageMode = ['library','account'].includes(requestedView) ? requestedView : 'store';
+  let returnMode = (fromCheckout || requestedView === 'reader') && validId(targetArticle);
   let objectUrls = [];
   const $ = (id) => document.getElementById(id);
   const message = (text) => { $('message').textContent = text; };
@@ -63,7 +70,27 @@ export const testScript = String.raw`'use strict';
     $('login-status').textContent = signedIn ? 'テスト環境にログイン中' : 'ログインしていません';
     $('purchase-help').textContent = signedIn ? '購入するプランをお選びください。テスト用カードのみ使用してください。' : '購入するにはログインしてください。';
     for (const id of ['single','monthly','account','view']) $(id).disabled = !signedIn;
-    if (!signedIn) { $('account-panel').hidden = true; $('account-result').textContent = ''; }
+    $('member-nav').hidden = !signedIn;
+    $('account-actions').hidden = !signedIn;
+    if (!signedIn) {
+      $('account-panel').hidden = true; $('account-result').textContent = '';
+      $('library-list').replaceChildren(); $('library-status').textContent = '';
+    }
+    if (!returnMode) {
+      $('auth-section').hidden = signedIn && pageMode === 'library';
+      $('purchase-section').hidden = pageMode !== 'store';
+      $('reader-section').hidden = pageMode !== 'store';
+      $('library-section').hidden = !signedIn || pageMode !== 'library';
+    } else {
+      $('reader-section').hidden = false;
+      $('library-section').hidden = true;
+      $('auth-section').hidden = false;
+    }
+    for (const name of ['store','library','account']) {
+      const item = $('nav-' + name);
+      if (name === (returnMode ? 'library' : pageMode)) item.setAttribute('aria-current','page');
+      else item.removeAttribute('aria-current');
+    }
   }
   const clearContent = () => { for (const url of objectUrls) URL.revokeObjectURL(url); objectUrls = []; $('article-result').textContent = ''; $('images').replaceChildren(); };
   const call = async (path, options = {}) => {
@@ -80,15 +107,17 @@ export const testScript = String.raw`'use strict';
     $('return-detail').textContent = detail;
     $('retry-return').hidden = !retry;
   }
-  function accountMode() {
-    returnMode = false; returnRun++;
-    $('return-status').hidden = true; $('purchase-section').hidden = false;
-    $('auth-section').hidden = false; $('reader-controls').hidden = false;
+  function accountMode(next = 'account') {
+    returnMode = false; returnRun++; pageMode = next;
+    clearContent();
+    $('return-status').hidden = true; $('reader-controls').hidden = false;
     $('reader-heading').textContent = '第一章の閲覧確認';
-    history.replaceState(null, '', location.pathname);
+    history.replaceState(null, '', location.pathname + (next === 'store' ? '' : '?view=' + next));
+    renderAuth();
+    if (accessToken) void refreshAccount(false);
     $('auth-section').scrollIntoView({block:'start'});
   }
-  $('back-to-account').addEventListener('click', accountMode);
+  $('back-to-account').addEventListener('click', () => accountMode());
   $('retry-return').addEventListener('click', () => completeReturn());
   async function auth(mode) {
     clearContent(); accessToken = null; renderAuth(); $('password').setAttribute('aria-invalid','false');
@@ -106,7 +135,7 @@ export const testScript = String.raw`'use strict';
   $('logout').addEventListener('click', async () => {
     try { if (accessToken) { const r = await call('/api/auth/logout',{method:'POST',cookies:true}); if (!r.ok) throw new Error('サーバー側のログアウトを確認できませんでした。'); } message('ログアウトしました。'); }
     catch (error) { message(error.message); }
-    finally { accessToken = null; memberEmail = ''; clearContent(); renderAuth(); accountMode(); }
+    finally { accessToken = null; memberEmail = ''; clearContent(); accountMode('store'); }
   });
   async function checkout(kind) {
     if (!accessToken) { message('先にログインしてください。'); return; }
@@ -123,11 +152,28 @@ export const testScript = String.raw`'use strict';
   }
   $('single').addEventListener('click', () => checkout('single'));
   $('monthly').addEventListener('click', () => checkout('subscription'));
+  function renderLibrary(bought, active) {
+    const entries = new Map();
+    for (const id of bought) if (typeof id === 'string' && validId(id)) entries.set(id, '購入済み・期限なし');
+    if (active && !entries.has('chapter-one')) entries.set('chapter-one','月額会員対象');
+    $('library-list').replaceChildren();
+    $('library-status').textContent = entries.size ? '閲覧できる記事：' + entries.size + '件' : '購入済みの記事はまだありません。スペシャルストーンから記事をお選びください。';
+    for (const [id, entitlement] of entries) {
+      const card = document.createElement('article'); card.className = 'library-card';
+      const title = document.createElement('h3');
+      title.textContent = id === 'chapter-one' ? '三つの宝石が教えてくれる、願いの叶え方' : id;
+      const state = document.createElement('p'); state.textContent = entitlement;
+      const link = document.createElement('a'); link.href = '?view=reader&article=' + encodeURIComponent(id); link.textContent = '記事を読む';
+      card.append(title,state,link); $('library-list').append(card);
+    }
+  }
   async function refreshAccount(showMessage = true) {
     const token = accessToken;
     if (!token) return;
     $('account-panel').hidden = false;
     $('account-result').textContent = '購入状況を確認中です。';
+    $('library-status').textContent = '購入記事を確認中です。';
+    $('library-list').replaceChildren();
     try {
       const r = await call('/api/account');
       if (!r.ok) throw new Error('購入状況を確認できませんでした。');
@@ -137,14 +183,17 @@ export const testScript = String.raw`'use strict';
       const active = until && Number.isFinite(until.getTime()) && until.getTime() > Date.now();
       const bought = Array.isArray(d.purchased_articles) ? d.purchased_articles : [];
       $('account-result').textContent = (active ? '月額会員｜有効期限：' + until.toLocaleDateString('ja-JP', {timeZone:'Asia/Tokyo'}) : '月額会員：未加入') + '\n単品購入済み記事：' + bought.length + '件' + (bought.includes('chapter-one') ? '\n第一章：購入済み' : active ? '\n第一章：月額会員対象' : '\n第一章：未購入');
+      renderLibrary(bought,active);
       if (showMessage) message('購入状況を確認しました。');
     } catch (e) {
       if (accessToken !== token) return;
       $('account-result').textContent = e.message;
+      $('library-status').textContent = '購入記事を取得できませんでした。一覧を更新してください。';
       if (showMessage) message(e.message);
     }
   }
   $('account').addEventListener('click', () => refreshAccount());
+  $('library-refresh').addEventListener('click', () => refreshAccount());
   renderAuth();
   async function view(anonymous) {
     clearContent(); const id = $('article').value.trim();
@@ -169,13 +218,13 @@ export const testScript = String.raw`'use strict';
     const current = () => returnMode && run === returnRun && token === accessToken;
     $('purchase-section').hidden = true;
     $('reader-controls').hidden = true;
-    $('reader-heading').textContent = '購入した記事';
+    $('reader-heading').textContent = targetArticle === 'chapter-one' ? '三つの宝石が教えてくれる、願いの叶え方' : '購入した記事';
     $('article').value = targetArticle;
     clearContent();
-    showReturn('購入状況を確認しています', '決済通知と閲覧権限をサーバーで照合しています。');
+    showReturn(fromCheckout ? '購入状況を確認しています' : '記事を開いています', fromCheckout ? '決済通知と閲覧権限をサーバーで照合しています。' : '閲覧権限をサーバーで確認しています。');
     $('return-status').scrollIntoView({block:'start'});
     try {
-      for (let attempt = 0; attempt < 12; attempt++) {
+      for (let attempt = 0; attempt < (fromCheckout ? 12 : 1); attempt++) {
         if (!current()) return;
         const r = await call('/api/articles/' + targetArticle);
         if (!current()) return;
@@ -204,9 +253,9 @@ export const testScript = String.raw`'use strict';
           showReturn('ログインの有効期限が切れました', '再度ログインすると購入記事を確認できます。'); return;
         }
         if (r.status !== 403) throw new Error('記事の取得に失敗しました。');
-        if (attempt < 11) await new Promise((resolve) => setTimeout(resolve, 1500));
+        if (fromCheckout && attempt < 11) await new Promise((resolve) => setTimeout(resolve, 1500));
       }
-      if (current()) showReturn('購入権限の反映待ち', '決済をやり直さず、閲覧権限を再確認してください。', true);
+      if (current()) showReturn(fromCheckout ? '購入権限の反映待ち' : '閲覧権限がありません', fromCheckout ? '決済をやり直さず、閲覧権限を再確認してください。' : 'マイアカウントで購入状況を確認してください。', true);
     } catch {
       if (current()) showReturn('閲覧権限を確認できませんでした', '再購入せずに、もう一度確認してください。', true);
     }
@@ -216,7 +265,7 @@ export const testScript = String.raw`'use strict';
     if (returnMode) {
       $('purchase-section').hidden = true;
       $('reader-controls').hidden = true;
-      showReturn('購入状況を確認しています', 'ログイン状態を復元しています。');
+      showReturn(fromCheckout ? '購入状況を確認しています' : '記事を開いています', 'ログイン状態を復元しています。');
     }
     try {
       const r = await jsonPost('/api/auth/restore',{},false,true);

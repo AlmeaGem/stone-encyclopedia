@@ -82,6 +82,7 @@ try {
     return json(404, {});
   });
   await page.goto('https://test.example/special-stones/');
+  assert.equal(await page.locator('#member-nav').isVisible(), false);
   await page.locator('#anonymous').click();
   await page.getByText('未ログインからのアクセスは拒否されました。').waitFor();
   await page.locator('#email').fill('user@example.test');
@@ -92,6 +93,7 @@ try {
   assert.equal(await page.locator('#auth-form').isVisible(), false);
   assert.equal(await page.locator('#signed-in').isVisible(), true);
   await page.getByText('第一章：未購入').waitFor();
+  assert.equal(await page.locator('#member-nav').isVisible(), true);
   await page.locator('#view').click();
   await page.getByText('閲覧権限がありません（HTTP 403）。').waitFor();
   purchased = true;
@@ -130,8 +132,17 @@ try {
   assert.equal(await page.locator('#purchase-section').isVisible(), false);
   assert.equal(await page.locator('#images img').count(), 3);
   assert.equal(calls.filter(c => c.path === '/api/auth/login').length, loginCount);
+  await page.locator('#nav-library').click();
+  await page.locator('#library-list').getByText('三つの宝石が教えてくれる、願いの叶え方').waitFor();
+  assert.equal(await page.locator('#purchase-section').isVisible(), false);
+  assert.equal(await page.locator('#reader-section').isVisible(), false);
+  await page.locator('#library-list').getByRole('link', { name: '記事を読む' }).click();
+  await page.getByText('記事を閲覧できます').waitFor();
+  assert.equal(await page.locator('#images img').count(), 3);
+  assert.equal(calls.filter(c => c.path === '/api/auth/login').length, loginCount);
   await page.locator('#back-to-account').click();
   await page.locator('#logout').click();
+  assert.equal(await page.locator('#member-nav').isVisible(), false);
   await page.getByText('ログアウトしました。').waitFor();
   assert.equal(await page.locator('#auth-form').isVisible(), true);
   assert.equal(await page.locator('#signed-in').isVisible(), false);
