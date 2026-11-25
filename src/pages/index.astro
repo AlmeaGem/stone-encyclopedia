@@ -200,6 +200,14 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
       <span aria-hidden="true">→</span>
     </a>
   </div>
+  <section class="wrap special-stones-home-entry" aria-labelledby="special-stones-home-title">
+    <a href={pathTo('special-stones/chapter-one/')}>
+      <span class="special-stones-home-kicker">SPECIAL STONES · CHAPTER I</span>
+      <strong id="special-stones-home-title">三つの宝石が教えてくれる、願いの叶え方</strong>
+      <span>サファイア・ルビー・エメラルドの物語を読む</span>
+      <span class="special-stones-home-arrow" aria-hidden="true">→</span>
+    </a>
+  </section>
   <DailyDiscovery />
   <ArchiveShelf />
   <section
@@ -332,4 +340,16 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
       margin-top: 1px;
     }
   }
+</style>
+
+<style>
+  .special-stones-home-entry { margin-block: 2.5rem; }
+  .special-stones-home-entry a {
+    display: flex; position: relative; flex-direction: column; gap: .55rem;
+    padding: clamp(1.4rem, 4vw, 2.5rem); background: #f8f0e8;
+    border: 1px solid #d7c4b1; color: #533d35; text-decoration: none;
+  }
+  .special-stones-home-entry strong { font-family: 'Shippori Mincho', serif; font-size: clamp(1.15rem, 2.8vw, 1.7rem); font-weight: 500; }
+  .special-stones-home-kicker { color: #705541; letter-spacing: .16em; font-size: .72rem; }
+  .special-stones-home-arrow { position: absolute; right: 1.5rem; bottom: 1.5rem; }
 </style>

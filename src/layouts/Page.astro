@@ -42,6 +42,11 @@ const {
   canonicalEnabled = true,
 } = Astro.props;
 const url = canonical(path);
+const memberLinkEnabled =
+  launched &&
+  import.meta.env.PUBLIC_SPECIAL_STONES_SALES_ENABLED === 'true' &&
+  new URL(canonical()).origin === 'https://almeagem.com' &&
+  import.meta.env.BASE_URL === '/';
 ---
 
 <!doctype html>
@@ -136,6 +141,8 @@ const url = canonical(path);
           <a href={pathTo('wishes/')}>願いから</a>
           <a href={pathTo('find-your-stone/')}>自分に合う石の見つけ方</a>
           <a href={pathTo('articles/')}>読みもの</a>
+          <a href={pathTo('special-stones/chapter-one/')}>スペシャルストーン</a>
+          {memberLinkEnabled && <a href="https://almeagem.com/members/?view=account">会員ページ</a>}
           <a href={pathTo('library/')}>My書架</a>
           <a href={pathTo('bracelet-designer/')}>デザインする</a>
           <a href={pathTo('diagnosis/')}>パーソナル診断（準備中）</a>
@@ -161,6 +168,8 @@ const url = canonical(path);
         <a href={pathTo('stones/')}>石を探す</a>
         <a href={pathTo('wishes/')}>願いから</a>
         <a href={pathTo('articles/')}>読みもの</a>
+        <a href={pathTo('special-stones/chapter-one/')}>スペシャルストーン</a>
+          {memberLinkEnabled && <a href="https://almeagem.com/members/?view=account">会員ページ</a>}
         <a href={pathTo('library/')}>My書架</a>
         <a class="nav-design" href={pathTo('bracelet-designer/')}>
           デザインする

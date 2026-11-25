@@ -8,3 +8,10 @@
 - 環境変数は production-config.mjs で検証する。鍵はWorker Secretsのみ。テストプロジェクト・テスト価格は拒否する。
 - 月額の実テスト、更新・解約・返金、重複購入防止、正式記事の表示、直接URL拒否、認証復元、メール設定、法定表示を確認してから販売開始。
 - 本番公開ルート追加、販売有効化、実課金はこのブランチの作成では行わない。
+
+## 公開導線
+- PR #76 の承認済み無料紹介とトップ・PC/スマホナビを統合。本文は変更しない。
+- 公開用の表紙だけを public/special-stones/01_chapter_cover.png に配置すること（元PNGのGit blob SHA: 8eac2d9700ef806608d83cf1ba2edfaf1945cae6）。正式表紙がないと販売フラグ付きビルドは拒否。
+- 公開サイトと会員Workerは同一オリジン https://almeagem.com を想定（ドメインとルーティング未確認）。/members/、/__special-members__/app.js、必要な /api/ のみ会員Workerへ割り当て、既存サービスを上書きしない。
+- PUBLIC_SPECIAL_STONES_SALES_ENABLED=false を初期値にする。本番の秘密情報を公開サイトに入れない。
+- 既存法定表示・返金規約・利用規約の内容をスペシャルストーンの販売条件に照合する。
