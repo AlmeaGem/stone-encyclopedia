@@ -251,6 +251,12 @@ export function createHandler(
           (kind === 'subscription' && body.article_id != null)
         )
           return response(400, { error: 'Invalid product' });
+        if (config.livemode === true) {
+          const account = await db.accountSummary(user.id);
+          const active = account?.membership_until && Date.parse(account.membership_until) > Date.now();
+          if ((kind === 'single' && (active || account?.purchased_articles?.includes(body.article_id))) || (kind === 'subscription' && active))
+            return response(409, { error: 'Already entitled' });
+        }
         const priceId =
           kind === 'single' ? config.singlePrice : config.monthlyPrice;
         const amount = kind === 'single' ? 150 : 580;

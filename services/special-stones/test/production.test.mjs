@@ -48,11 +48,25 @@ test('live checkout checks live price and session, never accepts sandbox objects
   const config=readProductionConfig(env);
   let priceLive=true, sessionId='cs_live_Fixture';
   const auth={getUser:async()=>({id:'fixture'})};
-  const db={createOrder:async()=>{},bindSession:async()=>{}};
+  const db={createOrder:async()=>{},bindSession:async()=>{},accountSummary:async()=>({purchased_articles:[],membership_until:null})};
   const stripe={prices:{retrieve:async()=>({livemode:priceLive,active:true,currency:'jpy',unit_amount:150,tax_behavior:'inclusive',recurring:null})},checkout:{sessions:{create:async()=>({livemode:true,id:sessionId,url:'https://checkout.stripe.com/fixture'})}}};
   const handle=createHandler({auth,db,stripe},config);
   const request=()=>handle(new Request('https://members.example.com/api/checkout',{method:'POST',headers:{Authorization:'Bearer fixture','Content-Type':'application/json'},body:JSON.stringify({kind:'single',article_id:'chapter-one'})}));
   assert.equal((await request()).status,200);
   priceLive=false;assert.equal((await request()).status,503);
   priceLive=true;sessionId='cs_test_Fixture';assert.equal((await request()).status,503);
+});
+
+test('production member shell is separate from dummy and diagnostic UI', async () => {
+ const r=await worker.fetch(new Request('https://members.example.com/members/'),env);
+ assert.equal(r.status,200);
+ assert.match(r.headers.get('cache-control'),/no-store/);
+ const html=await r.text();
+ assert.match(html,/購入記事一覧/);
+ assert.doesNotMatch(html,/ダミー素材|テスト決済|未ログインで拒否/);
+ const js=await worker.fetch(new Request('https://members.example.com/__special-members__/app.js'),env);
+ assert.equal(js.status,200);
+ const source=await js.text();
+ assert.doesNotMatch(source,/innerHTML|localStorage|sessionStorage/);
+ assert.doesNotThrow(()=>new Function(source));
 });
