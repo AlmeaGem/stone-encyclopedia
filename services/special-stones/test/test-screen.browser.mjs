@@ -128,7 +128,7 @@ try {
   const loginCount = calls.filter(c => c.path === '/api/auth/login').length;
   pendingReads = 1;
   await page.goto('https://test.example/special-stones/?checkout=return&article=chapter-one');
-  await page.getByText('記事を閲覧できます').waitFor();
+  await page.getByRole('heading', { name: '記事を閲覧できます', exact: true }).waitFor();
   assert.equal(await page.locator('#purchase-section').isVisible(), false);
   assert.equal(await page.locator('#images img').count(), 3);
   assert.equal(calls.filter(c => c.path === '/api/auth/login').length, loginCount);
@@ -137,7 +137,7 @@ try {
   assert.equal(await page.locator('#purchase-section').isVisible(), false);
   assert.equal(await page.locator('#reader-section').isVisible(), false);
   await page.locator('#library-list').getByRole('link', { name: '記事を読む' }).click();
-  await page.getByText('記事を閲覧できます').waitFor();
+  await page.getByRole('heading', { name: '記事を閲覧できます', exact: true }).waitFor();
   assert.equal(await page.locator('#images img').count(), 3);
   assert.equal(calls.filter(c => c.path === '/api/auth/login').length, loginCount);
   await page.locator('#back-to-account').click();
@@ -146,6 +146,7 @@ try {
   await page.getByText('ログアウトしました。').waitFor();
   assert.equal(await page.locator('#auth-form').isVisible(), true);
   assert.equal(await page.locator('#signed-in').isVisible(), false);
+  await page.locator('#email').fill('user@example.test');
   await page.locator('#password').fill('password-for-test');
   await page.locator('#login').click();
   await page.getByText('テスト環境にログイン中').waitFor();
