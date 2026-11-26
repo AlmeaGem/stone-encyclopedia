@@ -3,6 +3,12 @@ import Page from '../../layouts/Page.astro';
 import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { canonical, launched, pathTo } from '../../lib/urls';
+import { chapterById } from '../../../services/special-stones/src/catalog.mjs';
+import { stones } from '../../lib/content';
+import Visual from '../../components/Visual.astro';
+const chapter = chapterById('chapter-one')!;
+const gems = chapter.preview.map(g=>({...g,stone:stones.find(s=>s.slug===g.slug||s.name===g.name)}));
+const membersEnabled = launched && (import.meta.env.PUBLIC_SPECIAL_STONES_MEMBERS_ENABLED === 'true' || import.meta.env.PUBLIC_SPECIAL_STONES_SALES_ENABLED === 'true') && new URL(canonical()).origin === 'https://almeagem.com' && import.meta.env.BASE_URL === '/';
 const coverAvailable = existsSync(resolve('public/special-stones/01_chapter_cover.png'));
 const salesRequested = import.meta.env.PUBLIC_SPECIAL_STONES_SALES_ENABLED === 'true';
 const salesEnabled =
@@ -23,7 +29,7 @@ if (salesRequested && !salesEnabled) {
 >
   <article class="special-chapter wrap">
     <nav aria-label="現在地" class="special-breadcrumb">
-      <a href={pathTo()}>ホーム</a> / スペシャルストーン / 第一章
+      <a href={pathTo()}>ホーム</a> / <a href={pathTo('premium/')}>プレミアム</a> / <a href={pathTo('special-stones/')}>スペシャルストーン</a> / 第一章
     </nav>
     <p class="special-eyebrow">ALMÉA GEM · SPECIAL STONES · CHAPTER I</p>
     <h1>三つの宝石が教えてくれる、願いの叶え方</h1>
@@ -60,6 +66,16 @@ if (salesRequested && !salesEnabled) {
         この特別な章では、三つの宝石が秘める象徴と、願望に合わせた組み合わせを紐解いていきます。
       </p>
     </div>
+    <section class="special-gems" aria-labelledby="gem-title">
+      <p class="special-eyebrow">THE THREE ROYAL GEMS</p><h2 id="gem-title">美しさだけでは終わらない、三つの宝石の秘密。</h2>
+      <div class="special-gem-grid">{gems.map(g=><article>{g.stone && <div class="gem-visual"><Visual stone={g.stone}/></div>}<h3>{g.name}</h3><p>{g.theme}</p></article>)}</div>
+    </section>
+    <section class="special-reveal" aria-labelledby="reveal-title">
+      <p class="special-eyebrow">BEHIND THE JEWELS</p><h2 id="reveal-title">この先で明かされる、宝石の秘密</h2>
+      <ul>{chapter.preview.map(g=><li><strong>{g.name}</strong> ｜ {g.theme}</li>)}<li>{chapter.bonus}</li></ul>
+      <div class="sealed" aria-hidden="true"><span></span><span></span><span></span></div>
+      <p class="sealed-label">物語の続きは、購入後にお楽しみいただけます。</p>
+    </section>
     <section class="special-offer" aria-labelledby="offer-title">
       <p class="special-eyebrow">CONTINUE THE STORY</p>
       <h2 id="offer-title">物語の続きを開く</h2>
@@ -69,13 +85,13 @@ if (salesRequested && !salesEnabled) {
           <strong>単品購入</strong>
           <span>税込150円／記事</span>
           <small>買い切り・期限なし</small>
-          {salesEnabled && <a class="special-buy" href="https://almeagem.com/members/?view=store">150円で続きを読む</a>}
+          {salesEnabled && <a class="special-buy" href="https://almeagem.com/members/?view=store&article=chapter-one">150円で続きを読む</a>}
         </div>
         <div>
           <strong>月額会員</strong>
           <span>税込580円／月</span>
           <small>スペシャルストーン全記事が対象・毎月自動更新</small>
-          {salesEnabled && <a class="special-buy" href="https://almeagem.com/members/?view=store">月額会員になる</a>}
+          {salesEnabled && <a class="special-buy" href="https://almeagem.com/members/?view=store&article=chapter-one">月額会員になる</a>}
         </div>
       </div>
       {salesEnabled ? (
@@ -84,10 +100,12 @@ if (salesRequested && !salesEnabled) {
         </p>
       ) : (
         <p class="special-pending" role="status">
-          現在、決済・会員機能の接続準備中です。販売開始まで購入操作はできません。
+          現在、販売準備中です。販売開始まで購入操作はできません。
         </p>
       )}
+      {membersEnabled && !salesEnabled && <a class="special-buy" href="https://almeagem.com/members/?view=account">会員登録・ログイン</a>}
     </section>
+    <p class="back-list"><a href={pathTo("special-stones/")}>スペシャルストーン記事一覧に戻る →</a></p>
   </article>
 </Page>
 <style>
@@ -179,7 +197,21 @@ if (salesRequested && !salesEnabled) {
     color: #786a65;
     font-size: 0.85rem;
   }
+  .special-gems,.special-reveal{margin:3.5rem auto 0;text-align:center}
+  .special-gems h2,.special-reveal h2{font:500 clamp(1.25rem,3vw,1.8rem)/1.7 'Shippori Mincho',serif;color:#4b3833}
+  .special-gem-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:2rem 0}
+  .special-gem-grid article{min-width:0;background:#fffcf8;padding:.7rem .5rem 1rem;border-top:1px solid #d5baa0}
+  .special-gem-grid h3{font:500 1.1rem 'Shippori Mincho',serif;margin:.6rem 0}
+  .special-gem-grid p{font-size:.82rem;line-height:1.7;margin:0}
+  .gem-visual{overflow:hidden;aspect-ratio:1}
+  .special-reveal{background:linear-gradient(180deg,#fffcf8,#f8ede7);padding:2rem 1.2rem}
+  .special-reveal ul{text-align:left;list-style:none;padding:0;line-height:2;max-width:34rem;margin:1.5rem auto}
+  .special-reveal li{border-bottom:1px solid #e9d9d0;padding:.6rem 0;font-size:.9rem}
+  .sealed{display:grid;gap:.7rem;max-width:29rem;margin:2rem auto .7rem;mask-image:linear-gradient(#000,transparent)}
+  .sealed span{height:.45rem;background:#b9a08e;border-radius:1rem;opacity:.28}.sealed span:last-child{width:70%}
+  .sealed-label,.back-list{font-size:.85rem;color:#786a65;text-align:center}.back-list{margin:2rem auto}
   @media (max-width: 520px) {
+    .special-gem-grid{gap:.4rem}.special-gem-grid h3{font-size:.9rem}.special-gem-grid p{font-size:.75rem}
     .special-chapter {
       padding-top: 1.5rem;
     }

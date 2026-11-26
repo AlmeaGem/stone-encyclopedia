@@ -1,0 +1,30 @@
+---
+import Page from '../../layouts/Page.astro';
+import { existsSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { pathTo, launched, canonical } from '../../lib/urls';
+import { specialChapters, membershipPrice } from '../../../services/special-stones/src/catalog.mjs';
+export function getStaticPaths(){
+  return specialChapters.filter(c=>c.id!=='chapter-one').map(c=>({params:{slug:c.id},props:{chapter:c}}));
+}
+const {chapter}=Astro.props;
+const sales = import.meta.env.PUBLIC_SPECIAL_STONES_SALES_ENABLED==='true' && launched && new URL(canonical()).origin==='https://almeagem.com' && import.meta.env.BASE_URL==='/';
+const cover = existsSync(resolve('public',chapter.cover));
+if(sales&&!cover)throw Error('Missing public chapter cover');
+---
+<Page title={chapter.title} description={chapter.description} path={'special-stones/'+chapter.id+'/'}>
+  <article class="wrap future-chapter">
+    <nav aria-label="現在地"><a href={pathTo('special-stones/')}>スペシャルストーン</a> / CHAPTER {chapter.number}</nav>
+    <p class="eyebrow">SPECIAL STONES · CHAPTER {chapter.number}</p><h1>{chapter.title}</h1>
+    {cover&&<img src={pathTo(chapter.cover)} width={chapter.width} height={chapter.height} alt={chapter.title+'の表紙'}/>}
+    <h2>{chapter.headline}</h2>
+    <div class="copy">{chapter.intro.map(paragraph=><p>{paragraph.split(/(\*\*[^*]+\*\*)/g).map(part=>part.startsWith('**')&&part.endsWith('**')?<strong>{part.slice(2,-2)}</strong>:part)}</p>)}</div>
+    <section><h2>この先で明かされる、宝石の秘密</h2><ul>{chapter.preview.map(g=><li>{g.name} ｜ {g.theme}</li>)}{chapter.bonus&&<li>{chapter.bonus}</li>}</ul>
+    <h2>物語の続きを開く</h2><p>単品{chapter.price}円（税込・買い切り）／月額{membershipPrice}円（税込・毎月自動更新）</p>
+    {sales?<a href={'https://almeagem.com/members/?view=store&article='+encodeURIComponent(chapter.id)}>購入案内へ</a>:<p>販売準備中です。</p>}</section>
+    <a href={pathTo('special-stones/')}>記事一覧へ戻る →</a>
+  </article>
+</Page>
+<style>
+.future-chapter{max-width:760px;padding-block:2rem 5rem;color:#4b3833}.future-chapter h1,.future-chapter h2{font:500 1.8rem/1.65 'Shippori Mincho',serif;text-align:center}.future-chapter img{width:min(100%,500px);height:auto;display:block;margin:2rem auto;object-fit:contain}.eyebrow{text-align:center;letter-spacing:.15em;color:#896d58}.copy{font-family:'Noto Serif JP',serif;line-height:2.2;max-width:620px;margin:auto}.future-chapter section{margin:3rem auto;background:#fffaf6;padding:2rem;border-top:1px solid #c6a77b}.future-chapter a{color:#80565e}
+</style>

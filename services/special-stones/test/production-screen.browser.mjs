@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { chromium } from '@playwright/test';
 import { productionHtml, productionScript } from '../src/production-screen.mjs';
+import { specialChapters } from '../src/catalog.mjs';
 const browser=await chromium.launch({headless:true,executablePath:process.env.TEST_CHROMIUM_PATH||undefined});
 try {
  const page=await browser.newPage({viewport:{width:390,height:844}});
@@ -12,17 +13,17 @@ try {
   if(url.origin==='https://checkout.stripe.com')return route.fulfill({status:200,body:'Mock checkout'});
   if(url.origin!==origin)return route.abort();
   if(url.pathname==='/members/')return route.fulfill({status:200,contentType:'text/html',body:productionHtml});
-  if(url.pathname==='/__special-members__/app.js')return route.fulfill({status:200,contentType:'text/javascript',body:'const ALMEA_SALES_ENABLED = '+JSON.stringify(salesEnabled)+';\n'+productionScript});
+  if(url.pathname==='/__special-members__/app.js')return route.fulfill({status:200,contentType:'text/javascript',body:'const ALMEA_SALES_ENABLED = '+JSON.stringify(salesEnabled)+';\nconst ALMEA_CHAPTERS = '+JSON.stringify(specialChapters)+';\n'+productionScript});
   if(url.pathname==='/api/auth/login'){signed=true;loginCount++;return json(200,{access_token:'fixture',email:'user@example.test'});}
   if(url.pathname==='/api/auth/restore')return signed?json(200,{access_token:'fixture',email:'user@example.test'}):json(401,{});
   if(req.headers().authorization!=='Bearer fixture'||!signed)return json(401,{});
   if(url.pathname==='/api/auth/logout'){signed=false;return json(200,{});}
-  if(url.pathname==='/api/account')return json(200,{purchased_articles:purchased?['chapter-one']:[],membership_until:active?'2099-12-31T00:00:00Z':null});
+  if(url.pathname==='/api/account')return json(200,{purchased_articles:purchased?['chapter-one']:[],available_articles:['chapter-one'],membership_until:active?'2099-12-31T00:00:00Z':null});
   if(url.pathname==='/api/checkout'){checkoutKind=req.postDataJSON().kind;return json(200,{checkout_url:'https://checkout.stripe.com/fake'});}
   if(url.pathname==='/api/articles/chapter-one'){
    if(pending>0){pending--;return json(403,{});}
    if(!purchased&&!active)return json(403,{});
-   return route.fulfill({status:200,contentType:'text/markdown',body:'# 見出し\n## サファイア\n**安全な文章**\n<img src=x onerror="window.xss=true">\n## ルビー\n## エメラルド'});
+   return route.fulfill({status:200,contentType:'text/markdown',body:'# 見出し\n## サファイア\n**安全な文章**\n\n| 願い | 象徴 |\n|---|---|\n| 恋愛 | 信頼 |\n\n<img src=x onerror="window.xss=true">\n## ルビー\n## エメラルド'});
   }
   if(url.pathname.startsWith('/api/articles/chapter-one/assets/'))return route.fulfill({status:200,contentType:'image/png',body:Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=','base64')});
   return json(404,{});
@@ -39,6 +40,7 @@ try {
  await page.locator('#reader-section').waitFor();assert.equal(loginCount,1);
  assert.equal(await page.locator('#reader-copy img').count(),3);
  assert.equal(await page.locator('#reader-copy strong').textContent(),'安全な文章');
+ assert.equal(await page.locator('#reader-copy table td').count(),2);
  assert.equal(await page.evaluate(()=>window.xss===true),false);
  await page.locator('#nav-library').click();await page.getByText('単品購入済み・期限なし',{exact:true}).waitFor();
  await page.getByRole('link',{name:'記事を読む',exact:true}).click();await page.locator('#reader-section').waitFor();

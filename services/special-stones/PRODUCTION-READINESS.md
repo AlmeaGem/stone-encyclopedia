@@ -20,3 +20,8 @@
 - SPECIAL_STONES_LIVE_MEMBERS_ENABLED=true を明示した場合のみ、Stripe未接続で会員画面・認証・権限確認を動かせる。SALES_ENABLED=false / BILLING_ENABLED=false のまま開始。全フラグ既定false。
 - 決済開始後に新規購入のみ止める場合は MEMBERS_ENABLED=true / BILLING_ENABLED=true / SALES_ENABLED=false とし、Stripe秘密情報と既存購入者のWebhook・解約を維持する。
 - 正式記事は private bucket に article.md と画像を登録。パスワード再設定UI、本番メール認証、ルート、法定表示は別途検証。
+
+## プレミアム拡張
+- 公開メタデータのみを src/catalog.mjs に登録。プレミアム入口 /premium/ → /special-stones/ → 各章。第二章以降はメタデータから静的ページ生成。診断・占いは別サービスとして準備中、料金や会員特典は未確定のものを表示しない。
+- 002_catalog_summary.sql を対象DBに適用・権限確認してから会員画面を使用。公開済みIDのみ一覧・購入候補。正式原稿はprivate bucket、公開表紙のみpublic配下。原稿Markdownのフロントマターは表示せず、表・見出し・太字を保持する。
+- 追加記事はIDを永続固定、公開メタデータ、表紙、private bucketの article.md と assets/<key>.png を登録、未公開DB行から検証して公開する。将来の診断・占いは別の権限・利用回数設計を追加する。既存購入権限を流用して自動解放しない。
