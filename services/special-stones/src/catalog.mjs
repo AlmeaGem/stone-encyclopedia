@@ -2,7 +2,7 @@
 export const premiumCategories = Object.freeze([
   {id:'special-stones',title:'スペシャルストーン',english:'SPECIAL STONES',description:'宝石の物語と、願いに寄り添う石の組み合わせ。',path:'special-stones/',status:'preview'},
   {id:'diagnosis',title:'パーソナル診断',english:'PERSONAL SELECTION',description:'願いや好みに合わせた天然石選定。',path:'diagnosis/',status:'coming-soon'},
-  {id:'fortune',title:'占いコンテンツ',english:'FORTUNE & GUIDANCE',description:'自分を見つめるための占い・スピリチュアルな読みもの。',status:'coming-soon'},
+  {id:'fortune',title:'占い/四柱推命',english:'FORTUNE & GUIDANCE',description:'どこよりも詳しい四柱推命レポート\n対面鑑定以上の深い内容にしております！圧巻の情報量\n人生計画や相性占いも♡',status:'coming-soon'},
 ]);
 export const specialChapters = Object.freeze([
   {id:'chapter-one',number:'01',title:'宝石に秘められた、もうひとつの力',headline:'三つの宝石が教えてくれる、願いの叶え方',description:'サファイア・ルビー・エメラルドの物語。成功、魅力、愛と繁栄を象徴する三つの輝き。',cover:'special-stones/01_chapter_cover.png',width:1086,height:1448,price:150,sellable:true,
