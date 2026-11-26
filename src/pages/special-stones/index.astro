@@ -2,8 +2,9 @@
 import Page from '../../layouts/Page.astro';
 import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { pathTo } from '../../lib/urls';
+import { pathTo, launched, canonical } from '../../lib/urls';
 import { specialChapters, membershipPrice } from '../../../services/special-stones/src/catalog.mjs';
+const sales = launched && import.meta.env.PUBLIC_SPECIAL_STONES_SALES_ENABLED==='true' && new URL(canonical()).origin==='https://almeagem.com' && import.meta.env.BASE_URL==='/';
 ---
 <Page title="スペシャルストーン" path="special-stones/" description="宝石の知られざる物語を読む、ALMÉA GEMのスペシャルストーン記事一覧。">
   <div class="wrap collection-page">
@@ -14,12 +15,12 @@ import { specialChapters, membershipPrice } from '../../../services/special-ston
         <article>
           <a class="chapter-link" href={pathTo('special-stones/'+c.id+'/')}>
             {existsSync(resolve('public',c.cover)) ? <img src={pathTo(c.cover)} width={c.width} height={c.height} alt={c.title+'の表紙'} loading="lazy"/> : <div class="cover-unavailable"><span>CHAPTER {c.number}</span><strong>{c.title}</strong></div>}
-            <div class="copy"><p class="eyebrow">CHAPTER {c.number} · 無料紹介</p><h2>{c.title}</h2><p>{c.description}</p><p class="themes">{c.themes.join(' ／ ')}</p><span class="read">無料紹介を読む →</span><small>単品 {c.price}円（税込）／販売準備中</small></div>
+            <div class="copy"><p class="eyebrow">CHAPTER {c.number} · 無料紹介</p><h2>{c.title}</h2><p>{c.description}</p><p class="themes">{c.themes.join(' ／ ')}</p><span class="read">無料紹介を読む →</span><small>単品 {c.price}円（税込）{sales && c.sellable ? '／買い切り' : '／販売準備中'}</small></div>
           </a>
         </article>
       ))}
     </div>
-    <p class="membership">月額{membershipPrice}円（税込）でスペシャルストーンの対象記事が読み放題になる会員サービスを準備しています。毎月自動更新予定です。</p>
+    <p class="membership">月額{membershipPrice}円（税込）でスペシャルストーンの対象記事が読み放題。毎月自動更新{sales?'です。':'予定です。現在、販売準備中です。'}</p>
   </div>
 </Page>
 <style>

@@ -28,3 +28,21 @@ jobs:
       - name: Verify production member screen (mock only)
         if: github.ref_name == 'feat/special-stones-production-preparation'
         run: node services/special-stones/test/production-screen.browser.mjs
+
+  public-site:
+    if: github.ref_name == 'feat/special-stones-production-preparation'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci
+      - name: Build existing site and premium pages with sales disabled
+        run: npm run build
+        env:
+          PUBLIC_SPECIAL_STONES_SALES_ENABLED: 'false'
+          PUBLIC_SPECIAL_STONES_MEMBERS_ENABLED: 'false'
+      - name: Check public navigation, article index and absence of private media
+        run: node services/special-stones/test/public-catalog-build.mjs

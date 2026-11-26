@@ -41,6 +41,7 @@ try {
  assert.equal(await page.locator('#reader-copy img').count(),3);
  assert.equal(await page.locator('#reader-copy strong').textContent(),'安全な文章');
  assert.equal(await page.locator('#reader-copy table td').count(),2);
+ assert.equal(await page.locator('#reader-toc a').count(),3);
  assert.equal(await page.evaluate(()=>window.xss===true),false);
  await page.locator('#nav-library').click();await page.getByText('単品購入済み・期限なし',{exact:true}).waitFor();
  await page.getByRole('link',{name:'記事を読む',exact:true}).click();await page.locator('#reader-section').waitFor();

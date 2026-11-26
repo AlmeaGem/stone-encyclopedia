@@ -104,3 +104,18 @@ test('existing billing can remain enabled while new checkout is closed', async()
  assert.equal((await h(new Request(c.publicOrigin+'/api/checkout',{method:'POST'}))).status,503);
  assert.equal((await h(new Request(c.publicOrigin+'/api/subscription/cancel',{method:'POST'}))).status,401);
 });
+
+test('live catalog permits no undeclared article purchase or private illustration path', async()=>{
+ const config=readProductionConfig(env);
+ let downloads=0;
+ const auth={getUser:async()=>({id:'fixture'})};
+ const db={canView:async()=>true,accountSummary:async()=>({purchased_articles:[],membership_until:null})};
+ const h=createHandler({auth,db,storage:{download:async()=>{downloads++;return new Blob(['fixture'])}}},config);
+ const headers={Authorization:'Bearer fixture','Content-Type':'application/json'};
+ const checkout=await h(new Request(config.publicOrigin+'/api/checkout',{method:'POST',headers,body:JSON.stringify({kind:'single',article_id:'not-in-catalog'})}));
+ assert.equal(checkout.status,404);
+ assert.equal((await h(new Request(config.publicOrigin+'/api/articles/chapter-one/assets/unknown',{headers}))).status,404);
+ assert.equal(downloads,0);
+ assert.equal((await h(new Request(config.publicOrigin+'/api/articles/chapter-one/assets/sapphire',{headers}))).status,200);
+ assert.equal(downloads,1);
+});

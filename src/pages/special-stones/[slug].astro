@@ -3,12 +3,14 @@ import Page from '../../layouts/Page.astro';
 import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { pathTo, launched, canonical } from '../../lib/urls';
+import type { InferGetStaticPropsType } from 'astro';
 import { specialChapters, membershipPrice } from '../../../services/special-stones/src/catalog.mjs';
 export function getStaticPaths(){
   return specialChapters.filter(c=>c.id!=='chapter-one').map(c=>({params:{slug:c.id},props:{chapter:c}}));
 }
-const {chapter}=Astro.props;
-const sales = import.meta.env.PUBLIC_SPECIAL_STONES_SALES_ENABLED==='true' && launched && new URL(canonical()).origin==='https://almeagem.com' && import.meta.env.BASE_URL==='/';
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+const {chapter}=Astro.props as Props;
+const sales = chapter.sellable && import.meta.env.PUBLIC_SPECIAL_STONES_SALES_ENABLED==='true' && launched && new URL(canonical()).origin==='https://almeagem.com' && import.meta.env.BASE_URL==='/';
 const cover = existsSync(resolve('public',chapter.cover));
 if(sales&&!cover)throw Error('Missing public chapter cover');
 ---

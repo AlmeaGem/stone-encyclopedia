@@ -1,5 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import { processStripeEvent } from './stripe-events.mjs';
+import { chapterById } from './catalog.mjs';
 const MAX_BODY = 64 * 1024;
 const validArticleId = (value) =>
   typeof value === 'string' &&
@@ -257,6 +258,7 @@ export function createHandler(
         )
           return response(400, { error: 'Invalid product' });
         if (config.livemode === true) {
+          if (kind === 'single' && chapterById(body.article_id)?.sellable !== true) return response(404, { error: 'Article unavailable' });
           const account = await db.accountSummary(user.id);
           const active = account?.membership_until && Date.parse(account.membership_until) > Date.now();
           if ((kind === 'single' && account?.purchased_articles?.includes(body.article_id)) || (kind === 'subscription' && active))
@@ -330,6 +332,7 @@ export function createHandler(
           return response(403, {
             error: 'Purchase or active membership required',
           });
+        if (config.livemode === true && (!chapterById(m[1]) || (m[2] && !chapterById(m[1]).illustrations.some(a=>a.key===m[2])))) return response(404, { error: 'Not found' });
         if (m[1] === 'chapter-one' && m[2] && !Object.hasOwn(assetKeys, m[2]))
           return response(404, { error: 'Not found' });
         const object = await storage.download(
