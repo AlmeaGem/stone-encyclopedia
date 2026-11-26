@@ -32,7 +32,8 @@ if (salesRequested && !salesEnabled) {
       <a href={pathTo()}>ホーム</a> / <a href={pathTo('premium/')}>プレミアム</a> / <a href={pathTo('special-stones/')}>スペシャルストーン</a> / 第一章
     </nav>
     <p class="special-eyebrow">ALMÉA GEM · SPECIAL STONES · CHAPTER I</p>
-    <h1>三つの宝石が教えてくれる、願いの叶え方</h1>
+    <h1><span>三つの宝石が教えてくれる、</span><span>願いの叶え方</span></h1>
+    <p class="article-meta">無料紹介 · 本編150円（税込・買い切り）</p>
     {coverAvailable && (
       <img
         class="special-cover"
@@ -110,15 +111,15 @@ if (salesRequested && !salesEnabled) {
 </Page>
 <style>
   .special-chapter {
-    max-width: 800px;
-    padding-top: 3rem;
+    max-width: 850px;
+    padding-top: 24px;
     padding-bottom: 6rem;
     color: #4c3934;
   }
   .special-breadcrumb {
     font-size: 0.8rem;
     color: #776761;
-    margin-bottom: 3rem;
+    margin-bottom: 24px;
   }
   .special-breadcrumb a {
     color: inherit;
@@ -131,17 +132,17 @@ if (salesRequested && !salesEnabled) {
   }
   h1 {
     font-family: 'Shippori Mincho', serif;
-    font-size: clamp(1.75rem, 4vw, 2.65rem);
+    font-size: clamp(23px, 3.2vw, 32px);
     font-weight: 500;
     text-align: center;
-    line-height: 1.65;
-    margin: 1rem 0 3rem;
+    line-height: 1.55;
+    margin: 10px 0 8px;
   }
   .special-cover {
     display: block;
-    width: min(100%, 520px);
+    width: min(100%, 330px);
     height: auto;
-    margin: 0 auto 3rem;
+    margin: 20px auto 28px;
     border-radius: 10px;
   }
   .special-buy {
@@ -156,11 +157,11 @@ if (salesRequested && !salesEnabled) {
     max-width: 620px;
     margin: auto;
     font-family: 'Noto Serif JP', serif;
-    line-height: 2.35;
-    font-size: 1rem;
+    line-height: 1.95;
+    font-size: 15px;
   }
   .special-copy p {
-    margin: 0 0 1.5rem;
+    margin: 0 0 14px;
   }
   .special-offer {
     margin: 4rem auto 0;
@@ -172,7 +173,7 @@ if (salesRequested && !salesEnabled) {
   .special-offer h2 {
     font-family: 'Shippori Mincho', serif;
     font-weight: 500;
-    font-size: 1.65rem;
+    font-size: 23px;
     margin: 1rem 0;
   }
   .special-plans {
@@ -197,13 +198,23 @@ if (salesRequested && !salesEnabled) {
     color: #786a65;
     font-size: 0.85rem;
   }
-  .special-gems,.special-reveal{margin:3.5rem auto 0;text-align:center}
-  .special-gems h2,.special-reveal h2{font:500 clamp(1.25rem,3vw,1.8rem)/1.7 'Shippori Mincho',serif;color:#4b3833}
-  .special-gem-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:2rem 0}
+  .special-gems,.special-reveal{margin:36px auto 0;text-align:center}
+  .special-gems h2,.special-reveal h2{font:500 clamp(19px,2.6vw,24px)/1.55 'Shippori Mincho',serif;color:#4b3833}
+  .special-gem-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}
   .special-gem-grid article{min-width:0;background:#fffcf8;padding:.7rem .5rem 1rem;border-top:1px solid #d5baa0}
-  .special-gem-grid h3{font:500 1.1rem 'Shippori Mincho',serif;margin:.6rem 0}
-  .special-gem-grid p{font-size:.82rem;line-height:1.7;margin:0}
-  .gem-visual{overflow:hidden;aspect-ratio:1}
+  .special-gem-grid h3{font:500 17px 'Shippori Mincho',serif;margin:.6rem 0}
+  .special-gem-grid p{font-size:13px;line-height:1.7;margin:0}
+  .gem-visual{width:100%;max-width:190px;margin:0 auto 10px}
+  .gem-visual :global(.stone-figure){margin:0!important;padding:0!important;width:100%;max-width:none}
+  .gem-visual :global(.stone-image-frame){margin:0!important;width:100%;height:auto;aspect-ratio:1;position:relative;min-height:0}
+  .gem-visual :global(.stone-image-frame img){display:block;width:100%;height:100%;object-fit:contain}
+  .gem-visual :global(.stone-placeholder){width:100%;min-height:0;aspect-ratio:1}
+  .article-meta{text-align:center;color:#80675c;font-size:12px;margin:0}
+  h1 span{display:block;text-wrap:balance}
+  .special-gem-grid article{display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
+  .special-gem-grid h3{margin:8px 0 5px}
+  .special-offer{margin-top:36px;padding:24px 16px}
+  .special-plans span{font-size:18px}
   .special-reveal{background:linear-gradient(180deg,#fffcf8,#f8ede7);padding:2rem 1.2rem}
   .special-reveal ul{text-align:left;list-style:none;padding:0;line-height:2;max-width:34rem;margin:1.5rem auto}
   .special-reveal li{border-bottom:1px solid #e9d9d0;padding:.6rem 0;font-size:.9rem}
@@ -211,7 +222,14 @@ if (salesRequested && !salesEnabled) {
   .sealed span{height:.45rem;background:#b9a08e;border-radius:1rem;opacity:.28}.sealed span:last-child{width:70%}
   .sealed-label,.back-list{font-size:.85rem;color:#786a65;text-align:center}.back-list{margin:2rem auto}
   @media (max-width: 520px) {
-    .special-gem-grid{gap:.4rem}.special-gem-grid h3{font-size:.9rem}.special-gem-grid p{font-size:.75rem}
+    .special-gem-grid{grid-template-columns:1fr;gap:8px}
+    .special-gem-grid article{display:grid;grid-template-columns:92px minmax(0,1fr);column-gap:12px;row-gap:4px;align-items:center;text-align:left;padding:9px}
+    .gem-visual{grid-row:span 2;max-width:92px;margin:0}
+    .special-gem-grid h3{font-size:16px;margin:0;align-self:end}
+    .special-gem-grid p{font-size:13px;align-self:start}
+    .special-cover{width:min(76%,290px)}
+    h1{font-size:23px}
+    .special-copy p{margin-bottom:12px}
     .special-chapter {
       padding-top: 1.5rem;
     }
@@ -219,7 +237,7 @@ if (salesRequested && !salesEnabled) {
       grid-template-columns: 1fr;
     }
     .special-copy {
-      line-height: 2.1;
+      line-height: 1.9;
     }
   }
 </style>
