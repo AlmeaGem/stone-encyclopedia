@@ -1,0 +1,28 @@
+---
+import Page from '../../layouts/Page.astro';
+import { pathTo } from '../../lib/urls';
+import { premiumCategories } from '../../../services/special-stones/src/catalog.mjs';
+---
+<Page title="プレミアムコンテンツ" path="premium/" description="ALMÉA GEMの特別な読みもの、パーソナル診断、占いコンテンツ。">
+  <div class="wrap premium">
+    <nav aria-label="現在地"><a href={pathTo()}>ホーム</a> / プレミアム</nav>
+    <header><p class="eyebrow">ALMÉA GEM · PREMIUM</p><h1>石の世界を、もっと深く。</h1><p>宝石の物語から、あなたのための診断へ。<br/>ALMÉA GEMの特別なコンテンツをお届けします。</p></header>
+    <div class="collections">
+      {premiumCategories.map((c,i)=>(
+        <section class="collection">
+          <span class="number" aria-hidden="true">0{i+1}</span><p class="eyebrow">{c.english}</p><h2>{c.title}</h2><p>{c.description}</p>
+          {c.path ? <a href={pathTo(c.path)}>{c.status==='preview'?'記事一覧を見る':'診断の紹介を見る'} <span aria-hidden="true">→</span></a> : <p class="pending">準備中 / COMING SOON</p>}
+          {c.status==='coming-soon' && c.path && <small>有料結果の提供は準備中です。</small>}
+        </section>
+      ))}
+    </div>
+    <p class="note">天然石図鑑はこれまで通り無料で閲覧できます。診断・占いの提供内容や料金は、開始時にご案内します。</p>
+    <a class="return" href={pathTo('stones/')}>無料の天然石図鑑へ →</a>
+  </div>
+</Page>
+<style>
+.premium{max-width:1060px;padding-block:2rem 5rem;color:#4b3833}.premium nav{font-size:.8rem;color:#79655f}.premium nav a,.return{color:#80565e}
+header{text-align:center;margin:3rem 0 3.5rem}header h1{font:500 clamp(1.8rem,4vw,3rem)/1.6 'Shippori Mincho',serif;margin:1rem 0}header p{line-height:2}.eyebrow{color:#896d58;font-size:.75rem;letter-spacing:.16em}
+.collections{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem}.collection{position:relative;padding:2rem 1.3rem;border-top:1px solid #c6a77b;background:#fffaf6;display:flex;flex-direction:column;align-items:flex-start;gap:.6rem;overflow:hidden}.collection:first-child{background:linear-gradient(135deg,#fffdf9,#f5e8e5)}.number{font:3rem Georgia,serif;color:#b99570;line-height:1}.collection h2{font:500 1.4rem 'Shippori Mincho',serif;margin:0}.collection p{line-height:1.8}.collection a{margin-top:auto;text-decoration:none;color:#80565e;border-bottom:1px solid #b99685;padding:.65rem 0}.pending,.collection small,.note{color:#76665f;font-size:.85rem}.note{margin-top:2rem;line-height:1.8}.return{display:inline-block;margin-top:1rem}
+@media(max-width:720px){.collections{grid-template-columns:1fr}.collection{padding:1.5rem}header{margin:2rem 0}}
+</style>

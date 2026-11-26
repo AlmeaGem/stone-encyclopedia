@@ -1,0 +1,225 @@
+---
+import Page from '../../layouts/Page.astro';
+import { existsSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { canonical, launched, pathTo } from '../../lib/urls';
+import { chapterById } from '../../../services/special-stones/src/catalog.mjs';
+import { stones } from '../../lib/content';
+import Visual from '../../components/Visual.astro';
+const chapter = chapterById('chapter-one')!;
+const gems = chapter.preview.map(g=>({...g,stone:stones.find(s=>s.slug===g.slug||s.name===g.name)}));
+const membersEnabled = launched && (import.meta.env.PUBLIC_SPECIAL_STONES_MEMBERS_ENABLED === 'true' || import.meta.env.PUBLIC_SPECIAL_STONES_SALES_ENABLED === 'true') && new URL(canonical()).origin === 'https://almeagem.com' && import.meta.env.BASE_URL === '/';
+const coverAvailable = existsSync(resolve('public/special-stones/01_chapter_cover.png'));
+const salesRequested = import.meta.env.PUBLIC_SPECIAL_STONES_SALES_ENABLED === 'true';
+const salesEnabled =
+  salesRequested &&
+  launched &&
+  new URL(canonical()).origin === 'https://almeagem.com' &&
+  import.meta.env.BASE_URL === '/' &&
+  coverAvailable;
+if (salesRequested && !salesEnabled) {
+  throw new Error('Special Stones release prerequisites are missing');
+}
+---
+
+<Page
+  title="三つの宝石が教えてくれる、願いの叶え方"
+  description="サファイア、ルビー、エメラルド。三つの宝石が持つ象徴と、願望に合わせた組み合わせを紹介するスペシャルストーン第一章。"
+  path="special-stones/chapter-one/"
+>
+  <article class="special-chapter wrap">
+    <nav aria-label="現在地" class="special-breadcrumb">
+      <a href={pathTo()}>ホーム</a> / <a href={pathTo('premium/')}>プレミアム</a> / <a href={pathTo('special-stones/')}>スペシャルストーン</a> / 第一章
+    </nav>
+    <p class="special-eyebrow">ALMÉA GEM · SPECIAL STONES · CHAPTER I</p>
+    <h1>三つの宝石が教えてくれる、願いの叶え方</h1>
+    {coverAvailable && (
+      <img
+        class="special-cover"
+        src={pathTo('special-stones/01_chapter_cover.png')}
+        alt="スペシャルストーン第一章の表紙"
+        width="1086"
+        height="1448"
+        fetchpriority="high"
+      />
+    )}
+    <div class="special-copy">
+      <p>成功を手にしたいとき。</p>
+      <p>誰かの心に、忘れられない印象を残したいとき。</p>
+      <p>そして、手にした愛や豊かさを、いつまでも大切に育てたいとき。</p>
+      <p>もし、それぞれの願いに寄り添う宝石があるとしたら……。</p>
+      <p>
+        <strong>サファイア、ルビー、エメラルド。</strong>
+      </p>
+      <p>
+        古くから王族や権力者たちを魅了してきた三つの宝石には、美しさの奥に、それぞれ異なる神秘的な意味が伝えられています。
+      </p>
+      <p>
+        そして、パワーストーンの世界では、石を単独で選ぶだけでなく、
+        <strong>異なる意味を持つ石を組み合わせること</strong>
+        も大切にされてきました。
+      </p>
+      <p>成功を象徴する青い宝石に、情熱を象徴する赤い宝石を添えたら？</p>
+      <p>愛を育てる緑の宝石と、月の神秘を象徴する石を合わせたら？</p>
+      <p>その組み合わせには、どんな物語が生まれるのでしょうか。</p>
+      <p>
+        この特別な章では、三つの宝石が秘める象徴と、願望に合わせた組み合わせを紐解いていきます。
+      </p>
+    </div>
+    <section class="special-gems" aria-labelledby="gem-title">
+      <p class="special-eyebrow">THE THREE ROYAL GEMS</p><h2 id="gem-title">美しさだけでは終わらない、三つの宝石の秘密。</h2>
+      <div class="special-gem-grid">{gems.map(g=><article>{g.stone && <div class="gem-visual"><Visual stone={g.stone}/></div>}<h3>{g.name}</h3><p>{g.theme}</p></article>)}</div>
+    </section>
+    <section class="special-reveal" aria-labelledby="reveal-title">
+      <p class="special-eyebrow">BEHIND THE JEWELS</p><h2 id="reveal-title">この先で明かされる、宝石の秘密</h2>
+      <ul>{chapter.preview.map(g=><li><strong>{g.name}</strong> ｜ {g.theme}</li>)}<li>{chapter.bonus}</li></ul>
+      <div class="sealed" aria-hidden="true"><span></span><span></span><span></span></div>
+      <p class="sealed-label">物語の続きは、購入後にお楽しみいただけます。</p>
+    </section>
+    <section class="special-offer" aria-labelledby="offer-title">
+      <p class="special-eyebrow">CONTINUE THE STORY</p>
+      <h2 id="offer-title">物語の続きを開く</h2>
+      <p>第一章の有料本文と宝石画像は、購入者限定でご覧いただけます。</p>
+      <div class="special-plans">
+        <div>
+          <strong>単品購入</strong>
+          <span>税込150円／記事</span>
+          <small>買い切り・期限なし</small>
+          {salesEnabled && <a class="special-buy" href="https://almeagem.com/members/?view=store&article=chapter-one">150円で続きを読む</a>}
+        </div>
+        <div>
+          <strong>月額会員</strong>
+          <span>税込580円／月</span>
+          <small>スペシャルストーン全記事が対象・毎月自動更新</small>
+          {salesEnabled && <a class="special-buy" href="https://almeagem.com/members/?view=store&article=chapter-one">月額会員になる</a>}
+        </div>
+      </div>
+      {salesEnabled ? (
+        <p class="special-pending">
+          <a href="https://almeagem.com/members/?view=library">購入済みの記事を読む</a>
+        </p>
+      ) : (
+        <p class="special-pending" role="status">
+          現在、販売準備中です。販売開始まで購入操作はできません。
+        </p>
+      )}
+      {membersEnabled && !salesEnabled && <a class="special-buy" href="https://almeagem.com/members/?view=account">会員登録・ログイン</a>}
+    </section>
+    <p class="back-list"><a href={pathTo("special-stones/")}>スペシャルストーン記事一覧に戻る →</a></p>
+  </article>
+</Page>
+<style>
+  .special-chapter {
+    max-width: 800px;
+    padding-top: 3rem;
+    padding-bottom: 6rem;
+    color: #4c3934;
+  }
+  .special-breadcrumb {
+    font-size: 0.8rem;
+    color: #776761;
+    margin-bottom: 3rem;
+  }
+  .special-breadcrumb a {
+    color: inherit;
+  }
+  .special-eyebrow {
+    text-align: center;
+    letter-spacing: 0.2em;
+    font-size: 0.75rem;
+    color: #705541;
+  }
+  h1 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(1.75rem, 4vw, 2.65rem);
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.65;
+    margin: 1rem 0 3rem;
+  }
+  .special-cover {
+    display: block;
+    width: min(100%, 520px);
+    height: auto;
+    margin: 0 auto 3rem;
+    border-radius: 10px;
+  }
+  .special-buy {
+    display: block;
+    background: #754732;
+    color: #fff;
+    padding: 0.8rem;
+    text-decoration: none;
+    border-radius: 6px;
+  }
+  .special-copy {
+    max-width: 620px;
+    margin: auto;
+    font-family: 'Noto Serif JP', serif;
+    line-height: 2.35;
+    font-size: 1rem;
+  }
+  .special-copy p {
+    margin: 0 0 1.5rem;
+  }
+  .special-offer {
+    margin: 4rem auto 0;
+    padding: 2.5rem 1.5rem;
+    background: #faf5ef;
+    border-top: 1px solid #c7ae96;
+    text-align: center;
+  }
+  .special-offer h2 {
+    font-family: 'Shippori Mincho', serif;
+    font-weight: 500;
+    font-size: 1.65rem;
+    margin: 1rem 0;
+  }
+  .special-plans {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  .special-plans > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.5rem 0.7rem;
+    background: white;
+  }
+  .special-plans span {
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+  .special-plans small,
+  .special-pending {
+    color: #786a65;
+    font-size: 0.85rem;
+  }
+  .special-gems,.special-reveal{margin:3.5rem auto 0;text-align:center}
+  .special-gems h2,.special-reveal h2{font:500 clamp(1.25rem,3vw,1.8rem)/1.7 'Shippori Mincho',serif;color:#4b3833}
+  .special-gem-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin:2rem 0}
+  .special-gem-grid article{min-width:0;background:#fffcf8;padding:.7rem .5rem 1rem;border-top:1px solid #d5baa0}
+  .special-gem-grid h3{font:500 1.1rem 'Shippori Mincho',serif;margin:.6rem 0}
+  .special-gem-grid p{font-size:.82rem;line-height:1.7;margin:0}
+  .gem-visual{overflow:hidden;aspect-ratio:1}
+  .special-reveal{background:linear-gradient(180deg,#fffcf8,#f8ede7);padding:2rem 1.2rem}
+  .special-reveal ul{text-align:left;list-style:none;padding:0;line-height:2;max-width:34rem;margin:1.5rem auto}
+  .special-reveal li{border-bottom:1px solid #e9d9d0;padding:.6rem 0;font-size:.9rem}
+  .sealed{display:grid;gap:.7rem;max-width:29rem;margin:2rem auto .7rem;mask-image:linear-gradient(#000,transparent)}
+  .sealed span{height:.45rem;background:#b9a08e;border-radius:1rem;opacity:.28}.sealed span:last-child{width:70%}
+  .sealed-label,.back-list{font-size:.85rem;color:#786a65;text-align:center}.back-list{margin:2rem auto}
+  @media (max-width: 520px) {
+    .special-gem-grid{gap:.4rem}.special-gem-grid h3{font-size:.9rem}.special-gem-grid p{font-size:.75rem}
+    .special-chapter {
+      padding-top: 1.5rem;
+    }
+    .special-plans {
+      grid-template-columns: 1fr;
+    }
+    .special-copy {
+      line-height: 2.1;
+    }
+  }
+</style>

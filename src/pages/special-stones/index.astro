@@ -1,0 +1,29 @@
+---
+import Page from '../../layouts/Page.astro';
+import { existsSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { pathTo, launched, canonical } from '../../lib/urls';
+import { specialChapters, membershipPrice } from '../../../services/special-stones/src/catalog.mjs';
+const sales = launched && import.meta.env.PUBLIC_SPECIAL_STONES_SALES_ENABLED==='true' && new URL(canonical()).origin==='https://almeagem.com' && import.meta.env.BASE_URL==='/';
+---
+<Page title="スペシャルストーン" path="special-stones/" description="宝石の知られざる物語を読む、ALMÉA GEMのスペシャルストーン記事一覧。">
+  <div class="wrap collection-page">
+    <nav aria-label="現在地"><a href={pathTo()}>ホーム</a> / <a href={pathTo('premium/')}>プレミアム</a> / スペシャルストーン</nav>
+    <header><p class="eyebrow">SPECIAL STONES COLLECTION</p><h1>スペシャルストーン</h1><p>美しさの奥に眠る、宝石のもうひとつの顔。</p><p>特別な物語と願いに寄り添う石の組み合わせを、章ごとにお楽しみください。</p></header>
+    <div class="catalog">
+      {specialChapters.map(c=>(
+        <article>
+          <a class="chapter-link" href={pathTo('special-stones/'+c.id+'/')}>
+            {existsSync(resolve('public',c.cover)) ? <img src={pathTo(c.cover)} width={c.width} height={c.height} alt={c.title+'の表紙'} loading="lazy"/> : <div class="cover-unavailable"><span>CHAPTER {c.number}</span><strong>{c.title}</strong></div>}
+            <div class="copy"><p class="eyebrow">CHAPTER {c.number} · 無料紹介</p><h2>{c.title}</h2><p>{c.description}</p><p class="themes">{c.themes.join(' ／ ')}</p><span class="read">無料紹介を読む →</span><small>単品 {c.price}円（税込）{sales && c.sellable ? '／買い切り' : '／販売準備中'}</small></div>
+          </a>
+        </article>
+      ))}
+    </div>
+    <p class="membership">月額{membershipPrice}円（税込）でスペシャルストーンの対象記事が読み放題。毎月自動更新{sales?'です。':'予定です。現在、販売準備中です。'}</p>
+  </div>
+</Page>
+<style>
+.collection-page{max-width:1040px;padding-block:2rem 5rem;color:#4b3833}nav{font-size:.8rem;color:#79655f}nav a{color:inherit}header{text-align:center;margin:3rem 0 3.5rem}h1{font:500 clamp(1.8rem,4vw,3rem)/1.6 'Shippori Mincho',serif}header p{line-height:1.9}.eyebrow{color:#896d58;letter-spacing:.15em;font-size:.75rem}.catalog{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,310px),1fr));gap:2rem}.catalog article{min-width:0}.chapter-link{display:flex;flex-direction:column;align-items:center;text-decoration:none;color:inherit;gap:1.25rem;padding:1rem 1rem 1.5rem;background:#fffaf6;border-top:1px solid #c6a77b}.chapter-link img,.cover-unavailable{width:min(100%,280px);height:auto;aspect-ratio:1086/1448;object-fit:contain;box-shadow:0 8px 24px #4b38331c}.cover-unavailable{display:grid;align-content:center;gap:1rem;padding:1.5rem;text-align:center;background:#f4e7d8;font-family:'Shippori Mincho',serif}.copy{width:100%;max-width:34rem}.copy h2{font:500 1.5rem/1.6 'Shippori Mincho',serif;margin:.4rem 0}.copy p{line-height:1.8}.themes,small{color:#80675c;font-size:.84rem}.read{display:block;margin:.9rem 0 .3rem;color:#80565e;font-weight:600}.membership{line-height:1.8;color:#76665f;margin:2rem 0;font-size:.9rem}
+@media(min-width:760px){.catalog:has(>article:only-child) .chapter-link{flex-direction:row;gap:3rem;padding:2rem}}
+</style>
