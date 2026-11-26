@@ -112,12 +112,22 @@ for (const p of output) {
     throw new Error('非公開ファイルが出力されています');
   if (p.endsWith('.html')) {
     const html = await readFile(p, 'utf8');
+    // A provider name in this exact privacy-policy text node is a disclosure,
+    // not a client dependency. No URLs, credentials, attributes or scripts
+    // are exempted, and the exception is restricted to the privacy page.
+    const auditedHtml =
+      p === join('dist', 'privacy', 'index.html')
+        ? html.replace(
+            '<span>会員認証・データ管理にはSupabase、サイト配信にはCloudflare、決済にはStripeを利用する予定です。</span>',
+            '',
+          )
+        : html;
     if (
       /supabase|amule-private|api\.openai|stripe\.com\/v3|data-report-result/i.test(
-        html,
+        auditedHtml,
       )
     )
-      throw new Error('管理システム・有料結果への依存が検出されました');
+      throw new Error(`${p}: 管理システム・有料結果への依存が検出されました`);
   }
 }
 console.log(
