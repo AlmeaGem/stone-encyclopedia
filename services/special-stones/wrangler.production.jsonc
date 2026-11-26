@@ -2,7 +2,9 @@
   "name": "almea-special-stones-live",
   "main": "src/production-worker.mjs",
   "compatibility_date": "2026-08-01",
-  "compatibility_flags": ["nodejs_compat"],
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
   "workers_dev": false,
   "preview_urls": false,
   "vars": {
@@ -10,7 +12,12 @@
     "SPECIAL_STONES_LIVE_MEMBERS_ENABLED": "false",
     "SPECIAL_STONES_LIVE_BILLING_ENABLED": "false",
     "SPECIAL_STONES_FIXED_PRICE_TAX_APPROVED": "false",
-    "SUPABASE_LIVE_PRIVATE_BUCKET": "special-stones-live-private"
+    "SUPABASE_LIVE_PRIVATE_BUCKET": "special-stones-live-private",
+    "SUPABASE_LIVE_PROJECT_REF": "yepbvdxmopmlwrubsxbs",
+    "SUPABASE_APPROVED_LIVE_PROJECT_REF": "yepbvdxmopmlwrubsxbs",
+    "SUPABASE_LIVE_URL": "https://yepbvdxmopmlwrubsxbs.supabase.co"
   },
-  "observability": { "enabled": false }
+  "observability": {
+    "enabled": false
+  }
 }
