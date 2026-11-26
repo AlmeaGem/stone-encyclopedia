@@ -1,7 +1,7 @@
 // PUBLIC metadata only. Never add paid copy, private image bytes, or user data here.
 export const premiumCategories = Object.freeze([
-  {id:'special-stones',title:'スペシャルストーン',english:'SPECIAL STONES',description:'組み合わせたら最強かも？！\nまだ知られていない神秘的な石の組み合わせや、希少なスペシャルストーン。\n石好きなら絶対に知っておきたい宝石の秘話、願いに合わせた石選びまで。\n知れば知るほど、手に入れたくなる石の世界へ♡',path:'special-stones/',status:'preview'},
-  {id:'diagnosis',title:'パーソナル診断',english:'PERSONAL SELECTION',description:'今のあなたに、本当に必要な石は？\n恋愛、金運、仕事、願望実現…。あなたの願いや悩み、好みに合わせて天然石7種類を厳選。\nおすすめの優先順位から、相性の良い組み合わせ3案、購入時に見るべき品質まで。\n石選びにもう迷わない、あなただけの天然石選定レポート♡\n790円（税込・買い切り）',path:'diagnosis/',status:'coming-soon'},
+  {id:'special-stones',title:'スペシャルストーン',english:'SPECIAL STONES',description:'組み合わせたら最強かも？！\nまだ知られていない神秘的な石の組み合わせや、希少なスペシャルストーン。\n石好きなら絶対に知っておきたい宝石の秘話、願いに合わせた石選びまで。\n知れば知るほど、手に入れたくなる石の世界へ',path:'special-stones/',status:'preview'},
+  {id:'diagnosis',title:'パーソナル診断',english:'PERSONAL SELECTION',description:'今のあなたに、本当に必要な石は？\n恋愛、金運、仕事、願望実現…。あなたの願いや悩み、好みに合わせて天然石7種類を厳選。\nおすすめの優先順位から、相性の良い組み合わせ3案、購入時に見るべき品質まで。\n石選びにもう迷わない、あなただけの天然石選定レポート\n790円（税込・買い切り）',path:'diagnosis/',status:'coming-soon'},
   {id:'fortune',title:'占い/四柱推命',english:'FORTUNE & GUIDANCE',description:'どこよりも詳しい四柱推命レポート\n対面鑑定以上の深い内容にしております！圧巻の情報量\n\n自分に合う仕事は？お子さまの才能や特性は？\n命式から読み解く強みや注意点、気をつけたいことへの具体的な対策まで。\n人生計画や相性占いも、これ一つで♡',status:'coming-soon'},
 ]);
 export const specialChapters = Object.freeze([
