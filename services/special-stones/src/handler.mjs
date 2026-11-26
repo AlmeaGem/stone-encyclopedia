@@ -300,6 +300,11 @@ export function createHandler(
           managed_payments: { enabled: false },
           automatic_tax: { enabled: false },
         };
+        if (config.livemode === true) {
+          opts.custom_text = { submit: { message: kind === 'single'
+            ? '単品記事150円（税込・買い切り）。決済と閲覧権限確認後に提供します。閲覧・提供開始後のお客様都合による返品・返金・キャンセルは原則不可です。二重決済・提供不良等および法令上の権利は別途対応します。詳細：https://almeagem.com/refund/'
+            : '月額580円（税込）。初回申込み時から毎月自動更新。決済と閲覧権限確認後に提供します。次回更新前にマイアカウントから解約できます。支払い済み期間は閲覧可能で、日割り返金は原則ありません。法令上の権利は別途対応します。詳細：https://almeagem.com/refund/' } };
+        }
         if (kind === 'subscription')
           opts.subscription_data = { metadata: { order_id: orderId } };
         const session = await stripe.checkout.sessions.create(opts, {
