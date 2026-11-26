@@ -202,12 +202,56 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
   </div>
   <section class="wrap special-stones-home-entry" aria-labelledby="special-stones-home-title">
     <a href={pathTo('premium/')}>
+      <svg class="premium-satin" viewBox="0 0 1100 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="premium-rose-base" x1="0" y1="0" x2="1" y2="1">
+            <stop stop-color="#e4baa6"/><stop offset=".28" stop-color="#f1d8c8"/><stop offset=".51" stop-color="#e6c2ae"/><stop offset=".76" stop-color="#f4dece"/><stop offset="1" stop-color="#d4a997"/>
+          </linearGradient>
+          <linearGradient id="premium-rose-fold" x1="0" y1="0" x2="0" y2="1">
+            <stop stop-color="#fff7ed" stop-opacity=".12"/><stop offset=".44" stop-color="#fff9f0" stop-opacity=".95"/><stop offset=".62" stop-color="#e6bfaa" stop-opacity=".15"/><stop offset="1" stop-color="#9e6956" stop-opacity=".28"/>
+          </linearGradient>
+          <linearGradient id="premium-rose-sweep" x1="0" y1="0" x2="1" y2="0">
+            <stop stop-color="#fff7ee" stop-opacity="0"/><stop offset=".4" stop-color="#fff7ee" stop-opacity=".18"/><stop offset=".75" stop-color="#fff9ef" stop-opacity=".85"/><stop offset="1" stop-color="#fff9ef" stop-opacity=".35"/>
+          </linearGradient>
+          <filter id="premium-rose-soft" x="-20%" y="-100%" width="140%" height="300%">
+            <feGaussianBlur stdDeviation="5 3"/>
+          </filter>
+          <filter id="premium-rose-fine" x="-20%" y="-100%" width="140%" height="300%">
+            <feGaussianBlur stdDeviation="2.5 1.6"/>
+          </filter>
+          <filter id="premium-rose-grain" x="0" y="0" width="100%" height="100%">
+            <feTurbulence type="fractalNoise" baseFrequency=".43 .72" numOctaves="3" stitchTiles="stitch" seed="8"/>
+            <feColorMatrix type="saturate" values="0"/>
+          </filter>
+        </defs>
+        <rect width="1100" height="100" fill="url(#premium-rose-base)"/>
+        <path d="M340 110 C520 92 578 64 714 60 S930 16 1080 -25 L1150 -5 C1010 49 896 79 730 84 S470 115 340 132Z" fill="url(#premium-rose-fold)" filter="url(#premium-rose-soft)"/>
+        <path d="M305 109 C494 99 578 73 718 68 S921 37 1042 -11" fill="none" stroke="url(#premium-rose-sweep)" stroke-width="13" filter="url(#premium-rose-soft)"/>
+        <path d="M405 105 C546 91 602 74 732 67 S931 33 1038 -10" fill="none" stroke="url(#premium-rose-sweep)" stroke-width="4.5" filter="url(#premium-rose-fine)"/>
+        <path d="M665 118 C846 100 976 77 1106 34" fill="none" stroke="#b9826c" stroke-opacity=".13" stroke-width="22" filter="url(#premium-rose-soft)"/>
+        <rect width="1100" height="100" filter="url(#premium-rose-grain)" opacity=".075" style="mix-blend-mode:soft-light"/>
+      </svg>
       <span class="premium-entry-content">
         <span class="premium-entry-icon" aria-hidden="true">
-          <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
-            <defs><linearGradient id="home-premium-star-gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff3c5"/><stop offset=".48" stop-color="#ffe39a"/><stop offset="1" stop-color="#e0b862"/></linearGradient></defs>
-            <path d="M18 6Q20 16 30 18Q20 20 18 30Q16 20 6 18Q16 16 18 6Z" fill="url(#home-premium-star-gold)" stroke="#aa925e" stroke-width=".55"/>
-            <path d="M32 2Q33 7 38 8Q33 9 32 14Q31 9 26 8Q31 7 32 2Z M7 27Q8 31 12 32Q8 33 7 37Q6 33 2 32Q6 31 7 27Z" fill="url(#home-premium-star-gold)" stroke="#aa925e" stroke-width=".5"/>
+          <svg viewBox="0 0 48 48" fill="none" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="premium-gem-body" x1="0" y1="0" x2="1" y2="1">
+                <stop stop-color="#fffdf4"/><stop offset=".4" stop-color="#f7e5c8"/><stop offset=".68" stop-color="#eec1a2"/><stop offset="1" stop-color="#bf8d75"/>
+              </linearGradient>
+              <linearGradient id="premium-gem-opal" x1="0" y1="0" x2="1" y2="1">
+                <stop stop-color="#fffdf8"/><stop offset=".5" stop-color="#d9e6e8"/><stop offset="1" stop-color="#e5b7a0"/>
+              </linearGradient>
+            </defs>
+            <path d="M20 9 Q23 21 35 24 Q23 27 20 39 Q17 27 5 24 Q17 21 20 9Z" fill="url(#premium-gem-body)" stroke="#bd8d69" stroke-width=".65"/>
+            <path d="M20 9 L20 24 5 24 Q17 21 20 9Z" fill="#fff9e9"/>
+            <path d="M20 9 Q23 21 35 24 L20 24Z" fill="url(#premium-gem-opal)"/>
+            <path d="M20 24 L35 24 Q23 27 20 39Z" fill="#d4a088"/>
+            <path d="M20 24 L20 39 Q17 27 5 24Z" fill="url(#premium-gem-body)"/>
+            <path d="M20 10 L20 38 M6 24 H34" stroke="#fff7e8" stroke-opacity=".8" stroke-width=".6"/>
+            <path d="M36 2 Q38 10 46 12 Q38 14 36 22 Q34 14 26 12 Q34 10 36 2Z" fill="url(#premium-gem-body)" stroke="#c69673" stroke-width=".5"/>
+            <path d="M36 2 L36 12 26 12 Q34 10 36 2Z" fill="#fffaf0"/>
+            <path d="M36 12 L46 12 Q38 14 36 22Z" fill="url(#premium-gem-opal)"/>
+            <path d="M8 33 Q9 38 14 39 Q9 40 8 45 Q7 40 2 39 Q7 38 8 33Z" fill="url(#premium-gem-body)" stroke="#c69673" stroke-width=".5"/>
           </svg>
         </span>
         <span class="premium-entry-copy"><small>ALMÉA GEM · PREMIUM</small><strong id="special-stones-home-title">体験型コンテンツはこちら</strong><span class="premium-description">限定記事・相性診断・占い/四柱推命</span></span>
@@ -352,24 +396,73 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
 <style>
   .special-stones-home-entry { margin-block: 8px 20px; }
   .special-stones-home-entry a {
-    position:relative;isolation:isolate;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:64px;
-    padding:12px 22px;border:1px solid #eadab1;border-radius:12px;
-    background:linear-gradient(35deg,#b2b9a3 0%,#c4cbb8 49%,#dce1d1 100%);
-    color:#394333;text-decoration:none;box-shadow:inset 0 0 0 1px #f7efda,0 3px 8px #59483b1c;
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: 64px;
+    padding: 12px 22px;
+    border: 1px solid #c99e82;
+    border-radius: 12px;
+    background: #ecd0bf;
+    color: #4b3027;
+    text-decoration: none;
+    box-shadow: 0 3px 9px #80523a24;
   }
-  .special-stones-home-entry small { display:block;color:#394333;font:11px Georgia,serif;letter-spacing:.16em; }
-  .special-stones-home-entry strong { display:block;margin-top:5px;font-size:16px;font-weight:500;color:#394333;line-height:1.5; }
-  .premium-entry-content { display:flex;align-items:center;gap:14px;min-width:0; }
-  .premium-entry-icon { flex:none;color:#ffe39a; }
-  .premium-entry-icon svg { display:block;width:34px;height:34px;filter:drop-shadow(0 1px 1px #65553024); }
-  .premium-entry-copy { min-width:0; }
-  .premium-description { display:block;margin-top:4px;color:#394333;font-size:12px;line-height:1.5; }
-  .special-stones-home-entry a > span:last-child { flex:none;color:#394333;font-size:19px; }
-  .special-stones-home-entry a:hover { border-color:#dbc695;box-shadow:inset 0 0 0 1px #f7efda,0 4px 11px #59483b26; }
-  .special-stones-home-entry a:focus-visible { outline:2px solid #526149;outline-offset:3px; }
-  @media(max-width:640px) {
-    .special-stones-home-entry a { padding:12px 14px;gap:10px; }
-    .premium-entry-content { gap:10px; }
-    .premium-description { font-size:11px; }
+  .special-stones-home-entry a::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    border: 1px solid #fff8ec;
+    border-radius: 10px;
+    box-shadow: inset 0 0 5px #fff7e76b;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .premium-satin {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 11px;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+  }
+  .special-stones-home-entry small {
+    display: block;
+    color: #634332;
+    font: 11px Georgia, serif;
+    letter-spacing: .16em;
+  }
+  .special-stones-home-entry strong {
+    display: block;
+    margin-top: 3px;
+    font-size: 19px;
+    font-weight: 500;
+    color: #4b3027;
+    line-height: 1.5;
+  }
+  .premium-entry-content { display: flex; align-items: center; gap: 16px; min-width: 0; }
+  .premium-entry-icon { flex: none; }
+  .premium-entry-icon svg {
+    display: block;
+    width: 44px;
+    height: 44px;
+    filter: drop-shadow(0 1px 2px #925c3d36);
+  }
+  .premium-entry-copy { min-width: 0; }
+  .premium-description { display: block; margin-top: 3px; color: #624333; font-size: 12px; line-height: 1.5; }
+  .special-stones-home-entry a > span:last-child { flex: none; color: #634332; font-size: 19px; }
+  .special-stones-home-entry a:hover { border-color: #b78365; box-shadow: 0 4px 12px #80523a30; }
+  .special-stones-home-entry a:focus-visible { outline: 2px solid #91644e; outline-offset: 3px; }
+  @media (max-width: 640px) {
+    .special-stones-home-entry a { padding: 12px 14px; gap: 10px; }
+    .premium-entry-content { gap: 10px; }
+    .premium-entry-icon svg { width: 35px; height: 35px; }
+    .special-stones-home-entry strong { font-size: 16px; }
+    .premium-description { font-size: 11px; }
   }
 </style>
