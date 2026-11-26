@@ -13,7 +13,7 @@ export default {
       const path = new URL(request.url).pathname;
       if (request.method === 'GET' && (path === new URL(config.testReturnUrl).pathname || path === '/__special-members__/app.js')) {
         const js = path === '/__special-members__/app.js';
-        return new Response(js ? productionScript : productionHtml, {headers:{
+        return new Response(js ? 'const ALMEA_SALES_ENABLED = '+JSON.stringify(config.salesEnabled)+';\n'+productionScript : productionHtml, {headers:{
           'Content-Type':js?'text/javascript; charset=utf-8':'text/html; charset=utf-8',
           'Cache-Control':'private, no-store',
           'X-Content-Type-Options':'nosniff',

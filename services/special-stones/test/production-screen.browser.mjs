@@ -4,7 +4,7 @@ import { productionHtml, productionScript } from '../src/production-screen.mjs';
 const browser=await chromium.launch({headless:true,executablePath:process.env.TEST_CHROMIUM_PATH||undefined});
 try {
  const page=await browser.newPage({viewport:{width:390,height:844}});
- let signed=false, purchased=false, pending=0, active=false, loginCount=0, checkoutKind='';
+ let salesEnabled=true, signed=false, purchased=false, pending=0, active=false, loginCount=0, checkoutKind='';
  const origin='https://almeagem.com';
  await page.route('**/*',async route=>{
   const req=route.request(), url=new URL(req.url());
@@ -12,7 +12,7 @@ try {
   if(url.origin==='https://checkout.stripe.com')return route.fulfill({status:200,body:'Mock checkout'});
   if(url.origin!==origin)return route.abort();
   if(url.pathname==='/members/')return route.fulfill({status:200,contentType:'text/html',body:productionHtml});
-  if(url.pathname==='/__special-members__/app.js')return route.fulfill({status:200,contentType:'text/javascript',body:productionScript});
+  if(url.pathname==='/__special-members__/app.js')return route.fulfill({status:200,contentType:'text/javascript',body:'const ALMEA_SALES_ENABLED = '+JSON.stringify(salesEnabled)+';\n'+productionScript});
   if(url.pathname==='/api/auth/login'){signed=true;loginCount++;return json(200,{access_token:'fixture',email:'user@example.test'});}
   if(url.pathname==='/api/auth/restore')return signed?json(200,{access_token:'fixture',email:'user@example.test'}):json(401,{});
   if(req.headers().authorization!=='Bearer fixture'||!signed)return json(401,{});
@@ -53,5 +53,9 @@ try {
  await page.goto(origin+'/members/?checkout=return&article=chapter-one');await page.locator('#reader-section').waitFor();assert.equal(loginCount,1);
  await page.locator('#nav-account').click();await page.locator('#cancel-subscription').waitFor();
  await page.locator('#logout').click();await page.locator('#auth-section').waitFor();assert.equal(await page.locator('#member-nav').isVisible(),false);
+ salesEnabled=false;
+ await page.goto(origin+'/members/');await page.getByText('販売開始準備中です。会員登録・ログインはご利用いただけます。',{exact:true}).waitFor();
+ await page.locator('#email').fill('user@example.test');await page.locator('#password').fill('Test1234');await page.locator('#login').click();await page.locator('#member-nav').waitFor();
+ assert.equal(await page.locator('#single').isDisabled(),true);assert.equal(await page.locator('#monthly').isDisabled(),true);
  console.log('Production browser: login, checkout return, library, safe reader, PC/mobile and logout passed.');
 }finally{await browser.close();}

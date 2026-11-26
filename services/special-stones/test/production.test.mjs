@@ -84,3 +84,23 @@ test('live duplicate checks preserve independent single purchases and monthly ri
  summary={...summary,purchased_articles:['chapter-one']};
  assert.equal((await call({kind:'single',article_id:'chapter-one'})).status,409);
 });
+
+test('members-only mode requires no Stripe credentials and rejects billing', async () => {
+ const e={...env,SPECIAL_STONES_LIVE_MEMBERS_ENABLED:'true',SPECIAL_STONES_LIVE_SALES_ENABLED:'false',SPECIAL_STONES_FIXED_PRICE_TAX_APPROVED:'false'};
+ for(const key of ['STRIPE_LIVE_SECRET_KEY','STRIPE_LIVE_WEBHOOK_SECRET','STRIPE_LIVE_SINGLE_PRICE_ID','STRIPE_LIVE_MONTHLY_PRICE_ID'])delete e[key];
+ const c=readProductionConfig(e);
+ assert.equal(c.salesEnabled,false);assert.equal(c.billingEnabled,false);assert.equal(c.stripeSecret,null);
+ const html=await worker.fetch(new Request(c.testReturnUrl),e);assert.equal(html.status,200);
+ const js=await worker.fetch(new Request(c.publicOrigin+'/__special-members__/app.js'),e);assert.equal(js.status,200);assert.match(await js.text(),/^const ALMEA_SALES_ENABLED = false;/);
+ const handle=createHandler({},c);
+ for(const path of ['/api/checkout','/api/stripe/webhook','/api/subscription/cancel'])assert.equal((await handle(new Request(c.publicOrigin+path,{method:'POST'}))).status,503);
+ assert.throws(()=>readProductionConfig({...e,SPECIAL_STONES_LIVE_SALES_ENABLED:'true'}));
+ assert.throws(()=>readProductionConfig({...e,SUPABASE_LIVE_PROJECT_REF:'rsjxnobjrrcxlmxxfqlq'}));
+});
+test('existing billing can remain enabled while new checkout is closed', async()=>{
+ const c=readProductionConfig({...env,SPECIAL_STONES_LIVE_MEMBERS_ENABLED:'true',SPECIAL_STONES_LIVE_SALES_ENABLED:'false',SPECIAL_STONES_LIVE_BILLING_ENABLED:'true'});
+ assert.equal(c.billingEnabled,true);assert.equal(c.salesEnabled,false);
+ const h=createHandler({},c);
+ assert.equal((await h(new Request(c.publicOrigin+'/api/checkout',{method:'POST'}))).status,503);
+ assert.equal((await h(new Request(c.publicOrigin+'/api/subscription/cancel',{method:'POST'}))).status,401);
+});

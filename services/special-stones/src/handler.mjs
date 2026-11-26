@@ -100,6 +100,11 @@ export function createHandler(
     const response = (status, data) => json(status, data, cors);
     if (Number(request.headers.get('content-length') || 0) > MAX_BODY)
       return response(413, { error: 'Request too large' });
+    // Fail closed before any billing adapter or order is touched.
+    if (config.livemode === true && (
+      (url.pathname === '/api/checkout' && config.salesEnabled !== true) ||
+      (['/api/stripe/webhook','/api/subscription/cancel'].includes(url.pathname) && config.billingEnabled !== true)
+    )) return response(503, { error: 'Billing unavailable' });
     if (url.pathname === '/api/stripe/webhook' && request.method === 'POST') {
       let event;
       try {

@@ -15,3 +15,8 @@
 - 公開サイトと会員Workerは同一オリジン https://almeagem.com を想定（ドメインとルーティング未確認）。/members/、/__special-members__/app.js、必要な /api/ のみ会員Workerへ割り当て、既存サービスを上書きしない。
 - PUBLIC_SPECIAL_STONES_SALES_ENABLED=false を初期値にする。本番の秘密情報を公開サイトに入れない。
 - 既存法定表示・返金規約・利用規約の内容をスペシャルストーンの販売条件に照合する。
+
+## 決済審査中の会員機能
+- SPECIAL_STONES_LIVE_MEMBERS_ENABLED=true を明示した場合のみ、Stripe未接続で会員画面・認証・権限確認を動かせる。SALES_ENABLED=false / BILLING_ENABLED=false のまま開始。全フラグ既定false。
+- 決済開始後に新規購入のみ止める場合は MEMBERS_ENABLED=true / BILLING_ENABLED=true / SALES_ENABLED=false とし、Stripe秘密情報と既存購入者のWebhook・解約を維持する。
+- 正式記事は private bucket に article.md と画像を登録。パスワード再設定UI、本番メール認証、ルート、法定表示は別途検証。

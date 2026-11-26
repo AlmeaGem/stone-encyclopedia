@@ -10,12 +10,18 @@ const checkedUrl = (raw) => {
   return u;
 };
 export function readProductionConfig(env) {
-  if (env.SPECIAL_STONES_LIVE_SALES_ENABLED !== 'true') throw Error('Live sales disabled');
-  if (env.SPECIAL_STONES_FIXED_PRICE_TAX_APPROVED !== 'true') throw Error('Tax configuration approval required');
-  const stripeSecret = required(env, 'STRIPE_LIVE_SECRET_KEY');
-  if (!stripeSecret.startsWith('sk_live_')) throw Error('Live Stripe key required');
-  const stripeWebhook = required(env, 'STRIPE_LIVE_WEBHOOK_SECRET');
-  if (!stripeWebhook.startsWith('whsec_')) throw Error('Webhook secret required');
+  const salesEnabled = env.SPECIAL_STONES_LIVE_SALES_ENABLED === 'true';
+  const membersEnabled = env.SPECIAL_STONES_LIVE_MEMBERS_ENABLED === 'true';
+  const billingEnabled = salesEnabled || env.SPECIAL_STONES_LIVE_BILLING_ENABLED === 'true';
+  if (!salesEnabled && !membersEnabled) throw Error('Live service disabled');
+  let stripeSecret = null, stripeWebhook = null;
+  if (billingEnabled) {
+    if (env.SPECIAL_STONES_FIXED_PRICE_TAX_APPROVED !== 'true') throw Error('Tax configuration approval required');
+    stripeSecret = required(env, 'STRIPE_LIVE_SECRET_KEY');
+    if (!stripeSecret.startsWith('sk_live_')) throw Error('Live Stripe key required');
+    stripeWebhook = required(env, 'STRIPE_LIVE_WEBHOOK_SECRET');
+    if (!stripeWebhook.startsWith('whsec_')) throw Error('Webhook secret required');
+  }
   const projectRef = required(env, 'SUPABASE_LIVE_PROJECT_REF');
   if (!/^[a-z0-9]+$/.test(projectRef) || projectRef === 'rsjxnobjrrcxlmxxfqlq' || projectRef !== required(env, 'SUPABASE_APPROVED_LIVE_PROJECT_REF')) throw Error('Independent live project required');
   const supabaseUrl = checkedUrl(required(env, 'SUPABASE_LIVE_URL'));
@@ -24,14 +30,17 @@ export function readProductionConfig(env) {
   if (publicOrigin.pathname !== '/' || publicOrigin.hostname.endsWith('.workers.dev') || publicOrigin.hostname.endsWith('.github.io') || publicOrigin.hostname !== required(env, 'SPECIAL_STONES_APPROVED_LIVE_HOST')) throw Error('Approved custom domain required');
   const returnUrl = checkedUrl(required(env, 'SPECIAL_STONES_LIVE_RETURN_URL'));
   if (returnUrl.origin !== publicOrigin.origin) throw Error('Return origin mismatch');
-  const singlePrice = required(env, 'STRIPE_LIVE_SINGLE_PRICE_ID');
-  const monthlyPrice = required(env, 'STRIPE_LIVE_MONTHLY_PRICE_ID');
-  const sandboxPrices = ['price_1UdfnmD1dZuoT6Ah5Q9XqBwO','price_1UdfviD1dZuoT6AhRzCHVH9C'];
-  if (singlePrice === monthlyPrice || [singlePrice,monthlyPrice].some(p => !/^price_[A-Za-z0-9]+$/.test(p) || sandboxPrices.includes(p))) throw Error('Independent live prices required');
+  let singlePrice = null, monthlyPrice = null;
+  if (billingEnabled) {
+    singlePrice = required(env, 'STRIPE_LIVE_SINGLE_PRICE_ID');
+    monthlyPrice = required(env, 'STRIPE_LIVE_MONTHLY_PRICE_ID');
+    const sandboxPrices = ['price_1UdfnmD1dZuoT6Ah5Q9XqBwO','price_1UdfviD1dZuoT6AhRzCHVH9C'];
+    if (singlePrice === monthlyPrice || [singlePrice,monthlyPrice].some(p => !/^price_[A-Za-z0-9]+$/.test(p) || sandboxPrices.includes(p))) throw Error('Independent live prices required');
+  }
   const bucket = required(env, 'SUPABASE_LIVE_PRIVATE_BUCKET');
   if (bucket !== 'special-stones-live-private') throw Error('Live private bucket required');
   return Object.freeze({
-    livemode:true, stripeSecret, stripeWebhook, supabaseUrl:supabaseUrl.origin,
+    livemode:true, salesEnabled, billingEnabled, stripeSecret, stripeWebhook, supabaseUrl:supabaseUrl.origin,
     supabaseAnon:required(env,'SUPABASE_LIVE_ANON_KEY'),
     supabaseService:required(env,'SUPABASE_LIVE_SERVICE_ROLE_KEY'),
     publicOrigin:publicOrigin.origin, testReturnUrl:returnUrl.href, singlePrice, monthlyPrice, bucket,

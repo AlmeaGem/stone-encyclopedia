@@ -1,10 +1,10 @@
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
 export function createAdapters(c) {
-  const stripe = new Stripe(c.stripeSecret, {
+  const stripe = c.stripeSecret ? new Stripe(c.stripeSecret, {
     maxNetworkRetries: 2,
     httpClient: Stripe.createFetchHttpClient(),
-  });
+  }) : null;
   const makeAuth = () =>
     createClient(c.supabaseUrl, c.supabaseAnon, {
       auth: {

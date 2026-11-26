@@ -7,6 +7,8 @@
   "preview_urls": false,
   "vars": {
     "SPECIAL_STONES_LIVE_SALES_ENABLED": "false",
+    "SPECIAL_STONES_LIVE_MEMBERS_ENABLED": "false",
+    "SPECIAL_STONES_LIVE_BILLING_ENABLED": "false",
     "SPECIAL_STONES_FIXED_PRICE_TAX_APPROVED": "false",
     "SUPABASE_LIVE_PRIVATE_BUCKET": "special-stones-live-private"
   },
