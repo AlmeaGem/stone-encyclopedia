@@ -119,3 +119,20 @@ test('live catalog permits no undeclared article purchase or private illustratio
  assert.equal((await h(new Request(config.publicOrigin+'/api/articles/chapter-one/assets/sapphire',{headers}))).status,200);
  assert.equal(downloads,1);
 });
+
+test('production signup requires terms acceptance before calling auth', async () => {
+  const config = readProductionConfig({...env,SPECIAL_STONES_LIVE_SALES_ENABLED:'false',SPECIAL_STONES_LIVE_MEMBERS_ENABLED:'true'});
+  let calls = 0;
+  const handle = createHandler({auth:{signUp:async()=>{calls++;return {session:null};}}},config);
+  const request = body => handle(new Request(config.publicOrigin+'/api/auth/signup',{
+    method:'POST',headers:{'Content-Type':'application/json','Origin':config.publicOrigin},
+    body:JSON.stringify({email:'member@example.com',password:'fixture-password',browser_session:true,...body})
+  }));
+  assert.equal((await request({})).status,400);
+  assert.equal((await request({terms_accepted:false})).status,400);
+  assert.equal(calls,0);
+  const accepted=await request({terms_accepted:true});
+  assert.equal(accepted.status,200);
+  assert.equal((await accepted.json()).confirmation_required,true);
+  assert.equal(calls,1);
+});
