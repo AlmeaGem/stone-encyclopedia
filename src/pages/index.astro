@@ -202,10 +202,16 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
   </div>
   <section class="wrap special-stones-home-entry" aria-labelledby="special-stones-home-title">
     <a href={pathTo('premium/')}>
-      <span class="special-stones-home-kicker">ALMÉA GEM · PREMIUM</span>
-      <strong id="special-stones-home-title">石の世界を、もっと深く。</strong>
-      <span>スペシャルストーン・パーソナル診断・占い/四柱推命</span>
-      <span class="special-stones-home-arrow" aria-hidden="true">→</span>
+      <span class="premium-entry-content">
+        <span class="premium-entry-icon" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <path d="M18 5c1 8 4 11 12 12-8 1-11 4-12 12-1-8-4-11-12-12C14 16 17 13 18 5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M31 3v8M27 7h8M30 25v12M24 31h12M7 27v6M4 30h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="premium-entry-copy"><small>ALMÉA GEM · PREMIUM</small><strong id="special-stones-home-title">体験型コンテンツはこちら</strong><span class="premium-description">スペシャルストーン・パーソナル診断・占い/四柱推命</span></span>
+      </span>
+      <span aria-hidden="true">→</span>
     </a>
   </section>
   <DailyDiscovery />
@@ -343,13 +349,25 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
 </style>
 
 <style>
-  .special-stones-home-entry { margin-block: 2.5rem; }
+  .special-stones-home-entry { margin-block: 8px 20px; }
   .special-stones-home-entry a {
-    display: flex; position: relative; flex-direction: column; gap: .55rem;
-    padding: clamp(1.4rem, 4vw, 2.5rem); background: #f8f0e8;
-    border: 1px solid #d7c4b1; color: #533d35; text-decoration: none;
+    display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:64px;
+    padding:12px 22px;border:1px solid #d9bca0;border-radius:12px;
+    background:radial-gradient(ellipse at 10% 0%,#fffaf0 0%,transparent 58%),linear-gradient(115deg,#f7e9d7,#f1ddce 65%,#f7ebda);
+    color:#514741;text-decoration:none;box-shadow:0 2px 12px #b88b4b1a;
   }
-  .special-stones-home-entry strong { font-family: 'Shippori Mincho', serif; font-size: clamp(1.15rem, 2.8vw, 1.7rem); font-weight: 500; }
-  .special-stones-home-kicker { color: #705541; letter-spacing: .16em; font-size: .72rem; }
-  .special-stones-home-arrow { position: absolute; right: 1.5rem; bottom: 1.5rem; }
+  .special-stones-home-entry small { display:block;color:#795a3b;font:11px Georgia,serif;letter-spacing:.16em; }
+  .special-stones-home-entry strong { display:block;margin-top:5px;font-size:16px;font-weight:500; }
+  .premium-entry-content { display:flex;align-items:center;gap:14px;min-width:0; }
+  .premium-entry-icon { flex:none;color:#a27b48; }
+  .premium-entry-icon svg { display:block;width:34px;height:34px;filter:drop-shadow(0 0 3px #d9ae6a66); }
+  .premium-entry-copy { min-width:0; }
+  .premium-description { display:block;margin-top:4px;color:#75665c;font-size:12px;line-height:1.5; }
+  .special-stones-home-entry a:hover { border-color:#b89263;box-shadow:0 3px 15px #b88b4b30; }
+  .special-stones-home-entry a:focus-visible { outline:2px solid #a27b48;outline-offset:3px; }
+  @media(max-width:640px) {
+    .special-stones-home-entry a { padding:12px 14px;gap:10px; }
+    .premium-entry-content { gap:10px; }
+    .premium-description { font-size:11px; }
+  }
 </style>
