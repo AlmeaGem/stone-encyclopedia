@@ -205,11 +205,12 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
       <span class="premium-entry-content">
         <span class="premium-entry-icon" aria-hidden="true">
           <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
-            <path d="M18 5c1 8 4 11 12 12-8 1-11 4-12 12-1-8-4-11-12-12C14 16 17 13 18 5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-            <path d="M31 3v8M27 7h8M30 25v12M24 31h12M7 27v6M4 30h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            <defs><linearGradient id="home-premium-star-gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff6d9"/><stop offset=".48" stop-color="#d4ad61"/><stop offset="1" stop-color="#956829"/></linearGradient></defs>
+            <path d="M18 6Q20 16 30 18Q20 20 18 30Q16 20 6 18Q16 16 18 6Z" fill="url(#home-premium-star-gold)" stroke="#986d35" stroke-width=".7"/>
+            <path d="M32 2Q33 7 38 8Q33 9 32 14Q31 9 26 8Q31 7 32 2Z M7 27Q8 31 12 32Q8 33 7 37Q6 33 2 32Q6 31 7 27Z" fill="url(#home-premium-star-gold)" stroke="#986d35" stroke-width=".5"/>
           </svg>
         </span>
-        <span class="premium-entry-copy"><small>ALMÉA GEM · PREMIUM</small><strong id="special-stones-home-title">体験型コンテンツはこちら</strong><span class="premium-description">スペシャルストーン・パーソナル診断・占い/四柱推命</span></span>
+        <span class="premium-entry-copy"><small>ALMÉA GEM · PREMIUM</small><strong id="special-stones-home-title">体験型コンテンツはこちら</strong><span class="premium-description">限定記事・相性診断・占い/四柱推命</span></span>
       </span>
       <span aria-hidden="true">→</span>
     </a>
@@ -351,20 +352,21 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
 <style>
   .special-stones-home-entry { margin-block: 8px 20px; }
   .special-stones-home-entry a {
-    display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:64px;
-    padding:12px 22px;border:1px solid #cbb7df;border-radius:12px;
-    background:radial-gradient(ellipse at 12% 0%,#faf5ff 0%,transparent 55%),linear-gradient(115deg,#eee4f9,#e4d4f4 60%,#f1e8fb);
-    color:#514741;text-decoration:none;box-shadow:0 2px 12px #9470bf24;
+    position:relative; isolation:isolate; display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:64px;
+    padding:12px 22px;border:1px solid #b58a42;border-radius:12px;
+    background:linear-gradient(138deg,transparent 26%,#fffdf4a8 44%,#fffaf0db 50%,transparent 66%),repeating-linear-gradient(138deg,#ffffff24 0px,#ffffff24 1px,transparent 1px,transparent 4px),linear-gradient(115deg,#e9d4b4 0%,#fcf4e5 30%,#f6e8d0 72%,#e5c9a0 100%);
+    color:#493024;text-decoration:none;box-shadow:inset 0 0 0 2px #fff9e8,inset 0 0 13px #a77a3421,0 4px 9px #61421f29;
   }
-  .special-stones-home-entry small { display:block;color:#74568e;font:11px Georgia,serif;letter-spacing:.16em; }
-  .special-stones-home-entry strong { display:block;margin-top:5px;font-size:16px;font-weight:500; }
+  .special-stones-home-entry small { display:block;color:#65452b;font:11px Georgia,serif;letter-spacing:.16em; }
+  .special-stones-home-entry strong { display:block;margin-top:5px;font-size:16px;font-weight:500;color:#493024;line-height:1.5; }
   .premium-entry-content { display:flex;align-items:center;gap:14px;min-width:0; }
-  .premium-entry-icon { flex:none;color:#8a63ae; }
-  .premium-entry-icon svg { display:block;width:34px;height:34px;filter:drop-shadow(0 0 3px #c4a2efaa); }
+  .premium-entry-icon { flex:none;color:#a77b3e; }
+  .premium-entry-icon svg { display:block;width:34px;height:34px;filter:drop-shadow(0 1px 1px #80542330); }
   .premium-entry-copy { min-width:0; }
-  .premium-description { display:block;margin-top:4px;color:#695975;font-size:12px;line-height:1.5; }
-  .special-stones-home-entry a:hover { border-color:#a785c8;box-shadow:0 3px 15px #9470bf38; }
-  .special-stones-home-entry a:focus-visible { outline:2px solid #8a63ae;outline-offset:3px; }
+  .premium-description { display:block;margin-top:4px;color:#73502e;font-size:12px;line-height:1.5; }
+  .special-stones-home-entry a > span:last-child { flex:none;color:#65452b;font-size:19px; }
+  .special-stones-home-entry a:hover { border-color:#987033;box-shadow:inset 0 0 0 2px #fff9e8,0 5px 13px #61421f36; }
+  .special-stones-home-entry a:focus-visible { outline:2px solid #986d35;outline-offset:3px; }
   @media(max-width:640px) {
     .special-stones-home-entry a { padding:12px 14px;gap:10px; }
     .premium-entry-content { gap:10px; }
