@@ -138,6 +138,8 @@ export function createHandler(
         const body = await getJson(request);
         if (!validCredentials(body.email, body.password))
           return response(400, { error: 'Invalid input' });
+        if (config.livemode === true && url.pathname === '/api/auth/signup' && body.terms_accepted !== true)
+          return response(400, { error: 'Terms acceptance required' });
         if (body.browser_session === true && origin !== config.publicOrigin)
           return response(403, { error: 'Forbidden origin' });
         const data = url.pathname.endsWith('signup')
