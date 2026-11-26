@@ -33,6 +33,7 @@ export function createAdapters(c) {
         const { data, error } = await makeAuth().auth.signUp({
           email,
           password,
+          ...(c.livemode === true ? { options: { emailRedirectTo: c.testReturnUrl } } : {}),
         });
         if (error) throw new Error('Auth failed');
         return data;
