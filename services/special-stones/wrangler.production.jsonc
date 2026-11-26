@@ -15,7 +15,10 @@
     "SUPABASE_LIVE_PRIVATE_BUCKET": "special-stones-live-private",
     "SUPABASE_LIVE_PROJECT_REF": "yepbvdxmopmlwrubsxbs",
     "SUPABASE_APPROVED_LIVE_PROJECT_REF": "yepbvdxmopmlwrubsxbs",
-    "SUPABASE_LIVE_URL": "https://yepbvdxmopmlwrubsxbs.supabase.co"
+    "SUPABASE_LIVE_URL": "https://yepbvdxmopmlwrubsxbs.supabase.co",
+    "SPECIAL_STONES_LIVE_ORIGIN": "https://almeagem.com",
+    "SPECIAL_STONES_APPROVED_LIVE_HOST": "almeagem.com",
+    "SPECIAL_STONES_LIVE_RETURN_URL": "https://almeagem.com/members/"
   },
   "observability": {
     "enabled": false
