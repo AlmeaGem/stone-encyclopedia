@@ -18,7 +18,9 @@
     "SUPABASE_LIVE_URL": "https://yepbvdxmopmlwrubsxbs.supabase.co",
     "SPECIAL_STONES_LIVE_ORIGIN": "https://almeagem.com",
     "SPECIAL_STONES_APPROVED_LIVE_HOST": "almeagem.com",
-    "SPECIAL_STONES_LIVE_RETURN_URL": "https://almeagem.com/members/"
+    "SPECIAL_STONES_LIVE_RETURN_URL": "https://almeagem.com/members/",
+    "STRIPE_LIVE_SINGLE_PRICE_ID": "price_1Ug1r1DUeD2lo9xonue8XYpF",
+    "STRIPE_LIVE_MONTHLY_PRICE_ID": "price_1Ug1r3DUeD2lo9xo70adBnpI"
   },
   "observability": {
     "enabled": false
