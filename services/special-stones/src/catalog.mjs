@@ -16,7 +16,7 @@ export const specialChapters = Object.freeze([
   "title": "宇宙から届いた、運命を拓く石",
   "headline": "宇宙と地球の出会いを、一粒に。",
   "description": "ギベオン、モルダバイト、リビアングラスを中心に、七つの宇宙ストーンの誕生と神秘を紐解く特集。",
-  "cover": "special-stones/02_chapter_cover.svg",
+  "cover": "special-stones/02_chapter_starlight.svg",
   "width": 1086,
   "height": 1448,
   "price": 150,
