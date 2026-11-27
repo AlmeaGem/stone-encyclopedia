@@ -116,12 +116,16 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
             <small>BRACELET DESIGNER</small>
           </span>
         </a>
-        <a class="luxury-diagnosis" href={pathTo('fortune/')}>
-          <span class="luxury-icon" aria-hidden="true">
-            ✧
+        <a class="luxury-diagnosis fortune-nav-entry" href={pathTo('fortune/')}>
+          <span class="luxury-icon fortune-nav-icon" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none" aria-hidden="true" focusable="false">
+              <path d="M23 5a14.5 14.5 0 1 0 12 22A13 13 0 0 1 23 5Z" fill="#fff4e5" stroke="currentColor" stroke-width="1.15" stroke-linejoin="round"/>
+              <path d="M29 6Q30 13 37 14Q30 15 29 22Q28 15 21 14Q28 13 29 6Z" fill="#fffaf1" stroke="currentColor" stroke-width=".85"/>
+              <path d="M10 4v6M7 7h6M34 3v4M32 5h4" stroke="currentColor" stroke-width=".85" stroke-linecap="round"/>
+            </svg>
           </span>
           <span>
-            <strong>占い</strong>
+            <strong>占い・スピリチュアル</strong>
             <small>FORTUNE &amp; GUIDANCE</small>
           </span>
         </a>
@@ -170,15 +174,15 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
             <span>212種類の石から自由にデザイン ↗</span>
           </span>
         </a>
-        <a href={pathTo('fortune/')}>
+        <a class="fortune-desktop-entry" href={pathTo('fortune/')}>
           <img
             class="entry-art"
             src={pathTo('decorative/ametrine-cutout.webp')}
             alt=""
           />
           <span class="entry-copy">
-            <strong>占い</strong>
-            <span>占い・スピリチュアルコンテンツ ↗</span>
+            <strong>占い・スピリチュアル</strong>
+            <span>算命学・四柱推命・風水など ↗</span>
           </span>
         </a>
       </nav>
@@ -464,5 +468,50 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
     .premium-entry-icon svg { width: 35px; height: 35px; }
     .special-stones-home-entry strong { font-size: 16px; }
     .premium-description { font-size: 11px; }
+  }
+</style>
+
+<style>
+  /* A featured service in the existing ALMEA rose-champagne palette. */
+  :global(body[data-home='true']) .mobile-luxury-menu a.fortune-nav-entry,
+  :global(body[data-home='true']) .entry-actions a.fortune-desktop-entry {
+    position:relative;
+    isolation:isolate;
+    border:1px solid #bd8b72;
+    background:linear-gradient(149deg,transparent 18%,#fff8ec12 30%,#fff8edb5 43%,#fff8ed30 53%,transparent 66%),linear-gradient(115deg,#dfb39d,#f1d6c4 45%,#d5a48d);
+    color:#4b3027;
+    box-shadow:0 3px 8px #80523a26,inset 0 0 0 2px #fff8eea6;
+    gap:7px;
+  }
+  :global(body[data-home='true']) .mobile-luxury-menu a.fortune-nav-entry strong{
+    white-space:normal;
+    overflow-wrap:anywhere;
+    font-size:clamp(12px,1.05vw,15px);
+    line-height:1.4;
+    font-weight:500;
+    color:#4b3027;
+  }
+  :global(body[data-home='true']) .mobile-luxury-menu a.fortune-nav-entry small{
+    white-space:normal;
+    font-size:8px;
+    letter-spacing:.055em;
+    line-height:1.4;
+    color:#654332;
+  }
+  :global(body[data-home='true']) .mobile-luxury-menu a.fortune-nav-entry .fortune-nav-icon{
+    color:#92623f;
+    flex:0 0 31px;
+  }
+  .fortune-nav-icon svg{display:block;width:34px;height:34px;filter:drop-shadow(0 1px 1px #9f6e4a38)}
+  :global(body[data-home='true']) .mobile-luxury-menu a.fortune-nav-entry:hover,
+  :global(body[data-home='true']) .entry-actions a.fortune-desktop-entry:hover{
+    border-color:#99664d;box-shadow:0 4px 12px #80523a36,inset 0 0 0 2px #fff8eea6;
+  }
+  :global(body[data-home='true']) .mobile-luxury-menu a.fortune-nav-entry:focus-visible,
+  :global(body[data-home='true']) .entry-actions a.fortune-desktop-entry:focus-visible{outline:2px solid #91644e;outline-offset:3px}
+  @media(max-width:640px){
+    :global(body[data-home='true']) .mobile-luxury-menu a.fortune-nav-entry strong{font-size:clamp(11px,3.25vw,14px)}
+    :global(body[data-home='true']) .mobile-luxury-menu a.fortune-nav-entry .fortune-nav-icon{flex-basis:26px}
+    .fortune-nav-icon svg{width:28px;height:28px}
   }
 </style>
