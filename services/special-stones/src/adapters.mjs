@@ -101,6 +101,8 @@ export function createAdapters(c) {
         }),
       canView: (uid, id) =>
         rpc('special_stones_can_view', { p_user_id: uid, p_article_id: id }),
+      readSupplement: (uid, id) =>
+        rpc('special_stones_read_supplement', { p_user_id: uid, p_article_id: id }),
       accountSummary: (uid) =>
         rpc('special_stones_account_summary', { p_user_id: uid }),
       activeSubscription: (uid) =>
