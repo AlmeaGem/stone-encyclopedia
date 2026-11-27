@@ -11,9 +11,9 @@ const memberEntry = launched && new URL(canonical()).origin === 'https://almeage
     {memberEntry && <a class="member-entry" href="https://almeagem.com/members/?view=account"><span class="member-entry-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" width="30" height="30"><circle cx="16" cy="10" r="4.5" stroke="currentColor" stroke-width="1.2"/><path d="M6 26v-2c0-5 4.5-8 10-8s10 3 10 8v2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span><span><small>MEMBERS ACCOUNT</small><strong>ログイン・マイアカウント</strong><span class="member-entry-note">無料会員登録・購入記事の確認</span></span><span class="member-entry-arrow" aria-hidden="true">→</span></a>}
     <div class="collections">
       {premiumCategories.map((c,i)=>(
-        <section class="collection">
+        <section class:list={["collection",c.id]}>
           <span class="number" aria-hidden="true">0{i+1}</span><p class="eyebrow">{c.english}</p><h2>{c.id==='fortune'?'占い・スピリチュアル':c.title}</h2><p class="collection-description">{c.id==='fortune'?'算命学・四柱推命・パワーストーン風水など、さまざまな占いやスピリチュアルコンテンツをご用意します。\n生年月日から守護石を調べる無料コンテンツもご利用いただけます。':c.description}</p>
-          {c.id==='fortune' ? <a href={pathTo('fortune/')}>占い一覧を見る <span aria-hidden="true">→</span></a> : c.path ? <a href={pathTo(c.path)}>{c.status==='preview'?'記事一覧を見る':'診断の紹介を見る'} <span aria-hidden="true">→</span></a> : <p class="pending">準備中 / COMING SOON</p>}
+          {c.id==='fortune' ? <a href={pathTo('fortune/')}>占いを選んでみる <span aria-hidden="true">→</span></a> : c.path ? <a href={pathTo(c.path)}>{c.status==='preview'?'無料で記事一覧を見る':'パーソナル診断を見る'} <span aria-hidden="true">→</span></a> : <p class="pending">準備中 / COMING SOON</p>}
           {c.status==='coming-soon' && c.path && <small>有料結果の提供は準備中です。</small>}
         </section>
       ))}
@@ -28,4 +28,16 @@ header{text-align:center;margin:3rem 0 3.5rem}header h1{font:500 clamp(1.8rem,4v
 .collections{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem}.collection{position:relative;padding:2rem 1.3rem;border-top:1px solid #c6a77b;background:#fffaf6;display:flex;flex-direction:column;align-items:flex-start;gap:.6rem;overflow:hidden}.collection:first-child{background:linear-gradient(135deg,#fffdf9,#f5e8e5)}.number{font:3rem Georgia,serif;color:#b99570;line-height:1}.collection h2{font:500 1.4rem 'Shippori Mincho',serif;margin:0}.collection p{line-height:1.8}.collection-description{white-space:pre-line}.collection a{margin-top:auto;text-decoration:none;color:#80565e;border-bottom:1px solid #b99685;padding:.65rem 0}.pending,.collection small,.note{color:#76665f;font-size:.85rem}.note{margin-top:2rem;line-height:1.8}.return{display:inline-block;margin-top:1rem}
 @media(max-width:720px){.collections{grid-template-columns:1fr}.collection{padding:1.5rem}header{margin:2rem 0}}
 .member-entry{display:flex;align-items:center;gap:16px;max-width:680px;margin:0 auto 2rem;padding:14px 20px;background:#fbf5f0;border:1px solid #e2d0c1;border-radius:10px;color:#60483e;text-decoration:none}.member-entry:hover{border-color:#b99a85}.member-entry:focus-visible{outline:2px solid #896d58;outline-offset:3px}.member-entry-icon{color:#b28c72;flex:none}.member-entry small,.member-entry strong,.member-entry-note{display:block}.member-entry small{font:11px Georgia,serif;letter-spacing:.15em;color:#896d58}.member-entry strong{font:500 16px/1.65 'Shippori Mincho',serif}.member-entry-note{font-size:12px;color:#79655f}.member-entry-arrow{margin-left:auto;flex:none}@media(max-width:520px){.member-entry{gap:10px;padding:12px 14px;margin-bottom:1.5rem}}
+
+/* Premium call-to-action polish */
+.collection{border:1px solid #e0cabb;border-radius:12px;box-shadow:0 4px 12px #67462e0a;padding:1.8rem 1.25rem}
+ .collection-description{margin-bottom:1.25rem}
+ .collection>a{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:12px 15px;min-height:48px;box-sizing:border-box;border:1px solid #b88a72;border-radius:9px;background:linear-gradient(155deg,transparent 12%,#fff9ed9c 35%,transparent 55%),linear-gradient(110deg,#d9a58f,#f1d4c1 55%,#ddb09c);box-shadow:0 3px 0 #ae80685c,0 5px 12px #80523a20,inset 0 0 0 1px #fff7edb3;color:#4d3027;font-weight:600;text-decoration:none;line-height:1.5;width:100%;font-size:15px;margin-top:auto}
+ .collection>a span{display:grid;place-items:center;flex:none;width:28px;height:28px;background:#fff9ed80;border-radius:50%;font-size:18px}
+ .collection.diagnosis>a{background:linear-gradient(155deg,transparent 20%,#fff9eea6 40%,transparent 65%),linear-gradient(115deg,#e3c7a4,#f6e3c9,#d7b28a);border-color:#c3a17b}
+ .collection.fortune>a{background:linear-gradient(155deg,transparent 20%,#fff9eea6 40%,transparent 65%),linear-gradient(115deg,#dfcfe5,#f5e4e8,#d4c3dd);border-color:#b7a0bb;color:#4e374e}
+ .collection>a:hover{filter:brightness(1.04);transform:translateY(-1px)}.collection>a:active{transform:translateY(2px);box-shadow:inset 0 1px 3px #80523a20}
+ .collection>a:focus-visible{outline:2px solid #765142;outline-offset:3px}
+ .collection small{margin-top:.4rem;line-height:1.7}
+ @media(max-width:720px){.collection{padding:1.35rem}.collection>a{font-size:15px}}
 </style>
