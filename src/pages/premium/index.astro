@@ -1,12 +1,14 @@
 ---
 import Page from '../../layouts/Page.astro';
-import { pathTo } from '../../lib/urls';
+import { pathTo, canonical, launched } from '../../lib/urls';
 import { premiumCategories } from '../../../services/special-stones/src/catalog.mjs';
+const memberEntry = launched && new URL(canonical()).origin === 'https://almeagem.com' && import.meta.env.BASE_URL === '/';
 ---
 <Page title="プレミアムコンテンツ" path="premium/" description="ALMÉA GEMの特別な読みもの、パーソナル診断、占い/四柱推命。">
   <div class="wrap premium">
     <nav aria-label="現在地"><a href={pathTo()}>ホーム</a> / プレミアム</nav>
     <header><p class="eyebrow">ALMÉA GEM · PREMIUM</p><h1>石の世界を、もっと深く。</h1><p>宝石の物語から、あなたのための診断へ。<br/>ALMÉA GEMの特別なコンテンツをお届けします。</p></header>
+    {memberEntry && <a class="member-entry" href="https://almeagem.com/members/?view=account"><span class="member-entry-icon" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" width="30" height="30"><circle cx="16" cy="10" r="4.5" stroke="currentColor" stroke-width="1.2"/><path d="M6 26v-2c0-5 4.5-8 10-8s10 3 10 8v2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></span><span><small>MEMBERS ACCOUNT</small><strong>ログイン・マイアカウント</strong><span class="member-entry-note">無料会員登録・購入記事の確認</span></span><span class="member-entry-arrow" aria-hidden="true">→</span></a>}
     <div class="collections">
       {premiumCategories.map((c,i)=>(
         <section class="collection">
@@ -25,4 +27,5 @@ import { premiumCategories } from '../../../services/special-stones/src/catalog.
 header{text-align:center;margin:3rem 0 3.5rem}header h1{font:500 clamp(1.8rem,4vw,3rem)/1.6 'Shippori Mincho',serif;margin:1rem 0}header p{line-height:2}.eyebrow{color:#896d58;font-size:.75rem;letter-spacing:.16em}
 .collections{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem}.collection{position:relative;padding:2rem 1.3rem;border-top:1px solid #c6a77b;background:#fffaf6;display:flex;flex-direction:column;align-items:flex-start;gap:.6rem;overflow:hidden}.collection:first-child{background:linear-gradient(135deg,#fffdf9,#f5e8e5)}.number{font:3rem Georgia,serif;color:#b99570;line-height:1}.collection h2{font:500 1.4rem 'Shippori Mincho',serif;margin:0}.collection p{line-height:1.8}.collection-description{white-space:pre-line}.collection a{margin-top:auto;text-decoration:none;color:#80565e;border-bottom:1px solid #b99685;padding:.65rem 0}.pending,.collection small,.note{color:#76665f;font-size:.85rem}.note{margin-top:2rem;line-height:1.8}.return{display:inline-block;margin-top:1rem}
 @media(max-width:720px){.collections{grid-template-columns:1fr}.collection{padding:1.5rem}header{margin:2rem 0}}
+.member-entry{display:flex;align-items:center;gap:16px;max-width:680px;margin:0 auto 2rem;padding:14px 20px;background:#fbf5f0;border:1px solid #e2d0c1;border-radius:10px;color:#60483e;text-decoration:none}.member-entry:hover{border-color:#b99a85}.member-entry:focus-visible{outline:2px solid #896d58;outline-offset:3px}.member-entry-icon{color:#b28c72;flex:none}.member-entry small,.member-entry strong,.member-entry-note{display:block}.member-entry small{font:11px Georgia,serif;letter-spacing:.15em;color:#896d58}.member-entry strong{font:500 16px/1.65 'Shippori Mincho',serif}.member-entry-note{font-size:12px;color:#79655f}.member-entry-arrow{margin-left:auto;flex:none}@media(max-width:520px){.member-entry{gap:10px;padding:12px 14px;margin-bottom:1.5rem}}
 </style>
