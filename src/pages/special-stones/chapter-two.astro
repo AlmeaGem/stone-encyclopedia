@@ -79,4 +79,12 @@ const features=[['01','七つの宇宙ストーン','隕石と天然ガラスの
 .gem-missing{color:#79655f}
 @media(max-width:800px){.gem-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){.gem-grid{grid-template-columns:1fr}.uploaded-gem{margin:0}.uploaded-gem figcaption{font-size:8px}}
+
+/* Premium call-to-action polish */
+.member-link,.plans a{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:12px 15px;min-height:48px;box-sizing:border-box;border:1px solid #b88a72;border-radius:9px;background:linear-gradient(155deg,transparent 12%,#fff9ed9c 35%,transparent 55%),linear-gradient(110deg,#d9a58f,#f1d4c1 55%,#ddb09c);box-shadow:0 3px 0 #ae80685c,0 5px 12px #80523a20,inset 0 0 0 1px #fff7edb3;color:#4d3027;font-weight:600;text-decoration:none;line-height:1.5;justify-content:center;max-width:360px;margin:12px auto;font-size:15px;background:linear-gradient(155deg,transparent 20%,#fff9ee96 40%,transparent 65%),linear-gradient(110deg,#d8c7e2,#f2e3e7,#cdbbd9);border-color:#b29ab8;color:#49364d}
+ .member-link:hover,.plans a:hover{filter:brightness(1.05)}.member-link:focus-visible,.plans a:focus-visible{outline:2px solid #765142;outline-offset:3px}
+ @media(min-width:801px){.gem-grid{grid-template-columns:repeat(12,minmax(0,1fr));gap:14px}.gem-grid article{grid-column:span 3}.gem-grid article:nth-child(-n+3){grid-column:span 4}}
+ .gem-grid article:nth-child(-n+3){border-color:#c8b4ce;background:linear-gradient(145deg,#fffcf9,#f5eff6)}
+ .gem-visual{max-width:164px}
+ @media(max-width:640px){.gem-visual{max-width:84px}}
 </style>
