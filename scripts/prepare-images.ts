@@ -179,6 +179,22 @@ async function prepareChapterThreeCover(root: string) {
   await writeFile(join(coverDir, '03_chapter_silky.svg'), illustrated);
 }
 
+async function prepareRutileIllustrations(root: string) {
+  const directory = join(root, 'public/special-stones');
+  const names = [
+    'platinum-rutile',
+    'black-rutile',
+    'red-rutile',
+    'taichin-rutile',
+  ];
+  for (const name of names) {
+    await sharp(join(directory, name + '.png'))
+      .resize(960, 960, { fit: 'contain', background: '#fffaf5' })
+      .webp({ quality: 87 })
+      .toFile(join(directory, name + '.webp'));
+  }
+}
+
 if (
   process.argv[1] &&
   resolve(process.argv[1]) === fileURLToPath(import.meta.url)
@@ -187,6 +203,7 @@ if (
   const count = await prepareImages(root);
   await prepareChapterTwoCover(root);
   await prepareChapterThreeCover(root);
+  await prepareRutileIllustrations(root);
   console.log(
     `Prepared ${count} approved images and illustrated chapter covers`,
   );
