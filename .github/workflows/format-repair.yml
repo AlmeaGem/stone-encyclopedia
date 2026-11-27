@@ -1,0 +1,34 @@
+name: One-time formatting verification
+on:
+  push:
+    branches: [maintenance/format-repair-20261127]
+permissions:
+  contents: read
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Format and check
+        run: |
+          npm run format
+          npm run format:check
+      - name: Emit formatting-only results
+        run: |
+          node --input-type=module <<'JS'
+          import {execFileSync} from 'node:child_process';
+          import {readFileSync} from 'node:fs';
+          const files=execFileSync('git',['diff','--name-only','-z'],{encoding:'utf8'}).split('\0').filter(Boolean);
+          for(const file of files) {
+            const b=readFileSync(file).toString('base64');
+            for(let i=0;i<b.length;i+=8000) console.log('FORMAT_DATA '+JSON.stringify({file,offset:i,data:b.slice(i,i+8000)}));
+          }
+          console.log('FORMAT_COUNT '+files.length);
+          JS
