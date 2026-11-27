@@ -86,21 +86,21 @@ const features = [
         </a>
       </div>
     </header>
-    {
-      protectionArtReady && (
-        <figure class="protection-art">
-          <img
-            src={pathTo('special-stones/chapter-six-protection-art.png')}
-            alt="漆黒の宝石と銀色の護符を描いた守護のイメージ"
-            width="1536"
-            height="1024"
-            loading="lazy"
-            decoding="async"
-          />
-          <figcaption>THE ART OF PROTECTION · 破邪と守護のイメージ</figcaption>
-        </figure>
-      )
-    }
+    <figure class="protection-art">
+      <img
+        src={pathTo(
+          protectionArtReady
+            ? 'special-stones/chapter-six-protection-art.png'
+            : 'special-stones/chapter-six-guardian.svg',
+        )}
+        alt="銀色の護符と漆黒の宝石を描いた守護のイメージ"
+        width={protectionArtReady ? 1536 : 1200}
+        height={protectionArtReady ? 1024 : 600}
+        loading="lazy"
+        decoding="async"
+      />
+      <figcaption>THE ART OF PROTECTION · 破邪と守護のイメージ</figcaption>
+    </figure>
     <div class="rose-copy">
       {chapter.intro.map((p) => (
         <p>{p}</p>
