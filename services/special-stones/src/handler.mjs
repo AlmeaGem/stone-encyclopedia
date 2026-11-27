@@ -283,6 +283,12 @@ export function createHandler(
         if (config.livemode === true) {
           if (kind === 'single' && chapterById(body.article_id)?.sellable !== true) return response(404, { error: 'Article unavailable' });
           const account = await db.accountSummary(user.id);
+          // Published article IDs come from the live database, not the client.
+          const available = account?.available_articles;
+          if (!Array.isArray(available) ||
+              (kind === 'single' && !available.includes(body.article_id)) ||
+              (kind === 'subscription' && !available.some(id => chapterById(id)?.sellable === true)))
+            return response(404, { error: 'Article unavailable' });
           const active = account?.membership_until && Date.parse(account.membership_until) > Date.now();
           if ((kind === 'single' && account?.purchased_articles?.includes(body.article_id)) || (kind === 'subscription' && active))
             return response(409, { error: 'Already entitled' });
@@ -296,7 +302,7 @@ export function createHandler(
           price.active !== true ||
           price.currency !== 'jpy' ||
           price.unit_amount !== amount ||
-          price.tax_behavior === 'exclusive' ||
+          (config.livemode === true ? price.tax_behavior !== 'inclusive' : price.tax_behavior === 'exclusive') ||
           (kind === 'single' && price.recurring) ||
           (kind === 'subscription' &&
             (!price.recurring ||
