@@ -25,13 +25,13 @@ const sales =
   chapter.sellable &&
   import.meta.env.PUBLIC_SPECIAL_STONES_SALES_ENABLED === 'true';
 const features = [
-  ['01', '十四種類の強運・願望実現ストーン', '願い・好機・変容の象徴。'],
-  ['02', '願いに向かう四つのステージ', '願い・転機・好機・現実化。'],
-  ['03', '強運と願望実現は、同じなのか', '二つの願いを異なる視点から。'],
-  ['04', '願い別・特別な組み合わせ', '強運と願望実現のブレスレットレシピ。'],
-  ['05', '本物を選ぶための鉱物比較', '鉱物・品質・お手入れ。'],
-  ['06', '世界三大ヒーリングストーン', '願いへ向かうための心の土台。'],
-  ['07', 'カイヤナイト', '行き詰まった現状を切り開く。'],
+  ['01', '強運・願望実現の14石', '願い・好機・変容の象徴。'],
+  ['02', '願いに向かう4段階', '願い・転機・好機・現実化。'],
+  ['03', '強運と願望実現の違い', '二つの願いを異なる視点から。'],
+  ['04', '願い別・特別な組み合わせ', '願い別ブレスレットレシピ。'],
+  ['05', '本物を選ぶための比較', '鉱物・品質・お手入れ。'],
+  ['06', '世界三大ヒーリングストーン', '癒しと心の土台。'],
+  ['07', 'カイヤナイト', '問題解決と現実化。'],
   ['08', '今、あなたが望む奇跡は？', '選択式ミニ診断。'],
 ];
 ---
@@ -66,10 +66,11 @@ const features = [
         <p class="lead">
           <strong>まだ見ぬ未来に、幸運の扉を。</strong>
           <br />
-          想像を超える好機。人生の転機。そして、心から望む願い。
+          <span>想像を超える好機。人生の転機。</span>
+          <span>そして、心から望む願い。</span>
         </p>
         <p class="hero-promise">
-          十四種類の石から、未来の自分に重ねたい物語を見つける特集です。
+          十四の石から、願いに寄り添う一粒を見つける特集です。
         </p>
         <p class="meta">無料紹介 · 本編150円（税込・買い切り）</p>
         <a class="hero-contents-link" href="#rose-contents">
@@ -111,7 +112,17 @@ const features = [
               </div>
             )}
             <div>
-              <h3>{g.name}</h3>
+              <h3>
+                {
+                  g.slug === 'herkimer-diamond' ? (
+                    <>
+                      ハーキマー<wbr />ダイヤモンド
+                    </>
+                  ) : (
+                    g.name
+                  )
+                }
+              </h3>
               <p>{g.theme}</p>
             </div>
           </article>
@@ -180,7 +191,7 @@ const features = [
       </div>
       {!sales && (
         <p class="release-note">
-          本編の販売開始に向けて準備を進めています。無料紹介をお楽しみください。
+          本編は販売準備中です。無料紹介をお楽しみください。
         </p>
       )}
       {membersEnabled && (
@@ -552,8 +563,65 @@ const features = [
       padding: 18px 14px;
     }
     .rose-hero img {
-      max-width: 145px;
+      max-width: 132px;
       margin: auto;
+    }
+    .rose-hero {
+      gap: 10px;
+      padding: 16px 12px;
+    }
+    .rose-hero .overline {
+      font-size: 10px;
+      letter-spacing: 0.08em;
+    }
+    .rose-hero h1 {
+      font-size: clamp(22px, 6vw, 26px);
+      line-height: 1.45;
+      margin: 8px 0 12px;
+    }
+    .lead {
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 8px 0;
+    }
+    .lead strong {
+      font-size: 16px;
+    }
+    .lead > span {
+      display: block;
+    }
+    .hero-promise {
+      font-size: 13px;
+      line-height: 1.7;
+      margin: 8px auto;
+    }
+    .rose-copy {
+      margin: 20px auto 28px;
+      font-size: 14px;
+      line-height: 1.85;
+    }
+    .rose-copy p {
+      margin-bottom: 12px;
+    }
+    .rose h2 {
+      font-size: 19px;
+      line-height: 1.55;
+      text-wrap: balance;
+      margin-bottom: 14px;
+    }
+    .love-editorial {
+      padding: 20px 14px;
+    }
+    .love-editorial p:last-child {
+      font-size: 14px;
+      line-height: 1.75;
+    }
+    .rose-features,
+    .rose-offer {
+      padding: 18px 12px;
+    }
+    .feature-grid {
+      gap: 8px;
     }
     .gem-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -570,10 +638,32 @@ const features = [
       padding: 10px;
     }
     .feature-grid h3 {
-      font-size: 14px;
+      font-size: 13px;
+      line-height: 1.55;
+      text-wrap: balance;
+    }
+    .feature-grid p {
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .feature-grid span {
+      font-size: 17px;
     }
     .plans {
       grid-template-columns: 1fr;
+      gap: 8px;
+      margin: 14px auto;
+    }
+    .plans div {
+      padding: 10px 12px;
+      gap: 3px;
+    }
+    .plans b {
+      font-size: 22px;
+    }
+    .release-note {
+      font-size: 13px;
+      line-height: 1.7;
     }
   }
 </style>
