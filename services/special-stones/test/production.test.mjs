@@ -48,7 +48,7 @@ test('live checkout checks live price and session, never accepts sandbox objects
   const config=readProductionConfig(env);
   let priceLive=true, sessionId='cs_live_Fixture';
   const auth={getUser:async()=>({id:'fixture'})};
-  const db={createOrder:async()=>{},bindSession:async()=>{},accountSummary:async()=>({purchased_articles:[],membership_until:null})};
+  const db={createOrder:async()=>{},bindSession:async()=>{},accountSummary:async()=>({purchased_articles:[],membership_until:null,available_articles:['chapter-one']})};
   const stripe={prices:{retrieve:async()=>({livemode:priceLive,active:true,currency:'jpy',unit_amount:150,tax_behavior:'inclusive',recurring:null})},checkout:{sessions:{create:async()=>({livemode:true,id:sessionId,url:'https://checkout.stripe.com/fixture'})}}};
   const handle=createHandler({auth,db,stripe},config);
   const request=()=>handle(new Request('https://members.example.com/api/checkout',{method:'POST',headers:{Authorization:'Bearer fixture','Content-Type':'application/json'},body:JSON.stringify({kind:'single',article_id:'chapter-one'})}));
@@ -73,7 +73,7 @@ test('production member shell is separate from dummy and diagnostic UI', async (
 
 test('live duplicate checks preserve independent single purchases and monthly rights', async () => {
  const config=readProductionConfig(env);
- let summary={purchased_articles:[],membership_until:new Date(Date.now()+3600000).toISOString()};
+ let summary={purchased_articles:[],membership_until:new Date(Date.now()+3600000).toISOString(),available_articles:['chapter-one']};
  const auth={getUser:async()=>({id:'fixture'})};
  const db={accountSummary:async()=>summary,createOrder:async()=>{},bindSession:async()=>{}};
  const stripe={prices:{retrieve:async()=>({livemode:true,active:true,currency:'jpy',unit_amount:150,tax_behavior:'inclusive',recurring:null})},checkout:{sessions:{create:async()=>({livemode:true,id:'cs_live_Fixture',url:'https://checkout.stripe.com/fixture'})}}};
@@ -109,7 +109,7 @@ test('live catalog permits no undeclared article purchase or private illustratio
  const config=readProductionConfig(env);
  let downloads=0;
  const auth={getUser:async()=>({id:'fixture'})};
- const db={canView:async()=>true,accountSummary:async()=>({purchased_articles:[],membership_until:null})};
+ const db={canView:async()=>true,accountSummary:async()=>({purchased_articles:[],membership_until:null,available_articles:['chapter-one']})};
  const h=createHandler({auth,db,storage:{download:async()=>{downloads++;return new Blob(['fixture'])}}},config);
  const headers={Authorization:'Bearer fixture','Content-Type':'application/json'};
  const checkout=await h(new Request(config.publicOrigin+'/api/checkout',{method:'POST',headers,body:JSON.stringify({kind:'single',article_id:'not-in-catalog'})}));
@@ -167,4 +167,20 @@ test('private supplement follows the same article permission; images remain unch
  assert.equal(reads,0);assert.equal(downloads,0);
  allowed=true;const full=await h(new Request(url,{headers}));assert.equal(full.status,200);assert.equal(await full.text(),'base article\n\nprivate supplement');assert.match(full.headers.get('cache-control'),/no-store/);
  assert.equal(reads,1);const asset=await h(new Request(url+'/assets/sapphire',{headers}));assert.equal(await asset.text(),'base article');assert.equal(reads,1);
+});
+
+test('unpublished catalog cannot create live checkout or subscription', async()=>{
+ const config=readProductionConfig(env);
+ let orders=0,priceReads=0,available=[];
+ const auth={getUser:async()=>({id:'fixture'})};
+ const db={accountSummary:async()=>({purchased_articles:[],membership_until:null,available_articles:available}),createOrder:async()=>{orders++;}};
+ const stripe={prices:{retrieve:async()=>{priceReads++;return {livemode:true,active:true,currency:'jpy',unit_amount:150,tax_behavior:'unspecified',recurring:null};}}};
+ const handle=createHandler({auth,db,stripe},config);
+ const call=body=>handle(new Request(config.publicOrigin+'/api/checkout',{method:'POST',headers:{Authorization:'Bearer fixture','Content-Type':'application/json'},body:JSON.stringify(body)}));
+ assert.equal((await call({kind:'single',article_id:'chapter-one'})).status,404);
+ assert.equal((await call({kind:'subscription'})).status,404);
+ assert.equal(orders,0);assert.equal(priceReads,0);
+ available=['chapter-one'];
+ assert.equal((await call({kind:'single',article_id:'chapter-one'})).status,503);
+ assert.equal(orders,0);assert.equal(priceReads,1);
 });
