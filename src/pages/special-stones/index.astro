@@ -89,18 +89,7 @@ const sales =
               </div>
               <div class="copy">
                 <p class="eyebrow">CHAPTER {c.number} · 無料紹介</p>
-                <h3>
-                  {
-                    c.id === 'chapter-five' ? (
-                      <>
-                        <span>奇跡を呼び込む、</span>
-                        <span>運命を変える石たち</span>
-                      </>
-                    ) : (
-                      c.title
-                    )
-                  }
-                </h3>
+                <h3>{c.title}</h3>
                 <p class="description">{c.description}</p>
                 <div class="themes">
                   {c.themes.map((theme) => (
@@ -304,9 +293,6 @@ const sales =
       serif;
     margin: 0;
     text-wrap: balance;
-  }
-  .copy h3 > span {
-    display: inline-block;
   }
   .copy .description {
     font-size: 14px;

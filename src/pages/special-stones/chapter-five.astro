@@ -112,17 +112,7 @@ const features = [
               </div>
             )}
             <div>
-              <h3>
-                {
-                  g.slug === 'herkimer-diamond' ? (
-                    <>
-                      ハーキマー<wbr />ダイヤモンド
-                    </>
-                  ) : (
-                    g.name
-                  )
-                }
-              </h3>
+              <h3>{g.name}</h3>
               <p>{g.theme}</p>
             </div>
           </article>
@@ -629,6 +619,10 @@ const features = [
     }
     .gem-grid article {
       padding: 10px 6px;
+    }
+    .gem-grid h3 {
+      text-wrap: balance;
+      line-break: strict;
     }
     .gem-visual {
       max-width: 92px;
