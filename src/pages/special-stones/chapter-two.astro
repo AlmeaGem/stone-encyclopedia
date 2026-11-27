@@ -85,8 +85,9 @@ const features = [
     <section class="cosmic-gems">
       <p class="overline">THE COSMIC STONES</p>
       <h2>七つの石、七つの誕生の物語</h2>
+      <p class="gallery-note">掲載画像は石の特徴を表現したイメージです。</p>
       <div class="gem-grid">
-        {gems.map((g, i) => (
+        {gems.map((g) => (
           <article>
             {g.photo ? (
               <figure class="gem-visual uploaded-gem">
@@ -98,7 +99,6 @@ const features = [
                   loading="lazy"
                   decoding="async"
                 />
-                <figcaption>※ イメージ画像</figcaption>
               </figure>
             ) : g.stone ? (
               <div class="gem-visual">
@@ -108,15 +108,15 @@ const features = [
               <p class="gem-missing">画像準備中</p>
             )}
             <div>
-              <span class="gem-no">0{i + 1}</span>
               <h3>{g.name}</h3>
               <p>{g.theme}</p>
             </div>
           </article>
         ))}
       </div>
+      <a class="gallery-more" href="#cosmic-contents">本編の内容を見る ↓</a>
     </section>
-    <section class="cosmic-features">
+    <section class="cosmic-features" id="cosmic-contents">
       <p class="overline">INSIDE THE CHAPTER</p>
       <h2>宇宙の石の秘密を、もっと深く。</h2>
       <div class="feature-grid">
@@ -647,5 +647,100 @@ const features = [
     .gem-visual {
       max-width: 84px;
     }
+  }
+  /* Consistent compact gallery across the special-stone series. */
+  .gem-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .gem-grid > article,
+  .gem-grid > article:nth-child(-n + 3) {
+    grid-column: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    gap: 0;
+    min-width: 0;
+    padding: 10px 8px;
+    border: 1px solid #d9c8b8;
+    border-radius: 9px;
+  }
+  .gem-grid .gem-visual {
+    width: 100%;
+    max-width: 116px;
+    margin: 0 auto 6px;
+  }
+  .gem-grid .gem-visual > img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: contain;
+  }
+  .gem-grid h3 {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 4px 0;
+    overflow-wrap: anywhere;
+    text-wrap: balance;
+    line-break: strict;
+  }
+  .gem-grid p {
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+  .gem-grid .gem-visual :global(.image-impression-label) {
+    display: none;
+  }
+  @media (max-width: 850px) {
+    .gem-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 640px) {
+    .gem-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .gem-grid > article,
+    .gem-grid > article:nth-child(-n + 3) {
+      padding: 10px 6px;
+    }
+    .gem-grid .gem-visual {
+      max-width: 92px;
+      margin: 0 auto 5px;
+    }
+  }
+  .gallery-note {
+    font-size: 12px;
+    color: #75675f;
+    text-align: center;
+    margin: 0 auto 14px;
+  }
+  .gallery-more {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    margin-top: 16px;
+    padding: 8px 20px;
+    border: 1px solid currentColor;
+    border-radius: 7px;
+    color: inherit;
+    background: #fffaf580;
+    font-size: 13px;
+    text-decoration: none;
+  }
+  .gallery-more:hover {
+    text-decoration: underline;
+  }
+  .gallery-more:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
   }
 </style>

@@ -7,9 +7,6 @@ import { chapterById } from '../../../services/special-stones/src/catalog.mjs';
 import { stones } from '../../lib/content';
 import Visual from '../../components/Visual.astro';
 const chapter = chapterById('chapter-six')!;
-const protectionArtReady = existsSync(
-  resolve('public/special-stones/chapter-six-protection-art.png'),
-);
 const dedicated = new Set([
   'black-diamond',
   'aegirine',
@@ -86,27 +83,20 @@ const features = [
         </a>
       </div>
     </header>
-    <figure class="protection-art">
-      <img
-        src={pathTo(
-          protectionArtReady
-            ? 'special-stones/chapter-six-protection-art.png'
-            : 'special-stones/chapter-six-guardian.svg',
-        )}
-        alt="銀色の護符と漆黒の宝石を描いた守護のイメージ"
-        width={protectionArtReady ? 1536 : 1200}
-        height={protectionArtReady ? 1024 : 600}
-        loading="lazy"
-        decoding="async"
-      />
-      <figcaption>THE ART OF PROTECTION · 破邪と守護のイメージ</figcaption>
-    </figure>
     <div class="rose-copy">
       {chapter.intro.map((p) => (
         <p>{p}</p>
       ))}
     </div>
     <section class="rose-gems">
+      <img
+        class="guardian-symbol"
+        src={pathTo('special-stones/protection-gem.svg')}
+        alt=""
+        aria-hidden="true"
+        width="64"
+        height="64"
+      />
       <p class="overline">THE JEWELS OF PROTECTION</p>
       <h2>十四の石、十四の守りの物語</h2>
       <p class="image-note">掲載画像は石の特徴を表現したイメージです。</p>
@@ -145,6 +135,14 @@ const features = [
       </a>
     </section>
     <aside class="love-editorial">
+      <img
+        class="guardian-symbol"
+        src={pathTo('special-stones/protection-eye.svg')}
+        alt=""
+        aria-hidden="true"
+        width="64"
+        height="64"
+      />
       <p class="overline">THE EVIL EYE</p>
       <h2>邪視を遠ざける、守りの目。</h2>
       <p>
@@ -152,11 +150,27 @@ const features = [
       </p>
     </aside>
     <aside class="love-editorial breakthrough">
+      <img
+        class="guardian-symbol"
+        src={pathTo('special-stones/protection-shield.svg')}
+        alt=""
+        aria-hidden="true"
+        width="64"
+        height="64"
+      />
       <p class="overline">FIVE SHIELDS</p>
       <h2>破邪・浄化・防御・反射・断絶。</h2>
       <p>五つの守り方を知り、自分の願いに合う石を選ぶための特集です。</p>
     </aside>
     <section class="rose-features" id="rose-contents">
+      <img
+        class="guardian-symbol"
+        src={pathTo('special-stones/protection-cross.svg')}
+        alt=""
+        aria-hidden="true"
+        width="64"
+        height="64"
+      />
       <p class="overline">INSIDE THE CHAPTER</p>
       <h2>自分の未来を守るために。</h2>
       <div class="feature-grid">
@@ -174,6 +188,14 @@ const features = [
       </div>
     </section>
     <section class="rose-offer">
+      <img
+        class="guardian-symbol"
+        src={pathTo('special-stones/protection-moon.svg')}
+        alt=""
+        aria-hidden="true"
+        width="64"
+        height="64"
+      />
       <p class="overline">CONTINUE THE STORY</p>
       <h2>物語の続きを開く</h2>
       <p>第六章の本編は購入者・対象月額会員限定です。</p>
@@ -282,23 +304,6 @@ const features = [
   }
   .meta {
     font-size: 12px;
-  }
-  .protection-art {
-    max-width: 720px;
-    margin: 24px auto;
-    text-align: center;
-  }
-  .protection-art img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 9px;
-    border: 1px solid #aaa6b3;
-  }
-  .protection-art figcaption {
-    margin-top: 8px;
-    font-size: 11px;
-    color: #686471;
   }
   .rose-copy {
     max-width: 660px;
@@ -695,6 +700,20 @@ const features = [
     .release-note {
       font-size: 13px;
       line-height: 1.7;
+    }
+  }
+  .guardian-symbol {
+    display: block;
+    width: 28px;
+    height: 28px;
+    margin: 0 auto 7px;
+    opacity: 0.82;
+  }
+  @media (max-width: 640px) {
+    .guardian-symbol {
+      width: 24px;
+      height: 24px;
+      margin-bottom: 5px;
     }
   }
 </style>

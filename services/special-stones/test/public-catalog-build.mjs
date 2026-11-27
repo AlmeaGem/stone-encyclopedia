@@ -34,11 +34,16 @@ const sixth = read('special-stones/chapter-six/index.html');
 assert.match(catalog, /chapter-six\//);
 assert.match(sixth, /見えない邪気を払い/);
 assert.match(sixth, /ブラックダイヤモンド/);
-assert.match(sixth, /THE ART OF PROTECTION/);
-assert.ok(existsSync(join(root, 'special-stones/chapter-six-guardian.svg')));
+assert.match(sixth, /protection-shield\.svg/);
+assert.doesNotMatch(sixth, /破邪と守護のイメージ/);
+assert.ok(existsSync(join(root, 'special-stones/protection-eye.svg')));
 assert.match(sixth, /五つの守り方/);
 assert.doesNotMatch(sixth, /\/members\/\?view=store/);
 assert.ok(existsSync(join(root, 'special-stones/06_chapter_protection.svg')));
+for (const slug of ['one', 'two', 'three', 'four', 'five', 'six']) {
+  const html = read('special-stones/chapter-' + slug + '/index.html');
+  assert.equal((html.match(/本編の内容を見る/g) || []).length, 1);
+}
 function walk(p) {
   for (const e of readdirSync(p, { withFileTypes: true })) {
     const v = join(p, e.name);
