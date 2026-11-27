@@ -2,10 +2,14 @@
 import Page from '../../layouts/Page.astro';
 import { pathTo, launched, canonical } from '../../lib/urls';
 import { chapterById } from '../../../services/special-stones/src/catalog.mjs';
+import { existsSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { stones } from '../../lib/content';
 import Visual from '../../components/Visual.astro';
 const chapter = chapterById('chapter-two')!;
-const gems = chapter.preview.map(g=>({...g,stone:stones.find(s=>s.slug===g.slug||s.name===g.name)}));
+const uploaded: Record<string,string> = {"gibeon":"special-stones/gibeon.png","libyan-glass":"special-stones/libyan-glass.png","muonionalusta":"special-stones/muonionalusta.png","campo-del-cielo":"special-stones/campo-del-cielo.png","seymchan":"special-stones/seymchan.png"};
+const gems = chapter.preview.map(g=>({...g,photo:uploaded[g.slug],stone:stones.find(s=>s.slug===g.slug||s.name===g.name)}));
+for(const image of Object.values(uploaded)) if(!existsSync(resolve('public',image))) throw new Error('Missing chapter two illustration: '+image);
 const membersEnabled = launched && (import.meta.env.PUBLIC_SPECIAL_STONES_MEMBERS_ENABLED==='true'||import.meta.env.PUBLIC_SPECIAL_STONES_SALES_ENABLED==='true') && new URL(canonical()).origin==='https://almeagem.com' && import.meta.env.BASE_URL==='/';
 const sales = membersEnabled && chapter.sellable && import.meta.env.PUBLIC_SPECIAL_STONES_SALES_ENABLED==='true';
 const features=[['01','七つの宇宙ストーン','隕石と天然ガラスの誕生、特徴、伝承を知る。'],['02','特別な組み合わせ','人生の転機や願いに合わせた石選び。'],['03','宇宙の三石チャート','三つの石の象徴を視覚的に読み解く。'],['04','本物を選ぶために','来歴・鑑別・お手入れのチェックポイント。'],['05','七石の比較早見表','どの石が気になるか、違いをひと目で。'],['06','選択式ミニ診断','今、大切にしたい願いに寄り添う一粒を。']];
@@ -21,7 +25,7 @@ const features=[['01','七つの宇宙ストーン','隕石と天然ガラスの
  <div class="cosmic-copy">{chapter.intro.map(p=><p>{p}</p>)}</div>
  <section class="cosmic-gems">
   <p class="overline">THE COSMIC STONES</p><h2>七つの石、七つの誕生の物語</h2>
-  <div class="gem-grid">{gems.map((g,i)=><article>{g.stone ? <div class="gem-visual"><Visual stone={g.stone}/></div> : <div class="gem-symbol" aria-hidden="true">✧</div>}<div><span class="gem-no">0{i+1}</span><h3>{g.name}</h3><p>{g.theme}</p></div></article>)}</div>
+  <div class="gem-grid">{gems.map((g,i)=><article>{g.photo ? <figure class="gem-visual uploaded-gem"><img src={pathTo(g.photo)} alt={g.name+'のイメージ画像（AI生成）'} width="1254" height="1254" loading="lazy" decoding="async"/><figcaption>※ イメージ画像</figcaption></figure> : g.stone ? <div class="gem-visual"><Visual stone={g.stone}/></div> : <p class="gem-missing">画像準備中</p>}<div><span class="gem-no">0{i+1}</span><h3>{g.name}</h3><p>{g.theme}</p></div></article>)}</div>
  </section>
  <section class="cosmic-features"><p class="overline">INSIDE THE CHAPTER</p><h2>宇宙の石の秘密を、もっと深く。</h2><div class="feature-grid">{features.map(([n,t,d])=><article><span>{n}</span><h3>{t}</h3><p>{d}</p></article>)}</div></section>
  <section class="cosmic-offer"><p class="overline">CONTINUE THE STORY</p><h2>物語の続きを開く</h2><p>第二章の本編は購入者・対象月額会員限定です。</p><div class="plans"><div><strong>単品購入</strong><b>150円</b><small>税込・買い切り</small>{sales&&<a href={pathTo('members/?view=store&article=chapter-two')}>続きを読む →</a>}</div><div><strong>月額会員</strong><b>580円／月</b><small>税込・対象記事読み放題・自動更新</small>{sales&&<a href={pathTo('members/?view=store&article=chapter-two')}>月額会員になる →</a>}</div></div>{!sales&&<p>現在、販売準備中です。</p>}{membersEnabled&&<a class="member-link" href={pathTo('members/?view=account')}>会員登録・ログイン →</a>}</section>
@@ -66,4 +70,13 @@ const features=[['01','七つの宇宙ストーン','隕石と天然ガラスの
 .cosmic-features{background:linear-gradient(130deg,#f2edf5,#faf5ed 65%);border-color:#d7c8d9}
 @media(max-width:800px){.gem-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:640px){.cosmic-hero{grid-template-columns:1fr}.cosmic-copy{font-size:15px;line-height:1.9}.gem-grid{grid-template-columns:1fr}}
+/* Uniform specimen cards: actual uploaded illustrations, no dark placeholders. */
+.gem-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.gem-grid article{background:#fffdf9;border-color:#ded2dc;min-width:0}
+.uploaded-gem{position:relative;margin:0 auto 10px;background:#f9f8f7}
+.uploaded-gem img{display:block;width:100%;height:100%;object-fit:contain}
+.uploaded-gem figcaption{position:absolute;right:4px;bottom:4px;padding:2px 4px;background:#fffaf2eb;color:#6d625a;font-size:10px;line-height:1.4}
+.gem-missing{color:#79655f}
+@media(max-width:800px){.gem-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.gem-grid{grid-template-columns:1fr}.uploaded-gem{margin:0}.uploaded-gem figcaption{font-size:8px}}
 </style>
