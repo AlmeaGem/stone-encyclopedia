@@ -113,13 +113,13 @@ const features = [
             <div>
               <h3>{g.name}</h3>
               <p>{g.theme}</p>
-              <a class="gem-more" href="#rose-contents">
-                本編の内容を見る →
-              </a>
             </div>
           </article>
         ))}
       </div>
+      <a class="gem-more" href="#rose-contents">
+        本編の内容を見る ↓
+      </a>
     </section>
     <aside class="love-editorial">
       <p class="overline">HEALING & RESET</p>
@@ -285,8 +285,8 @@ const features = [
   }
   .gem-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
   }
   .gem-grid article,
   .feature-grid article {
@@ -296,9 +296,13 @@ const features = [
     background: #fdfaff;
     min-width: 0;
   }
+  .gem-grid article {
+    padding: 10px 8px;
+  }
   .gem-visual {
-    max-width: 164px;
-    margin: 0 auto 12px;
+    width: 100%;
+    max-width: 116px;
+    margin: 0 auto 6px;
   }
   .gem-visual :global(.stone-figure) {
     margin: 0 !important;
@@ -331,6 +335,16 @@ const features = [
     margin: 0;
     color: #65566f;
   }
+  .gem-grid h3 {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 4px 0;
+    overflow-wrap: anywhere;
+  }
+  .gem-grid p {
+    font-size: 12px;
+    line-height: 1.5;
+  }
   .rose-features,
   .rose-offer {
     margin-top: 28px;
@@ -342,7 +356,7 @@ const features = [
   .rose-placeholder {
     display: grid;
     place-items: center;
-    min-height: 90px;
+    min-height: 0;
     aspect-ratio: 1;
     border: 1px solid #d6c8e5;
     border-radius: 6px;
@@ -476,11 +490,25 @@ const features = [
     margin: -12px 0 18px;
   }
   .gem-more {
-    display: inline-block;
-    margin-top: 9px;
-    color: #694d82;
-    font-size: 12px;
-    text-underline-offset: 3px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    margin-top: 16px;
+    padding: 8px 20px;
+    border: 1px solid #b6a0c9;
+    border-radius: 7px;
+    background: #f2eaf9;
+    color: #574263;
+    font-size: 13px;
+    text-decoration: none;
+  }
+  .gem-more:hover {
+    text-decoration: underline;
+  }
+  .gem-more:focus-visible {
+    outline: 2px solid #694d82;
+    outline-offset: 3px;
   }
   .love-editorial {
     padding: 30px 24px;
@@ -508,6 +536,11 @@ const features = [
     font-size: 14px;
     line-height: 1.8;
   }
+  @media (max-width: 850px) {
+    .gem-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
   @media (max-width: 640px) {
     .rose {
       padding-block: 16px 40px;
@@ -523,17 +556,15 @@ const features = [
       margin: auto;
     }
     .gem-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
     }
     .gem-grid article {
-      display: grid;
-      grid-template-columns: 90px minmax(0, 1fr);
-      align-items: center;
-      text-align: left;
-      gap: 14px;
+      padding: 10px 6px;
     }
     .gem-visual {
-      margin: 0;
+      max-width: 92px;
+      margin: 0 auto 5px;
     }
     .feature-grid article {
       padding: 10px;
