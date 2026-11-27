@@ -4,12 +4,8 @@ test('diagnosis resumes after history navigation and can start over', async ({
   page,
 }) => {
   await page.goto('/');
-  if ((page.viewportSize()?.width ?? 0) < 768)
-    await page.locator('.mobile-luxury-menu a[href="/diagnosis/"]').click();
-  else
-    await page
-      .locator('nav[aria-label="メインメニュー"] a[href="/diagnosis/"]')
-      .click();
+  await page.locator('.report-offer a[href="/diagnosis/"]').click();
+  await expect(page).toHaveURL(/\/diagnosis\/$/);
   await page.locator('fieldset[data-step="1"] label').first().click();
   await page.locator('#next').click();
   await page.locator('fieldset[data-step="2"] label').first().click();

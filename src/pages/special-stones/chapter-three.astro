@@ -46,7 +46,7 @@ const features = [
         src={pathTo(chapter.cover)}
         width={chapter.width}
         height={chapter.height}
-        alt={chapter.title + 'の表紙（抽象的なイラスト）'}
+        alt={chapter.title + 'の表紙（三石のイメージ画像）'}
         fetchpriority="high"
       />
       <div>
@@ -62,6 +62,9 @@ const features = [
           黄金の輝きに、未来への願いを。
         </p>
         <p class="meta">無料紹介 · 本編150円（税込・買い切り）</p>
+        <a class="hero-contents-link" href="#golden-contents">
+          この章の内容を見る ↓
+        </a>
       </div>
     </header>
     <div class="golden-copy">
@@ -105,7 +108,7 @@ const features = [
         </div>
       </div>
     </section>
-    <section class="golden-features">
+    <section class="golden-features" id="golden-contents">
       <p class="overline">INSIDE THE CHAPTER</p>
       <h2>豊かさへの鍵を、もっと深く。</h2>
       <div class="feature-grid">
@@ -180,31 +183,41 @@ const features = [
     gap: 24px;
     padding: 26px;
     margin: 22px 0 26px;
-    border: 1px solid #b18b4c;
+    border: 1px solid #bda087;
     border-radius: 12px;
-    background: linear-gradient(125deg, #a87730, #f5e1b2 46%, #cfa45e);
-    box-shadow: inset 0 0 0 2px #fff4d8a8, 0 5px 16px #76512224;
-    color: #503514;
+    background:
+      radial-gradient(ellipse at 18% 10%, #fffaf5b3, transparent 45%),
+      radial-gradient(ellipse at 88% 96%, #fffdf5b3, transparent 50%),
+      linear-gradient(153deg, transparent 12%, #fffdf8d9 35%, transparent 64%),
+      linear-gradient(115deg, #e4cdb7, #f8eee3 52%, #dfc3aa);
+    box-shadow:
+      inset 0 0 0 2px #fffaf5c0,
+      0 5px 16px #74523c1a;
+    color: #503b30;
   }
   .golden-hero > .overline {
     grid-column: 1/-1;
     text-align: center;
   }
   .overline {
-    font: 11px/1.7 Georgia, serif;
+    font:
+      11px/1.7 Georgia,
+      serif;
     letter-spacing: 0.15em;
-    color: #815b2b;
+    color: #5e4436;
     margin: 0;
   }
   .golden-hero img {
     width: 100%;
     height: auto;
     border-radius: 5px;
-    box-shadow: 0 5px 12px #52381745;
+    box-shadow: 0 5px 12px #6a51402b;
   }
   .golden-hero h1 {
-    font: 500 clamp(25px, 4vw, 36px)/1.6 'Shippori Mincho', serif;
-    color: #4b3010;
+    font:
+      500 clamp(25px, 4vw, 36px)/1.6 'Shippori Mincho',
+      serif;
+    color: #49362b;
     margin: 12px 0;
   }
   .lead {
@@ -230,7 +243,9 @@ const features = [
     text-align: center;
   }
   .golden h2 {
-    font: 500 clamp(20px, 3vw, 25px)/1.65 'Shippori Mincho', serif;
+    font:
+      500 clamp(20px, 3vw, 25px)/1.65 'Shippori Mincho',
+      serif;
     margin: 8px 0 22px;
   }
   .gem-grid {
@@ -241,9 +256,9 @@ const features = [
   .gem-grid article,
   .feature-grid article {
     padding: 16px;
-    border: 1px solid #ddc398;
+    border: 1px solid #ddc9b6;
     border-radius: 9px;
-    background: #fffaf1;
+    background: #fffaf6;
     min-width: 0;
   }
   .gem-visual {
@@ -269,7 +284,9 @@ const features = [
   }
   .gem-grid h3,
   .feature-grid h3 {
-    font: 500 16px/1.6 'Shippori Mincho', serif;
+    font:
+      500 16px/1.6 'Shippori Mincho',
+      serif;
     margin: 5px 0;
   }
   .gem-grid p,
@@ -284,9 +301,9 @@ const features = [
   .golden-offer {
     margin-top: 28px;
     padding: 25px 18px;
-    border: 1px solid #d5b787;
+    border: 1px solid #d7c1ac;
     border-radius: 10px;
-    background: linear-gradient(130deg, #f5e7ca, #fffbf3 65%, #eed7aa);
+    background: linear-gradient(130deg, #f2e5d9, #fffbf7 65%, #ead8c8);
   }
   .feature-grid,
   .plans {
@@ -298,8 +315,10 @@ const features = [
     text-align: left;
   }
   .feature-grid span {
-    font: 21px Georgia, serif;
-    color: #976c30;
+    font:
+      21px Georgia,
+      serif;
+    color: #886849;
   }
   .plans {
     max-width: 620px;
@@ -310,13 +329,15 @@ const features = [
     flex-direction: column;
     gap: 7px;
     padding: 16px;
-    border: 1px solid #dfc49c;
+    border: 1px solid #dfcbb7;
     border-radius: 7px;
-    background: #fffdf7;
+    background: #fffdf9;
   }
   .plans b {
-    font: 500 24px 'Shippori Mincho', serif;
-    color: #76501e;
+    font:
+      500 24px 'Shippori Mincho',
+      serif;
+    color: #74543c;
   }
   .plans small,
   .fine,
@@ -324,17 +345,42 @@ const features = [
     font-size: 12px;
     line-height: 1.9;
   }
+  .hero-contents-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 8px 18px;
+    border: 1px solid #bda087;
+    border-radius: 7px;
+    background: #fff9f1;
+    color: #503b30;
+    font-size: 13px;
+    text-decoration: none;
+    box-shadow: 0 2px 6px #74523c16;
+  }
+  .hero-contents-link:focus-visible {
+    outline: 2px solid #765142;
+    outline-offset: 3px;
+  }
+  .golden-features {
+    scroll-margin-top: 20px;
+  }
   .member-link,
   .plans a {
     display: block;
     max-width: 360px;
     margin: 12px auto;
     padding: 14px;
-    border: 1px solid #a87e3b;
+    border: 1px solid #b3967b;
     border-radius: 8px;
-    background: linear-gradient(120deg, #cfaa6b, #f9e5b6 50%, #c79543);
-    box-shadow: 0 3px 0 #98704466, inset 0 0 0 1px #fff6df;
-    color: #4b3010;
+    background:
+      linear-gradient(153deg, transparent 12%, #fffdf8d9 35%, transparent 64%),
+      linear-gradient(115deg, #e4cdb7, #f8eee3 52%, #dfc3aa);
+    box-shadow:
+      0 3px 0 #a38a7245,
+      inset 0 0 0 1px #fffaf4;
+    color: #49362b;
     font-weight: 600;
     text-decoration: none;
   }
