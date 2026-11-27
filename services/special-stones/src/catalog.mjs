@@ -149,6 +149,91 @@ export const specialChapters = Object.freeze([
     bonus: '五つのルチル比較、願い別レシピ、黄金の三石チャートとミニ診断',
     illustrations: [],
   },
+  {
+    id: 'chapter-four',
+    number: '04',
+    title: '愛を惹き寄せる、魅惑の宝石たち',
+    headline: '誰かの心に、忘れられない輝きを。',
+    description:
+      'ルベライト、ピンクスピネル、ピンクサファイアを中心に、十二種類の石となりたい女性像、恋愛の段階別の石選びを紹介。',
+    cover: 'special-stones/04_chapter_rose.svg',
+    width: 1086,
+    height: 1448,
+    price: 150,
+    sellable: false,
+    contentSource: 'private-db',
+    themes: ['魅力・情熱', '出会い・良縁', '愛・自尊心'],
+    intro: [
+      '誰かの心に、忘れられない輝きを。',
+      '愛することだけではなく、愛されること。自分の魅力を大切にしながら、心から望む恋へ。',
+      '恋愛の段階によって、大切にしたい願いは少しずつ変わります。',
+      '十二種類の石と、あなたがなりたい女性像。愛の物語を紐解く特別な章です。',
+    ],
+    preview: [
+      {
+        name: 'ルベライト',
+        theme: '情熱・色気',
+        slug: 'rubellite',
+      },
+      {
+        name: 'ピンクスピネル',
+        theme: '個性・華やかさ',
+        slug: 'pink-spinel',
+      },
+      {
+        name: 'ピンクサファイア',
+        theme: '品格・誠実な愛',
+        slug: 'pink-sapphire',
+      },
+      {
+        name: 'ピンクトルマリン',
+        theme: '愛される魅力',
+        slug: 'pink-tourmaline',
+      },
+      {
+        name: 'モルガナイト',
+        theme: '深い愛情',
+        slug: 'morganite',
+      },
+      {
+        name: 'ストロベリークォーツ',
+        theme: '人気・親しみやすさ',
+        slug: 'strawberry-quartz',
+      },
+      {
+        name: 'インカローズ',
+        theme: '情熱・ときめき',
+        slug: 'rhodochrosite',
+      },
+      {
+        name: 'ローズクォーツ',
+        theme: '自己愛',
+        slug: 'rose-quartz',
+      },
+      {
+        name: 'ピンクシラームーンストーン',
+        theme: '良縁・出会い',
+        slug: 'pink-schiller-moonstone',
+      },
+      {
+        name: 'ピンクオパール',
+        theme: '柔らかな魅力',
+        slug: 'pink-opal',
+      },
+      {
+        name: 'ラブラドライト',
+        theme: '神秘性・自分の世界',
+        slug: 'labradorite',
+      },
+      {
+        name: 'クンツァイト',
+        theme: '慈愛・調和',
+        slug: 'kunzite',
+      },
+    ],
+    bonus: '恋愛の四段階、願い別レシピ、なりたい女性像から選ぶミニ診断',
+    illustrations: [],
+  },
 ]);
 export const membershipPrice = 580;
 export const chapterById = id => specialChapters.find(c=>c.id===id);
