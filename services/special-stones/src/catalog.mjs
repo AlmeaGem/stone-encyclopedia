@@ -481,8 +481,7 @@ export const specialChapters = Object.freeze([
         slug: 'black-rutile',
       },
     ],
-    bonus:
-      '五つの守り方、邪視除けの歴史、願い別レシピ、空間の守護とミニ診断',
+    bonus: '五つの守り方、邪視除けの歴史、願い別レシピ、空間の守護とミニ診断',
     illustrations: [],
   },
 ]);

@@ -7,6 +7,9 @@ import { chapterById } from '../../../services/special-stones/src/catalog.mjs';
 import { stones } from '../../lib/content';
 import Visual from '../../components/Visual.astro';
 const chapter = chapterById('chapter-six')!;
+const protectionArtReady = existsSync(
+  resolve('public/special-stones/chapter-six-protection-art.png'),
+);
 const dedicated = new Set([
   'black-diamond',
   'aegirine',
@@ -76,15 +79,28 @@ const features = [
           <span>破邪・邪視除け・霊的守護。</span>
           <span>古くから受け継がれる祈りの物語。</span>
         </p>
-        <p class="hero-promise">
-          十四の宝石に秘められた、破邪と守護の物語。
-        </p>
+        <p class="hero-promise">十四の宝石に秘められた、破邪と守護の物語。</p>
         <p class="meta">無料紹介 · 本編150円（税込・買い切り）</p>
         <a class="hero-contents-link" href="#rose-contents">
           無料で内容を見る ↓
         </a>
       </div>
     </header>
+    {
+      protectionArtReady && (
+        <figure class="protection-art">
+          <img
+            src={pathTo('special-stones/chapter-six-protection-art.png')}
+            alt="漆黒の宝石と銀色の護符を描いた守護のイメージ"
+            width="1536"
+            height="1024"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>THE ART OF PROTECTION · 破邪と守護のイメージ</figcaption>
+        </figure>
+      )
+    }
     <div class="rose-copy">
       {chapter.intro.map((p) => (
         <p>{p}</p>
@@ -138,9 +154,7 @@ const features = [
     <aside class="love-editorial breakthrough">
       <p class="overline">FIVE SHIELDS</p>
       <h2>破邪・浄化・防御・反射・断絶。</h2>
-      <p>
-        五つの守り方を知り、自分の願いに合う石を選ぶための特集です。
-      </p>
+      <p>五つの守り方を知り、自分の願いに合う石を選ぶための特集です。</p>
     </aside>
     <section class="rose-features" id="rose-contents">
       <p class="overline">INSIDE THE CHAPTER</p>
@@ -268,6 +282,23 @@ const features = [
   }
   .meta {
     font-size: 12px;
+  }
+  .protection-art {
+    max-width: 720px;
+    margin: 24px auto;
+    text-align: center;
+  }
+  .protection-art img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 9px;
+    border: 1px solid #aaa6b3;
+  }
+  .protection-art figcaption {
+    margin-top: 8px;
+    font-size: 11px;
+    color: #686471;
   }
   .rose-copy {
     max-width: 660px;
