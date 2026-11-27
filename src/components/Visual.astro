@@ -31,7 +31,7 @@ const cloudOrigin = cloudPhotoOrigin(import.meta.env.PUBLIC_PHOTO_API_ORIGIN);
             ['ai-generated', 'illustrative-photo'].includes(
               photo.imageKind || '',
             )
-              ? `${stone.name}のイメージ画像${photo.imageKind === 'ai-generated' ? '（AI生成）' : ''}`
+              ? `${stone.name}のイメージ画像`
               : photo.alt || `${stone.name}の承認済み写真`
           }
         />
