@@ -106,6 +106,27 @@ export function createHandler(
       (url.pathname === '/api/checkout' && config.salesEnabled !== true) ||
       (['/api/stripe/webhook','/api/subscription/cancel'].includes(url.pathname) && config.billingEnabled !== true)
     )) return response(503, { error: 'Billing unavailable' });
+    if (config.livemode === true && request.method === 'POST' &&
+      ['/api/auth/recovery-request','/api/auth/recovery-complete'].includes(url.pathname)) {
+      if (origin !== config.publicOrigin) return response(403, { error: 'Forbidden origin' });
+      let body;
+      try { body = await getJson(request); } catch { return response(400, { error: 'Invalid input' }); }
+      if (!body || typeof body.email !== 'string' || body.email.length > 254 ||
+        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email)) return response(400, { error: 'Invalid input' });
+      if (url.pathname === '/api/auth/recovery-request') {
+        // Never reveal whether the address belongs to an account.
+        try { await auth.requestPasswordReset(body.email); } catch {}
+        return response(200, { accepted: true });
+      }
+      if (!validCredentials(body.email, body.password) || typeof body.code !== 'string' || !/^\d{8}$/.test(body.code))
+        return response(400, { error: 'Invalid input' });
+      try {
+        await auth.completePasswordReset(body.email, body.code, body.password);
+        return json(200, { password_reset: true }, { ...cors, 'Set-Cookie': clearRefreshCookie(cookieName) });
+      } catch {
+        return response(400, { error: 'Unable to reset password' });
+      }
+    }
     if (url.pathname === '/api/stripe/webhook' && request.method === 'POST') {
       let event;
       try {
