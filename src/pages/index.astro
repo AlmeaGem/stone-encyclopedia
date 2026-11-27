@@ -125,7 +125,7 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
             </svg>
           </span>
           <span>
-            <strong>占い・スピリチュアル</strong>
+            <strong>占い・四柱推命</strong>
             <small>FORTUNE &amp; GUIDANCE</small>
           </span>
         </a>
@@ -159,7 +159,7 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
             <span>212種類の石を詳しく見る ↗</span>
           </span>
         </a>
-        <a href={pathTo('bracelet-designer/')}>
+        <a class="designer-desktop-entry" href={pathTo('bracelet-designer/')}>
           <img
             class="entry-art"
             src={pathTo('decorative/star-rose-cutout.webp')}
@@ -181,7 +181,7 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
             alt=""
           />
           <span class="entry-copy">
-            <strong>占い・スピリチュアル</strong>
+            <strong>占い・四柱推命</strong>
             <span>算命学・四柱推命・風水など ↗</span>
           </span>
         </a>
@@ -473,6 +473,17 @@ const picks = ['s107', 's134', 's110', 's133', 's205', 's187'].map((id) =>
 
 <style>
   /* A featured service in the existing ALMEA rose-champagne palette. */
+  :global(body[data-home='true']) .mobile-luxury-menu a.luxury-designer,
+  :global(body[data-home='true']) .entry-actions a.designer-desktop-entry {
+    background:#fbf8f3;
+    color:#463b35;
+    border:1px solid #eee6dd;
+    box-shadow:inset 0 1px #fff,0 3px 8px #7c67551a;
+  }
+  :global(body[data-home='true']) .mobile-luxury-menu a.luxury-designer .luxury-icon{color:#b68e61}
+  :global(body[data-home='true']) .mobile-luxury-menu a.luxury-designer strong,
+  :global(body[data-home='true']) .mobile-luxury-menu a.luxury-designer small{color:inherit;text-shadow:none}
+  
   :global(body[data-home='true']) .mobile-luxury-menu a.fortune-nav-entry,
   :global(body[data-home='true']) .entry-actions a.fortune-desktop-entry {
     position:relative;
