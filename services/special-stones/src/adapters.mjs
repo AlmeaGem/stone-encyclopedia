@@ -38,6 +38,20 @@ export function createAdapters(c) {
         if (error) throw new Error('Auth failed');
         return data;
       },
+      requestPasswordReset: async (email) => {
+        const { error } = await makeAuth().auth.resetPasswordForEmail(email, { redirectTo: c.testReturnUrl });
+        if (error) throw new Error('Recovery request failed');
+      },
+      completePasswordReset: async (email, code, password) => {
+        // Use a user-scoped, short-lived recovery session, never the admin API.
+        const client = makeAuth();
+        const verified = await client.auth.verifyOtp({ email, token: code, type: 'recovery' });
+        if (verified.error || !verified.data.session || !verified.data.user) throw new Error('Recovery verification failed');
+        const result = await client.auth.updateUser({ password });
+        if (result.error) throw new Error('Password update failed');
+        // Password update is complete even if subsequent session cleanup fails.
+        try { await client.auth.signOut({ scope: 'global' }); } catch {}
+      },
       refresh: async (refreshToken) => {
         const { data, error } = await makeAuth().auth.refreshSession({
           refresh_token: refreshToken,
