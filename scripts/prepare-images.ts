@@ -2,6 +2,7 @@ import { readFile, mkdir, rm, writeFile } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { z } from 'zod';
+import sharp from 'sharp';
 import { candidateSchema } from '../src/lib/schema';
 import { validateApproved } from './image-policy';
 import { publicImage, sha256 } from './public-image';
@@ -33,6 +34,23 @@ export async function prepareImages(root: string) {
       height: optimized.height,
     });
   }
+  // Chapter II uses existing public illustrations, embedded at thumbnail resolution
+  // so the SVG cover renders correctly in <img> without external image references.
+  const coverDir=join(root,'public/special-stones');
+  let cover=await readFile(join(coverDir,'02_chapter_cover.svg'),'utf8');
+  const specimenPaths=[
+    join(coverDir,'gibeon.png'),
+    join(root,'assets/approved-images/s104/e7bad8ebb98bad8af460ab6bd51c5d0d6044f2a072c8a4a1b8a9a35be15c7604.webp'),
+    join(coverDir,'libyan-glass.png'),
+  ];
+  const thumbs=await Promise.all(specimenPaths.map(p=>sharp(p).resize(340,340,{fit:'contain',background:'#f8f4ef'}).flatten({background:'#f8f4ef'}).jpeg({quality:85}).toBuffer()));
+  const frames=[[140,758,250],[398,650,290],[696,758,250]];
+  const frameMarkup=frames.map(([x,y,w],i)=>'<g><rect x="'+(x-6)+'" y="'+(y-6)+'" width="'+(w+12)+'" height="'+(w+12)+'" rx="18" fill="#cbb297"/><rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+w+'" rx="12" fill="#faf5ed"/><clipPath id="stoneClip'+i+'"><rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+w+'" rx="12"/></clipPath><image x="'+x+'" y="'+y+'" width="'+w+'" height="'+w+'" href="data:image/jpeg;base64,'+thumbs[i].toString('base64')+'" clip-path="url(#stoneClip'+i+')"/></g>').join('');
+  const placeholder=/<g stroke="#e1c9a8" stroke-width="1\.5"><circle cx="270"[\s\S]*?<\/g>/;
+  if(!placeholder.test(cover))throw Error('Chapter II cover template has changed');
+  cover=cover.replace(placeholder,()=>frameMarkup);
+  cover=cover.replace('軌道と三つの石を抽象的に表現。','軌道と三つの石のイメージ画像を使用。').replace('x="270" y="1020"','x="265" y="1046"').replace('x="543" y="946"','x="543" y="974"').replace('x="816" y="1020"','x="821" y="1046"');
+  await writeFile(join(coverDir,'02_chapter_starlight.svg'),cover);
   // Build-only provenance: never copied into public/ or dist/.
   await mkdir(join(root, '.astro'), { recursive: true });
   await writeFile(
