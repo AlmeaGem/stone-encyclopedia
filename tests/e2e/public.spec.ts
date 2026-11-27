@@ -614,9 +614,13 @@ test('free and planned paid services are explicit before answering, with no purc
 }) => {
   await page.goto('/');
   await expect(page.locator('.entry-actions a')).toHaveCount(3);
-  await expect(page.locator('.entry-actions a').nth(2)).toContainText(
-    '結果790円',
-  );
+  const fortune = page.locator('.entry-actions a[href="/fortune/"]');
+  await expect(fortune).toHaveCount(1);
+  await expect(fortune).toContainText('占い・四柱推命');
+  await expect(page.locator('.report-offer')).toContainText('790円');
+  await expect(
+    page.locator('.report-offer a[href="/diagnosis/"]'),
+  ).toBeVisible();
   await expect(page.locator('.home-service-details summary')).toBeVisible();
   await page.locator('.home-service-details summary').click();
   await expect(page.locator('.comparison-card')).toHaveCount(2);
