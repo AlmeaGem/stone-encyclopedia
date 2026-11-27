@@ -74,6 +74,17 @@ if (salesRequested && !salesEnabled) {
     <section class="special-reveal" aria-labelledby="reveal-title">
       <p class="special-eyebrow">BEHIND THE JEWELS</p><h2 id="reveal-title">この先で明かされる、宝石の秘密</h2>
       <ul>{chapter.preview.map(g=><li><strong>{g.name}</strong> ｜ {g.theme}</li>)}<li>{chapter.bonus}</li></ul>
+      <div class="bonus-preview">
+        <p class="special-eyebrow">INSIDE THE CHAPTER</p>
+        <h3>読むだけではなく、選ぶ楽しさも。</h3>
+        <div class="bonus-grid">
+          <div><span aria-hidden="true">01</span><strong>三石の比較早見表</strong><p>願いに合わせた石選びのヒントを一目で。</p></div>
+          <div><span aria-hidden="true">02</span><strong>組み合わせ実践レシピ</strong><p>二石・三石の組み合わせと装いへの取り入れ方。</p></div>
+          <div><span aria-hidden="true">03</span><strong>三角関係性チャート</strong><p>三つの宝石の象徴を視覚的に楽しめます。</p></div>
+          <div><span aria-hidden="true">04</span><strong>選択式ミニ診断</strong><p>今大切にしたい願いから、石選びのヒントを。</p></div>
+        </div>
+        <p class="bonus-note">誕生石・鉱物の特徴、お手入れの注意点も収録。</p>
+      </div>
       <div class="sealed" aria-hidden="true"><span></span><span></span><span></span></div>
       <p class="sealed-label">物語の続きは、購入後にお楽しみいただけます。</p>
     </section>
@@ -240,4 +251,13 @@ if (salesRequested && !salesEnabled) {
       line-height: 1.9;
     }
   }
+  .bonus-preview{max-width:620px;margin:1.6rem auto 0;text-align:left}
+  .bonus-preview h3{text-align:center;font:500 19px/1.6 'Shippori Mincho',serif;color:#4b3833;margin:.55rem 0 1rem}
+  .bonus-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .bonus-grid>div{border:1px solid #dec7b6;border-radius:7px;background:#fffaf6;padding:12px}
+  .bonus-grid span{display:block;font:18px Georgia,serif;color:#9c725d;margin-bottom:5px}
+  .bonus-grid strong{display:block;color:#604339;font-weight:500;font-size:15px;line-height:1.6}
+  .bonus-grid p,.bonus-note{font-size:12px;line-height:1.8;color:#6d5750;margin:.4rem 0 0}
+  .bonus-note{text-align:center;margin-top:.9rem}
+  @media(max-width:520px){.bonus-grid{gap:8px}.bonus-grid>div{padding:10px}.bonus-grid strong{font-size:13px}.bonus-grid p{font-size:12px}}
 </style>
