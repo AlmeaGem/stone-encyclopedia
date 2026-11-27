@@ -136,3 +136,21 @@ test('production signup requires terms acceptance before calling auth', async ()
   assert.equal((await accepted.json()).confirmation_required,true);
   assert.equal(calls,1);
 });
+
+test('password recovery requires same origin and valid code; never exposes session', async () => {
+  const config=readProductionConfig({...env,SPECIAL_STONES_LIVE_SALES_ENABLED:'false',SPECIAL_STONES_LIVE_MEMBERS_ENABLED:'true'});
+  let requests=0, completions=0;
+  const handle=createHandler({auth:{
+    requestPasswordReset:async()=>{requests++;throw Error('unknown email');},
+    completePasswordReset:async(email,code,password)=>{completions++;assert.equal(code,'12345678');assert.equal(password,'new-fixture-password');}
+  }},config);
+  const call=(route,body,origin=config.publicOrigin)=>handle(new Request(config.publicOrigin+'/api/auth/'+route,{method:'POST',headers:{'Content-Type':'application/json','Origin':origin},body:JSON.stringify(body)}));
+  const email='member@example.com';
+  assert.equal((await call('recovery-request',{email},'https://other.example')).status,403);
+  const result=await call('recovery-request',{email});
+  assert.deepEqual(await result.json(),{accepted:true});assert.equal(requests,1);
+  assert.equal((await call('recovery-complete',{email,code:'123',password:'new-fixture-password'})).status,400);
+  assert.equal(completions,0);
+  const done=await call('recovery-complete',{email,code:'12345678',password:'new-fixture-password'});
+  assert.equal(done.status,200);assert.deepEqual(await done.json(),{password_reset:true});assert.match(done.headers.get('set-cookie'),/Max-Age=0/);assert.equal(completions,1);
+});
