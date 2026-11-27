@@ -1,10 +1,12 @@
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
 export function createAdapters(c) {
-  const stripe = c.stripeSecret ? new Stripe(c.stripeSecret, {
-    maxNetworkRetries: 2,
-    httpClient: Stripe.createFetchHttpClient(),
-  }) : null;
+  const stripe = c.stripeSecret
+    ? new Stripe(c.stripeSecret, {
+        maxNetworkRetries: 2,
+        httpClient: Stripe.createFetchHttpClient(),
+      })
+    : null;
   const makeAuth = () =>
     createClient(c.supabaseUrl, c.supabaseAnon, {
       auth: {
@@ -33,24 +35,35 @@ export function createAdapters(c) {
         const { data, error } = await makeAuth().auth.signUp({
           email,
           password,
-          ...(c.livemode === true ? { options: { emailRedirectTo: c.testReturnUrl } } : {}),
+          ...(c.livemode === true
+            ? { options: { emailRedirectTo: c.testReturnUrl } }
+            : {}),
         });
         if (error) throw new Error('Auth failed');
         return data;
       },
       requestPasswordReset: async (email) => {
-        const { error } = await makeAuth().auth.resetPasswordForEmail(email, { redirectTo: c.testReturnUrl });
+        const { error } = await makeAuth().auth.resetPasswordForEmail(email, {
+          redirectTo: c.testReturnUrl,
+        });
         if (error) throw new Error('Recovery request failed');
       },
       completePasswordReset: async (email, code, password) => {
         // Use a user-scoped, short-lived recovery session, never the admin API.
         const client = makeAuth();
-        const verified = await client.auth.verifyOtp({ email, token: code, type: 'recovery' });
-        if (verified.error || !verified.data.session || !verified.data.user) throw new Error('Recovery verification failed');
+        const verified = await client.auth.verifyOtp({
+          email,
+          token: code,
+          type: 'recovery',
+        });
+        if (verified.error || !verified.data.session || !verified.data.user)
+          throw new Error('Recovery verification failed');
         const result = await client.auth.updateUser({ password });
         if (result.error) throw new Error('Password update failed');
         // Password update is complete even if subsequent session cleanup fails.
-        try { await client.auth.signOut({ scope: 'global' }); } catch {}
+        try {
+          await client.auth.signOut({ scope: 'global' });
+        } catch {}
       },
       refresh: async (refreshToken) => {
         const { data, error } = await makeAuth().auth.refreshSession({
@@ -102,7 +115,10 @@ export function createAdapters(c) {
       canView: (uid, id) =>
         rpc('special_stones_can_view', { p_user_id: uid, p_article_id: id }),
       readSupplement: (uid, id) =>
-        rpc('special_stones_read_supplement', { p_user_id: uid, p_article_id: id }),
+        rpc('special_stones_read_supplement', {
+          p_user_id: uid,
+          p_article_id: id,
+        }),
       accountSummary: (uid) =>
         rpc('special_stones_account_summary', { p_user_id: uid }),
       activeSubscription: (uid) =>

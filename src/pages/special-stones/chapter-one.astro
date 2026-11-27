@@ -7,10 +7,21 @@ import { chapterById } from '../../../services/special-stones/src/catalog.mjs';
 import { stones } from '../../lib/content';
 import Visual from '../../components/Visual.astro';
 const chapter = chapterById('chapter-one')!;
-const gems = chapter.preview.map(g=>({...g,stone:stones.find(s=>s.slug===g.slug||s.name===g.name)}));
-const membersEnabled = launched && (import.meta.env.PUBLIC_SPECIAL_STONES_MEMBERS_ENABLED === 'true' || import.meta.env.PUBLIC_SPECIAL_STONES_SALES_ENABLED === 'true') && new URL(canonical()).origin === 'https://almeagem.com' && import.meta.env.BASE_URL === '/';
-const coverAvailable = existsSync(resolve('public/special-stones/01_chapter_cover.png'));
-const salesRequested = import.meta.env.PUBLIC_SPECIAL_STONES_SALES_ENABLED === 'true';
+const gems = chapter.preview.map((g) => ({
+  ...g,
+  stone: stones.find((s) => s.slug === g.slug || s.name === g.name),
+}));
+const membersEnabled =
+  launched &&
+  (import.meta.env.PUBLIC_SPECIAL_STONES_MEMBERS_ENABLED === 'true' ||
+    import.meta.env.PUBLIC_SPECIAL_STONES_SALES_ENABLED === 'true') &&
+  new URL(canonical()).origin === 'https://almeagem.com' &&
+  import.meta.env.BASE_URL === '/';
+const coverAvailable = existsSync(
+  resolve('public/special-stones/01_chapter_cover.png'),
+);
+const salesRequested =
+  import.meta.env.PUBLIC_SPECIAL_STONES_SALES_ENABLED === 'true';
 const salesEnabled =
   salesRequested &&
   launched &&
@@ -29,10 +40,15 @@ if (salesRequested && !salesEnabled) {
 >
   <article class="special-chapter wrap">
     <nav aria-label="現在地" class="special-breadcrumb">
-      <a href={pathTo()}>ホーム</a> / <a href={pathTo('premium/')}>プレミアム</a> / <a href={pathTo('special-stones/')}>スペシャルストーン</a> / 第一章
+      <a href={pathTo()}>ホーム</a> /{' '}
+      <a href={pathTo('premium/')}>プレミアム</a> /{' '}
+      <a href={pathTo('special-stones/')}>スペシャルストーン</a> / 第一章
     </nav>
     <p class="special-eyebrow">ALMÉA GEM · SPECIAL STONES · CHAPTER I</p>
-    <h1><span>三つの宝石が教えてくれる、</span><span>願いの叶え方</span></h1>
+    <h1>
+      <span>三つの宝石が教えてくれる、</span>
+      <span>願いの叶え方</span>
+    </h1>
     <p class="article-meta">無料紹介 · 本編150円（税込・買い切り）</p>
     {coverAvailable && (
       <img
@@ -68,24 +84,65 @@ if (salesRequested && !salesEnabled) {
       </p>
     </div>
     <section class="special-gems" aria-labelledby="gem-title">
-      <p class="special-eyebrow">THE THREE ROYAL GEMS</p><h2 id="gem-title">美しさだけでは終わらない、三つの宝石の秘密。</h2>
-      <div class="special-gem-grid">{gems.map(g=><article>{g.stone && <div class="gem-visual"><Visual stone={g.stone}/></div>}<h3>{g.name}</h3><p>{g.theme}</p></article>)}</div>
+      <p class="special-eyebrow">THE THREE ROYAL GEMS</p>
+      <h2 id="gem-title">美しさだけでは終わらない、三つの宝石の秘密。</h2>
+      <div class="special-gem-grid">
+        {gems.map((g) => (
+          <article>
+            {g.stone && (
+              <div class="gem-visual">
+                <Visual stone={g.stone} />
+              </div>
+            )}
+            <h3>{g.name}</h3>
+            <p>{g.theme}</p>
+          </article>
+        ))}
+      </div>
     </section>
     <section class="special-reveal" aria-labelledby="reveal-title">
-      <p class="special-eyebrow">BEHIND THE JEWELS</p><h2 id="reveal-title">この先で明かされる、宝石の秘密</h2>
-      <ul>{chapter.preview.map(g=><li><strong>{g.name}</strong> ｜ {g.theme}</li>)}<li>{chapter.bonus}</li></ul>
+      <p class="special-eyebrow">BEHIND THE JEWELS</p>
+      <h2 id="reveal-title">この先で明かされる、宝石の秘密</h2>
+      <ul>
+        {chapter.preview.map((g) => (
+          <li>
+            <strong>{g.name}</strong> ｜ {g.theme}
+          </li>
+        ))}
+        <li>{chapter.bonus}</li>
+      </ul>
       <div class="bonus-preview">
         <p class="special-eyebrow">INSIDE THE CHAPTER</p>
         <h3>読むだけではなく、選ぶ楽しさも。</h3>
         <div class="bonus-grid">
-          <div><span aria-hidden="true">01</span><strong>三石の比較早見表</strong><p>願いに合わせた石選びのヒントを一目で。</p></div>
-          <div><span aria-hidden="true">02</span><strong>組み合わせ実践レシピ</strong><p>二石・三石の組み合わせと装いへの取り入れ方。</p></div>
-          <div><span aria-hidden="true">03</span><strong>三角関係性チャート</strong><p>三つの宝石の象徴を視覚的に楽しめます。</p></div>
-          <div><span aria-hidden="true">04</span><strong>選択式ミニ診断</strong><p>今大切にしたい願いから、石選びのヒントを。</p></div>
+          <div>
+            <span aria-hidden="true">01</span>
+            <strong>三石の比較早見表</strong>
+            <p>願いに合わせた石選びのヒントを一目で。</p>
+          </div>
+          <div>
+            <span aria-hidden="true">02</span>
+            <strong>組み合わせ実践レシピ</strong>
+            <p>二石・三石の組み合わせと装いへの取り入れ方。</p>
+          </div>
+          <div>
+            <span aria-hidden="true">03</span>
+            <strong>三角関係性チャート</strong>
+            <p>三つの宝石の象徴を視覚的に楽しめます。</p>
+          </div>
+          <div>
+            <span aria-hidden="true">04</span>
+            <strong>選択式ミニ診断</strong>
+            <p>今大切にしたい願いから、石選びのヒントを。</p>
+          </div>
         </div>
         <p class="bonus-note">誕生石・鉱物の特徴、お手入れの注意点も収録。</p>
       </div>
-      <div class="sealed" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="sealed" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       <p class="sealed-label">物語の続きは、購入後にお楽しみいただけます。</p>
     </section>
     <section class="special-offer" aria-labelledby="offer-title">
@@ -97,27 +154,52 @@ if (salesRequested && !salesEnabled) {
           <strong>単品購入</strong>
           <span>税込150円／記事</span>
           <small>買い切り・期限なし</small>
-          {salesEnabled && <a class="special-buy" href="https://almeagem.com/members/?view=store&article=chapter-one">150円で続きを読む</a>}
+          {salesEnabled && (
+            <a
+              class="special-buy"
+              href="https://almeagem.com/members/?view=store&article=chapter-one"
+            >
+              150円で続きを読む
+            </a>
+          )}
         </div>
         <div>
           <strong>月額会員</strong>
           <span>税込580円／月</span>
           <small>スペシャルストーン全記事が対象・毎月自動更新</small>
-          {salesEnabled && <a class="special-buy" href="https://almeagem.com/members/?view=store&article=chapter-one">月額会員になる</a>}
+          {salesEnabled && (
+            <a
+              class="special-buy"
+              href="https://almeagem.com/members/?view=store&article=chapter-one"
+            >
+              月額会員になる
+            </a>
+          )}
         </div>
       </div>
       {salesEnabled ? (
         <p class="special-pending">
-          <a href="https://almeagem.com/members/?view=library">購入済みの記事を読む</a>
+          <a href="https://almeagem.com/members/?view=library">
+            購入済みの記事を読む
+          </a>
         </p>
       ) : (
         <p class="special-pending" role="status">
           現在、販売準備中です。販売開始まで購入操作はできません。
         </p>
       )}
-      {membersEnabled && !salesEnabled && <a class="special-buy" href="https://almeagem.com/members/?view=account">会員登録・ログイン</a>}
+      {membersEnabled && !salesEnabled && (
+        <a
+          class="special-buy"
+          href="https://almeagem.com/members/?view=account"
+        >
+          会員登録・ログイン
+        </a>
+      )}
     </section>
-    <p class="back-list"><a href={pathTo("special-stones/")}>スペシャルストーン記事一覧に戻る →</a></p>
+    <p class="back-list">
+      <a href={pathTo('special-stones/')}>スペシャルストーン記事一覧に戻る →</a>
+    </p>
   </article>
 </Page>
 <style>
@@ -209,38 +291,176 @@ if (salesRequested && !salesEnabled) {
     color: #786a65;
     font-size: 0.85rem;
   }
-  .special-gems,.special-reveal{margin:36px auto 0;text-align:center}
-  .special-gems h2,.special-reveal h2{font:500 clamp(19px,2.6vw,24px)/1.55 'Shippori Mincho',serif;color:#4b3833}
-  .special-gem-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}
-  .special-gem-grid article{min-width:0;background:#fffcf8;padding:.7rem .5rem 1rem;border-top:1px solid #d5baa0}
-  .special-gem-grid h3{font:500 17px 'Shippori Mincho',serif;margin:.6rem 0}
-  .special-gem-grid p{font-size:13px;line-height:1.7;margin:0}
-  .gem-visual{width:100%;max-width:190px;margin:0 auto 10px}
-  .gem-visual :global(.stone-figure){margin:0!important;padding:0!important;width:100%;max-width:none}
-  .gem-visual :global(.stone-image-frame){margin:0!important;width:100%;height:auto;aspect-ratio:1;position:relative;min-height:0}
-  .gem-visual :global(.stone-image-frame img){display:block;width:100%;height:100%;object-fit:contain}
-  .gem-visual :global(.stone-placeholder){width:100%;min-height:0;aspect-ratio:1}
-  .article-meta{text-align:center;color:#80675c;font-size:12px;margin:0}
-  h1 span{display:block;text-wrap:balance}
-  .special-gem-grid article{display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
-  .special-gem-grid h3{margin:8px 0 5px}
-  .special-offer{margin-top:36px;padding:24px 16px}
-  .special-plans span{font-size:18px}
-  .special-reveal{background:linear-gradient(180deg,#fffcf8,#f8ede7);padding:2rem 1.2rem}
-  .special-reveal ul{text-align:left;list-style:none;padding:0;line-height:2;max-width:34rem;margin:1.5rem auto}
-  .special-reveal li{border-bottom:1px solid #e9d9d0;padding:.6rem 0;font-size:.9rem}
-  .sealed{display:grid;gap:.7rem;max-width:29rem;margin:2rem auto .7rem;mask-image:linear-gradient(#000,transparent)}
-  .sealed span{height:.45rem;background:#b9a08e;border-radius:1rem;opacity:.28}.sealed span:last-child{width:70%}
-  .sealed-label,.back-list{font-size:.85rem;color:#786a65;text-align:center}.back-list{margin:2rem auto}
+  .special-gems,
+  .special-reveal {
+    margin: 36px auto 0;
+    text-align: center;
+  }
+  .special-gems h2,
+  .special-reveal h2 {
+    font:
+      500 clamp(19px, 2.6vw, 24px)/1.55 'Shippori Mincho',
+      serif;
+    color: #4b3833;
+  }
+  .special-gem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin: 18px 0;
+  }
+  .special-gem-grid article {
+    min-width: 0;
+    background: #fffcf8;
+    padding: 0.7rem 0.5rem 1rem;
+    border-top: 1px solid #d5baa0;
+  }
+  .special-gem-grid h3 {
+    font:
+      500 17px 'Shippori Mincho',
+      serif;
+    margin: 0.6rem 0;
+  }
+  .special-gem-grid p {
+    font-size: 13px;
+    line-height: 1.7;
+    margin: 0;
+  }
+  .gem-visual {
+    width: 100%;
+    max-width: 190px;
+    margin: 0 auto 10px;
+  }
+  .gem-visual :global(.stone-figure) {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    max-width: none;
+  }
+  .gem-visual :global(.stone-image-frame) {
+    margin: 0 !important;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    position: relative;
+    min-height: 0;
+  }
+  .gem-visual :global(.stone-image-frame img) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .gem-visual :global(.stone-placeholder) {
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: 1;
+  }
+  .article-meta {
+    text-align: center;
+    color: #80675c;
+    font-size: 12px;
+    margin: 0;
+  }
+  h1 span {
+    display: block;
+    text-wrap: balance;
+  }
+  .special-gem-grid article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .special-gem-grid h3 {
+    margin: 8px 0 5px;
+  }
+  .special-offer {
+    margin-top: 36px;
+    padding: 24px 16px;
+  }
+  .special-plans span {
+    font-size: 18px;
+  }
+  .special-reveal {
+    background: linear-gradient(180deg, #fffcf8, #f8ede7);
+    padding: 2rem 1.2rem;
+  }
+  .special-reveal ul {
+    text-align: left;
+    list-style: none;
+    padding: 0;
+    line-height: 2;
+    max-width: 34rem;
+    margin: 1.5rem auto;
+  }
+  .special-reveal li {
+    border-bottom: 1px solid #e9d9d0;
+    padding: 0.6rem 0;
+    font-size: 0.9rem;
+  }
+  .sealed {
+    display: grid;
+    gap: 0.7rem;
+    max-width: 29rem;
+    margin: 2rem auto 0.7rem;
+    mask-image: linear-gradient(#000, transparent);
+  }
+  .sealed span {
+    height: 0.45rem;
+    background: #b9a08e;
+    border-radius: 1rem;
+    opacity: 0.28;
+  }
+  .sealed span:last-child {
+    width: 70%;
+  }
+  .sealed-label,
+  .back-list {
+    font-size: 0.85rem;
+    color: #786a65;
+    text-align: center;
+  }
+  .back-list {
+    margin: 2rem auto;
+  }
   @media (max-width: 520px) {
-    .special-gem-grid{grid-template-columns:1fr;gap:8px}
-    .special-gem-grid article{display:grid;grid-template-columns:92px minmax(0,1fr);column-gap:12px;row-gap:4px;align-items:center;text-align:left;padding:9px}
-    .gem-visual{grid-row:span 2;max-width:92px;margin:0}
-    .special-gem-grid h3{font-size:16px;margin:0;align-self:end}
-    .special-gem-grid p{font-size:13px;align-self:start}
-    .special-cover{width:min(76%,290px)}
-    h1{font-size:23px}
-    .special-copy p{margin-bottom:12px}
+    .special-gem-grid {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .special-gem-grid article {
+      display: grid;
+      grid-template-columns: 92px minmax(0, 1fr);
+      column-gap: 12px;
+      row-gap: 4px;
+      align-items: center;
+      text-align: left;
+      padding: 9px;
+    }
+    .gem-visual {
+      grid-row: span 2;
+      max-width: 92px;
+      margin: 0;
+    }
+    .special-gem-grid h3 {
+      font-size: 16px;
+      margin: 0;
+      align-self: end;
+    }
+    .special-gem-grid p {
+      font-size: 13px;
+      align-self: start;
+    }
+    .special-cover {
+      width: min(76%, 290px);
+    }
+    h1 {
+      font-size: 23px;
+    }
+    .special-copy p {
+      margin-bottom: 12px;
+    }
     .special-chapter {
       padding-top: 1.5rem;
     }
@@ -251,16 +471,104 @@ if (salesRequested && !salesEnabled) {
       line-height: 1.9;
     }
   }
-  .bonus-preview{max-width:620px;margin:1.6rem auto 0;text-align:left}
-  .bonus-preview h3{text-align:center;font:500 19px/1.6 'Shippori Mincho',serif;color:#4b3833;margin:.55rem 0 1rem}
-  .bonus-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-  .bonus-grid>div{border:1px solid #dec7b6;border-radius:7px;background:#fffaf6;padding:12px}
-  .bonus-grid span{display:block;font:18px Georgia,serif;color:#9c725d;margin-bottom:5px}
-  .bonus-grid strong{display:block;color:#604339;font-weight:500;font-size:15px;line-height:1.6}
-  .bonus-grid p,.bonus-note{font-size:12px;line-height:1.8;color:#6d5750;margin:.4rem 0 0}
-  .bonus-note{text-align:center;margin-top:.9rem}
-  @media(max-width:520px){.bonus-grid{gap:8px}.bonus-grid>div{padding:10px}.bonus-grid strong{font-size:13px}.bonus-grid p{font-size:12px}}
+  .bonus-preview {
+    max-width: 620px;
+    margin: 1.6rem auto 0;
+    text-align: left;
+  }
+  .bonus-preview h3 {
+    text-align: center;
+    font:
+      500 19px/1.6 'Shippori Mincho',
+      serif;
+    color: #4b3833;
+    margin: 0.55rem 0 1rem;
+  }
+  .bonus-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .bonus-grid > div {
+    border: 1px solid #dec7b6;
+    border-radius: 7px;
+    background: #fffaf6;
+    padding: 12px;
+  }
+  .bonus-grid span {
+    display: block;
+    font:
+      18px Georgia,
+      serif;
+    color: #9c725d;
+    margin-bottom: 5px;
+  }
+  .bonus-grid strong {
+    display: block;
+    color: #604339;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .bonus-grid p,
+  .bonus-note {
+    font-size: 12px;
+    line-height: 1.8;
+    color: #6d5750;
+    margin: 0.4rem 0 0;
+  }
+  .bonus-note {
+    text-align: center;
+    margin-top: 0.9rem;
+  }
+  @media (max-width: 520px) {
+    .bonus-grid {
+      gap: 8px;
+    }
+    .bonus-grid > div {
+      padding: 10px;
+    }
+    .bonus-grid strong {
+      font-size: 13px;
+    }
+    .bonus-grid p {
+      font-size: 12px;
+    }
+  }
 
-/* Premium call-to-action polish */
-.special-buy{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:12px 15px;min-height:48px;box-sizing:border-box;border:1px solid #b88a72;border-radius:9px;background:linear-gradient(155deg,transparent 12%,#fff9ed9c 35%,transparent 55%),linear-gradient(110deg,#d9a58f,#f1d4c1 55%,#ddb09c);box-shadow:0 3px 0 #ae80685c,0 5px 12px #80523a20,inset 0 0 0 1px #fff7edb3;color:#4d3027;font-weight:600;text-decoration:none;line-height:1.5;justify-content:center;max-width:360px;margin:8px auto;font-size:15px;text-align:center}.special-buy:hover{filter:brightness(1.05)}.special-buy:focus-visible{outline:2px solid #765142;outline-offset:3px}
+  /* Premium call-to-action polish */
+  .special-buy {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    padding: 12px 15px;
+    min-height: 48px;
+    box-sizing: border-box;
+    border: 1px solid #b88a72;
+    border-radius: 9px;
+    background:
+      linear-gradient(155deg, transparent 12%, #fff9ed9c 35%, transparent 55%),
+      linear-gradient(110deg, #d9a58f, #f1d4c1 55%, #ddb09c);
+    box-shadow:
+      0 3px 0 #ae80685c,
+      0 5px 12px #80523a20,
+      inset 0 0 0 1px #fff7edb3;
+    color: #4d3027;
+    font-weight: 600;
+    text-decoration: none;
+    line-height: 1.5;
+    justify-content: center;
+    max-width: 360px;
+    margin: 8px auto;
+    font-size: 15px;
+    text-align: center;
+  }
+  .special-buy:hover {
+    filter: brightness(1.05);
+  }
+  .special-buy:focus-visible {
+    outline: 2px solid #765142;
+    outline-offset: 3px;
+  }
 </style>

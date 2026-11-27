@@ -3,72 +3,488 @@ import Page from '../../layouts/Page.astro';
 import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { pathTo, launched, canonical } from '../../lib/urls';
-import { specialChapters, membershipPrice } from '../../../services/special-stones/src/catalog.mjs';
-const sales = launched && import.meta.env.PUBLIC_SPECIAL_STONES_SALES_ENABLED==='true' && new URL(canonical()).origin==='https://almeagem.com' && import.meta.env.BASE_URL==='/';
+import {
+  specialChapters,
+  membershipPrice,
+} from '../../../services/special-stones/src/catalog.mjs';
+const sales =
+  launched &&
+  import.meta.env.PUBLIC_SPECIAL_STONES_SALES_ENABLED === 'true' &&
+  new URL(canonical()).origin === 'https://almeagem.com' &&
+  import.meta.env.BASE_URL === '/';
 ---
-<Page title="スペシャルストーン記事一覧" path="special-stones/" description="希少な天然石、宝石の秘話、願いに合わせた石の組み合わせを紹介するALMÉA GEMの連載。">
+
+<Page
+  title="スペシャルストーン記事一覧"
+  path="special-stones/"
+  description="希少な天然石、宝石の秘話、願いに合わせた石の組み合わせを紹介するALMÉA GEMの連載。"
+>
   <div class="wrap collection-page">
-    <nav aria-label="現在地"><a href={pathTo()}>ホーム</a> / <a href={pathTo('premium/')}>プレミアム</a> / スペシャルストーン</nav>
+    <nav aria-label="現在地">
+      <a href={pathTo()}>ホーム</a> /{' '}
+      <a href={pathTo('premium/')}>プレミアム</a> / スペシャルストーン
+    </nav>
     <header class="collection-header">
       <p class="eyebrow">ALMÉA GEM · SPECIAL STONES</p>
       <h1>スペシャルストーン</h1>
       <p class="lead">まだ知らない石の魅力に、出会う。</p>
-      <p>希少な天然石、宝石に秘められた物語、願いに合わせた特別な組み合わせ。<br class="desktop-break"/>石好きのための連載を、今後も一記事ずつお届けします。</p>
+      <p>
+        希少な天然石、宝石に秘められた物語、願いに合わせた特別な組み合わせ。
+        <br class="desktop-break" />
+        石好きのための連載を、今後も一記事ずつお届けします。
+      </p>
     </header>
     <div class="collection-pricing" aria-label="料金案内">
-      <div><span>気になる記事だけ</span><strong>150<small>円 / 1記事</small></strong><p>税込・買い切り</p></div>
-      <div><span>すべての記事を楽しむ</span><strong>{membershipPrice}<small>円 / 月</small></strong><p>税込・対象記事読み放題・自動更新</p></div>
-      {!sales && <p class="sales-note">現在は無料紹介を公開中。購入・月額会員の受付は準備中です。</p>}
+      <div>
+        <span>気になる記事だけ</span>
+        <strong>
+          150<small>円 / 1記事</small>
+        </strong>
+        <p>税込・買い切り</p>
+      </div>
+      <div>
+        <span>すべての記事を楽しむ</span>
+        <strong>
+          {membershipPrice}
+          <small>円 / 月</small>
+        </strong>
+        <p>税込・対象記事読み放題・自動更新</p>
+      </div>
+      {!sales && (
+        <p class="sales-note">
+          現在は無料紹介を公開中。購入・月額会員の受付は準備中です。
+        </p>
+      )}
     </div>
     <section aria-labelledby="catalog-title" class="catalog-section">
-      <div class="catalog-heading"><div><p class="eyebrow">THE COLLECTION</p><h2 id="catalog-title">記事一覧</h2></div><p>公開中の無料紹介：{specialChapters.length}件</p></div>
+      <div class="catalog-heading">
+        <div>
+          <p class="eyebrow">THE COLLECTION</p>
+          <h2 id="catalog-title">記事一覧</h2>
+        </div>
+        <p>公開中の無料紹介：{specialChapters.length}件</p>
+      </div>
       <div class="catalog">
-        {specialChapters.map(c=>(
+        {specialChapters.map((c) => (
           <article class="catalog-card">
-            <a class="chapter-link" href={pathTo('special-stones/'+c.id+'/')}>
-              <div class="cover-slot">{existsSync(resolve('public',c.cover)) ? <img src={pathTo(c.cover)} width={c.width} height={c.height} alt={c.title+'の表紙'} loading="lazy"/> : <div class="cover-unavailable"><span>CHAPTER {c.number}</span><strong>{c.title}</strong></div>}</div>
+            <a
+              class="chapter-link"
+              href={pathTo('special-stones/' + c.id + '/')}
+            >
+              <div class="cover-slot">
+                {existsSync(resolve('public', c.cover)) ? (
+                  <img
+                    src={pathTo(c.cover)}
+                    width={c.width}
+                    height={c.height}
+                    alt={c.title + 'の表紙'}
+                    loading="lazy"
+                  />
+                ) : (
+                  <div class="cover-unavailable">
+                    <span>CHAPTER {c.number}</span>
+                    <strong>{c.title}</strong>
+                  </div>
+                )}
+              </div>
               <div class="copy">
                 <p class="eyebrow">CHAPTER {c.number} · 無料紹介</p>
-                <h3>{c.title}</h3><p class="description">{c.description}</p>
-                <div class="themes">{c.themes.map(theme=><span>{theme}</span>)}</div>
-                <div class="card-bottom"><strong class="price">{c.price}円 <small>税込</small></strong><span class="read">無料紹介を読む <span aria-hidden="true">→</span></span></div>
-                {(!sales || !c.sellable) && <small class="pending">販売準備中</small>}
+                <h3>{c.title}</h3>
+                <p class="description">{c.description}</p>
+                <div class="themes">
+                  {c.themes.map((theme) => (
+                    <span>{theme}</span>
+                  ))}
+                </div>
+                <div class="card-bottom">
+                  <strong class="price">
+                    {c.price}円 <small>税込</small>
+                  </strong>
+                  <span class="read">
+                    無料紹介を読む <span aria-hidden="true">→</span>
+                  </span>
+                </div>
+                {(!sales || !c.sellable) && (
+                  <small class="pending">販売準備中</small>
+                )}
               </div>
             </a>
           </article>
         ))}
       </div>
-      <aside class="next-note"><p class="eyebrow">MORE STORIES TO COME</p><h3>次のスペシャルストーンもお楽しみに。</h3><p>新しい石の物語や組み合わせの記事を順次追加予定です。</p></aside>
+      <aside class="next-note">
+        <p class="eyebrow">MORE STORIES TO COME</p>
+        <h3>次のスペシャルストーンもお楽しみに。</h3>
+        <p>新しい石の物語や組み合わせの記事を順次追加予定です。</p>
+      </aside>
     </section>
-    <p class="membership">月額会員は、公開済みの対象記事と今後追加される対象記事を楽しめるプランです。{sales?'':'現在は受付準備中です。'}</p>
-    <a class="back" href={pathTo('premium/')}>← プレミアムへ戻る</a>
+    <p class="membership">
+      月額会員は、公開済みの対象記事と今後追加される対象記事を楽しめるプランです。
+      {sales ? '' : '現在は受付準備中です。'}
+    </p>
+    <a class="back" href={pathTo('premium/')}>
+      ← プレミアムへ戻る
+    </a>
   </div>
 </Page>
 <style>
-.collection-page{max-width:1080px;padding-block:24px 64px;color:#4b3833;font-size:15px}
-nav{font-size:12px;color:#79655f}nav a{color:inherit}
-.collection-header{text-align:center;margin:32px auto 25px;max-width:660px}
-h1{font:500 clamp(25px,3.2vw,34px)/1.5 'Shippori Mincho',serif;margin:10px 0}
-.collection-header p{line-height:1.85;margin:8px 0}.collection-header .lead{font-size:17px}
-.eyebrow{color:#896d58;letter-spacing:.13em;font-size:11px;margin:0}
-.collection-pricing{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border:1px solid #e2d4c7;background:#fffaf6;border-radius:8px;text-align:center;max-width:650px;margin:0 auto 36px;overflow:hidden}
-.collection-pricing>div{padding:14px 8px}.collection-pricing>div+div{border-left:1px solid #e2d4c7}
-.collection-pricing span,.collection-pricing p{display:block;font-size:12px;color:#76665f;margin:3px 0}.collection-pricing strong{display:block;font:500 25px/1.5 'Shippori Mincho',serif;color:#644a38}.collection-pricing strong small{font-family:inherit;font-size:12px;line-height:1.5;font-weight:400}.collection-pricing .sales-note{grid-column:1/-1;border-top:1px solid #e2d4c7;padding:9px;margin:0}
-.catalog-heading{display:flex;align-items:end;justify-content:space-between;gap:12px;border-bottom:1px solid #d6c0a9;padding-bottom:12px;margin-bottom:18px}.catalog-heading h2{font:500 23px/1.5 'Shippori Mincho',serif;margin:3px 0 0}.catalog-heading>p{font-size:12px;color:#79655f;margin:0}
-.catalog{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:stretch}
-.catalog-card{min-width:0;border:1px solid #e6d8ce;border-radius:8px;background:#fffcf9;overflow:hidden}
-.chapter-link{height:100%;display:flex;flex-direction:column;color:inherit;text-decoration:none}.chapter-link:hover .read,.chapter-link:focus-visible .read{text-decoration:underline}
-.cover-slot{display:grid;place-items:center;padding:16px;background:#f3e9df;aspect-ratio: 4/3;overflow:hidden}.cover-slot img,.cover-unavailable{width:auto;max-width:100%;height:100%;min-height:0;max-height:200px;object-fit:contain;box-shadow:0 5px 14px #4b383320}.cover-unavailable{display:grid;place-content:center;text-align:center;padding:10px;background:#f4e7d8;aspect-ratio:3/4;font-size:12px}
-.copy{display:flex;flex-direction:column;flex:1;padding:16px;gap:8px}.copy h3{font:500 19px/1.55 'Shippori Mincho',serif;margin:0;text-wrap:balance}.copy .description{font-size:14px;line-height:1.8;margin:0}.themes{display:flex;flex-wrap:wrap;gap:5px;margin:3px 0}.themes span{font-size:11px;color:#805f50;border:1px solid #e3d3c7;padding:3px 7px;border-radius:20px}
-.card-bottom{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding-top:12px;border-top:1px solid #eee2d9}.price{font-size:17px;color:#6c4939}.price small,.pending{font-size:11px;color:#786a65;font-weight:400}.read{font-size:13px;color:#80565e;font-weight:600}.pending{margin-top:2px}
-.next-note{text-align:center;border:1px dashed #d6c0a9;background:#fbf5ef;padding:20px 12px;margin:24px 0 0;border-radius:8px}.next-note h3{font:500 17px/1.65 'Shippori Mincho',serif;margin:7px 0}.next-note p:last-child{font-size:13px;margin:0;color:#76665f}.membership,.back{font-size:13px;line-height:1.8;color:#80565e}.membership{margin:18px 0}
-@media(max-width:800px){.catalog{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:520px){.collection-page{padding-block:18px 40px}.collection-header{margin:22px auto}.desktop-break{display:none}.catalog{grid-template-columns:1fr;gap:14px}.chapter-link{display:grid;grid-template-columns:38% minmax(0,1fr)}.cover-slot{aspect-ratio:auto;padding:8px}.cover-slot img,.cover-unavailable{height:auto;max-height:175px;width:100%;object-fit:contain}.copy{padding:12px;gap:6px}.copy h3{font-size:16px}.copy .description{font-size:12px}.card-bottom{gap:4px;padding-top:8px}.read{font-size:12px}.catalog-heading h2{font-size:20px}.collection-pricing strong{font-size:22px}}
+  .collection-page {
+    max-width: 1080px;
+    padding-block: 24px 64px;
+    color: #4b3833;
+    font-size: 15px;
+  }
+  nav {
+    font-size: 12px;
+    color: #79655f;
+  }
+  nav a {
+    color: inherit;
+  }
+  .collection-header {
+    text-align: center;
+    margin: 32px auto 25px;
+    max-width: 660px;
+  }
+  h1 {
+    font:
+      500 clamp(25px, 3.2vw, 34px)/1.5 'Shippori Mincho',
+      serif;
+    margin: 10px 0;
+  }
+  .collection-header p {
+    line-height: 1.85;
+    margin: 8px 0;
+  }
+  .collection-header .lead {
+    font-size: 17px;
+  }
+  .eyebrow {
+    color: #896d58;
+    letter-spacing: 0.13em;
+    font-size: 11px;
+    margin: 0;
+  }
+  .collection-pricing {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    border: 1px solid #e2d4c7;
+    background: #fffaf6;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 650px;
+    margin: 0 auto 36px;
+    overflow: hidden;
+  }
+  .collection-pricing > div {
+    padding: 14px 8px;
+  }
+  .collection-pricing > div + div {
+    border-left: 1px solid #e2d4c7;
+  }
+  .collection-pricing span,
+  .collection-pricing p {
+    display: block;
+    font-size: 12px;
+    color: #76665f;
+    margin: 3px 0;
+  }
+  .collection-pricing strong {
+    display: block;
+    font:
+      500 25px/1.5 'Shippori Mincho',
+      serif;
+    color: #644a38;
+  }
+  .collection-pricing strong small {
+    font-family: inherit;
+    font-size: 12px;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+  .collection-pricing .sales-note {
+    grid-column: 1/-1;
+    border-top: 1px solid #e2d4c7;
+    padding: 9px;
+    margin: 0;
+  }
+  .catalog-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 12px;
+    border-bottom: 1px solid #d6c0a9;
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+  }
+  .catalog-heading h2 {
+    font:
+      500 23px/1.5 'Shippori Mincho',
+      serif;
+    margin: 3px 0 0;
+  }
+  .catalog-heading > p {
+    font-size: 12px;
+    color: #79655f;
+    margin: 0;
+  }
+  .catalog {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    align-items: stretch;
+  }
+  .catalog-card {
+    min-width: 0;
+    border: 1px solid #e6d8ce;
+    border-radius: 8px;
+    background: #fffcf9;
+    overflow: hidden;
+  }
+  .chapter-link {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    color: inherit;
+    text-decoration: none;
+  }
+  .chapter-link:hover .read,
+  .chapter-link:focus-visible .read {
+    text-decoration: underline;
+  }
+  .cover-slot {
+    display: grid;
+    place-items: center;
+    padding: 16px;
+    background: #f3e9df;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+  .cover-slot img,
+  .cover-unavailable {
+    width: auto;
+    max-width: 100%;
+    height: 100%;
+    min-height: 0;
+    max-height: 200px;
+    object-fit: contain;
+    box-shadow: 0 5px 14px #4b383320;
+  }
+  .cover-unavailable {
+    display: grid;
+    place-content: center;
+    text-align: center;
+    padding: 10px;
+    background: #f4e7d8;
+    aspect-ratio: 3/4;
+    font-size: 12px;
+  }
+  .copy {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 16px;
+    gap: 8px;
+  }
+  .copy h3 {
+    font:
+      500 19px/1.55 'Shippori Mincho',
+      serif;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .copy .description {
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 0;
+  }
+  .themes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 3px 0;
+  }
+  .themes span {
+    font-size: 11px;
+    color: #805f50;
+    border: 1px solid #e3d3c7;
+    padding: 3px 7px;
+    border-radius: 20px;
+  }
+  .card-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 12px;
+    border-top: 1px solid #eee2d9;
+  }
+  .price {
+    font-size: 17px;
+    color: #6c4939;
+  }
+  .price small,
+  .pending {
+    font-size: 11px;
+    color: #786a65;
+    font-weight: 400;
+  }
+  .read {
+    font-size: 13px;
+    color: #80565e;
+    font-weight: 600;
+  }
+  .pending {
+    margin-top: 2px;
+  }
+  .next-note {
+    text-align: center;
+    border: 1px dashed #d6c0a9;
+    background: #fbf5ef;
+    padding: 20px 12px;
+    margin: 24px 0 0;
+    border-radius: 8px;
+  }
+  .next-note h3 {
+    font:
+      500 17px/1.65 'Shippori Mincho',
+      serif;
+    margin: 7px 0;
+  }
+  .next-note p:last-child {
+    font-size: 13px;
+    margin: 0;
+    color: #76665f;
+  }
+  .membership,
+  .back {
+    font-size: 13px;
+    line-height: 1.8;
+    color: #80565e;
+  }
+  .membership {
+    margin: 18px 0;
+  }
+  @media (max-width: 800px) {
+    .catalog {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 520px) {
+    .collection-page {
+      padding-block: 18px 40px;
+    }
+    .collection-header {
+      margin: 22px auto;
+    }
+    .desktop-break {
+      display: none;
+    }
+    .catalog {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    .chapter-link {
+      display: grid;
+      grid-template-columns: 38% minmax(0, 1fr);
+    }
+    .cover-slot {
+      aspect-ratio: auto;
+      padding: 8px;
+    }
+    .cover-slot img,
+    .cover-unavailable {
+      height: auto;
+      max-height: 175px;
+      width: 100%;
+      object-fit: contain;
+    }
+    .copy {
+      padding: 12px;
+      gap: 6px;
+    }
+    .copy h3 {
+      font-size: 16px;
+    }
+    .copy .description {
+      font-size: 12px;
+    }
+    .card-bottom {
+      gap: 4px;
+      padding-top: 8px;
+    }
+    .read {
+      font-size: 12px;
+    }
+    .catalog-heading h2 {
+      font-size: 20px;
+    }
+    .collection-pricing strong {
+      font-size: 22px;
+    }
+  }
 
-/* Premium call-to-action polish */
-.card-bottom{display:grid;grid-template-columns:1fr;gap:10px}.read{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:12px 15px;min-height:48px;box-sizing:border-box;border:1px solid #b88a72;border-radius:9px;background:linear-gradient(155deg,transparent 12%,#fff9ed9c 35%,transparent 55%),linear-gradient(110deg,#d9a58f,#f1d4c1 55%,#ddb09c);box-shadow:0 3px 0 #ae80685c,0 5px 12px #80523a20,inset 0 0 0 1px #fff7edb3;color:#4d3027;font-weight:600;text-decoration:none;line-height:1.5;width:100%;font-size:14px}.read>span{flex:none;font-size:19px}
- .chapter-link:hover .read,.chapter-link:focus-visible .read{text-decoration:none;filter:brightness(1.05)}
- .chapter-link:focus-visible{outline:2px solid #765142;outline-offset:-3px}
- .catalog-card:nth-child(2) .read{background:linear-gradient(150deg,transparent 20%,#fff7ec8c 42%,transparent 64%),linear-gradient(110deg,#d8c8e3,#eee2e6,#cbbbd8);border-color:#b29ab8;color:#49364d}
- @media(max-width:520px){.read{padding:9px 10px;font-size:12px;min-height:44px}.read>span{font-size:16px}}
+  /* Premium call-to-action polish */
+  .card-bottom {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .read {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6rem;
+    padding: 12px 15px;
+    min-height: 48px;
+    box-sizing: border-box;
+    border: 1px solid #b88a72;
+    border-radius: 9px;
+    background:
+      linear-gradient(155deg, transparent 12%, #fff9ed9c 35%, transparent 55%),
+      linear-gradient(110deg, #d9a58f, #f1d4c1 55%, #ddb09c);
+    box-shadow:
+      0 3px 0 #ae80685c,
+      0 5px 12px #80523a20,
+      inset 0 0 0 1px #fff7edb3;
+    color: #4d3027;
+    font-weight: 600;
+    text-decoration: none;
+    line-height: 1.5;
+    width: 100%;
+    font-size: 14px;
+  }
+  .read > span {
+    flex: none;
+    font-size: 19px;
+  }
+  .chapter-link:hover .read,
+  .chapter-link:focus-visible .read {
+    text-decoration: none;
+    filter: brightness(1.05);
+  }
+  .chapter-link:focus-visible {
+    outline: 2px solid #765142;
+    outline-offset: -3px;
+  }
+  .catalog-card:nth-child(2) .read {
+    background:
+      linear-gradient(150deg, transparent 20%, #fff7ec8c 42%, transparent 64%),
+      linear-gradient(110deg, #d8c8e3, #eee2e6, #cbbbd8);
+    border-color: #b29ab8;
+    color: #49364d;
+  }
+  @media (max-width: 520px) {
+    .read {
+      padding: 9px 10px;
+      font-size: 12px;
+      min-height: 44px;
+    }
+    .read > span {
+      font-size: 16px;
+    }
+  }
 </style>

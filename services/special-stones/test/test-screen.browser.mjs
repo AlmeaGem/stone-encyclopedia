@@ -45,16 +45,27 @@ try {
       });
     if (url.pathname === '/api/auth/login') {
       signedIn = true;
-      return json(200, { access_token: 'fake-login-token', email: 'user@example.test' });
+      return json(200, {
+        access_token: 'fake-login-token',
+        email: 'user@example.test',
+      });
     }
     if (url.pathname === '/api/auth/restore')
-      return signedIn ? json(200, { access_token: 'fake-login-token', email: 'user@example.test' }) : json(401, {});
+      return signedIn
+        ? json(200, {
+            access_token: 'fake-login-token',
+            email: 'user@example.test',
+          })
+        : json(401, {});
     if (url.pathname === '/api/account')
       return json(200, {
         purchased_articles: purchased ? ['chapter-one'] : [],
         membership_until: null,
       });
-    if (url.pathname === '/api/auth/logout') { signedIn = false; return json(200, { signed_out: true }); }
+    if (url.pathname === '/api/auth/logout') {
+      signedIn = false;
+      return json(200, { signed_out: true });
+    }
     if (url.pathname === '/api/checkout') {
       checkoutMode = req.postDataJSON().kind;
       return json(200, { checkout_url: 'https://checkout.stripe.com/fake' });
@@ -62,7 +73,10 @@ try {
     if (url.pathname === '/api/articles/chapter-one') {
       if (!req.headers().authorization)
         return json(401, { error: 'Authentication required' });
-      if (pendingReads > 0) { pendingReads--; return json(403, { error: 'Purchase required' }); }
+      if (pendingReads > 0) {
+        pendingReads--;
+        return json(403, { error: 'Purchase required' });
+      }
       if (!purchased) return json(403, { error: 'Purchase required' });
       return route.fulfill({
         status: 200,
@@ -125,21 +139,39 @@ try {
   await page.locator('#monthly').click();
   await page.waitForURL('https://checkout.stripe.com/fake');
   assert.equal(checkoutMode, 'subscription');
-  const loginCount = calls.filter(c => c.path === '/api/auth/login').length;
+  const loginCount = calls.filter((c) => c.path === '/api/auth/login').length;
   pendingReads = 1;
-  await page.goto('https://test.example/special-stones/?checkout=return&article=chapter-one');
-  await page.getByRole('heading', { name: '記事を閲覧できます', exact: true }).waitFor();
+  await page.goto(
+    'https://test.example/special-stones/?checkout=return&article=chapter-one',
+  );
+  await page
+    .getByRole('heading', { name: '記事を閲覧できます', exact: true })
+    .waitFor();
   assert.equal(await page.locator('#purchase-section').isVisible(), false);
   assert.equal(await page.locator('#images img').count(), 3);
-  assert.equal(calls.filter(c => c.path === '/api/auth/login').length, loginCount);
+  assert.equal(
+    calls.filter((c) => c.path === '/api/auth/login').length,
+    loginCount,
+  );
   await page.locator('#nav-library').click();
-  await page.locator('#library-list').getByText('三つの宝石が教えてくれる、願いの叶え方').waitFor();
+  await page
+    .locator('#library-list')
+    .getByText('三つの宝石が教えてくれる、願いの叶え方')
+    .waitFor();
   assert.equal(await page.locator('#purchase-section').isVisible(), false);
   assert.equal(await page.locator('#reader-section').isVisible(), false);
-  await page.locator('#library-list').getByRole('link', { name: '記事を読む' }).click();
-  await page.getByRole('heading', { name: '記事を閲覧できます', exact: true }).waitFor();
+  await page
+    .locator('#library-list')
+    .getByRole('link', { name: '記事を読む' })
+    .click();
+  await page
+    .getByRole('heading', { name: '記事を閲覧できます', exact: true })
+    .waitFor();
   assert.equal(await page.locator('#images img').count(), 3);
-  assert.equal(calls.filter(c => c.path === '/api/auth/login').length, loginCount);
+  assert.equal(
+    calls.filter((c) => c.path === '/api/auth/login').length,
+    loginCount,
+  );
   await page.locator('#back-to-account').click();
   await page.locator('#logout').click();
   await page.getByText('ログアウトしました。', { exact: true }).waitFor();

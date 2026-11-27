@@ -370,8 +370,13 @@ test('signup, login, refresh, logout use auth adapter and no-store responses', a
 test('browser refresh cookie restores login without exposing refresh credentials', async () => {
   const f = fixtures();
   const login = await f.request('/api/auth/login', {
-    method: 'POST', origin: config.publicOrigin,
-    body: { email: 'person@example.test', password: 'Test1234', browser_session: true },
+    method: 'POST',
+    origin: config.publicOrigin,
+    body: {
+      email: 'person@example.test',
+      password: 'Test1234',
+      browser_session: true,
+    },
   });
   assert.equal(login.status, 200);
   const data = await login.json();
@@ -383,19 +388,36 @@ test('browser refresh cookie restores login without exposing refresh credentials
   assert.match(cookie, /SameSite=Lax/);
   assert.match(cookie, /Path=\/api\/auth/);
   const restore = await f.request('/api/auth/restore', {
-    method: 'POST', origin: config.publicOrigin, cookie: cookie.split(';')[0], body: {},
+    method: 'POST',
+    origin: config.publicOrigin,
+    cookie: cookie.split(';')[0],
+    body: {},
   });
   assert.equal(restore.status, 200);
   assert.match(restore.headers.get('set-cookie'), /rotated/);
   assert.equal(Object.hasOwn(await restore.json(), 'refresh_token'), false);
-  assert.equal((await f.request('/api/auth/restore', {
-    method: 'POST', cookie: cookie.split(';')[0], body: {},
-  })).status, 403);
-  assert.equal((await f.request('/api/articles/chapter-one', {
-    cookie: cookie.split(';')[0],
-  })).status, 401);
+  assert.equal(
+    (
+      await f.request('/api/auth/restore', {
+        method: 'POST',
+        cookie: cookie.split(';')[0],
+        body: {},
+      })
+    ).status,
+    403,
+  );
+  assert.equal(
+    (
+      await f.request('/api/articles/chapter-one', {
+        cookie: cookie.split(';')[0],
+      })
+    ).status,
+    401,
+  );
   const logout = await f.request('/api/auth/logout', {
-    method: 'POST', origin: config.publicOrigin, token: 'alice',
+    method: 'POST',
+    origin: config.publicOrigin,
+    token: 'alice',
   });
   assert.match(logout.headers.get('set-cookie'), /Max-Age=0/);
 });

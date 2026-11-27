@@ -1,7 +1,11 @@
 name: Special Stones test
 on:
   push:
-    branches: [codex/special-stones-test-foundation, feat/special-stones-production-preparation]
+    branches:
+      [
+        codex/special-stones-test-foundation,
+        feat/special-stones-production-preparation,
+      ]
   workflow_dispatch:
 permissions:
   contents: read
