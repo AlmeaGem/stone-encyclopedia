@@ -187,5 +187,7 @@ if (
   const count = await prepareImages(root);
   await prepareChapterTwoCover(root);
   await prepareChapterThreeCover(root);
-  console.log(`Prepared ${count} approved images and illustrated chapter covers`);
+  console.log(
+    `Prepared ${count} approved images and illustrated chapter covers`,
+  );
 }
