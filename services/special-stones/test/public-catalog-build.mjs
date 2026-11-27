@@ -30,6 +30,13 @@ assert.match(fifth, /ハーキマーダイヤモンド/);
 assert.match(fifth, /無料で内容を見る/);
 assert.doesNotMatch(fifth, /\/members\/\?view=store/);
 assert.ok(existsSync(join(root, 'special-stones/05_chapter_miracle.svg')));
+const sixth = read('special-stones/chapter-six/index.html');
+assert.match(catalog, /chapter-six\//);
+assert.match(sixth, /見えない邪気を払い/);
+assert.match(sixth, /ブラックダイヤモンド/);
+assert.match(sixth, /五つの守り方/);
+assert.doesNotMatch(sixth, /\/members\/\?view=store/);
+assert.ok(existsSync(join(root, 'special-stones/06_chapter_protection.svg')));
 function walk(p) {
   for (const e of readdirSync(p, { withFileTypes: true })) {
     const v = join(p, e.name);

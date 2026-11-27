@@ -321,6 +321,69 @@ async function prepareChapterFiveCover(root: string) {
   );
 }
 
+async function prepareChapterSixCover(root: string) {
+  const directory = join(root, 'public/special-stones');
+  const template = await readFile(
+    join(directory, '06_chapter_pearl.svg'),
+    'utf8',
+  );
+  const diamond = join(directory, 'black-diamond.png');
+  const hasDiamond = await access(diamond).then(
+    () => true,
+    () => false,
+  );
+  const specimens = [
+    {
+      path: join(
+        root,
+        'public/images/s019/90f9676b098d3d493967a55bf601baa25854fae651f21dc3562cb21b25bb9f28.webp',
+      ),
+      x: hasDiamond ? 126 : 154,
+      y: hasDiamond ? 814 : 691,
+      size: hasDiamond ? 248 : 365,
+      name: 'MORION',
+    },
+    {
+      path: join(
+        root,
+        'public/images/s001/799ff7ede196fc6470cfe997d7c37efbd61b4310a2a2dcdeab50e311e32abaa7.webp',
+      ),
+      x: hasDiamond ? 712 : 567,
+      y: hasDiamond ? 814 : 691,
+      size: hasDiamond ? 248 : 365,
+      name: 'OBSIDIAN',
+    },
+  ];
+  if (hasDiamond) {
+    specimens.unshift({
+      path: diamond,
+      x: 358,
+      y: 646,
+      size: 370,
+      name: 'BLACK DIAMOND',
+    });
+  }
+  const frames = await Promise.all(
+    specimens.map(async ({ path, x, y, size, name }, i) => {
+      const thumb = await sharp(path)
+        .resize(400, 400, { fit: 'contain', background: '#fffcfa' })
+        .flatten({ background: '#fffcfa' })
+        .jpeg({ quality: 88 })
+        .toBuffer();
+      const cx = x + size / 2;
+      const cy = y + size / 2;
+      const r = size / 2;
+      return `<g><circle cx="${cx}" cy="${cy}" r="${r + 5}" fill="#fffcfa" stroke="#a4a0ad" stroke-width="2"/><clipPath id="protectionGem${i}"><circle cx="${cx}" cy="${cy}" r="${r}"/></clipPath><image x="${x}" y="${y}" width="${size}" height="${size}" href="data:image/jpeg;base64,${thumb.toString('base64')}" clip-path="url(#protectionGem${i})"/><text x="${cx}" y="${y + size + 31}" fill="#595562" text-anchor="middle" font-family="Georgia,serif" font-size="18" letter-spacing="2">${name}</text></g>`;
+    }),
+  );
+  const motif = /<!-- GEM_ART_START -->[\s\S]*?<!-- GEM_ART_END -->/;
+  if (!motif.test(template)) throw Error('Chapter VI cover template changed');
+  await writeFile(
+    join(directory, '06_chapter_protection.svg'),
+    template.replace(motif, () => frames.join('')),
+  );
+}
+
 if (
   process.argv[1] &&
   resolve(process.argv[1]) === fileURLToPath(import.meta.url)
@@ -332,6 +395,7 @@ if (
   await prepareRutileIllustrations(root);
   await prepareChapterFourCover(root);
   await prepareChapterFiveCover(root);
+  await prepareChapterSixCover(root);
   console.log(
     `Prepared ${count} approved images and illustrated chapter covers`,
   );

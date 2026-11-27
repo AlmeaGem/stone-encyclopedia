@@ -1,0 +1,669 @@
+---
+import Page from '../../layouts/Page.astro';
+import { existsSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { pathTo, launched, canonical } from '../../lib/urls';
+import { chapterById } from '../../../services/special-stones/src/catalog.mjs';
+import { stones } from '../../lib/content';
+import Visual from '../../components/Visual.astro';
+const chapter = chapterById('chapter-six')!;
+const dedicated = new Set([
+  'black-diamond',
+  'aegirine',
+  'black-sugilite',
+  'eye-agate',
+  'black-rutile',
+]);
+const gems = chapter.preview.map((g) => ({
+  ...g,
+  stone: stones.find((stone) => stone.slug === g.slug),
+  imageReady:
+    dedicated.has(g.slug) &&
+    existsSync(resolve('public/special-stones', g.slug + '.png')),
+}));
+const membersEnabled =
+  launched &&
+  (import.meta.env.PUBLIC_SPECIAL_STONES_MEMBERS_ENABLED === 'true' ||
+    import.meta.env.PUBLIC_SPECIAL_STONES_SALES_ENABLED === 'true') &&
+  new URL(canonical()).origin === 'https://almeagem.com' &&
+  import.meta.env.BASE_URL === '/';
+const sales =
+  membersEnabled &&
+  chapter.sellable &&
+  import.meta.env.PUBLIC_SPECIAL_STONES_SALES_ENABLED === 'true';
+const features = [
+  ['01', '十四の破邪・守護ストーン', '魔除け・邪気除けの象徴。'],
+  ['02', '悪魔祓い・霊祓いの伝承', '信仰とお守り文化。'],
+  ['03', '五つの守り方', '破邪・浄化・防御・反射・断絶。'],
+  ['04', '願い別の特別な組み合わせ', '魔除けと悪縁切りのレシピ。'],
+  ['05', '黒い宝石の違い', '材質・処理・選び方。'],
+  ['06', '邪視と守りの目', '歴史に残る護符の物語。'],
+  ['07', '身につける守り・空間の守り', '日々のお守りの楽しみ方。'],
+  ['08', '今のあなたに必要な守りは？', '選択式ミニ診断。'],
+];
+---
+
+<Page
+  title={chapter.title}
+  description={chapter.description}
+  path="special-stones/chapter-six/"
+>
+  <article class="rose wrap">
+    <nav aria-label="現在地">
+      <a href={pathTo()}>ホーム</a> /{' '}
+      <a href={pathTo('premium/')}>プレミアム</a> /{' '}
+      <a href={pathTo('special-stones/')}>スペシャルストーン</a> / 第六章
+    </nav>
+    <header class="rose-hero">
+      <p class="overline">ALMÉA GEM · SPECIAL STONES · CHAPTER VI</p>
+      <img
+        src={pathTo(chapter.cover)}
+        width={chapter.width}
+        height={chapter.height}
+        alt={chapter.title + 'の表紙'}
+        fetchpriority="high"
+      />
+      <div>
+        <p class="overline">THE JEWELS OF PROTECTION & PURIFICATION</p>
+        <h1>
+          見えない邪気を払い、
+          <br />
+          運命を守る石たち
+        </h1>
+        <p class="lead">
+          <strong>邪を祓い、悪縁を断ち、自分を守る。</strong>
+          <br />
+          <span>破邪・邪視除け・霊的守護。</span>
+          <span>古くから受け継がれる祈りの物語。</span>
+        </p>
+        <p class="hero-promise">
+          十四の宝石に秘められた、破邪と守護の物語。
+        </p>
+        <p class="meta">無料紹介 · 本編150円（税込・買い切り）</p>
+        <a class="hero-contents-link" href="#rose-contents">
+          無料で内容を見る ↓
+        </a>
+      </div>
+    </header>
+    <div class="rose-copy">
+      {chapter.intro.map((p) => (
+        <p>{p}</p>
+      ))}
+    </div>
+    <section class="rose-gems">
+      <p class="overline">THE JEWELS OF PROTECTION</p>
+      <h2>十四の石、十四の守りの物語</h2>
+      <p class="image-note">掲載画像は石の特徴を表現したイメージです。</p>
+      <div class="gem-grid">
+        {gems.map((g) => (
+          <article>
+            {g.imageReady ? (
+              <div class="gem-visual">
+                <img
+                  src={pathTo('special-stones/' + g.slug + '.png')}
+                  alt={g.name + 'のイメージ画像'}
+                  width="1024"
+                  height="1024"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            ) : g.stone ? (
+              <div class="gem-visual">
+                <Visual stone={g.stone} />
+              </div>
+            ) : (
+              <div class="gem-visual rose-placeholder">
+                <p>専用画像準備中</p>
+              </div>
+            )}
+            <div>
+              <h3>{g.name}</h3>
+              <p>{g.theme}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <a class="gem-more" href="#rose-contents">
+        本編の内容を見る ↓
+      </a>
+    </section>
+    <aside class="love-editorial">
+      <p class="overline">THE EVIL EYE</p>
+      <h2>邪視を遠ざける、守りの目。</h2>
+      <p>
+        天眼石・ジェット・ラピスラズリ。古くから祈りを託してきた護符文化を読み解きます。
+      </p>
+    </aside>
+    <aside class="love-editorial breakthrough">
+      <p class="overline">FIVE SHIELDS</p>
+      <h2>破邪・浄化・防御・反射・断絶。</h2>
+      <p>
+        五つの守り方を知り、自分の願いに合う石を選ぶための特集です。
+      </p>
+    </aside>
+    <section class="rose-features" id="rose-contents">
+      <p class="overline">INSIDE THE CHAPTER</p>
+      <h2>自分の未来を守るために。</h2>
+      <div class="feature-grid">
+        {features.map(([n, t, d]) => (
+          <article
+            class:list={[
+              { 'feature-spotlight': n === '06' || n === '07' || n === '08' },
+            ]}
+          >
+            <span>{n}</span>
+            <h3>{t}</h3>
+            <p>{d}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+    <section class="rose-offer">
+      <p class="overline">CONTINUE THE STORY</p>
+      <h2>物語の続きを開く</h2>
+      <p>第六章の本編は購入者・対象月額会員限定です。</p>
+      <div class="plans">
+        <div>
+          <strong>単品購入</strong>
+          <b>150円</b>
+          <small>税込・買い切り</small>
+          {sales && (
+            <a href={pathTo('members/?view=store&article=chapter-six')}>
+              続きを読む →
+            </a>
+          )}
+        </div>
+        <div>
+          <strong>月額会員</strong>
+          <b>580円／月</b>
+          <small>税込・対象記事読み放題・自動更新</small>
+          {sales && (
+            <a href={pathTo('members/?view=store&article=chapter-six')}>
+              月額会員になる →
+            </a>
+          )}
+        </div>
+      </div>
+      {!sales && (
+        <p class="release-note">
+          本編は販売準備中です。無料紹介をお楽しみください。
+        </p>
+      )}
+      {membersEnabled && (
+        <a class="member-link" href={pathTo('members/?view=account')}>
+          会員登録・ログイン →
+        </a>
+      )}
+    </section>
+    <p class="fine">
+      石の意味は伝承と象徴的解釈です。霊的な作用や危険の回避を保証するものではありません。
+    </p>
+    <a class="back" href={pathTo('special-stones/')}>
+      ← スペシャルストーン記事一覧へ戻る
+    </a>
+  </article>
+</Page>
+<style>
+  .rose {
+    max-width: 940px;
+    padding-block: 24px 60px;
+    color: #35313f;
+  }
+  .rose nav {
+    font-size: 12px;
+    color: #686471;
+  }
+  .rose nav a,
+  .back {
+    color: inherit;
+  }
+  .rose-hero {
+    display: grid;
+    grid-template-columns: 180px minmax(0, 1fr);
+    align-items: center;
+    gap: 24px;
+    padding: 26px;
+    margin: 22px 0 26px;
+    border: 1px solid #a4a0ac;
+    border-radius: 12px;
+    background:
+      radial-gradient(ellipse at 18% 10%, #fffaf5b3, transparent 45%),
+      radial-gradient(ellipse at 88% 96%, #fffdf5b3, transparent 50%),
+      linear-gradient(153deg, transparent 12%, #fffdf8d9 35%, transparent 64%),
+      linear-gradient(115deg, #c9c7d0, #fffefa 52%, #c3c1cb);
+    box-shadow:
+      inset 0 0 0 2px #fffaf5c0,
+      0 5px 16px #74523c1a;
+    color: #35313f;
+  }
+  .rose-hero > .overline {
+    grid-column: 1/-1;
+    text-align: center;
+  }
+  .overline {
+    font:
+      11px/1.7 Georgia,
+      serif;
+    letter-spacing: 0.15em;
+    color: #5c5866;
+    margin: 0;
+  }
+  .rose-hero img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 5px 12px #6a51402b;
+  }
+  .rose-hero h1 {
+    font:
+      500 clamp(25px, 4vw, 36px)/1.6 'Shippori Mincho',
+      serif;
+    color: #35313f;
+    margin: 12px 0;
+  }
+  .lead {
+    font-size: 15px;
+    line-height: 1.9;
+  }
+  .meta {
+    font-size: 12px;
+  }
+  .rose-copy {
+    max-width: 660px;
+    margin: 28px auto 40px;
+    line-height: 2;
+    font-size: 15px;
+  }
+  .rose-copy p {
+    margin: 0 0 15px;
+  }
+  .rose-gems,
+  .rose-features,
+  .rose-offer {
+    margin: 30px 0;
+    text-align: center;
+  }
+  .rose h2 {
+    font:
+      500 clamp(20px, 3vw, 25px)/1.65 'Shippori Mincho',
+      serif;
+    margin: 8px 0 22px;
+  }
+  .gem-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .gem-grid article,
+  .feature-grid article {
+    padding: 16px;
+    border: 1px solid #d9d6df;
+    border-radius: 9px;
+    background: #faf9fc;
+    min-width: 0;
+  }
+  .gem-grid article {
+    padding: 10px 8px;
+  }
+  .gem-visual {
+    width: 100%;
+    max-width: 116px;
+    margin: 0 auto 6px;
+  }
+  .gem-visual :global(.stone-figure) {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    max-width: none;
+  }
+  .gem-visual :global(.stone-image-frame) {
+    margin: 0 !important;
+    width: 100%;
+    aspect-ratio: 1;
+    min-height: 0;
+  }
+  .gem-visual :global(.stone-image-frame img) {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .gem-grid h3,
+  .feature-grid h3 {
+    font:
+      500 16px/1.6 'Shippori Mincho',
+      serif;
+    margin: 5px 0;
+  }
+  .gem-grid p,
+  .feature-grid p {
+    font-size: 13px;
+    line-height: 1.8;
+    margin: 0;
+    color: #57535e;
+  }
+  .gem-grid h3 {
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 4px 0;
+    overflow-wrap: anywhere;
+  }
+  .gem-grid p {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .rose-features,
+  .rose-offer {
+    margin-top: 28px;
+    padding: 25px 18px;
+    border: 1px solid #b9b6c2;
+    border-radius: 10px;
+    background: linear-gradient(130deg, #e6e4ea, #fffbf8 65%, #d6d3dc);
+  }
+  .rose-placeholder {
+    display: grid;
+    place-items: center;
+    min-height: 0;
+    aspect-ratio: 1;
+    border: 1px solid #ccc9d4;
+    border-radius: 6px;
+    background: #eeedf2;
+  }
+  .feature-grid,
+  .plans {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .feature-grid {
+    text-align: left;
+  }
+  .feature-grid span {
+    font:
+      21px Georgia,
+      serif;
+    color: #886849;
+  }
+  .plans {
+    max-width: 620px;
+    margin: 20px auto;
+  }
+  .plans div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 16px;
+    border: 1px solid #d9d6e0;
+    border-radius: 7px;
+    background: #fffdf9;
+  }
+  .plans b {
+    font:
+      500 24px 'Shippori Mincho',
+      serif;
+    color: #504b59;
+  }
+  .plans small,
+  .fine,
+  .back {
+    font-size: 12px;
+    line-height: 1.9;
+  }
+  .hero-contents-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 8px 18px;
+    border: 1px solid #a4a0ac;
+    border-radius: 7px;
+    background: #fff9f1;
+    color: #35313f;
+    font-size: 13px;
+    text-decoration: none;
+    box-shadow: 0 2px 6px #74523c16;
+  }
+  .hero-contents-link:focus-visible {
+    outline: 2px solid #765142;
+    outline-offset: 3px;
+  }
+  .rose-features {
+    scroll-margin-top: 20px;
+  }
+  .member-link,
+  .plans a {
+    display: block;
+    max-width: 360px;
+    margin: 12px auto;
+    padding: 14px;
+    border: 1px solid #9d99a6;
+    border-radius: 8px;
+    background:
+      linear-gradient(153deg, transparent 12%, #fffdf8d9 35%, transparent 64%),
+      linear-gradient(115deg, #e4cdb7, #f8eee3 52%, #dfc3aa);
+    box-shadow:
+      0 3px 0 #a38a7245,
+      inset 0 0 0 1px #fffaf4;
+    color: #35313f;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .rose-hero {
+    grid-template-columns: 210px minmax(0, 1fr);
+    background:
+      radial-gradient(ellipse at 16% 75%, #fffaf6c9, transparent 60%),
+      linear-gradient(
+        145deg,
+        transparent 19%,
+        #fffaf6b3 38%,
+        transparent 48%,
+        #fff9f473 60%,
+        transparent 74%
+      ),
+      linear-gradient(115deg, #c6c3cd, #fffbf6 50%, #bdbac6);
+  }
+  .lead strong {
+    font-size: 19px;
+    color: #403b4b;
+    font-weight: 600;
+  }
+  .hero-promise {
+    font-size: 14px;
+    line-height: 1.9;
+    max-width: 35em;
+  }
+  .hero-contents-link {
+    background: linear-gradient(125deg, #aaa6b3, #efedf2 48%, #bbb7c4);
+    color: #302d39;
+    font-weight: 600;
+    min-height: 48px;
+    box-shadow:
+      0 3px 0 #8b869760,
+      inset 0 0 0 1px #fffaf6;
+  }
+  .gem-visual :global(.image-impression-label) {
+    display: none;
+  }
+  .gem-visual > img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: contain;
+    border-radius: 5px;
+  }
+  .image-note {
+    color: #686371;
+    font-size: 12px;
+    margin: -12px 0 18px;
+  }
+  .gem-more {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    margin-top: 16px;
+    padding: 8px 20px;
+    border: 1px solid #9d99a6;
+    border-radius: 7px;
+    background: #efedf2;
+    color: #35313f;
+    font-size: 13px;
+    text-decoration: none;
+  }
+  .gem-more:hover {
+    text-decoration: underline;
+  }
+  .gem-more:focus-visible {
+    outline: 2px solid #4f495d;
+    outline-offset: 3px;
+  }
+  .love-editorial {
+    padding: 30px 24px;
+    text-align: center;
+    background: linear-gradient(125deg, #e1dfe7, #fffbf7 54%, #d6d3df);
+    border: 1px solid #b3afbe;
+    border-radius: 10px;
+    color: #35313f;
+  }
+  .love-editorial p:last-child {
+    max-width: 40em;
+    margin: auto;
+    line-height: 1.9;
+  }
+  .breakthrough {
+    margin-top: 18px;
+    background: linear-gradient(125deg, #e3e6eb, #fffefa 60%, #e3dfe8);
+  }
+  .feature-spotlight {
+    border-color: #9c96ac !important;
+    background: #efedf2 !important;
+  }
+  .release-note {
+    color: #504b59;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  @media (max-width: 850px) {
+    .gem-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 640px) {
+    .rose {
+      padding-block: 16px 40px;
+    }
+    .rose-hero {
+      grid-template-columns: 1fr;
+      gap: 14px;
+      text-align: center;
+      padding: 18px 14px;
+    }
+    .rose-hero img {
+      max-width: 132px;
+      margin: auto;
+    }
+    .rose-hero {
+      gap: 10px;
+      padding: 16px 12px;
+    }
+    .rose-hero .overline {
+      font-size: 10px;
+      letter-spacing: 0.08em;
+    }
+    .rose-hero h1 {
+      font-size: clamp(22px, 6vw, 26px);
+      line-height: 1.45;
+      margin: 8px 0 12px;
+    }
+    .lead {
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 8px 0;
+    }
+    .lead strong {
+      font-size: 16px;
+    }
+    .lead > span {
+      display: block;
+    }
+    .hero-promise {
+      font-size: 13px;
+      line-height: 1.7;
+      margin: 8px auto;
+    }
+    .rose-copy {
+      margin: 20px auto 28px;
+      font-size: 14px;
+      line-height: 1.85;
+    }
+    .rose-copy p {
+      margin-bottom: 12px;
+    }
+    .rose h2 {
+      font-size: 19px;
+      line-height: 1.55;
+      text-wrap: balance;
+      margin-bottom: 14px;
+    }
+    .love-editorial {
+      padding: 20px 14px;
+    }
+    .love-editorial p:last-child {
+      font-size: 14px;
+      line-height: 1.75;
+    }
+    .rose-features,
+    .rose-offer {
+      padding: 18px 12px;
+    }
+    .feature-grid {
+      gap: 8px;
+    }
+    .gem-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .gem-grid article {
+      padding: 10px 6px;
+    }
+    .gem-grid h3 {
+      text-wrap: balance;
+      line-break: strict;
+    }
+    .gem-visual {
+      max-width: 92px;
+      margin: 0 auto 5px;
+    }
+    .feature-grid article {
+      padding: 10px;
+    }
+    .feature-grid h3 {
+      font-size: 13px;
+      line-height: 1.55;
+      text-wrap: balance;
+    }
+    .feature-grid p {
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .feature-grid span {
+      font-size: 17px;
+    }
+    .plans {
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin: 14px auto;
+    }
+    .plans div {
+      padding: 10px 12px;
+      gap: 3px;
+    }
+    .plans b {
+      font-size: 22px;
+    }
+    .release-note {
+      font-size: 13px;
+      line-height: 1.7;
+    }
+  }
+</style>
