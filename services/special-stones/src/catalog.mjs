@@ -295,6 +295,100 @@ export const specialChapters = Object.freeze([
     bonus: '恋愛の四段階、願い別レシピ、なりたい女性像から選ぶミニ診断',
     illustrations: [],
   },
+  {
+    id: 'chapter-five',
+    number: '05',
+    title: '奇跡を呼び込む、運命を変える石たち',
+    headline: 'まだ見ぬ未来に、幸運の扉を。',
+    description:
+      'フェナカイト、ハーキマーダイヤモンド、アメトリンを中心に、十四種類の石と強運・願望実現、世界三大ヒーリングストーンを紐解く特集。',
+    cover: 'special-stones/05_chapter_miracle.svg',
+    width: 1086,
+    height: 1448,
+    price: 150,
+    sellable: false,
+    contentSource: 'private-db',
+    themes: ['強運・好機', '願望実現・転機', '癒し・問題解決'],
+    intro: [
+      '何気ない出会いや思いがけない知らせが、人生の新しい扉になることがあります。',
+      '強運、願望実現、人生の好転。似ているようで、それぞれ少しずつ違う願い。',
+      '三つの主役となる宝石と、さらに七つの幸運ストーン。行き詰まった現状を切り開くカイヤナイト、世界三大ヒーリングストーンから、願いに寄り添う石選びを紐解きます。',
+    ],
+    preview: [
+      {
+        name: 'フェナカイト',
+        theme: '願望実現・可能性',
+        slug: 'phenakite',
+      },
+      {
+        name: 'ハーキマーダイヤモンド',
+        theme: '夢・思いがけない好機',
+        slug: 'herkimer-diamond',
+      },
+      {
+        name: 'アメトリン',
+        theme: '理想の現実化',
+        slug: 'ametrine',
+      },
+      {
+        name: 'モルダバイト',
+        theme: '人生の転機・変容',
+        slug: 'moldavite',
+      },
+      {
+        name: 'リビアングラス',
+        theme: '大きな希望・幸運',
+        slug: 'libyan-glass',
+      },
+      {
+        name: 'アイオライト',
+        theme: '人生の方向性',
+        slug: 'iolite',
+      },
+      {
+        name: 'プレシャスオパール',
+        theme: '予想外の幸運',
+        slug: 'precious-opal',
+      },
+      {
+        name: 'ペリドット',
+        theme: '幸運・成長',
+        slug: 'peridot',
+      },
+      {
+        name: 'サンストーン',
+        theme: '行動・チャンス',
+        slug: 'sunstone',
+      },
+      {
+        name: 'ダンビュライト',
+        theme: '希望・心の余裕',
+        slug: 'danburite',
+      },
+      {
+        name: 'カイヤナイト',
+        theme: '問題解決・現実化・突破',
+        slug: 'kyanite',
+      },
+      {
+        name: 'スギライト',
+        theme: '守護・深い癒し',
+        slug: 'sugilite',
+      },
+      {
+        name: 'ラリマー',
+        theme: '安らぎ・調和',
+        slug: 'larimar',
+      },
+      {
+        name: 'チャロアイト',
+        theme: '恐れの克服・変容',
+        slug: 'charoite',
+      },
+    ],
+    bonus: '幸運の四段階、世界三大ヒーリングストーン、カイヤナイト、願い別レシピと選択式ミニ診断',
+    illustrations: [],
+  },
 ]);
 export const membershipPrice = 580;
 export const chapterById = (id) => specialChapters.find((c) => c.id === id);

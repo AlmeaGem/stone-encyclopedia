@@ -21,6 +21,15 @@ assert.match(catalog, /MORE STORIES TO COME/);
 assert.match(catalog, /150/);
 assert.match(chapter, /この先で明かされる、宝石の秘密/);
 assert.doesNotMatch(chapter, /\/members\/\?view=store/);
+const fifth = read('special-stones/chapter-five/index.html');
+assert.match(catalog, /chapter-five\//);
+assert.match(fifth, /奇跡を呼び込む/);
+assert.match(fifth, /世界三大ヒーリングストーン/);
+assert.match(fifth, /カイヤナイト/);
+assert.match(fifth, /ハーキマーダイヤモンド/);
+assert.match(fifth, /無料で内容を見る/);
+assert.doesNotMatch(fifth, /\/members\/\?view=store/);
+assert.ok(existsSync(join(root, 'special-stones/05_chapter_miracle.svg')));
 function walk(p) {
   for (const e of readdirSync(p, { withFileTypes: true })) {
     const v = join(p, e.name);

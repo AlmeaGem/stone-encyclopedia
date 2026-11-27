@@ -258,6 +258,69 @@ async function prepareChapterFourCover(root: string) {
   );
 }
 
+async function prepareChapterFiveCover(root: string) {
+  const directory = join(root, 'public/special-stones');
+  const template = await readFile(
+    join(directory, '05_chapter_lavender.svg'),
+    'utf8',
+  );
+  const herkimer = join(directory, 'herkimer-diamond.png');
+  const hasHerkimer = await access(herkimer).then(
+    () => true,
+    () => false,
+  );
+  const specimens = [
+    {
+      path: join(
+        root,
+        'public/images/s178/cfe12d8f64ad989027df415d8f4c66e8785411266682e4c293bc146fac3560eb.webp',
+      ),
+      x: hasHerkimer ? 126 : 154,
+      y: hasHerkimer ? 814 : 691,
+      size: hasHerkimer ? 248 : 365,
+      name: 'PHENAKITE',
+    },
+    {
+      path: join(
+        root,
+        'public/images/s138/c25deadb0a8baf40c79c8c047d8cb18a7856bceeee48eba3ebe56f71a6ee9b92.webp',
+      ),
+      x: hasHerkimer ? 712 : 567,
+      y: hasHerkimer ? 814 : 691,
+      size: hasHerkimer ? 248 : 365,
+      name: 'AMETRINE',
+    },
+  ];
+  if (hasHerkimer) {
+    specimens.unshift({
+      path: herkimer,
+      x: 358,
+      y: 646,
+      size: 370,
+      name: 'HERKIMER DIAMOND',
+    });
+  }
+  const frames = await Promise.all(
+    specimens.map(async ({ path, x, y, size, name }, i) => {
+      const thumb = await sharp(path)
+        .resize(400, 400, { fit: 'contain', background: '#fffcfa' })
+        .flatten({ background: '#fffcfa' })
+        .jpeg({ quality: 88 })
+        .toBuffer();
+      const cx = x + size / 2;
+      const cy = y + size / 2;
+      const r = size / 2;
+      return `<g><circle cx="${cx}" cy="${cy}" r="${r + 5}" fill="#fffcfa" stroke="#b5a0c8" stroke-width="2"/><clipPath id="miracleGem${i}"><circle cx="${cx}" cy="${cy}" r="${r}"/></clipPath><image x="${x}" y="${y}" width="${size}" height="${size}" href="data:image/jpeg;base64,${thumb.toString('base64')}" clip-path="url(#miracleGem${i})"/><text x="${cx}" y="${y + size + 31}" fill="#6c587f" text-anchor="middle" font-family="Georgia,serif" font-size="18" letter-spacing="2">${name}</text></g>`;
+    }),
+  );
+  const motif = /<!-- GEM_ART_START -->[\s\S]*?<!-- GEM_ART_END -->/;
+  if (!motif.test(template)) throw Error('Chapter V cover template changed');
+  await writeFile(
+    join(directory, '05_chapter_miracle.svg'),
+    template.replace(motif, () => frames.join('')),
+  );
+}
+
 if (
   process.argv[1] &&
   resolve(process.argv[1]) === fileURLToPath(import.meta.url)
@@ -268,6 +331,7 @@ if (
   await prepareChapterThreeCover(root);
   await prepareRutileIllustrations(root);
   await prepareChapterFourCover(root);
+  await prepareChapterFiveCover(root);
   console.log(
     `Prepared ${count} approved images and illustrated chapter covers`,
   );
