@@ -370,7 +370,13 @@ export function createHandler(
               : `${m[1]}/assets/${m[2]}.png`
             : `${m[1]}/article.md`,
         );
-        return new Response(object, {
+        let output = object;
+        if (config.livemode === true && !m[2] && typeof db.readSupplement === 'function') {
+          const supplement = await db.readSupplement(user.id, m[1]);
+          if (typeof supplement === 'string' && supplement.trim())
+            output = (await new Response(object).text()) + '\n\n' + supplement;
+        }
+        return new Response(output, {
           status: 200,
           headers: {
             ...cors,
