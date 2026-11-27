@@ -5,9 +5,16 @@ import { chapterById } from '../../../services/special-stones/src/catalog.mjs';
 import { stones } from '../../lib/content';
 import Visual from '../../components/Visual.astro';
 const chapter = chapterById('chapter-three')!;
+const rutilePhotos: Record<string, string> = {
+  'platinum-rutilated-quartz': 'special-stones/platinum-rutile.webp',
+  'black-rutilated-quartz': 'special-stones/black-rutile.webp',
+  'red-rutilated-quartz': 'special-stones/red-rutile.webp',
+  'taichin-rutilated-quartz': 'special-stones/taichin-rutile.webp',
+};
 const gems = chapter.preview.map((g) => ({
   ...g,
   stone: stones.find((stone) => stone.slug === g.slug),
+  photo: rutilePhotos[g.slug],
 }));
 const membersEnabled =
   launched &&
@@ -96,11 +103,22 @@ const features = [
       <div class="rutile-preview">
         <p class="overline">THE WORLD OF RUTILE</p>
         <h2>さらに、四つの針水晶へ</h2>
-        <div class="feature-grid">
+        <div class="rutile-grid">
           {gems
-            .filter((g) => !g.stone)
+            .filter((g) => g.photo)
             .map((g) => (
               <article>
+                <figure class="rutile-photo">
+                  <img
+                    src={pathTo(g.photo)}
+                    alt={g.name + 'のイメージ画像'}
+                    width="960"
+                    height="960"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption>※ イメージ画像</figcaption>
+                </figure>
                 <h3>{g.name}</h3>
                 <p>{g.theme}</p>
               </article>
@@ -304,6 +322,50 @@ const features = [
     border: 1px solid #d7c1ac;
     border-radius: 10px;
     background: linear-gradient(130deg, #f2e5d9, #fffbf7 65%, #ead8c8);
+  }
+  .rutile-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .rutile-grid article {
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid #ddc9b6;
+    border-radius: 9px;
+    background: #fffaf6;
+  }
+  .rutile-photo {
+    margin: 0 auto 10px;
+  }
+  .rutile-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: contain;
+    border-radius: 5px;
+  }
+  .rutile-photo figcaption {
+    margin: 5px 0 0;
+    font-size: 11px;
+    color: #705e54;
+  }
+  .rutile-grid h3 {
+    font-size: 14px;
+    line-height: 1.65;
+    margin: 5px 0;
+    overflow-wrap: anywhere;
+  }
+  .rutile-grid p {
+    font-size: 13px;
+    color: #705e54;
+    margin: 0;
+  }
+  @media (max-width: 850px) {
+    .rutile-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
   }
   .feature-grid,
   .plans {

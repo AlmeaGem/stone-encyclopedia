@@ -1,0 +1,509 @@
+---
+import Page from '../../layouts/Page.astro';
+import { existsSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { pathTo, launched, canonical } from '../../lib/urls';
+import { chapterById } from '../../../services/special-stones/src/catalog.mjs';
+import { stones } from '../../lib/content';
+import Visual from '../../components/Visual.astro';
+const chapter = chapterById('chapter-four')!;
+const spinelReady = existsSync(resolve('public/special-stones/pink-spinel.png'));
+const gems = chapter.preview.map((g) => ({
+  ...g,
+  stone: stones.find((stone) => stone.slug === g.slug),
+}));
+const membersEnabled =
+  launched &&
+  (import.meta.env.PUBLIC_SPECIAL_STONES_MEMBERS_ENABLED === 'true' ||
+    import.meta.env.PUBLIC_SPECIAL_STONES_SALES_ENABLED === 'true') &&
+  new URL(canonical()).origin === 'https://almeagem.com' &&
+  import.meta.env.BASE_URL === '/';
+const sales =
+  membersEnabled &&
+  chapter.sellable &&
+  import.meta.env.PUBLIC_SPECIAL_STONES_SALES_ENABLED === 'true';
+const features = [
+  ['01', '十二種類の恋愛ストーン', '魅力・情熱・良縁・愛の象徴。'],
+  ['02', '恋愛の四段階', '出会いの前から、交際・結婚まで。'],
+  ['03', '愛する女性から、愛される女性へ', '自分の価値と対等な愛を大切に。'],
+  ['04', '願い別ブレスレットレシピ', 'ときめき・魅力・誠実な愛の組み合わせ。'],
+  ['05', '似た宝石の違いと選び方', '色・鉱物・処理・お手入れ。'],
+  ['06', 'なりたい女性像から選ぶ診断', '今の自分に寄り添う組み合わせ。'],
+];
+---
+
+<Page
+  title={chapter.title}
+  description={chapter.description}
+  path="special-stones/chapter-four/"
+>
+  <article class="rose wrap">
+    <nav aria-label="現在地">
+      <a href={pathTo()}>ホーム</a> /{' '}
+      <a href={pathTo('premium/')}>プレミアム</a> /{' '}
+      <a href={pathTo('special-stones/')}>スペシャルストーン</a> / 第四章
+    </nav>
+    <header class="rose-hero">
+      <p class="overline">ALMÉA GEM · SPECIAL STONES · CHAPTER IV</p>
+      <img
+        src={pathTo(chapter.cover)}
+        width={chapter.width}
+        height={chapter.height}
+        alt={chapter.title + 'の表紙'}
+        fetchpriority="high"
+      />
+      <div>
+        <p class="overline">THE JEWELS OF LOVE & ATTRACTION</p>
+        <h1>
+          愛を惹き寄せる、
+          <br />
+          魅惑の宝石たち
+        </h1>
+        <p class="lead">
+          <strong>誰かの心に、忘れられない輝きを。</strong>
+          <br />
+          愛されることも、自分を愛することも。
+        </p>
+        <p class="hero-promise">魅力・良縁・愛される私へ。十二の宝石から、なりたい自分を見つける恋愛特集。</p>
+        <p class="meta">無料紹介 · 本編150円（税込・買い切り）</p>
+        <a class="hero-contents-link" href="#rose-contents">
+          無料で内容を見る ↓
+        </a>
+      </div>
+    </header>
+    <div class="rose-copy">
+      {chapter.intro.map((p) => (
+        <p>{p}</p>
+      ))}
+    </div>
+    <section class="rose-gems">
+      <p class="overline">THE JEWELS OF LOVE</p>
+      <h2>十二の石、十二の愛の物語</h2>
+      <p class="image-note">掲載画像は石の特徴を表現したイメージです。</p>
+      <div class="gem-grid">
+        {gems.map((g) => (
+          <article>
+            {g.slug === 'pink-spinel' && spinelReady ? (
+              <div class="gem-visual">
+                <img
+                  src={pathTo('special-stones/pink-spinel.png')}
+                  alt="ピンクスピネルのイメージ画像"
+                  width="1024"
+                  height="1024"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            ) : g.stone ? (
+              <div class="gem-visual">
+                <Visual stone={g.stone} />
+              </div>
+            ) : (
+              <div class="gem-visual rose-placeholder">
+                <p>画像準備中</p>
+              </div>
+            )}
+            <div>
+              <h3>{g.name}</h3>
+              <p>{g.theme}</p>
+              <a class="gem-more" href="#rose-contents">本編の内容を見る →</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+    <aside class="love-editorial">
+      <p class="overline">THE ART OF BEING LOVED</p>
+      <h2>愛されるために、自分を小さくしない。</h2>
+      <p>出会う前、恋愛初期、交際、結婚。恋の段階によって変わる願いと、自分を大切にする石選びを特集します。</p>
+    </aside>
+    <section class="rose-features" id="rose-contents">
+      <p class="overline">INSIDE THE CHAPTER</p>
+      <h2>望む恋と、なりたい自分へ。</h2>
+      <div class="feature-grid">
+        {features.map(([n, t, d]) => (
+          <article class:list={[{ 'feature-spotlight': n === '03' || n === '06' }]}>
+            <span>{n}</span>
+            <h3>{t}</h3>
+            <p>{d}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+    <section class="rose-offer">
+      <p class="overline">CONTINUE THE STORY</p>
+      <h2>物語の続きを開く</h2>
+      <p>第四章の本編は購入者・対象月額会員限定です。</p>
+      <div class="plans">
+        <div>
+          <strong>単品購入</strong>
+          <b>150円</b>
+          <small>税込・買い切り</small>
+          {sales && (
+            <a href={pathTo('members/?view=store&article=chapter-four')}>
+              続きを読む →
+            </a>
+          )}
+        </div>
+        <div>
+          <strong>月額会員</strong>
+          <b>580円／月</b>
+          <small>税込・対象記事読み放題・自動更新</small>
+          {sales && (
+            <a href={pathTo('members/?view=store&article=chapter-four')}>
+              月額会員になる →
+            </a>
+          )}
+        </div>
+      </div>
+      {!sales && <p class="release-note">本編の販売開始に向けて準備を進めています。無料紹介をお楽しみください。</p>}
+      {membersEnabled && (
+        <a class="member-link" href={pathTo('members/?view=account')}>
+          会員登録・ログイン →
+        </a>
+      )}
+    </section>
+    <p class="fine">
+      石の意味は伝承や象徴に基づくもので、将来や願いの実現を保証するものではありません。
+    </p>
+    <a class="back" href={pathTo('special-stones/')}>
+      ← スペシャルストーン記事一覧へ戻る
+    </a>
+  </article>
+</Page>
+<style>
+  .rose {
+    max-width: 940px;
+    padding-block: 24px 60px;
+    color: #4b3931;
+  }
+  .rose nav {
+    font-size: 12px;
+    color: #806b60;
+  }
+  .rose nav a,
+  .back {
+    color: inherit;
+  }
+  .rose-hero {
+    display: grid;
+    grid-template-columns: 180px minmax(0, 1fr);
+    align-items: center;
+    gap: 24px;
+    padding: 26px;
+    margin: 22px 0 26px;
+    border: 1px solid #bc979e;
+    border-radius: 12px;
+    background:
+      radial-gradient(ellipse at 18% 10%, #fffaf5b3, transparent 45%),
+      radial-gradient(ellipse at 88% 96%, #fffdf5b3, transparent 50%),
+      linear-gradient(153deg, transparent 12%, #fffdf8d9 35%, transparent 64%),
+      linear-gradient(115deg, #e3c5ce, #fff6f3 52%, #ddbec9);
+    box-shadow:
+      inset 0 0 0 2px #fffaf5c0,
+      0 5px 16px #74523c1a;
+    color: #603b48;
+  }
+  .rose-hero > .overline {
+    grid-column: 1/-1;
+    text-align: center;
+  }
+  .overline {
+    font:
+      11px/1.7 Georgia,
+      serif;
+    letter-spacing: 0.15em;
+    color: #69464f;
+    margin: 0;
+  }
+  .rose-hero img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 5px 12px #6a51402b;
+  }
+  .rose-hero h1 {
+    font:
+      500 clamp(25px, 4vw, 36px)/1.6 'Shippori Mincho',
+      serif;
+    color: #603b48;
+    margin: 12px 0;
+  }
+  .lead {
+    font-size: 15px;
+    line-height: 1.9;
+  }
+  .meta {
+    font-size: 12px;
+  }
+  .rose-copy {
+    max-width: 660px;
+    margin: 28px auto 40px;
+    line-height: 2;
+    font-size: 15px;
+  }
+  .rose-copy p {
+    margin: 0 0 15px;
+  }
+  .rose-gems,
+  .rose-features,
+  .rose-offer {
+    margin: 30px 0;
+    text-align: center;
+  }
+  .rose h2 {
+    font:
+      500 clamp(20px, 3vw, 25px)/1.65 'Shippori Mincho',
+      serif;
+    margin: 8px 0 22px;
+  }
+  .gem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+  }
+  .gem-grid article,
+  .feature-grid article {
+    padding: 16px;
+    border: 1px solid #e2cbd1;
+    border-radius: 9px;
+    background: #fffaf9;
+    min-width: 0;
+  }
+  .gem-visual {
+    max-width: 164px;
+    margin: 0 auto 12px;
+  }
+  .gem-visual :global(.stone-figure) {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    max-width: none;
+  }
+  .gem-visual :global(.stone-image-frame) {
+    margin: 0 !important;
+    width: 100%;
+    aspect-ratio: 1;
+    min-height: 0;
+  }
+  .gem-visual :global(.stone-image-frame img) {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .gem-grid h3,
+  .feature-grid h3 {
+    font:
+      500 16px/1.6 'Shippori Mincho',
+      serif;
+    margin: 5px 0;
+  }
+  .gem-grid p,
+  .feature-grid p {
+    font-size: 13px;
+    line-height: 1.8;
+    margin: 0;
+    color: #705e54;
+  }
+  .rose-features,
+  .rose-offer {
+    margin-top: 28px;
+    padding: 25px 18px;
+    border: 1px solid #d9bcc5;
+    border-radius: 10px;
+    background: linear-gradient(130deg, #f2dfe3, #fffbf8 65%, #ead4dc);
+  }
+  .rose-placeholder {
+    display: grid;
+    place-items: center;
+    min-height: 90px;
+    aspect-ratio: 1;
+    border: 1px solid #dfc5cc;
+    border-radius: 6px;
+    background: #f9eff0;
+  }
+  .feature-grid,
+  .plans {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .feature-grid {
+    text-align: left;
+  }
+  .feature-grid span {
+    font:
+      21px Georgia,
+      serif;
+    color: #886849;
+  }
+  .plans {
+    max-width: 620px;
+    margin: 20px auto;
+  }
+  .plans div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 16px;
+    border: 1px solid #e1cbd1;
+    border-radius: 7px;
+    background: #fffdf9;
+  }
+  .plans b {
+    font:
+      500 24px 'Shippori Mincho',
+      serif;
+    color: #704653;
+  }
+  .plans small,
+  .fine,
+  .back {
+    font-size: 12px;
+    line-height: 1.9;
+  }
+  .hero-contents-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 8px 18px;
+    border: 1px solid #bc979e;
+    border-radius: 7px;
+    background: #fff9f1;
+    color: #603b48;
+    font-size: 13px;
+    text-decoration: none;
+    box-shadow: 0 2px 6px #74523c16;
+  }
+  .hero-contents-link:focus-visible {
+    outline: 2px solid #765142;
+    outline-offset: 3px;
+  }
+  .rose-features {
+    scroll-margin-top: 20px;
+  }
+  .member-link,
+  .plans a {
+    display: block;
+    max-width: 360px;
+    margin: 12px auto;
+    padding: 14px;
+    border: 1px solid #b58f9a;
+    border-radius: 8px;
+    background:
+      linear-gradient(153deg, transparent 12%, #fffdf8d9 35%, transparent 64%),
+      linear-gradient(115deg, #e4cdb7, #f8eee3 52%, #dfc3aa);
+    box-shadow:
+      0 3px 0 #a38a7245,
+      inset 0 0 0 1px #fffaf4;
+    color: #603b48;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .rose-hero {
+    grid-template-columns: 210px minmax(0, 1fr);
+    background:
+      radial-gradient(ellipse at 16% 75%, #fffaf6c9, transparent 60%),
+      linear-gradient(145deg, transparent 19%, #fffaf6b3 38%, transparent 48%, #fff9f473 60%, transparent 74%),
+      linear-gradient(115deg, #dec0ca, #fff7f4 50%, #dcbcc8);
+  }
+  .lead strong {
+    font-size: 19px;
+    color: #6b364b;
+    font-weight: 600;
+  }
+  .hero-promise {
+    font-size: 14px;
+    line-height: 1.9;
+    max-width: 35em;
+  }
+  .hero-contents-link {
+    background: linear-gradient(125deg, #d4a6b7, #f9e5e8 48%, #dfb5c3);
+    color: #532c40;
+    font-weight: 600;
+    min-height: 48px;
+    box-shadow: 0 3px 0 #b68b9a60, inset 0 0 0 1px #fffaf6;
+  }
+  .gem-visual :global(.image-impression-label) {
+    display: none;
+  }
+  .gem-visual > img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: contain;
+    border-radius: 5px;
+  }
+  .image-note {
+    color: #765d65;
+    font-size: 12px;
+    margin: -12px 0 18px;
+  }
+  .gem-more {
+    display: inline-block;
+    margin-top: 9px;
+    color: #774457;
+    font-size: 12px;
+    text-underline-offset: 3px;
+  }
+  .love-editorial {
+    padding: 30px 24px;
+    text-align: center;
+    background: linear-gradient(125deg, #f4e1e6, #fffbf7 54%, #ecd4dd);
+    border: 1px solid #c9a5b2;
+    border-radius: 10px;
+    color: #603b48;
+  }
+  .love-editorial p:last-child {
+    max-width: 40em;
+    margin: auto;
+    line-height: 1.9;
+  }
+  .feature-spotlight {
+    border-color: #bf98a8 !important;
+    background: #f9eaf0 !important;
+  }
+  .release-note {
+    color: #704653;
+    font-size: 14px;
+    line-height: 1.8;
+  }
+  @media (max-width: 640px) {
+    .rose {
+      padding-block: 16px 40px;
+    }
+    .rose-hero {
+      grid-template-columns: 1fr;
+      gap: 14px;
+      text-align: center;
+      padding: 18px 14px;
+    }
+    .rose-hero img {
+      max-width: 145px;
+      margin: auto;
+    }
+    .gem-grid {
+      grid-template-columns: 1fr;
+    }
+    .gem-grid article {
+      display: grid;
+      grid-template-columns: 90px minmax(0, 1fr);
+      align-items: center;
+      text-align: left;
+      gap: 14px;
+    }
+    .gem-visual {
+      margin: 0;
+    }
+    .feature-grid article {
+      padding: 10px;
+    }
+    .feature-grid h3 {
+      font-size: 14px;
+    }
+    .plans {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
