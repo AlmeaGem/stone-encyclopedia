@@ -156,7 +156,7 @@ export const specialChapters = Object.freeze([
     headline: '誰かの心に、忘れられない輝きを。',
     description:
       'ルベライト、ピンクスピネル、ピンクサファイアを中心に、十二種類の石となりたい女性像、恋愛の段階別の石選びを紹介。',
-    cover: 'special-stones/04_chapter_rose.svg',
+    cover: 'special-stones/04_chapter_love.svg',
     width: 1086,
     height: 1448,
     price: 150,
