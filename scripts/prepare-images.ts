@@ -1,4 +1,4 @@
-import { readFile, mkdir, rm, writeFile } from 'node:fs/promises';
+import { readFile, mkdir, rm, writeFile, access } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { z } from 'zod';
@@ -195,6 +195,66 @@ async function prepareRutileIllustrations(root: string) {
   }
 }
 
+async function prepareChapterFourCover(root: string) {
+  const directory = join(root, 'public/special-stones');
+  const template = await readFile(join(directory, '04_chapter_rose.svg'), 'utf8');
+  const spinel = join(directory, 'pink-spinel.png');
+  const hasSpinel = await access(spinel).then(
+    () => true,
+    () => false,
+  );
+  const specimens = [
+    {
+      path: join(
+        root,
+        'public/images/s205/eeae1b3a2dfb7e0ab3c1ee14b2498a5516278f3175e1227976f99c5115246dee.webp',
+      ),
+      x: hasSpinel ? 126 : 154,
+      y: hasSpinel ? 814 : 691,
+      size: hasSpinel ? 248 : 365,
+      name: 'RUBELLITE',
+    },
+    {
+      path: join(
+        root,
+        'public/images/s207/8770880a9aa2aee00cb92e282099abcf90e134bba0d6ea3c3d3f399349384cf7.webp',
+      ),
+      x: hasSpinel ? 712 : 567,
+      y: hasSpinel ? 814 : 691,
+      size: hasSpinel ? 248 : 365,
+      name: 'PINK SAPPHIRE',
+    },
+  ];
+  if (hasSpinel) {
+    specimens.unshift({
+      path: spinel,
+      x: 358,
+      y: 646,
+      size: 370,
+      name: 'PINK SPINEL',
+    });
+  }
+  const frames = await Promise.all(
+    specimens.map(async ({ path, x, y, size, name }, i) => {
+      const thumb = await sharp(path)
+        .resize(400, 400, { fit: 'contain', background: '#fff8f6' })
+        .flatten({ background: '#fff8f6' })
+        .jpeg({ quality: 88 })
+        .toBuffer();
+      const cx = x + size / 2;
+      const cy = y + size / 2;
+      const r = size / 2;
+      return `<g><circle cx="${cx}" cy="${cy}" r="${r + 5}" fill="#fff8f6" stroke="#b68b9a" stroke-width="2"/><clipPath id="roseGem${i}"><circle cx="${cx}" cy="${cy}" r="${r}"/></clipPath><image x="${x}" y="${y}" width="${size}" height="${size}" href="data:image/jpeg;base64,${thumb.toString('base64')}" clip-path="url(#roseGem${i})"/><text x="${cx}" y="${y + size + 31}" fill="#795662" text-anchor="middle" font-family="Georgia,serif" font-size="18" letter-spacing="2">${name}</text></g>`;
+    }),
+  );
+  const motif = /<!-- GEM_ART_START -->[\s\S]*?<!-- GEM_ART_END -->/;
+  if (!motif.test(template)) throw Error('Chapter IV cover template changed');
+  await writeFile(
+    join(directory, '04_chapter_love.svg'),
+    template.replace(motif, () => frames.join('')),
+  );
+}
+
 if (
   process.argv[1] &&
   resolve(process.argv[1]) === fileURLToPath(import.meta.url)
@@ -204,6 +264,7 @@ if (
   await prepareChapterTwoCover(root);
   await prepareChapterThreeCover(root);
   await prepareRutileIllustrations(root);
+  await prepareChapterFourCover(root);
   console.log(
     `Prepared ${count} approved images and illustrated chapter covers`,
   );

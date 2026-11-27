@@ -1,10 +1,13 @@
 ---
 import Page from '../../layouts/Page.astro';
+import { existsSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { pathTo, launched, canonical } from '../../lib/urls';
 import { chapterById } from '../../../services/special-stones/src/catalog.mjs';
 import { stones } from '../../lib/content';
 import Visual from '../../components/Visual.astro';
 const chapter = chapterById('chapter-four')!;
+const spinelReady = existsSync(resolve('public/special-stones/pink-spinel.png'));
 const gems = chapter.preview.map((g) => ({
   ...g,
   stone: stones.find((stone) => stone.slug === g.slug),
@@ -57,13 +60,14 @@ const features = [
           魅惑の宝石たち
         </h1>
         <p class="lead">
-          誰かの心に、忘れられない輝きを。
+          <strong>誰かの心に、忘れられない輝きを。</strong>
           <br />
           愛されることも、自分を愛することも。
         </p>
+        <p class="hero-promise">魅力・良縁・愛される私へ。十二の宝石から、なりたい自分を見つける恋愛特集。</p>
         <p class="meta">無料紹介 · 本編150円（税込・買い切り）</p>
         <a class="hero-contents-link" href="#rose-contents">
-          この章の内容を見る ↓
+          無料で内容を見る ↓
         </a>
       </div>
     </header>
@@ -75,10 +79,22 @@ const features = [
     <section class="rose-gems">
       <p class="overline">THE JEWELS OF LOVE</p>
       <h2>十二の石、十二の愛の物語</h2>
+      <p class="image-note">掲載画像は石の特徴を表現したイメージです。</p>
       <div class="gem-grid">
         {gems.map((g) => (
           <article>
-            {g.stone ? (
+            {g.slug === 'pink-spinel' && spinelReady ? (
+              <div class="gem-visual">
+                <img
+                  src={pathTo('special-stones/pink-spinel.png')}
+                  alt="ピンクスピネルのイメージ画像"
+                  width="1024"
+                  height="1024"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            ) : g.stone ? (
               <div class="gem-visual">
                 <Visual stone={g.stone} />
               </div>
@@ -90,17 +106,23 @@ const features = [
             <div>
               <h3>{g.name}</h3>
               <p>{g.theme}</p>
+              <a class="gem-more" href="#rose-contents">本編の内容を見る →</a>
             </div>
           </article>
         ))}
       </div>
     </section>
+    <aside class="love-editorial">
+      <p class="overline">THE ART OF BEING LOVED</p>
+      <h2>愛されるために、自分を小さくしない。</h2>
+      <p>出会う前、恋愛初期、交際、結婚。恋の段階によって変わる願いと、自分を大切にする石選びを特集します。</p>
+    </aside>
     <section class="rose-features" id="rose-contents">
       <p class="overline">INSIDE THE CHAPTER</p>
       <h2>望む恋と、なりたい自分へ。</h2>
       <div class="feature-grid">
         {features.map(([n, t, d]) => (
-          <article>
+          <article class:list={[{ 'feature-spotlight': n === '03' || n === '06' }]}>
             <span>{n}</span>
             <h3>{t}</h3>
             <p>{d}</p>
@@ -134,7 +156,7 @@ const features = [
           )}
         </div>
       </div>
-      {!sales && <p>現在、販売準備中です。</p>}
+      {!sales && <p class="release-note">本編の販売開始に向けて準備を進めています。無料紹介をお楽しみください。</p>}
       {membersEnabled && (
         <a class="member-link" href={pathTo('members/?view=account')}>
           会員登録・ログイン →
@@ -378,6 +400,74 @@ const features = [
     color: #603b48;
     font-weight: 600;
     text-decoration: none;
+  }
+  .rose-hero {
+    grid-template-columns: 210px minmax(0, 1fr);
+    background:
+      radial-gradient(ellipse at 16% 75%, #fffaf6c9, transparent 60%),
+      linear-gradient(145deg, transparent 19%, #fffaf6b3 38%, transparent 48%, #fff9f473 60%, transparent 74%),
+      linear-gradient(115deg, #dec0ca, #fff7f4 50%, #dcbcc8);
+  }
+  .lead strong {
+    font-size: 19px;
+    color: #6b364b;
+    font-weight: 600;
+  }
+  .hero-promise {
+    font-size: 14px;
+    line-height: 1.9;
+    max-width: 35em;
+  }
+  .hero-contents-link {
+    background: linear-gradient(125deg, #d4a6b7, #f9e5e8 48%, #dfb5c3);
+    color: #532c40;
+    font-weight: 600;
+    min-height: 48px;
+    box-shadow: 0 3px 0 #b68b9a60, inset 0 0 0 1px #fffaf6;
+  }
+  .gem-visual :global(.image-impression-label) {
+    display: none;
+  }
+  .gem-visual > img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1;
+    object-fit: contain;
+    border-radius: 5px;
+  }
+  .image-note {
+    color: #765d65;
+    font-size: 12px;
+    margin: -12px 0 18px;
+  }
+  .gem-more {
+    display: inline-block;
+    margin-top: 9px;
+    color: #774457;
+    font-size: 12px;
+    text-underline-offset: 3px;
+  }
+  .love-editorial {
+    padding: 30px 24px;
+    text-align: center;
+    background: linear-gradient(125deg, #f4e1e6, #fffbf7 54%, #ecd4dd);
+    border: 1px solid #c9a5b2;
+    border-radius: 10px;
+    color: #603b48;
+  }
+  .love-editorial p:last-child {
+    max-width: 40em;
+    margin: auto;
+    line-height: 1.9;
+  }
+  .feature-spotlight {
+    border-color: #bf98a8 !important;
+    background: #f9eaf0 !important;
+  }
+  .release-note {
+    color: #704653;
+    font-size: 14px;
+    line-height: 1.8;
   }
   @media (max-width: 640px) {
     .rose {
