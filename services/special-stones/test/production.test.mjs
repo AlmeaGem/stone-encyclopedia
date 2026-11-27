@@ -154,3 +154,17 @@ test('password recovery requires same origin and valid code; never exposes sessi
   const done=await call('recovery-complete',{email,code:'12345678',password:'new-fixture-password'});
   assert.equal(done.status,200);assert.deepEqual(await done.json(),{password_reset:true});assert.match(done.headers.get('set-cookie'),/Max-Age=0/);assert.equal(completions,1);
 });
+
+test('private supplement follows the same article permission; images remain unchanged', async()=>{
+ const config=readProductionConfig(env);
+ let allowed=false,reads=0,downloads=0;
+ const auth={getUser:async()=>({id:'fixture'})};
+ const db={canView:async()=>allowed,readSupplement:async(uid,id)=>{assert.equal(uid,'fixture');assert.equal(id,'chapter-one');reads++;return 'private supplement';}};
+ const h=createHandler({auth,db,storage:{download:async()=>{downloads++;return new Blob(['base article']);}}},config);
+ const url=config.publicOrigin+'/api/articles/chapter-one',headers={Authorization:'Bearer fixture'};
+ assert.equal((await h(new Request(url))).status,401);
+ assert.equal((await h(new Request(url,{headers}))).status,403);
+ assert.equal(reads,0);assert.equal(downloads,0);
+ allowed=true;const full=await h(new Request(url,{headers}));assert.equal(full.status,200);assert.equal(await full.text(),'base article\n\nprivate supplement');assert.match(full.headers.get('cache-control'),/no-store/);
+ assert.equal(reads,1);const asset=await h(new Request(url+'/assets/sapphire',{headers}));assert.equal(await asset.text(),'base article');assert.equal(reads,1);
+});
