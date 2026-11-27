@@ -226,3 +226,38 @@ const memberLinkEnabled =
     if (menu) menu.open = false;
   });
 </script>
+
+<style is:global>
+  @media (min-width: 641px) {
+    .site-header {
+      flex-wrap: wrap;
+      gap: 14px 20px;
+    }
+    .site-header > .brand {
+      flex: 0 0 auto;
+      max-width: 100%;
+    }
+    .site-header > .brand .brand-name {
+      white-space: nowrap;
+    }
+    .site-header > .desktop-navigation {
+      flex: 0 1 auto;
+      flex-wrap: wrap;
+      gap: 8px;
+      min-width: 0;
+      max-width: 100%;
+    }
+    .site-header > .desktop-navigation > a {
+      flex: 0 0 auto;
+      white-space: nowrap;
+    }
+  }
+  @media (min-width: 641px) and (max-width: 1230px) {
+    .site-header {
+      padding-inline: 26px;
+    }
+    .site-header > .desktop-navigation {
+      flex-basis: 100%;
+    }
+  }
+</style>

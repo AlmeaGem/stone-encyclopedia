@@ -129,6 +129,56 @@ async function prepareChapterTwoCover(root: string) {
   await writeFile(join(coverDir, '02_chapter_starlight.svg'), cover);
 }
 
+async function prepareChapterThreeCover(root: string) {
+  const coverDir = join(root, 'public/special-stones');
+  const cover = await readFile(join(coverDir, '03_chapter_cover.svg'), 'utf8');
+  const specimens = [
+    {
+      path: 's209/4b13f1c25a481d98e03d0e439a8b48bfb39641d7fadaba84c53879faf7fa587b.webp',
+      x: 383,
+      y: 655,
+      size: 320,
+      name: 'GOLD RUTILE',
+    },
+    {
+      path: 's051/0dd18cfdf1a1602a01edf2444b53a70210af41b6ebe2adb62f2c66ae53f32ba4.webp',
+      x: 126,
+      y: 835,
+      size: 245,
+      name: 'IMPERIAL TOPAZ',
+    },
+    {
+      path: 's047/3b952d10bca735f5bf0818962df1790df1c9c40b10179e080d752258e391fd34.webp',
+      x: 715,
+      y: 835,
+      size: 245,
+      name: 'SUNSTONE',
+    },
+  ];
+  const frames = await Promise.all(
+    specimens.map(async ({ path, x, y, size, name }, index) => {
+      const thumb = await sharp(join(root, 'public/images', path))
+        .resize(360, 360, { fit: 'contain', background: '#fffaf5' })
+        .flatten({ background: '#fffaf5' })
+        .jpeg({ quality: 87 })
+        .toBuffer();
+      const center = x + size / 2;
+      const radius = size / 2;
+      return `<g><circle cx="${center}" cy="${y + radius}" r="${radius + 5}" fill="#fffaf5" stroke="#bba087" stroke-width="1.5"/><clipPath id="gem${index}"><circle cx="${center}" cy="${y + radius}" r="${radius}"/></clipPath><image x="${x}" y="${y}" width="${size}" height="${size}" href="data:image/jpeg;base64,${thumb.toString('base64')}" clip-path="url(#gem${index})"/><text x="${center}" y="${y + size + 31}" fill="#705343" text-anchor="middle" font-family="Georgia,serif" font-size="17" letter-spacing="2">${name}</text></g>`;
+    }),
+  );
+  const motif =
+    /<g fill="none" stroke="#baa083">[\s\S]*?<g transform="translate\(543 842\)"[\s\S]*?<\/g>/;
+  if (!motif.test(cover)) throw Error('Chapter III cover template has changed');
+  const illustrated = cover
+    .replace(motif, () => frames.join(''))
+    .replace(
+      '金の糸をモチーフにした第三章の表紙。',
+      '三つの天然石のイメージ画像を使用した第三章の表紙。',
+    );
+  await writeFile(join(coverDir, '03_chapter_silky.svg'), illustrated);
+}
+
 if (
   process.argv[1] &&
   resolve(process.argv[1]) === fileURLToPath(import.meta.url)
@@ -136,5 +186,6 @@ if (
   const root = fileURLToPath(new URL('../', import.meta.url));
   const count = await prepareImages(root);
   await prepareChapterTwoCover(root);
-  console.log(`Prepared ${count} approved images and chapter two cover`);
+  await prepareChapterThreeCover(root);
+  console.log(`Prepared ${count} approved images and illustrated chapter covers`);
 }

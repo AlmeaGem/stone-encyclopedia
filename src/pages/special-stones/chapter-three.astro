@@ -46,7 +46,7 @@ const features = [
         src={pathTo(chapter.cover)}
         width={chapter.width}
         height={chapter.height}
-        alt={chapter.title + 'の表紙（抽象的なイラスト）'}
+        alt={chapter.title + 'の表紙（三石のイメージ画像）'}
         fetchpriority="high"
       />
       <div>
@@ -62,6 +62,9 @@ const features = [
           黄金の輝きに、未来への願いを。
         </p>
         <p class="meta">無料紹介 · 本編150円（税込・買い切り）</p>
+        <a class="hero-contents-link" href="#golden-contents">
+          この章の内容を見る ↓
+        </a>
       </div>
     </header>
     <div class="golden-copy">
@@ -105,7 +108,7 @@ const features = [
         </div>
       </div>
     </section>
-    <section class="golden-features">
+    <section class="golden-features" id="golden-contents">
       <p class="overline">INSIDE THE CHAPTER</p>
       <h2>豊かさへの鍵を、もっと深く。</h2>
       <div class="feature-grid">
@@ -183,6 +186,8 @@ const features = [
     border: 1px solid #bda087;
     border-radius: 12px;
     background:
+      radial-gradient(ellipse at 18% 10%, #fffaf5b3, transparent 45%),
+      radial-gradient(ellipse at 88% 96%, #fffdf5b3, transparent 50%),
       linear-gradient(153deg, transparent 12%, #fffdf8d9 35%, transparent 64%),
       linear-gradient(115deg, #e4cdb7, #f8eee3 52%, #dfc3aa);
     box-shadow:
@@ -339,6 +344,27 @@ const features = [
   .back {
     font-size: 12px;
     line-height: 1.9;
+  }
+  .hero-contents-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 8px 18px;
+    border: 1px solid #bda087;
+    border-radius: 7px;
+    background: #fff9f1;
+    color: #503b30;
+    font-size: 13px;
+    text-decoration: none;
+    box-shadow: 0 2px 6px #74523c16;
+  }
+  .hero-contents-link:focus-visible {
+    outline: 2px solid #765142;
+    outline-offset: 3px;
+  }
+  .golden-features {
+    scroll-margin-top: 20px;
   }
   .member-link,
   .plans a {

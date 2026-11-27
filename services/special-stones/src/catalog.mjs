@@ -142,7 +142,7 @@ export const specialChapters = Object.freeze([
     headline: '好機をつかみ、豊かさを育てる。',
     description:
       'ゴールドルチル、インペリアルトパーズ、サンストーンを中心に、十種類の石と五つのルチルの違いを紐解く金運・成功の特集。',
-    cover: 'special-stones/03_chapter_cover.svg',
+    cover: 'special-stones/03_chapter_silky.svg',
     width: 1086,
     height: 1448,
     price: 150,
