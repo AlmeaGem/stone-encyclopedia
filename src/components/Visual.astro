@@ -154,7 +154,7 @@ const cloudOrigin = cloudPhotoOrigin(import.meta.env.PUBLIC_PHOTO_API_ORIGIN);
               encodeURIComponent(photo.stoneId) +
               '?v=' +
               encodeURIComponent(photo.revision);
-            img.alt = photo.alt;
+            img.alt = String(photo.alt || '').replaceAll('（AI生成）','').replaceAll('(AI生成)','');
             img.loading = 'eager';
             img.decoding = 'async';
             img.draggable = false;
