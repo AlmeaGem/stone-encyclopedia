@@ -329,6 +329,101 @@ export const specialChapters = Object.freeze([
       '幸運の四段階、世界三大ヒーリングストーン、カイヤナイト、願い別レシピと選択式ミニ診断',
     illustrations: [],
   },
+  {
+    id: 'chapter-six',
+    number: '06',
+    title: '見えない邪気を払い、運命を守る石たち',
+    headline: '邪を祓い、悪縁を断ち、自分を守る。',
+    description:
+      'ブラックダイヤモンド、モリオン、オブシディアンを中心に、十四の石と破邪・邪視除け・悪縁切りの伝承を読み解く特集。',
+    cover: 'special-stones/06_chapter_protection.svg',
+    width: 1086,
+    height: 1448,
+    price: 150,
+    sellable: false,
+    contentSource: 'private-db',
+    themes: ['魔除け・破邪', '霊的守護・邪視除け', '悪縁切り'],
+    intro: [
+      '人は古くから、石に大切な人の無事や災いを避けたいという祈りを託してきました。',
+      '黒い宝石、目の形の瑪瑙、自然が形づくる十字石。十四の石から、破邪と守護の物語を紐解きます。',
+      '悪魔祓い・霊祓いの伝承と現代のお守り文化を区別し、守る・祓う・断つという願いに寄り添う一粒をご紹介します。',
+    ],
+    preview: [
+      {
+        name: 'ブラックダイヤモンド',
+        theme: '守護・揺るがない意志',
+        slug: 'black-diamond',
+      },
+      {
+        name: 'モリオン',
+        theme: '破邪・邪気払い',
+        slug: 'morion',
+      },
+      {
+        name: 'オブシディアン',
+        theme: '悪縁切り・断絶',
+        slug: 'obsidian',
+      },
+      {
+        name: 'ブラックトルマリン',
+        theme: '邪気除け・防御',
+        slug: 'black-tourmaline',
+      },
+      {
+        name: 'エジリン',
+        theme: '破邪・境界線',
+        slug: 'aegirine',
+      },
+      {
+        name: 'ブラックスギライト',
+        theme: '霊的守護・静けさ',
+        slug: 'black-sugilite',
+      },
+      {
+        name: 'ジェット',
+        theme: '邪視除け・巡礼の祈り',
+        slug: 'jet',
+      },
+      {
+        name: 'スタウロライト',
+        theme: '十字石・神聖な守護',
+        slug: 'staurolite',
+      },
+      {
+        name: 'ペリドット',
+        theme: '悪霊除けの伝承',
+        slug: 'peridot',
+      },
+      {
+        name: '天眼石',
+        theme: '邪視除け・守りの目',
+        slug: 'eye-agate',
+      },
+      {
+        name: 'ラピスラズリ',
+        theme: '厄除け・護符',
+        slug: 'lapis-lazuli',
+      },
+      {
+        name: 'マラカイト',
+        theme: '反射・災い除けの象徴',
+        slug: 'malachite',
+      },
+      {
+        name: 'オニキス',
+        theme: '悪縁切り・決意',
+        slug: 'black-onyx',
+      },
+      {
+        name: 'ブラックルチルクォーツ',
+        theme: '守護・前進',
+        slug: 'black-rutile',
+      },
+    ],
+    bonus:
+      '五つの守り方、邪視除けの歴史、願い別レシピ、空間の守護とミニ診断',
+    illustrations: [],
+  },
 ]);
 export const membershipPrice = 580;
 export const chapterById = id => specialChapters.find(c=>c.id===id);
