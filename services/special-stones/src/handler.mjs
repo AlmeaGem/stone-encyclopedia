@@ -369,15 +369,18 @@ export function createHandler(
         if (config.livemode === true && (!chapterById(m[1]) || (m[2] && !chapterById(m[1]).illustrations.some(a=>a.key===m[2])))) return response(404, { error: 'Not found' });
         if (m[1] === 'chapter-one' && m[2] && !Object.hasOwn(assetKeys, m[2]))
           return response(404, { error: 'Not found' });
-        const object = await storage.download(
+        const databaseBody = config.livemode === true && !m[2] && chapterById(m[1])?.contentSource === 'private-db';
+        if (databaseBody && typeof db.readSupplement !== 'function') return response(503,{error:'Content unavailable'});
+        const object = databaseBody ? await db.readSupplement(user.id,m[1]) : await storage.download(
           m[2]
             ? m[1] === 'chapter-one'
               ? assetKeys[m[2]]
               : `${m[1]}/assets/${m[2]}.png`
             : `${m[1]}/article.md`,
         );
+        if (databaseBody && (typeof object !== 'string' || !object.trim())) return response(503,{error:'Content unavailable'});
         let output = object;
-        if (config.livemode === true && !m[2] && typeof db.readSupplement === 'function') {
+        if (!databaseBody && config.livemode === true && !m[2] && typeof db.readSupplement === 'function') {
           const supplement = await db.readSupplement(user.id, m[1]);
           if (typeof supplement === 'string' && supplement.trim())
             output = (await new Response(object).text()) + '\n\n' + supplement;
