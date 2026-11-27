@@ -2,9 +2,7 @@
   "name": "almea-special-stones-live",
   "main": "src/production-worker.mjs",
   "compatibility_date": "2026-08-01",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
+  "compatibility_flags": ["nodejs_compat"],
   "workers_dev": false,
   "preview_urls": false,
   "vars": {
@@ -20,9 +18,9 @@
     "SPECIAL_STONES_APPROVED_LIVE_HOST": "almeagem.com",
     "SPECIAL_STONES_LIVE_RETURN_URL": "https://almeagem.com/members/",
     "STRIPE_LIVE_SINGLE_PRICE_ID": "price_1Ug1r1DUeD2lo9xonue8XYpF",
-    "STRIPE_LIVE_MONTHLY_PRICE_ID": "price_1Ug1r3DUeD2lo9xo70adBnpI"
+    "STRIPE_LIVE_MONTHLY_PRICE_ID": "price_1Ug1r3DUeD2lo9xo70adBnpI",
   },
   "observability": {
-    "enabled": false
-  }
+    "enabled": false,
+  },
 }

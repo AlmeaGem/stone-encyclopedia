@@ -4,38 +4,171 @@ import { existsSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { pathTo, launched, canonical } from '../../lib/urls';
 import type { InferGetStaticPropsType } from 'astro';
-import { specialChapters, membershipPrice } from '../../../services/special-stones/src/catalog.mjs';
-export function getStaticPaths(){
-  return specialChapters.filter(c=>c.id!=='chapter-one').map(c=>({params:{slug:c.id},props:{chapter:c}}));
+import {
+  specialChapters,
+  membershipPrice,
+} from '../../../services/special-stones/src/catalog.mjs';
+export function getStaticPaths() {
+  return specialChapters
+    .filter((c) => c.id !== 'chapter-one')
+    .map((c) => ({ params: { slug: c.id }, props: { chapter: c } }));
 }
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
-const {chapter}=Astro.props as Props;
-const sales = chapter.sellable && import.meta.env.PUBLIC_SPECIAL_STONES_SALES_ENABLED==='true' && launched && new URL(canonical()).origin==='https://almeagem.com' && import.meta.env.BASE_URL==='/';
-const cover = existsSync(resolve('public',chapter.cover));
-if(sales&&!cover)throw Error('Missing public chapter cover');
+const { chapter } = Astro.props as Props;
+const sales =
+  chapter.sellable &&
+  import.meta.env.PUBLIC_SPECIAL_STONES_SALES_ENABLED === 'true' &&
+  launched &&
+  new URL(canonical()).origin === 'https://almeagem.com' &&
+  import.meta.env.BASE_URL === '/';
+const cover = existsSync(resolve('public', chapter.cover));
+if (sales && !cover) throw Error('Missing public chapter cover');
 ---
-<Page title={chapter.title} description={chapter.description} path={'special-stones/'+chapter.id+'/'}>
+
+<Page
+  title={chapter.title}
+  description={chapter.description}
+  path={'special-stones/' + chapter.id + '/'}
+>
   <article class="wrap future-chapter">
-    <nav aria-label="現在地"><a href={pathTo('special-stones/')}>スペシャルストーン</a> / CHAPTER {chapter.number}</nav>
-    <p class="eyebrow">SPECIAL STONES · CHAPTER {chapter.number}</p><h1>{chapter.title}</h1><p class="article-meta">無料紹介 · 本編{chapter.price}円（税込・買い切り）</p>
-    {cover&&<img src={pathTo(chapter.cover)} width={chapter.width} height={chapter.height} alt={chapter.title+'の表紙'}/>}
+    <nav aria-label="現在地">
+      <a href={pathTo('special-stones/')}>スペシャルストーン</a> / CHAPTER{' '}
+      {chapter.number}
+    </nav>
+    <p class="eyebrow">SPECIAL STONES · CHAPTER {chapter.number}</p>
+    <h1>{chapter.title}</h1>
+    <p class="article-meta">
+      無料紹介 · 本編{chapter.price}円（税込・買い切り）
+    </p>
+    {cover && (
+      <img
+        src={pathTo(chapter.cover)}
+        width={chapter.width}
+        height={chapter.height}
+        alt={chapter.title + 'の表紙'}
+      />
+    )}
     <h2>{chapter.headline}</h2>
-    <div class="copy">{chapter.intro.map(paragraph=><p>{paragraph.split(/(\*\*[^*]+\*\*)/g).map(part=>part.startsWith('**')&&part.endsWith('**')?<strong>{part.slice(2,-2)}</strong>:part)}</p>)}</div>
-    <section><h2>この先で明かされる、宝石の秘密</h2><ul>{chapter.preview.map(g=><li>{g.name} ｜ {g.theme}</li>)}{chapter.bonus&&<li>{chapter.bonus}</li>}</ul>
-    <h2>物語の続きを開く</h2><p>単品{chapter.price}円（税込・買い切り）／月額{membershipPrice}円（税込・毎月自動更新）</p>
-    {sales?<a href={'https://almeagem.com/members/?view=store&article='+encodeURIComponent(chapter.id)}>購入案内へ</a>:<p>販売準備中です。</p>}</section>
+    <div class="copy">
+      {chapter.intro.map((paragraph) => (
+        <p>
+          {paragraph
+            .split(/(\*\*[^*]+\*\*)/g)
+            .map((part) =>
+              part.startsWith('**') && part.endsWith('**') ? (
+                <strong>{part.slice(2, -2)}</strong>
+              ) : (
+                part
+              ),
+            )}
+        </p>
+      ))}
+    </div>
+    <section>
+      <h2>この先で明かされる、宝石の秘密</h2>
+      <ul>
+        {chapter.preview.map((g) => (
+          <li>
+            {g.name} ｜ {g.theme}
+          </li>
+        ))}
+        {chapter.bonus && <li>{chapter.bonus}</li>}
+      </ul>
+      <h2>物語の続きを開く</h2>
+      <p>
+        単品{chapter.price}円（税込・買い切り）／月額{membershipPrice}
+        円（税込・毎月自動更新）
+      </p>
+      {sales ? (
+        <a
+          href={
+            'https://almeagem.com/members/?view=store&article=' +
+            encodeURIComponent(chapter.id)
+          }
+        >
+          購入案内へ
+        </a>
+      ) : (
+        <p>販売準備中です。</p>
+      )}
+    </section>
     <a href={pathTo('special-stones/')}>記事一覧へ戻る →</a>
   </article>
 </Page>
 <style>
-.future-chapter{max-width:850px;padding-block:24px 64px;color:#4b3833;font-size:15px}
-.future-chapter nav{font-size:12px;margin-bottom:24px;color:#79655f}
-.future-chapter h1{font:500 clamp(23px,3.2vw,32px)/1.55 'Shippori Mincho',serif;text-align:center;text-wrap:balance;margin:10px 0 8px}
-.future-chapter h2{font:500 clamp(19px,2.6vw,24px)/1.55 'Shippori Mincho',serif;text-align:center;text-wrap:balance}
-.future-chapter img{width:min(100%,330px);height:auto;display:block;margin:20px auto 28px;object-fit:contain;border-radius:8px}
-.eyebrow,.article-meta{text-align:center;color:#896d58;font-size:12px;margin:0}.eyebrow{letter-spacing:.15em}
-.copy{font-family:'Noto Serif JP',serif;font-size:15px;line-height:1.95;max-width:620px;margin:auto}.copy p{margin:0 0 14px}
-.future-chapter section{margin:36px auto;background:#fffaf6;padding:24px 16px;border-top:1px solid #c6a77b;line-height:1.9}
-.future-chapter a{color:#80565e}
-@media(max-width:520px){.future-chapter{padding-block:18px 40px}.future-chapter img{width:min(76%,290px)}.copy p{margin-bottom:12px}}
+  .future-chapter {
+    max-width: 850px;
+    padding-block: 24px 64px;
+    color: #4b3833;
+    font-size: 15px;
+  }
+  .future-chapter nav {
+    font-size: 12px;
+    margin-bottom: 24px;
+    color: #79655f;
+  }
+  .future-chapter h1 {
+    font:
+      500 clamp(23px, 3.2vw, 32px)/1.55 'Shippori Mincho',
+      serif;
+    text-align: center;
+    text-wrap: balance;
+    margin: 10px 0 8px;
+  }
+  .future-chapter h2 {
+    font:
+      500 clamp(19px, 2.6vw, 24px)/1.55 'Shippori Mincho',
+      serif;
+    text-align: center;
+    text-wrap: balance;
+  }
+  .future-chapter img {
+    width: min(100%, 330px);
+    height: auto;
+    display: block;
+    margin: 20px auto 28px;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+  .eyebrow,
+  .article-meta {
+    text-align: center;
+    color: #896d58;
+    font-size: 12px;
+    margin: 0;
+  }
+  .eyebrow {
+    letter-spacing: 0.15em;
+  }
+  .copy {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 15px;
+    line-height: 1.95;
+    max-width: 620px;
+    margin: auto;
+  }
+  .copy p {
+    margin: 0 0 14px;
+  }
+  .future-chapter section {
+    margin: 36px auto;
+    background: #fffaf6;
+    padding: 24px 16px;
+    border-top: 1px solid #c6a77b;
+    line-height: 1.9;
+  }
+  .future-chapter a {
+    color: #80565e;
+  }
+  @media (max-width: 520px) {
+    .future-chapter {
+      padding-block: 18px 40px;
+    }
+    .future-chapter img {
+      width: min(76%, 290px);
+    }
+    .copy p {
+      margin-bottom: 12px;
+    }
+  }
 </style>

@@ -10,7 +10,9 @@ const check = (condition) => {
 // All amounts and ownership are checked from Stripe's API and the server-created order.
 export async function processStripeEvent(event, { stripe, db }, config) {
   check(
-    event && event.livemode === (config.livemode === true) && /^evt_[A-Za-z0-9]+$/.test(event.id),
+    event &&
+      event.livemode === (config.livemode === true) &&
+      /^evt_[A-Za-z0-9]+$/.test(event.id),
   );
   if (
     event.type === 'checkout.session.completed' ||
@@ -67,7 +69,9 @@ export async function processStripeEvent(event, { stripe, db }, config) {
     );
     const subscription = await stripe.subscriptions.retrieve(subId);
     const orderId = subscription.metadata?.order_id;
-    check(subscription.livemode === (config.livemode === true) && uuid(orderId));
+    check(
+      subscription.livemode === (config.livemode === true) && uuid(orderId),
+    );
     const order = await db.getOrder(orderId);
     check(
       order &&
