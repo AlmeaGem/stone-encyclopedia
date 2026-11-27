@@ -135,6 +135,81 @@ export const specialChapters = Object.freeze([
     bonus: '宇宙の三石チャート、選択式ミニ診断と石選びのヒント',
     illustrations: [],
   },
+  {
+    id: 'chapter-three',
+    number: '03',
+    title: '黄金の石が秘める、繁栄への鍵',
+    headline: '好機をつかみ、豊かさを育てる。',
+    description:
+      'ゴールドルチル、インペリアルトパーズ、サンストーンを中心に、十種類の石と五つのルチルの違いを紐解く金運・成功の特集。',
+    cover: 'special-stones/03_chapter_cover.svg',
+    width: 1086,
+    height: 1448,
+    price: 150,
+    sellable: false,
+    contentSource: 'private-db',
+    themes: ['金運・好機', '仕事・成功', '繁栄・守護'],
+    intro: [
+      '黄金の輝きに、豊かさへの願いを重ねる。',
+      '好機を見つけること。自分の力を発揮すること。手にした成果を育て、守ること。',
+      '同じ金運の石でも、象徴する願いは少しずつ異なります。',
+      '黄金の針を宿す水晶から帝王の宝石、太陽の輝きまで。五つのルチルの違いと、十種類の石を巡る特別な章です。',
+    ],
+    preview: [
+      {
+        name: 'ゴールドルチルクォーツ',
+        theme: '財運・好機',
+        slug: 'golden-rutilated-quartz',
+      },
+      {
+        name: 'インペリアルトパーズ',
+        theme: '繁栄・自己実現',
+        slug: 'imperial-topaz',
+      },
+      {
+        name: 'サンストーン',
+        theme: '人気・自信',
+        slug: 'sunstone',
+      },
+      {
+        name: 'プラチナルチルクォーツ',
+        theme: '転機・変容',
+        slug: 'platinum-rutilated-quartz',
+      },
+      {
+        name: 'ブラックルチルクォーツ',
+        theme: '継続・安定',
+        slug: 'black-rutilated-quartz',
+      },
+      {
+        name: 'レッドルチルクォーツ',
+        theme: '情熱・行動',
+        slug: 'red-rutilated-quartz',
+      },
+      {
+        name: 'タイチンルチルクォーツ',
+        theme: '飛躍・目標',
+        slug: 'taichin-rutilated-quartz',
+      },
+      {
+        name: 'シトリン',
+        theme: '商売・豊かさ',
+        slug: 'citrine',
+      },
+      {
+        name: 'パイライト',
+        theme: '守護・意志',
+        slug: 'pyrite',
+      },
+      {
+        name: 'ゴールデンタイガーアイ',
+        theme: '判断・決断',
+        slug: 'tiger-eye',
+      },
+    ],
+    bonus: '五つのルチル比較、願い別レシピ、黄金の三石チャートとミニ診断',
+    illustrations: [],
+  },
 ]);
 export const membershipPrice = 580;
 export const chapterById = (id) => specialChapters.find((c) => c.id === id);
