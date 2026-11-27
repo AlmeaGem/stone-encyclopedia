@@ -184,3 +184,22 @@ test('unpublished catalog cannot create live checkout or subscription', async()=
  assert.equal((await call({kind:'single',article_id:'chapter-one'})).status,503);
  assert.equal(orders,0);assert.equal(priceReads,1);
 });
+
+test('chapter two database article is readable only after authorization and never downloads storage', async()=>{
+ const config=readProductionConfig(env);
+ let allowed=false,reads=0,downloads=0;
+ const auth={getUser:async()=>({id:'fixture'})};
+ const db={canView:async()=>allowed,readSupplement:async(uid,id)=>{assert.equal(uid,'fixture');assert.equal(id,'chapter-two');reads++;return 'private chapter fixture';}};
+ const h=createHandler({auth,db,storage:{download:async()=>{downloads++;throw Error('unexpected storage');}}},config);
+ const url=config.publicOrigin+'/api/articles/chapter-two',headers={Authorization:'Bearer fixture'};
+ assert.equal((await h(new Request(url))).status,401);
+ assert.equal((await h(new Request(url,{headers}))).status,403);
+ assert.equal(reads,0);
+ allowed=true;
+ const result=await h(new Request(url,{headers}));
+ assert.equal(result.status,200);assert.equal(await result.text(),'private chapter fixture');
+ assert.match(result.headers.get('cache-control'),/no-store/);
+ assert.equal(reads,1);assert.equal(downloads,0);
+ assert.equal((await h(new Request(url+'/assets/unknown',{headers}))).status,404);
+ assert.equal(downloads,0);
+});
