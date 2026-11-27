@@ -386,7 +386,8 @@ export const specialChapters = Object.freeze([
         slug: 'charoite',
       },
     ],
-    bonus: '幸運の四段階、世界三大ヒーリングストーン、カイヤナイト、願い別レシピと選択式ミニ診断',
+    bonus:
+      '幸運の四段階、世界三大ヒーリングストーン、カイヤナイト、願い別レシピと選択式ミニ診断',
     illustrations: [],
   },
 ]);

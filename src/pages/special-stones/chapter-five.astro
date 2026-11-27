@@ -141,7 +141,9 @@ const features = [
       <div class="feature-grid">
         {features.map(([n, t, d]) => (
           <article
-            class:list={[{ 'feature-spotlight': n === '06' || n === '07' || n === '08' }]}
+            class:list={[
+              { 'feature-spotlight': n === '06' || n === '07' || n === '08' },
+            ]}
           >
             <span>{n}</span>
             <h3>{t}</h3>
