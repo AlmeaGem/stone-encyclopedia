@@ -12,8 +12,8 @@ const memberEntry = launched && new URL(canonical()).origin === 'https://almeage
     <div class="collections">
       {premiumCategories.map((c,i)=>(
         <section class="collection">
-          <span class="number" aria-hidden="true">0{i+1}</span><p class="eyebrow">{c.english}</p><h2>{c.title}</h2><p class="collection-description">{c.description}</p>
-          {c.path ? <a href={pathTo(c.path)}>{c.status==='preview'?'記事一覧を見る':'診断の紹介を見る'} <span aria-hidden="true">→</span></a> : <p class="pending">準備中 / COMING SOON</p>}
+          <span class="number" aria-hidden="true">0{i+1}</span><p class="eyebrow">{c.english}</p><h2>{c.id==='fortune'?'占い・スピリチュアル':c.title}</h2><p class="collection-description">{c.id==='fortune'?'算命学・四柱推命・パワーストーン風水など、さまざまな占いやスピリチュアルコンテンツをご用意します。\n生年月日から守護石を調べる無料コンテンツもご利用いただけます。':c.description}</p>
+          {c.id==='fortune' ? <a href={pathTo('fortune/')}>占い一覧を見る <span aria-hidden="true">→</span></a> : c.path ? <a href={pathTo(c.path)}>{c.status==='preview'?'記事一覧を見る':'診断の紹介を見る'} <span aria-hidden="true">→</span></a> : <p class="pending">準備中 / COMING SOON</p>}
           {c.status==='coming-soon' && c.path && <small>有料結果の提供は準備中です。</small>}
         </section>
       ))}
