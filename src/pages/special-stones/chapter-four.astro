@@ -7,7 +7,9 @@ import { chapterById } from '../../../services/special-stones/src/catalog.mjs';
 import { stones } from '../../lib/content';
 import Visual from '../../components/Visual.astro';
 const chapter = chapterById('chapter-four')!;
-const spinelReady = existsSync(resolve('public/special-stones/pink-spinel.png'));
+const spinelReady = existsSync(
+  resolve('public/special-stones/pink-spinel.png'),
+);
 const gems = chapter.preview.map((g) => ({
   ...g,
   stone: stones.find((stone) => stone.slug === g.slug),
@@ -64,7 +66,9 @@ const features = [
           <br />
           愛されることも、自分を愛することも。
         </p>
-        <p class="hero-promise">魅力・良縁・愛される私へ。十二の宝石から、なりたい自分を見つける恋愛特集。</p>
+        <p class="hero-promise">
+          魅力・良縁・愛される私へ。十二の宝石から、なりたい自分を見つける恋愛特集。
+        </p>
         <p class="meta">無料紹介 · 本編150円（税込・買い切り）</p>
         <a class="hero-contents-link" href="#rose-contents">
           無料で内容を見る ↓
@@ -106,7 +110,9 @@ const features = [
             <div>
               <h3>{g.name}</h3>
               <p>{g.theme}</p>
-              <a class="gem-more" href="#rose-contents">本編の内容を見る →</a>
+              <a class="gem-more" href="#rose-contents">
+                本編の内容を見る →
+              </a>
             </div>
           </article>
         ))}
@@ -115,14 +121,18 @@ const features = [
     <aside class="love-editorial">
       <p class="overline">THE ART OF BEING LOVED</p>
       <h2>愛されるために、自分を小さくしない。</h2>
-      <p>出会う前、恋愛初期、交際、結婚。恋の段階によって変わる願いと、自分を大切にする石選びを特集します。</p>
+      <p>
+        出会う前、恋愛初期、交際、結婚。恋の段階によって変わる願いと、自分を大切にする石選びを特集します。
+      </p>
     </aside>
     <section class="rose-features" id="rose-contents">
       <p class="overline">INSIDE THE CHAPTER</p>
       <h2>望む恋と、なりたい自分へ。</h2>
       <div class="feature-grid">
         {features.map(([n, t, d]) => (
-          <article class:list={[{ 'feature-spotlight': n === '03' || n === '06' }]}>
+          <article
+            class:list={[{ 'feature-spotlight': n === '03' || n === '06' }]}
+          >
             <span>{n}</span>
             <h3>{t}</h3>
             <p>{d}</p>
@@ -156,7 +166,11 @@ const features = [
           )}
         </div>
       </div>
-      {!sales && <p class="release-note">本編の販売開始に向けて準備を進めています。無料紹介をお楽しみください。</p>}
+      {!sales && (
+        <p class="release-note">
+          本編の販売開始に向けて準備を進めています。無料紹介をお楽しみください。
+        </p>
+      )}
       {membersEnabled && (
         <a class="member-link" href={pathTo('members/?view=account')}>
           会員登録・ログイン →
@@ -405,7 +419,14 @@ const features = [
     grid-template-columns: 210px minmax(0, 1fr);
     background:
       radial-gradient(ellipse at 16% 75%, #fffaf6c9, transparent 60%),
-      linear-gradient(145deg, transparent 19%, #fffaf6b3 38%, transparent 48%, #fff9f473 60%, transparent 74%),
+      linear-gradient(
+        145deg,
+        transparent 19%,
+        #fffaf6b3 38%,
+        transparent 48%,
+        #fff9f473 60%,
+        transparent 74%
+      ),
       linear-gradient(115deg, #dec0ca, #fff7f4 50%, #dcbcc8);
   }
   .lead strong {
@@ -423,7 +444,9 @@ const features = [
     color: #532c40;
     font-weight: 600;
     min-height: 48px;
-    box-shadow: 0 3px 0 #b68b9a60, inset 0 0 0 1px #fffaf6;
+    box-shadow:
+      0 3px 0 #b68b9a60,
+      inset 0 0 0 1px #fffaf6;
   }
   .gem-visual :global(.image-impression-label) {
     display: none;

@@ -197,7 +197,10 @@ async function prepareRutileIllustrations(root: string) {
 
 async function prepareChapterFourCover(root: string) {
   const directory = join(root, 'public/special-stones');
-  const template = await readFile(join(directory, '04_chapter_rose.svg'), 'utf8');
+  const template = await readFile(
+    join(directory, '04_chapter_rose.svg'),
+    'utf8',
+  );
   const spinel = join(directory, 'pink-spinel.png');
   const hasSpinel = await access(spinel).then(
     () => true,
