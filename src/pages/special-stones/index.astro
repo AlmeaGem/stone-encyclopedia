@@ -97,7 +97,7 @@ const sales =
                   ))}
                 </div>
                 <div class="card-bottom">
-                  <strong class="price">
+                  <strong class="catalog-price">
                     {c.price}円 <small>税込</small>
                   </strong>
                   <span class="read">
@@ -322,11 +322,13 @@ const sales =
     padding-top: 12px;
     border-top: 1px solid #eee2d9;
   }
-  .price {
-    font-size: 17px;
+  .catalog-price {
+    font:
+      500 16px/1.4 'Shippori Mincho',
+      serif;
     color: #6c4939;
   }
-  .price small,
+  .catalog-price small,
   .pending {
     font-size: 11px;
     color: #786a65;
@@ -513,13 +515,13 @@ const sales =
     .read > span {
       font-size: 16px;
     }
-    .collection-page .catalog-card .price {
-      font-size: 22px;
-      line-height: 1.3;
+    .collection-page .catalog-card .catalog-price {
+      font-size: 15px;
+      line-height: 1.4;
       font-weight: 500;
       white-space: nowrap;
     }
-    .collection-page .catalog-card .price small {
+    .collection-page .catalog-card .catalog-price small {
       font-size: 11px;
     }
     .chapter-link {
