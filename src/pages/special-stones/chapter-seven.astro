@@ -21,12 +21,35 @@ const imagePath = (slug: string) => {
     ? revised
     : 'special-stones/' + slug + '.png';
 };
+const finalImageSlugs = new Set([
+  'trapiche-quartz',
+  'pyrite-in-quartz',
+  'hollandite-in-quartz',
+  'star-rutilated-quartz',
+  'gilalite-in-quartz',
+  'fluorite-in-quartz',
+  'tourmaline-in-quartz',
+  'epidote-in-quartz',
+  'actinolite-in-quartz',
+  'pink-angel-ladder',
+  'super-seven',
+  'enhydro-quartz',
+]);
+for (const slug of finalImageSlugs) {
+  if (!existsSync(resolve('public', 'special-stones/' + slug + '.png')))
+    throw Error('Missing chapter seven image: ' + slug);
+}
+const imageUrl = (slug: string) =>
+  pathTo(imagePath(slug)) +
+  (finalImageSlugs.has(slug) ? '?v=ch7-final-1' : '');
 const gems = chapter.preview.map((g) => ({
   ...g,
   stone: existing.has(g.slug)
     ? stones.find((s) => s.slug === g.slug)
     : undefined,
-  imageReady: existsSync(resolve('public', imagePath(g.slug))),
+  imageReady:
+    finalImageSlugs.has(g.slug) ||
+    existsSync(resolve('public', imagePath(g.slug))),
 }));
 const membersEnabled =
   launched &&
@@ -186,7 +209,7 @@ const features = [
                 {g.imageReady ? (
                   <div class="gem-visual">
                     <img
-                      src={pathTo(imagePath(g.slug))}
+                      src={imageUrl(g.slug)}
                       alt={g.name + 'のイメージ画像'}
                       width="1024"
                       height="1024"

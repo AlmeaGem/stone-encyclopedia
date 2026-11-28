@@ -281,4 +281,34 @@ for (const name of chapterSevenAssets) {
   if (cover && !chapterSevenCatalog.includes(path))
     throw Error('Chapter seven catalog cover reference missing');
 }
-console.log('Chapter seven: all ten revised artwork files decode OK');
+const chapterSevenFinalAssets = [
+  'trapiche-quartz.png',
+  'pyrite-in-quartz.png',
+  'hollandite-in-quartz.png',
+  'star-rutilated-quartz.png',
+  'gilalite-in-quartz.png',
+  'fluorite-in-quartz.png',
+  'tourmaline-in-quartz.png',
+  'epidote-in-quartz.png',
+  'actinolite-in-quartz.png',
+  'pink-angel-ladder.png',
+  'super-seven.png',
+  'enhydro-quartz.png',
+];
+for (const name of chapterSevenFinalAssets) {
+  const path = 'special-stones/' + name;
+  if (!chapterSevenHtml.includes(path))
+    throw Error('Chapter seven final image reference missing: ' + name);
+  const bytes = await readFile('dist/' + path);
+  const metadata = await sharp(bytes).metadata();
+  if (
+    metadata.format !== 'png' ||
+    !metadata.width ||
+    metadata.width !== metadata.height
+  )
+    throw Error('Invalid chapter seven final image: ' + name);
+  await sharp(bytes).raw().toBuffer();
+}
+if (chapterSevenHtml.includes('画像準備中'))
+  throw Error('Chapter seven still contains an image placeholder');
+console.log('Chapter seven: all 22 dedicated artwork files decode OK');
