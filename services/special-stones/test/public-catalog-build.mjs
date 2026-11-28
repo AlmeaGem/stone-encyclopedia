@@ -50,6 +50,9 @@ assert.match(seventh, /水晶に封じられた/);
 assert.match(seventh, /天賦の造形美/);
 assert.match(seventh, /クォーツインクォーツ/);
 assert.match(seventh, /スタールチルクォーツ/);
+assert.match(seventh, /五つの鑑賞カテゴリー/);
+assert.match(seventh, /quartz-growth\.svg/);
+assert.match(seventh, /quartz-time\.svg/);
 assert.doesNotMatch(seventh, /\/members\/\?view=store/);
 assert.ok(existsSync(join(root, 'special-stones/07_chapter_quartz.svg')));
 function walk(p) {

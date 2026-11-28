@@ -30,13 +30,77 @@ const sales =
   membersEnabled &&
   chapter.sellable &&
   import.meta.env.PUBLIC_SPECIAL_STONES_SALES_ENABLED === 'true';
+const groups = [
+  {
+    n: '01',
+    title: '成長の記憶を宿す水晶',
+    key: 'growth',
+    slugs: [
+      'quartz-in-quartz',
+      'phantom-quartz',
+      'trapiche-quartz',
+      'scepter-quartz',
+      'elestial-quartz',
+    ],
+  },
+  {
+    n: '02',
+    title: '金属鉱物が描く意匠',
+    key: 'metal',
+    slugs: [
+      'aurora-quartz',
+      'stibnite-in-quartz',
+      'hematite-in-quartz',
+      'pyrite-in-quartz',
+      'lepidocrocite-in-quartz',
+      'hollandite-in-quartz',
+      'star-rutilated-quartz',
+    ],
+  },
+  {
+    n: '03',
+    title: '稀少鉱物が織りなす景観',
+    key: 'rare',
+    slugs: [
+      'dumortierite-in-quartz',
+      'ajoite-in-quartz',
+      'papagoite-in-quartz',
+      'gilalite-in-quartz',
+      'fluorite-in-quartz',
+      'tourmaline-in-quartz',
+      'epidote-in-quartz',
+      'actinolite-in-quartz',
+    ],
+  },
+  {
+    n: '04',
+    title: '幻想の光彩を秘めた水晶',
+    key: 'light',
+    slugs: [
+      'angel-ladder-quartz',
+      'pink-angel-ladder',
+      'rainbow-quartz',
+    ],
+  },
+  {
+    n: '05',
+    title: '自然の歳月を閉じ込めた水晶',
+    key: 'time',
+    slugs: [
+      'agate-in-quartz',
+      'garden-quartz',
+      'super-seven',
+      'enhydro-quartz',
+    ],
+  },
+];
 const features = [
   ['01', '二十七の水晶図鑑', '稀有な内包景観と結晶形態。'],
   ['02', '内包と共生の境界', '透明な結晶に残る成長の記憶。'],
   ['03', '幻想的な光の秘密', '光芒と虹彩の造形。'],
   ['04', '願い別の組み合わせ', '内なる景観を重ねるレシピ。'],
   ['05', '希少性と真贋', '鑑賞の視点と処理の見極め。'],
-  ['06', '七つの稀有な姿', '特殊な成長形態と光学的景観。'],
+  ['06', '五つの鑑賞カテゴリー', '成長・内包・光彩・自然の歳月。'],
   ['07', '願いと景観の早見表', '成長・繁栄・再生・調和。'],
   ['08', '内側に眠る可能性', '選択式ミニ診断。'],
 ];
@@ -93,36 +157,53 @@ const features = [
       <p class="overline">THE INNER LANDSCAPE</p>
       <h2>二十七の水晶、二十七の造形</h2>
       <p class="image-note">掲載画像は石の特徴を表現したイメージです。</p>
-      <div class="gem-grid">
-        {gems.map((g) => (
-          <article>
-            {g.imageReady ? (
-              <div class="gem-visual">
-                <img
-                  src={pathTo('special-stones/' + g.slug + '.png')}
-                  alt={g.name + 'のイメージ画像'}
-                  width="1024"
-                  height="1024"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-            ) : g.stone ? (
-              <div class="gem-visual">
-                <Visual stone={g.stone} />
-              </div>
-            ) : (
-              <div class="gem-visual rose-placeholder">
-                <p>画像準備中</p>
-              </div>
-            )}
-            <div>
-              <h3>{g.name}</h3>
-              <p>{g.theme}</p>
+      <p class="group-note">景観の特徴に基づく五つの鑑賞カテゴリーです。</p>
+      {
+        groups.map((group) => (
+          <section class:list={['quartz-group', group.key]}>
+            <h3 class="group-heading">
+              <img
+                src={pathTo('special-stones/quartz-' + group.key + '.svg')}
+                width="24"
+                height="24"
+                alt=""
+                aria-hidden="true"
+              />
+              <span>{group.n} · {group.title}</span>
+            </h3>
+            <div class="gem-grid">
+              {gems.filter((g) => group.slugs.includes(g.slug)).map((g) => (
+                <article>
+                  {g.imageReady ? (
+                    <div class="gem-visual">
+                      <img
+                        src={pathTo('special-stones/' + g.slug + '.png')}
+                        alt={g.name + 'のイメージ画像'}
+                        width="1024"
+                        height="1024"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  ) : g.stone ? (
+                    <div class="gem-visual">
+                      <Visual stone={g.stone} />
+                    </div>
+                  ) : (
+                    <div class="gem-visual rose-placeholder">
+                      <p>画像準備中</p>
+                    </div>
+                  )}
+                  <div>
+                    <h3>{g.name}</h3>
+                    <p>{g.theme}</p>
+                  </div>
+                </article>
+              ))}
             </div>
-          </article>
-        ))}
-      </div>
+          </section>
+        ))
+      }
       <a class="gem-more" href="#rose-contents">
         本編の内容を見る ↓
       </a>
@@ -136,7 +217,7 @@ const features = [
     </aside>
     <aside class="love-editorial breakthrough">
       <p class="overline">RARE FORMS</p>
-      <h2>光と成長が描く、七つの稀有な姿。</h2>
+      <h2>光と成長が描く、稀有な姿。</h2>
       <p>光学的な景観や特殊な結晶形態にも焦点を当てます。</p>
     </aside>
     <section class="rose-features" id="rose-contents">
@@ -274,6 +355,7 @@ const features = [
   }
   .rose-copy p {
     margin: 0 0 15px;
+    color: #403c36;
   }
   .rose-gems,
   .rose-features,
@@ -662,5 +744,56 @@ const features = [
       font-size: 13px;
       line-height: 1.7;
     }
+  }
+  .group-note {
+    font-size: 12px;
+    margin: 0 0 16px;
+    color: #596c57;
+  }
+  .quartz-group {
+    margin: 18px 0;
+    text-align: left;
+    --group-bg: #e6eee2;
+    --group-ink: #40584a;
+  }
+  .quartz-group.metal {
+    --group-bg: #f2e8d8;
+    --group-ink: #765c36;
+  }
+  .quartz-group.rare {
+    --group-bg: #e4edf1;
+    --group-ink: #486575;
+  }
+  .quartz-group.light {
+    --group-bg: #ece5f2;
+    --group-ink: #66547a;
+  }
+  .quartz-group.time {
+    --group-bg: #efece3;
+    --group-ink: #665b46;
+  }
+  .group-heading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 9px;
+    padding: 8px 12px;
+    background: var(--group-bg);
+    color: var(--group-ink);
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 6px;
+  }
+  .group-heading img {
+    flex: none;
+    width: 24px;
+    height: 24px;
+  }
+  .quartz-group .gem-grid {
+    text-align: center;
+  }
+  .quartz-group .gem-grid h3 {
+    letter-spacing: 0;
+    text-wrap: balance;
   }
 </style>
