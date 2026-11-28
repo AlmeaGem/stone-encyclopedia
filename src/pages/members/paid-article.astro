@@ -1,0 +1,113 @@
+---
+import { appIconPath } from '../../lib/app-icons';
+import { pathTo } from '../../lib/urls';
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>購入者限定コンテンツ | ALMÉA GEM</title>
+    <link
+      rel="icon"
+      href={appIconPath('favicon.ico')}
+      sizes="16x16 32x32 48x48"
+    />
+    <link rel="icon" href={appIconPath('favicon-32.png')} sizes="32x32" />
+    <link rel="icon" href={appIconPath('favicon-48.png')} sizes="48x48" />
+    <link
+      rel="apple-touch-icon"
+      href={appIconPath('apple-touch-icon.png')}
+      sizes="180x180"
+    />
+    <link rel="manifest" href={appIconPath('site.webmanifest')} />
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        color: #493a37;
+        background: #faf7f5;
+        margin: 0;
+      }
+      main {
+        max-width: 660px;
+        padding: 32px 20px;
+        margin: 32px auto;
+      }
+      section {
+        background: white;
+        border: 1px solid #eadfda;
+        border-radius: 16px;
+        padding: 24px;
+      }
+      input,
+      button {
+        font: inherit;
+        padding: 12px;
+        margin: 6px 0;
+        box-sizing: border-box;
+      }
+      input {
+        width: 100%;
+        border: 1px solid #cdbbb4;
+        border-radius: 8px;
+      }
+      button {
+        border: 0;
+        border-radius: 8px;
+        background: #795d64;
+        color: white;
+        cursor: pointer;
+      }
+      button:disabled {
+        opacity: 0.55;
+        cursor: wait;
+      }
+      #article {
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+        line-height: 1.9;
+      }
+      #message {
+        min-height: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>購入者限定コンテンツ</h1>
+      <p>ご購入済みのアカウントでログインすると、対象記事を閲覧できます。</p>
+      <section>
+        <form id="login">
+          <label for="email">メールアドレス</label>
+          <input id="email" type="email" autocomplete="username" required />
+          <label for="password">パスワード</label>
+          <input
+            id="password"
+            type="password"
+            autocomplete="current-password"
+            required
+          />
+          <button id="submit" type="submit">
+            ログインして記事を確認
+          </button>
+        </form>
+        <button id="logout" type="button" hidden>
+          ログアウト
+        </button>
+        <p id="message" role="status" aria-live="polite"></p>
+        <article id="article" hidden>
+          <h2 id="article-title"></h2>
+          <div id="article-body"></div>
+        </article>
+      </section>
+      <p>
+        <a href={pathTo()}>無料の天然石図鑑へ戻る</a>
+      </p>
+    </main>
+    <script>
+      import '../../scripts/paid-article';
+    </script>
+  </body>
+</html>
