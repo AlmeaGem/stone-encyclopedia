@@ -39,17 +39,16 @@ for (const slug of finalImageSlugs) {
   if (!existsSync(resolve('public', 'special-stones/' + slug + '.png')))
     throw Error('Missing chapter seven image: ' + slug);
 }
-const imageUrl = (slug: string) =>
-  pathTo(imagePath(slug)) +
-  (finalImageSlugs.has(slug) ? '?v=ch7-final-1' : '');
+const imageUrl = (slug: string) => {
+  const url = pathTo(imagePath(slug));
+  return finalImageSlugs.has(slug) ? url + '?v=ch7-final-1' : url;
+};
 const gems = chapter.preview.map((g) => ({
   ...g,
   stone: existing.has(g.slug)
     ? stones.find((s) => s.slug === g.slug)
     : undefined,
-  imageReady:
-    finalImageSlugs.has(g.slug) ||
-    existsSync(resolve('public', imagePath(g.slug))),
+  imageReady: existsSync(resolve('public', imagePath(g.slug))),
 }));
 const membersEnabled =
   launched &&
