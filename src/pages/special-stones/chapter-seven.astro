@@ -17,9 +17,7 @@ const existing = new Set([
 ]);
 const gems = chapter.preview.map((g) => ({
   ...g,
-  stone: existing.has(g.slug)
-    ? stones.find((s) => s.slug === g.slug)
-    : undefined,
+  stone: existing.has(g.slug) ? stones.find((s) => s.slug === g.slug) : undefined,
   imageReady: existsSync(resolve('public/special-stones', g.slug + '.png')),
 }));
 const membersEnabled =
@@ -77,7 +75,9 @@ const features = [
           <span>透明なる結晶の深奥に、</span>
           <span>二十七の神秘を訪ねる。</span>
         </p>
-        <p class="hero-promise">鉱物の共生、成長の記憶、光の妙を読み解きます。</p>
+        <p class="hero-promise">
+          鉱物の共生、成長の記憶、光の妙を読み解きます。
+        </p>
         <p class="meta">無料紹介 · 本編150円（税込・買い切り）</p>
         <a class="hero-contents-link" href="#rose-contents">
           無料で内容を見る ↓
