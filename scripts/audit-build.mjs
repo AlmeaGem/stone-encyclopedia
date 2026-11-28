@@ -250,10 +250,8 @@ const chapterSevenHtml = await readFile(
   'dist/special-stones/chapter-seven/index.html',
   'utf8',
 );
-const chapterSevenCatalog = await readFile(
-  'dist/special-stones/index.html',
-  'utf8',
-);
+const catalogPath = 'dist/special-stones/index.html';
+const chapterSevenCatalog = await readFile(catalogPath, 'utf8');
 const chapterSevenAssets = [
   '07_chapter_quartz_edition2.jpg',
   'ch7-quartz-in-quartz-v2.png',
@@ -278,9 +276,9 @@ for (const name of chapterSevenAssets) {
     metadata.width !== (cover ? 900 : 400) ||
     metadata.height !== (cover ? 1200 : 400)
   )
-    throw Error('Chapter seven image has invalid dimensions or format: ' + name);
+    throw Error('Invalid chapter seven image dimensions or format: ' + name);
   await sharp(bytes).raw().toBuffer();
   if (cover && !chapterSevenCatalog.includes(path))
     throw Error('Chapter seven catalog cover reference missing');
 }
-console.log('Chapter seven: all ten revised artwork files decode successfully');
+console.log('Chapter seven: all ten revised artwork files decode OK');
