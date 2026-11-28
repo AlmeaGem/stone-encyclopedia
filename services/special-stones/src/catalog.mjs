@@ -491,7 +491,7 @@ export const specialChapters = Object.freeze([
     headline: '悠久の歳月が織りなす、比類なき景観。',
     description:
       '内包結晶、幻想的な光、鉱物の共生。二十七の水晶に秘められた造形と象徴を紐解く特集。',
-    cover: 'special-stones/07_chapter_quartz.svg',
+    cover: 'special-stones/07_chapter_quartz_edition2.jpg',
     width: 1086,
     height: 1448,
     price: 150,

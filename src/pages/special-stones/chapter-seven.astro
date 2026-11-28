@@ -15,12 +15,18 @@ const existing = new Set([
   'scepter-quartz',
   'elestial-quartz',
 ]);
+const imagePath = (slug: string) => {
+  const revised = 'special-stones/ch7-' + slug + '-v2.png';
+  return existsSync(resolve('public', revised))
+    ? revised
+    : 'special-stones/' + slug + '.png';
+};
 const gems = chapter.preview.map((g) => ({
   ...g,
   stone: existing.has(g.slug)
     ? stones.find((s) => s.slug === g.slug)
     : undefined,
-  imageReady: existsSync(resolve('public/special-stones', g.slug + '.png')),
+  imageReady: existsSync(resolve('public', imagePath(g.slug))),
 }));
 const membersEnabled =
   launched &&
@@ -180,7 +186,7 @@ const features = [
                 {g.imageReady ? (
                   <div class="gem-visual">
                     <img
-                      src={pathTo('special-stones/' + g.slug + '.png')}
+                      src={pathTo(imagePath(g.slug))}
                       alt={g.name + 'のイメージ画像'}
                       width="1024"
                       height="1024"
