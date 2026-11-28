@@ -22,11 +22,6 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run lint
-      - name: Show chapter seven formatting diff on failure
-        if: failure()
-        run: |
-          npx prettier --write src/pages/special-stones/chapter-seven.astro
-          git diff -- src/pages/special-stones/chapter-seven.astro
       - run: npm run validate
       - run: npm test
       - run: npm run build

@@ -17,7 +17,9 @@ const existing = new Set([
 ]);
 const gems = chapter.preview.map((g) => ({
   ...g,
-  stone: existing.has(g.slug) ? stones.find((s) => s.slug === g.slug) : undefined,
+  stone: existing.has(g.slug)
+    ? stones.find((s) => s.slug === g.slug)
+    : undefined,
   imageReady: existsSync(resolve('public/special-stones', g.slug + '.png')),
 }));
 const membersEnabled =
@@ -139,7 +141,9 @@ const features = [
           <span>透明なる結晶の深奥に、</span>
           <span>二十七の神秘を訪ねる。</span>
         </p>
-        <p class="hero-promise">鉱物の共生、成長の記憶、光の妙を読み解きます。</p>
+        <p class="hero-promise">
+          鉱物の共生、成長の記憶、光の妙を読み解きます。
+        </p>
         <p class="meta">無料紹介 · 本編150円（税込・買い切り）</p>
         <a class="hero-contents-link" href="#rose-contents">
           無料で内容を見る ↓
@@ -156,52 +160,52 @@ const features = [
       <h2>二十七の水晶、二十七の造形</h2>
       <p class="image-note">掲載画像は石の特徴を表現したイメージです。</p>
       <p class="group-note">景観の特徴に基づく五つの鑑賞カテゴリーです。</p>
-      {
-        groupedGems.map((group) => (
-          <section class:list={['quartz-group', group.key]}>
-            <h3 class="group-heading">
-              <img
-                src={pathTo('special-stones/quartz-' + group.key + '.svg')}
-                width="24"
-                height="24"
-                alt=""
-                aria-hidden="true"
-              />
-              <span>{group.n} · {group.title}</span>
-            </h3>
-            <div class="gem-grid">
-              {group.gems.map((g) => (
-                <article>
-                  {g.imageReady ? (
-                    <div class="gem-visual">
-                      <img
-                        src={pathTo('special-stones/' + g.slug + '.png')}
-                        alt={g.name + 'のイメージ画像'}
-                        width="1024"
-                        height="1024"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                  ) : g.stone ? (
-                    <div class="gem-visual">
-                      <Visual stone={g.stone} />
-                    </div>
-                  ) : (
-                    <div class="gem-visual rose-placeholder">
-                      <p>画像準備中</p>
-                    </div>
-                  )}
-                  <div>
-                    <h3>{g.name}</h3>
-                    <p>{g.theme}</p>
+      {groupedGems.map((group) => (
+        <section class:list={['quartz-group', group.key]}>
+          <h3 class="group-heading">
+            <img
+              src={pathTo('special-stones/quartz-' + group.key + '.svg')}
+              width="24"
+              height="24"
+              alt=""
+              aria-hidden="true"
+            />
+            <span>
+              {group.n} · {group.title}
+            </span>
+          </h3>
+          <div class="gem-grid">
+            {group.gems.map((g) => (
+              <article>
+                {g.imageReady ? (
+                  <div class="gem-visual">
+                    <img
+                      src={pathTo('special-stones/' + g.slug + '.png')}
+                      alt={g.name + 'のイメージ画像'}
+                      width="1024"
+                      height="1024"
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
-                </article>
-              ))}
-            </div>
-          </section>
-        ))
-      }
+                ) : g.stone ? (
+                  <div class="gem-visual">
+                    <Visual stone={g.stone} />
+                  </div>
+                ) : (
+                  <div class="gem-visual rose-placeholder">
+                    <p>画像準備中</p>
+                  </div>
+                )}
+                <div>
+                  <h3>{g.name}</h3>
+                  <p>{g.theme}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      ))}
       <a class="gem-more" href="#rose-contents">
         本編の内容を見る ↓
       </a>
