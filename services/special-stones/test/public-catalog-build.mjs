@@ -40,10 +40,18 @@ assert.ok(existsSync(join(root, 'special-stones/protection-eye.svg')));
 assert.match(sixth, /五つの守り方/);
 assert.doesNotMatch(sixth, /\/members\/\?view=store/);
 assert.ok(existsSync(join(root, 'special-stones/06_chapter_protection.svg')));
-for (const slug of ['one', 'two', 'three', 'four', 'five', 'six']) {
+for (const slug of ['one', 'two', 'three', 'four', 'five', 'six', 'seven']) {
   const html = read('special-stones/chapter-' + slug + '/index.html');
   assert.equal((html.match(/本編の内容を見る/g) || []).length, 1);
 }
+const seventh = read('special-stones/chapter-seven/index.html');
+assert.match(catalog, /chapter-seven\//);
+assert.match(seventh, /水晶に封じられた/);
+assert.match(seventh, /天賦の造形美/);
+assert.match(seventh, /クォーツインクォーツ/);
+assert.match(seventh, /スタールチルクォーツ/);
+assert.doesNotMatch(seventh, /\/members\/\?view=store/);
+assert.ok(existsSync(join(root, 'special-stones/07_chapter_quartz.svg')));
 function walk(p) {
   for (const e of readdirSync(p, { withFileTypes: true })) {
     const v = join(p, e.name);

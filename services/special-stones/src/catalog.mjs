@@ -484,6 +484,165 @@ export const specialChapters = Object.freeze([
     bonus: '五つの守り方、邪視除けの歴史、願い別レシピ、空間の守護とミニ診断',
     illustrations: [],
   },
+  {
+    id: 'chapter-seven',
+    number: '07',
+    title: '水晶に封じられた、天賦の造形美',
+    headline: '悠久の歳月が織りなす、比類なき景観。',
+    description:
+      '内包結晶、幻想的な光、鉱物の共生。二十七の水晶に秘められた造形と象徴を紐解く特集。',
+    cover: 'special-stones/07_chapter_quartz.svg',
+    width: 1086,
+    height: 1448,
+    price: 150,
+    sellable: false,
+    contentSource: 'private-db',
+    themes: ['希少な水晶', '成長・自己実現', '共生・光彩'],
+    intro: [
+      '透明なる結晶の深奥には、ときに想像を凌駕する光景が広がります。',
+      '群青の花房、黄金の薄片、幾重にも連なる山影。水晶の内部に残された異質な存在こそが、比類なき美しさの源泉です。',
+      '二十七の水晶を通して、結晶成長と鉱物の共生、光の妙、そして願いに重ねられる象徴を紐解きます。',
+    ],
+    preview: [
+      {
+        name: 'クォーツインクォーツ',
+        theme: '自己実現・飛躍',
+        slug: 'quartz-in-quartz',
+      },
+      {
+        name: 'エンジェルラダークォーツ',
+        theme: '希望・導き',
+        slug: 'angel-ladder-quartz',
+      },
+      {
+        name: 'オーロラクォーツ',
+        theme: '繁栄・結実',
+        slug: 'aurora-quartz',
+      },
+      {
+        name: 'アゲートインクォーツ',
+        theme: '再生・対話',
+        slug: 'agate-in-quartz',
+      },
+      {
+        name: 'スティブナイトインクォーツ',
+        theme: '決断・悪縁切り',
+        slug: 'stibnite-in-quartz',
+      },
+      {
+        name: 'ヘマタイトインクォーツ',
+        theme: '挑戦・信念',
+        slug: 'hematite-in-quartz',
+      },
+      {
+        name: 'ファントムクォーツ',
+        theme: '成長・再起',
+        slug: 'phantom-quartz',
+      },
+      {
+        name: 'ガーデンクォーツ',
+        theme: '蓄積・繁栄',
+        slug: 'garden-quartz',
+      },
+      {
+        name: 'デュモルチェライトインクォーツ',
+        theme: '研鑽・才能',
+        slug: 'dumortierite-in-quartz',
+      },
+      {
+        name: 'アホーアイトインクォーツ',
+        theme: '静謐・再生',
+        slug: 'ajoite-in-quartz',
+      },
+      {
+        name: 'パパゴアイトインクォーツ',
+        theme: '解放・柔軟性',
+        slug: 'papagoite-in-quartz',
+      },
+      {
+        name: 'ギラライトインクォーツ',
+        theme: '創造性・個性',
+        slug: 'gilalite-in-quartz',
+      },
+      {
+        name: 'フローライトインクォーツ',
+        theme: '発想・学び',
+        slug: 'fluorite-in-quartz',
+      },
+      {
+        name: 'トルマリンインクォーツ',
+        theme: '守護・境界線',
+        slug: 'tourmaline-in-quartz',
+      },
+      {
+        name: 'パイライトインクォーツ',
+        theme: '繁栄・実行',
+        slug: 'pyrite-in-quartz',
+      },
+      {
+        name: 'エピドートインクォーツ',
+        theme: '変容・成長',
+        slug: 'epidote-in-quartz',
+      },
+      {
+        name: 'アクチノライトインクォーツ',
+        theme: '安定・意志',
+        slug: 'actinolite-in-quartz',
+      },
+      {
+        name: 'レピドクロサイトインクォーツ',
+        theme: '情熱・魅力',
+        slug: 'lepidocrocite-in-quartz',
+      },
+      {
+        name: 'スーパーセブン',
+        theme: '調和・統合',
+        slug: 'super-seven',
+      },
+      {
+        name: '水入り水晶（エンハイドロクォーツ）',
+        theme: '時間・再生',
+        slug: 'enhydro-quartz',
+      },
+      {
+        name: 'ピンクエンジェルラダー',
+        theme: '愛情・希望',
+        slug: 'pink-angel-ladder',
+      },
+      {
+        name: 'レインボークォーツ',
+        theme: '好機・可能性',
+        slug: 'rainbow-quartz',
+      },
+      {
+        name: 'ホーランダイトインクォーツ',
+        theme: '個性・方向性',
+        slug: 'hollandite-in-quartz',
+      },
+      {
+        name: 'トラピッチェクォーツ',
+        theme: '秩序・調和',
+        slug: 'trapiche-quartz',
+      },
+      {
+        name: 'セプタークォーツ',
+        theme: '主体性・意志',
+        slug: 'scepter-quartz',
+      },
+      {
+        name: 'エレスチャルクォーツ',
+        theme: '変容・統合',
+        slug: 'elestial-quartz',
+      },
+      {
+        name: 'スタールチルクォーツ',
+        theme: '飛躍・発展',
+        slug: 'star-rutilated-quartz',
+      },
+    ],
+    bonus: '内包と共生の違い、願い別レシピ、希少性と真贋、選択式ミニ診断',
+    illustrations: [],
+  },
 ]);
 export const membershipPrice = 580;
 export const chapterById = (id) => specialChapters.find((c) => c.id === id);
