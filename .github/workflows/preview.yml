@@ -78,3 +78,21 @@ jobs:
       - name: Deploy preview only
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Verify chapter seven artwork on the public domain
+        if: ${{ vars.ALMEAGEM_DOMAIN_LAUNCH == 'true' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=https://almeagem.com/special-stones
+          curl -fsSL --retry 3 --retry-all-errors --max-time 20 "$base/chapter-seven/?v=${GITHUB_SHA}" -o /tmp/chapter-seven.html
+          curl -fsSL --retry 3 --retry-all-errors --max-time 20 "$base/?v=${GITHUB_SHA}" -o /tmp/chapter-seven-catalog.html
+          grep -Fq '07_chapter_quartz_edition2.jpg' /tmp/chapter-seven-catalog.html
+          for name in 07_chapter_quartz_edition2.jpg ch7-quartz-in-quartz-v2.png ch7-angel-ladder-quartz-v2.png ch7-aurora-quartz-v2.png ch7-agate-in-quartz-v2.png ch7-stibnite-in-quartz-v2.png ch7-hematite-in-quartz-v2.png ch7-dumortierite-in-quartz-v2.png ch7-ajoite-in-quartz-v2.png ch7-papagoite-in-quartz-v2.png; do
+            grep -Fq "$name" /tmp/chapter-seven.html
+            curl -fsSL --retry 3 --retry-all-errors --max-time 20 "$base/$name" -o /tmp/ch7-artwork
+            case "$name" in
+              *.jpg) file --mime-type /tmp/ch7-artwork | grep -Fq 'image/jpeg' ;;
+              *.png) file --mime-type /tmp/ch7-artwork | grep -Fq 'image/png' ;;
+            esac
+            echo "Public artwork OK: $name"
+          done

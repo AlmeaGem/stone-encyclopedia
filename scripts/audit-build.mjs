@@ -244,3 +244,43 @@ for (const file of output.filter((p) => p.endsWith('.html'))) {
     throw new Error(`${file} references the retired text icon`);
 }
 console.log('App icon and manifest subpath audit OK: ' + prefix);
+
+// Check the chapter seven artwork in the actual publication output.
+const chapterSevenHtml = await readFile(
+  'dist/special-stones/chapter-seven/index.html',
+  'utf8',
+);
+const chapterSevenCatalog = await readFile(
+  'dist/special-stones/index.html',
+  'utf8',
+);
+const chapterSevenAssets = [
+  '07_chapter_quartz_edition2.jpg',
+  'ch7-quartz-in-quartz-v2.png',
+  'ch7-angel-ladder-quartz-v2.png',
+  'ch7-aurora-quartz-v2.png',
+  'ch7-agate-in-quartz-v2.png',
+  'ch7-stibnite-in-quartz-v2.png',
+  'ch7-hematite-in-quartz-v2.png',
+  'ch7-dumortierite-in-quartz-v2.png',
+  'ch7-ajoite-in-quartz-v2.png',
+  'ch7-papagoite-in-quartz-v2.png',
+];
+for (const name of chapterSevenAssets) {
+  const path = 'special-stones/' + name;
+  if (!chapterSevenHtml.includes(path))
+    throw Error('Chapter seven image reference missing: ' + name);
+  const bytes = await readFile('dist/' + path);
+  const metadata = await sharp(bytes).metadata();
+  const cover = name.endsWith('.jpg');
+  if (
+    metadata.format !== (cover ? 'jpeg' : 'png') ||
+    metadata.width !== (cover ? 900 : 400) ||
+    metadata.height !== (cover ? 1200 : 400)
+  )
+    throw Error('Chapter seven image has invalid dimensions or format: ' + name);
+  await sharp(bytes).raw().toBuffer();
+  if (cover && !chapterSevenCatalog.includes(path))
+    throw Error('Chapter seven catalog cover reference missing');
+}
+console.log('Chapter seven: all ten revised artwork files decode successfully');
