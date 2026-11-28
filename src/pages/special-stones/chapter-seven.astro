@@ -76,11 +76,7 @@ const groups = [
     n: '04',
     title: '幻想の光彩を秘めた水晶',
     key: 'light',
-    slugs: [
-      'angel-ladder-quartz',
-      'pink-angel-ladder',
-      'rainbow-quartz',
-    ],
+    slugs: ['angel-ladder-quartz', 'pink-angel-ladder', 'rainbow-quartz'],
   },
   {
     n: '05',
@@ -94,6 +90,10 @@ const groups = [
     ],
   },
 ];
+const groupedGems = groups.map((group) => ({
+  ...group,
+  gems: gems.filter((g) => group.slugs.includes(g.slug)),
+}));
 const features = [
   ['01', '二十七の水晶図鑑', '稀有な内包景観と結晶形態。'],
   ['02', '内包と共生の境界', '透明な結晶に残る成長の記憶。'],
@@ -139,9 +139,7 @@ const features = [
           <span>透明なる結晶の深奥に、</span>
           <span>二十七の神秘を訪ねる。</span>
         </p>
-        <p class="hero-promise">
-          鉱物の共生、成長の記憶、光の妙を読み解きます。
-        </p>
+        <p class="hero-promise">鉱物の共生、成長の記憶、光の妙を読み解きます。</p>
         <p class="meta">無料紹介 · 本編150円（税込・買い切り）</p>
         <a class="hero-contents-link" href="#rose-contents">
           無料で内容を見る ↓
@@ -159,7 +157,7 @@ const features = [
       <p class="image-note">掲載画像は石の特徴を表現したイメージです。</p>
       <p class="group-note">景観の特徴に基づく五つの鑑賞カテゴリーです。</p>
       {
-        groups.map((group) => (
+        groupedGems.map((group) => (
           <section class:list={['quartz-group', group.key]}>
             <h3 class="group-heading">
               <img
@@ -172,7 +170,7 @@ const features = [
               <span>{group.n} · {group.title}</span>
             </h3>
             <div class="gem-grid">
-              {gems.filter((g) => group.slugs.includes(g.slug)).map((g) => (
+              {group.gems.map((g) => (
                 <article>
                   {g.imageReady ? (
                     <div class="gem-visual">
